@@ -12,12 +12,12 @@ Be sure to edit the *manifest.json* file as in the guide provided below to fit y
 #### Configuration guide and notes
 
 ##### 1. Code to register the service worker
-This is the first step to making your web app work offline. Copy and Paste this code to your index file, eg just before the end of the body tag or in the head tag in html5
+This is the first step to making your web app work *offline.* Copy and paste this code to your *index file,* eg just before the end of the *body tag* or in the *head tag* in html5
 
-This code checks to see if the service worker API is available, and if it is, the service worker at /sw.js is registered once the page is loaded.
+This code checks to see if the *service worker API* is available, and if it is, the service worker at */sw.js* is registered once the page is loaded.
 
 ##### N/B : You need HTTPS
-You can only register service workers on Websites, Web Apps or pages served over HTTPS.
+You can only register service workers on Websites, Web Apps or Pages served over HTTPS.
 
 Read more about service workers [HERE](https://developers.google.com/web/fundamentals/primers/service-workers/)
 
@@ -37,7 +37,7 @@ Read more about service workers [HERE](https://developers.google.com/web/fundame
 		<!-- end of service worker -->
 ```
 ##### 2. Using the Web Manifest - manifest.json
-When you have created the manifest and it's on your site, add a link tag to all the pages that encompass your web app, as follows:
+When you have created the *manifest* and it's on your site, add a link tag to all the pages that encompass your web app, as follows;
 
 ```html
 <link rel="manifest" href="/manifest.json">
