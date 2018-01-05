@@ -1,4 +1,4 @@
-## Get Started with Project pwafire
+## Get Started with Project PWA Fire
 Project pwa_fire is an open source progressive web app bundle developed by Maye Edwin that allows you to convert your website into a pwa or build one in seconds. It is the most simplest way you can ever convert your web app or website into a 100% progressive Web App.
 
 #### What to do // Required
@@ -11,7 +11,7 @@ N/B Do not edit anything else but the one guided to.
 
 #### Service Worker // sw.js Guide
 
-```
+```javascript
 //after a service worker is installed and the user navigates to a different page or refreshes, 
 //the service worker will begin to receive fetch events
 self.addEventListener('fetch', function(event) {
