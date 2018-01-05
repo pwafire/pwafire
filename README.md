@@ -37,7 +37,7 @@ Read more about service workers [HERE](https://developers.google.com/web/fundame
 		<!-- end of service worker -->
 ```
 ##### 2. Using the Web Manifest - manifest.json
-When you have created the *manifest* and it's on your site, add a link tag to all the pages that encompass your web app, as follows;
+When you have uploaded the *manifest* and it's on your site, add a link tag to all the pages that encompass your web app, as follows;
 
 ```html
 <link rel="manifest" href="/manifest.json">
