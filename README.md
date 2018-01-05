@@ -1,15 +1,14 @@
 ### Get Started with Project PWA Fire
-Project [pwa_fire](https://twitter.com/pwafire) is an open source **progressive web app javascript** and **json** [Bundle](https://twitter.com/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a *progressive web app* or build one in a few. It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
+Project [pwa_fire](https://twitter.com/pwafire) is an open source *progressive web app* **javascript** and **json** [Bundle](https://twitter.com/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a *progressive web app* or build one in a few. It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
 #### What to do first // Required
-[Download/fork/clone](https://developers.google.com/web/fundamentals/web-app-manifest/) the bundle and upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
+[Download](https://github.com/mayeedwin/pwafire/edit/master/README.md) the pwafire bundle and upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
 
 Be sure to edit the *manifest.json* file as in the guide provided below to fit your web app needs.
 
 **N/B:** Do not configure or edit anything else but the one guided to.
 
 #### Configuration guide and notes
-
 ##### 1. Code to register the service worker
 This is the first step to making your web app work *offline.* Copy and paste this code to your *index file,* eg just before the end of the *body tag* or in the *head tag* in html5
 
