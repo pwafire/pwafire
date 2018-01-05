@@ -3,6 +3,7 @@ Official Github Repo for Project PWA Fire
 
 ### Manifest.json Guide
 
+```
 // now add the following line to the bottom of the <head> element in your index.html, 
 // add a link tag to all the pages that encompass your web app, as follows:
 // Here is the line <link rel="manifest" href="/manifest.json">
@@ -41,3 +42,4 @@ Official Github Repo for Project PWA Fire
     //the value we're using has the advantage of being meaningful to Google Analytics.
 }
 
+```
