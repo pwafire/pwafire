@@ -1,7 +1,7 @@
 # pwafire
 Official Github Repo for Project PWA Fire
 
-### Manifest.json Guide - Do not copy this; Cooments will be taken us data in JSON
+### Manifest.json Guide - Do not copy this; Comments will be taken us data in JSON
 
 ```
 
