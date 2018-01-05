@@ -2,8 +2,7 @@
 Project [pwa_fire](https://twitter.com/pwafire) is an open source **progressive web app javascript** and **json** [Bundle](https://twitter.com/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a *progressive web app* or build one in a few. It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
 #### What to do first // Required
-
-Download the bundle and upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
+[Download/fork/clone](https://developers.google.com/web/fundamentals/web-app-manifest/) the bundle and upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
 
 Be sure to edit the *manifest.json* file as in the guide provided below to fit your web app needs.
 
@@ -48,7 +47,6 @@ Configuring the **manifest.json** helps you to specify how you want your web app
 Read more about Web Manifest [HERE](https://developers.google.com/web/fundamentals/web-app-manifest/)
 
 #### Service Worker // sw.js Guide
-
 ```javascript
 //after a service worker is installed and the user navigates to a different page or refreshes, 
 //the service worker will begin to receive fetch events
@@ -101,24 +99,20 @@ self.addEventListener('fetch', function(event) {
      });
     }));
 });
-
 ```
 #### Web Manifest // manifest.json Guide
-
-##### 1. // add a link tag to all the pages that encompass your web app, as shown below;
+##### 1. // Add a link tag to all the pages that encompass your web app, as shown below;
 ```html
 <!-- manifest  -->
 // <link rel="manifest" href="/manifest.json">
 <!-- end-manifest -->
 ```
-
 ##### 2. // Configuring manifest.json
 Configure/edit the background and theme colors, display type, the Web App short name, the Web App name and icons size (keep icon sizes as **specified** below)
 
 Leave the **start url** as recomended below though this can be anything you want; the value we're using has the advantage of being meaningful to **Google Analytics.**
 
 **N/B** : For the **theme color**, specify that also in the index file/ pages to be cached. Example for html5 in the head tag, see below;
-
 ```html
 <!-- theme-color -->
  <meta name="theme-color" content="#fff" />
@@ -159,13 +153,10 @@ Leave the **start url** as recomended below though this can be anything you want
   ],
   "start_url": "index.html?launcher=true"
 }
-
 ```
 #### View Progressive Web Apps Built with Project PWA Fire
-
 ##### 1. Impala Developers 
 View the web app [HERE](https://impaladevelopers.com)
-
 ##### 2. Project Maye Edwin PWA
 View the web app [HERE](https://maye.gdgmoi.com)
 
