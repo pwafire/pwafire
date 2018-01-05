@@ -1,5 +1,5 @@
 ### Get Started with Project PWA Fire
-Project [pwa_fire](https://twitter.com/pwafire) is an open source progressive web app javascript and json [Bundle](https://twitter.com/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a pwa or build one in seconds. It is the most simplest way you can ever convert your web app or website into a 100% progressive Web App.
+Project [pwa_fire](https://twitter.com/pwafire) is an open source **progressive web app javascript** and **json** [Bundle](https://twitter.com/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a pwa or build one in seconds. It is the most simplest way you can ever convert your web app or website into a 100% progressive Web App.
 
 #### What to do first // Required
 
