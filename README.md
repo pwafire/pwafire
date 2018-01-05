@@ -1,4 +1,4 @@
-## Get Started with Project PWA Fire
+### Get Started with Project PWA Fire
 Project pwa_fire is an open source progressive web app bundle developed by Maye Edwin that allows you to convert your website into a pwa or build one in seconds. It is the most simplest way you can ever convert your web app or website into a 100% progressive Web App.
 
 #### What to do // Required
@@ -8,6 +8,29 @@ Download the bundle and upload the sw.js and manifest.json files to your root fo
 Be sure to edit the manifest.json file as in the guide provided below to fit your web app needs.
 
 N/B Do not edit anything else but the one guided to.
+
+#### Configuration guide and notes
+
+##### 1. Code to register the service worker
+
+This is the first step to making the app work offline. Copy and Paste this code to your index file, eg just before the </body> in html5
+
+```javascript
+<!-- register service worker -->
+	<script>
+	
+	    if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js')
+    .then(function() { console.log("Service Worker Registered"); });
+  }
+  
+  );
+}
+	</script>
+		<!-- end of service worker -->
+
+```
 
 #### Service Worker // sw.js Guide
 
