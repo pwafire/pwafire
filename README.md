@@ -1,19 +1,25 @@
 ### Get Started with Project PWA Fire
 Project pwa_fire is an open source progressive web app bundle developed by Maye Edwin that allows you to convert your website into a pwa or build one in seconds. It is the most simplest way you can ever convert your web app or website into a 100% progressive Web App.
 
-#### What to do // Required
+#### What to do first // Required
 
-Download the bundle and upload the sw.js and manifest.json files to your root folder of your project.
+Download the bundle and upload the sw.js and manifest.json files to your ROOT folder of your project.
 
 Be sure to edit the manifest.json file as in the guide provided below to fit your web app needs.
 
-N/B Do not edit anything else but the one guided to.
+N/B Do not configure or edit anything else but the one guided to.
 
 #### Configuration guide and notes
 
 ##### 1. Code to register the service worker
-
 This is the first step to making the app work offline. Copy and Paste this code to your index file, eg just before the end of the body tag or in the head tag in html5
+
+This code checks to see if the service worker API is available, and if it is, the service worker at /sw.js is registered once the page is loaded.
+
+##### N/B : You need HTTPS
+You can only register service workers on Websites, Web Apps or pages served over HTTPS.
+
+Read more about service workers [HERE](https://developers.google.com/web/fundamentals/primers/service-workers/)
 
 ```html
 <!-- register service worker -->
@@ -27,10 +33,20 @@ This is the first step to making the app work offline. Copy and Paste this code 
   
   );
 }
-	</script>
+        </script>
 		<!-- end of service worker -->
 
 ```
+##### 2. Using the Web Manifest - manifest.json
+When you have created the manifest and it's on your site, add a link tag to all the pages that encompass your web app, as follows:
+
+```html
+<link rel="manifest" href="/manifest.json">
+
+```
+Make sure to configure the manifest.json file as shown in the guide below.
+
+Read more about Web Manifest [HERE](https://developers.google.com/web/fundamentals/web-app-manifest/)
 
 #### Service Worker // sw.js Guide
 
@@ -71,7 +87,7 @@ self.addEventListener('fetch', function(event) {
           '/sw.js/',
           '/manifest.js',
 
-          // These are links to the extenal social media buttons that should be cached 
+          // These are links to the extenal social media buttons that should be cached if any exists.
          'https://platform.twitter.com/widgets.js',
          'https://platform.linkedin.com/badges/js/profile.js',
          'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11&appId=128193484441134',
