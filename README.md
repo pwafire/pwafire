@@ -105,43 +105,58 @@ self.addEventListener('fetch', function(event) {
 ```
 #### Manifest // manifest.json Guide - Do not copy this; Comments will be taken us data in JSON
 
-```script
-
-// add a link tag to all the pages that encompass your web app, as shown below;
+##### 1. // add a link tag to all the pages that encompass your web app, as shown below;
+```html
+<!-- end-theme-color -->
 // <link rel="manifest" href="/manifest.json">
+<!-- end-theme-color -->
+```
+
+##### 2. // Configuring manifest.json
+The background and theme colors, display type, App short name, the name and icons size as **specified** below;
+
+Leave the start url as recomended below though this can be anything you want; the value we're using has the advantage of being meaningful to Google Analytics.
+
+**N/B** : For the theme color, specify that also in the index file/ pages to be cached. Example for html5 in the head tag, see below;
+
+```html
+<!-- theme color -->
+ <meta name="theme-color" content="#fff" />
+
+```
+```json
 {
- "background_color": "#fff", // set the background color
- "display": "standalone", // set the launch style / you make your web app hide the browser's UI by setting the display type to standalone
- "theme_color": "#fff", // set the background color
+ "background_color": "#fff", 
+ "display": "standalone",
+ "theme_color": "#fff", 
     
-  "short_name": "PWA Fire", // a short_name for use as the text on the users home screen / rename this
-  "name": "Your Web App Name", // a name for use in the Web App Install banner / rename this
+  "short_name": "PWA Fire", 
+  "name": "Your Web App Name",
   "icons": [
     {
-      "src": "images/pwamayeedwin.png", // replace with your image/icon path
+      "src": "images/pwamayeedwin.png",
       "type": "image/png",
-      "sizes": "48x48" // must be this size
+      "sizes": "48x48"
     },
     {
-      "src": "images/pwamayeedwin.png", // replace with your image/icon path
+      "src": "images/pwamayeedwin.png", 
       "type": "image/png",
-      "sizes": "96x96" // must be this size
+      "sizes": "96x96" // must be this siz
     },
     {
-      "src": "images/mayepwalogo192.png", // replace with your image/icon path
+      "src": "images/mayepwalogo192.png", 
       "type": "image/png",
-      "sizes": "192x192" // must be this size
+      "sizes": "192x192" // 
     }
     ,
     {
-      "src": "images/mayepwa512.png", // replace with your image/icon path
+      "src": "images/mayepwa512.png",
       "type": "image/png",
-      "sizes": "512x512" // must be this size
+      "sizes": "512x512"
     }
     
   ],
-  "start_url": "index.html?launcher=true" // recomended though this can be anything you want; 
-    //the value we're using has the advantage of being meaningful to Google Analytics.
+  "start_url": "index.html?launcher=true"
 }
 
 ```
