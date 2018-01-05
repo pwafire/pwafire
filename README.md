@@ -13,9 +13,9 @@ N/B Do not edit anything else but the one guided to.
 
 ##### 1. Code to register the service worker
 
-This is the first step to making the app work offline. Copy and Paste this code to your index file, eg just before the </body> in html5
+This is the first step to making the app work offline. Copy and Paste this code to your index file, eg just before the end of the body tag or after the first thing in the head tag in html5
 
-```javascript
+```html
 <!-- register service worker -->
 	<script>
 	
