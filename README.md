@@ -113,17 +113,18 @@ self.addEventListener('fetch', function(event) {
 ```
 
 ##### 2. // Configuring manifest.json
-The background and theme colors, display type, App short name, the name and icons size as **specified** below;
+Configure/edit the background and theme colors, display type, the Web App short name, the Web App name and icons size (keep icon sizes as **specified** below)
 
-Leave the start url as recomended below though this can be anything you want; the value we're using has the advantage of being meaningful to Google Analytics.
+Leave the **start url** as recomended below though this can be anything you want; the value we're using has the advantage of being meaningful to **Google Analytics.**
 
-**N/B** : For the theme color, specify that also in the index file/ pages to be cached. Example for html5 in the head tag, see below;
+**N/B** : For the **theme color**, specify that also in the index file/ pages to be cached. Example for html5 in the head tag, see below;
 
 ```html
 <!-- theme-color -->
  <meta name="theme-color" content="#fff" />
 <!-- end-theme-color -->
 ```
+##### The manifest.json code below;
 ```json
 {
  "background_color": "#fff", 
