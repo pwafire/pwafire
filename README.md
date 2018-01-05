@@ -103,7 +103,7 @@ self.addEventListener('fetch', function(event) {
 });
 
 ```
-#### Manifest // manifest.json Guide - Do not copy this; Comments will be taken us data in JSON
+#### Web Manifest // manifest.json Guide
 
 ##### 1. // add a link tag to all the pages that encompass your web app, as shown below;
 ```html
