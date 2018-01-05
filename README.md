@@ -3,11 +3,11 @@ Project [pwa_fire](https://twitter.com/pwafire) is an open source **progressive 
 
 #### What to do first // Required
 
-Download the bundle and upload the sw.js and manifest.json files to the ROOT folder of your project.
+Download the bundle and upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
 
-Be sure to edit the manifest.json file as in the guide provided below to fit your web app needs.
+Be sure to edit the *manifest.json* file as in the guide provided below to fit your web app needs.
 
-N/B Do not configure or edit anything else but the one guided to.
+**N/B:** Do not configure or edit anything else but the one guided to.
 
 #### Configuration guide and notes
 
