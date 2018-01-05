@@ -141,12 +141,12 @@ Leave the start url as recomended below though this can be anything you want; th
     {
       "src": "images/pwamayeedwin.png", 
       "type": "image/png",
-      "sizes": "96x96" // must be this siz
+      "sizes": "96x96" 
     },
     {
       "src": "images/mayepwalogo192.png", 
       "type": "image/png",
-      "sizes": "192x192" // 
+      "sizes": "192x192" 
     }
     ,
     {
