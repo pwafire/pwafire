@@ -35,7 +35,6 @@ Read more about service workers [HERE](https://developers.google.com/web/fundame
 }
         </script>
 		<!-- end of service worker -->
-
 ```
 ##### 2. Using the Web Manifest - manifest.json
 When you have created the manifest and it's on your site, add a link tag to all the pages that encompass your web app, as follows:
@@ -44,7 +43,7 @@ When you have created the manifest and it's on your site, add a link tag to all 
 <link rel="manifest" href="/manifest.json">
 
 ```
-Make sure to configure the manifest.json file as shown in the guide below.
+Make sure to configure the **manifest.json** file as shown in the guide below.
 
 Read more about Web Manifest [HERE](https://developers.google.com/web/fundamentals/web-app-manifest/)
 
@@ -104,11 +103,9 @@ self.addEventListener('fetch', function(event) {
 });
 
 ```
-
-
 #### Manifest // manifest.json Guide - Do not copy this; Comments will be taken us data in JSON
 
-```
+```html
 
 // add a link tag to all the pages that encompass your web app, as shown below;
 // <link rel="manifest" href="/manifest.json">
@@ -148,3 +145,13 @@ self.addEventListener('fetch', function(event) {
 }
 
 ```
+#### View Progressive Web Apps Built with Project PWA Fire
+
+##### 1. Impala Developers 
+View the web app [HERE](https://impaladevelopers.com)
+
+##### 2. Project Maye Edwin PWA
+View the web app [HERE](https://maye.gdgmoi.com)
+
+Follow Project [pwa_fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire)
+
