@@ -1,9 +1,9 @@
 # pwafire
 Official Github Repo for Project PWA Fire
 
-### Manifest.json Guide
+### Manifest.json Guide - Do not copy this; Cooments will be taken us data in JSON
 
-```json
+```
 
 // add a link tag to all the pages that encompass your web app, as shown below;
 // <link rel="manifest" href="/manifest.json">
