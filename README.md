@@ -170,3 +170,4 @@ View the web app [HERE](https://maye.gdgmoi.com)
 
 Follow Project [pwa_fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire)
 
+Donate a star, like, follow and contribute in any way. Be sure to use **project pwa_fire**
