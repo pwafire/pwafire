@@ -107,9 +107,9 @@ self.addEventListener('fetch', function(event) {
 
 ##### 1. // add a link tag to all the pages that encompass your web app, as shown below;
 ```html
-<!-- end-theme-color -->
+<!-- manifest  -->
 // <link rel="manifest" href="/manifest.json">
-<!-- end-theme-color -->
+<!-- end-manifest -->
 ```
 
 ##### 2. // Configuring manifest.json
@@ -120,9 +120,9 @@ Leave the start url as recomended below though this can be anything you want; th
 **N/B** : For the theme color, specify that also in the index file/ pages to be cached. Example for html5 in the head tag, see below;
 
 ```html
-<!-- theme color -->
+<!-- theme-color -->
  <meta name="theme-color" content="#fff" />
-
+<!-- end-theme-color -->
 ```
 ```json
 {
