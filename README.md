@@ -43,7 +43,7 @@ When you have uploaded the *manifest* and it's on your site, add a link tag to a
 <link rel="manifest" href="/manifest.json">
 
 ```
-Make sure to configure the **manifest.json** file as shown in the guide below.
+Configuring the **manifest.json** helps you to specify how you want your web app to look like when launched on the device.
 
 Read more about Web Manifest [HERE](https://developers.google.com/web/fundamentals/web-app-manifest/)
 
