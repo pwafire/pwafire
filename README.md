@@ -2,7 +2,7 @@
 Project [pwa_fire](https://twitter.com/pwafire) is an open source *progressive web app* **javascript** and **json** [Bundle](https://twitter.com/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a *progressive web app* or build one in a few. It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
 #### What to do first // Required
-[Download](https://github.com/mayeedwin/pwafire/edit/master/README.md) the pwafire bundle and upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
+[Download](https://github.com/mayeedwin/pwafire/edit/master/README.md) the [pwafire](https://twitter.com/mayeedwin1) bundle and upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
 
 Be sure to edit the *manifest.json* file as in the guide provided below to fit your web app needs.
 
@@ -16,7 +16,6 @@ This is the first step to making your web app work *offline.* Copy and paste thi
 You can only register service workers on Websites, Web Apps or Pages served over HTTPS.
 
 Read more about service workers [HERE](https://developers.google.com/web/fundamentals/primers/service-workers/)
-
 ```html
 <!-- register service worker -->
 	<script>
@@ -36,10 +35,8 @@ This code checks to see if the *service worker API* is available, and if it is, 
 
 ##### 2. Using the Web Manifest - manifest.json
 When you have uploaded the *manifest* and it's on your site, add a link tag to all the pages that encompass your web app, as follows;
-
 ```html
 <link rel="manifest" href="/manifest.json">
-
 ```
 Configuring the **manifest.json** helps you to specify how you want your web app to look like when launched on the device.
 
