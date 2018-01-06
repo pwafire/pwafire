@@ -2,7 +2,7 @@
 > Build amazing Web experiences now with [pwa_fire](https://github.com/mayeedwin/pwafire)
 
 ### Get Started with Project PWA Fire
->Project [pwa_fire](https://twitter.com/pwafire) is an open source *progressive web app* **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a *progressive web app* or build one in a few. It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
+Project [pwa_fire](https://twitter.com/pwafire) is an open source *progressive web app* **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a *progressive web app* or build one in a few. It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
 #### What to do first // Required
 [Download](https://github.com/mayeedwin/pwafire) the [pwa_fire](https://twitter.com/pwafire) bundle and upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
@@ -46,6 +46,7 @@ Configuring the **manifest.json** helps you to specify how you want your web app
 Read more about Web Manifest [HERE](https://developers.google.com/web/fundamentals/web-app-manifest/)
 
 #### Service Worker // sw.js Guide
+>Follow the steps as commented in the code below as in order to correctly configure the *sw.json* file.
 ```javascript
 //after a service worker is installed and the user navigates to a different page or refreshes, 
 //the service worker will begin to receive fetch events
@@ -100,6 +101,7 @@ self.addEventListener('fetch', function(event) {
 });
 ```
 #### Web Manifest // manifest.json Guide
+>Follow the steps below as described in order to correctly configure the *manifest.json* file.
 ##### 1. // Add a link tag to all the pages that encompass your web app, as shown below;
 ```html
 <!-- manifest  -->
