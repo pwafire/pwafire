@@ -28,7 +28,7 @@ self.addEventListener('fetch', function(event) {
           '/index.html', //default
           '/index.html?homescreen=1', //default
           '/?homescreen=1', //default
-          '/assets/css/main.css',
+          '/assets/css/main.css',// configure as by your site ; just an example
                
           // Do not replace/delete/edit the sw.js/ and manifest.js paths below
           '/sw.js/',
