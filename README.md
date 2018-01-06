@@ -1,3 +1,4 @@
+
 ### Project PWA Fire
 > Build amazing Web experiences now with [pwa_fire](https://github.com/mayeedwin/pwafire)
 
@@ -19,6 +20,7 @@ This is the first step to making your web app work *offline.* Copy and paste thi
 You can only register service workers on Websites, Web Apps or Pages served over HTTPS.
 
 Read more about service workers [HERE](https://developers.google.com/web/fundamentals/primers/service-workers/)
+
 ```html
 <!-- register service worker -->
 	<script>
