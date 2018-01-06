@@ -1,4 +1,3 @@
-
 ### Project PWA Fire
 > Build amazing Web experiences now with [pwa_fire](https://github.com/mayeedwin/pwafire)
 
@@ -49,6 +48,7 @@ Read more about Web Manifest [HERE](https://developers.google.com/web/fundamenta
 
 #### Service Worker // sw.js Guide
 >Follow the steps as commented in the code below as in order to correctly configure the *sw.js* file.
+
 ```javascript
 //after a service worker is installed and the user navigates to a different page or refreshes, 
 //the service worker will begin to receive fetch events
