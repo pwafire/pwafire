@@ -34,10 +34,10 @@ Read more about service workers [HERE](https://developers.google.com/web/fundame
         </script>
 		<!-- end of service worker -->
 ```
->This code checks to see if the *service worker API* is available, and if it is, the service worker at */sw.js* is registered once the page is loaded.
+This code checks to see if the *service worker API* is available, and if it is, the service worker at */sw.js* is registered once the page is loaded.
 
 ##### 2. Using the Web Manifest - manifest.json
->When you have uploaded the *manifest* and it's on your site, add a link tag to all the pages that encompass your web app, as follows;
+When you have uploaded the *manifest* and it's on your site, add a link tag to all the pages that encompass your web app, as follows;
 ```html
 <link rel="manifest" href="/manifest.json">
 ```
@@ -107,7 +107,7 @@ self.addEventListener('fetch', function(event) {
 <!-- end-manifest -->
 ```
 ##### 2. // Configuring manifest.json
->Configure/edit the background and theme colors, display type, the Web App short name, the Web App name and icons size (keep icon sizes as **specified** below)
+Configure/edit the background and theme colors, display type, the Web App short name, the Web App name and icons size (keep icon sizes as **specified** below)
 
 Leave the **start url** as recomended below though this can be anything you want; the value we're using has the advantage of being meaningful to **Google Analytics.**
 
