@@ -1,11 +1,11 @@
 ### Project PWA Fire
->Build amazing Web experiences now with [pwafire](https://github.com/mayeedwin/pwafire). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
+>Build amazing Web experiences now with [pwa fire](https://github.com/mayeedwin/pwafire). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
 
 ### Get Started with Project PWA Fire
-Project [pwafire](https://twitter.com/pwafire) is an open source *progressive web app* **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a *progressive web app* or build one in a few. It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
+Project [pwa fire](https://twitter.com/pwafire) is an open source *progressive web app* **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a *progressive web app* or build one in a few. It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
 #### What to do first // Required
-[Download](https://github.com/mayeedwin/pwafire/releases) now the [pwafire](https://twitter.com/pwafire) bundle and upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
+[Download](https://github.com/mayeedwin/pwafire/releases) now the [pwa fire](https://twitter.com/pwafire) bundle and upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
 
 Be sure to edit the *sw.js* and *manifest.json* file as in the guide provided below to fit your web app needs.
 
@@ -165,7 +165,7 @@ View the web app [HERE](https://maye.gdgmoi.com)
 ##### 3. Share Your Story
 View the web app [HERE](https://share.gdgmoi.com)
 ##### Join the conversation 
->Follow Project [pwafire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
+>Follow Project [pwa fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
 
 ##### Support us 
-Donate a star, like, follow and contribute in any way. Be sure to use **project pwa_fire**. If you use the pwafire_bundle, kindly let us know via **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
+Donate a star, like, follow and contribute in any way. Be sure to use **project pwa fire**. If you use the pwafire_bundle, kindly let us know via **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
