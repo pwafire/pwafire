@@ -104,13 +104,13 @@ self.addEventListener('fetch', function(event) {
 ```
 ### b) Web Manifest // manifest.json Guide
 >Follow the steps below as described in order to correctly configure the *manifest.json* file.
-#### 1. // Add a link tag to all the pages that encompass your web app, as shown below;
+#### // Add a link tag to all the pages that encompass your web app, as shown below;
 ```html
 <!-- manifest  -->
 // <link rel="manifest" href="/manifest.json">
 <!-- end-manifest -->
 ```
-#### 2. // Configuring manifest.json
+#### // Configuring manifest.json
 Configure/edit the background and theme colors, display type, the Web App short name, the Web App name and icons size (keep icon sizes as **specified** below)
 
 Leave the **start url** as recomended below though this can be anything you want; the value we're using has the advantage of being meaningful to **Google Analytics.**
