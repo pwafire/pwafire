@@ -166,5 +166,6 @@ View the web app [HERE](https://maye.gdgmoi.com)
 View the web app [HERE](https://share.gdgmoi.com)
 ##### Join the conversation 
 >Follow Project [pwa_fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
+
 ##### Support us 
 Donate a star, like, follow and contribute in any way. Be sure to use **project pwa_fire**. If you use the pwafire_bundle, kindly let us know via **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
