@@ -32,7 +32,12 @@
   gtag('config', 'UA-111993564-1');
 	
    </script>
+	
+   <!-- manifest  -->
 	  
+// <link rel="manifest" href="../pwafire_bundle/manifest.json">
+	  
+<!-- end-manifest -->
 	  
   </head>
 
@@ -120,6 +125,21 @@
 	    
     </section>
 
+	  <!-- register service-worker -->
+	<script>
+	
+	    if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('../pwafire_bundle/sw.js')
+    .then(function() { console.log("Service Worker Registered"); });
+  }
+  
+  );
+}
+	
+  </script>
+		<!-- end of sw -->
+	  
   </body>
 	
 </html>
