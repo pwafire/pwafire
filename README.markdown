@@ -128,31 +128,30 @@ Leave the **start url** as recomended below though this can be anything you want
  "display": "standalone",
  "theme_color": "#fff",
     
-  "short_name": "Maye",
-  "name": "maye.edwin",
+  "short_name": "PWA Fire",
+  "name": "PWA Fire",
   "icons": [
     {
-      "src": "images/pwamayeedwin.png",
+      "src": "images/size48.png",
       "type": "image/png",
       "sizes": "48x48"
     },
     {
-      "src": "images/pwamayeedwin.png",
+      "src": "images/size96.png",
       "type": "image/png",
       "sizes": "96x96"
     },
     {
-      "src": "images/mayepwalogo192.png",
+      "src": "images/size192.png",
       "type": "image/png",
       "sizes": "192x192"
     }
     ,
     {
-      "src": "images/mayepwa512.png",
+      "src": "images/size512.png",
       "type": "image/png",
       "sizes": "512x512"
-    }
-    
+    }  
   ],
   "start_url": "index.html?launcher=true"
 }
