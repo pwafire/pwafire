@@ -13,7 +13,7 @@ Be sure to edit the *sw.js* and *manifest.json* file as in the guide provided be
 
 **N/B:** Do not configure or edit anything else but the one guided to.
 
-## Configuration guide and notes
+## Configuration guide
 ### 1. Code to register the service worker
 This is the first step to making your web app work *offline.* Copy and paste this code to your *index file,* eg just before the end of the *body tag* or in the *head tag* in html5
 ### N/B : You need HTTPS
