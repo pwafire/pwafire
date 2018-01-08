@@ -123,32 +123,32 @@ Leave the **start url** as recomended below though this can be anything you want
 ### The manifest.json code below;
 
 ```json
-{
- "background_color": "#fff", 
+{   
+ "background_color": "#fff",
  "display": "standalone",
- "theme_color": "#fff", 
+ "theme_color": "#fff",
     
-  "short_name": "PWA Fire", 
-  "name": "PWA Fire",
+  "short_name": "Maye",
+  "name": "maye.edwin",
   "icons": [
     {
-      "src": "images/icon.png",
+      "src": "images/pwamayeedwin.png",
       "type": "image/png",
       "sizes": "48x48"
     },
     {
-      "src": "images/icon96.png", 
+      "src": "images/pwamayeedwin.png",
       "type": "image/png",
-      "sizes": "96x96" 
+      "sizes": "96x96"
     },
     {
-      "src": "images/icon192.png", 
+      "src": "images/mayepwalogo192.png",
       "type": "image/png",
-      "sizes": "192x192" 
+      "sizes": "192x192"
     }
     ,
     {
-      "src": "images/icon512.png",
+      "src": "images/mayepwa512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
