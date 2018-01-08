@@ -1,21 +1,21 @@
 ## [Project PWA Fire](https://mayeedwin.github.io/pwafire/)
 >Build amazing Web experiences now with [PWA Fire](https://github.com/mayeedwin/pwafire). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
 
-### Get Started with Project PWA Fire
+## Get Started with Project PWA Fire
 Project [PWA Fire](https://twitter.com/pwafire) is an open source *progressive web app* **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a *progressive web app* or build one in a few. It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
-### What to do first // Required
+## What to do first // Required
 [Download](https://github.com/mayeedwin/pwafire/releases) now the [PWA Fire](https://twitter.com/pwafire) bundle and upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
 
 Be sure to edit the *sw.js* and *manifest.json* file as in the guide provided below to fit your web app needs.
 
 **N/B:** Do not configure or edit anything else but the one guided to.
 
-### Configuration guide and notes
-#### 1. Code to register the service worker
+## Configuration guide and notes
+### 1. Code to register the service worker
 This is the first step to making your web app work *offline.* Copy and paste this code to your *index file,* eg just before the end of the *body tag* or in the *head tag* in html5
 
-#### N/B : You need HTTPS
+### N/B : You need HTTPS
 You can only register service workers on Websites, Web Apps or Pages served over HTTPS.
 
 Read more about service workers [HERE](https://developers.google.com/web/fundamentals/primers/service-workers/)
@@ -37,7 +37,7 @@ Read more about service workers [HERE](https://developers.google.com/web/fundame
 ```
 This code checks to see if the *service worker API* is available, and if it is, the service worker at */sw.js* is registered once the page is loaded.
 
-#### 2. Using the Web Manifest - manifest.json
+### 2. Using the Web Manifest - manifest.json
 When you have uploaded the *manifest* and it's on your site, add a link tag to all the pages that encompass your web app, as follows;
 ```html
 <link rel="manifest" href="/manifest.json">
@@ -46,7 +46,7 @@ Configuring the **manifest.json** helps you to specify how you want your web app
 
 Read more about Web Manifest [HERE](https://developers.google.com/web/fundamentals/web-app-manifest/)
 
-### a) Service Worker // sw.js Guide
+## a) Service Worker // sw.js Guide
 >Follow the steps as commented in the code below in order to correctly configure the *sw.js* file.
 
 ```javascript
@@ -102,7 +102,7 @@ self.addEventListener('fetch', function(event) {
     }));
 });
 ```
-### b) Web Manifest // manifest.json Guide
+## b) Web Manifest // manifest.json Guide
 >Follow the steps below as described in order to correctly configure the *manifest.json* file.
 #### // Add a link tag to all the pages that encompass your web app, as shown below;
 ```html
@@ -110,7 +110,7 @@ self.addEventListener('fetch', function(event) {
 // <link rel="manifest" href="/manifest.json">
 <!-- end-manifest -->
 ```
-#### // Configuring manifest.json
+### // Configuring manifest.json
 Configure/edit the background and theme colors, display type, the Web App short name, the Web App name and icons size (keep icon sizes as **specified** below)
 
 Leave the **start url** as recomended below though this can be anything you want; the value we're using has the advantage of being meaningful to **Google Analytics.**
@@ -121,7 +121,7 @@ Leave the **start url** as recomended below though this can be anything you want
  <meta name="theme-color" content="#fff" />
 <!-- end-theme-color -->
 ```
-#### The manifest.json code below;
+### The manifest.json code below;
 ```json
 {
  "background_color": "#fff", 
@@ -157,19 +157,19 @@ Leave the **start url** as recomended below though this can be anything you want
   "start_url": "index.html?launcher=true"
 }
 ```
-### View Progressive Web Apps Built with Project PWA Fire
-#### 1. Impala Developers 
+## View Progressive Web Apps Built with Project PWA Fire
+### 1. Impala Developers 
 View the web app [HERE](https://impaladevelopers.com)
-#### 2. Project Maye Edwin PWA
+### 2. Project Maye Edwin PWA
 View the web app [HERE](https://maye.gdgmoi.com)
-#### 3. Share Your Story
+### 3. Share Your Story
 View the web app [HERE](https://share.gdgmoi.com)
-### Join the conversation 
+## Join the conversation 
 >Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
 
-### License
+## License
 
 See the [LICENSE](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) file.
 
-### Support us 
+## Support us 
 Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use the *pwafire_bundle*, kindly let us know via **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
