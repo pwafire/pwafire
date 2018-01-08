@@ -94,7 +94,7 @@ self.addEventListener('fetch', function(event) {
       ]);
     })
   );    });
-
+  
         // respond from the cache, or the network
             return response || fetchPromise;
      });
