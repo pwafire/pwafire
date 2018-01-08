@@ -168,4 +168,4 @@ Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twit
 ## License
 See the [LICENSE](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) file.
 ## Support us 
-Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use the *pwafire_bundle*, kindly let us know via **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
+Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use the [PWA Fire](https://mayeedwin.github.io/pwafire/), kindly let us know via **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
