@@ -91,8 +91,7 @@ self.addEventListener('fetch', function(event) {
          'https://buttons.github.io/buttons.js'
       ]);
     })
-  );
-    });
+  );    });
 
         // respond from the cache, or the network
             return response || fetchPromise;
@@ -114,7 +113,6 @@ Configure/edit the background and theme colors, display type, the Web App short 
 
 Leave the **start url** as recomended below though this can be anything you want; the value we're using has the advantage of being meaningful to **Google Analytics.**
 
-**N/B** : For the **theme color**, specify that also in the index file/ pages to be cached. Example for html5 in the head tag, see below;
 ```html
 <!-- theme-color -->
  <meta name="theme-color" content="#fff" />
@@ -158,9 +156,10 @@ Leave the **start url** as recomended below though this can be anything you want
 ```
 ## View Progressive Web Apps Built with Project PWA Fire
 
-- Impala Developers | [View Now](https://impaladevelopers.com) |
-- Project Maye Edwin PWA | [View Now](https://maye.gdgmoi.com) |
-- Share Your Story | [View Now](https://share.gdgmoi.com) |
+Impala Developers | [View Now](https://impaladevelopers.com) |
+Project Maye Edwin PWA | [View Now](https://maye.gdgmoi.com) |
+Share Your Story | [View Now](https://share.gdgmoi.com) |
+
 ## Join the conversation 
 Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
 ## License
