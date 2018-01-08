@@ -47,7 +47,7 @@ Configuring the **manifest.json** helps you to specify how you want your web app
 Read more about Web Manifest [HERE](https://developers.google.com/web/fundamentals/web-app-manifest/)
 
 ### a) Service Worker // sw.js Guide
->Follow the steps as commented in the code below as in order to correctly configure the *sw.js* file.
+>Follow the steps as commented in the code below in order to correctly configure the *sw.js* file.
 
 ```javascript
 //after a service worker is installed and the user navigates to a different page or refreshes, 
