@@ -1,7 +1,7 @@
 ## [Project PWA Fire](https://mayeedwin.github.io/pwafire/)
 >Build amazing Web experiences now with [PWA Fire](https://github.com/mayeedwin/pwafire). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
 
-## Get Started with Project PWA Fire
+## Get Started with PWA Fire
 Project [PWA Fire](https://twitter.com/pwafire) is an open source *progressive web app* **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a *progressive web app* or build one in a few. It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
 ## What to do first // Required
