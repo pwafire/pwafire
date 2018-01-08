@@ -1,13 +1,16 @@
 ## [Project PWA Fire](https://mayeedwin.github.io/pwafire/)
 >Build amazing Web experiences now with [PWA Fire](https://github.com/mayeedwin/pwafire). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
+
 ## Get Started with Project PWA Fire
 Project [PWA Fire](https://twitter.com/pwafire) is an open source *progressive web app* **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a *progressive web app* or build one in a few. It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
+
 ## What to do first // Required
 [Download](https://github.com/mayeedwin/pwafire/releases) now the [PWA Fire](https://twitter.com/pwafire) bundle and upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
 
 Be sure to edit the *sw.js* and *manifest.json* file as in the guide provided below to fit your web app needs.
 
 **N/B:** Do not configure or edit anything else but the one guided to.
+
 ## Configuration guide and notes
 ### 1. Code to register the service worker
 This is the first step to making your web app work *offline.* Copy and paste this code to your *index file,* eg just before the end of the *body tag* or in the *head tag* in html5
@@ -99,6 +102,7 @@ self.addEventListener('fetch', function(event) {
 ```
 ## b) Web Manifest // manifest.json Guide
 >Follow the steps below as described in order to correctly configure the *manifest.json* file.
+
 ### // Add a link tag to all the pages that encompass your web app, as shown below;
 ```html
 <!-- manifest  -->
