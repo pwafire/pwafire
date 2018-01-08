@@ -132,7 +132,7 @@ Leave the **start url** as recomended below though this can be anything you want
   "name": "PWA Fire",
   "icons": [
     {
-      "src": "images/icon48.png",
+      "src": "images/icon.png",
       "type": "image/png",
       "sizes": "48x48"
     },
