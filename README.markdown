@@ -165,6 +165,8 @@ Share Your Story | [View Now](https://share.gdgmoi.com) |
 ## Join the conversation 
 Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
 ## License
+
 MIT Licence | [View Licence](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) |
+
 ## Support us 
 Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use [PWA Fire](https://mayeedwin.github.io/pwafire/), kindly let us know via **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
