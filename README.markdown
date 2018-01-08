@@ -111,7 +111,7 @@ self.addEventListener('fetch', function(event) {
 <!-- end-manifest -->
 ```
 ### // Configuring manifest.json
-Configure/edit the background and theme colors, display type, the Web App short name, the Web App name and icons size (keep icon sizes as **specified** below)
+Configure/edit the background and theme colors, display type, the Web App short name, the Web App name, icons size (keep icon sizes as **specified** below) and your icon/logo paths. Also state the img type eg image/ico or image/png.
 
 Leave the **start url** as recomended below though this can be anything you want; the value we're using has the advantage of being meaningful to **Google Analytics.**
 
@@ -128,26 +128,26 @@ Leave the **start url** as recomended below though this can be anything you want
  "theme_color": "#fff", 
     
   "short_name": "PWA Fire", 
-  "name": "Your Web App Name",
+  "name": "PWA Fire",
   "icons": [
     {
-      "src": "images/pwamayeedwin.png",
+      "src": "images/icon48.png",
       "type": "image/png",
       "sizes": "48x48"
     },
     {
-      "src": "images/pwamayeedwin.png", 
+      "src": "images/icon96.png", 
       "type": "image/png",
       "sizes": "96x96" 
     },
     {
-      "src": "images/mayepwalogo192.png", 
+      "src": "images/icon192.png", 
       "type": "image/png",
       "sizes": "192x192" 
     }
     ,
     {
-      "src": "images/mayepwa512.png",
+      "src": "images/icon512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
