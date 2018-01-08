@@ -167,5 +167,9 @@ View the web app [HERE](https://share.gdgmoi.com)
 ### Join the conversation 
 >Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
 
+### License
+
+See the [LICENSE](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) file.
+
 ### Support us 
 Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use the *pwafire_bundle*, kindly let us know via **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
