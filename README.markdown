@@ -121,6 +121,7 @@ Leave the **start url** as recomended below though this can be anything you want
 <!-- end-theme-color -->
 ```
 ### The manifest.json code below;
+
 ```json
 {
  "background_color": "#fff", 
