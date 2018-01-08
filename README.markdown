@@ -157,16 +157,12 @@ Leave the **start url** as recomended below though this can be anything you want
 }
 ```
 ## View Progressive Web Apps Built with Project PWA Fire
-| Progressive Web App | Web App Link
-| --- | --- |
-| Impala Developers | [View Now](https://impaladevelopers.com) |
-| Project Maye Edwin PWA | [View Now](https://maye.gdgmoi.com) |
-| Share Your Story | [View Now](https://share.gdgmoi.com) |
+
+- Impala Developers | [View Now](https://impaladevelopers.com) |
+- Project Maye Edwin PWA | [View Now](https://maye.gdgmoi.com) |
+- Share Your Story | [View Now](https://share.gdgmoi.com) |
 ## Join the conversation 
-| Communication Channel | Talk to us |
-| --- | --- |
-| Live Twitter Chat | [Tweet us](https://twitter.com/pwafire) |
-| Slack Workspace | [Join Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI) |
+Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
 ## License
 See the [LICENSE](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) file.
 ## Support us 
