@@ -153,6 +153,7 @@ Leave the **start url** as recomended below though this can be anything you want
       "sizes": "512x512"
     }  
   ],
+  
   "start_url": "index.html?launcher=true"
 }
 ```
