@@ -98,7 +98,7 @@ self.addEventListener('fetch', function(event) {
 ```
 ## b) Web Manifest // manifest.json Guide
 >Follow the steps below as described in order to correctly configure the *manifest.json* file.
-#### // Add a link tag to all the pages that encompass your web app, as shown below;
+### // Add a link tag to all the pages that encompass your web app, as shown below;
 ```html
 <!-- manifest  -->
 // <link rel="manifest" href="/manifest.json">
