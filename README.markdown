@@ -160,8 +160,8 @@ Leave the **start url** as recomended below though this can be anything you want
 ## Features //Roadmap
 1. Offline Capabilities and Add to Homescreen (Done!) 
 2. Push notification add-on (In progress)
-3.  Automatic [PWA Fire Bundle](https://github.com/mayeedwin/pwafire/releases) Generator U/I for non developers (To begin)
-4. Contribute __Propose your Feature by [creating an issue](https://github.com/mayeedwin/pwafire/issues/new)
+3. Automatic [PWA Fire Bundle](https://github.com/mayeedwin/pwafire/releases) Generator U/I for non developers (To begin)
+4. Propose your Feature by [creating an issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ## View Progressive Web Apps Built with Project PWA Fire
 
