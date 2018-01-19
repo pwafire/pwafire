@@ -6,6 +6,10 @@ Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive W
 
 It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
+
+![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebanner.png)
+
+
 ## What to do first // Required
 [Download](https://github.com/mayeedwin/pwafire/releases) PWA Fire and from [pwafire_bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire_bundle) folder, upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
 
