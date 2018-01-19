@@ -1,7 +1,7 @@
 ## [Project PWA Fire](https://mayeedwin.github.io/pwafire/)
-![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)
->Build amazing Web experiences now with [PWA Fire](https://github.com/mayeedwin/pwafire). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
 
+>Build amazing Web experiences now with [PWA Fire](https://github.com/mayeedwin/pwafire). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
+![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)
 ## Get Started with PWA Fire
 Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few. 
 
