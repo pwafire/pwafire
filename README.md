@@ -1,7 +1,6 @@
 ## [Project PWA Fire](https://mayeedwin.github.io/pwafire/)
 
->Build amazing Web experiences now with [PWA Fire](https://github.com/mayeedwin/pwafire). Github latest release version availabe [HERE]
-(https://github.com/mayeedwin/pwafire/releases)
+>Build amazing Web experiences now with [PWA Fire](https://github.com/mayeedwin/pwafire). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
 
 [![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)](https://github.com/mayeedwin/pwafire)
 ### Get Started with PWA Fire
