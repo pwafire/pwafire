@@ -17,8 +17,10 @@ Be sure to edit the *sw.js* and *manifest.json* file as in the guide provided be
 **N/B:** Do not configure or edit anything else but the one guided to.
 
 ### Configuration guide
+
 #### 1. Code to register the service worker
 This is the first step to making your web app work *offline.* Copy and paste this code to your *index file,* eg just before the end of the *body tag* or in the *head tag* in html5
+
 #### N/B : You need HTTPS
 You can only register service workers on Websites, Web Apps or Pages served over HTTPS.
 
@@ -40,6 +42,7 @@ Read more about service workers [HERE](https://developers.google.com/web/fundame
 		<!-- end of service worker -->
 ```
 This code checks to see if the *service worker API* is available, and if it is, the service worker at */sw.js* is registered once the page is loaded.
+
 #### 2. Using the Web Manifest - manifest.json
 When you have uploaded the *manifest* and it's on your site, add a link tag to all the pages that encompass your web app, as follows;
 ```html
@@ -189,4 +192,4 @@ PWA Fire | [Github Pulse](https://github.com/mayeedwin/pwafire/pulse) |
 MIT License | [View License](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) |
 
 ### Support us 
-Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use [PWA Fire](https://mayeedwin.github.io/pwafire/), kindly let us know via **info@pwafire.org** | **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
+Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use [PWA Fire](https://pwafire.org), kindly let us know via **info@pwafire.org** | **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
