@@ -1,21 +1,27 @@
-### Project PWA Fire
-> Build amazing Web experiences now with [pwa_fire](https://github.com/mayeedwin/pwafire)
+## [Project PWA Fire](https://pwafire.org)
 
-### Get Started with Project PWA Fire
-Project [pwa_fire](https://twitter.com/pwafire) is an open source *progressive web app* **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a *progressive web app* or build one in a few. It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
+>Build amazing Web experiences now with [PWA Fire](https://pwafire.org). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
 
-#### What to do first // Required
-[Download](https://github.com/mayeedwin/pwafire) the [pwa_fire](https://twitter.com/pwafire) bundle and upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
+### Get Started with PWA Fire
+Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few. 
+
+It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
+
+[![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)](https://pwafire.org)
+
+### What to do first // Required
+[Download](https://github.com/mayeedwin/pwafire/releases) PWA Fire and from [pwafire_bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire_bundle) folder, upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
 
 Be sure to edit the *sw.js* and *manifest.json* file as in the guide provided below to fit your web app needs.
 
 **N/B:** Do not configure or edit anything else but the one guided to.
 
-#### Configuration guide and notes
-##### 1. Code to register the service worker
+### Configuration guide
+
+#### 1. Code to register the service worker
 This is the first step to making your web app work *offline.* Copy and paste this code to your *index file,* eg just before the end of the *body tag* or in the *head tag* in html5
 
-##### N/B : You need HTTPS
+#### N/B : You need HTTPS
 You can only register service workers on Websites, Web Apps or Pages served over HTTPS.
 
 Read more about service workers [HERE](https://developers.google.com/web/fundamentals/primers/service-workers/)
@@ -37,7 +43,7 @@ Read more about service workers [HERE](https://developers.google.com/web/fundame
 ```
 This code checks to see if the *service worker API* is available, and if it is, the service worker at */sw.js* is registered once the page is loaded.
 
-##### 2. Using the Web Manifest - manifest.json
+#### 2. Using the Web Manifest - manifest.json
 When you have uploaded the *manifest* and it's on your site, add a link tag to all the pages that encompass your web app, as follows;
 ```html
 <link rel="manifest" href="/manifest.json">
@@ -46,8 +52,8 @@ Configuring the **manifest.json** helps you to specify how you want your web app
 
 Read more about Web Manifest [HERE](https://developers.google.com/web/fundamentals/web-app-manifest/)
 
-#### Service Worker // sw.js Guide
->Follow the steps as commented in the code below as in order to correctly configure the *sw.js* file.
+### a) Service Worker // sw.js Guide
+>Follow the steps as commented in the code below in order to correctly configure the *sw.js* file.
 
 ```javascript
 //after a service worker is installed and the user navigates to a different page or refreshes, 
@@ -93,76 +99,98 @@ self.addEventListener('fetch', function(event) {
          'https://buttons.github.io/buttons.js'
       ]);
     })
-  );
-    });
-
+  );    });
+  
         // respond from the cache, or the network
             return response || fetchPromise;
      });
     }));
 });
 ```
-#### Web Manifest // manifest.json Guide
+### b) Web Manifest // manifest.json Guide
 >Follow the steps below as described in order to correctly configure the *manifest.json* file.
-##### 1. // Add a link tag to all the pages that encompass your web app, as shown below;
+
+#### // Add a link tag to all the pages that encompass your web app, as shown below;
 ```html
 <!-- manifest  -->
 // <link rel="manifest" href="/manifest.json">
 <!-- end-manifest -->
 ```
-##### 2. // Configuring manifest.json
-Configure/edit the background and theme colors, display type, the Web App short name, the Web App name and icons size (keep icon sizes as **specified** below)
+#### // Configuring manifest.json
+Configure/edit the background and theme colors, display type, the Web App short name, the Web App name, icons size (keep icon sizes as **specified** below) and your icon/logo paths. Also state the img type eg image/ico or image/png.
 
 Leave the **start url** as recomended below though this can be anything you want; the value we're using has the advantage of being meaningful to **Google Analytics.**
 
-**N/B** : For the **theme color**, specify that also in the index file/ pages to be cached. Example for html5 in the head tag, see below;
 ```html
 <!-- theme-color -->
  <meta name="theme-color" content="#fff" />
 <!-- end-theme-color -->
 ```
-##### The manifest.json code below;
+#### The manifest.json code below;
+
 ```json
-{
- "background_color": "#fff", 
+{   
+ "background_color": "#fff",
  "display": "standalone",
- "theme_color": "#fff", 
+ "theme_color": "#fff",
     
-  "short_name": "PWA Fire", 
-  "name": "Your Web App Name",
+  "short_name": "PWA Fire",
+  "name": "PWA Fire",
   "icons": [
     {
-      "src": "images/pwamayeedwin.png",
+      "src": "images/size48.png",
       "type": "image/png",
       "sizes": "48x48"
     },
     {
-      "src": "images/pwamayeedwin.png", 
+      "src": "images/size96.png",
       "type": "image/png",
-      "sizes": "96x96" 
+      "sizes": "96x96"
     },
     {
-      "src": "images/mayepwalogo192.png", 
+      "src": "images/size192.png",
       "type": "image/png",
-      "sizes": "192x192" 
+      "sizes": "192x192"
     }
     ,
     {
-      "src": "images/mayepwa512.png",
+      "src": "images/size512.png",
       "type": "image/png",
       "sizes": "512x512"
-    }
-    
+    }  
   ],
+  
   "start_url": "index.html?launcher=true"
 }
 ```
-#### View Progressive Web Apps Built with Project PWA Fire
-##### 1. Impala Developers 
-View the web app [HERE](https://impaladevelopers.com)
-##### 2. Project Maye Edwin PWA
-View the web app [HERE](https://maye.gdgmoi.com)
+### Features //Roadmap
+1. Offline Capabilities and Add to Homescreen (Done!) 
 
-Follow Project [pwa_fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire)
+2. Push notification add-on (In progress)
 
->Donate a star, like, follow and contribute in any way. Be sure to use **project pwa_fire**. If you use the pwafire_bundle, kindly let us know via **mayedwine1@gmail.com** or [Tweet us](https://twitter.com/pwafire).
+3. Automatic [PWA Fire Bundle](https://github.com/mayeedwin/pwafire/releases) Generator U/I for non developers (To begin)
+
+4. Propose your Feature by [creating an issue](https://github.com/mayeedwin/pwafire/issues/new)
+
+### View Progressive Web Apps Built with Project PWA Fire
+
+Impala Developers | [View Now](https://impaladevelopers.com) |
+Project Maye PWA | [View Now](https://maye.gdgmoi.com) |
+Share Your Story | [View Now](https://share.gdgmoi.com) |
+PWA Fire PWA | [View Now](https://pwafire.org) |
+GDG Kenya | [View Now](https://gdgkenya.org) |
+
+### Join the conversation 
+Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
+
+PWA Fire | [Twitter Hash Tag](https://twitter.com/hashtag/pwafire?src=hash) |
+PWA Fire | [Project Wiki](https://github.com/mayeedwin/pwafire/wiki) |
+PWA Fire | [Project Progress](https://github.com/mayeedwin/pwafire/projects) |
+PWA Fire | [Github Pulse](https://github.com/mayeedwin/pwafire/pulse) |
+
+### License
+
+MIT License | [View License](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) |
+
+### Support us 
+Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use [PWA Fire](https://pwafire.org), kindly let us know via **info@pwafire.org** | **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
