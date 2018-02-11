@@ -16,7 +16,7 @@ self.addEventListener('fetch', function(event) {
                 return networkResponse;
             }, function (e) {
                 
-           // rejected promise - just ignore it, we're offline
+           // rejected promise - just ignore it, we're offline!
                 
            console.log("Error in fetch()", e);
            e.waitUntil(
