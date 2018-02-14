@@ -109,19 +109,10 @@ self.addEventListener('fetch', function(event) {
 ```
 ### b) Web Manifest // manifest.json Guide
 >Follow the steps below as described in order to correctly configure the *manifest.json* file.
-#### // Configuring manifest.json
+
 Configure/edit the background and theme colors, display type, the Web App short name, the Web App name, icons size (keep icon sizes as **specified** below) and your icon/logo paths. Also state the img type eg image/ico or image/png.
 
 Leave the **start url** as recomended below though this can be anything you want; the value we're using has the advantage of being meaningful to **Google Analytics.**
-
-Also remember to add the theme color to all your pages as shown in the code below;
-
-```html
-<!-- theme-color -->
- <meta name="theme-color" content="#fff" />
-<!-- end-theme-color -->
-```
-#### The manifest.json code below;
 
 ```json
 {   
@@ -158,6 +149,14 @@ Also remember to add the theme color to all your pages as shown in the code belo
   "start_url": "index.html?launcher=true"
 }
 ```
+Also remember to add the theme color to all your pages as shown in the code below;
+
+```html
+<!-- theme-color -->
+ <meta name="theme-color" content="#fff" />
+<!-- end-theme-color -->
+```
+
 ### Features //Roadmap
 1. Offline Capabilities and Add to Homescreen (Done!) 
 
