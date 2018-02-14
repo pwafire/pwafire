@@ -1,3 +1,6 @@
+
+<!-- pwa fire config file -->
+
 <!-- register service worker -->
 
 	<script>
@@ -20,3 +23,6 @@
 <link rel="manifest" href="/manifest.json">
 
 <!-- end of web manifest -->
+
+
+
