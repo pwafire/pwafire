@@ -1,5 +1,4 @@
 ## [Project PWA Fire](https://pwafire.org)
-
 >Build amazing Web experiences now with [PWA Fire](https://pwafire.org). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
 
 ### Get Started with PWA Fire
@@ -8,7 +7,6 @@ Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive W
 It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
 [![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)](https://pwafire.org)
-
 ### What to do first // Required
 [Download](https://github.com/mayeedwin/pwafire/releases) PWA Fire and from [pwafire_bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire_bundle) folder, upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
 
@@ -17,7 +15,6 @@ Be sure to edit the *sw.js* and *manifest.json* file as in the guide provided be
 **N/B:** Do not configure or edit anything else but the one guided to.
 
 ### Configuration guide
-
 #### 1. Code to register the service worker
 This is the first step to making your web app work *offline.* Copy and paste this code to your *index file,* eg just before the end of the *body tag* or in the *head tag* in html5
 
@@ -156,7 +153,6 @@ Also remember to add the theme color to all your pages as shown in the code belo
  <meta name="theme-color" content="#fff" />
 <!-- end-theme-color -->
 ```
-
 ### Features //Roadmap
 1. Offline Capabilities and Add to Homescreen (Done!) 
 
@@ -167,7 +163,6 @@ Also remember to add the theme color to all your pages as shown in the code belo
 4. Propose your Feature by [creating an issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with Project PWA Fire
-
 Impala Developers | [View Now](https://impaladevelopers.com) |
 Project Maye PWA | [View Now](https://maye.gdgmoi.com) |
 Share Your Story | [View Now](https://share.gdgmoi.com) |
@@ -183,8 +178,6 @@ PWA Fire | [Project Progress](https://github.com/mayeedwin/pwafire/projects) |
 PWA Fire | [Github Pulse](https://github.com/mayeedwin/pwafire/pulse) |
 
 ### License
-
 MIT License | [View License](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) |
-
 ### Support us 
 Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use [PWA Fire](https://pwafire.org), kindly let us know via **info@pwafire.org** | **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
