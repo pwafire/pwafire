@@ -16,13 +16,13 @@
   
  </script>
  
-<!-- end-of service worker -->
+<!-- end of service worker -->
 
-<!-- start-of web manifest -->
+<!-- start of web manifest -->
 
 <link rel="manifest" href="/manifest.json">
 
-<!-- end-of web manifest -->
+<!-- end of web manifest -->
 
 
 
