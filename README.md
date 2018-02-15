@@ -170,11 +170,6 @@ Share Your Story | [View Now](https://share.gdgmoi.com) |
 PWA Fire PWA | [View Now](https://pwafire.org) |
 GDG Kenya | [View Now](https://gdgkenya.org) |
 
-PWA Fire | [Twitter Hash Tag](https://twitter.com/hashtag/pwafire?src=hash) |
-PWA Fire | [Project Wiki](https://github.com/mayeedwin/pwafire/wiki) |
-PWA Fire | [Project Progress](https://github.com/mayeedwin/pwafire/projects) |
-PWA Fire | [Github Pulse](https://github.com/mayeedwin/pwafire/pulse) |
-
 ### Join the conversation 
 Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
 
