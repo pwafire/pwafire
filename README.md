@@ -164,7 +164,6 @@ Also remember to add the theme color to all your pages as shown in the code belo
 
 ### View Progressive Web Apps Built with Project PWA Fire
 
-Impala Developers | [View Now](https://impaladevelopers.com) |
 Project Maye PWA | [View Now](https://maye.gdgmoi.com) |
 Share Your Story | [View Now](https://share.gdgmoi.com) |
 PWA Fire PWA | [View Now](https://pwafire.org) |
