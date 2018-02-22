@@ -1,5 +1,11 @@
 
-<!-- pwa fire config file -->
+<!-- pwa fire config file
+
+This is the first step to making your web app work offline. 
+Copy and paste this code to your index file, eg just before the end of the body tag
+or in the head tag in html5.
+
+-->
 
 <!-- register service worker -->
 
@@ -18,11 +24,27 @@
  
 <!-- end of service worker -->
 
+
+<!-- using the web manifest.json
+
+Add a link tag to all the pages that encompass your web app, as follows;
+
+-->
+
 <!-- start of web manifest -->
 
 <link rel="manifest" href="/manifest.json">
 
-<!-- end of web manifest -->
+
+
+<!-- theme-color 
+
+Also remember to add the theme color to all your pages as shown in the code below;
+-->
+
+ <meta name="theme-color" content="#fff" />
+
+<!-- end-theme-color -->
 
 
 
