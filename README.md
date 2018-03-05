@@ -176,7 +176,7 @@ Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twit
 | Communication Channel | Talk to us |
 | --- | --- |
 | Live Twitter Chat | [Tweet us](https://twitter.com/pwafire) |
-| Slack Workspace | [Join Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI) |
+| Slack Workspace | [Join Workspace](http://bit.ly/2oPNK7S) |
 
 ### License
 MIT License | [View License](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) |
