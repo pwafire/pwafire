@@ -160,7 +160,7 @@ Also remember to add the theme color to all your pages as shown in the code belo
 
 3. Automatic [PWA Fire Bundle](https://github.com/mayeedwin/pwafire/releases) Generator U/I for non developers (To begin)
 
-4. Propose your Feature by [creating an issue](https://github.com/mayeedwin/pwafire/issues/new)
+4. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with Project PWA Fire
 
