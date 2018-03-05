@@ -163,12 +163,12 @@ Also remember to add the theme color to all your pages as shown in the code belo
 4. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with Project PWA Fire
-| Progressive Web App | Web App Link  |
+| Progressive Web App | Web App Link |
 | --- | --- |
-Project Maye PWA | [View Now](https://maye.gdgmoi.com) |
-Share Your Story | [View Now](https://share.gdgmoi.com) |
-PWA Fire PWA | [View Now](https://pwafire.org) |
-GDG Kenya | [View Now](https://gdgkenya.org) |
+| Project Maye PWA | [View Now](https://maye.gdgmoi.com) |
+| Share Your Story | [View Now](https://share.gdgmoi.com) |
+| PWA Fire PWA | [View Now](https://pwafire.org) |
+| GDG Kenya | [View Now](https://gdgkenya.org) |
 
 ### Join the conversation 
 Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
