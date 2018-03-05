@@ -173,10 +173,10 @@ GDG Kenya | [View Now](https://gdgkenya.org) |
 ### Join the conversation 
 Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
 
-PWA Fire | [Twitter Hash Tag](https://twitter.com/hashtag/pwafire?src=hash) |
-PWA Fire | [Project Wiki](https://github.com/mayeedwin/pwafire/wiki) |
-PWA Fire | [Project Progress](https://github.com/mayeedwin/pwafire/projects) |
-PWA Fire | [Github Pulse](https://github.com/mayeedwin/pwafire/pulse) |
+| Communication Channel | Talk to us |
+| --- | --- |
+| Live Twitter Chat | [Tweet us](https://twitter.com/pwafire) |
+| Slack Workspace | [Join Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI) |
 
 ### License
 MIT License | [View License](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) |
