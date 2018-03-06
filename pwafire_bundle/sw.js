@@ -1,4 +1,5 @@
- // after a service worker is installed and the user navigates to a different page or 
+ 
+// after a service worker is installed and the user navigates to a different page or 
  // refreshes,the service worker will begin to receive fetch events
     
      self.addEventListener('fetch', function(event) {
