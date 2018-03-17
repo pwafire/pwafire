@@ -160,22 +160,24 @@ Also remember to add the theme color to all your pages as shown in the code belo
 
 3. Automatic [PWA Fire Bundle](https://github.com/mayeedwin/pwafire/releases) Generator U/I for non developers (To begin)
 
-4. Propose your Feature by [creating an issue](https://github.com/mayeedwin/pwafire/issues/new)
+4. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with Project PWA Fire
 
-Project Maye PWA | [View Now](https://maye.gdgmoi.com) |
-Share Your Story | [View Now](https://share.gdgmoi.com) |
-PWA Fire PWA | [View Now](https://pwafire.org) |
-GDG Kenya | [View Now](https://gdgkenya.org) |
+| Progressive Web App | Web App Link |
+| --- | --- |
+| Project Maye PWA | [View Now](https://maye.gdgmoi.com) |
+| Share Your Story | [View Now](https://share.gdgmoi.com) |
+| PWA Fire PWA | [View Now](https://pwafire.org) |
+| GDG Kenya | [View Now](https://gdgkenya.org) |
 
 ### Join the conversation 
 Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
 
-PWA Fire | [Twitter Hash Tag](https://twitter.com/hashtag/pwafire?src=hash) |
-PWA Fire | [Project Wiki](https://github.com/mayeedwin/pwafire/wiki) |
-PWA Fire | [Project Progress](https://github.com/mayeedwin/pwafire/projects) |
-PWA Fire | [Github Pulse](https://github.com/mayeedwin/pwafire/pulse) |
+| Communication Channel | Talk to us |
+| --- | --- |
+| Live Twitter Chat | [Tweet us](https://twitter.com/pwafire) |
+| Slack Workspace | [Join Workspace](http://bit.ly/2oPNK7S) |
 
 ### License
 MIT License | [View License](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) |
