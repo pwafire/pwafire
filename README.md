@@ -112,39 +112,39 @@ Configure/edit the background and theme colors, display type, the Web App short 
 Leave the **start url** as recomended below though this can be anything you want; the value we're using has the advantage of being meaningful to **Google Analytics.**
 
 ```json
-{   
- "background_color": "#fff",
- "display": "standalone",
- "theme_color": "#fff",
-    
+{
+  "background_color": "#fff",
+  "display": "standalone",
+  "orientation":"portrait",
+  "theme_color": "#fff",           
   "short_name": "PWA Fire",
-  "name": "PWA Fire",
+  "name": "PWA Fire Codelab",
   "icons": [
-    {
-      "src": "images/size48.png",
-      "type": "image/png",
-      "sizes": "48x48"
-    },
-    {
-      "src": "images/size96.png",
-      "type": "image/png",
-      "sizes": "96x96"
-    },
-    {
-      "src": "images/size192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    }
-    ,
-    {
-      "src": "images/size512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }  
+  {
+  "src": "icons/pwafire512.png",
+  "type": "image/png",
+  "sizes": "48x48"
+  },
+  {
+  "src": "icons/pwafire512.png",
+  "type": "image/png",
+  "sizes": "96x96"
+  },
+  {
+  "src": "icons/pwafire512.png",
+  "type": "image/png",
+  "sizes": "192x192"
+  }
+  ,
+  {
+  "src": "icons/pwafire512.png",
+  "type": "image/png",
+  "sizes": "512x512"
+  } 
   ],
-  
+
   "start_url": "index.html?launcher=true"
-}
+  }
 ```
 Also remember to add the theme color to all your pages as shown in the code below;
 
