@@ -1,6 +1,8 @@
- 
+// A project PWA Fire written. All writes reserved https://pwafire.org 2018.
+// Author : Maye Edwin https://maye.gdgmoi.com
+
 // after a service worker is installed and the user navigates to a different page or 
- // refreshes,the service worker will begin to receive fetch events
+// refreshes,the service worker will begin to receive fetch events
     
      self.addEventListener('fetch', function(event) {
         event.respondWith(caches.open('cache').then(function(cache) {
