@@ -53,6 +53,9 @@ Read more about Web Manifest [HERE](https://developers.google.com/web/fundamenta
 >Follow the steps as commented in the code below in order to correctly configure the *sw.js* file.
 
 ```javascript
+// A project PWA Fire written. All writes reserved https://pwafire.org 2018.
+// Author : Maye Edwin https://maye.gdgmoi.com
+
 //after a service worker is installed and the user navigates to a different page or refreshes, 
 //the service worker will begin to receive fetch events
 self.addEventListener('fetch', function(event) {
