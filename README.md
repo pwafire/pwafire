@@ -1,4 +1,4 @@
-## [Project PWA Fire](https://pwafire.org)
+## [Project PWA Fire](https://pwafire.org)[(https://badges.frapsoft.com/os/v2/open-source-200x33.png?v=103)]
 >Build amazing Web experiences now with [PWA Fire](https://pwafire.org). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
 
 ### Get Started with PWA Fire
