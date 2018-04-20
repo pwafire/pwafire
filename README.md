@@ -180,6 +180,6 @@ Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twit
 | Slack Workspace | [Join Workspace](http://bit.ly/2oPNK7S) |
 
 ### License
-MIT License | [View License](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) |
+MIT License : [View License](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) 
 ### Support us 
 Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use [PWA Fire](https://pwafire.org), kindly let us know via **info@pwafire.org** | **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
