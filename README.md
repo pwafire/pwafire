@@ -173,6 +173,7 @@ Also remember to add the theme color to all your pages as shown in the code belo
 | PWA Fire PWA | [View Now](https://pwafire.org) |
 | GDG Kenya | [View Now](https://gdgkenya.org) |
 | GDG Jalandhar | [View Now](https://gdgjalandhar.com) |
+| I/O Extended Eldoret | [View Now](https://io.gdgmoi.com) |
 
 ### Join the conversation 
 Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
