@@ -3,14 +3,14 @@
 <html lang="{{ site.lang | default: "en-US" }}">
 
   <head>
-    <link rel="shortcut icon" href="" type="image/png"/>  
+    <link rel="shortcut icon" href="https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirelogo.png" type="image/png"/>  
     <meta charset="UTF-8">
 	  
 {% seo %}
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="theme-color" content="#155799">
+    <meta name="theme-color" content="#fff">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
@@ -42,6 +42,8 @@
   </head>
 
   <body>
+	  
+	
 
     <section class="page-header">
 
@@ -49,7 +51,10 @@
       
       <h1 class="project-name"> PWA Fire </h1>
 
-      <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+      <!-- <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2> -->
+	    
+	    <h2 class="project-tagline"> Documentation </h2>
+	    
 
       {% if site.github.is_project_page %}
 
@@ -57,7 +62,6 @@
 
       {% endif %}
 
-      <!--
        {% if site.show_downloads %}
 
          <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
@@ -65,75 +69,27 @@
         <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
 
       {% endif %} 
-     -->
-	    <br>
-	    <!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/mayeedwin/pwafire/archive/master.zip" data-icon="octicon-cloud-download" data-size="large" aria-label="Download PWA Fire on GitHub">Download</a>
-	    <!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/mayeedwin/pwafire" data-icon="octicon-star" data-size="large" aria-label="Star PWA Fire on GitHub">Star now</a>	    	   
-	    <!-- Place this tag where you want the button to render. -->
-<!-- <a class="github-button" href="https://github.com/mayeedwin/pwafire/fork" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork mayeedwin/pwafire on GitHub">Fork PWA Fire</a> -->
-            <!-- Place this tag where you want the button to render. -->
-<!-- <a class="github-button" href="https://github.com/mayeedwin/pwafire/subscription" data-icon="octicon-eye" data-size="large" aria-label="Watch PWA Fire on GitHub">Watch</a> -->	    
-	    <!-- Place this tag where you want the button to render. -->
-	    <!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/mayeedwin/pwafire/issues" data-icon="octicon-issue-opened" data-size="large" data-show-count="true" aria-label="Issue mayeedwin/pwafire on GitHub">New issue</a>
-	    
+	   
     </section>
 
     <section class="main-content">
 	    
-      
-<!-- github Fork -->
-	    
-	    <!--  
-	      <div align="center">
-		      
-	    <a class="github-button" href="https://github.com/mayeedwin/pwafire/fork" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork mayeedwin/pwafire on GitHub">Fork Project PWA Fire</a>
-            
-            -->
-	    
-            <!-- github Star -->
-                         
-           <!--
-
-	    <a class="github-button" href="https://github.com/mayeedwin/pwafire" data-size="large" aria-label="Star mayeedwin/pwafire on GitHub">Star Project PWA Fire</a>                         
+      <footer class="site-footer">
 	      
-	   </div>
-	    -->
       {{ content }}
 	    
 	    <!-- Message and Follow on Twitter -->
 	    
+	<div>
 	<a href="https://twitter.com/pwafire?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="true">Follow @pwafire</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	
 	<a href="https://twitter.com/mayeedwin1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="true">Follow @mayeedwin1</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	
 	<a href="https://twitter.com/intent/tweet?screen_name=pwafire&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-size="large" data-show-count="false">Tweet to @pwafire</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-	    
-      <footer class="site-footer">
 	      
-	<!-- Tweets by PWA Fire -->
-	   
-	<div align="center">  
-        
-         <a class="twitter-timeline" data-width="600" data-height="350" href="https://twitter.com/pwafire?ref_src=twsrc%5Etfw">Tweets by PWA Fire</a> 
-
-	<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-   
-        </div>
-
-          <!-- github Fork -->
+	</div>
 	      
-	    <div align="center">
-		      
-	    <a class="github-button" href="https://github.com/mayeedwin/pwafire/fork" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork mayeedwin/pwafire on GitHub">Fork Project PWA Fire</a>
-             
-            <!-- github Star -->
-                         
-           <a class="github-button" href="https://github.com/mayeedwin/pwafire" data-size="large" aria-label="Star mayeedwin/pwafire on GitHub">Star Project PWA Fire</a>                         
-	      
-	      </div>
+	     
 	      
         {% if site.github.is_project_page %}
 
@@ -164,5 +120,5 @@
 		<!-- end of servive-worker -->
 	  
   </body>
-	
+	  		
 </html>

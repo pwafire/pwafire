@@ -1,14 +1,13 @@
-## [Project PWA Fire](https://mayeedwin.github.io/pwafire/)
+## [Project PWA Fire](https://pwafire.org)
 
->Build amazing Web experiences now with [PWA Fire](https://github.com/mayeedwin/pwafire). Github latest release version availabe [HERE]
-(https://github.com/mayeedwin/pwafire/releases)
-
-[![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)](https://github.com/mayeedwin/pwafire)
+>Build amazing Web experiences now with [PWA Fire](https://pwafire.org). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
+	
 ### Get Started with PWA Fire
 Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few. 
 
 It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
+[![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)](https://pwafire.org)
 ### What to do first // Required
 [Download](https://github.com/mayeedwin/pwafire/releases) PWA Fire and from [pwafire_bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire_bundle) folder, upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
 
@@ -19,6 +18,7 @@ Be sure to edit the *sw.js* and *manifest.json* file as in the guide provided be
 ### Configuration guide
 #### 1. Code to register the service worker
 This is the first step to making your web app work *offline.* Copy and paste this code to your *index file,* eg just before the end of the *body tag* or in the *head tag* in html5
+
 #### N/B : You need HTTPS
 You can only register service workers on Websites, Web Apps or Pages served over HTTPS.
 
@@ -40,6 +40,7 @@ Read more about service workers [HERE](https://developers.google.com/web/fundame
 		<!-- end of service worker -->
 ```
 This code checks to see if the *service worker API* is available, and if it is, the service worker at */sw.js* is registered once the page is loaded.
+
 #### 2. Using the Web Manifest - manifest.json
 When you have uploaded the *manifest* and it's on your site, add a link tag to all the pages that encompass your web app, as follows;
 ```html
@@ -107,85 +108,84 @@ self.addEventListener('fetch', function(event) {
 ### b) Web Manifest // manifest.json Guide
 >Follow the steps below as described in order to correctly configure the *manifest.json* file.
 
-#### // Add a link tag to all the pages that encompass your web app, as shown below;
-```html
-<!-- manifest  -->
-// <link rel="manifest" href="/manifest.json">
-<!-- end-manifest -->
-```
-#### // Configuring manifest.json
 Configure/edit the background and theme colors, display type, the Web App short name, the Web App name, icons size (keep icon sizes as **specified** below) and your icon/logo paths. Also state the img type eg image/ico or image/png.
 
 Leave the **start url** as recomended below though this can be anything you want; the value we're using has the advantage of being meaningful to **Google Analytics.**
+
+```json
+{
+  "background_color": "#fff",
+  "display": "standalone",
+  "orientation":"portrait",
+  "theme_color": "#fff",           
+  "short_name": "PWA Fire",
+  "name": "PWA Fire Codelab",
+  "icons": [
+  {
+  "src": "icons/pwafire512.png",
+  "type": "image/png",
+  "sizes": "48x48"
+  },
+  {
+  "src": "icons/pwafire512.png",
+  "type": "image/png",
+  "sizes": "96x96"
+  },
+  {
+  "src": "icons/pwafire512.png",
+  "type": "image/png",
+  "sizes": "192x192"
+  }
+  ,
+  {
+  "src": "icons/pwafire512.png",
+  "type": "image/png",
+  "sizes": "512x512"
+  } 
+  ],
+
+  "start_url": "index.html?launcher=true"
+  
+  }
+```
+Also remember to add the theme color to all your pages as shown in the code below;
 
 ```html
 <!-- theme-color -->
  <meta name="theme-color" content="#fff" />
 <!-- end-theme-color -->
 ```
-#### The manifest.json code below;
-
-```json
-{   
- "background_color": "#fff",
- "display": "standalone",
- "theme_color": "#fff",
-    
-  "short_name": "PWA Fire",
-  "name": "PWA Fire",
-  "icons": [
-    {
-      "src": "images/size48.png",
-      "type": "image/png",
-      "sizes": "48x48"
-    },
-    {
-      "src": "images/size96.png",
-      "type": "image/png",
-      "sizes": "96x96"
-    },
-    {
-      "src": "images/size192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    }
-    ,
-    {
-      "src": "images/size512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }  
-  ],
-  
-  "start_url": "index.html?launcher=true"
-}
-```
-### Features //Roadmap
+### Features // Roadmap
 1. Offline Capabilities and Add to Homescreen (Done!) 
 
 2. Push notification add-on (In progress)
 
 3. Automatic [PWA Fire Bundle](https://github.com/mayeedwin/pwafire/releases) Generator U/I for non developers (To begin)
 
-4. Propose your Feature by [creating an issue](https://github.com/mayeedwin/pwafire/issues/new)
+4. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with Project PWA Fire
 
-Impala Developers | [View Now](https://impaladevelopers.com) |
-Project Maye Edwin PWA | [View Now](https://maye.gdgmoi.com) |
-Share Your Story | [View Now](https://share.gdgmoi.com) |
+| Progressive Web App | Web App Link |
+| --- | --- |
+| Project Maye PWA | [View Now](https://maye.gdgmoi.com) |
+| PWAFire.Org | [View Now](https://pwafire.org) |
+| GDG Eldoret | [View Now](https://gdgmoi.com) |
+| GDG Kenya | [View Now](https://gdgkenya.org) |
+| GDG Jalandhar | [View Now](https://gdgjalandhar.com) |
+| I/O Extended Eldoret | [View Now](https://io.gdgmoi.com) |
 
 ### Join the conversation 
 Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
 
-PWA Fire | [Medium Tag](https://medium.com/tag/pwafire/latest) |
-PWA Fire | [Project Wiki](https://github.com/mayeedwin/pwafire/wiki) |
-PWA Fire | [Project Progress](https://github.com/mayeedwin/pwafire/projects) |
-PWA Fire | [Github Pulse](https://github.com/mayeedwin/pwafire/pulse) |
+| Communication Channel | Talk to us |
+| --- | --- |
+| Live Twitter Chat | [Tweet us](https://twitter.com/pwafire) |
+| Slack Workspace | [Join Workspace](http://bit.ly/2oPNK7S) |
 
 ### License
-
-MIT License | [View License](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) |
-
+| License |License url |
+| --- | --- |
+| MIT License | [View License](https://github.com/mayeedwin/faq-beta/blob/master/LICENSE) |
 ### Support us 
-Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use [PWA Fire](https://mayeedwin.github.io/pwafire/), kindly let us know via **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
+Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use [PWA Fire](https://pwafire.org/developer), kindly let us know via **info@pwafire.org** | **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
