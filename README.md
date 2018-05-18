@@ -170,6 +170,7 @@ Also remember to add the theme color to all your pages as shown in the code belo
 | --- | --- |
 | Project Maye PWA | [View Now](https://maye.gdgmoi.com) |
 | PWAFire.Org | [View Now](https://pwafire.org) |
+| GDG Eldoret | [View Now](https://gdgmoi.com) |
 | GDG Kenya | [View Now](https://gdgkenya.org) |
 | GDG Jalandhar | [View Now](https://gdgjalandhar.com) |
 | I/O Extended Eldoret | [View Now](https://io.gdgmoi.com) |
