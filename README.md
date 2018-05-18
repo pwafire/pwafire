@@ -155,7 +155,7 @@ Also remember to add the theme color to all your pages as shown in the code belo
  <meta name="theme-color" content="#fff" />
 <!-- end-theme-color -->
 ```
-### Features //Roadmap
+### Features // Roadmap
 1. Offline Capabilities and Add to Homescreen (Done!) 
 
 2. Push notification add-on (In progress)
@@ -183,6 +183,6 @@ Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twit
 | Slack Workspace | [Join Workspace](http://bit.ly/2oPNK7S) |
 
 ### License
-| MIT License | [View License](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) |
+| MIT License | [View License](https://github.com/mayeedwin/faq-beta/blob/master/LICENSE) |
 ### Support us 
-Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use [PWA Fire](https://pwafire.org), kindly let us know via **info@pwafire.org** | **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
+Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use [PWA Fire](https://pwafire.org/developer), kindly let us know via **info@pwafire.org** | **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
