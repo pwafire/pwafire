@@ -1,6 +1,7 @@
 ## [Project PWA Fire](https://pwafire.org)
->Build amazing Web experiences now with [PWA Fire](https://pwafire.org). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
 
+>Build amazing Web experiences now with [PWA Fire](https://pwafire.org). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
+	
 ### Get Started with PWA Fire
 Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few. 
 
@@ -144,6 +145,7 @@ Leave the **start url** as recomended below though this can be anything you want
   ],
 
   "start_url": "index.html?launcher=true"
+  
   }
 ```
 Also remember to add the theme color to all your pages as shown in the code below;
@@ -153,7 +155,7 @@ Also remember to add the theme color to all your pages as shown in the code belo
  <meta name="theme-color" content="#fff" />
 <!-- end-theme-color -->
 ```
-### Features //Roadmap
+### Features // Roadmap
 1. Offline Capabilities and Add to Homescreen (Done!) 
 
 2. Push notification add-on (In progress)
@@ -167,9 +169,11 @@ Also remember to add the theme color to all your pages as shown in the code belo
 | Progressive Web App | Web App Link |
 | --- | --- |
 | Project Maye PWA | [View Now](https://maye.gdgmoi.com) |
-| Share Your Story | [View Now](https://share.gdgmoi.com) |
-| PWA Fire PWA | [View Now](https://pwafire.org) |
+| PWAFire.Org | [View Now](https://pwafire.org) |
+| GDG Eldoret | [View Now](https://gdgmoi.com) |
 | GDG Kenya | [View Now](https://gdgkenya.org) |
+| GDG Jalandhar | [View Now](https://gdgjalandhar.com) |
+| I/O Extended Eldoret | [View Now](https://io.gdgmoi.com) |
 
 ### Join the conversation 
 Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
@@ -180,6 +184,9 @@ Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twit
 | Slack Workspace | [Join Workspace](http://bit.ly/2oPNK7S) |
 
 ### License
-MIT License : [View License](https://github.com/mayeedwin/pwafire/blob/master/LICENSE) 
+| License |License url |
+| --- | --- |
+| MIT License | [View License](https://github.com/mayeedwin/faq-beta/blob/master/LICENSE) |
+
 ### Support us 
-Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use [PWA Fire](https://pwafire.org), kindly let us know via **info@pwafire.org** | **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
+Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use [PWA Fire](https://pwafire.org/developer), kindly let us know via **info@pwafire.org** | **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
