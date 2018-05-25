@@ -5,6 +5,7 @@
   "theme_color": "#fff",           
   "short_name": "PWA Fire",
   "name": "PWA Fire Codelab",
+  "lang": "en-US",
   "icons": [
   {
   "src": "icons/pwafire512.png",
@@ -28,6 +29,5 @@
   "sizes": "512x512"
   } 
   ],
-
   "start_url": "index.html?launcher=true"
-  }
+}
