@@ -1,8 +1,8 @@
 ### [Project PWA Fire 3.0](https://pwafire.org)
 
->Build amazing Web experiences now with [PWA Fire](https://pwafire.org/developer/pwa/started/). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
+Build amazing Web experiences now with [PWA Fire](https://pwafire.org/developer/pwa/started/). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
 
->PWA Fire 3.0 Build will contain Service Worker pre-cache tooling for npm and gulp.
+PWA Fire 3.0 Build will contain Service Worker pre-cache tooling for npm and gulp.
 
 ### Features // Roadmap
 1. Offline Capabilities and Add to Homescreen (Done!) 
