@@ -9,7 +9,6 @@ module.exports = {
     "js/animation.js",
     "images/home/*.jpg",
     "images/icon/*.svg",
-    "pages/offline.html",
     "pages/404.html"
   ],
   "swSrc": "src/sw.js", // The path and filename of the service worker file that will be created by the build process.
