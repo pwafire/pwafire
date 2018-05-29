@@ -1,8 +1,8 @@
-### [Project PWA Fire 3.0](https://pwafire.org)
+### [PWA Fire for-node-modules](https://pwafire.org)
 
 Build amazing Web experiences now with [PWA Fire](https://pwafire.org/developer/pwa/started/). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
 
-PWA Fire 3.0 Build Has a Guide to building production ready service workers for node-modules; npm, gulp and webpack!
+Package of PWA Fire 3.0 Build. Has a Guide to building production ready service workers for node-modules; npm, gulp and webpack!
 
 ### Features // Roadmap
 1. Offline Capabilities and Add to Homescreen (Done!) 
