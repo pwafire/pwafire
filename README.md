@@ -37,7 +37,7 @@ Read more about service workers [HERE](https://developers.google.com/web/fundame
   );
 }
         </script>
-		<!-- end of service worker -->
+<!-- end of service worker -->
 ```
 This code checks to see if the *service worker API* is available, and if it is, the service worker at */sw.js* is registered once the page is loaded.
 
