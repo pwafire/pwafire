@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "build": " add at the end of your build process >>> injectManifest sw-config.js"
+      }
+}
