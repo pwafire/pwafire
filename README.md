@@ -9,7 +9,7 @@ Package of PWA Fire 3.0 Build. Has a Guide to building production ready service 
 
 2. Push notification add-on (In progress)
 
-3. Automatic [PWA Fire Bundle](https://github.com/mayeedwin/pwafire/releases) Generator U/I for non developers (To begin)
+3. Automatic [web Manifest](https://pwafire.org/developer/tools/get-manifest/) Generator U/I (Released in May 2018!)
 
 4. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
