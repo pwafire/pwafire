@@ -9,7 +9,7 @@ It is the most simplest way you can ever convert your web app or website into a 
 
 [![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)](https://pwafire.org)
 ### What to do first // Required
-[Download](https://github.com/mayeedwin/pwafire/releases) PWA Fire and from [pwafire_bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire_bundle) folder, upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
+[Download](https://github.com/mayeedwin/pwafire/archive/master.zip) PWA Fire and from [pwafire-bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle) folder, upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
 
 Be sure to edit the *sw.js* and *manifest.json* file as in the guide provided below to fit your web app needs.
 
