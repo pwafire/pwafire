@@ -1,6 +1,6 @@
 ## [Project PWA Fire](https://pwafire.org)
 
->Build amazing Web experiences now with [PWA Fire](https://pwafire.org). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases). Package of PWA Fire 3.0 Build. Has a Guide to building production ready service workers for node-modules; npm, gulp and webpack! Get [started here now.](https://pwafire.org/developer/pwa/started/) and on [github here](https://github.com/mayeedwin/pwafire/tree/for-node-modules)
+Build amazing Web experiences now with [PWA Fire](https://pwafire.org). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases). This is release 3.0; Has a Guide to building production ready service workers for node-modules; npm, gulp and webpack! Get [started here now.](https://pwafire.org/developer/pwa/started/) and on [github here](https://github.com/mayeedwin/pwafire/tree/for-node-modules)
 	
 ### Get Started with PWA Fire
 Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few. 
