@@ -119,6 +119,8 @@ Leave the **start url** as recomended below though this can be anything you want
   "theme_color": "#fff",           
   "short_name": "PWA Fire",
   "name": "PWA Fire Codelab",
+  "description": "description or purpose of your progressive web app",
+  "lang": "en-US",
   "icons": [
   {
   "src": "icons/pwafire512.png",
@@ -142,10 +144,9 @@ Leave the **start url** as recomended below though this can be anything you want
   "sizes": "512x512"
   } 
   ],
-
-  "start_url": "index.html?launcher=true"
-  
-  }
+  "start_url": "index.html?launcher=true",
+  "scope": "/"
+}
 ```
 Also remember to add the theme color to all your pages as shown in the code below;
 
