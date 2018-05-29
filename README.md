@@ -1,8 +1,6 @@
 ### [PWA Fire for-node-modules](https://pwafire.org)
 
-Build amazing Web experiences now with [PWA Fire](https://pwafire.org/developer/pwa/started/). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
-
-Package of PWA Fire 3.0 Build. Has a Guide to building production ready service workers for node-modules; npm, gulp and webpack! Get [started here now.](https://pwafire.org/developer/pwa/started/)
+Build your first progressive web app with [PWA Fire Bundle](https://pwafire.org/developer/pwa/codelab/). Github latest release version [availabe here](https://github.com/mayeedwin/pwafire/releases). This is version 3.0 with a Guide to building production ready service workers for node-modules; npm, gulp and webpack! Get [started here](https://pwafire.org/developer/pwa/started/) and on [github here](https://github.com/mayeedwin/pwafire/tree/for-node-modules).
 
 ### Features // Roadmap
 1. Offline Capabilities and Add to Homescreen (Done!) 
