@@ -1,4 +1,4 @@
-### [PWA Fire for-node-modules](https://pwafire.org)
+### [PWA Fire for-node-modules](https://pwafire.org/developer/)
 
 Build your first progressive web app with [PWA Fire Bundle](https://pwafire.org/developer/pwa/codelab/). Github latest release version [availabe here](https://github.com/mayeedwin/pwafire/releases). This is version 3.0 with a Guide to building production ready service workers for node-modules; npm, gulp and webpack! Get [started here](https://pwafire.org/developer/pwa/started/) and on [github here](https://github.com/mayeedwin/pwafire/tree/for-node-modules).
 
