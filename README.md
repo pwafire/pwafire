@@ -1,6 +1,6 @@
 ## [Project PWA Fire](https://pwafire.org)
 
->Build amazing Web experiences now with [PWA Fire](https://pwafire.org). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
+>Build amazing Web experiences now with [PWA Fire](https://pwafire.org). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases). Package of PWA Fire 3.0 Build. Has a Guide to building production ready service workers for node-modules; npm, gulp and webpack! Get [started here now.](https://pwafire.org/developer/pwa/started/) and on [github here](https://github.com/mayeedwin/pwafire/tree/for-node-modules)
 	
 ### Get Started with PWA Fire
 Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few. 
@@ -160,7 +160,7 @@ Also remember to add the theme color to all your pages as shown in the code belo
 
 2. Push notification add-on (In progress)
 
-3. Automatic [PWA Fire Bundle](https://github.com/mayeedwin/pwafire/releases) Generator U/I for non developers (To begin)
+3. [Web Manifest](https://pwafire.org/developer/tools/get-manifest/) [Generator](https://pwafire.org/developer/tools/get-manifest/) tool (Released in May 2018!)
 
 4. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
