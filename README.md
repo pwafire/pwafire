@@ -31,7 +31,7 @@ Read more about service workers [HERE](https://developers.google.com/web/fundame
 	    if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/sw.js')
-    .then(function() { console.log("Service Worker Registered"); });
+    .then(function() { console.log("Service Worker Registered! Cheers to PWA Fire!"); });
   }
   
   );
