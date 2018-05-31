@@ -1,15 +1,15 @@
 ## [Project PWA Fire](https://pwafire.org)
 
->Build amazing Web experiences now with [PWA Fire](https://pwafire.org). Github latest release version availabe [HERE](https://github.com/mayeedwin/pwafire/releases)
+Build your first progressive web app with [PWA Fire Bundle](https://pwafire.org/developer/pwa/codelab/). Github latest release version [availabe here](https://github.com/mayeedwin/pwafire/releases). This is version 3.0 with a Guide to building production ready service workers for node-modules; npm, gulp and webpack! Get [started here](https://pwafire.org/developer/pwa/started/) and on [github here](https://github.com/mayeedwin/pwafire/tree/for-node-modules).
 	
 ### Get Started with PWA Fire
-Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire) developed by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few. 
+Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle) made by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few. 
 
 It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
 [![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)](https://pwafire.org)
 ### What to do first // Required
-[Download](https://github.com/mayeedwin/pwafire/releases) PWA Fire and from [pwafire_bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire_bundle) folder, upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
+[Download](https://github.com/mayeedwin/pwafire/archive/master.zip) PWA Fire and from [pwafire-bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle) folder, upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
 
 Be sure to edit the *sw.js* and *manifest.json* file as in the guide provided below to fit your web app needs.
 
@@ -31,13 +31,13 @@ Read more about service workers [HERE](https://developers.google.com/web/fundame
 	    if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/sw.js')
-    .then(function() { console.log("Service Worker Registered"); });
+    .then(function() { console.log("Service Worker Registered! Cheers to PWA Fire!"); });
   }
   
   );
 }
         </script>
-		<!-- end of service worker -->
+<!-- end of service worker -->
 ```
 This code checks to see if the *service worker API* is available, and if it is, the service worker at */sw.js* is registered once the page is loaded.
 
@@ -54,56 +54,55 @@ Read more about Web Manifest [HERE](https://developers.google.com/web/fundamenta
 >Follow the steps as commented in the code below in order to correctly configure the *sw.js* file.
 
 ```javascript
-//after a service worker is installed and the user navigates to a different page or refreshes, 
-//the service worker will begin to receive fetch events
-self.addEventListener('fetch', function(event) {
-    event.respondWith(caches.open('cache').then(function(cache) {
-        return cache.match(event.request).then(function(response) {
-            console.log("cache request: " + event.request.url);
-            var fetchPromise = fetch(event.request).then(function(networkResponse) {
-                
-                // if we got a response from the cache, update the cache
-                
-                console.log("fetch completed: " + event.request.url, networkResponse);
-                if (networkResponse) {
-                    console.debug("updated cached page: " + event.request.url, networkResponse);
-                    cache.put(event.request, networkResponse.clone());
-                }
-                return networkResponse;
-            }, function (e) {
-                
-           // rejected promise - just ignore it, we're offline
-                
-           console.log("Error in fetch()", e);
-           e.waitUntil(
-           caches.open('cache').then(function(cache) { // our cache here is named *cache* in the caches.open()
-           return cache.addAll([ //cache.addAll(), takes a list of URLs, then fetches them from the server and adds the response to the cache.
-          // add your entire site to the cache- as in the code below; for offline access
-          // If you have some build process for your site, perhaps that could generate the list of possible URLs that a user might load.
-          '/', // do not remove this
-          '/index.html', //default
-          '/index.html?homescreen=1', //default
-          '/?homescreen=1', //default
-          '/assets/css/main.css',
-               
-          // Do not replace/delete/edit the sw.js/ and manifest.js paths below
-          '/sw.js/',
-          '/manifest.js',
 
-          // These are links to the extenal social media buttons that should be cached if any exists.
-         'https://platform.twitter.com/widgets.js',
-         'https://platform.linkedin.com/badges/js/profile.js',
-         'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11&appId=128193484441134',
-         'https://buttons.github.io/buttons.js'
-      ]);
-    })
-  );    });
-  
-        // respond from the cache, or the network
-            return response || fetchPromise;
-     });
-    }));
+// A project PWA Fire written. All writes reserved https://pwafire.org 2018.
+// Author : Maye Edwin https://maye.gdgmoi.com
+
+// after a service worker is installed and the user navigates to a different page or 
+// refreshes,the service worker will begin to receive fetch events
+    
+self.addEventListener('fetch', function(event) {
+  event.respondWith(caches.open('cache').then(function(cache) {
+    return cache.match(event.request).then(function(response) {
+      console.log("cache request: " + event.request.url);
+       var fetchPromise = fetch(event.request).then(function(networkResponse) {           
+// if we got a response from the cache, update the cache                   
+console.log("fetch completed: " + event.request.url, networkResponse);
+  if (networkResponse) {
+    console.debug("updated cached page: " + event.request.url, networkResponse);
+      cache.put(event.request, networkResponse.clone());}
+        return networkResponse;
+          }, function (event) {   
+// rejected promise - just ignore it, we're offline!   
+          console.log("Error in fetch()", event);
+          event.waitUntil(
+          caches.open('cache').then(function(cache) { // our cache here is named *cache* in the caches.open()
+          return cache.addAll
+          ([            
+//cache.addAll(), takes a list of URLs, then fetches them from the server and adds the response to the cache.           
+// add your entire site to the cache- as in the code below; for offline access
+// If you have some build process for your site, perhaps that could generate the list of possible URLs that a user might load.               
+        '/', // do not remove this
+        '/index.html', //default
+        '/index.html?homescreen=1', //default
+        '/?homescreen=1', //default
+        '/assets/css/main.css',// configure as by your site ; just an example
+        '/images/*',// choose images to keep offline; just an example
+// Do not replace/delete/edit the sw.js/ and manifest.js paths below
+        '/sw.js',
+        '/manifest.js',
+//These are links to the extenal social media buttons that should be cached; we have used twitter's as an example
+        'https://platform.twitter.com/widgets.js',       
+        ]);
+        })
+        );
+        });
+// respond from the cache, or the network
+  return response || fetchPromise;
 });
+}));
+});
+
 ```
 ### b) Web Manifest // manifest.json Guide
 >Follow the steps below as described in order to correctly configure the *manifest.json* file.
@@ -120,6 +119,8 @@ Leave the **start url** as recomended below though this can be anything you want
   "theme_color": "#fff",           
   "short_name": "PWA Fire",
   "name": "PWA Fire Codelab",
+  "description": "description or purpose of your progressive web app",
+  "lang": "en-US",
   "icons": [
   {
   "src": "icons/pwafire512.png",
@@ -143,10 +144,9 @@ Leave the **start url** as recomended below though this can be anything you want
   "sizes": "512x512"
   } 
   ],
-
-  "start_url": "index.html?launcher=true"
-  
-  }
+  "start_url": "index.html?launcher=true",
+  "scope": "/"
+}
 ```
 Also remember to add the theme color to all your pages as shown in the code below;
 
@@ -160,7 +160,7 @@ Also remember to add the theme color to all your pages as shown in the code belo
 
 2. Push notification add-on (In progress)
 
-3. Automatic [PWA Fire Bundle](https://github.com/mayeedwin/pwafire/releases) Generator U/I for non developers (To begin)
+3. [Web Manifest](https://pwafire.org/developer/tools/get-manifest/) [Generator](https://pwafire.org/developer/tools/get-manifest/) tool (Released in May 2018!)
 
 4. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
