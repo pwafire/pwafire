@@ -187,4 +187,4 @@ Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twit
 | MIT License | [View License](https://github.com/mayeedwin/pwafire/blob/master/.github/LICENSE) |
 
 ### Engage us 
-Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use [PWA Fire](https://pwafire.org/developer), kindly let us know via **info@pwafire.org** | **mayedwine1@gmail.com** or JUST simply [Tweet us](https://twitter.com/pwafire).
+Donate a star, like, follow and contribute in any way. Be sure to use **Project PWA Fire**. If you use [PWA Fire Bundle](https://pwafire.org/developer/codelabs/pwafire), kindly let us know via **developer@pwafire.org** or JUST simply [Tweet us](https://twitter.com/pwafire).
