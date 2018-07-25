@@ -18,7 +18,7 @@ Get started with configuring the code in this [setup guide here](https://github.
 
 2. Push notification add-on (In progress)
 
-3. [Web Manifest](https://pwafire.org/developer/tools/get-manifest/) [Generator](https://pwafire.org/developer/tools/get-manifest/) tool (Released in May 2018!)
+3. [Web Manifest Generator Tool](https://pwafire.org/developer/tools/get-manifest/) (Released in May 2018!)
 
 4. [Browser Compatiblity Test Tool](https://pwafire.org/developer/tools/browser-test/)
 
