@@ -1,17 +1,17 @@
 ## [Project PWA Fire 🐰](https://pwafire.org)
 
-Build your first progressive web app with [PWA Fire Bundle](https://pwafire.org/developer/pwa/codelab/). Github latest release version [availabe here](https://github.com/mayeedwin/pwafire/releases). This is version 3.0 with a Guide to building production ready service workers for node-modules; npm, gulp and webpack! Get [started here](https://pwafire.org/developer/pwa/started/) and on [github here](https://github.com/mayeedwin/pwafire/tree/for-node-modules).
+Build your first progressive web app with [PWA Fire Bundle](https://pwafire.org/developer/pwa/codelab/). Github latest release version [availabe here](https://github.com/mayeedwin/pwafire/releases). This is version 3.0 with a Guide to building production ready service workers for node-modules; npm, gulp and webpack! Get [started here](https://pwafire.org/developer/pwa/started/#sw-config-for-node) and on [github here](https://github.com/mayeedwin/pwafire/tree/for-node-modules).
 	
 ### Get Started with PWA Fire
-Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle) made by [Maye Edwin](https://maye.gdgmoi.com) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few. 
+Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle) made by [Maye Edwin](https://twitter.com/MayeEdwin1) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few. 
 
 It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
 [![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)](https://pwafire.org)
 ### What to do first // Required
-[Download](https://github.com/mayeedwin/pwafire/archive/master.zip) PWA Fire and from [pwafire-bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle) folder, upload the *sw.js* and *manifest.json files* to the **ROOT** folder of your project or website.
+Get the Bundle's [source code here](https://github.com/mayeedwin/pwafire/) PWA Fire and from [pwafire-bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle) folder, add the *service-worker.js* and *manifest.json*  files to the **ROOT** folder of your project or website.
 
-Be sure to edit the *sw.js* and *manifest.json* file as in the guide provided below to fit your web app needs.
+Be sure to edit the *service-worker.js* and *manifest.json* files as in the guide provided below to fit your web app needs.
 
 **N/B:** Do not configure or edit anything else but the one guided to.
 
