@@ -9,7 +9,7 @@ It is the most simplest way you can ever convert your web app or website into a 
 
 [![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)](https://pwafire.org)
 ### What to do first // Required
-Get the [source code here](https://github.com/mayeedwin/pwafire/) and from [pwafire-bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle) folder, add the *service-worker.js* and *manifest.json*  files to the **ROOT** folder of your project or website. Be sure to edit the *service-worker.js* and *manifest.json* files as in the guide provided below to fit your web app needs.
+Create two empty files in your project's root folder ; service-worker.js and manifest.json. N/B: Make sure to make the configuration changes as documented below.
 
 **N/B:** Do not configure or edit anything else but the one guided to.
 ### ConfiGuration // setup
