@@ -11,8 +11,7 @@ It is the most simplest way you can ever convert your web app or website into a 
 ### What to do first // Required
 Create two empty files in your project's root folder ; service-worker.js and manifest.json. N/B: Make sure to make the configuration changes as documented below.
 
-**N/B:** Do not configure or edit anything else but the one guided to.
-### ConfiGuration // setup
+### Configuration // setup
 Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/setup)
 ### Features // Roadmap
 1. Offline Capabilities and Add to Homescreen (Done!) 
