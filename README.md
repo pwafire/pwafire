@@ -14,8 +14,8 @@ Get the [source code here](https://github.com/mayeedwin/pwafire/) and from [pwaf
 Be sure to edit the *service-worker.js* and *manifest.json* files as in the guide provided below to fit your web app needs.
 
 **N/B:** Do not configure or edit anything else but the one guided to.
-### Confiuration // setup
-Get started with configuring the code in this setup guide here
+### ConfiGuration // setup
+Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/setup)
 ### Features // Roadmap
 1. Offline Capabilities and Add to Homescreen (Done!) 
 
