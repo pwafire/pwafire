@@ -22,6 +22,8 @@ Get started with configuring the code in this [setup guide here](https://github.
 
 4. [Browser Compatiblity Test Tool](https://pwafire.org/developer/tools/browser-test/)
 
+4. [Workbox Service Worker - NPM](https://github.com/mayeedwin/workbox-service-worker/)
+
 5. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with Project PWA Fire
