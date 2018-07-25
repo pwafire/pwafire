@@ -20,7 +20,9 @@ Get started with configuring the code in this [setup guide here](https://github.
 
 3. [Web Manifest](https://pwafire.org/developer/tools/get-manifest/) [Generator](https://pwafire.org/developer/tools/get-manifest/) tool (Released in May 2018!)
 
-4. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
+4. [Browser Compatiblity Test Tool](https://pwafire.org/developer/tools/browser-test/)
+
+5. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with Project PWA Fire
 
