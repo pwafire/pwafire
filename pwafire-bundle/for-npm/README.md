@@ -11,7 +11,7 @@ An open source javascript and json bundle that allows you to convert your existi
 
 #### [PWA Fire Bundle 4.0.0 Web Codelab]()
 In this codelab, you will learn about getting started with PWA Fire Bundle 4.0.0 for your next Progressive Web App project.
-[Get started with the docs](https://github.com/mayeedwin/workbox-service-worker/tree/master/docs)
+[Get started with the codelab](https://github.com/mayeedwin/workbox-service-worker/tree/master/docs)
 
 #### [Engage us](https://twitter.com/pwafire)
 Donate a star, like, follow and contribute in any way. If you use [PWA Fire Developer Resources](https://pwafire.org/developer), kindly let us know. JUST simply [Tweet us](https://twitter.com/pwafire).
