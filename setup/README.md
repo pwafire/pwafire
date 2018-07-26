@@ -1,5 +1,5 @@
 
-### Configuration guide
+### [Getting started with PWA Fire Bundle](https://pwafire.org/developer/pwa/started/)
 #### 1. Code to register the service worker
 This is the first step to making your web app work *offline.* Copy and paste this code to your *index file,* eg just before the end of the *body tag* or in the *head tag* in html5
 
@@ -14,7 +14,7 @@ Read more about service workers [HERE](https://developers.google.com/web/fundame
 	
 	    if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js')
+    navigator.serviceWorker.register('/service-worker.js')
     .then(function() { console.log("Service Worker Registered! Cheers to PWA Fire!"); });
   }
   
@@ -25,7 +25,7 @@ Read more about service workers [HERE](https://developers.google.com/web/fundame
 ```
 This code checks to see if the *service worker API* is available, and if it is, the service worker at */sw.js* is registered once the page is loaded.
 
-#### 2. Using the Web Manifest - manifest.json
+#### [2. Using the Web Manifest - manifest.json](https://pwafire.org/developer/pwa/started/#use-web-manifest)
 When you have uploaded the *manifest* and it's on your site, add a link tag to all the pages that encompass your web app, as follows;
 ```html
 <link rel="manifest" href="/manifest.json">
@@ -34,8 +34,8 @@ Configuring the **manifest.json** helps you to specify how you want your web app
 
 Read more about Web Manifest [HERE](https://developers.google.com/web/fundamentals/web-app-manifest/)
 
-### a) Service Worker // sw.js Guide
->Follow the steps as commented in the code below in order to correctly configure the *sw.js* file.
+### [a) Service Worker // service-worker.js Guide](https://pwafire.org/developer/pwa/started/#sw-config)
+>Follow the steps as commented in the code below in order to correctly configure the *service-worker.js* file.
 
 ```javascript
 
@@ -88,7 +88,7 @@ console.log("fetch completed: " + event.request.url, networkResponse);
 });
 
 ```
-### b) Web Manifest // manifest.json Guide
+### [b) Web Manifest // manifest.json Guide](https://pwafire.org/developer/pwa/started/#web-manifest-config)
 >Follow the steps below as described in order to correctly configure the *manifest.json* file.
 
 Configure/edit the background and theme colors, display type, the Web App short name, the Web App name, icons size (keep icon sizes as **specified** below) and your icon/logo paths. Also state the img type eg image/ico or image/png.
