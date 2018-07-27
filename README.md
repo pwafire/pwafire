@@ -4,6 +4,8 @@ We just announced [PWA Fire Bundle 4.0.0](https://github.com/mayeedwin/pwafire/)
 
 ### [What's NEW?]()
 1. In this release, we are using [workbox;](https://developers.google.com/web/tools/workbox/) which is a set of libraries and Node modules that make it easy to cache assets and take full advantage of features used to build Progressive Web Apps. 
+
+2. Use of [PWA Fire App Template.]() This allows you to use our sample progressive web app template which is designed with all progressive web app best practises and strutured ready for PWA Fire Bundle 4.0.0 use.
 	
 ### Get Started with PWA Fire Bundle
 Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/default) made by [Maye Edwin](https://twitter.com/MayeEdwin1) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few. 
