@@ -1,6 +1,9 @@
 ## [Project PWA Fire 🐰](https://pwafire.org)
 
-Build your first progressive web app with [PWA Fire Bundle](https://pwafire.org/developer/pwa/codelab/). Github latest release version [availabe here](https://github.com/mayeedwin/pwafire/releases). This is version 3.0 with a Guide to building production ready service workers for node-modules; npm, gulp and webpack! Get [started here](https://pwafire.org/developer/pwa/started/#sw-config-for-node) and on [github here](https://github.com/mayeedwin/pwafire/tree/for-node-modules).
+We just announced [PWA Fire Bundle 4.0.0](https://github.com/mayeedwin/pwafire/) which allows you to build a progressive web app more easily and in a more fun way. 
+
+#### [What's NEW?]()
+1. In this release, we are using [workbox;](https://developers.google.com/web/tools/workbox/) which is a set of libraries and Node modules that make it easy to cache assets and take full advantage of features used to build Progressive Web Apps. 
 	
 ### Get Started with PWA Fire Bundle
 Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/default) made by [Maye Edwin](https://twitter.com/MayeEdwin1) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few. 
