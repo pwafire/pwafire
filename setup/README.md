@@ -87,6 +87,12 @@ console.log("fetch completed: " + event.request.url, networkResponse);
 }));
 });
 
+self.addEventListener('install', function(event) {
+    // The promise that skipWaiting() returns can be safely ignored.
+    self.skipWaiting();
+    console.log("Latest version installed!");
+});
+
 ```
 ### [b) Web Manifest // manifest.json Guide](https://pwafire.org/developer/pwa/started/#web-manifest-config)
 >Follow the steps below as described in order to correctly configure the *manifest.json* file.
