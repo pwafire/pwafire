@@ -12,4 +12,4 @@ Add **rel="noopener"** or **rel="noreferrer"** to each of the links that Lightho
 always add one of these attributes when you open an external link in a new window or tab.
 
 [Get started here >>>](https://github.com/mayeedwin/pwafire/blob/master/resources/url-parameters/index.html) and learn more of
-these url parameters [on this site here](https://html.spec.whatwg.org/multipage/links.html)
+these url parameters [on this site here >>>](https://html.spec.whatwg.org/multipage/links.html)
