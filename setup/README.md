@@ -99,7 +99,7 @@ self.addEventListener('install', function(event) {
 
 Configure/edit the background and theme colors, display type, the Web App short name, the Web App name, icons size (keep icon sizes as **specified** below) and your icon/logo paths. Also state the img type eg image/ico or image/png.
 
-Leave the **start url** as recomended below though this can be anything you want; the value we're using has the advantage of being meaningful to **Google Analytics.**
+Leave the **start url** as recommended below though this can be anything you want; the value we're using has the advantage of being meaningful to **Google Analytics.**
 
 ```json
 {
