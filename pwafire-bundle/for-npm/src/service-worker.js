@@ -1,3 +1,4 @@
+
 // authored by Maye Edwin : https://twitter.com/MayeEdwin1
 // Add offline properties, push notification, web share, web payments, etc
 // pwafire 4.0.0
@@ -58,3 +59,4 @@ workbox.clientsClaim();
 } else {
     console.log(`Oops! Workbox didn't load 👺`);
 }
+
