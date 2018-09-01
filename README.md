@@ -17,7 +17,7 @@ It is the most simplest way you can ever convert your web app or website into a 
 Create two empty files in your project's root folder ; service-worker.js and manifest.json. N/B: Make sure to make the configuration changes as documented below.
 
 ### Configuration // setup
-Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/setup)
+Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/docs)
 ### Features // Roadmap
 1. Offline Capabilities and Add to Homescreen (Done!) 
 
@@ -29,7 +29,9 @@ Get started with configuring the code in this [setup guide here](https://github.
 
 4. [Workbox Service Worker - NPM](https://github.com/mayeedwin/workbox-service-worker/)
 
-5. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
+5. [Background Sync Add](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync)
+
+6. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with Project PWA Fire
 
