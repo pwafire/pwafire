@@ -1,7 +1,7 @@
 
 /**
- * Copyright 2018 PWAFire.Org Authored. All Rights Reserved.
- */
+ Copyright 2018 PWAFire.Org Authored. All Rights Reserved.
+ **/
 (function (window) {
     'use strict';
     // Add background sync on page load
