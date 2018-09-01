@@ -1,6 +1,7 @@
-## [Project PWA Fire 🐰](https://pwafire.org)
 
 [![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)](https://pwafire.org)
+
+## [Project PWA Fire 🐰](https://pwafire.org)
 
 We just announced [PWA Fire Bundle 4.0.0](https://github.com/mayeedwin/pwafire/) which allows you to build a progressive web app more easily and in a more fun way. 
 
