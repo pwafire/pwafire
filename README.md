@@ -23,13 +23,13 @@ Get started with configuring the code in this [setup guide here](https://github.
 
 2. Push notification add-on (In progress)
 
-3. [Web Manifest Generator Tool](https://pwafire.org/developer/tools/get-manifest/) (Released in May 2018!)
+3. [Web Manifest Generator Tool](https://pwafire.org/developer/tools/get-manifest/) (Done!) 
 
-4. [Browser Compatiblity Test Tool](https://pwafire.org/developer/tools/browser-test/)
+4. [Browser Compatiblity Test Tool](https://pwafire.org/developer/tools/browser-test/) (Done!) 
 
-4. [Workbox Service Worker - NPM](https://github.com/mayeedwin/workbox-service-worker/)
+4. [Workbox Service Worker - NPM](https://github.com/mayeedwin/workbox-service-worker/) (Done!) 
 
-5. [Background Sync Add](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync)
+5. [Background Sync Add](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync) (Done!) 
 
 6. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
