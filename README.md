@@ -19,9 +19,10 @@ Create two empty files in your project's root folder ; service-worker.js and man
 ### Configuration // setup
 Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/docs)
 ### Features // Roadmap
-1. Offline Capabilities and Add to Homescreen (Done!) 
 
-2. Push notification add-on (In progress)
+1. [Offline Capabilities and Add to Homescreen](https://github.com/mayeedwin/pwafire/projects/1) (Done!) 
+
+2. [Push notification add-on](https://github.com/mayeedwin/pwafire/projects/1) (In progress)
 
 3. [Web Manifest Generator Tool](https://pwafire.org/developer/tools/get-manifest/) (Done!) 
 
