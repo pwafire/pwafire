@@ -7,7 +7,7 @@ We just announced [PWA Fire Bundle 4.0.0](https://github.com/mayeedwin/pwafire/)
 
 
 <p align="center">
-  <img src="https://github.com/mayeedwin/pwafireapp/blob/master/app/src/images/pwafireapp-frog-icon.gif" alt="PWA Fire App" height="100"/>
+  <img src="https://github.com/mayeedwin/pwafireapp/blob/master/app/src/images/pwafireapp-frog-icon.gif" alt="PWA Fire App" height="150"/>
 </p>
 	
 ### Get Started with PWA Fire Bundle
