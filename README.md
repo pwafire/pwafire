@@ -1,3 +1,6 @@
+
+[![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)](https://pwafire.org)
+
 ## [Project PWA Fire 🐰](https://pwafire.org)
 
 We just announced [PWA Fire Bundle 4.0.0](https://github.com/mayeedwin/pwafire/) which allows you to build a progressive web app more easily and in a more fun way. 
@@ -12,24 +15,26 @@ Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive W
 
 It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
-[![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)](https://pwafire.org)
 ### What to do first // Required
 Create two empty files in your project's root folder ; service-worker.js and manifest.json. N/B: Make sure to make the configuration changes as documented below.
 
 ### Configuration // setup
-Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/setup)
+Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/docs)
 ### Features // Roadmap
-1. Offline Capabilities and Add to Homescreen (Done!) 
 
-2. Push notification add-on (In progress)
+1. [Offline Capabilities and Add to Homescreen](https://github.com/mayeedwin/pwafire/projects/1) (Done!) 
 
-3. [Web Manifest Generator Tool](https://pwafire.org/developer/tools/get-manifest/) (Released in May 2018!)
+2. [Push notification add-on](https://github.com/mayeedwin/pwafire/projects/1) (In progress)
 
-4. [Browser Compatiblity Test Tool](https://pwafire.org/developer/tools/browser-test/)
+3. [Web Manifest Generator Tool](https://pwafire.org/developer/tools/get-manifest/) (Done!) 
 
-4. [Workbox Service Worker - NPM](https://github.com/mayeedwin/workbox-service-worker/)
+4. [Browser Compatiblity Test Tool](https://pwafire.org/developer/tools/browser-test/) (Done!) 
 
-5. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
+4. [Workbox Service Worker - NPM](https://github.com/mayeedwin/workbox-service-worker/) (Done!) 
+
+5. [Background Sync Add](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync) (Done!) 
+
+6. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with Project PWA Fire
 

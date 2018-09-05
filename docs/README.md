@@ -145,5 +145,6 @@ Also remember to add the theme color to all your pages as shown in the code belo
  <meta name="theme-color" content="#fff" />
 <!-- end-theme-color -->
 ```
+
 ### [Engage us](https://twitter.com/pwafire)
 Donate a star, like, follow and contribute in any way. If you use [PWA Fire Developer Resources](https://pwafire.org/developer), kindly let us know. JUST simply [Tweet us](https://twitter.com/pwafire). You got any **bug?** Report it [here for support.](https://github.com/mayeedwin/pwafire/issues/new) You want to contribute? Create your [feature here.](https://github.com/mayeedwin/pwafire/issues/new)
