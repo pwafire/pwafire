@@ -1,9 +1,10 @@
-
-[![PWA Fire Logo](https://github.com/mayeedwin/pwafireapp/blob/master/app/src/images/pwafireapp-frog-icon.gif)](https://pwafire.org)
-
 ## [Project PWA Fire 🐰](https://pwafire.org)
 
 We just announced [PWA Fire Bundle 4.0.0](https://github.com/mayeedwin/pwafire/) which allows you to build a progressive web app more easily and in a more fun way. 
+
+<p align="center">
+  <img src="https://github.com/mayeedwin/pwafireapp/blob/master/app/src/images/pwafireapp-frog-icon.gif" alt="PWA Fire App" height="42"  />
+</p>
 
 ### [What's NEW?]()
 1. In this release, we are using [workbox;](https://developers.google.com/web/tools/workbox/) which is a set of libraries and Node modules that make it easy to cache assets and take full advantage of features used to build Progressive Web Apps. 
