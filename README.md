@@ -1,5 +1,5 @@
 
-[![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)](https://pwafire.org)
+[![PWA Fire Logo](https://github.com/mayeedwin/pwafireapp/blob/master/app/src/images/pwafireapp-frog-icon.gif)](https://pwafire.org)
 
 ## [Project PWA Fire 🐰](https://pwafire.org)
 
