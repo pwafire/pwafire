@@ -11,7 +11,7 @@ The page could store these in an "outbox" store in **indexedDB**, and the **serv
 
 ### [We shall be adding the codelab below]()
 
-[PWA Fire Bundle ](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle) Background sync is activated once your page is loaded by default. Though you could re-configure this to anything. Maybe listen to events like on **click** with javascript.
+[PWA Fire Bundle ](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle) Background Sync is activated once your page is loaded by default. Though you could re-configure this to anything. Maybe listen to events like on **click** with javascript.
 
 ### [How to configure]()
 
