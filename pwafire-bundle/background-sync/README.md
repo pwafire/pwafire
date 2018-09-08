@@ -15,8 +15,8 @@ The page could store these in an "outbox" store in **indexedDB**, and the **serv
 
 ### [How to configure]()
 
-To your javascript source folder, create an empty **sync.js** file and copy the following code snippet to it. 
-Remember to add it to your pages at the botton of your project's pages 😊 
+To your javascript source folder, create an empty **sync.js** file and copy the [following code snippet](https://github.com/mayeedwin/pwafire/blob/master/pwafire-bundle/background-sync/js/sync.js) to it. 
+Remember to add it to your pages at the botton of your project's pages as hown below 😊 
 
 ```html
 
