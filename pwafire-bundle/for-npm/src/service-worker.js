@@ -3,7 +3,7 @@
 // Add offline properties, push notification, web share, web payments, etc
 // pwafire 4.0.0
 
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js')
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.5.0/workbox-sw.js')
   
 if (workbox) {
     console.log(`Yay! Workbox is loaded ! Cheers to PWA Fire 🐹`);
@@ -53,6 +53,8 @@ if (workbox) {
 
   // add offline analytics 
   workbox.googleAnalytics.initialize(); 
+
+  
 
 workbox.skipWaiting();
 workbox.clientsClaim();
