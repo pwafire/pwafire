@@ -4,6 +4,7 @@
 Chrome will automatically show the native app install prompt to the user when the following criteria are met:
 Neither the web app or the native app are already installed
 Meets a user engagement heuristic (currently, the user has interacted with the domain for at least 30 seconds)
+and PWA served over https
 
 #### Includes a Web App Manifest that includes:
 
