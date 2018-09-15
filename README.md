@@ -36,6 +36,8 @@ Get started with configuring the code in this [setup guide here](https://github.
 
 5. [Background Sync Add](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync) (Done!) 
 
+6. [Native App Install Banner](https://github.com/mayeedwin/pwafire/issues/33)
+
 6. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with Project PWA Fire
