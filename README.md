@@ -1,14 +1,16 @@
-
-[![PWA Fire Logo](https://github.com/mayeedwin/pwafire/blob/master/_layouts/pwafirebannerlogo.png)](https://pwafire.org)
-
 ## [Project PWA Fire 🐰](https://pwafire.org)
-
-We just announced [PWA Fire Bundle 4.0.0](https://github.com/mayeedwin/pwafire/) which allows you to build a progressive web app more easily and in a more fun way. 
+An open source javascript and json bundle that allows you to convert your existing website into a progressive web app or build one in a few.
 
 ### [What's NEW?]()
+We just announced [PWA Fire Bundle 4.0.0](https://github.com/mayeedwin/pwafire/) which allows you to build a progressive web app more easily and in a more fun way. 
 1. In this release, we are using [workbox;](https://developers.google.com/web/tools/workbox/) which is a set of libraries and Node modules that make it easy to cache assets and take full advantage of features used to build Progressive Web Apps. 
 
 2. Use of [PWA Fire App](https://pwafire.org/developer/app) This allows you to use our sample progressive web app template which is designed with all progressive web app best practises and strutured ready for PWA Fire Bundle 4.0.0 use.
+
+
+<p align="center">
+  <img src="https://github.com/mayeedwin/pwafireapp/blob/master/app/src/images/pwafireapp-frog-icon.gif" alt="PWA Fire App" height="150"/>
+</p>
 	
 ### Get Started with PWA Fire Bundle
 Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/default) made by [Maye Edwin](https://twitter.com/MayeEdwin1) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few. 
@@ -22,25 +24,27 @@ Create two empty files in your project's root folder ; service-worker.js and man
 Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/docs)
 ### Features // Roadmap
 
-1. [Offline Capabilities and Add to Homescreen](https://github.com/mayeedwin/pwafire/projects/1) (Done!) 
+1. [Offline Capabilities and Add to Homescreen](https://github.com/mayeedwin/pwafire/projects/1)
 
-2. [Push notification add-on](https://github.com/mayeedwin/pwafire/projects/1) (In progress)
+2. [Push notification add-on](https://github.com/mayeedwin/pwafire/projects/1)
 
-3. [Web Manifest Generator Tool](https://pwafire.org/developer/tools/get-manifest/) (Done!) 
+3. [Web Manifest Generator Tool](https://pwafire.org/developer/tools/get-manifest/) 
 
-4. [Browser Compatiblity Test Tool](https://pwafire.org/developer/tools/browser-test/) (Done!) 
+4. [Browser Compatiblity Test Tool](https://pwafire.org/developer/tools/browser-test/) 
 
-4. [Workbox Service Worker - NPM](https://github.com/mayeedwin/workbox-service-worker/) (Done!) 
+4. [Workbox Service Worker - NPM](https://github.com/mayeedwin/workbox-service-worker/) 
 
-5. [Background Sync Add](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync) (Done!) 
+5. [Background Sync Add](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync) 
 
-6. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
+6. [Native App Install Banner](https://github.com/mayeedwin/pwafire/issues/33)
+
+7. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with Project PWA Fire
 
 | Progressive Web App | Web App Link | Progressive Web App | Web App Link |
 | --- | --- | --- | --- |
-| Maye Edwin | [View Now](https://maye.gdgmoi.com) | PWAFire.Org | [View Now](https://pwafire.org) | 
+| Maye Edwin | [View Now](https://maye.pwafire.org) | PWAFire.Org | [View Now](https://pwafire.org) | 
 | GDG Eldoret | [View Now](https://gdgmoi.com) | GDG Kenya | [View Now](https://gdgkenya.org) |
 | GDG Jalandhar | [View Now](https://gdgjalandhar.com) | I/O Extended Eldoret | [View Now](https://io.gdgmoi.com) |
 | Soko Brand | [View Now](https://www.sokobrand.co.ke/) |||
