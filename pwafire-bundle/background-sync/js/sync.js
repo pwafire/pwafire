@@ -1,7 +1,6 @@
 
-/**
- Copyright 2018 PWAFire.Org Authored. All Rights Reserved.
- **/
+// Author : Maye Edwin https://pwafire.org
+
 (function (window) {
     'use strict';
     // Add background sync on page load
