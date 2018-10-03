@@ -1,3 +1,4 @@
+
 // Author : Maye Edwin https://pwafire.org
 
 // after a service worker is installed and the user navigates to a different page or 
