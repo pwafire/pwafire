@@ -1,4 +1,4 @@
-## [Project PWA Fire 🐰](https://pwafire.org)
+## [Project PWA Fire](https://pwafire.org)
 An open source javascript and json bundle that allows you to convert your existing website into a progressive web app or build one in a few.
 
 ### [What's NEW?]()

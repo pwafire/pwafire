@@ -1,5 +1,5 @@
-// A project PWA Fire written. All writes reserved https://pwafire.org 2018.
-// Author : Maye Edwin https://maye.gdgmoi.com
+
+// Author : Maye Edwin https://pwafire.org
 
 // after a service worker is installed and the user navigates to a different page or 
 // refreshes,the service worker will begin to receive fetch events
