@@ -1,5 +1,5 @@
 
-// Author : Maye Edwin https://pwafire.org
+// All rights reserved - https://www.pwafire.org 2018
 
 // after a service worker is installed and the user navigates to a different page or 
 // refreshes,the service worker will begin to receive fetch events
