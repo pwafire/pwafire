@@ -40,7 +40,7 @@ Get started with configuring the code in this [setup guide here](https://github.
 
 7. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
-### View Progressive Web Apps Built with Project PWA Fire
+### View Progressive Web Apps Built with PWA Fire Bundle
 
 | Progressive Web App | Web App Link | Progressive Web App | Web App Link |
 | --- | --- | --- | --- |
