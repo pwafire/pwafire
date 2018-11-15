@@ -1,6 +1,5 @@
 ## [Project PWA Fire](https://pwafire.org)
-An open source javascript and json bundle that allows you to convert your existing website into a progressive web app or build one in a few.
-
+Build Scalable Progressive Web Apps/First Experiences Today : )
 ### [What's NEW?]()
 We just announced [PWA Fire Bundle 4.0.0](https://github.com/mayeedwin/pwafire/) which allows you to build a progressive web app more easily and in a more fun way. 
 1. In this release, we are using [workbox;](https://developers.google.com/web/tools/workbox/) which is a set of libraries and Node modules that make it easy to cache assets and take full advantage of features used to build Progressive Web Apps. 
@@ -40,14 +39,15 @@ Get started with configuring the code in this [setup guide here](https://github.
 
 7. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
-### View Progressive Web Apps Built with Project PWA Fire
+### View Progressive Web Apps Built with PWA Fire Bundle
 
 | Progressive Web App | Web App Link | Progressive Web App | Web App Link |
 | --- | --- | --- | --- |
 | Maye Edwin | [View Now](https://maye.pwafire.org) | PWAFire.Org | [View Now](https://pwafire.org) | 
-| GDG Eldoret | [View Now](https://gdgmoi.com) | GDG Kenya | [View Now](https://gdgkenya.org) |
-| GDG Jalandhar | [View Now](https://gdgjalandhar.com) | I/O Extended Eldoret | [View Now](https://io.gdgmoi.com) |
-| Soko Brand | [View Now](https://www.sokobrand.co.ke/) |||
+| GDG Eldoret | [View Now](https://gdgeldoret.com) | GDG Kenya | [View Now](https://gdgkenya.org) |
+| GDG Jalandhar | [View Now](https://gdgjalandhar.com) | I/O Extended Eldoret | [View Now](https://io.gdgmoi.com) 
+| Soko Brand | [View Now](https://www.sokobrand.co.ke/) | DevFest Rift Valley | [View Now](https://devfest.gdgeldoret.com) 
+| NettyFinder | [View Now](https://netty-finder.herokuapp.com/) | ICAFulokoja | [View Now](http://icafulokoja.github.io) |||
 
 
 ### Join the conversation 
