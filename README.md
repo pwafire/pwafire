@@ -1,4 +1,4 @@
-### [First, Integrated, Reachable & Engaging Web](https://pwafire.org)
+### [Projet PWA Fire](https://pwafire.org)
 Build Scalable Progressive Web Apps/First Experiences Today : )
 ### [What's NEW?]()
 We just announced [PWA Fire Bundle 4.0.0](https://github.com/mayeedwin/pwafire/) which allows you to build a progressive web app more easily and in a more fun way. 
