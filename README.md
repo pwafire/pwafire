@@ -1,6 +1,5 @@
-## [Project PWA Fire](https://pwafire.org)
-An open source javascript and json bundle that allows you to convert your existing website into a progressive web app or build one in a few.
-
+## [Project PWAFire.Org](https://pwafire.org)
+Build Scalable Progressive Web Apps/First Experiences Today : )
 ### [What's NEW?]()
 We just announced [PWA Fire Bundle 4.0.0](https://github.com/mayeedwin/pwafire/) which allows you to build a progressive web app more easily and in a more fun way. 
 1. In this release, we are using [workbox;](https://developers.google.com/web/tools/workbox/) which is a set of libraries and Node modules that make it easy to cache assets and take full advantage of features used to build Progressive Web Apps. 
