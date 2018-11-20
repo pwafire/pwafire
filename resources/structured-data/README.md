@@ -12,5 +12,5 @@ page with valid structured data is eligible to appear in a graphical search resu
 structured data [on this doc here >](https://developers.google.com/search/docs/guides/intro-structured-data)
 
 <p align="center">
-  <img src="https://github.com/mayeedwin/pwafire/blob/master/assets/images/data-structures.png" alt="Structured Data" height="450"/>
+  <img src="https://github.com/mayeedwin/pwafire/blob/master/assets/images/data-structures.png" alt="Structured Data"/>
 </p>
