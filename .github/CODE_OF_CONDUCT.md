@@ -1,4 +1,4 @@
-## Project PWA Fire Contributor Covenant Code of Conduct
+## PWAFire.Org Contributor Covenant Code of Conduct
 
 ### Our Pledge
 
