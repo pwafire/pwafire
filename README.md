@@ -1,5 +1,5 @@
-## [Project PWAFire.Org](https://pwafire.org) 
-[![Build Status](https://travis-ci.com/mayeedwin/pwafire.svg?branch=master)](https://travis-ci.com/mayeedwin/pwafire)
+## [Project PWAFire.Org](https://pwafire.org) [![Build Status](https://travis-ci.com/mayeedwin/pwafire.svg?branch=master)](https://travis-ci.com/mayeedwin/pwafire)
+
 Build Scalable Progressive Web Apps/First Experiences Today : )
 
 ### [What's NEW?]()
