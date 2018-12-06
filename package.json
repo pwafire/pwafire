@@ -7,6 +7,6 @@
     "jshint": "^2.9.6"
   },
   "scripts": {
-    "test": "jshint ./bundle/default/service-worker.js && jshint ./bundle/background-sync/js/sync.js && jshint ./bundle/workbox/src/service-worker.js"
+    "test": "jshint ./bundle/default/service-worker.js"
   }
 }
