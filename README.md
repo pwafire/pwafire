@@ -1,7 +1,6 @@
-## [Project PWAFire.Org](https://pwafire.org)
-Build Scalable Progressive Web Apps/First Experiences Today : )
-
+## [Project PWAFire.Org](https://pwafire.org) 
 [![Build Status](https://travis-ci.com/mayeedwin/pwafire.svg?branch=master)](https://travis-ci.com/mayeedwin/pwafire)
+Build Scalable Progressive Web Apps/First Experiences Today : )
 
 ### [What's NEW?]()
 We just announced [PWA Fire Bundle 4.0.0](https://github.com/mayeedwin/pwafire/) which allows you to build a progressive web app more easily and in a more fun way. 
