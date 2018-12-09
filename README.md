@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/mayeedwin/pwafireapp/blob/master/app/src/images/pwafireapp-frog-icon.gif" alt="PWA Fire App" height="100"/>
+</p>
+	
 ## [Project PWAFire.Org](https://pwafire.org) 
 
 Build Scalable Progressive Web Apps/First Experiences Today : ) 
