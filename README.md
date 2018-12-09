@@ -12,10 +12,6 @@ We just announced [PWA Fire Bundle 4.0.0](https://github.com/mayeedwin/pwafire/)
 
 2. Use of [PWA Fire App](https://pwafire.org/developer/app) - Starter Web App Designed With Progressive Web App Best Practices And Packaged Ready For [Your PWA Project](https://pwafire.org/developer/app/)
 
-<p align="center">
-  <img src="https://github.com/mayeedwin/pwafireapp/blob/master/app/src/images/pwafireapp-frog-icon.gif" alt="PWA Fire App" height="150"/>
-</p>
-	
 ### Get Started with PWA Fire Bundle
 [PWA Fire Bundle](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/default) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few. 
 
