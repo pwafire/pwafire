@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://github.com/mayeedwin/pwafireapp/blob/master/app/src/images/pwafireapp-frog-icon.gif" alt="PWA Fire App" height="100"/>
-</p>
-	
 ## [Project PWAFire.Org](https://pwafire.org) 
 
 Build Scalable Progressive Web Apps/First Experiences Today : ) 
@@ -70,3 +66,8 @@ Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twit
 
 ### Engage us 
 Donate a star, like, follow and contribute in any way. If you use [PWA Fire Bundle](https://pwafire.org/developer/codelabs/pwafire), kindly let us know via **developer@pwafire.org** or JUST simply [Tweet us](https://twitter.com/pwafire).
+
+<p align="center">
+  <img src="https://github.com/mayeedwin/pwafireapp/blob/master/app/src/images/pwafireapp-frog-icon.gif" alt="PWA Fire App" height="100"/>
+</p>
+
