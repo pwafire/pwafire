@@ -1,4 +1,3 @@
-
 ```javascript
 
 // In a web page
@@ -10,6 +9,5 @@ self.addEventListener('sync', () => {
   self.Badge.set(getUnreadCount());
 });
 
+
 ```
-
-
