@@ -1,5 +1,5 @@
 
-`javascript
+```javascript
 
 // In a web page
 const unreadCount = 24;
@@ -10,6 +10,6 @@ self.addEventListener('sync', () => {
   self.Badge.set(getUnreadCount());
 });
 
-`
+```
 
 
