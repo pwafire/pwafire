@@ -38,7 +38,9 @@ Get started with configuring the code in this [setup guide here](https://github.
 
 6. [Native App Install Banner](https://github.com/mayeedwin/pwafire/issues/33)
 
-7. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
+7. [Badging API Add (Beta)](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging)
+
+8. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with PWA Fire Bundle
 
