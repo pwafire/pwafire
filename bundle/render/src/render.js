@@ -9,3 +9,8 @@ window.onload = function()
 {
     document.getElementById('render').removeAttribute('disabled');
 };
+
+/* 
+add this js to your pages
+*/
+
