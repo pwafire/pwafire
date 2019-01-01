@@ -1,6 +1,6 @@
 ## [Project PWAFire.Org](https://pwafire.org)
 
-Build Scalable Progressive Web Apps/First Experiences Today : ) 
+Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You Build Better For The Modern Web.
 
 
 [![Build Status](https://travis-ci.com/mayeedwin/pwafire.svg?branch=master)](https://travis-ci.com/mayeedwin/pwafire)
