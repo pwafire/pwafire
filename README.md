@@ -42,9 +42,7 @@ Get started with configuring the code in this [setup guide here](https://github.
 
 9. [Badging API Add (Beta)](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging)
 
-10.[Web Share API Add](https://github.com/mayeedwin/pwafire/tree/master/bundle/)
-
-11. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
+10. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with PWA Fire Bundle
 
