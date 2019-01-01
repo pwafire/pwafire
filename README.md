@@ -24,23 +24,25 @@ Create two empty files in your project's root folder ; service-worker.js and man
 Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/docs)
 ### Features // Roadmap
 
-1. [Offline Capabilities and Add to Homescreen](https://github.com/mayeedwin/pwafire/projects/1)
+1. [Installable App](https://github.com/mayeedwin/pwafire/projects/1)
 
-2. [Push notification add-on](https://github.com/mayeedwin/pwafire/projects/1)
+2. [Offline Capabilities](https://github.com/mayeedwin/pwafire/projects/1)
 
-3. [Web Manifest Generator Tool](https://pwafire.org/developer/tools/get-manifest/) 
+3. [Push notification add-on](https://github.com/mayeedwin/pwafire/projects/1)
 
-4. [Browser Compatiblity Test Tool](https://pwafire.org/developer/tools/browser-test/) 
+4. [Web Manifest Generator Tool](https://pwafire.org/developer/tools/get-manifest/) 
 
-4. [Workbox Service Worker - NPM](https://github.com/mayeedwin/workbox-service-worker/) 
+5. [Browser Compatiblity Test Tool](https://pwafire.org/developer/tools/browser-test/) 
 
-5. [Background Sync Add](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync) 
+6. [Workbox Service Worker - NPM](https://github.com/mayeedwin/workbox-service-worker/) 
 
-6. [Native App Install Banner](https://github.com/mayeedwin/pwafire/issues/33)
+7. [Background Sync Add](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync) 
 
-7. [Badging API Add (Beta)](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging)
+8. [Native App Install Banner](https://github.com/mayeedwin/pwafire/issues/33)
 
-8. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
+9. [Badging API Add (Beta)](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging)
+
+10. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with PWA Fire Bundle
 
