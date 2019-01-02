@@ -38,7 +38,7 @@ Get started with configuring the code in this [setup guide here](https://github.
 
 7. [Background Sync Add](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync) 
 
-8. [Native App Install Banner](https://github.com/mayeedwin/pwafire/issues/33)
+8. [Native App Install Banner](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install)
 
 9. [Badging API Add (Beta)](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging)
 
