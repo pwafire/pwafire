@@ -7,7 +7,7 @@ The most ideal place to fall for is the Web. The question is, why the Web? It's 
 
   - **Native app install banners** give you the ability to let users quickly and seamlessly install your native app on their device from the app store, without leaving the browser, and without showing an annoying interstitial.
 
-### [How do you get that done?]]()
+### [How do you get that done?]()
 Well, with [pwafire app](https://pwafire.org/developer/app/), you will start your progressive web app project and add a few lines of code to the [manifest.json](https://github.com/mayeedwin/pwafire/blob/master/pwafire-bundle/default/manifest.json) to add that Native App Install capabilities on the web . Check the code snippet below.
 
 ```json
