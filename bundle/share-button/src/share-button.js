@@ -1,38 +1,36 @@
 
 /* 
-add custom install banner 
+add share button
 */
 
 const buttonInstall = document.getElementById('buttonInstall');
 
-window.addEventListener('beforeinstallprompt', (event) => {
-  console.log('👍', 'beforeinstallprompt', event);
-  // Stash the event so it can be triggered later.
-  window.deferredPrompt = event;
-  // Remove the 'hidden' class from the install button container
-  buttonInstall.removeAttribute('disabled');
-});
-
-buttonInstall.addEventListener('click', () => {
-  console.log('👍', 'buttonInstall-clicked');
-  const promptEvent = window.deferredPrompt;
-  if (!promptEvent) {
-    // The deferred prompt isn't available.
-    return;
-  }
-  // Show the install prompt.
-  promptEvent.prompt();
-  // Log the result
-  promptEvent.userChoice.then((result) => {
-    console.log('👍', 'userChoice', result);
-    // Reset the deferred prompt variable, since 
-    // prompt() can only be called once.
-    window.deferredPrompt = null;
-    // Hide the install button.
-    buttonInstall.setAttribute('disabled', true);
+if ('share' in navigator) {
+  console.log('👍', 'navigator.share is supported');
+  buttonShare.removeAttribute('disabled');
+  buttonShare.addEventListener('click', (e) => {
+    console.log('👍', 'buttonShare-clicked', e);
+    e.preventDefault();
+    const shareOpts = {
+      // add your app's meta info
+      title: 'PWAFire.Org',
+      text: 'Learn how to build Progressive Web Apps',
+      url: 'https://pwafire.org/',
+    };
+    navigator.share(shareOpts)
+        .then((e) => {
+          const msg = 'navigator.share succeeded.';
+          divResult.textContent = msg;
+          console.log('👍', msg, e);
+        })
+        .catch((err) => {
+          const msg = 'navigator.share failed';
+          divResult.textContent = `${msg}\n${JSON.stringify(err)}`;
+          console.error('👎', msg, err);
+        });
   });
-});
-
-window.addEventListener('appinstalled', (event) => {
-  console.log('👍', 'app successfully installed', event);
-});
+} 
+ else  {
+  console.warn('👎', 'navigator.share is not supported');
+   
+   
