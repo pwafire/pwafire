@@ -7,7 +7,8 @@ Remember to add it to your pages at the botton of your project's pages as hown b
 
 ```html
 
-<!-- Add background sync -->
+<!-- Add background
+sync -->
 <script src="js/install-button.js"></script>
 
 ```
