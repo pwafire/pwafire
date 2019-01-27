@@ -1,4 +1,4 @@
-## [Add custom install button]()
+## [Add Custom Install Button]()
 
 ### How to add it to your PWA?
 
