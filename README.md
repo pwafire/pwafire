@@ -1,4 +1,4 @@
-## [Progressive Web First // pwafire.org](https://pwafire.org)
+## [PWA Fire Bundle](https://pwafire.org)
 
 Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You Build Better For The Modern Web.
 
@@ -6,7 +6,15 @@ Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You B
 [![Build Status](https://travis-ci.com/mayeedwin/pwafire.svg?branch=master)](https://travis-ci.com/mayeedwin/pwafire)
 
 ### [What's NEW?]()
-We just announced [PWA Fire Bundle 4.0.1](https://github.com/mayeedwin/pwafire/) which allows you to build a progressive web app more easily and in a more fun way with customer install and share buttons. Checkout the releases tab for docs.
+We just announced [PWA Fire Bundle 4.0.1](https://github.com/mayeedwin/pwafire/).
+
+#### Custom Install Button and Share Button
+
+In this release we have added custom install button and custom share button features. 
+    
+1. Get started with Install Button [here](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button)
+
+2. Get started with Share Button [here](https://github.com/mayeedwin/pwafire/tree/master/bundle/share-button)
 
 
 
