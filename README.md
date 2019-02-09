@@ -79,7 +79,7 @@ Follow our [Developer Account](https://twitter.com/pwafire) on [Twitter](https:/
 | MIT License | [View License](https://github.com/mayeedwin/pwafire/blob/master/.github/LICENSE) |
 
 ### Engage us 
-Donate a star, like, follow and contribute in any way. If you use [PWA Fire Bundle](https://pwafire.org/developer/codelabs/pwafire), kindly let us know via **developer@pwafire.org** or JUST simply [Tweet us](https://twitter.com/pwafire).
+Donate a star, like, follow and contribute in any way. We're social. [Tweet us](https://twitter.com/pwafire).
 
 <p align="center">
   <img src="https://github.com/mayeedwin/pwafireapp/blob/master/app/src/images/pwafireapp-frog-icon.gif" alt="PWA Fire App" height="100"/>
