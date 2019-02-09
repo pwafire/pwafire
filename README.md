@@ -6,11 +6,9 @@ Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You B
 [![Build Status](https://travis-ci.com/mayeedwin/pwafire.svg?branch=master)](https://travis-ci.com/mayeedwin/pwafire)
 
 ### [What's NEW?]()
-We just announced [PWA Fire Bundle 4.0.0](https://github.com/mayeedwin/pwafire/) which allows you to build a progressive web app more easily and in a more fun way. 
+We just announced [PWA Fire Bundle 4.0.1](https://github.com/mayeedwin/pwafire/) which allows you to build a progressive web app more easily and in a more fun way with customer install and share buttons. Checkout the releases tab for docs.
 
-1. In this release, we are using [workbox](https://developers.google.com/web/tools/workbox/) - which is a set of libraries and Node modules that make it easy to cache assets and take full advantage of features used to build Progressive Web Apps. 
 
-2. Use of [PWA Fire App](https://pwafire.org/developer/app) - Starter Web App Designed With Progressive Web App Best Practices And Packaged Ready For [Your PWA Project](https://pwafire.org/developer/app/)
 
 ### Get Started with PWA Fire Bundle
 [PWA Fire Bundle](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/default) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few minutes. 
