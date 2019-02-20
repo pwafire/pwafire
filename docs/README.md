@@ -10,10 +10,10 @@ You can only register service workers on Websites, Web Apps or Pages served over
 Read more about service workers [HERE](https://developers.google.com/web/fundamentals/primers/service-workers/)
 
 ```html
-<!-- register service worker -->
-	<script>
-	
-	    if ('serviceWorker' in navigator) {
+<!-- register service 
+worker -->
+<script>
+if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/service-worker.js')
     .then(function() { console.log("Service Worker Registered! Cheers to PWA Fire!"); });
@@ -21,21 +21,25 @@ Read more about service workers [HERE](https://developers.google.com/web/fundame
   
   );
 }
-        </script>
-<!-- end of service worker -->
+</script>
+<!-- end of service 
+worker -->
 ```
 This code checks to see if the *service worker API* is available, and if it is, the service worker at */sw.js* is registered once the page is loaded.
 
 #### [2. Using the Web Manifest - app.webmanifest](https://pwafire.org/developer/pwa/started/#use-web-manifest)
 When you have uploaded the *manifest* and it's on your site, add a link tag to all the pages that encompass your web app, as follows;
+
 ```html
 <link rel="manifest" href="/app.webmanifest">
 ```
+
 Configuring the **app.webmanifest** helps you to specify how you want your web app to look like when launched on the device.
 
 Read more about Web Manifest [HERE](https://developers.google.com/web/fundamentals/web-app-manifest/)
 
 ### [a) Service Worker // service-worker.js Guide](https://pwafire.org/developer/pwa/started/#sw-config)
+
 >Follow the steps as commented in the code below in order to correctly configure the *service-worker.js* file.
 
 ```javascript
