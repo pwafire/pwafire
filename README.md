@@ -24,7 +24,7 @@ In this release we have added custom install button and custom share button feat
 It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
 ### What to do first // Required
-Create two empty files in your project's root folder ; service-worker.js and manifest.json. N/B: Make sure to make the configuration changes as documented below.
+Create two empty files in your project's root folder ; service-worker.js and app.webmanifest. N/B: Make sure to make the configuration changes as documented below.
 
 ### Configuration // setup
 Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/docs)
