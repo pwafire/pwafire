@@ -77,8 +77,8 @@ console.log("fetch completed: " + event.request.url, networkResponse);
         '/?homescreen=1', //default
         '/assets/css/main.css',// configure as by your site ; just an example
         '/images/*',// choose images to keep offline; just an example
-// Do not delete manifest.js path below
-        '/manifest.js',
+// Do not delete app.webmanifest path below
+        '/app.webmanifest',
 //These are links to the extenal social media buttons that should be cached; we have used twitter's as an example
         'https://platform.twitter.com/widgets.js',       
         ]);
