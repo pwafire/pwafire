@@ -3,7 +3,7 @@
 // Add offline properties, push notification, web share, web payments, etc
 // pwafire 4.0.0
 
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js');
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.0.0/workbox-sw.js');
   
 if (workbox) {
     console.log(`Yay! Workbox is loaded ! Cheers to PWA Fire 🐹`);
@@ -14,7 +14,7 @@ if (workbox) {
     */
    workbox.routing.registerRoute(
     /(.*)others(.*)\.(?:png|gif|jpg)/,
-    workbox.strategies.cacheFirst({
+    new workbox.strategies.CacheFirst({
       cacheName: 'images',
       plugins: [
         new workbox.expiration.Plugin({
@@ -31,7 +31,7 @@ if (workbox) {
     // cache js, css, scc files 
     /.*\.(?:css|js|scss|)/,
     // use cache but update in the background ASAP
-    workbox.strategies.staleWhileRevalidate({
+    new workbox.strategies.StaleWhileRevalidate({
       // use a custom cache name
       cacheName: 'assets',
     })
@@ -40,7 +40,7 @@ if (workbox) {
    // cache google fonts
   workbox.routing.registerRoute(
     new RegExp('https://fonts.(?:googleapis|gstatic).com/(.*)'),
-    workbox.strategies.cacheFirst({
+    new workbox.strategies.CacheFirst({
       cacheName: 'google-fonts',
       plugins: [
         new workbox.cacheableResponse.Plugin({
@@ -57,8 +57,8 @@ if (workbox) {
 and control a web page as soon as possible
 */
 
-workbox.skipWaiting();
-workbox.clientsClaim();
+workbox.core.skipWaiting();
+workbox.core.clientsClaim();
     
 } else {
     console.log(`Oops! Workbox didn't load 👺`);
