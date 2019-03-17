@@ -6,7 +6,7 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.0.0/workbox-sw.js');
   
 if (workbox) {
-    console.log(`Yay! Workbox is loaded ! Cheers to PWA Fire 🐹`);
+    console.log(`[ PWA Fire Bundle ] Yay! Workbox is loaded ! Cheers to 🐹`);
     workbox.precaching.precacheAndRoute([]);
     
    /*  cache images in the e.g others folder; edit to other folders you got 
