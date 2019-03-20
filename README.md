@@ -1,43 +1,58 @@
-## [Project PWA Fire](https://pwafire.org)
-Build Scalable Progressive Web Apps/First Experiences Today : )
+## [PWA Fire Bundle](https://pwafire.org)
+
+Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You Build Better For The Modern Web.
+
+
+[![Build Status](https://travis-ci.com/mayeedwin/pwafire.svg?branch=master)](https://travis-ci.com/mayeedwin/pwafire)
+
 ### [What's NEW?]()
-We just announced [PWA Fire Bundle 4.0.0](https://github.com/mayeedwin/pwafire/) which allows you to build a progressive web app more easily and in a more fun way. 
-1. In this release, we are using [workbox;](https://developers.google.com/web/tools/workbox/) which is a set of libraries and Node modules that make it easy to cache assets and take full advantage of features used to build Progressive Web Apps. 
+We just announced [PWA Fire Bundle 4.0.1](https://github.com/mayeedwin/pwafire/).
 
-2. Use of [PWA Fire App](https://pwafire.org/developer/app) This allows you to use our sample progressive web app template which is designed with all progressive web app best practises and strutured ready for PWA Fire Bundle 4.0.0 use.
+#### Custom Install Button and Share Button
+
+In this release we have added custom install button and custom share button features. 
+    
+1. Get started with Install Button [here](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button)
+
+2. Get started with Share Button [here](https://github.com/mayeedwin/pwafire/tree/master/bundle/share-button)
 
 
-<p align="center">
-  <img src="https://github.com/mayeedwin/pwafireapp/blob/master/app/src/images/pwafireapp-frog-icon.gif" alt="PWA Fire App" height="150"/>
-</p>
-	
+
 ### Get Started with PWA Fire Bundle
-Project [PWA Fire](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/default) made by [Maye Edwin](https://twitter.com/MayeEdwin1) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few. 
+[PWA Fire Bundle](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/default) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few minutes. 
 
 It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
 ### What to do first // Required
-Create two empty files in your project's root folder ; service-worker.js and manifest.json. N/B: Make sure to make the configuration changes as documented below.
+Create two empty files in your project's root folder ; service-worker.js and app.webmanifest. N/B: Make sure to make the configuration changes as documented below.
 
 ### Configuration // setup
 Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/docs)
 ### Features // Roadmap
 
-1. [Offline Capabilities and Add to Homescreen](https://github.com/mayeedwin/pwafire/projects/1)
+1. [Installable App](https://github.com/mayeedwin/pwafire/projects/1)
 
-2. [Push notification add-on](https://github.com/mayeedwin/pwafire/projects/1)
+2. [Offline Capabilities](https://github.com/mayeedwin/pwafire/projects/1)
 
-3. [Web Manifest Generator Tool](https://pwafire.org/developer/tools/get-manifest/) 
+3. [Push notification add-on](https://github.com/mayeedwin/pwafire/projects/1)
 
-4. [Browser Compatiblity Test Tool](https://pwafire.org/developer/tools/browser-test/) 
+4. [Web Manifest Generator Tool](https://pwafire.org/developer/tools/get-manifest/) 
 
-4. [Workbox Service Worker - NPM](https://github.com/mayeedwin/workbox-service-worker/) 
+5. [Browser Compatiblity Test Tool](https://pwafire.org/developer/tools/browser-test/) 
 
-5. [Background Sync Add](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync) 
+6. [Workbox Service Worker - NPM](https://github.com/mayeedwin/workbox-service-worker/) 
 
-6. [Native App Install Banner](https://github.com/mayeedwin/pwafire/issues/33)
+7. [Background Sync Add](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync) 
 
-7. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
+8. [Native App Install Banner](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install)
+
+9. [Badging API Add (Beta)](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging)
+
+10. [Web Share Add](https://github.com/mayeedwin/pwafire/tree/master/bundle/web-share)
+
+10. [Custom Install Button](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button)
+
+11. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with PWA Fire Bundle
 
@@ -51,7 +66,7 @@ Get started with configuring the code in this [setup guide here](https://github.
 
 
 ### Join the conversation 
-Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
+Follow our [Developer Account](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
 
 | Communication Channel | Talk to us |
 | --- | --- |
@@ -64,4 +79,9 @@ Follow Project [PWA Fire](https://twitter.com/pwafire) on [Twitter](https://twit
 | MIT License | [View License](https://github.com/mayeedwin/pwafire/blob/master/.github/LICENSE) |
 
 ### Engage us 
-Donate a star, like, follow and contribute in any way. If you use [PWA Fire Bundle](https://pwafire.org/developer/codelabs/pwafire), kindly let us know via **developer@pwafire.org** or JUST simply [Tweet us](https://twitter.com/pwafire).
+Donate a star, like, follow and contribute in any way. We're social. [Tweet us](https://twitter.com/pwafire).
+
+<p align="center">
+  <img src="https://github.com/mayeedwin/pwafireapp/blob/master/app/src/images/pwafireapp-frog-icon.gif" alt="PWA Fire App" height="100"/>
+</p>
+

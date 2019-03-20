@@ -10,32 +10,36 @@ You can only register service workers on Websites, Web Apps or Pages served over
 Read more about service workers [HERE](https://developers.google.com/web/fundamentals/primers/service-workers/)
 
 ```html
-<!-- register service worker -->
-	<script>
-	
-	    if ('serviceWorker' in navigator) {
+<!-- register service 
+worker -->
+<script>
+if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/service-worker.js')
-    .then(function() { console.log("Service Worker Registered! Cheers to PWA Fire!"); });
+    .then(function() { console.log("[ PWA Fire Bundle ] Service Worker Registered"); });
   }
   
   );
 }
-        </script>
-<!-- end of service worker -->
+</script>
+<!-- end of service 
+worker -->
 ```
 This code checks to see if the *service worker API* is available, and if it is, the service worker at */sw.js* is registered once the page is loaded.
 
-#### [2. Using the Web Manifest - manifest.json](https://pwafire.org/developer/pwa/started/#use-web-manifest)
+#### [2. Using the Web Manifest - app.webmanifest](https://pwafire.org/developer/pwa/started/#use-web-manifest)
 When you have uploaded the *manifest* and it's on your site, add a link tag to all the pages that encompass your web app, as follows;
+
 ```html
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/app.webmanifest">
 ```
-Configuring the **manifest.json** helps you to specify how you want your web app to look like when launched on the device.
+
+Configuring the **app.webmanifest** helps you to specify how you want your web app to look like when launched on the device.
 
 Read more about Web Manifest [HERE](https://developers.google.com/web/fundamentals/web-app-manifest/)
 
 ### [a) Service Worker // service-worker.js Guide](https://pwafire.org/developer/pwa/started/#sw-config)
+
 >Follow the steps as commented in the code below in order to correctly configure the *service-worker.js* file.
 
 ```javascript
@@ -73,8 +77,8 @@ console.log("fetch completed: " + event.request.url, networkResponse);
         '/?homescreen=1', //default
         '/assets/css/main.css',// configure as by your site ; just an example
         '/images/*',// choose images to keep offline; just an example
-// Do not delete manifest.js path below
-        '/manifest.js',
+// Do not delete app.webmanifest path below
+        '/app.webmanifest',
 //These are links to the extenal social media buttons that should be cached; we have used twitter's as an example
         'https://platform.twitter.com/widgets.js',       
         ]);
@@ -94,8 +98,8 @@ self.addEventListener('install', function(event) {
 });
 
 ```
-### [b) Web Manifest // manifest.json Guide](https://pwafire.org/developer/pwa/started/#web-manifest-config)
->Follow the steps below as described in order to correctly configure the *manifest.json* file.
+### [b) Web Manifest // app.webmanifest Guide](https://pwafire.org/developer/pwa/started/#web-manifest-config)
+>Follow the steps below as described in order to correctly configure the *app.webmanifest* file.
 
 Configure/edit the background and theme colors, display type, the Web App short name, the Web App name, icons size (keep icon sizes as **specified** below) and your icon/logo paths. Also state the img type eg image/ico or image/png.
 

@@ -1,4 +1,4 @@
-### [description]()
+### [structured-data]()
 
 Google uses structured data that it finds on the web to understand the content of the page, as well as to gather
 information about the web and the world in general.
@@ -8,5 +8,9 @@ information about the web and the world in general.
 Google Search also uses structured data to enable special search result features and enhancements. For example, a recipe 
 page with valid structured data is eligible to appear in a graphical search result, [as shown here >>>](https://developers.google.com/search/docs/guides/intro-structured-data)
 
-[Get started here >>>](https://github.com/mayeedwin/pwafire/blob/master/resources/data-structures/index.html) and learn more of
-structured data [on this doc here >>>](https://developers.google.com/search/docs/guides/intro-structured-data)
+[Get started here >](https://github.com/mayeedwin/pwafire/blob/master/resources/data-structures/index.html) and learn more of
+structured data [on this doc here >](https://developers.google.com/search/docs/guides/intro-structured-data)
+
+<p align="center">
+  <img src="https://github.com/mayeedwin/pwafire/blob/master/assets/images/data-structures.png" alt="Structured Data"/>
+</p>
