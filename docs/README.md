@@ -16,7 +16,7 @@ worker -->
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/service-worker.js')
-    .then(function() { console.log("Service Worker Registered! Cheers to PWA Fire!"); });
+    .then(function() { console.log("[ PWA Fire Bundle ] Service Worker Registered"); });
   }
   
   );
