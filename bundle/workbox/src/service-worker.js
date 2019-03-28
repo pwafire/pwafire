@@ -1,9 +1,9 @@
 
 /* Authored by https://www.pwafire.org
   Add offline properties, push notification, web share, web payments, etc
-  pwafire 4.0.0 */
+  pwafire 4.1.1 */
 
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.0.0/workbox-sw.js');
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.1.1/workbox-sw.js');
   
 if (workbox) {
     console.log(`[ PWA Fire Bundle 🐹 ] Workbox is loaded`);
