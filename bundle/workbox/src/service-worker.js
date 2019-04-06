@@ -1,12 +1,12 @@
 
-// authored by Maye Edwin : https://twitter.com/MayeEdwin1
-// Add offline properties, push notification, web share, web payments, etc
-// pwafire 4.0.0
+/* Authored by https://www.pwafire.org
+  Add offline properties, push notification, web share, web payments, etc
+  pwafire 4.1.1 */
 
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.0.0/workbox-sw.js');
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.1.1/workbox-sw.js');
   
 if (workbox) {
-    console.log(`[ PWA Fire Bundle ] Yay! Workbox is loaded ! Cheers to 🐹`);
+    console.log(`[ PWA Fire Bundle 🐹 ] Workbox is loaded`);
     workbox.precaching.precacheAndRoute([]);
     
    /*  cache images in the e.g others folder; edit to other folders you got 

@@ -80,8 +80,3 @@ Follow our [Developer Account](https://twitter.com/pwafire) on [Twitter](https:/
 
 ### Engage us 
 Donate a star, like, follow and contribute in any way. We're social. [Tweet us](https://twitter.com/pwafire).
-
-<p align="center">
-  <img src="https://github.com/mayeedwin/pwafireapp/blob/master/app/src/images/pwafireapp-frog-icon.gif" alt="PWA Fire App" height="100"/>
-</p>
-
