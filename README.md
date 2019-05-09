@@ -44,7 +44,7 @@ Get started with configuring the code in this [setup guide here](https://github.
 
 
 | Feature | Documentation | Feature | Documentation |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | Installable | [Read Doc](https://github.com/mayeedwin/pwafire/projects/1) | Offline Capabilities | [Read Doc](https://github.com/mayeedwin/pwafire/projects/1) | Web Manifest Generator Tool | [Launch Tool](https://pwafire.org/developer/tools/get-manifest/) | 
 | Background Sync | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync) |
 
