@@ -30,7 +30,6 @@ Create two empty files in your project's root folder ; service-worker.js and app
 Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/docs)
 ### Features // Roadmap
 
-1. [Installable App](https://github.com/mayeedwin/pwafire/projects/1)
 
 2. [Offline Capabilities](https://github.com/mayeedwin/pwafire/projects/1)
 
@@ -53,6 +52,11 @@ Get started with configuring the code in this [setup guide here](https://github.
 10. [Custom Install Button](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button)
 
 11. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
+
+
+| Feature | Documentation | Feature | Documentation |
+| --- | --- | --- | --- |
+| Installable | [Read Docs](https://github.com/mayeedwin/pwafire/projects/1) | Offline Capabilities | [Read Docs](https://github.com/mayeedwin/pwafire/projects/1) | 
 
 ### View Progressive Web Apps Built with PWA Fire Bundle
 
