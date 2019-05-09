@@ -22,7 +22,7 @@ In this release we have added custom install button and custom share button feat
 It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
 ### What to do first // Required
-Create two empty files in your project's root folder ; service-worker.js and app.webmanifest. N/B: Make sure to make the configuration changes as documented below.
+Create two empty files in your project's root folder ; `service-worker.js` and `app.webmanifest`. N/B: Make sure to make the configuration changes as documented below.
 
 ### Configuration // setup
 Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/docs)
@@ -35,12 +35,13 @@ Get started with configuring the code in this [setup guide here](https://github.
 | Background Sync | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/background-sync) | Native App Install Banner | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install) 
 | Badging API | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging) | Web Share | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/web-share) | 
 | Install Button | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button) | Workbox | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/workbox) |
+| Connectivity | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/connectivity) |
 
 ### Contribute
 
 > Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
-### View Progressive Web Apps Built with PWA Fire Bundle
+### Demo Progressive Web Apps Built with PWA Fire Bundle
 
 | Progressive Web App | Web App Link | Progressive Web App | Web App Link |
 | --- | --- | --- | --- |
@@ -48,8 +49,7 @@ Get started with configuring the code in this [setup guide here](https://github.
 | GDG Eldoret | [View Now](https://gdgeldoret.com) | GDG Kenya | [View Now](https://gdgkenya.org) |
 | GDG Jalandhar | [View Now](https://gdgjalandhar.com) | I/O Extended Eldoret | [View Now](https://io.gdgmoi.com) 
 | Soko Brand | [View Now](https://www.sokobrand.co.ke/) | DevFest Rift Valley | [View Now](https://devfest.gdgeldoret.com) 
-| NettyFinder | [View Now](https://netty-finder.herokuapp.com/) | ICAFulokoja | [View Now](http://icafulokoja.github.io) | Workbox Service Worker | [Read Docs](https://github.com/mayeedwin/workbox-service-worker/) | 
-
+| NettyFinder | [View Now](https://netty-finder.herokuapp.com/) | ICAFulokoja | [View Now](http://icafulokoja.github.io) |
 
 ### Join the conversation 
 Follow our [Developer Account](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
