@@ -16,8 +16,6 @@ In this release we have added custom install button and custom share button feat
 
 2. Get started with Share Button [here](https://github.com/mayeedwin/pwafire/tree/master/bundle/share-button)
 
-
-
 ### Get Started with PWA Fire Bundle
 [PWA Fire Bundle](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/default) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few minutes. 
 
@@ -30,16 +28,7 @@ Create two empty files in your project's root folder ; service-worker.js and app
 Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/docs)
 ### Features // Roadmap
 
-
-2. [Offline Capabilities](https://github.com/mayeedwin/pwafire/projects/1)
-
-3. [Push notification add-on](https://github.com/mayeedwin/pwafire/projects/1)
-
-4. [Web Manifest Generator Tool](https://pwafire.org/developer/tools/get-manifest/) 
-
-5. [Browser Compatiblity Test Tool](https://pwafire.org/developer/tools/browser-test/) 
-
-6. [Workbox Service Worker - NPM](https://github.com/mayeedwin/workbox-service-worker/) 
+ 
 
 7. [Background Sync Add](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync) 
 
@@ -55,8 +44,9 @@ Get started with configuring the code in this [setup guide here](https://github.
 
 
 | Feature | Documentation | Feature | Documentation |
-| --- | --- | --- | --- |
-| Installable | [Read Docs](https://github.com/mayeedwin/pwafire/projects/1) | Offline Capabilities | [Read Docs](https://github.com/mayeedwin/pwafire/projects/1) | 
+| --- | --- | --- | --- | --- | --- |
+| Installable | [Read Doc](https://github.com/mayeedwin/pwafire/projects/1) | Offline Capabilities | [Read Doc](https://github.com/mayeedwin/pwafire/projects/1) | Web Manifest Generator Tool | [Launch Tool](https://pwafire.org/developer/tools/get-manifest/) | 
+| Background Sync | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync) |
 
 ### View Progressive Web Apps Built with PWA Fire Bundle
 
@@ -66,7 +56,7 @@ Get started with configuring the code in this [setup guide here](https://github.
 | GDG Eldoret | [View Now](https://gdgeldoret.com) | GDG Kenya | [View Now](https://gdgkenya.org) |
 | GDG Jalandhar | [View Now](https://gdgjalandhar.com) | I/O Extended Eldoret | [View Now](https://io.gdgmoi.com) 
 | Soko Brand | [View Now](https://www.sokobrand.co.ke/) | DevFest Rift Valley | [View Now](https://devfest.gdgeldoret.com) 
-| NettyFinder | [View Now](https://netty-finder.herokuapp.com/) | ICAFulokoja | [View Now](http://icafulokoja.github.io) |||
+| NettyFinder | [View Now](https://netty-finder.herokuapp.com/) | ICAFulokoja | [View Now](http://icafulokoja.github.io) | Workbox Service Worker | [Read Docs](https://github.com/mayeedwin/workbox-service-worker/) | 
 
 
 ### Join the conversation 
