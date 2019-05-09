@@ -26,27 +26,17 @@ Create two empty files in your project's root folder ; service-worker.js and app
 
 ### Configuration // setup
 Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/docs)
+
 ### Features // Roadmap
-
- 
-
-7. [Background Sync Add](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync) 
-
-8. [Native App Install Banner](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install)
-
-9. [Badging API Add (Beta)](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging)
-
-10. [Web Share Add](https://github.com/mayeedwin/pwafire/tree/master/bundle/web-share)
-
-10. [Custom Install Button](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button)
-
-11. Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
-
 
 | Feature | Documentation | Feature | Documentation |
 | --- | --- | --- | --- |
 | Installable | [Read Doc](https://github.com/mayeedwin/pwafire/projects/1) | Offline Capabilities | [Read Doc](https://github.com/mayeedwin/pwafire/projects/1) |  
-| Web Manifest Generator Tool | [Launch Tool](https://pwafire.org/developer/tools/get-manifest/) | Background Sync | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/background-sync) |
+| Web Manifest Generator | [Launch Tool](https://pwafire.org/developer/tools/get-manifest/) | Background Sync | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/background-sync) |
+| Native App Install Banner | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install) | Badging API | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging) |
+| Web Share | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/web-share) | Install Button | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button) |
+
+> Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ### View Progressive Web Apps Built with PWA Fire Bundle
 
