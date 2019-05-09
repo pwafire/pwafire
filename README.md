@@ -27,14 +27,17 @@ Create two empty files in your project's root folder ; service-worker.js and app
 ### Configuration // setup
 Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/docs)
 
-### Features // Roadmap
+### What's in the PWA Fire Bundle?
 
 | Feature | Documentation | Feature | Documentation |
 | --- | --- | --- | --- |
 | Installable | [Read Doc](https://github.com/mayeedwin/pwafire/projects/1) | Offline Capabilities | [Read Doc](https://github.com/mayeedwin/pwafire/projects/1) |  
-| Background Sync | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/background-sync) |
-| Native App Install Banner | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install) | Badging API | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging) |
-| Web Share | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/web-share) | Install Button | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button) |
+| Background Sync | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/background-sync) | Native App Install Banner | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install) 
+| Badging API | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging) | Web Share | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/web-share) | 
+
+| Install Button | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button) |
+
+### Contribute
 
 > Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
