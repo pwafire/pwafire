@@ -2,6 +2,8 @@
 
 Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You Build Better For The Modern Web.
 
+[![Build Status](https://travis-ci.com/mayeedwin/pwafire.svg?branch=master)](https://travis-ci.com/mayeedwin/pwafire)
+
 ### About [pwafire.org](https://pwafire.org)
 
 Our mission is to make your developer environment as a **webdev** fully stacked up for best web development practices with Progressive Web Apps. Read more [on this devdoc by pwafire.org](https://pwafire.org/developer/docs/how-to-use-vscode-pwa-in-vscode/)
@@ -9,8 +11,6 @@ Our mission is to make your developer environment as a **webdev** fully stacked 
 ### Setting up the PWA Development Environment 
 
 We have a **pwadev tips** [repo available here](https://github.com/mayeedwin/pwadev-tips) to help guide you if you're just starting up or want to have your setup checklist done right ✅.
-
-[![Build Status](https://travis-ci.com/mayeedwin/pwafire.svg?branch=master)](https://travis-ci.com/mayeedwin/pwafire)
 
 ### [What's NEW?]()
 We just announced [PWA Fire Bundle 4.0.1](https://github.com/mayeedwin/pwafire/).
