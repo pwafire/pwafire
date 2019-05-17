@@ -6,4 +6,8 @@ The new `loading` attribute brings native `<img>` and `<iframe>` lazy-loading to
 
  - Chrome ^75 ✅
 
+### Setup
+
+Head to the src folder [to get started]()
+
 Read more about lazy loading by Google's Addy Osman [on this devdoc](https://addyosmani.com/blog/lazy-loading/)
