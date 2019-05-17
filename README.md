@@ -24,7 +24,7 @@ In this release we have added custom install button and custom share button feat
 2. Get started with Share Button [here](https://github.com/mayeedwin/pwafire/tree/master/bundle/share-button)
 
 ### Get Started with PWA Fire Bundle
-[PWA Fire Bundle](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/default) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few minutes. 
+[PWA Fire Bundle](https://twitter.com/pwafire) is an open source [Progressive Web App](https://maye.pwafire.org/articles/building-progressive-web-apps-with-pwafiredev-resources/) Tooling [Bundle](https://github.com/mayeedwin/pwafire/tree/master/bundle/) that provides you with resources to build [Progressive Web Apps](https://maye.pwafire.org/articles/building-progressive-web-apps-with-pwafiredev-resources/) like a pro in a few minutes and with good web practices. 
 
 It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
