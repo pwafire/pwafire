@@ -10,7 +10,7 @@ Our mission is to make your developer environment as a **webdev** fully stacked 
 
 ### Setting up the PWA Development Environment 
 
-We have a **pwadev tips** [repo available here](https://github.com/mayeedwin/pwadev-tips) to help guide you if you're just starting up or want to have your setup checklist done right ✅.
+We have a **pwadev tips** [repo available here](https://github.com/mayeedwin/pwadev-tips) to help guide you if you're just starting up or want to have your setup checklist done right ✅
 
 ### [What's NEW?]()
 We just announced [PWA Fire Bundle 4.0.1](https://github.com/mayeedwin/pwafire/).
@@ -42,7 +42,7 @@ Get started with configuring the code in this [setup guide here](https://github.
 | Background Sync | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/background-sync) | Native App Install Banner | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install) 
 | Badging API | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging) | Web Share | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/web-share) | 
 | Install Button | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button) | Workbox | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/workbox) |
-| Connectivity | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/connectivity) | New Capabilities ( Yet ] | [ Read Doc ](https://developers.google.com/web/updates/capabilities#process)
+| Connectivity | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/connectivity) | New Capabilities ( Yet ) | [ Read Doc ](https://developers.google.com/web/updates/capabilities#process)
 
 ### Contribute
 
