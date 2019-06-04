@@ -1,4 +1,4 @@
-## Hey people 👋, here is what's coming up next.
+### Hey people 👋, here is what's coming up next.
 
  - 🔶 How to handle media files putting TTI first with assets like videos 
 
