@@ -1,5 +1,4 @@
 
-
 /* check if the Network Information API is supported / available */
 if (navigator.connection.effectiveType === '4G') {
 // load a video on 4G network
@@ -12,4 +11,3 @@ if (navigator.connection.effectiveType === '4G') {
   const imageSource = image.getAttribute('data-src');
   image.setAttribute('src', imageSource);
 }
-
