@@ -1,8 +1,5 @@
 
-/* 
-add share button
-*/
-
+/* add share button */
 const buttonInstall = document.getElementById('buttonInstall');
 
 if ('share' in navigator) {
@@ -32,5 +29,4 @@ if ('share' in navigator) {
 } 
  else  {
   console.warn('👎', 'navigator.share is not supported');
-   
-   
+ }
