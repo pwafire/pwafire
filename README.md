@@ -2,8 +2,15 @@
 
 Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You Build Better For The Modern Web.
 
-
 [![Build Status](https://travis-ci.com/mayeedwin/pwafire.svg?branch=master)](https://travis-ci.com/mayeedwin/pwafire)
+
+### About [pwafire.org](https://pwafire.org)
+
+Our mission is to make your **webdev** environment fully stacked up for best web development practices with Progressive Web Apps. 
+
+### Setting up the PWA Development Environment 
+
+We have a **pwadev tips** [repo available here](https://github.com/mayeedwin/pwadev-tips) to help guide you if you're just starting up or want to have your setup checklist done right ✅
 
 ### [What's NEW?]()
 We just announced [PWA Fire Bundle 4.0.1](https://github.com/mayeedwin/pwafire/).
@@ -17,7 +24,7 @@ In this release we have added custom install button and custom share button feat
 2. Get started with Share Button [here](https://github.com/mayeedwin/pwafire/tree/master/bundle/share-button)
 
 ### Get Started with PWA Fire Bundle
-[PWA Fire Bundle](https://twitter.com/pwafire) is an open source [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) **javascript** and **json** [Bundle](https://github.com/mayeedwin/pwafire/tree/master/pwafire-bundle/default) that allows you to convert your website into a [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) or build one in a few minutes. 
+[PWA Fire Bundle](https://twitter.com/pwafire) is an open source [Progressive Web App](https://maye.pwafire.org/articles/building-progressive-web-apps-with-pwafiredev-resources/) Tooling [Bundle](https://github.com/mayeedwin/pwafire/tree/master/bundle/) that provides you with resources to build [Progressive Web Apps](https://maye.pwafire.org/articles/building-progressive-web-apps-with-pwafiredev-resources/) like a pro in a few minutes and with good web practices. 
 
 It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
@@ -35,7 +42,7 @@ Get started with configuring the code in this [setup guide here](https://github.
 | Background Sync | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/background-sync) | Native App Install Banner | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install) 
 | Badging API | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging) | Web Share | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/web-share) | 
 | Install Button | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button) | Workbox | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/workbox) |
-| Connectivity | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/connectivity) |
+| Connectivity | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/connectivity) | New Capabilities ( Yet ) | [ Read Doc ](https://developers.google.com/web/updates/capabilities#process)
 
 ### Contribute
 
