@@ -6,7 +6,7 @@ Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You B
 
 ### About [pwafire.org](https://pwafire.org)
 
-Our mission is to make your developer environment as a **webdev** fully stacked up for best web development practices with Progressive Web Apps. Read more [about pwafire.org here](https://pwafire.org)
+Our mission is to make your **webdev** environment fully stacked up for best web development practices with Progressive Web Apps. 
 
 ### Setting up the PWA Development Environment 
 
