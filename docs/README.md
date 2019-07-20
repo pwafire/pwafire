@@ -14,9 +14,9 @@ Read more about service workers [HERE](https://developers.google.com/web/fundame
 worker -->
 <script>
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
+  window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js')
-    .then(function() { console.log("[ PWA Fire Bundle ] Service Worker Registered"); });
+    .then(() => { console.log("[ PWA Fire Bundle ] Service Worker Registered"); });
   }
   
   );
