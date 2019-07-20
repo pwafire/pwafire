@@ -1,3 +1,4 @@
+
 /* after a service worker is installed and the user navigates to a different page or 
   refreshes,the service worker will begin to receive fetch events */  
   self.addEventListener('fetch', (event) => {
@@ -38,3 +39,4 @@
       self.skipWaiting();
       console.log("Latest version installed!");
   });
+
