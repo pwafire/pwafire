@@ -62,15 +62,15 @@ console.log("fetch completed: " + event.request.url, networkResponse);
 // rejected promise - just ignore it, we're offline!   
           console.log("Error in fetch()", event);
           event.waitUntil(
-          caches.open('cache').then((cache) => { // our cache here is named *cache* in the caches.open()
+// our 'cache' here is named *cache* in the caches.open()
+          caches.open('cache').then((cache) => { 
           return cache.addAll
           ([            
-//cache.addAll(), takes a list of URLs, then fetches them from the server and adds the response to the cache.           
-// add your entire site to the cache- as in the code below; for offline access
-// If you have some build process for your site, perhaps that could generate the list of possible URLs that a user might load.               
+// cache.addAll(), takes a list of URLs, then fetches them from 
+// the server and adds the response to the cache          
         './index.html', // cache your index page
-        './assets/css/main.css',// configure as by your site ; just an example
-        './images/*',// choose images to keep offline; just an example
+        './assets/css/app.main.css', // cache app.main css
+        './images/*', // cache all images
         './app.webmanifest',
 // external url fetch, twitter's as an example
         'https://platform.twitter.com/widgets.js',       
