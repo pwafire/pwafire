@@ -1,18 +1,16 @@
-/* 
-  offline.js by https://pwafire.org/developer/ 
-  */
+/* by https://pwafire.org/developer/ */
 
 // Our navbar has a class name called "navbar"
 var navbarElement = document.querySelector('.navbar');
 
 // Once the DOM is loaded, check for connectivity
-document.addEventListener('DOMContentLoaded', function (event) {
+document.addEventListener('DOMContentLoaded', (event) => {
     if (!navigator.onLine) {
         goOffline();
     }
 
     //Offline Event
-    function goOffline() {
+    const goOffline = () => {
         // Change the color of navbar to #fafafa when offline [1]
         navbarElement.style.background = '#fafafa';
 
@@ -28,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     }
 
     // Online Event
-    window.addEventListener("online", function () {
+    window.addEventListener("online", () => {
         // Change the color of navbar to #fff when online [1]
         navbarElement.style.background = '#fff';
 
@@ -38,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         // Add the "show" class to div
         snackbar.className = "show";
         // After 5 seconds, remove the show class from div
-        setTimeout(function () {
+        setTimeout(() => {
             snackbar.className = snackbar.className.replace("show", "");
         }, 3000);
     });
