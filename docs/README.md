@@ -43,10 +43,10 @@ Read more about Web Manifest [HERE](https://developers.google.com/web/fundamenta
 >Follow the steps as commented in the code below in order to correctly configure the *service-worker.js* file.
 
 ```javascript
-// pwafire.org
+// learn more at pwafire.org
+
 /* after a service worker is installed and the user navigates to a different page or 
-refreshes,the service worker will begin to receive fetch events */
-    
+refreshes,the service worker will begin to receive fetch events */  
 self.addEventListener('fetch', (event) => {
   event.respondWith(caches.open('cache').then((cache) => {
     return cache.match(event.request).then((response) => {
