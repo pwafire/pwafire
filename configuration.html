@@ -7,12 +7,10 @@ or in the head tag in html5.
 <!-- register service worker -->
 <script>
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
+  window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js')
-    .then(function() { console.log("[ PWA Fire Bundle 🐹 ] Service Worker Registered"); });
-  }
-  
-  );
+    .then(() => { console.log("[ PWA Fire Bundle 🐹 ] Service Worker Registered"); });
+  });
 }
  </script>
 <!-- end of service worker -->
