@@ -15,7 +15,7 @@ worker -->
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
+    navigator.serviceWorker.register('./service-worker.js')
     .then(() => { console.log("[ PWA Fire Bundle ] Service Worker Registered"); });
   }
   
@@ -25,13 +25,13 @@ if ('serviceWorker' in navigator) {
 <!-- end of service 
 worker -->
 ```
-This code checks to see if the *service worker API* is available, and if it is, the service worker at */sw.js* is registered once the page is loaded.
+This code checks to see if the *service worker API* is available, and if it is, the service worker at `service-worker.js` is registered once the page is loaded.
 
 #### [2. Using the Web Manifest - app.webmanifest](https://pwafire.org/developer/pwa/started/#use-web-manifest)
 When you have uploaded the *manifest* and it's on your site, add a link tag to all the pages that encompass your web app, as follows;
 
 ```html
-<link rel="manifest" href="/app.webmanifest">
+<link rel="manifest" href="./app.webmanifest">
 ```
 
 Configuring the **app.webmanifest** helps you to specify how you want your web app to look like when launched on the device.
@@ -43,18 +43,15 @@ Read more about Web Manifest [HERE](https://developers.google.com/web/fundamenta
 >Follow the steps as commented in the code below in order to correctly configure the *service-worker.js* file.
 
 ```javascript
-
-// A project PWA Fire written. All writes reserved https://pwafire.org 2018.
-// Author : Maye Edwin https://maye.gdgmoi.com
-
-// after a service worker is installed and the user navigates to a different page or 
-// refreshes,the service worker will begin to receive fetch events
+// pwafire.org
+/* after a service worker is installed and the user navigates to a different page or 
+refreshes,the service worker will begin to receive fetch events */
     
-self.addEventListener('fetch', function(event) {
-  event.respondWith(caches.open('cache').then(function(cache) {
-    return cache.match(event.request).then(function(response) {
+self.addEventListener('fetch', (event) => {
+  event.respondWith(caches.open('cache').then((cache) => {
+    return cache.match(event.request).then((response) => {
       console.log("cache request: " + event.request.url);
-       var fetchPromise = fetch(event.request).then(function(networkResponse) {           
+       var fetchPromise = fetch(event.request).then((networkResponse) => {           
 // if we got a response from the cache, update the cache                   
 console.log("fetch completed: " + event.request.url, networkResponse);
   if (networkResponse) {
@@ -65,21 +62,17 @@ console.log("fetch completed: " + event.request.url, networkResponse);
 // rejected promise - just ignore it, we're offline!   
           console.log("Error in fetch()", event);
           event.waitUntil(
-          caches.open('cache').then(function(cache) { // our cache here is named *cache* in the caches.open()
+          caches.open('cache').then((cache) => { // our cache here is named *cache* in the caches.open()
           return cache.addAll
           ([            
 //cache.addAll(), takes a list of URLs, then fetches them from the server and adds the response to the cache.           
 // add your entire site to the cache- as in the code below; for offline access
 // If you have some build process for your site, perhaps that could generate the list of possible URLs that a user might load.               
-        '/', // do not remove this
-        '/index.html', //default
-        '/index.html?homescreen=1', //default
-        '/?homescreen=1', //default
-        '/assets/css/main.css',// configure as by your site ; just an example
-        '/images/*',// choose images to keep offline; just an example
-// Do not delete app.webmanifest path below
-        '/app.webmanifest',
-//These are links to the extenal social media buttons that should be cached; we have used twitter's as an example
+        './index.html', // cache your index page
+        './assets/css/main.css',// configure as by your site ; just an example
+        './images/*',// choose images to keep offline; just an example
+        './app.webmanifest',
+// external url fetch, twitter's as an example
         'https://platform.twitter.com/widgets.js',       
         ]);
         })
@@ -91,8 +84,8 @@ console.log("fetch completed: " + event.request.url, networkResponse);
 }));
 });
 
-self.addEventListener('install', function(event) {
-    // The promise that skipWaiting() returns can be safely ignored.
+// always updating i.e latest version available
+self.addEventListener('install', (event) => {
     self.skipWaiting();
     console.log("Latest version installed!");
 });
