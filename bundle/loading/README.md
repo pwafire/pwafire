@@ -1,4 +1,4 @@
-## [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+## [Intersection Observer Web API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
 
 Using Intersection Observer, you can load target images only when the user scrolls down, causing them to display in the viewport.
 
