@@ -38,8 +38,8 @@ Get started with configuring the code in this [setup guide here](https://github.
 | Background Sync | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/background-sync) | Native App Install Banner | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install) 
 | Badging API | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging) | Web Share | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/web-share) | 
 | Install Button | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button) | Workbox | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/workbox) |
-| Connectivity | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/connectivity) | New Capabilities ( Yet ) | [ Read Doc ](https://developers.google.com/web/updates/capabilities#process)
-
+| Connectivity | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/connectivity) | New Capabilities ( Yet ) | [ Read Doc ](https://developers.google.com/web/updates/capabilities#process) |
+| Progressive Loading | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/loading) |
 ### Contribute
 
 > Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
