@@ -1,9 +1,15 @@
+## [Add Custom Share Button]()
 
-### What is the Web Share Target API?
-The Web Share Target API allows installed web apps to register with the underlying OS as a share 
-target to receive shared content from either the Web Share API or system events, like the OS-level share button.
+### How to add it to your PWA?
 
-Web Share Target is currently supported on Android in Chrome 71 or later. Both Mozilla and Microsoft 
-have indicated their support but have not implemented it yet.
+To your javascript source folder, create an empty **.js** file and copy the [following code snippet](https://github.com/mayeedwin/pwafire/blob/master/bundle/share/src/app.webShare.js.js) to it. 
+Remember to add it to your pages at the botton of your project's pages as hown below 😊 
 
-[Read more about it here](https://developers.google.com/web/updates/2018/12/web-share-target)
+```html
+
+<!-- Add web share
+button -->
+<script src="./js/app.webShare.js.js"></script>
+
+```
+
