@@ -13,15 +13,11 @@ Our mission is to make your **webdev** environment fully stacked up for best web
 We have a **pwadev tips** [repo available here](https://github.com/mayeedwin/pwadev-tips) to help guide you if you're just starting up or want to have your setup checklist done right ✅
 
 ### [What's NEW?]()
-We just announced [PWA Fire Bundle 4.0.1](https://github.com/mayeedwin/pwafire/).
+We just announced [PWA Fire Bundle 4.0.5](https://github.com/mayeedwin/pwafire/).
 
-#### Custom Install Button and Share Button
+ 1. ES6 Arrow Functions implementaion.
 
-In this release we have added custom install button and custom share button features. 
-    
-1. Get started with Install Button [here](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button)
-
-2. Get started with Share Button [here](https://github.com/mayeedwin/pwafire/tree/master/bundle/share-button)
+ 2. Using [Intersection Observer](https://github.com/mayeedwin/pwafire/tree/master/bundle/loading), you can now load target images only when the user scrolls down, causing them to display in the viewport.
 
 ### Get Started with PWA Fire Bundle
 [PWA Fire Bundle](https://twitter.com/pwafire) is an open source [Progressive Web App](https://maye.pwafire.org/articles/building-progressive-web-apps-with-pwafiredev-resources/) Tooling [Bundle](https://github.com/mayeedwin/pwafire/tree/master/bundle/) that provides you with resources to build [Progressive Web Apps](https://maye.pwafire.org/articles/building-progressive-web-apps-with-pwafiredev-resources/) like a pro in a few minutes and with good web practices. 
@@ -40,10 +36,10 @@ Get started with configuring the code in this [setup guide here](https://github.
 | --- | --- | --- | --- |
 | Installable | [Read Doc](https://github.com/mayeedwin/pwafire/projects/1) | Offline Capabilities | [Read Doc](https://github.com/mayeedwin/pwafire/projects/1) |  
 | Background Sync | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/background-sync) | Native App Install Banner | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install) 
-| Badging API | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging) | Web Share | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/web-share) | 
+| Badging API | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging) | Web Share | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/share-button) | 
 | Install Button | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button) | Workbox | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/workbox) |
-| Connectivity | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/connectivity) | New Capabilities ( Yet ) | [ Read Doc ](https://developers.google.com/web/updates/capabilities#process)
-
+| Connectivity | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/connectivity) | New Capabilities ( Yet ) | [ Read Doc ](https://developers.google.com/web/updates/capabilities#process) |
+| Progressive Loading | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/loading) |
 ### Contribute
 
 > Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)

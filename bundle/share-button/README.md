@@ -9,7 +9,7 @@ Remember to add it to your pages at the botton of your project's pages as hown b
 
 <!-- Add web share
 button -->
-<script src="js/share-button.js"></script>
+<script src="./js/share-button.js"></script>
 
 ```
 
