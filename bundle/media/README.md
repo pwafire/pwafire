@@ -9,8 +9,8 @@ As a result of [a conversation](https://twitter.com/thula__/status/1130952218667
 
 ### Try it out
 
-We have an awesome codelab at we.dev. [See it live here](https://web.dev/codelab-adapt-video-to-image-serving-based-on-network-quality/)
+We have an awesome codelab at web.dev. [See it live here](https://web.dev/codelab-adapt-video-to-image-serving-based-on-network-quality/)
 
-### handle-media.js
+### handleMedia.js
 
-find edited js [source code here](https://github.com/mayeedwin/pwafire/blob/master/bundle/handle-media/src/handle-media.js)
+find edited js [source code here](https://github.com/pwafire/pwafire/tree/master/bundle/media/src)
