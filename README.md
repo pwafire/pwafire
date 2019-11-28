@@ -34,7 +34,7 @@ Get started with configuring the code in this [setup guide here](https://github.
 | --- | --- | --- | --- |
 | Installable | [Read Doc](https://github.com/mayeedwin/pwafire/projects/1) | Offline Capabilities | [Read Doc](https://github.com/mayeedwin/pwafire) |  
 | Background Sync | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/background-sync) | Native App Install Banner | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install) 
-| Badging API | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging) | Web Share | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/share) | 
+| Badging API | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging) | Web Share | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/web-share) | 
 | Install Button | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button) | Workbox | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/workbox) |
 | Progressive Loading | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/loading) | 
 | View All, 15 + | [View Bundle](https://github.com/mayeedwin/pwafire/tree/master/bundle/) |
