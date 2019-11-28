@@ -13,10 +13,9 @@
 
  - To add Web Share to your existing Progressive Web App then create an empty ``js`` file called ``webShare.js`` in a js folder as shown below. 
 
-``
+```bash
   your-project/js/webShare.js
-  
-``
+```
  - Next thing to do is to copy the code below to the empty ``webShare.js``
  
 ```javascript
