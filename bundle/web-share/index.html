@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <!--
+    Built with love using Material Design Lite
+    https://www.pwafire.org
+    -->
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113005114-1"></script>
+      <script>
+ window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'UA-113005114-1');
+   </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="In this codelab you will learn how to use the Web Share API which allows you easily trigger the native Android share dialog, passing either a URL or text to share.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>PWA Fire Codelabs - Using the Web Share API with Progressive Web Apps</title>
+    <!-- Add to homescreen -->
+    <link rel="manifest" href="../../../app.webmanifest">
+    <!-- Fallback to homescreen for Chrome <39 on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Make Your PWA sharable with Web Share API  / PWA Fire Codelabs">
+    <link rel="icon" sizes="192x192" href="../../../images/icons/icon-192x192.png">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Make Your PWA sharable with Web Share API  / PWA Fire Codelabs">
+    <link rel="apple-touch-icon" href="../../../images/icons/pwafire32white.png">
+    <meta name="twitter:image"  content="ttps://pwafire.org/images/codelabs/pwafirebanner.jpg">
+    <!-- Facebook sharing meta data -->
+    <meta property="og:title" content="Make Your PWA sharable with Web Share API  / PWA Fire Codelabs">
+    <meta property="og:site_name" content="Make Your PWA sharable with Web Share API  / PWA Fire Codelabs">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="In this codelab you will learn how to use the Web Share API which allows you easily trigger the native Android share dialog, passing either a URL or text to share.">
+    <meta property="og:image" content="ttps://pwafire.org/images/codelabs/pwafirebanner.jpg">
+    <meta property="og:image:type" content="image/png" />
+    <meta name="theme-color" content="#fff">
+    <link rel="shortcut icon" sizes="32x32" href="../../../images/icons/pwafire32white.png">
+    <link rel="canonical" href="https://pwafire.org/developer/codelabs/add-navigator-share/">
+    <!-- Page styles -->
+    <link rel="stylesheet" href="../../pwa/assets/prism-default.css">
+    <link rel="stylesheet" href="../../pwa/material.min.css">
+    <link rel="stylesheet" href="../../pwa/assets/main.css">
+    <link rel="icon" sizes="192x192" href="../../../images/icons/icon-192x192.png">
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+  <body class="started">
+    
+  <div class="image-preloader"></div>
+  <div class="docs-layout mdl-layout mdl-js-layout">
+    <header class="docs-layout-header mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="docs-layout-title mdl-layout-title"></span>
+      </div>
+      <div class="docs-navigation__container">
+        <nav class="docs-navigation mdl-navigation">
+          <a href="#" class="mdl-navigation__link started">Start Codelab</a>
+          <a href="#" class="mdl-navigation__link codelab">Get Started</a>
+          <a href="https://pwafire-codelab.firebaseapp.com/" class="mdl-navigation__link showcase" target="_blank" rel="noopener">Showcase</a>
+          <a href="../" class="mdl-navigation__link ">Back</a>
+        </nav>
+      </div>
+      <i class="material-icons scrollindicator scrollindicator--right">&#xE315;</i>
+      <i class="material-icons scrollindicator scrollindicator--left">&#xE314;</i>
+    </header>
+    <main class="docs-layout-content mdl-layout__content mdl-color-text--grey-600">
+      <div class="content mdl-grid mdl-grid--no-spacing" id="content">
+        <div class="subpageheader mdl-cell--12-col">Start codelab</div>
+      
+<div class="docs-text-styling">
+  <section class="docs-toc">
+    <h3>Codelab Flow</h3>
+    <nav class="section-content">
+      <ul>
+        <li><a href="#what-to-learn">What you will learn</a></li>
+        <li><a href="#setting-up">Setting up the API</a></li>
+        <li><a href="#add-web-share-js">Add to your page</a></li>
+        <li><a href="#add-share-button">Add a share button or icon</a></li>
+        <li><a href="#whats-next">What's next?</a></li>
+        <li><a href="#support">Support</a></li>
+        <li><a href="#license">License</a></li>
+      </ul>
+    </nav>
+  </section>
+
+  <section id="what-to-learn">
+    <h3>What you will learn</h3>
+    <div class="section-content">
+      <span class="mdl-chip mdl-chip--contact">
+        <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">L</span>
+        <span class="mdl-chip__text"><time datetime="2019-05-27">Last updated on 28/11/19</time></span>
+    </span>
+    <span class="mdl-chip mdl-chip--contact">
+      <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">W</span>
+      <span class="mdl-chip__text">Web Share API</span>
+  </span>
+      <p>
+        In this codelab you will learn how to use the <a href="https://developers.google.com/web/updates/2016/09/navigator-share" target="_blank" rel="noopener">Web Share API</a> which allows you easily trigger the native Android share dialog, passing either a URL or text or <b>both</b> to share.
+      </p>
+    </div>
+   
+  </section>
+
+  <section id="setting-up">
+    <h3>Setting up the API</h3>
+    <div class="section-content">
+
+        <p> It is <b>important</b> to note the following checklist for the <b>Web Share API</b> to work;</p>
+        <div class="code-with-text">
+            <ol>
+                <li>You must be served over HTTPS</li>
+                <li>You can only invoke the API in response to a user action, such as a click</li>
+                <li>You can also share any URL, not just URLs under your website's current scope</li>
+                <li>And you may also share text without a URL</li>
+              </ol>
+        </div>
+        <p>
+            To add <a href="#">Web Share</a> to your existing Progressive Web App then create an empty 
+            <b>js</b> file called <b><a href="https://github.com/pwafire/pwafire/blob/master/bundle/web-share/src/webShare.js" 
+                target="_blank" 
+                rel="noopener">webShare.js</a></b> in a <b>./scripts</b> folder as shown below.
+        </p>
+        <pre><code><span class="pln">your-project/scripts/webShare.js</span></code></pre>
+        <p>Next thing to do is to copy the code below to the empty <b>webShare.js</b>.</p>
+      <div class="mdl-tabs mdl-js-tabs">
+          <div class="mdl-tabs__tab-bar">
+            <a href="#tab1" class="mdl-tabs__tab is-active">Description</a>
+            <a href="#tab2" class="mdl-tabs__tab">View Code</a>
+            <a href="#tab3" class="mdl-tabs__tab">On Github</a>
+           -
+          </div>
+
+          <div class="mdl-tabs__panel is-active" id="tab1">
+              <div class="code-with-text">
+              This code allows you to use the <b>Web Share API</b> for your PWA. 
+              In the code snippet, we have <b>comments</b> explaining what each line of the <b>code</b> does. Read through.
+            </div>
+        </div>
+        
+        <div class="mdl-tabs__panel" id="tab2">
+            <div class="code-with-text">
+              Once invoked, it will bring up the native picker (<a href="https://pwafire-codelab.firebaseapp.com/" target="_blank" rel="noopener">as in the demo pwa on your phone</a>) and allow you to share the data with the app (whatsapp, facebook, twitter, etc) chosen by the user.
+            </div>
+      <pre class="language-javascript"><code>   
+// select the share button with the class 'share-button'
+const share = document.querySelector('.share-button');
+    // listen to a click event and fire share
+    share.addEventListener('click', () => {
+        // check if web share is supported
+        if (navigator.share) {
+            navigator.share({
+                // title of what to share
+                title: 'Developer Resources by pwafire.org',
+                // text to share
+                text: 'Here are resources to learn how to build Progressive Web Apps',
+                // url to share
+                url: 'https://pwafire.org',
+            })
+                .then(() => console.log('Successful share'))
+                .catch((error) => console.log('Error sharing', error));
+        } else {
+            console.log(`Web share not supported on desktop...`);
+        }
+    })
+    </code></pre>
+          </div>
+          <div class="mdl-tabs__panel is-active" id="tab3">
+              <div class="code-with-text">
+                <ul class="toc"> 
+                    <a href="https://github.com/pwafire/pwafire/blob/master/bundle/web-share/src/webShare.js" target="_blank" rel="noopener">Get code</a>
+                  </ul>
+            </div>
+
+        </div>
+
+      </div>
+
+  </section>
+
+  <section id="add-web-share-js">
+      <h3>Add to your App</h3>
+      <div class="section-content">
+        <p>
+            In your page, add the following code at the bottom just before the end of the <b>body tag</b> :::: depending with the directory in which you have saved <b>app.webShare.js</b>
+        </p>
+          <pre class="language-markup"><code>&lt;script src="assets/js/webShare.js">&lt;/script></code></pre>
+      </div>
+    </section>
+
+  <section id="add-share-button">
+      <h3>Add a Share button </h3>
+      <div class="section-content">
+        <p>
+            Add the <b>Share button</b> or icon on your page after configuring the <b>webShare.js</b> file above to fit your web app needs.
+            We need to create a button with its <b>class</b> as <code>share-button</code>.
+        </p>
+           <p>
+                Add the code below to your page to define the <b>Button</b> for your Progressive Web App and save.
+          </p>
+   <pre class="language-markup"><code>&lt;button class="share-button">Share&lt;/button></code></pre>
+          <p>Yay! Done! Visit your web app on your phone now and click the your <b>share button.</b> You should see the native picker which allows you to share your PWA with the app (whatsapp, facebook, twitter, etc) you choose.</p>      
+          <p><img src="../../images/icons/aboutpwafire.gif" height="100px" alt="Mr. PWA Fire's Son Dance"> <img src="../../images/icons/aboutpwafire.gif" height="100px" alt="Mr. PWA Fire's Son Dance"></p>
+      
+          <p>While on your phone, click the button below to demo our <a href="#">Web Share</a> add-on!</p>
+        <div class="download-button-container">
+            <a href="" target="_blank" rel="noopener">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect share">
+                      Share Now
+              </button>
+            </a>
+            
+          </div>
+        </div>
+
+    </section>
+  <section id="whats-next">
+
+    <h3>What's next?</h3>
+    <div class="section-content">
+      <p>
+          Have a look at more of <a href="../">currently existing codelabs here</a> for you to take. Donate a <a class="github-button" href="https://github.com/mayeedwin/faq-beta"> Star </a> and
+          <a class="github-button" href="https://github.com/mayeedwin/faq-beta/issues"> Contribute </a> in any way. Be sure to 
+          <a class="github-button" href="https://github.com/mayeedwin"> follow </a> us on <a href="https://twitter.com/pwafire">Twitter</a>.
+      </p>
+    </div>
+  </section>
+
+  <section id="license">
+    <h3>License</h3>
+    <div class="section-content">
+      <p>
+       Licensed under an <a href="https://github.com/pwafire/pwafire/blob/master/.github/LICENSE" target="_blank" rel="noopener">MIT License.</a>
+      </p>
+    </div>
+  </section>
+  
+</div>
+
+     </div>
+      <section class="docs-text-styling download mdl-color--grey-800">
+      <a href="https://github.com/mayeedwin/faq-beta/fork" class="mdl-color-text--grey-50">FORK ON GITHUB</a>            
+      </section>
+      <footer class="docs-text-styling docs-footer mdl-mini-footer mdl-color--grey-900">
+        <div class="section-content">
+        <p>Built with love using Material Design Lite</p>
+          </div>
+      </footer>
+    </main>
+  </div>
+    <!-- Material Design Lite -->
+    <script src="../../pwa/material.min.js"></script>
+    <!-- Enable Prism syntax highlighting -->
+    <script src="../../pwa/assets/prism.js"></script>
+    <script src="../../pwa/assets/prism-markup.min.js"></script>
+    <script src="../../pwa/assets/prism-javascript.min.js"></script>
+    <script src="../../pwa/assets/prism-css.min.js"></script>
+    <script src="../../pwa/assets/prism-bash.min.js"></script>
+    <script src="../../pwa/assets/main.js"></script>
+    <script src="./webShare.js"></script>
+  </body>
+</html>
