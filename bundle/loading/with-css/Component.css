@@ -1,0 +1,13 @@
+/* copy this styling to your target elememnt, section or page
+below is an example for all list elements */
+
+li {
+  /* other
+  ....
+  stylings *
+  -webkit-animation: fadein 2s; /* safari, chrome and opera > 12.1 */
+  -moz-animation: fadein 2s; /* firefox < 16 */
+  -ms-animation: fadein 2s; /* internet explorer */
+  -o-animation: fadein 2s; /* opera < 12.1 */
+  animation: fadein 2s;
+}
