@@ -33,7 +33,13 @@ would mean more JavaScript and therefore needs a very on-demand use in your Apps
          animation: fadein 2s;
        }
    ```
+   -  You can now use the `Fade.css` style in your Main styling say `About.css` by importing it with `@import`as shown below (
+   this example means that `Fade.css` is in the same directory as `About.css`)
+   
+   ```css
+     @import "./Fade.css";
+   ```
+ 
+### Demo
 
-
-
-
+Have a look at `Fade.css` in action on [this sample web app](https://javascript-fetch.glitch.me/)
