@@ -1,3 +1,4 @@
+// lazload progressively
 let imagesToLoad = document.querySelectorAll('img[data-src]');
 
 let loadImages = (image) => {
