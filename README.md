@@ -10,7 +10,7 @@ Our mission is to make your **webdev** environment fully stacked up for best web
 
 ### Setting up the PWA Development Environment 
 
-We have a **pwadev tips** [repo available here](https://github.com/mayeedwin/pwadev-tips) to help guide you if you're just starting up or want to have your setup checklist done right ✅
+We have a **PWA Developer Tips** [repo available here](https://github.com/mayeedwin/pwadev-tips) to help guide you if you're just starting up or want to have your setup checklist done right ✅
 
 ### [What's NEW?]()
 We just announced [PWA Fire Bundle 4.0.5](https://github.com/mayeedwin/pwafire/).
@@ -20,7 +20,7 @@ We just announced [PWA Fire Bundle 4.0.5](https://github.com/mayeedwin/pwafire/)
  2. Using [Intersection Observer](https://github.com/mayeedwin/pwafire/tree/master/bundle/loading), you can now load target images only when the user scrolls down, causing them to display in the viewport.
 
 ### Get Started with PWA Fire Bundle
-[PWA Fire Bundle](https://twitter.com/pwafire) is an open source [Progressive Web App](https://maye.pwafire.org/articles/building-progressive-web-apps-with-pwafiredev-resources/) Tooling [Bundle](https://github.com/mayeedwin/pwafire/tree/master/bundle/) that provides you with resources to build [Progressive Web Apps](https://maye.pwafire.org/articles/building-progressive-web-apps-with-pwafiredev-resources/) like a pro in a few minutes and with good web practices. 
+[PWA Fire Bundle](https://twitter.com/pwafire) is an open source [Progressive Web App](https://maye.pwafire.org/articles/building-progressive-web-apps-with-pwafiredev-resources/) Tooling [Bundle](https://github.com/mayeedwin/pwafire/tree/master/bundle/) that provides you with resources to build [Progressive Web Apps](https://maye.pwafire.org/articles/building-progressive-web-apps-with-pwafiredev-resources/) with good web practices. 
 
 It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
 
