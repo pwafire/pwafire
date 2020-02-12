@@ -1,8 +1,10 @@
 // Using workbox service worker : Learn : https://pwafire.org
+
 importScripts(
   "https://storage.googleapis.com/workbox-cdn/releases/5.0.0/workbox-sw.js"
 );
 
+// remember to set to fault on production
 workbox.setConfig({
   debug: true
 });
@@ -11,9 +13,8 @@ if (workbox) {
     console.log(`[ PWA Fire Bundle 🐹 ] Workbox is loaded`);
     workbox.precaching.precacheAndRoute([]);
     
-   /*  cache images in the e.g others folder; edit to other folders you got 
-   and config in the sw-config.js file
-    */
+   /* cache images in the e.g others folder; edit to other folders you got 
+   and config in the sw-config.js file */
    workbox.routing.registerRoute(
     /(.*)others(.*)\.(?:png|gif|jpg)/,
     new workbox.strategies.CacheFirst({
@@ -27,8 +28,7 @@ if (workbox) {
     })
   );
     /* Make your JS and CSS ⚡ fast by returning the assets from the cache, 
-  while making sure they are updated in the background for the next use.
-  */
+  while making sure they are updated in the background for the next use. */
   workbox.routing.registerRoute(
     // cache js, css, scc files 
     /.*\.(?:css|js|scss|)/,
