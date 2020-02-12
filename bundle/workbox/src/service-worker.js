@@ -1,10 +1,9 @@
-// Using workbox service worker : Learn : https://pwafire.org
-
+// Using workbox service worker : Docs : https://pwafire.org/developer/pwa/started/#workbox
 importScripts(
   "https://storage.googleapis.com/workbox-cdn/releases/5.0.0/workbox-sw.js"
 );
 
-// remember to set to fault on production
+// set debug mode
 workbox.setConfig({
   debug: true
 });
@@ -63,4 +62,3 @@ workbox.core.clientsClaim();
 } else {
     console.log(`Oops! Workbox didn't load 👺`);
 }
-
