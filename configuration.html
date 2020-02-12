@@ -5,13 +5,18 @@ or in the head tag in html5.
 -->
 
 <!-- register service worker -->
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-    .then(() => { console.log("[ PWA Fire Bundle 🐹 ] Service Worker Registered"); });
-  });
-}
+   <script>
+     if ("serviceWorker" in navigator) {
+       window.addEventListener("load", () => {
+         navigator.serviceWorker
+           .register("/service-worker.js")
+           .then(registered => {
+             console.log("[ PWA Fire Bundle 🐹 ] Service Worker Registered");
+             // get the latest update all the time,
+             registered.update();
+           });
+       });
+     }
  </script>
 <!-- end of service worker -->
 
