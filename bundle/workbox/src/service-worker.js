@@ -1,9 +1,11 @@
+// Using workbox service worker : Learn : https://pwafire.org
+importScripts(
+  "https://storage.googleapis.com/workbox-cdn/releases/5.0.0/workbox-sw.js"
+);
 
-/* Authored by https://www.pwafire.org
-  Add offline properties, push notification, web share, web payments, etc
-  pwafire 4.1.1 */
-
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
+workbox.setConfig({
+  debug: true
+});
   
 if (workbox) {
     console.log(`[ PWA Fire Bundle 🐹 ] Workbox is loaded`);
@@ -17,7 +19,7 @@ if (workbox) {
     new workbox.strategies.CacheFirst({
       cacheName: 'images',
       plugins: [
-        new workbox.expiration.Plugin({
+        new workbox.expiration.ExpirationPlugin({
           maxEntries: 50,
           maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
         })
@@ -53,10 +55,8 @@ if (workbox) {
   // add offline analytics 
   workbox.googleAnalytics.initialize(); 
 
-/* Install a new service worker and have it update 
-and control a web page as soon as possible
-*/
-
+/* publish a new service worker and have it update and
+control a web page as soon as possible */
 workbox.core.skipWaiting();
 workbox.core.clientsClaim();
     
