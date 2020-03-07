@@ -15,6 +15,7 @@ or multiple contacts, and if you want all the fields, or just a subset of names,
 2. Remember to add the contact picker button element to your web page.
 
 ```html
-
+<!-- Add this button to your App -->
+ <button id="contact-picker"> Pick Contacts </button>
 ```
 Take the [codelab here]()
