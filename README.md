@@ -12,12 +12,27 @@ Our mission is to make your **webdev** environment fully stacked up for best web
 
 We have a **PWA Developer Tips** [repo available here](https://github.com/mayeedwin/pwadev-tips) to help guide you if you're just starting up or want to have your setup checklist done right ✅
 
-### [What's NEW?]()
-We just announced [PWA Fire Bundle 4.0.5](https://github.com/mayeedwin/pwafire/).
+### [What's NEW? ]()
 
- 1. ES6 Arrow Functions implementaion.
+### v 4.0.6
 
- 2. Using [Intersection Observer](https://github.com/mayeedwin/pwafire/tree/master/bundle/loading), you can now load target images only when the user scrolls down, causing them to display in the viewport.
+### Contacts Picker API
+
+**Note : Chrome 77 or higher running on Android M or later required!**
+
+It allows a web application to access contacts from the device's native contacts manager. Like this, your web app 
+has access to your contacts' names, emails, and telephone numbers. 
+
+### How to setup?
+
+1. In your **App**, create an empty **contactPicker.js** file and copy and paste [this code snippet to it](https://github.com/pwafire/pwafire/blob/master/bundle/contact-picker/src/contactPicker.js) to it. Then save your chnages!
+
+2. Remember to add the contact picker button element to your web page.
+
+```html
+<!-- Add this button to your App -->
+ <button id="contact-picker"> Pick Contacts </button>
+```
 
 ### Get Started with PWA Fire Bundle
 [PWA Fire Bundle](https://twitter.com/pwafire) is an open source [Progressive Web App](https://maye.pwafire.org/articles/building-progressive-web-apps-with-pwafiredev-resources/) Tooling [Bundle](https://github.com/mayeedwin/pwafire/tree/master/bundle/) that provides you with resources to build [Progressive Web Apps](https://maye.pwafire.org/articles/building-progressive-web-apps-with-pwafiredev-resources/) with good web practices. 
