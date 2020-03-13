@@ -14,7 +14,7 @@ We have a **PWA Developer Tips** [Repo here](https://github.com/mayeedwin/pwadev
 
 ### [What's NEW? ]() => v 4.0.6
 
-### Contacts Picker API
+#### Contacts Picker API
 
 **Note : Chrome 77 or higher running on Android M or later required!**
 
