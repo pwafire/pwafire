@@ -10,7 +10,7 @@ Our mission is to make your **webdev** environment fully stacked up for best web
 
 ### Setting up the PWA Development Environment 
 
-We have a **PWA Developer Tips** [repo available here](https://github.com/mayeedwin/pwadev-tips) to help guide you if you're just starting up or want to have your setup checklist done right ✅
+We have a **PWA Developer Tips** [Repo here](https://github.com/mayeedwin/pwadev-tips) to help guide you if you're just starting up or want to have your setup checklist done right ✅
 
 ### [What's NEW? ]()
 
