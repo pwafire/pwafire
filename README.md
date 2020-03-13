@@ -12,15 +12,13 @@ Our mission is to make your **webdev** environment fully stacked up for best web
 
 We have a **PWA Developer Tips** [Repo here](https://github.com/mayeedwin/pwadev-tips) to help guide you if you're just starting up or want to have your setup checklist done right ✅
 
-### [What's NEW? ]()
-
-### v 4.0.6
+### [What's NEW? ]() => v 4.0.6
 
 ### Contacts Picker API
 
 **Note : Chrome 77 or higher running on Android M or later required!**
 
-It allows a Web Application to access contacts from the device's native contacts manager. Like this, your web app 
+It allows a Web Application to access contacts from the device's native contacts manager. Your Web App 
 has access to your contacts' names, emails, and telephone numbers. 
 
 ### How to setup?
@@ -34,9 +32,9 @@ has access to your contacts' names, emails, and telephone numbers.
  <button id="contact-picker"> Pick Contacts </button>
 ```
 
-### What's in the PWA Fire Bundle?
+### What's PWA Fire Bundle?
 
-A collection of Modern New Web Capabilities. Just add the source code in a plug-n-play code anatomy and have your favourite Browser's PWA Capability up in your Progressive Web App.
+A collection of **Modern New Web Capabilities**. Just add the source code in what we call **a plug-n-play code anatomy** and have your favourite Browser's PWA Capability up in your Progressive Web App.
 Below is a list of all these Capabilities.
 
 | Feature | Documentation | Feature | Documentation |
