@@ -20,7 +20,7 @@ We have a **PWA Developer Tips** [repo available here](https://github.com/mayeed
 
 **Note : Chrome 77 or higher running on Android M or later required!**
 
-It allows a web application to access contacts from the device's native contacts manager. Like this, your web app 
+It allows a Web Application to access contacts from the device's native contacts manager. Like this, your web app 
 has access to your contacts' names, emails, and telephone numbers. 
 
 ### How to setup?
@@ -34,18 +34,10 @@ has access to your contacts' names, emails, and telephone numbers.
  <button id="contact-picker"> Pick Contacts </button>
 ```
 
-### Get Started with PWA Fire Bundle
-[PWA Fire Bundle](https://twitter.com/pwafire) is an open source [Progressive Web App](https://maye.pwafire.org/articles/building-progressive-web-apps-with-pwafiredev-resources/) Tooling [Bundle](https://github.com/mayeedwin/pwafire/tree/master/bundle/) that provides you with resources to build [Progressive Web Apps](https://maye.pwafire.org/articles/building-progressive-web-apps-with-pwafiredev-resources/) with good web practices. 
-
-It is the most simplest way you can ever convert your web app or website into a 100% [Progressive Web App](https://www.linkedin.com/pulse/what-progressive-web-app-get-started-now-canaan-maye-edwin/) and still have some fun with the code. It doesn't make you a lazy code beast.
-
-### What to do first // Required
-Create two empty files in your project's root folder ; `service-worker.js` and `app.webmanifest`. N/B: Make sure to make the configuration changes as documented below.
-
-### Configuration // setup
-Get started with configuring the code in this [setup guide here](https://github.com/mayeedwin/pwafire/tree/master/docs)
-
 ### What's in the PWA Fire Bundle?
+
+A collection of Modern New Web Capabilities. Just add the source code in a plug-n-play code anatomy and have your favourite Browser's PWA Capability up in your Progressive Web App.
+Below is a list of all these Capabilities.
 
 | Feature | Documentation | Feature | Documentation |
 | --- | --- | --- | --- |
