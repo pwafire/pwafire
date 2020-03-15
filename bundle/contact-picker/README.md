@@ -1,7 +1,5 @@
 ## Contacts Picker API
 
-### Launched : 	Chrome 80
-
 **Note : Chrome 77 or higher running on Android M or later required!**
 
 It allows a web application to access contacts from the device's native contacts manager. Like this, your web app 
