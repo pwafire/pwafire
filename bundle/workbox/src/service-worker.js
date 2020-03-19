@@ -43,11 +43,6 @@ if (workbox) {
     new RegExp('https://fonts.(?:googleapis|gstatic).com/(.*)'),
     new workbox.strategies.CacheFirst({
       cacheName: 'google-fonts',
-      plugins: [
-        new workbox.cacheableResponse.Plugin({
-          statuses: [0, 200],
-        }),
-      ],
     })
   );
 
