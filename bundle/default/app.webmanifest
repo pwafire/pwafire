@@ -2,7 +2,7 @@
   "background_color": "#fff",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "000",
+  "theme_color": "#fff",
   "short_name": "PWAs",
   "name": "PWA Fire ",
   "description": "PWAs Resources for developers",
