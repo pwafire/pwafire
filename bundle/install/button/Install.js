@@ -1,8 +1,5 @@
 
-/* 
-add custom install banner 
-*/
-
+/* add custom install banner @mayeedwin @pwafire 2020 */
 const buttonInstall = document.getElementById('buttonInstall');
 
 window.addEventListener('beforeinstallprompt', (event) => {
@@ -34,5 +31,5 @@ buttonInstall.addEventListener('click', () => {
 });
 
 window.addEventListener('appinstalled', (event) => {
-  console.log('👍', 'app successfully installed', event);
+  console.log('👍', 'App successfully installed', event);
 });
