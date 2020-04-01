@@ -1,38 +1,35 @@
-
-/* 
-add custom install banner 
-*/
-
-const buttonInstall = document.getElementById('buttonInstall');
+/* add custom install banner @mayeedwin @pwafire 2020 */
+const installButton = document.getElementById('install');
 
 window.addEventListener('beforeinstallprompt', (event) => {
-  console.log('👍', 'beforeinstallprompt', event);
+  console.log('👍', 'Before Install Prompt');
   // Stash the event so it can be triggered later.
   window.deferredPrompt = event;
   // Remove the 'hidden' class from the install button container
-  buttonInstall.removeAttribute('disabled');
+  // installButton.removeAttribute('disabled');
 });
 
-buttonInstall.addEventListener('click', () => {
-  console.log('👍', 'buttonInstall-clicked');
+installButton.addEventListener('click', () => {
+  console.log('👍', 'Install Button Clicked');
   const promptEvent = window.deferredPrompt;
   if (!promptEvent) {
-    // The deferred prompt isn't available.
-    return;
+    // The deferred prompt isn't available, so pwa exists
+    console.log(`App Exists`);
+    installButton.innerHTML = `<i class="fas fa-tablet-alt"></i>&nbsp;&nbsp;Already Installed`
+    return installed;
   }
   // Show the install prompt.
   promptEvent.prompt();
   // Log the result
   promptEvent.userChoice.then((result) => {
-    console.log('👍', 'userChoice', result);
+    console.log('👍', 'User Choice', result);
     // Reset the deferred prompt variable, since 
     // prompt() can only be called once.
     window.deferredPrompt = null;
     // Hide the install button.
-    buttonInstall.setAttribute('disabled', true);
   });
 });
 
 window.addEventListener('appinstalled', (event) => {
-  console.log('👍', 'app successfully installed', event);
+  console.log('👍', 'App successfully installed', event);
 });
