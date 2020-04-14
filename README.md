@@ -34,7 +34,7 @@ has access to your contacts' names, emails, and telephone numbers.
 
 ## What's PWA Fire Bundle?
 
-A collection of **Modern New Web Capabilities**. Just add the source code in what we call **a plug-n-play code anatomy** and have your favourite Browser's PWA Capability up in your Progressive Web App.
+A Collection of **Modern New Web Capabilities**. Just add the source code in what we call **a plug-n-play code anatomy** and have your favourite Browser's PWA Capability up in your Progressive Web App.
 Below is a list of all these Capabilities.
 
 | Feature | Documentation | Feature | Documentation |
@@ -46,10 +46,6 @@ Below is a list of all these Capabilities.
 | Contact Picker | [Read Doc](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) | 
 | Progressive Loading | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/loading) | 
 | View All, 15 + | [View Bundle](https://github.com/mayeedwin/pwafire/tree/master/bundle/) |
-
-## Contribute
-
-> Propose your Feature by [Creating an Issue](https://github.com/mayeedwin/pwafire/issues/new)
 
 ## Examples of Progressive Web Apps Built with PWA Fire Bundle
 
@@ -96,10 +92,14 @@ Support this project with your organization. Your logo will show up here with a 
 <a href="https://opencollective.com/pwafire/organization/8/website"><img src="https://opencollective.com/pwafire/organization/8/avatar.svg"></a>
 <a href="https://opencollective.com/pwafire/organization/9/website"><img src="https://opencollective.com/pwafire/organization/9/avatar.svg"></a>
 
+
+## Contribute
+Propose your Feature by [Creating an Issue](https://github.com/pwafire/pwafire/issues/new)
+
 ### License
 | License |License url |
 | --- | --- |
-| MIT License | [View License](https://github.com/mayeedwin/pwafire/blob/master/.github/LICENSE) |
+| MIT License | [View License](https://github.com/pwafire/pwafire/blob/master/.github/LICENSE) |
 
 ### Engage us 
 Donate a star, like, follow and contribute in any way. We're social. [Tweet us](https://twitter.com/pwafire).
