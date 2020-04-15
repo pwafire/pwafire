@@ -8,7 +8,7 @@ or multiple contacts, and if you want all the fields, or just a subset of names,
 
 ### How to setup?
 
-1. In your **App**, create an empty **contactPicker.js** file and copy and paste [this code snippet to it](https://github.com/pwafire/pwafire/blob/master/bundle/contact-picker/src/contactPicker.js) to it. Then save your chnages!
+1. In your **App**, create an empty **contactPicker.js** file and copy and paste [this code snippet to it](https://github.com/pwafire/pwafire/blob/master/bundle/contact-picker/src/contactPicker.js). Then save your changes!
 
 2. Remember to add the contact picker button element to your web page.
 
