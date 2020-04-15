@@ -16,4 +16,4 @@ or multiple contacts, and if you want all the fields, or just a subset of names,
 <!-- Add this button to your App -->
  <button id="contact-picker"> Pick Contacts </button>
 ```
-Take the [codelab here]()
+Take the [codelab here](https://pwafire.org/developer/add-contact-picker-to-your-progressive-web-app/)
