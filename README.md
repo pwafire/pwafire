@@ -34,7 +34,7 @@ has access to your contacts' names, emails, and telephone numbers.
 
 ## What's PWA Fire Bundle?
 
-A Collection of **Modern New Web Capabilities**. Just add the source code in what we call **a plug-n-play code anatomy** and have your favourite Browser's PWA Capability up in your Progressive Web App.
+A Collection of **New Web Capabilities**. Just add the source code in what we call **a plug-n-play code anatomy** and have your favourite Browser's PWA Capability up in your Progressive Web App.
 Below is a list of all these Capabilities.
 
 | Feature | Documentation | Feature | Documentation |
