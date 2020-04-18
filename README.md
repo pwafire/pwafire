@@ -1,4 +1,4 @@
-## [` PWA Fire Bundle `](https://pwafire.org) 
+## [PWA Fire Bundle](https://pwafire.org) 
 
 [![Build Status](https://travis-ci.org/pwafire/pwafire.svg?branch=master)](https://travis-ci.org/pwafire/pwafire)
 
