@@ -39,17 +39,11 @@ Below is a list of all these Capabilities.
 
 | Feature | Documentation | Feature | Documentation |
 | --- | --- | --- | --- |
-| Installable | [Read Doc](https://github.com/mayeedwin/pwafire/projects/1) |
-| Offline Capabilities | [Read Doc](https://github.com/mayeedwin/pwafire) |  
-| Background Sync | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/background-sync) 
-| Native App Install Banner | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install)|
-| Badging API | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging)
-| Web Share | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/web-share)|
-| Install Button | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button)
-| Workbox | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/workbox)|
-| Contact Picker | [Read Doc](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker)
-| Progressive Loading | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/loading)|
-| View All, 15 + | [View Bundle](https://github.com/mayeedwin/pwafire/tree/master/bundle/)
+| Installable | [Read Doc](https://github.com/mayeedwin/pwafire/projects/1) | Offline Capabilities | [Read Doc](https://github.com/mayeedwin/pwafire)
+| Background Sync | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/background-sync) | Native App Install Banner | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install) |
+| Badging API | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging) | Web Share | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/web-share) |
+| Install Button | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button) | Workbox | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/workbox) |
+| Contact Picker | [Read Doc](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) | Progressive Loading | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/loading) | View All, 15 + | [View Bundle](https://github.com/mayeedwin/pwafire/tree/master/bundle/)
 
 ## Examples of Progressive Web Apps Built with PWA Fire Bundle
 
