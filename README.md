@@ -39,7 +39,7 @@ Below is a list of all these Capabilities.
 
 | Feature | Documentation | Feature | Documentation |
 | --- | --- | --- | --- |
-| Installable | [Read Doc](https://github.com/mayeedwin/pwafire/projects/1)
+| Installable | [Read Doc](https://github.com/mayeedwin/pwafire/projects/1) |
 | Offline Capabilities | [Read Doc](https://github.com/mayeedwin/pwafire) |  
 | Background Sync | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/background-sync) 
 | Native App Install Banner | [Read Doc](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install)|
