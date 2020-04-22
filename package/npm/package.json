@@ -1,0 +1,23 @@
+{
+  "name": "pwafire",
+  "version": "1.0.0",
+  "description": "Add New Web Capabilities to your PWAs",
+  "main": "scr/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pwafire/pwafire/tree/master/package/npm"
+  },
+  "keywords": [
+    "pwafire",
+    "pwa",
+    "workbox",
+    "api",
+    "copy tex",
+    "new web capabilities"
+  ],
+  "author": "Maye Edwin",
+  "license": "MIT"
+}
