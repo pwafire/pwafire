@@ -56,7 +56,7 @@ const element = document.querySelector(".share-button");
 #### Define the data object to be shared
 
 ```js
-const data {
+const data =  {
   // Title of what to share
   title: `Some title..`,
   // Text to share
