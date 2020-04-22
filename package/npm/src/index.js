@@ -8,6 +8,7 @@ const copyStyles = `
     border-radius: 3px;`;
 // Declare the PWA Features class...
 class PWA {
+
   // Copy text...
   copyText(element) {
     element.addEventListener("click", async event => {
@@ -27,18 +28,33 @@ class PWA {
       }
     });
   }
-  // Share
-  Share(element, data){
+
+  // Web Share...
+  Share(element, data) {
     element.addEventListener(`click`, () => {
       // Check if web share is supported
       if (navigator.share) {
-          navigator.share(data)
-              .then(() => console.log(`Successful share`))
-              .catch((error) => console.log(`Error sharing`, error));
+        navigator.share(data)
+          .then(() => console.log(`Successful share`))
+          .catch((error) => console.log(`Error sharing`, error));
       } else {
-          console.log(`Web share not supported on desktop...`);
+        console.log(`Web share not supported on desktop...`);
       }
-  })
+    })
+  }
+
+  // Contacts Picker...
+  Contacts(element, props, options ) {
+    element.addEventListener("click", async () => {
+      try {
+        const contacts = await navigator.contacts.select(props, options);
+        // Return contacts...
+        return contacts;
+      } catch (error) {
+        // Handle any errors here...
+        alert(error);
+      }
+    });
   }
 }
 // Create an instance of a PWA
