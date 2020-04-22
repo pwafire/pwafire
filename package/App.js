@@ -10,6 +10,4 @@ let elements = document.querySelectorAll(".copy");
 for (let el of elements) {
   // Copy text...
   pwa.copyText(el);
-}
-
-                
+}     
