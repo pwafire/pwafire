@@ -14,22 +14,22 @@ const pwa = pwafire.pwa;
 ### 1. Copy Text
 Copy text to clipboard
 
-#### Copy from a single element...
+#### Copy from a single element
 
 ```js
-// Copy from a single element...
+// Copy from a single element
 let element = document.getElementById("copy");
-// Copy text...
+// Copy text
 pwa.copyText(element);
 ```
 
-#### Copy from multiple elements...
+#### Copy from multiple elements
 
 ```js
-//  Copy from multiple elements...
+//  Copy from multiple elements
 let elements = document.querySelectorAll(".copy");
 for (let el of elements) {
-  // Copy text...
+  // Copy text
   pwa.copyText(el);
 }
 ```
