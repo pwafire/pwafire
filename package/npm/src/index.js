@@ -27,6 +27,19 @@ class PWA {
       }
     });
   }
+  // Share
+  Share(element, data){
+    element.addEventListener(`click`, () => {
+      // Check if web share is supported
+      if (navigator.share) {
+          navigator.share(data)
+              .then(() => console.log(`Successful share`))
+              .catch((error) => console.log(`Error sharing`, error));
+      } else {
+          console.log(`Web share not supported on desktop...`);
+      }
+  })
+  }
 }
 // Create an instance of a PWA
 exports.pwa = new PWA();
