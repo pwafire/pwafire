@@ -1,7 +1,14 @@
 ## Install via NPM
 
+
 ```bash
 npm i pwafire
+```
+
+### Import pwafire in your React App
+
+```js
+import pwafire from 'pwafire';
 ```
 
 ### Require the pwafire npm package
@@ -10,6 +17,8 @@ npm i pwafire
 const pwafire = require('pwafire');
 const pwa = pwafire.pwa;
 ```
+
+
 
 ### 1. Copy Text
 Copy text to clipboard
