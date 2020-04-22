@@ -72,7 +72,7 @@ const data =  {
 pwa.Share(element, data);
 ```
 
-### 2. Contacts Picker
+### 3. Contacts Picker
 
 [Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the device's native contacts manager. **Chrome 77** or higher running on **Android M or later** required. 
 
