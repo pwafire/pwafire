@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Add New Web Capabilities to your PWAs",
   "main": "src/index.js",
   "scripts": {
@@ -12,7 +12,10 @@
   },
   "keywords": [
     "pwafire",
+    "pwa react",
     "pwa",
+    "progressive web app",
+    "progressive web apps",
     "workbox",
     "api",
     "copy tex",
