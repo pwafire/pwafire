@@ -42,4 +42,4 @@ const share = document.querySelector('.share-button');
 
 ```
 
-Checkout the complete codelab on our [devdoc here](https://pwafire.org/developer/codelabs/add-navigator-share/)
+Checkout the complete codelab on our [devdoc here](https://pwafire.org/developer/codelabs/add-web-share/)
