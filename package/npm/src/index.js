@@ -63,12 +63,46 @@ class PWA {
       }
       // Online Event...
       window.addEventListener("online", () => {
-         online();
+        online();
       });
 
     });
   }
-
+  // Copy Image...
+  copyImage(imgURL) {
+    // Copy: Writing image to the clipboard
+    try {
+      const data = await fetch(imgURL);
+      const blob = await data.blob();
+      await navigator.clipboard.write([
+        new ClipboardItem(Object.defineProperty({}, blob.type, {
+          value: blob,
+          enumerable: true
+        }))
+      ]);
+      console.log(`Image copied...`);
+    } catch (e) {
+      console.error(e, e.message);
+    }
+    // Paste : Image from clipboard...
+    async function Paste() {
+      try {
+        const clipboardItems = await navigator.clipboard.read();
+        for (const clipboardItem of clipboardItems) {
+          try {
+            for (const type of clipboardItem.types) {
+              const blob = await clipboardItem.getType(type);
+              console.log(URL.createObjectURL(blob));
+            }
+          } catch (e) {
+            console.error(e, e.message);
+          }
+        }
+      } catch (e) {
+        console.error(e, e.message);
+      }
+    }
+  }
   // Payment...
   Payment(element) {
     // Initiate Payment UI on click...
