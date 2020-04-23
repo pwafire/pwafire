@@ -97,18 +97,18 @@ pwa.Contacts(element, props, options);
 let contacts = pwa.Contacts(element, props, options);
 ```
 
-### Show PWA Connectivity status
+### 4. Show PWA Connectivity status
 Pass in two call back funtions, aka **online** and **offline** handlers.
 
 #### Declaring the two handlers separately
 
 ```js
 // Online handler...
-const online => () => {
+const online = () => {
   //...
 };
 // Offline handler...
-const offline => () => {
+const offline = () => {
   //...
 };
 ```

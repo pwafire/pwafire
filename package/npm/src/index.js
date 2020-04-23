@@ -56,19 +56,14 @@ class PWA {
   // Connectivity...
   Connectivity(online, offline) {
     // Once the DOM is loaded, check for connectivity...
-    document.addEventListener('DOMContentLoaded', event => {
-      if (!navigator.onLine) {
-        goOffline();
-      }
+    document.addEventListener('DOMContentLoaded', () => {
       // Offline Event...
-      function goOffline() {
-         offline()
-         return `You are offline...`;
+      if (!navigator.onLine) {
+        offline()
       }
       // Online Event...
       window.addEventListener("online", () => {
          online();
-         return `You are back online...`;
       });
 
     });
