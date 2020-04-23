@@ -104,9 +104,13 @@ Pass in two call back funtions, aka **online** and **offline** handlers.
 
 ```js
 // Online handler...
-const online => () => {};
+const online => () => {
+  //...
+};
 // Offline handler...
-const offline => () => {};
+const offline => () => {
+  //...
+};
 ```
 
 #### Call the connectivity method on pwa, adding the two parameters
