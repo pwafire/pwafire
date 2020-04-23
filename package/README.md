@@ -1,4 +1,4 @@
-## Add PWA from CDN to your JS Project
+### Add PWA from CDN to your JS Project
 
 ```html
  <!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
