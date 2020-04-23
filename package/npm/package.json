@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "1.6.2",
+  "version": "1.6.4",
   "description": "Add New Web Capabilities to your PWAs",
   "main": "src/index.js",
   "scripts": {
@@ -19,8 +19,8 @@
     "workbox",
     "api",
     "connectivity",
-    "olline hadler",
-    "offline hadler",
+    "olline handler",
+    "offline handler",
     "new web capabilities"
   ],
   "author": "Maye Edwin",
