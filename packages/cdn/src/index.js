@@ -10,7 +10,7 @@ const copyStyles = `
 class PWA {
   // Copy text...
   copyText(element) {
-    element.addEventListener("click", async event => {
+    element.addEventListener("click", async (event) => {
       let html = element.innerHTML;
       let text = element.innerText;
       try {
@@ -39,9 +39,9 @@ class PWA {
           new ClipboardItem(
             Object.defineProperty({}, blob.type, {
               value: blob,
-              enumerable: true
+              enumerable: true,
             })
-          )
+          ),
         ]);
         console.log("Image copied.");
         return `Image copied.`;
@@ -58,7 +58,7 @@ class PWA {
         navigator
           .share(data)
           .then(() => console.log(`Successful share`))
-          .catch(error => console.log(`Error sharing`, error));
+          .catch((error) => console.log(`Error sharing`, error));
       } else {
         console.log(`Web share not supported on desktop...`);
       }
@@ -91,11 +91,30 @@ class PWA {
       });
     });
   }
-
+  // Badge...
+  Badge(unreadCount) {
+    return {
+      get Set() {
+        navigator.setAppBadge(unreadCount).catch((error) => {
+          // Do something with the error.
+          console.log(error);
+        });
+        return `Set bage`;
+      },
+      get Clear() {
+        // Clear the badge
+        navigator.clearAppBadge().catch((error) => {
+          // Do something with the error.
+          console.log(error);
+        });
+        return `Clear badge`;
+      },
+    };
+  }
   // Payment...
   Payment(element) {
     // Initiate Payment UI on click...
-    element.addEventListener("click", event => {
+    element.addEventListener("click", (event) => {
       event.preventDefault();
       const paymentRequest = new PaymentRequest(
         paymentMethods,
@@ -105,11 +124,11 @@ class PWA {
       // Initiate user interface...
       paymentRequest
         .show()
-        .then(paymentResponse => {
+        .then((paymentResponse) => {
           // Validate with backend...
           return paymentResponse;
         })
-        .catch(err => {
+        .catch((err) => {
           // API error or user cancelled the payment
           console.log("Error:", err);
         });
