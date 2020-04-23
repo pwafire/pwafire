@@ -1,4 +1,4 @@
-import { pwa } from "./package/src/index.js";
+// import { pwa } from "./package/src/index.js";
 
 // 1. Copy from a single element...
 let element = document.getElementById("copy");
