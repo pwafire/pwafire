@@ -27,8 +27,96 @@ class PWA {
       }
     });
   }
+  // Copy image
+  copyImage(imgURL) {
+    Copy(imgURL);
+    async function Copy(imgURL) {
+      // Copy: Writing image to the clipboard
+      try {
+        const data = await fetch(imgURL);
+        const blob = await data.blob();
+        await navigator.clipboard.write([
+          new ClipboardItem(
+            Object.defineProperty({}, blob.type, {
+              value: blob,
+              enumerable: true
+            })
+          )
+        ]);
+        console.log("Image copied.");
+        return `Image copied.`;
+      } catch (e) {
+        console.error(e, e.message);
+      }
+    }
+  }
+  // Web Share...
+  Share(element, data) {
+    element.addEventListener(`click`, () => {
+      // Check if web share is supported
+      if (navigator.share) {
+        navigator
+          .share(data)
+          .then(() => console.log(`Successful share`))
+          .catch(error => console.log(`Error sharing`, error));
+      } else {
+        console.log(`Web share not supported on desktop...`);
+      }
+    });
+  }
+  // Contacts Picker...
+  Contacts(element, props, options) {
+    element.addEventListener("click", async () => {
+      try {
+        const contacts = await navigator.contacts.select(props, options);
+        // Return contacts...
+        return contacts;
+      } catch (error) {
+        // Handle any errors here...
+        alert(error);
+      }
+    });
+  }
+  // Connectivity...
+  Connectivity(online, offline) {
+    // Once the DOM is loaded, check for connectivity...
+    document.addEventListener("DOMContentLoaded", () => {
+      // Offline Event...
+      if (!navigator.onLine) {
+        offline();
+      }
+      // Online Event...
+      window.addEventListener("online", () => {
+        online();
+      });
+    });
+  }
+
+  // Payment...
+  Payment(element) {
+    // Initiate Payment UI on click...
+    element.addEventListener("click", event => {
+      event.preventDefault();
+      const paymentRequest = new PaymentRequest(
+        paymentMethods,
+        paymentDetails,
+        options
+      );
+      // Initiate user interface...
+      paymentRequest
+        .show()
+        .then(paymentResponse => {
+          // Validate with backend...
+          return paymentResponse;
+        })
+        .catch(err => {
+          // API error or user cancelled the payment
+          console.log("Error:", err);
+        });
+    });
+  }
 }
-// Create an instance of a PWA
+// Create an instance of PWA
 const pwa = new PWA();
 // Export the instance
-export { pwa };
+// export default pwa;
