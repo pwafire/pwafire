@@ -2,9 +2,7 @@
 
 [![Build Status](https://travis-ci.org/pwafire/pwafire.svg?branch=master)](https://travis-ci.org/pwafire/pwafire)
 
-Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You Build Better For The Modern Web.
-
-## Check [Documentation](https://pwafire.org)
+Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You Build Better For The Modern Web. Check  out our [Documentation](https://pwafire.org) site.
 
 ### Latest : Contacts Picker API
 
@@ -81,6 +79,3 @@ Propose your Feature by [Creating an Issue](https://github.com/pwafire/pwafire/i
 | License |License url |
 | --- | --- |
 | MIT License | [View License](https://github.com/pwafire/pwafire/blob/master/.github/LICENSE) |
-
-### Engage us 
-Donate a star, like, follow and contribute in any way. We're social. [Tweet us](https://twitter.com/pwafire).
