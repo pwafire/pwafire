@@ -52,7 +52,10 @@ class PWA {
         return contacts;
       } catch (error) {
         // Handle any errors here...
-        alert(error);
+        if(error === `TypeError: navigator.contacts is undefined`) {
+          alert(`Bowser not supported!`);
+        }
+        return error;
       }
     });
   }
