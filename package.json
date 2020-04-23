@@ -8,5 +8,6 @@
   },
   "scripts": {
     "test": "jshint ./bundle/default/service-worker.js"
-  }
+  },
+  "dependencies": {}
 }
