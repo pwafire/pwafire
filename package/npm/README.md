@@ -46,6 +46,12 @@ for (let el of elements) {
 
 Copy images to the clipboard(Only PNG suported currently).
 
+#### Get the image url, example
+
+```js
+const imgURL = `https://developers.google.com/web/updates/images/generic/file.png`;
+```
+
 #### Call the copyImage method on pwa
 
 ```js
