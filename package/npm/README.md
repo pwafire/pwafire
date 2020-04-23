@@ -20,7 +20,7 @@ const pwa = pwafire.pwa;
 
 ### 1. Copy Text
 
-Copy text to clipboard.
+Copy text to clipboard
 
 #### Copy from a single element
 
@@ -42,25 +42,10 @@ for (let el of elements) {
 }
 ```
 
-### 2. Copy Images
+### 2. Web Share
 
-Copy images to the clipboard(Only PNG suported currently).
-
-#### Get the image url, example
-
-```js
-const imgURL = `https://developers.google.com/web/updates/images/generic/file.png`;
-```
-
-#### Call the copyImage method on pwa
-
-```js
-pwa.copy(imgaURL);
-```
-
-### 3. Web Share
-
-Share links, text, and files to other apps installed on the device.
+The Web Share API makes it possible for web apps to share links, text, and files to
+other apps installed on the device.
 
 #### Add the share element(button)
 
@@ -87,9 +72,9 @@ const data =  {
 pwa.Share(element, data);
 ```
 
-### 4. Contacts Picker
+### 3. Contacts Picker
 
-Access contacts from the device's native contacts manager. **Chrome 77** or higher running on **Android M or later** required. 
+[Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the device's native contacts manager. **Chrome 77** or higher running on **Android M or later** required. 
 
 #### Add the contact picker element(button)
 
@@ -112,7 +97,7 @@ pwa.Contacts(element, props, options);
 let contacts = pwa.Contacts(element, props, options);
 ```
 
-### 5. Show PWA Connectivity status
+### 4. Show PWA Connectivity status
 Pass in two call back funtions, aka **online** and **offline** handlers.
 
 #### Declaring the two handlers separately
@@ -133,3 +118,4 @@ const offline = () => {
 ```js
 pwa.Connectivity(online, offline);
 ```
+
