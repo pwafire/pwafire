@@ -8,7 +8,6 @@ const copyStyles = `
     border-radius: 3px;`;
 // Declare the PWA Features class...
 class PWA {
-
   // Copy text...
   copyText(element) {
     element.addEventListener("click", async event => {
@@ -28,7 +27,6 @@ class PWA {
       }
     });
   }
-
   // Web Share...
   Share(element, data) {
     element.addEventListener(`click`, () => {
@@ -42,9 +40,8 @@ class PWA {
       }
     })
   }
-
   // Contacts Picker...
-  Contacts(element, props, options ) {
+  Contacts(element, props, options) {
     element.addEventListener("click", async () => {
       try {
         const contacts = await navigator.contacts.select(props, options);
@@ -52,13 +49,55 @@ class PWA {
         return contacts;
       } catch (error) {
         // Handle any errors here...
-        if(error === `TypeError: navigator.contacts is undefined`) {
-          alert(`Bowser not supported!`);
-        }
-        return error;
+        alert(error);
       }
     });
   }
+  // Connectivity...
+  Connectivity(online, offline) {
+    // Once the DOM is loaded, check for connectivity...
+    document.addEventListener('DOMContentLoaded', event => {
+      if (!navigator.onLine) {
+        goOffline();
+      }
+      // Offline Event...
+      function goOffline() {
+         offline()
+         return `You are offline...`;
+      }
+      // Online Event...
+      window.addEventListener("online", () => {
+         online();
+         return `You are back online...`;
+      });
+
+    });
+  }
+
+  // Payment...
+  Payment(element) {
+    // Initiate Payment UI on click...
+    element.addEventListener("click", event => {
+      event.preventDefault();
+      const paymentRequest = new PaymentRequest(
+        paymentMethods,
+        paymentDetails,
+        options
+      );
+      // Initiate user interface...
+      paymentRequest
+        .show()
+        .then(paymentResponse => {
+          // Validate with backend...
+          return paymentResponse
+        })
+        .catch(err => {
+          // API error or user cancelled the payment
+          console.log("Error:", err);
+        });
+    });
+  }
+
 }
 // Create an instance of a PWA
 exports.pwa = new PWA();

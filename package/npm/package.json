@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "1.5.7",
+  "version": "1.5.91",
   "description": "Add New Web Capabilities to your PWAs",
   "main": "src/index.js",
   "scripts": {

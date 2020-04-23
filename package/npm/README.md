@@ -4,7 +4,7 @@
 npm i pwafire
 ```
 
-### Import pwafire in your React App
+### Import pwafire in your react app
 
 ```js
 import pwafire from "pwafire";
@@ -96,3 +96,22 @@ pwa.Contacts(element, props, options);
 // You can save the return value in a vaibale...
 let contacts = pwa.Contacts(element, props, options);
 ```
+
+### Show PWA Connectivity status
+Pass in two call back funtions, aka **online** and **offline** handlers.
+
+#### Declaring the two handlers separately
+
+```js
+// Online handler...
+const online => () => {};
+// Offline handler...
+const offline => () => {};
+```
+
+#### Call the connectivity method on pwa, adding the two parameters
+
+```js
+pwa.Connectivity(online, offline);
+```
+
