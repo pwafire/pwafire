@@ -4,17 +4,9 @@
 
 Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You Build Better For The Modern Web.
 
-## About [pwafire.org](https://pwafire.org)
+## Check [Documentation](https://pwafire.org)
 
-Our mission is to make your **webdev** environment fully stacked up for best web development practices with Progressive Web Apps. 
-
-## Setting up the PWA Development Environment 
-
-We have a **PWA Developer Tips** [Repo here](https://github.com/mayeedwin/pwadev-tips) to help guide you if you're just starting up or want to have your setup checklist done right ✅
-
-## [What's NEW? ]() => v 4.0.6
-
-### Contacts Picker API
+### Latest : Contacts Picker API
 
 **Note : Chrome 77 or higher running on Android M or later required!**
 
@@ -32,10 +24,7 @@ has access to your contacts' names, emails, and telephone numbers.
  <button id="contact-picker"> Pick Contacts </button>
 ```
 
-## What's PWA Fire Bundle?
-
-A Collection of **New Web Capabilities**. Just add the source code in what we call **a plug-n-play code anatomy** and have your favourite Browser's PWA Capability up in your Progressive Web App.
-Below is a list of all these Capabilities.
+## PWA : New Web Capabilities
 
 | Feature | Documentation | Feature | Documentation |
 | --- | --- | --- | --- |
@@ -46,14 +35,7 @@ Below is a list of all these Capabilities.
 | Contact Picker | [Documentation](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) | Progressive Loading | [Documentation](https://github.com/mayeedwin/pwafire/tree/master/bundle/loading) 
 | Copy | [Documentation ](https://github.com/mayeedwin/pwafire/tree/master/bundle/copy/) | View All, 15 + | [View Bundle](https://github.com/mayeedwin/pwafire/tree/master/bundle/)
 
-## Examples of Progressive Web Apps Built with PWA Fire Bundle
-
-| Progressive Web App | Web App Link | Progressive Web App | Web App Link |
-| --- | --- | --- | --- |
-| Maye Edwin | [View Now](https://maye.pwafire.org) | PWA Fire Devsite | [View Now](https://pwafire.org) | 
-| GDG Eldoret | [View Now](https://gdgeldoret.com) | GDG Jalandhar | [View Now](https://gdgjalandhar.com) | 
-
-## Join the conversation 
+## Chat : Join the conversation 
 Follow our [Developer Account](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
 
 | Communication Channel | Talk to us |
