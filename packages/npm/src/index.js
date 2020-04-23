@@ -81,6 +81,26 @@ class PWA {
       }
     };
   }
+  // Badge...
+  Badge(unreadCount) {
+    return {
+      get Set() {
+        navigator.setAppBadge(unreadCount).catch(error => {
+          // Do something with the error.
+          console.log(error);
+        });
+        return `Set bage`;
+      },
+      get Clear() {
+        // Clear the badge
+        navigator.clearAppBadge().catch(error => {
+          // Do something with the error.
+          console.log(error);
+        });
+        return `Clear badge`;
+      }
+    };
+  }
   // Payment...
   Payment(element) {
     // Initiate Payment UI on click...
