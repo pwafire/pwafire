@@ -63,12 +63,24 @@ class PWA {
       }
       // Online Event...
       window.addEventListener("online", () => {
-         online();
+        online();
       });
 
     });
   }
-
+  // Copy Image...
+  copyImage(element, imgURL) {
+    element.onclick = async () => {
+      try {
+        const blobInput = await loadBlob(imgURL);
+        const clipboardItemInput = new ClipboardItem({'image/png' : blobInput});
+        await navigator.clipboard.write([clipboardItemInput]);
+         log('Image copied to clipboard.');
+      } catch(error) {
+        log(error);
+      }
+    };
+  }
   // Payment...
   Payment(element) {
     // Initiate Payment UI on click...
