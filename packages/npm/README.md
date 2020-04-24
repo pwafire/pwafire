@@ -44,7 +44,7 @@ for (let el of elements) {
 
 ### 2. Web Share
 
-The Web Share API makes it possible for web apps to share links, text, and files to
+Share links, text, and files to
 other apps installed on the device.
 
 #### Add the share element(button)
@@ -74,7 +74,7 @@ pwa.Share(element, data);
 
 ### 3. Contacts Picker
 
-[Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the device's native contacts manager. **Chrome 77** or higher running on **Android M or later** required. 
+Access contacts from the device's native contacts manager. **Chrome 77** or higher running on **Android M or later** required. 
 
 #### Add the contact picker element(button)
 
@@ -98,7 +98,8 @@ let contacts = pwa.Contacts(element, props, options);
 ```
 
 ### 4. Show PWA Connectivity status
-Pass in two call back funtions, aka **online** and **offline** handlers.
+
+Pass in two call back funtions, a.k.a **online** and **offline** handlers.
 
 #### Declaring the two handlers separately
 
