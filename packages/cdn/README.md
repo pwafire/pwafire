@@ -121,3 +121,151 @@ const offline = () => {
 ```js
 pwa.Connectivity(online, offline);
 ```
+
+### 6. Web Payments
+
+Allows users select their preferred way of **paying for things**, and make that information
+available to **a merchant.**
+
+#### Call Payment method with three arguments
+
+```js
+let paymentResponse = pwa.Payment(pay, paydata, validatePayment);
+```
+
+#### Example : compute total amount to pay
+
+```js
+// Calculations...
+const payment = {
+  price: 1,
+  discount: 1,
+  get total() {
+    return this.price + this.tax - this.discount;
+  },
+  get tax() {
+    return 0.14 * this.price;
+  }
+};
+
+// Destructure payment object...
+const { price, tax, discount, total } = payment;
+```
+
+#### Set Payment methods
+
+```js
+const paymentMethods = [
+  {
+    supportedMethods: ["basic-card"],
+    data: {
+      supportedNetworks: ["visa", "mastercard"]
+    }
+  }
+];
+```
+
+#### Set Payment details
+
+```js
+const paymentDetails = {
+  total: {
+    label: "Total Amount",
+    amount: {
+      currency: "KSH",
+      value: total
+    }
+  },
+  ```
+
+#### Set other items to display
+  
+```js
+displayItems: [
+    {
+      label: "Discount",
+      amount: {
+        currency: "KSH",
+        value: discount
+      }
+    },
+    {
+      label: "Taxes, 14% V.A.T",
+      amount: {
+        currency: "KSH",
+        value: tax
+      }
+    }
+  ]
+};
+```
+
+#### Requesting additional info
+
+```js
+const options = {
+  requestPayerName: true,
+  requestPayerEmail: true
+};
+```
+
+#### Create paydata object
+
+```js
+const paydata = {
+  paymentMethods,
+  paymentDetails,
+  options
+};
+```
+
+#### Validate payment
+
+```js
+const validatePayment = paymentResponse => {
+  
+  // Destructure to get payment responses
+  const { details, shippingAddress, shippingOption } = paymentResponse;
+
+  // Destructure to get card details...
+  const {
+    cardNumber,
+    cardSecurityCode,
+    cardholderName,
+    expiryMonth,
+    expiryYear
+  } = details;
+
+  // Destructure to get billing address...
+  const {
+    addressLine,
+    city,
+    country,
+    dependentLocality,
+    organization,
+    phone,
+    postalCode,
+    recipient,
+    region,
+    sortingCode
+  } = details.billingAddress;
+
+  // Validate...
+  let condition;
+  if (condition) {
+    // Return sucess
+    return paymentResponse.complete("success");
+    //...
+  } else {
+    // Return failure
+    return paymentResponse.complete("failure");
+    
+  }
+};
+```
+
+### Call Payment method, returns a payment response
+
+```js
+const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
+```

@@ -112,23 +112,23 @@ class PWA {
     };
   }
   // Payment...
-  Payment(element) {
+  Payment(element, paydata, validatePayment) {
     // Initiate Payment UI on click...
-    element.addEventListener("click", (event) => {
+    element.addEventListener("click", event => {
       event.preventDefault();
       const paymentRequest = new PaymentRequest(
-        paymentMethods,
-        paymentDetails,
-        options
+        paydata.paymentMethods,
+        paydata.paymentDetails,
+        paydata.options
       );
       // Initiate user interface...
       paymentRequest
         .show()
-        .then((paymentResponse) => {
+        .then(paymentResponse => {
           // Validate with backend...
-          return paymentResponse;
+          validatePayment(paymentResponse);
         })
-        .catch((err) => {
+        .catch(err => {
           // API error or user cancelled the payment
           console.log("Error:", err);
         });
