@@ -223,7 +223,6 @@ const paydata = {
 
 ```js
 const validatePayment = paymentResponse => {
-  
   // Destructure to get payment responses
   const { details, shippingAddress, shippingOption } = paymentResponse;
 
