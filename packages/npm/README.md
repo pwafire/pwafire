@@ -1,4 +1,4 @@
-## Install via NPM
+## Install pwafire via NPM
 
 ```bash
 npm i pwafire
@@ -17,6 +17,8 @@ const pwa = pwafire.pwa;
 const pwafire = require("pwafire");
 const pwa = pwafire.pwa;
 ```
+
+All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
 
 ### 1. Copy Text
 

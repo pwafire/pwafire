@@ -4,6 +4,9 @@
  <!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
  <script src="https://pwafire.org/code/cdn/releases/1.0.0/pwafire.js"></script>
 ```
+
+All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
+
 ### 1. Copy Text
 
 Copy text to clipboard
