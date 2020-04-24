@@ -1,4 +1,4 @@
-## Install pwafire via NPM
+## 🦴 Install pwafire via NPM
 
 ```bash
 npm i pwafire
