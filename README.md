@@ -29,13 +29,13 @@ Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You B
    import pwafire from "pwafire";
    const pwa = pwafire.pwa;
 ```
-Preview Documentation : [Get Started](https://github.com/pwafire/pwafire/tree/master/packages )
-
-### Example :  Call the share method on pwa
+#### Call the share method on pwa
 
 ```js
    pwa.Share(element, data);
 ```
+Preview Documentation : [Get Started](https://github.com/pwafire/pwafire/tree/master/packages)
+
 ## PWA : New Web Capabilities
 
 | Feature | Documentation | Feature | Documentation |
