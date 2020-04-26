@@ -125,6 +125,18 @@ class PWA {
     });
   }
 
+  //open Fullscreen on click
+  Fullscreen(element) {
+    element.addEventListener("click", event => {
+      event.preventDefault();
+
+      if(document.fullscreenEnabled) {
+        document.documentElement.requestFullscreen();
+      }
+
+    })
+  }
+
 }
 // Create an instance of a PWA
 exports.pwa = new PWA();
