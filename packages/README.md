@@ -287,7 +287,7 @@ pwa.Fullscreen(element);
 
 ### 8. Notifications
 
-Show notification request on click element
+Show notification request on a click event
 
 #### Add the specific element(eg button)
 
