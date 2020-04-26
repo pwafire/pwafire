@@ -10,7 +10,7 @@ const copyStyles = `
 class PWA {
   // Copy text...
   copyText(element) {
-    element.addEventListener("click", async event => {
+    element.addEventListener("click", async (event) => {
       let html = element.innerHTML;
       let text = element.innerText;
       try {
@@ -32,13 +32,14 @@ class PWA {
     element.addEventListener(`click`, () => {
       // Check if web share is supported
       if (navigator.share) {
-        navigator.share(data)
+        navigator
+          .share(data)
           .then(() => console.log(`Successful share`))
           .catch((error) => console.log(`Error sharing`, error));
       } else {
         console.log(`Web share not supported on desktop...`);
       }
-    })
+    });
   }
   // Contacts Picker...
   Contacts(element, props, options) {
@@ -56,16 +57,15 @@ class PWA {
   // Connectivity...
   Connectivity(online, offline) {
     // Once the DOM is loaded, check for connectivity...
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener("DOMContentLoaded", () => {
       // Offline Event...
       if (!navigator.onLine) {
-        offline()
+        offline();
       }
       // Online Event...
       window.addEventListener("online", () => {
         online();
       });
-
     });
   }
   // Copy Image...
@@ -73,9 +73,11 @@ class PWA {
     element.onclick = async () => {
       try {
         const blobInput = await loadBlob(imgURL);
-        const clipboardItemInput = new ClipboardItem({ 'image/png': blobInput });
+        const clipboardItemInput = new ClipboardItem({
+          "image/png": blobInput,
+        });
         await navigator.clipboard.write([clipboardItemInput]);
-        log('Image copied to clipboard.');
+        log("Image copied to clipboard.");
       } catch (error) {
         log(error);
       }
@@ -85,7 +87,7 @@ class PWA {
   Badge(unreadCount) {
     return {
       get Set() {
-        navigator.setAppBadge(unreadCount).catch(error => {
+        navigator.setAppBadge(unreadCount).catch((error) => {
           // Do something with the error.
           console.log(error);
         });
@@ -93,18 +95,18 @@ class PWA {
       },
       get Clear() {
         // Clear the badge
-        navigator.clearAppBadge().catch(error => {
+        navigator.clearAppBadge().catch((error) => {
           // Do something with the error.
           console.log(error);
         });
         return `Clear badge`;
-      }
+      },
     };
   }
   // Payment...
   Payment(element, paydata, validatePayment) {
     // Initiate Payment UI on click...
-    element.addEventListener("click", event => {
+    element.addEventListener("click", (event) => {
       event.preventDefault();
       const paymentRequest = new PaymentRequest(
         paydata.paymentMethods,
@@ -114,40 +116,44 @@ class PWA {
       // Initiate user interface...
       paymentRequest
         .show()
-        .then(paymentResponse => {
+        .then((paymentResponse) => {
           // Validate with backend...
           validatePayment(paymentResponse);
         })
-        .catch(err => {
+        .catch((err) => {
           // API error or user cancelled the payment
           console.log("Error:", err);
         });
     });
   }
-
-  //open Fullscreen on click
+  // Fullscreen...
   Fullscreen(element) {
-    element.addEventListener("click", event => {
+    element.addEventListener("click", (event) => {
       event.preventDefault();
 
-      if(document.fullscreenEnabled) {
+      if (document.fullscreenEnabled) {
         document.documentElement.requestFullscreen();
       }
-
-    })
+    });
   }
-
-  //Notification request on click
+  // Notification...
   Notification(element) {
-    element.addEventListener("click", event => {
+    element.addEventListener("click", (event) => {
       event.preventDefault();
-
-      if(Notification) {
-        Notification.requestPermission();
+      console.log(`click`);
+      if ("Notification" in window) {
+        Notification.requestPermission()
+          .then((permission) => {
+            console.log(permission);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        return `Notifications not supported.`;
       }
-    })
+    });
   }
-
 }
 // Create an instance of a PWA
 exports.pwa = new PWA();

@@ -114,7 +114,7 @@ class PWA {
   // Payment...
   Payment(element, paydata, validatePayment) {
     // Initiate Payment UI on click...
-    element.addEventListener("click", event => {
+    element.addEventListener("click", (event) => {
       event.preventDefault();
       const paymentRequest = new PaymentRequest(
         paydata.paymentMethods,
@@ -124,40 +124,46 @@ class PWA {
       // Initiate user interface...
       paymentRequest
         .show()
-        .then(paymentResponse => {
+        .then((paymentResponse) => {
           // Validate with backend...
           validatePayment(paymentResponse);
         })
-        .catch(err => {
+        .catch((err) => {
           // API error or user cancelled the payment
           console.log("Error:", err);
         });
     });
   }
-
-  //open Fullscreen on click
+  // Fullscreen...
   Fullscreen(element) {
-    element.addEventListener("click", event => {
+    element.addEventListener("click", (event) => {
       event.preventDefault();
 
-      if(document.fullscreenEnabled) {
+      if (document.fullscreenEnabled) {
         document.documentElement.requestFullscreen();
       }
-
-    })
+    });
   }
-
-  //Notification request on click
+  // Notification...
   Notification(element) {
-    element.addEventListener("click", event => {
+    element.addEventListener("click", (event) => {
       event.preventDefault();
-
-      if(Notification) {
-        Notification.requestPermission();
+      console.log(`click`);
+      if ("Notification" in window) {
+        Notification.requestPermission()
+          .then((permission) => {
+            console.log(permission);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        return `Notifications not supported.`;
       }
-    })
+    });
   }
 }
+
 // Create an instance of PWA
 const pwa = new PWA();
 // Export the instance
