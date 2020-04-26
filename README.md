@@ -4,24 +4,38 @@
 
 Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You Build Better For The Modern Web. Check  out our [Documentation](https://pwafire.org) site.
 
-### Latest : Contacts Picker API
+## Introducing *pwafire* cdn and npm 
 
-**Note : Chrome 77 or higher running on Android M or later required!**
+ All New Web Capabilities as one Package! All APIs bundled together.
 
-It allows a Web Application to access contacts from the device's native contacts manager. Your Web App 
-has access to your contacts' names, emails, and telephone numbers. 
+### Install pwafire via NPM
 
-### How to setup?
-
-1. In your **App**, create an empty **contactPicker.js** file and copy and paste [this code snippet to it](https://github.com/pwafire/pwafire/blob/master/bundle/contact-picker/src/contactPicker.js) to it. Then save your chnages!
-
-2. Remember to add the contact picker button element to your web page.
-
-```html
-<!-- Add this button to your App -->
- <button id="contact-picker"> Pick Contacts </button>
+```bash
+   npm i pwafire
 ```
 
+### Get pwafire over CDN
+
+```html
+   <!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
+   <script crossorigi src="https://pwafire.org/code/cdn/releases/1.0.0/pwafire.js"></script>
+```
+
+### Example : using *pwafire*
+
+#### Import pwafire in your react app
+
+```js
+   import pwafire from "pwafire";
+   const pwa = pwafire.pwa;
+```
+Preview Documentation : [Get Started](https://github.com/pwafire/pwafire/tree/master/packages )
+
+### Example :  Call the share method on pwa
+
+```js
+   pwa.Share(element, data);
+```
 ## PWA : New Web Capabilities
 
 | Feature | Documentation | Feature | Documentation |
