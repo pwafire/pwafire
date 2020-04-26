@@ -137,6 +137,17 @@ class PWA {
     })
   }
 
+  //Notification request on click
+  Notification(element) {
+    element.addEventListener("click", event => {
+      event.preventDefault();
+
+      if(Notification) {
+        Notification.requestPermission();
+      }
+    })
+  }
+
 }
 // Create an instance of a PWA
 exports.pwa = new PWA();
