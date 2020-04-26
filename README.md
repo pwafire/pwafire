@@ -17,7 +17,7 @@ Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You B
 ### Or get pwafire NPM package via CDN
 
 ```js
-<script crossorigin src="https://unpkg.com/pwabuilder-components@latest"></script>
+<script crossorigin src="https://unpkg.com/pwafire@latest"></script>
 ```
 
 ### Get pwafire over CDN
