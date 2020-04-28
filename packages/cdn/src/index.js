@@ -142,12 +142,6 @@ class PWA {
       if (document.fullscreenEnabled) {
         document.documentElement.requestFullscreen();
       }
-        
-      setTimeout(() => {
-        if(document.fullscreenElement) {
-          element.style.display = `none`
-        }
-       }, 1000);
     });
   }
   // Notification...
