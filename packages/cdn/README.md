@@ -269,21 +269,34 @@ const validatePayment = paymentResponse => {
 const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
 ```
 
-### 6. Fullscreen
+### 7. Fullscreen
 
-Open app in fullscreen on click element
+Open app in fullscreen on a click event
 
 #### Add the specific element(eg button)
 
 ```js
 const element = document.querySelector(".fullscreen-button");
 ```
-### 7. Notifications
 
-Show notification request on click element
+#### Call the fullscreen method
+
+```js
+pwa.Fullscreen(element);
+```
+
+### 8. Notifications
+
+Show notification request on a click event
 
 #### Add the specific element(eg button)
 
 ```js
 const element = document.querySelector(".notification-button");
+```
+
+#### Call the notification method
+
+```js
+pwa.Notification(element);
 ```
