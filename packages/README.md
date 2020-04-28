@@ -37,6 +37,6 @@
 
 ### Get started
 
- - Over [NPM docs]()
+ - Over [NPM docs](https://github.com/pwafire/pwafire/tree/master/packages/npm)
  
- - Over [CDN docs]()
+ - Over [CDN docs](https://github.com/pwafire/pwafire/tree/master/packages/cdn)
