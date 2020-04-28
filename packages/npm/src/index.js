@@ -134,6 +134,10 @@ class PWA {
       if (document.fullscreenEnabled) {
         document.documentElement.requestFullscreen();
       }
+        
+     if(document.fullscreenElement) {
+         element.style.display = `none`
+     }
     });
   }
   // Notification...
