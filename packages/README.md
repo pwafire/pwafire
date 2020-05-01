@@ -10,7 +10,7 @@
 
 ### Or get pwafire NPM version via CDN
 
-```js
+```html
    <script crossorigin src="https://unpkg.com/pwafire@latest"></script>
 ```
 
