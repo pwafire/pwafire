@@ -39,7 +39,7 @@ Preview Documentation : [Get Started](https://github.com/pwafire/pwafire/tree/ma
 ## PWA : New Web Capabilities
 
 | Feature | Feature |
-| --- | --- | --- | --- |
+| --- | --- |
 | Custom Install Button | Offline Capabilities | 
 Background Sync | Native App Install Banner | 
 | Badging |  Web Share | 
