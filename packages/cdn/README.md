@@ -252,13 +252,13 @@ const validatePayment = paymentResponse => {
   // Validate...
   let condition;
   if (condition) {
+    //...
     // Return sucess
     return paymentResponse.complete("success");
-    //...
   } else {
+    //...
     // Return failure
     return paymentResponse.complete("failure");
-    
   }
 };
 ```
