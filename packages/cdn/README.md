@@ -2,7 +2,7 @@
 
 ```html
  <!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
- <script crossorigin="anonymous" src="https://pwafire.org/code/cdn/releases/1.0.0/pwafire.js"></script>
+ <script crossorigin="anonymous" src="https://pwafire.org/code/cdn/releases/@latest/pwafire.js"></script>
 ```
 ### 1. Copy Text
 

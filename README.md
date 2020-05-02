@@ -18,7 +18,7 @@ Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
 
 ```html
  <!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
- <script crossorigi src="https://pwafire.org/code/cdn/releases/1.0.0/pwafire.js"></script>
+ <script crossorigi src="https://pwafire.org/code/cdn/releases/@latest/pwafire.js"></script>
 ```
 
 ### Example : using *pwafire*
@@ -45,7 +45,7 @@ Background Sync | Native App Install Banner |
 | Badging |  Web Share | 
 | Contact Picker |  Copy Text, PNG | 
 | Share Target |  Periodic Background Sync | 
-| View All, 15 + | [All Here](https://github.com/mayeedwin/pwafire/tree/master/bundle/)
+| View All, 15 + | [All Here](https://github.com/pwafire/pwafire/tree/master/bundle/)
 
 ## Chat : Join the conversation 
 
