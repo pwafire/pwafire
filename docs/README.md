@@ -39,9 +39,7 @@ Read more about Web Manifest [on this tech doc](https://pwafire.org/developer/do
 Follow the steps as commented in the code below in order to correctly configure the *service-worker.js* file.
 
 ```javascript
-// learn more at pwafire.org
-
-/* Fetch events, on registration of service worker... */  
+// Fetch events, on registration of service worker...
 self.addEventListener('fetch', (event) => {
   event.respondWith(caches.open('cache').then((cache) => {
     return cache.match(event.request).then((response) => {
@@ -57,14 +55,14 @@ console.log("fetch completed: " + event.request.url, networkResponse);
 // Rejected promise - just ignore it, we're offline...  
           console.log("Error in fetch()", event);
           event.waitUntil(
-// Our 'cache' here is named *cache* in the caches.open()
+// Name the *cache* in the caches.open()...
           caches.open('cache').then((cache) => { 
           // Take a list of URLs, then fetch them from the server and add the response to the cache...
           return cache.addAll
           ([                    
-        './index.html', // Cache your index page
-        './assets/css/app.main.css', // Cache app.main css
-        './images/*', // Cache all images
+        './index.html', 
+        './assets/css/app.main.css', 
+        './images/*',
         './app.webmanifest',
 // External url fetch, twitter's as an example...
         'https://platform.twitter.com/widgets.js',       
