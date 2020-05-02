@@ -33,7 +33,7 @@ Copy png images to clipboard
 #### Add the image element or copy element(button)
 
 ```js
-const img = document.querySelector(".copy-image");
+const img = document.getElementById("copy-image");
 const imgURL = img.src;
 ```
 
@@ -53,7 +53,7 @@ Share links, text, and files to other apps installed on the device.
 #### Add the share element(button)
 
 ```js
-const element = document.querySelector(".share-button");
+const element = document.getElementById("share-button");
 ```
 
 #### Define the data object to be shared
@@ -82,7 +82,7 @@ pwa.Share(element, data);
 #### Add the contact picker element(button)
 
 ```js
-const element = document.querySelector(".contacts-picker");
+const element = document.getElementById("contacts-picker");
 ```
 
 #### Define the "properties" and "select type" option you need
@@ -276,7 +276,7 @@ Open app in fullscreen on a click event
 #### Add the specific element(eg button)
 
 ```js
-const element = document.querySelector(".fullscreen-button");
+const element = document.getElementById("fullscreen-button");
 ```
 
 #### Call the fullscreen method
@@ -292,7 +292,7 @@ Show notification request on a click event
 #### Add the specific element(eg button)
 
 ```js
-const element = document.querySelector(".notification-button");
+const element = document.getElementById("notification-button");
 ```
 
 #### Call the notification method

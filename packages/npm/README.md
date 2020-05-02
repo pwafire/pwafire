@@ -52,7 +52,7 @@ other apps installed on the device.
 #### Add the share element(button)
 
 ```js
-const element = document.querySelector(".share-button");
+const element = document.getElementById("share-button");
 ```
 
 #### Define the data object to be shared
@@ -81,7 +81,7 @@ Access contacts from the device's native contacts manager. **Chrome 77** or high
 #### Add the contact picker element(button)
 
 ```js
-const element = document.querySelector(".contacts-picker");
+const element = document.getElementById("contacts-picker");
 ```
 
 #### Define the "properties" and "select type" option you need
@@ -252,13 +252,13 @@ const validatePayment = paymentResponse => {
   // Validate...
   let condition;
   if (condition) {
+    //...
     // Return sucess
     return paymentResponse.complete("success");
-    //...
   } else {
+    //...
     // Return failure
     return paymentResponse.complete("failure");
-    
   }
 };
 ```
@@ -276,7 +276,7 @@ Open app in fullscreen on a click event
 #### Add the specific element(eg button)
 
 ```js
-const element = document.querySelector(".fullscreen-button");
+const element = document.getElementById("fullscreen-button");
 ```
 
 #### Call the fullscreen method
@@ -292,7 +292,7 @@ Show notification request on a click event
 #### Add the specific element(eg button)
 
 ```js
-const element = document.querySelector(".notification-button");
+const element = document.getElementById("notification-button");
 ```
 
 #### Call the notification method
