@@ -2,11 +2,11 @@
 
 [![Build Status](https://travis-ci.org/pwafire/pwafire.svg?branch=master)](https://travis-ci.org/pwafire/pwafire)
 
-Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You Build Better For The Modern Web. Check  out our [Documentation](https://pwafire.org) site.
+Build Scalable Progressive Web Apps/First Experiences. Visit [Documentation](https://pwafire.org) site.
 
 ## Introducing *pwafire* cdn and npm 
 
- All New Web Capabilities as one Package! All APIs bundled together.
+Progressive Web Apps API of APIs. All New Web Capabilities as one Package! All APIs bundled together.
 
 ### Install pwafire via NPM
 
