@@ -68,20 +68,24 @@ class PWA {
       });
     });
   }
-  // Copy Image...
-  copyImage(element, imgURL) {
-    element.onclick = async () => {
-      try {
-        const blobInput = await loadBlob(imgURL);
-        const clipboardItemInput = new ClipboardItem({
-          "image/png": blobInput,
-        });
-        await navigator.clipboard.write([clipboardItemInput]);
-        log("Image copied to clipboard.");
-      } catch (error) {
-        log(error);
-      }
-    };
+  // Copy image
+  async copyImage(imgURL) {
+    try {
+      const data = await fetch(imgURL);
+      const blob = await data.blob();
+      await navigator.clipboard.write([
+        new ClipboardItem(
+          Object.defineProperty({}, blob.type, {
+            value: blob,
+            enumerable: true,
+          })
+        ),
+      ]);
+      console.log("Image copied.");
+      return `Image copied.`;
+    } catch (e) {
+      console.error(e, e.message);
+    }
   }
   // Badge...
   Badge(unreadCount) {

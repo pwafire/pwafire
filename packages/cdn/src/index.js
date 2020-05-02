@@ -28,41 +28,23 @@ class PWA {
     });
   }
   // Copy image
-  copyImage(imgURL) {
-    Copy(imgURL);
-    async function Copy(imgURL) {
-      // Copy: Writing image to the clipboard
-      try {
-        const data = await fetch(imgURL);
-        const blob = await data.blob();
-        await navigator.clipboard.write([
-          new ClipboardItem(
-            Object.defineProperty({}, blob.type, {
-              value: blob,
-              enumerable: true,
-            })
-          ),
-        ]);
-        console.log("Image copied.");
-        return `Image copied.`;
-      } catch (e) {
-        console.error(e, e.message);
-      }
+  async copyImage(imgURL) {
+    try {
+      const data = await fetch(imgURL);
+      const blob = await data.blob();
+      await navigator.clipboard.write([
+        new ClipboardItem(
+          Object.defineProperty({}, blob.type, {
+            value: blob,
+            enumerable: true,
+          })
+        ),
+      ]);
+      console.log("Image copied.");
+      return `Image copied.`;
+    } catch (e) {
+      console.error(e, e.message);
     }
-  }
-  // Web Share...
-  Share(element, data) {
-    element.addEventListener(`click`, () => {
-      // Check if web share is supported
-      if (navigator.share) {
-        navigator
-          .share(data)
-          .then(() => console.log(`Successful share`))
-          .catch((error) => console.log(`Error sharing`, error));
-      } else {
-        console.log(`Web share not supported on desktop...`);
-      }
-    });
   }
   // Contacts Picker...
   Contacts(element, props, options) {
