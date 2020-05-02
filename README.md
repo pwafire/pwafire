@@ -38,20 +38,22 @@ Preview Documentation : [Get Started](https://github.com/pwafire/pwafire/tree/ma
 
 ## PWA : New Web Capabilities
 
-| Feature | Documentation | Feature | Documentation |
+| Feature | Feature |
 | --- | --- | --- | --- |
-| Install Button | [Documentation](https://github.com/pwafire/pwafire/tree/master/bundle/install) | Offline Capabilities | [Documentation](https://github.com/mayeedwin/pwafire)
-| Background Sync | [Documentation](https://github.com/mayeedwin/pwafire/tree/master/bundle/background-sync) | Native App Install Banner | [Documentation](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install) |
-| Badging | [Documentation](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging) | Web Share | [Documentation](https://github.com/mayeedwin/pwafire/tree/master/bundle/web-share) |
-| Contact Picker | [Documentation](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) | Progressive Loading | [Documentation](https://github.com/mayeedwin/pwafire/tree/master/bundle/loading) 
-| Copy | [Documentation ](https://github.com/mayeedwin/pwafire/tree/master/bundle/copy/) | View All, 15 + | [View Bundle](https://github.com/mayeedwin/pwafire/tree/master/bundle/)
+| Custom Install Button | Offline Capabilities | 
+Background Sync | Native App Install Banner | 
+| Badging |  Web Share | 
+| Contact Picker |  Copy Text, PNG | 
+| Share Target |  Periodic Background Sync | 
+| View All, 15 + | [All Here](https://github.com/mayeedwin/pwafire/tree/master/bundle/)
 
 ## Chat : Join the conversation 
+
 Follow our [Developer Account](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
 
 | Communication Channel | Talk to us |
 | --- | --- |
-| Live Twitter Chat | [Tweet us](https://twitter.com/pwafire) |
+| Twitter Chat | [Tweet us](https://twitter.com/pwafire) |
 | Slack Workspace | [Join Workspace](http://bit.ly/2oPNK7S) |
 
 ## Contributors
@@ -89,6 +91,6 @@ Support this project with your organization. Your logo will show up here with a 
 Propose your Feature by [Creating an Issue](https://github.com/pwafire/pwafire/issues/new)
 
 ### License
-| License |License url |
+| License | Link |
 | --- | --- |
 | MIT License | [View License](https://github.com/pwafire/pwafire/blob/master/.github/LICENSE) |
