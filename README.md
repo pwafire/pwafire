@@ -2,23 +2,23 @@
 
 [![Build Status](https://travis-ci.org/pwafire/pwafire.svg?branch=master)](https://travis-ci.org/pwafire/pwafire)
 
-Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You Build Better For The Modern Web. Check  out our [Documentation](https://pwafire.org) site.
+Build Scalable Progressive Web Apps/First Experiences. Visit [Documentation](https://pwafire.org) site.
 
 ## Introducing *pwafire* cdn and npm 
 
- All New Web Capabilities as one Package! All APIs bundled together.
+Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
 
 ### Install pwafire via NPM
 
 ```bash
-   npm i pwafire
+ npm i pwafire
 ```
 
 ### Get pwafire over CDN
 
 ```html
-   <!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
-   <script crossorigi src="https://pwafire.org/code/cdn/releases/1.0.0/pwafire.js"></script>
+ <!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
+ <script crossorigi src="https://pwafire.org/code/cdn/releases/1.0.0/pwafire.js"></script>
 ```
 
 ### Example : using *pwafire*
@@ -26,13 +26,13 @@ Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You B
 #### Import pwafire in your react app
 
 ```js
-   import pwafire from "pwafire";
-   const pwa = pwafire.pwa;
+ import pwafire from "pwafire";
+ const pwa = pwafire.pwa;
 ```
 #### Call the share method on pwa
 
 ```js
-   pwa.Share(element, data);
+ pwa.Share(element, data);
 ```
 Preview Documentation : [Get Started](https://github.com/pwafire/pwafire/tree/master/packages)
 
@@ -85,7 +85,7 @@ Support this project with your organization. Your logo will show up here with a 
 <a href="https://opencollective.com/pwafire/organization/9/website"><img src="https://opencollective.com/pwafire/organization/9/avatar.svg"></a>
 
 
-## Contribute
+### Contribute
 Propose your Feature by [Creating an Issue](https://github.com/pwafire/pwafire/issues/new)
 
 ### License
