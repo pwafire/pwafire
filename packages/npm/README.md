@@ -245,7 +245,7 @@ const validatePayment = paymentResponse => {
     phone,
     postalCode,
     recipient,
-    region,
+    re.gion,
     sortingCode
   } = details.billingAddress;
 
@@ -273,7 +273,7 @@ const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
 
 Open app in fullscreen on a click event
 
-#### Add the specific element(eg button)
+#### Add the specific element(e.g button)
 
 ```js
 const element = document.getElementById("fullscreen-button");
@@ -289,7 +289,7 @@ pwa.Fullscreen(element);
 
 Show notification request on a click event
 
-#### Add the specific element(eg button)
+#### Add the specific element(e.g button)
 
 ```js
 const element = document.getElementById("notification-button");
@@ -299,4 +299,20 @@ const element = document.getElementById("notification-button");
 
 ```js
 pwa.Notification(element);
+```
+
+### 8. Install
+
+Add custom install button
+
+#### Add the specific element(e.g button)
+
+```js
+const element = document.getElementById("install");
+```
+
+#### Call the install method
+
+```js
+pwa.Install(element);
 ```

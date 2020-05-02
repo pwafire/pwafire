@@ -162,6 +162,34 @@ class PWA {
       }
     });
   }
+  // Install...
+  Install(element) {
+    window.addEventListener("beforeinstallprompt", (event) => {
+      // Stash the event so it can be triggered later...
+      window.deferredPrompt = event;
+    });
+
+    element.addEventListener("click", () => {
+      console.log(`"👍", Install Button Clicked`);
+      const promptEvent = window.deferredPrompt;
+      if (!promptEvent) {
+        // The deferred prompt isn't available, so pwa exists...
+        console.log(`App Exists`);
+        return null;
+      }
+      // Show the install prompt...
+      promptEvent.prompt();
+      // Log the result...
+      promptEvent.userChoice.then((result) => {
+        // Reset the deferred prompt variable, since rompt() can only be called once...
+        window.deferredPrompt = null;
+      });
+    });
+
+    window.addEventListener("appinstalled", (event) => {
+      console.log(`"👍", App Installed`);
+    });
+  }
 }
 
 // Create an instance of PWA
