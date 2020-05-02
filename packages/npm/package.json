@@ -1,7 +1,7 @@
 {
   "name": "pwafire",
-  "version": "1.7.8",
-  "description": "Add New Web Capabilities to your PWAs",
+  "version": "1.7.9",
+  "description": "Progressive Web Apps API of APIs",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
