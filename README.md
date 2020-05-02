@@ -11,14 +11,14 @@ Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
 ### Install pwafire via NPM
 
 ```bash
-   npm i pwafire
+ npm i pwafire
 ```
 
 ### Get pwafire over CDN
 
 ```html
-   <!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
-   <script crossorigi src="https://pwafire.org/code/cdn/releases/1.0.0/pwafire.js"></script>
+ <!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
+ <script crossorigi src="https://pwafire.org/code/cdn/releases/1.0.0/pwafire.js"></script>
 ```
 
 ### Example : using *pwafire*
@@ -26,13 +26,13 @@ Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
 #### Import pwafire in your react app
 
 ```js
-   import pwafire from "pwafire";
-   const pwa = pwafire.pwa;
+ import pwafire from "pwafire";
+ const pwa = pwafire.pwa;
 ```
 #### Call the share method on pwa
 
 ```js
-   pwa.Share(element, data);
+ pwa.Share(element, data);
 ```
 Preview Documentation : [Get Started](https://github.com/pwafire/pwafire/tree/master/packages)
 
@@ -85,7 +85,7 @@ Support this project with your organization. Your logo will show up here with a 
 <a href="https://opencollective.com/pwafire/organization/9/website"><img src="https://opencollective.com/pwafire/organization/9/avatar.svg"></a>
 
 
-## Contribute
+### Contribute
 Propose your Feature by [Creating an Issue](https://github.com/pwafire/pwafire/issues/new)
 
 ### License
