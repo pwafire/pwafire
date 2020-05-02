@@ -14,12 +14,6 @@ Build Scalable Progressive Web Apps/First Experiences Today. We're Helping You B
    npm i pwafire
 ```
 
-### Or get pwafire NPM version via CDN
-
-```js
-   <script crossorigin src="https://unpkg.com/pwafire@latest"></script>
-```
-
 ### Get pwafire over CDN
 
 ```html
@@ -46,10 +40,9 @@ Preview Documentation : [Get Started](https://github.com/pwafire/pwafire/tree/ma
 
 | Feature | Documentation | Feature | Documentation |
 | --- | --- | --- | --- |
-| Install | [Documentation](https://github.com/mayeedwin/pwafire/projects/1) | Offline Capabilities | [Documentation](https://github.com/mayeedwin/pwafire)
+| Install Button | [Documentation](https://github.com/pwafire/pwafire/tree/master/bundle/install) | Offline Capabilities | [Documentation](https://github.com/mayeedwin/pwafire)
 | Background Sync | [Documentation](https://github.com/mayeedwin/pwafire/tree/master/bundle/background-sync) | Native App Install Banner | [Documentation](https://github.com/mayeedwin/pwafire/tree/master/bundle/native-app-install) |
 | Badging | [Documentation](https://github.com/mayeedwin/pwafire/tree/master/bundle/badging) | Web Share | [Documentation](https://github.com/mayeedwin/pwafire/tree/master/bundle/web-share) |
-| Install Button | [Documentation](https://github.com/mayeedwin/pwafire/tree/master/bundle/install-button) | Workbox | [Documentation](https://github.com/mayeedwin/pwafire/tree/master/bundle/workbox) |
 | Contact Picker | [Documentation](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) | Progressive Loading | [Documentation](https://github.com/mayeedwin/pwafire/tree/master/bundle/loading) 
 | Copy | [Documentation ](https://github.com/mayeedwin/pwafire/tree/master/bundle/copy/) | View All, 15 + | [View Bundle](https://github.com/mayeedwin/pwafire/tree/master/bundle/)
 

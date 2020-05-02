@@ -19,6 +19,11 @@
 ```html
  <!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
  <script crossorigi src="https://pwafire.org/code/cdn/releases/1.0.0/pwafire.js"></script>
+### Get pwafire over CDN
+
+```html
+   <!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
+   <script crossorigin src="https://pwafire.org/code/cdn/releases/1.0.0/pwafire.js"></script>
 ```
 
 ### Example : using *pwafire*
