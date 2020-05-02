@@ -8,17 +8,13 @@
  npm i pwafire
 ```
 
-### Or get pwafire NPM version via CDN
-
-```js
- <script crossorigin src="https://unpkg.com/pwafire@latest"></script>
-```
-
 ### Get pwafire over CDN
 
 ```html
  <!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
  <script crossorigi src="https://pwafire.org/code/cdn/releases/1.0.0/pwafire.js"></script>
+ ```
+
 ### Get pwafire over CDN
 
 ```html
