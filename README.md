@@ -6,7 +6,7 @@ Build Scalable Progressive Web Apps/First Experiences. Visit [Documentation](htt
 
 ## Introducing *pwafire* cdn and npm 
 
-Progressive Web Apps API of APIs. All New Web Capabilities as one Package! All APIs bundled together.
+Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package! All APIs bundled together.
 
 ### Install pwafire via NPM
 
