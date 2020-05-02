@@ -8,12 +8,6 @@
    npm i pwafire
 ```
 
-### Or get pwafire NPM version via CDN
-
-```html
-   <script crossorigin src="https://unpkg.com/pwafire@latest"></script>
-```
-
 ### Get pwafire over CDN
 
 ```html
