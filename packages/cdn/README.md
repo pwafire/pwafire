@@ -1,8 +1,8 @@
 ## Add PWA from CDN to your JS Project
 
 ```html
- <!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
- <script crossorigin src="https://pwafire.org/code/cdn/releases/@latest/pwafire.js"></script>
+<!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
+<script crossorigin src="https://pwafire.org/code/cdn/releases/@latest/pwafire.js"></script>
 ```
 ### 1. Copy Text
 
