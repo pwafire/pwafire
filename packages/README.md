@@ -13,7 +13,7 @@
 ```html
 <!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
 <script crossorigin src="https://pwafire.org/code/cdn/releases/@latest/pwafire.js"></script>
- 
+```
 ### Example : using *pwafire*
 
 #### Import pwafire in your react app
