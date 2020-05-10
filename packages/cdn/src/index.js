@@ -172,6 +172,19 @@ class PWA {
       console.log(`"👍", App Installed`);
     });
   }
+  // Visibility...
+  Visibility(isVisible, notAvailable) {
+    if (document.visibilityState) {
+      const state = document.visibilityState;
+      if (state === `visible`) {
+        // Call back function...
+        isVisible();
+      }
+    } else {
+      // Alternative...
+      notAvailable();
+    }
+  }
 }
 
 // Create an instance of PWA
