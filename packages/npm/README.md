@@ -187,7 +187,7 @@ pwa.Install(element);
 
 #### 9. Visibility
 
-Check is user is viewing a page. Best to pause/play video play or games e.t.c
+Check if user is viewing a page. Pause/play video or games e.t.c
 
 ##### Define page visibilty handler
 
