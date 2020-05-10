@@ -28,7 +28,7 @@ Copy text to clipboard
 
 ```js
 // Copy from a single element
-let element = document.getElementById("copy");
+const element = document.getElementById("copy");
 // Copy text
 pwa.copyText(element);
 ```
@@ -37,17 +37,34 @@ pwa.copyText(element);
 
 ```js
 //  Copy from multiple elements
-let elements = document.querySelectorAll(".copy");
+const elements = document.querySelectorAll(".copy");
 for (let el of elements) {
   // Copy text
   pwa.copyText(el);
 }
 ```
+### 2. Copy image (Only PNG are supported for security purposes)
+Copy png images to clipboard
 
-### 2. Web Share
+#### Add the image element or copy element(button)
 
-Share links, text, and files to
-other apps installed on the device.
+```js
+const img = document.getElementById("copy-image");
+const imgURL = img.src;
+```
+
+#### Call the copyImage method on pwa
+
+```js
+img.addEventListener("click", event => {
+  event.preventDefault();
+  pwa.copyImage(imgURL);
+});
+```
+
+### 3. Web Share
+
+Share links, text, and files to other apps installed on the device.
 
 #### Add the share element(button)
 
@@ -74,9 +91,9 @@ const data =  {
 pwa.Share(element, data);
 ```
 
-### 3. Contacts Picker
+### 4. Contacts Picker
 
-Access contacts from the device's native contacts manager. **Chrome 77** or higher running on **Android M or later** required. 
+[Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the device's native contacts manager. **Chrome 77** or higher running on **Android M or later** required. 
 
 #### Add the contact picker element(button)
 
@@ -95,13 +112,12 @@ const options = { multiple: true };
 
 ```js
 pwa.Contacts(element, props, options);
-// You can save the return value in a vaibale...
+// You can save the return value in a variable...
 let contacts = pwa.Contacts(element, props, options);
 ```
 
-### 4. Show PWA Connectivity status
-
-Pass in two call back funtions, a.k.a **online** and **offline** handlers.
+### 5. Show PWA Connectivity status
+Pass in two call back funtions, aka **online** and **offline** handlers.
 
 #### Declaring the two handlers separately
 
@@ -121,8 +137,85 @@ const offline = () => {
 ```js
 pwa.Connectivity(online, offline);
 ```
+### 6. Fullscreen
 
-### 5. Web Payments
+Open app in fullscreen on a click event
+
+#### Add the specific element(e.g button)
+
+```js
+const element = document.getElementById("fullscreen-button");
+```
+
+#### Call the fullscreen method
+
+```js
+pwa.Fullscreen(element);
+```
+
+### 7. Notifications
+
+Show notification request on a click event
+
+#### Add the specific element(e.g button)
+
+```js
+const element = document.getElementById("notification-button");
+```
+
+#### Call the notification method
+
+```js
+pwa.Notification(element);
+```
+
+### 8. Install
+
+Add custom install button
+
+#### Add the specific element(e.g button)
+
+```js
+const element = document.getElementById("install");
+```
+
+#### Call the install method
+
+```js
+pwa.Install(element);
+```
+
+#### 9. Visibility
+
+Check is user is viewing a page. Best to pause/play video play or games e.t.c
+
+##### Define page visibilty handler
+
+```js
+// Do something....
+const isVisible = () => {
+  //...
+  console.log(`Page Visibility Available`);
+};
+```
+
+##### If visbility api is not supported, define the handler
+
+```js
+// Do something....
+const notAvailable = () => {
+  //...
+  console.log(`Page Visibility Not Available`);
+};
+```
+
+##### Call the visibility method with the two  arguments
+
+```js
+pwa.Visibility(isVisible, notAvailable);
+```
+
+### 10. Web Payments
 
 Allows users select their preferred way of **paying for things**, and make that information
 available to **a merchant.**
@@ -267,52 +360,4 @@ const validatePayment = paymentResponse => {
 
 ```js
 const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
-```
-
-### 6. Fullscreen
-
-Open app in fullscreen on a click event
-
-#### Add the specific element(e.g button)
-
-```js
-const element = document.getElementById("fullscreen-button");
-```
-
-#### Call the fullscreen method
-
-```js
-pwa.Fullscreen(element);
-```
-
-### 7. Notifications
-
-Show notification request on a click event
-
-#### Add the specific element(e.g button)
-
-```js
-const element = document.getElementById("notification-button");
-```
-
-#### Call the notification method
-
-```js
-pwa.Notification(element);
-```
-
-### 8. Install
-
-Add custom install button
-
-#### Add the specific element(e.g button)
-
-```js
-const element = document.getElementById("install");
-```
-
-#### Call the install method
-
-```js
-pwa.Install(element);
 ```

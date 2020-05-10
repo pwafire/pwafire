@@ -12,7 +12,7 @@ Copy text to clipboard
 
 ```js
 // Copy from a single element
-let element = document.getElementById("copy");
+const element = document.getElementById("copy");
 // Copy text
 pwa.copyText(element);
 ```
@@ -21,7 +21,7 @@ pwa.copyText(element);
 
 ```js
 //  Copy from multiple elements
-let elements = document.querySelectorAll(".copy");
+const elements = document.querySelectorAll(".copy");
 for (let el of elements) {
   // Copy text
   pwa.copyText(el);
@@ -96,7 +96,7 @@ const options = { multiple: true };
 
 ```js
 pwa.Contacts(element, props, options);
-// You can save the return value in a vaibale...
+// You can save the return value in a variable...
 let contacts = pwa.Contacts(element, props, options);
 ```
 
@@ -121,8 +121,85 @@ const offline = () => {
 ```js
 pwa.Connectivity(online, offline);
 ```
+### 6. Fullscreen
 
-### 6. Web Payments
+Open app in fullscreen on a click event
+
+#### Add the specific element(e.g button)
+
+```js
+const element = document.getElementById("fullscreen-button");
+```
+
+#### Call the fullscreen method
+
+```js
+pwa.Fullscreen(element);
+```
+
+### 7. Notifications
+
+Show notification request on a click event
+
+#### Add the specific element(e.g button)
+
+```js
+const element = document.getElementById("notification-button");
+```
+
+#### Call the notification method
+
+```js
+pwa.Notification(element);
+```
+
+### 8. Install
+
+Add custom install button
+
+#### Add the specific element(e.g button)
+
+```js
+const element = document.getElementById("install");
+```
+
+#### Call the install method
+
+```js
+pwa.Install(element);
+```
+
+#### 9. Visibility
+
+Check is user is viewing a page. Best to pause/play video play or games e.t.c
+
+##### Define page visibilty handler
+
+```js
+// Do something....
+const isVisible = () => {
+  //...
+  console.log(`Page Visibility Available`);
+};
+```
+
+##### If visbility api is not supported, define the handler
+
+```js
+// Do something....
+const notAvailable = () => {
+  //...
+  console.log(`Page Visibility Not Available`);
+};
+```
+
+##### Call the visibility method with the two  arguments
+
+```js
+pwa.Visibility(isVisible, notAvailable);
+```
+
+### 10. Web Payments
 
 Allows users select their preferred way of **paying for things**, and make that information
 available to **a merchant.**
@@ -267,52 +344,4 @@ const validatePayment = paymentResponse => {
 
 ```js
 const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
-```
-
-### 7. Fullscreen
-
-Open app in fullscreen on a click event
-
-#### Add the specific element(e.g button)
-
-```js
-const element = document.getElementById("fullscreen-button");
-```
-
-#### Call the fullscreen method
-
-```js
-pwa.Fullscreen(element);
-```
-
-### 8. Notifications
-
-Show notification request on a click event
-
-#### Add the specific element(e.g button)
-
-```js
-const element = document.getElementById("notification-button");
-```
-
-#### Call the notification method
-
-```js
-pwa.Notification(element);
-```
-
-### 9. Install
-
-Add custom install button
-
-#### Add the specific element(e.g button)
-
-```js
-const element = document.getElementById("install");
-```
-
-#### Call the install method
-
-```js
-pwa.Install(element);
 ```
