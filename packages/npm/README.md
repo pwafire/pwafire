@@ -43,7 +43,9 @@ for (let el of elements) {
   pwa.copyText(el);
 }
 ```
+
 ### 2. Copy image (Only PNG are supported for security purposes)
+
 Copy png images to clipboard
 
 #### Add the image element or copy element(button)
@@ -56,7 +58,7 @@ const imgURL = img.src;
 #### Call the copyImage method on pwa
 
 ```js
-img.addEventListener("click", event => {
+img.addEventListener("click", (event) => {
   event.preventDefault();
   pwa.copyImage(imgURL);
 });
@@ -75,14 +77,14 @@ const element = document.getElementById("share-button");
 #### Define the data object to be shared
 
 ```js
-const data =  {
+const data = {
   // Title of what to share
   title: `Some title..`,
   // Text to share
   text: `Some text...`,
   // Url to share...
-  url: 'https://pwafire.org',
-}
+  url: "https://pwafire.org",
+};
 ```
 
 #### Call the share method on pwa
@@ -93,7 +95,7 @@ pwa.Share(element, data);
 
 ### 4. Contacts Picker
 
-[Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the device's native contacts manager. **Chrome 77** or higher running on **Android M or later** required. 
+[Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the device's native contacts manager. **Chrome 77** or higher running on **Android M or later** required.
 
 #### Add the contact picker element(button)
 
@@ -117,6 +119,7 @@ let contacts = pwa.Contacts(element, props, options);
 ```
 
 ### 5. Show PWA Connectivity status
+
 Pass in two call back funtions, aka **online** and **offline** handlers.
 
 #### Declaring the two handlers separately
@@ -137,6 +140,7 @@ const offline = () => {
 ```js
 pwa.Connectivity(online, offline);
 ```
+
 ### 6. Fullscreen
 
 Open app in fullscreen on a click event
@@ -155,18 +159,30 @@ pwa.Fullscreen(element);
 
 ### 7. Notifications
 
-Show notification request on a click event
+Show notifications. Pass a **data** object
 
-#### Add the specific element(e.g button)
+#### Add notification data
 
 ```js
-const element = document.getElementById("notification-button");
+const data = {
+  title: "Hello Notification!",
+  options: {
+    body: "Progressive Web App Hello Notification!",
+    icon: "../images/icons/icon-192x192.png",
+    tag: "pwa",
+  },
+};
 ```
 
-#### Call the notification method
+#### Call the notification method, pass in `data` object, for e.g
 
 ```js
-pwa.Notification(element);
+// Add an event listener to a button element...
+const notification = document.getElementById("notification");
+notification.addEventListener("click", (event) => {
+  // Call the notification method...
+  pwa.Notification(data);
+});
 ```
 
 ### 8. Install
@@ -209,7 +225,7 @@ const notAvailable = () => {
 };
 ```
 
-##### Call the visibility method with the two  arguments
+##### Call the visibility method with the two arguments
 
 ```js
 pwa.Visibility(isVisible, notAvailable);
@@ -238,7 +254,7 @@ const payment = {
   },
   get tax() {
     return 0.14 * this.price;
-  }
+  },
 };
 
 // Destructure payment object...
@@ -252,9 +268,9 @@ const paymentMethods = [
   {
     supportedMethods: ["basic-card"],
     data: {
-      supportedNetworks: ["visa", "mastercard"]
-    }
-  }
+      supportedNetworks: ["visa", "mastercard"],
+    },
+  },
 ];
 ```
 
@@ -269,10 +285,10 @@ const paymentDetails = {
       value: total
     }
   },
-  ```
+```
 
 #### Set other items to display
-  
+
 ```js
 displayItems: [
     {
@@ -298,7 +314,7 @@ displayItems: [
 ```js
 const options = {
   requestPayerName: true,
-  requestPayerEmail: true
+  requestPayerEmail: true,
 };
 ```
 
@@ -308,7 +324,7 @@ const options = {
 const paydata = {
   paymentMethods,
   paymentDetails,
-  options
+  options,
 };
 ```
 
