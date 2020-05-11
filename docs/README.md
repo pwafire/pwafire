@@ -39,7 +39,7 @@ Read more about Web Manifest [on this tech doc](https://pwafire.org/developer/do
 Follow the steps as commented in the code below in order to correctly configure the *service-worker.js* file.
 
 ```javascript
-// Fetch events, on registration of service worker...
+// Fetch events, on registration of Service Worker...
 self.addEventListener('fetch', (event) => {
   event.respondWith(caches.open('cache').then((cache) => {
     return cache.match(event.request).then((response) => {
