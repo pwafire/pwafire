@@ -1,9 +1,9 @@
-### [description]()
+### [Description]()
 
 Meta tags are snippets of text that describe a page's content; the meta tags don't appear on the page itself, 
 but only in the page's code. Meta tags are added to the **<head>** section of your HTML page.
 
-### [meta tags that google understands](https://support.google.com/webmasters/answer/79812?hl=en&ref_topic=4617741)
+### [Meta tags that google understands](https://support.google.com/webmasters/answer/79812?hl=en&ref_topic=4617741)
 
 We have curated a number of **meta tags** you can add to your pages for best Google search reach especially for your
 [progressive web app](). This is not an exclusive list of available meta tags, and you should feel free to use unlisted 
