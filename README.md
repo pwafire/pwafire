@@ -1,5 +1,3 @@
-## [PWA Fire Bundle](https://pwafire.org)
-
 ## Progressive Web Apps API of APIs
 
 [![Build Status](https://travis-ci.org/pwafire/pwafire.svg?branch=master)](https://travis-ci.org/pwafire/pwafire)
