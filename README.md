@@ -47,7 +47,8 @@ Background Sync | Native App Install Banner |
 | Badging |  Web Share | 
 | Contact Picker |  Copy Text, PNG | 
 | Share Target |  Periodic Background Sync | 
-| Page Visibility | [View All, 15 + Here](https://github.com/pwafire/pwafire/tree/master/bundle/)
+| Page Visibility | Push Notifications |
+| [View All, 15 + Here](https://github.com/pwafire/pwafire/tree/master/bundle/)|
 
 ## Chat : Join the conversation 
 
