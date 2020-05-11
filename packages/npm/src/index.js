@@ -141,22 +141,23 @@ class PWA {
     });
   }
   // Notification...
-  Notification(element) {
-    element.addEventListener("click", (event) => {
-      event.preventDefault();
-      console.log(`click`);
-      if ("Notification" in window) {
-        Notification.requestPermission()
-          .then((permission) => {
-            console.log(permission);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      } else {
-        return `Notifications not supported.`;
-      }
-    });
+  Notification(data) {
+    const { title, options } = data;
+    if ("Notification" in window) {
+      Notification.requestPermission()
+        .then((permission) => {
+          if (permission === "granted") {
+            navigator.serviceWorker.ready.then((registration) => {
+              registration.showNotification(title, options);
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      return `Notifications not supported.`;
+    }
   }
   // Install...
   Install(element) {
