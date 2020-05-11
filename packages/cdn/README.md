@@ -147,7 +147,7 @@ pwa.Fullscreen(element);
 
 ### 7. Notifications
 
-Show notifications. Pass an a `data` object
+Show notifications. Pass a **data** object
 
 #### Add notification data
 
