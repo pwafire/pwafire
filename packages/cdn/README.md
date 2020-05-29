@@ -12,10 +12,12 @@ Copy text to clipboard
 #### Copy from a single element
 
 ```js
+// Define styles of the success message as a string
+const styles = ``;
 // Copy from a single element
 const element = document.getElementById("copy");
 // Copy text
-pwa.copyText(element);
+pwa.copyText(element, styles);
 ```
 
 #### Copy from multiple elements
@@ -25,7 +27,7 @@ pwa.copyText(element);
 const elements = document.querySelectorAll(".copy");
 for (let el of elements) {
   // Copy text
-  pwa.copyText(el);
+  pwa.copyText(el, styles);
 }
 ```
 
@@ -100,7 +102,7 @@ const options = { multiple: true };
 ```js
 pwa.Contacts(element, props, options);
 // You can save the return value in a variable...
-let contacts = pwa.Contacts(element, props, options);
+const contacts = pwa.Contacts(element, props, options);
 ```
 
 ### 5. Show PWA Connectivity status
