@@ -7,7 +7,7 @@
     "jshint": "^2.9.6"
   },
   "scripts": {
-    "test": "jshint ./bundle/default/service-worker.js"
+    "test": "jshint ./packages/cdn/src/index.js"
   },
   "dependencies": {}
 }
