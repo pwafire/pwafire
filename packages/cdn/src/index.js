@@ -5,7 +5,7 @@ class PWA {
   copyText(element, styles) {
     let style = ``;
     if (styles) {
-      style = styles
+      style = styles;
     }
     element.addEventListener("click", async (event) => {
       let html = element.innerHTML;
