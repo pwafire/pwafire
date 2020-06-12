@@ -5,6 +5,7 @@
   "devDependencies": {
     "jshint": "^2.9.6"
   },
+   "dependencies": {},
   "scripts": {
     "test": "jshint ./packages/cdn/src/index.js"
   }
