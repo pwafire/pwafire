@@ -4,7 +4,7 @@
 npm i pwafire
 ```
 
-### Import pwafire in your react app
+### Import pwafire in your React/Angular/Vue App
 
 ```js
 import pwafire from "pwafire";
