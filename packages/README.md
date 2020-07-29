@@ -1,6 +1,6 @@
-## Introducing *pwafire* cdn and npm 
+## Introducing _pwafire_ cdn and npm
 
- All New Web Capabilities as one Package! All APIs bundled together.
+All New Web Capabilities as one Package! All APIs bundled together.
 
 ### Install pwafire via NPM
 
@@ -8,29 +8,34 @@
  npm i pwafire
 ```
 
-### Get pwafire over CDN
+### Get pwafire over CDN, latest version;
 
-```html
-<!-- Insert this script at the bottom of the HTML, but before you use any PWA Capability -->
-<script src="https://pwafire.org/code/cdn/releases/@latest/pwafire.js"></script>
+```js
+import pwafire from "https://cdn.skypack.dev/pwafire";
+const pwa = pwafire.pwa;
 ```
-### Example : using *pwafire*
+
+### Or a specific version
+
+```js
+import pwafire from "https://cdn.skypack.dev/pwafire@1.8.7";
+```
+
+### Example : using _pwafire_
 
 #### Import pwafire in your react app
 
 ```js
- import pwafire from "pwafire";
- const pwa = pwafire.pwa;
+import pwafire from "pwafire";
+const pwa = pwafire.pwa;
 ```
 
 #### Call the share method on pwa
 
 ```js
- pwa.Share(element, data);
+pwa.Share(data);
 ```
 
 ### Get started
 
- - Over [NPM docs](https://github.com/pwafire/pwafire/tree/master/packages/npm)
- 
- - Over [CDN docs](https://github.com/pwafire/pwafire/tree/master/packages/cdn)
+[API Docs](https://github.com/pwafire/pwafire/tree/master/packages/npm)
