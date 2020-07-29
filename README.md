@@ -32,7 +32,7 @@ Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
 #### Call the share method on pwa
 
 ```js
- pwa.Share(element, data);
+ pwa.Share(data);
 ```
 Preview Documentation : [Get Started](https://github.com/pwafire/pwafire/tree/master/packages)
 
