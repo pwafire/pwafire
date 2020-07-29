@@ -10,15 +10,8 @@ All New Web Capabilities as one Package! All APIs bundled together.
 
 ### Get pwafire over CDN, latest version;
 
-```js
-import pwafire from "https://cdn.skypack.dev/pwafire";
-const pwa = pwafire.pwa;
-```
-
-### Or a specific version
-
-```js
-import pwafire from "https://cdn.skypack.dev/pwafire@1.8.7";
+```html
+ <script src="https://pwafire.org/code/cdn/releases/@latest/pwafire.js"></script>
 ```
 
 ### Example : using _pwafire_
@@ -38,4 +31,4 @@ pwa.Share(data);
 
 ### Get started
 
-[API Docs](https://github.com/pwafire/pwafire/tree/master/packages/npm)
+[API Docs](https://github.com/pwafire/pwafire/tree/master/packages/pwafire)
