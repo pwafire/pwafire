@@ -66,12 +66,6 @@ img.addEventListener("click", (event) => {
 
 Share links, text, and files to other apps installed on the device.
 
-#### Add the share element(button)
-
-```js
-const element = document.getElementById("share-button");
-```
-
 #### Define the data object to be shared
 
 ```js
