@@ -16,8 +16,8 @@ Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
 
 ### Get pwafire over CDN
 
-```js
-import pwafire from "https://cdn.skypack.dev/pwafire";
+```html
+ <script src="https://pwafire.org/code/cdn/releases/@latest/pwafire.js"></script>
 ```
 
 ### Example : using *pwafire*
