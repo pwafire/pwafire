@@ -11,7 +11,7 @@ All New Web Capabilities as one Package! All APIs bundled together.
 ### Get pwafire over CDN, latest version;
 
 ```js
-import pwafire from "https://cdn.skypack.dev/pwafire";
+import pwafire from "https://pwafire.org/code/cdn/releases/@latest/pwafire.js";
 const pwa = pwafire.pwa;
 ```
 

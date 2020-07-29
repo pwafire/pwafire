@@ -1,7 +1,7 @@
 // All PWA Fire Bundle Features as ES6 Module @copyright : mayeedwin
 class PWA {
   // Copy text...
-  copyText(text) {
+  async copyText(text) {
       try {
         await navigator.clipboard.writeText(text);
       } catch (err) {
