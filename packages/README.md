@@ -38,4 +38,4 @@ pwa.Share(data);
 
 ### Get started
 
-[API Docs](https://github.com/pwafire/pwafire/tree/master/packages/npm)
+[API Docs](https://github.com/pwafire/pwafire/tree/master/packages/pwafire)
