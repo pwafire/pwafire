@@ -2,7 +2,7 @@
   "name": "pwafire",
   "description": "Bundle Check for JSHint (Code Linting)",
   "author": "Maye Edwin",
-  "version": "@latest",
+  "version": "1.8.7",
   "devDependencies": {
     "jshint": "^2.9.6"
   },
