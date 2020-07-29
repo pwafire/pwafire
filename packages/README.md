@@ -14,6 +14,13 @@ All New Web Capabilities as one Package! All APIs bundled together.
  <script src="https://pwafire.org/code/cdn/releases/@latest/pwafire.js"></script>
 ```
 
+### In your e.g App.js, start using the API on the go!
+
+```js
+// Copy Text...
+ pwa.copyText(text);
+```
+
 ### Example : using _pwafire_
 
 #### Import pwafire in your react app
