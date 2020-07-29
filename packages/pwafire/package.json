@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "1.8.8",
+  "version": "1.8.81",
   "description": "Progressive Web Apps API of APIs",
   "main": "src/index.js",
   "scripts": {
