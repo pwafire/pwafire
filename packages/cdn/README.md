@@ -12,12 +12,8 @@ Copy text to clipboard
 #### Copy from a single element
 
 ```js
-// Define styles of the success message as a string
-const styles = ``;
-// Copy from a single element
-const element = document.getElementById("copy");
 // Copy text
-pwa.copyText(element, styles);
+pwa.copyText(text);
 ```
 
 #### Copy from multiple elements
@@ -27,7 +23,7 @@ pwa.copyText(element, styles);
 const elements = document.querySelectorAll(".copy");
 for (let el of elements) {
   // Copy text
-  pwa.copyText(el, styles);
+  pwa.copyText(text);
 }
 ```
 
@@ -45,7 +41,7 @@ const imgURL = img.src;
 #### Call the copyImage method on pwa
 
 ```js
-img.addEventListener("click", (event) => {
+img.addEventListener("click", event => {
   event.preventDefault();
   pwa.copyImage(imgURL);
 });
@@ -77,18 +73,12 @@ const data = {
 #### Call the share method on pwa
 
 ```js
-pwa.Share(element, data);
+pwa.Share(data);
 ```
 
 ### 4. Contacts Picker
 
 [Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the device's native contacts manager. **Chrome 77** or higher running on **Android M or later** required.
-
-#### Add the contact picker element(button)
-
-```js
-const element = document.getElementById("contacts-picker");
-```
 
 #### Define the "properties" and "select type" option you need
 
@@ -100,9 +90,8 @@ const options = { multiple: true };
 #### Call the contacts method on pwa, it returns selected contacts
 
 ```js
-pwa.Contacts(element, props, options);
 // You can save the return value in a variable...
-const contacts = pwa.Contacts(element, props, options);
+const contacts = pwa.Contacts(props, options);
 ```
 
 ### 5. Show PWA Connectivity status
@@ -132,16 +121,10 @@ pwa.Connectivity(online, offline);
 
 Open app in fullscreen on a click event
 
-#### Add the specific element(e.g button)
-
-```js
-const element = document.getElementById("fullscreen-button");
-```
-
 #### Call the fullscreen method
 
 ```js
-pwa.Fullscreen(element);
+pwa.Fullscreen();
 ```
 
 ### 7. Notifications
@@ -164,28 +147,18 @@ const data = {
 #### Call the notification method, pass in `data` object, for e.g
 
 ```js
-// Add an event listener to a button element...
-const notification = document.getElementById("notification");
-notification.addEventListener("click", (event) => {
-  // Call the notification method...
-  pwa.Notification(data);
-});
+// Call the notification method...
+pwa.Notification(data);
 ```
 
 ### 8. Install
 
 Add custom install button
 
-#### Add the specific element(e.g button)
-
-```js
-const element = document.getElementById("install");
-```
-
 #### Call the install method
 
 ```js
-pwa.Install(element);
+pwa.Install();
 ```
 
 #### 9. Visibility
@@ -226,7 +199,7 @@ available to **a merchant.**
 #### Call Payment method with three arguments
 
 ```js
-let paymentResponse = pwa.Payment(pay, paydata, validatePayment);
+const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
 ```
 
 #### Example : compute total amount to pay

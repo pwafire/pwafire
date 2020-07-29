@@ -1,27 +1,48 @@
-// All PWA Fire Bundle Features as ES6 Module
-// Declare the PWA Features class...
+// All PWA Fire Bundle Features as ES6 Module @copyright : mayeedwin
 class PWA {
   // Copy text...
-  copyText(element, styles) {
-    let style = ``;
-    if (styles) {
-      style = styles;
-    }
-    element.addEventListener("click", async (event) => {
-      let html = element.innerHTML;
-      let text = element.innerText;
+  copyText(text) {
       try {
         await navigator.clipboard.writeText(text);
-        // Show success message...
-        element.innerHTML = `<span style="${style}">
-                Copied to clipboard!</span>`;
-        // Show previous text...
-        setTimeout(() => {
-          element.innerHTML = html;
-        }, 3000);
       } catch (err) {
         console.error("Failed to copy to clipboard", err);
       }
+  }
+  // Web Share...
+  Share(data) {
+      // Check if web share is supported
+      if (navigator.share) {
+        navigator
+          .share(data)
+          .then(() => console.log(`Shared`))
+          .catch((error) => console.log(`Error sharing`, error));
+      } else {
+        console.log(`Web share not supported!`);
+      };
+  }
+  // Contacts Picker...
+  async Contacts(props, options) {
+      try {
+        const contacts = await navigator.contacts.select(props, options);
+        // Return contacts...
+        return contacts;
+      } catch (error) {
+        // Handle any errors here...
+        alert(error);
+      }
+  }
+  // Connectivity...
+  Connectivity(online, offline) {
+    // Once the DOM is loaded, check for connectivity...
+    document.addEventListener("DOMContentLoaded", () => {
+      // Offline Event...
+      if (!navigator.onLine) {
+        offline();
+      }
+      // Online Event...
+      window.addEventListener("online", () => {
+        online();
+      });
     });
   }
   // Copy image
@@ -42,33 +63,6 @@ class PWA {
     } catch (e) {
       console.error(e, e.message);
     }
-  }
-  // Contacts Picker...
-  Contacts(element, props, options) {
-    element.addEventListener("click", async () => {
-      try {
-        const contacts = await navigator.contacts.select(props, options);
-        // Return contacts...
-        return contacts;
-      } catch (error) {
-        // Handle any errors here...
-        alert(error);
-      }
-    });
-  }
-  // Connectivity...
-  Connectivity(online, offline) {
-    // Once the DOM is loaded, check for connectivity...
-    document.addEventListener("DOMContentLoaded", () => {
-      // Offline Event...
-      if (!navigator.onLine) {
-        offline();
-      }
-      // Online Event...
-      window.addEventListener("online", () => {
-        online();
-      });
-    });
   }
   // Badge...
   Badge(unreadCount) {
@@ -91,10 +85,7 @@ class PWA {
     };
   }
   // Payment...
-  Payment(element, paydata, validatePayment) {
-    // Initiate Payment UI on click...
-    element.addEventListener("click", (event) => {
-      event.preventDefault();
+  Payment(paydata, validatePayment) {
       const paymentRequest = new PaymentRequest(
         paydata.paymentMethods,
         paydata.paymentDetails,
@@ -111,17 +102,12 @@ class PWA {
           // API error or user cancelled the payment
           console.log("Error:", err);
         });
-    });
   }
   // Fullscreen...
-  Fullscreen(element) {
-    element.addEventListener("click", (event) => {
-      event.preventDefault();
-
+  Fullscreen() {
       if (document.fullscreenEnabled) {
         document.documentElement.requestFullscreen();
       }
-    });
   }
   // Notification...
   Notification(data) {
@@ -143,13 +129,11 @@ class PWA {
     }
   }
   // Install...
-  Install(element) {
+  Install() {
     window.addEventListener("beforeinstallprompt", (event) => {
       // Stash the event so it can be triggered later...
       window.deferredPrompt = event;
     });
-
-    element.addEventListener("click", () => {
       console.log(`"👍", Install Button Clicked`);
       const promptEvent = window.deferredPrompt;
       if (!promptEvent) {
@@ -164,8 +148,6 @@ class PWA {
         // Reset the deferred prompt variable, since rompt() can only be called once...
         window.deferredPrompt = null;
       });
-    });
-
     window.addEventListener("appinstalled", (event) => {
       console.log(`"👍", App Installed`);
     });
