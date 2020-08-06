@@ -8,6 +8,5 @@
   },
   "scripts": {
     "test": "jshint ./packages/npm/src/index.js"
-  },
-  "dependencies": {}
+  }
 }
