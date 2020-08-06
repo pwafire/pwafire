@@ -30,5 +30,8 @@
     "new web capabilities"
   ],
   "author": "Maye Edwin",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  }
 }
