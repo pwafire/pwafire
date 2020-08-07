@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "Progressive Web Apps API of APIs",
   "main": "src/index.js",
   "scripts": {
@@ -30,8 +30,5 @@
     "new web capabilities"
   ],
   "author": "Maye Edwin",
-  "license": "MIT",
-  "devDependencies": {
-    "typescript": "^3.9.7"
-  }
+  "license": "MIT"
 }

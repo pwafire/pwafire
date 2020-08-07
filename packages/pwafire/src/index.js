@@ -201,5 +201,6 @@ class PWA {
     }
   }
 }
+// Export...
 // Create an instance of a PWA
 exports.pwa = new PWA();
