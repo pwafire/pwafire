@@ -1,5 +1,8 @@
 ## Install pwafire via NPM
 
+### Breaking Change : v1.9.2 +
+You now just need to import `pwa` from pwafire package
+
 ```bash
 npm i pwafire
 ```
@@ -7,15 +10,13 @@ npm i pwafire
 ### Import pwafire in your React/Angular/Vue App
 
 ```js
-import pwafire from "pwafire";
-const pwa = pwafire.pwa;
+import pwa from "pwafire";
 ```
 
 ### Require the pwafire npm package
 
 ```js
-const pwafire = require("pwafire");
-const pwa = pwafire.pwa;
+const pwa = require("pwafire");
 ```
 
 All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
