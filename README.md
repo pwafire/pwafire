@@ -14,6 +14,9 @@ Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
  npm i pwafire
 ```
 
+### Breaking Change : v1.9.2 +
+You now just need to import `pwa` from pwafire package
+
 ### Get pwafire over CDN
 
 ```html
@@ -25,8 +28,7 @@ Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
 #### Import pwafire in your react app
 
 ```js
- import pwafire from "pwafire";
- const pwa = pwafire.pwa;
+ import pwa from "pwafire";
 ```
 #### Call the share method on pwa
 
