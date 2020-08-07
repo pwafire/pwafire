@@ -1,8 +1,5 @@
 ## Install pwafire via NPM
 
-### Breaking Change : v1.9.2 +
-You now just need to import `pwa` from pwafire package
-
 ```bash
 npm i pwafire
 ```
@@ -10,13 +7,15 @@ npm i pwafire
 ### Import pwafire in your React/Angular/Vue App
 
 ```js
-import pwa from "pwafire";
+import pwafire from "pwafire";
+const pwa = pwafire.pwa;
 ```
 
 ### Require the pwafire npm package
 
 ```js
-const pwa = require("pwafire");
+const pwafire = require("pwafire");
+const pwa = pwafire.pwa;
 ```
 
 All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
@@ -66,6 +65,12 @@ img.addEventListener("click", (event) => {
 ### 3. Web Share
 
 Share links, text, and files to other apps installed on the device.
+
+#### Add the share element(button)
+
+```js
+const element = document.getElementById("share-button");
+```
 
 #### Define the data object to be shared
 
