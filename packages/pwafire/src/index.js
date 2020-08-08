@@ -5,33 +5,22 @@ class PWA {
     try {
       await navigator.clipboard.writeText(text);
       // Copied...
-      return { code: "copied", message: `Copied` };
+      return { type:`success`, message: `Copied` };
     } catch (error) {
       // Error...
-      return {
-        error,
-        code: "failed",
-        message: `Failed`,
-      };
+      return { error, type: `fail` };
     }
   }
   // Web Share...
-  Share(data) {
+  async Share(data) {
     // Check support...
-    if (navigator.share) {
-      navigator
-        .share(data)
-        .then(() => {
-          // Shared...
-          return { code: "shared", message: `Shared` };
-        })
-        .catch(error => {
-          // Error..
-          return { error, code: "failed", message: `Failed` };
-        });
-    } else {
-      // No support...
-      return { code: "no-support", message: `Not supported` };
+    try {
+      await navigator.share(data)
+       // Shared...
+       return { type:`success`, message: `Shared` };
+    } catch (error) {
+      // Error...
+      return { error, type: `fail` };
     }
   }
 
@@ -40,10 +29,10 @@ class PWA {
     try {
       const contacts = await navigator.contacts.select(props, options);
       // Return contacts...
-      return contacts;
+      return { type:`success`, contacts, message: `Picked` };
     } catch (error) {
       // Error...
-      return { error, code: "no-support", message: `Not supported` };
+      return { error, type: `fail` };
     }
   }
 
@@ -55,17 +44,17 @@ class PWA {
         // Offline Event...
         if (!navigator.onLine) {
           offline();
-          return { code: "offline", message: `Offline` };
+          return { type: `success`, message: `Offline` };
         }
         // Online Event...
         window.addEventListener("online", () => {
           online();
-          return { code: "online", message: `Online` };
+          return { type:`success`, message: `Online` };
         });
       });
     } catch (error) {
-      // Error...
-      return { error, code: "no-support", message: `Not supported` };
+       // Error...
+       return { error, type: `fail` };
     }
   }
   // Copy image
@@ -82,10 +71,10 @@ class PWA {
         ),
       ]);
       // Error...
-      return { code: "copied", message: `Copied` };
+      return { type:`success`, message: `Copied` };
     } catch (error) {
       // Error...
-      return { error, code: "failed", message: `Failed` };
+      return { error, type: `fail` };
     }
   }
   // Badge...
@@ -93,23 +82,18 @@ class PWA {
     try {
       return {
         get Set() {
-          navigator.setAppBadge(unreadCount).catch(error => {
-            // Do something with the error.
-            return { error, code: "failed", message: `Failed` };
-          });
-          return { code: "set", message: `Set badge` };
+           await navigator.setAppBadge(unreadCount);
+           return { type: "success", message: `Set badge` };
         },
         get Clear() {
           // Clear the badge
-          navigator.clearAppBadge().catch(error => {
-            // Do something with the error.
-            return { error, code: "failed", message: `Failed` };
-          });
-          return { code: "clear", message: `Clear badge` };
+          await navigator.clearAppBadge();
+          return { type: "success", message: `Clear badge` };
         },
       };
     } catch (error) {
-      return { error, code: "failed", message: `Not supported` };
+       // Error...
+       return { error, type: `fail` };
     }
   }
   // Payment...
@@ -125,11 +109,11 @@ class PWA {
       .then(paymentResponse => {
         // Validate with backend...
         validatePayment(paymentResponse);
-        return { code: "succesful", message: `Successful`, paymentResponse };
+        return { type: "success", message: `Successful`, paymentResponse };
       })
       .catch(error => {
-        // API error or user cancelled the payment
-        return { error, code: "failed", message: `Failed` };
+         // Error...
+      return { error, type: `fail` };
       });
   }
   // Fullscreen...
@@ -137,32 +121,29 @@ class PWA {
     try {
       if (document.fullscreenEnabled) {
         document.documentElement.requestFullscreen();
+      return { type:`success`, message: `Fullscreen` };
       }
     } catch (error) {
       // Error...
-      return { error, code: "failed", message: `Failed` };
+      return { error, type: `fail` };
     }
   }
   // Notification...
-  Notification(data) {
+  async Notification(data) {
     const { title, options } = data;
-    if ("Notification" in window) {
-      Notification.requestPermission()
-        .then(permission => {
-          if (permission === "granted") {
-            navigator.serviceWorker.ready.then(registration => {
-              registration.showNotification(title, options);
-              // Sent...
-              return { code: "sent", message: `Sent` };
-            });
-          }
-        })
-        .catch(error => {
-          return { error, code: "failed", message: `Failed` };
+     try {
+      const permission = await Notification.requestPermission()
+      if (permission === "granted") {
+        navigator.serviceWorker.ready.then(registration => {
+          registration.showNotification(title, options);
+          // Sent...
+          return { type: "success", message: `Sent` };
         });
-    } else {
-      return { code: "no-support", message: `Not supported` };
-    }
+      }
+     } catch (error) {
+        // Error...
+      return { error, type: `fail` };
+     }
   }
   // Install...
   Install() {
@@ -172,7 +153,7 @@ class PWA {
     });
     const promptEvent = window.deferredPrompt;
     if (!promptEvent) {
-      return { code: "exists", message: `Exists` };
+      return { type: "success", message: `Exists` };
     }
     // Show the install prompt...
     promptEvent.prompt();
@@ -182,9 +163,10 @@ class PWA {
       window.deferredPrompt = null;
     });
     window.addEventListener("appinstalled", event => {
-      return { code: "installed", message: `Installed` };
+      return { type: "success", message: `Installed` };
     });
   }
+
   // Visibility...
   Visibility(isVisible, notAvailable) {
     if (document.visibilityState) {
@@ -192,12 +174,12 @@ class PWA {
       if (state === `visible`) {
         // Call back function...
         isVisible();
-        return { code: "visible", message: `Visible` };
+        return { type: "success", message: `Visible` };
       }
     } else {
       // Alternative...
       notAvailable();
-      return { code: "no-support", message: `Not supported` };
+      return { type: "fail", message: `Not supported` };
     }
   }
 }
