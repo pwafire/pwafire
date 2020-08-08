@@ -21,15 +21,8 @@ const pwa = pwafire.pwa;
 All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
 
 ### API Spec
-These are async functions, and the promise value returned is a an object. Below is the format.
-
-```js
-  {
-    error: {},
-    code: `code`,
-    message: `message`
-  }
-```
+These are async functions, and the promise value returned is an object.
+Except for Payments, Install and Visibility APIs.
 
 ### 1. Copy Text
 
@@ -76,12 +69,6 @@ img.addEventListener("click", (event) => {
 
 Share links, text, and files to other apps installed on the device.
 
-#### Add the share element(button)
-
-```js
-const element = document.getElementById("share-button");
-```
-
 #### Define the data object to be shared
 
 ```js
@@ -112,11 +99,13 @@ const props = ["name", "email", "tel"];
 const options = { multiple: true };
 ```
 
-#### Call the contacts method on pwa, it returns selected contacts
+#### Call the contacts method on pwa, the promise resolves with an array of contacts selected by the user.
 
 ```js
 // You can save the return value in a variable...
-const contacts = pwa.Contacts(props, options);
+pwa.Contacts(props, options).then(contacts => {
+// Do somthing with 'contacts'
+});
 ```
 
 ### 5. Show PWA Connectivity status
