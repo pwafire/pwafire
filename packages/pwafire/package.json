@@ -1,8 +1,8 @@
 {
   "name": "pwafire",
-  "version": "1.10.0",
+  "version": "1.10.2",
   "description": "Progressive Web Apps API of APIs",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d dist",

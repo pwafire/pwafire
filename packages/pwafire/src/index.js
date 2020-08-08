@@ -49,25 +49,22 @@ class PWA {
   }
 
   // Connectivity...
-  async Connectivity(online, offline) {
-    // Check support...
-    try {
-      document.addEventListener("DOMContentLoaded", () => {
-        // Offline Event...
-        if (!navigator.onLine) {
-          offline();
-          return { type: "success", message: `Offline` };
-        }
+  Connectivity(online, offline) {
+    // Once the DOM is loaded, check for connectivity...
+    document.addEventListener("DOMContentLoaded", () => {
+      // Offline Event...
+      if (!navigator.onLine) {
+        offline();
+        return { type: "success", message: `Offline` };
+      } else {
         // Online Event...
-        window.addEventListener("online", () => {
-          online();
-          return { type: "success", message: `Online` };
-        });
+      window.addEventListener("online", () => {
+        online();
+        return { type: "success", message: `Online` };
       });
-    } catch (error) {
-      // Error...
-      return { error, type: "fail" };
-    }
+      }
+      
+    });
   }
   // Copy image
   async copyImage(imgURL) {
@@ -137,7 +134,8 @@ class PWA {
   async Fullscreen() {
     try {
       if (document.fullscreenEnabled) {
-        document.documentElement.requestFullscreen();
+        await document.documentElement.requestFullscreen();
+        return { type: "success", message: "Fullscreen" };
       }
     } catch (error) {
       // Error...
@@ -148,10 +146,10 @@ class PWA {
   Notification(data) {
     const { title, options } = data;
     if ("Notification" in window) {
-      Notification.requestPermission()
-        .then(permission => {
+      return Notification.requestPermission()
+        .then(async permission => {
           if (permission === "granted") {
-            navigator.serviceWorker.ready.then(registration => {
+            return await navigator.serviceWorker.ready.then(registration => {
               registration.showNotification(title, options);
               // Sent...
               return { type: "success", message: `Sent` };
@@ -176,11 +174,12 @@ class PWA {
       // Stash the event so it can be triggered later...
       window.deferredPrompt = event;
     });
+
     const promptEvent = window.deferredPrompt;
     if (!promptEvent) {
-      return { type: "success", message: `Exists` };
-    }
-    // Show the install prompt...
+      return { type: "fail", message: `No manifest, or app exists` };
+    } else {
+      // Show the install prompt...
     promptEvent.prompt();
     // Log the result...
     promptEvent.userChoice.then(result => {
@@ -190,6 +189,8 @@ class PWA {
     window.addEventListener("appinstalled", event => {
       return { type: "success", message: `Installed` };
     });
+    }
+    
   }
   // Visibility...
   Visibility(isVisible, notAvailable) {
