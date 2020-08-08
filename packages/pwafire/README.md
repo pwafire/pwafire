@@ -22,7 +22,7 @@ All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Brow
 
 ### API Spec
 These are async functions, and the promise value returned is an object.
-Except for Payments, Install and Visibility APIs.
+Except for Payments, Install, Notifications, Share and Visibility APIs, which basically return an object.
 
 ### 1. Copy Text
 
@@ -34,7 +34,6 @@ Copy text to clipboard.
 // Copy text
 pwa.copyText(text);
 ```
-
 
 #### Do something with the promise value returned
 
