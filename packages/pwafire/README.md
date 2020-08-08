@@ -20,29 +20,32 @@ const pwa = pwafire.pwa;
 
 All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
 
+### API Spec
+These are async functions, and the promise value returned is an object.
+Except for Payments, Install and Visibility APIs.
+
 ### 1. Copy Text
 
-Copy text to clipboard
+Copy text to clipboard. 
 
-#### Copy from a single element
+#### Copy text to clipboard
 
 ```js
 // Copy text
 pwa.copyText(text);
 ```
 
-#### Copy from multiple elements
+
+#### Do something with the promise value returned
 
 ```js
-//  Copy from multiple elements
-const elements = document.querySelectorAll(".copy");
-for (let el of elements) {
-  // Copy text
-  pwa.copyText(text);
-}
+// Copy text
+pwa.copyText(text).then(res => {
+  // Do something with 'res'
+  })
 ```
 
-### 2. Copy image (Only PNG are supported for security purposes)
+### 2. Copy image (Only PNG are supported for security purposes) to clipboard
 
 Copy png images to clipboard
 
@@ -65,12 +68,6 @@ img.addEventListener("click", (event) => {
 ### 3. Web Share
 
 Share links, text, and files to other apps installed on the device.
-
-#### Add the share element(button)
-
-```js
-const element = document.getElementById("share-button");
-```
 
 #### Define the data object to be shared
 
@@ -102,11 +99,13 @@ const props = ["name", "email", "tel"];
 const options = { multiple: true };
 ```
 
-#### Call the contacts method on pwa, it returns selected contacts
+#### Call the contacts method on pwa, the promise resolves with an array of contacts selected by the user.
 
 ```js
 // You can save the return value in a variable...
-const contacts = pwa.Contacts(props, options);
+pwa.Contacts(props, options).then(contacts => {
+// Do somthing with 'contacts'
+});
 ```
 
 ### 5. Show PWA Connectivity status
