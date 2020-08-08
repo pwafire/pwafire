@@ -5,13 +5,13 @@ class PWA {
     try {
       await navigator.clipboard.writeText(text);
       // Copied...
-      return { code: "copied", message: `Copied text to clipboard` };
+      return { code: "copied", message: `Copied` };
     } catch (error) {
       // Error...
       return {
         error,
         code: "failed",
-        message: `Failed to copy text to clipboard`,
+        message: `Failed`,
       };
     }
   }
@@ -23,11 +23,11 @@ class PWA {
         .share(data)
         .then(() => {
           // Shared...
-          return { code: "shared", message: `Shared data` };
+          return { code: "shared", message: `Shared` };
         })
         .catch(error => {
           // Error..
-          return { error, code: "failed", message: `Failed to share data` };
+          return { error, code: "failed", message: `Failed` };
         });
     } else {
       // No support...
@@ -43,7 +43,7 @@ class PWA {
       return contacts;
     } catch (error) {
       // Error...
-      return { error, code: "failed", message: `Not supported` };
+      return { error, code: "no-support", message: `Not supported` };
     }
   }
 
@@ -65,7 +65,7 @@ class PWA {
       });
     } catch (error) {
       // Error...
-      return { error, code: "failed", message: `Not supported` };
+      return { error, code: "no-support", message: `Not supported` };
     }
   }
   // Copy image
@@ -82,7 +82,7 @@ class PWA {
         ),
       ]);
       // Error...
-      return { code: "copied", message: `Copied image to clipboard` };
+      return { code: "copied", message: `Copied` };
     } catch (error) {
       // Error...
       return { error, code: "failed", message: `Failed` };
@@ -153,7 +153,7 @@ class PWA {
             navigator.serviceWorker.ready.then(registration => {
               registration.showNotification(title, options);
               // Sent...
-              return { code: "sent", message: `Notification sent` };
+              return { code: "sent", message: `Sent` };
             });
           }
         })
@@ -172,7 +172,7 @@ class PWA {
     });
     const promptEvent = window.deferredPrompt;
     if (!promptEvent) {
-      return { code: "exists", message: `App exists` };
+      return { code: "exists", message: `Exists` };
     }
     // Show the install prompt...
     promptEvent.prompt();
@@ -182,7 +182,7 @@ class PWA {
       window.deferredPrompt = null;
     });
     window.addEventListener("appinstalled", event => {
-      return { code: "installed", message: `App installed` };
+      return { code: "installed", message: `Installed` };
     });
   }
   // Visibility...
@@ -192,12 +192,12 @@ class PWA {
       if (state === `visible`) {
         // Call back function...
         isVisible();
-        return { code: "visible", message: `Content is visible` };
+        return { code: "visible", message: `Visible` };
       }
     } else {
       // Alternative...
       notAvailable();
-      return { code: "no-support", message: `Not available` };
+      return { code: "no-support", message: `Not supported` };
     }
   }
 }
