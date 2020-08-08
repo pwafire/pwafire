@@ -20,29 +20,39 @@ const pwa = pwafire.pwa;
 
 All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
 
+### API Spec
+These are async functions, and the promise value returned is a an object. Below is the format.
+
+```js
+  {
+    error: {},
+    code: `code`,
+    message: `message`
+  }
+```
+
 ### 1. Copy Text
 
-Copy text to clipboard
+Copy text to clipboard. 
 
-#### Copy from a single element
+#### Copy text to clipboard
 
 ```js
 // Copy text
 pwa.copyText(text);
 ```
 
-#### Copy from multiple elements
+
+#### Do something with the promise value returned
 
 ```js
-//  Copy from multiple elements
-const elements = document.querySelectorAll(".copy");
-for (let el of elements) {
-  // Copy text
-  pwa.copyText(text);
-}
+// Copy text
+pwa.copyText(text).then(res => {
+  // Do something with 'res'
+  })
 ```
 
-### 2. Copy image (Only PNG are supported for security purposes)
+### 2. Copy image (Only PNG are supported for security purposes) to clipboard
 
 Copy png images to clipboard
 
