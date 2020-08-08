@@ -21,8 +21,8 @@ const pwa = pwafire.pwa;
 All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
 
 ### API Spec
-These are async functions, and the promise value returned is an object.
-Except for Payments, Install and Visibility APIs.
+Some are promises e.g Copy Text, and the promise value returned is an object.
+Except for Payments, Share, Install and Visibility APIs.
 
 ### 1. Copy Text
 
