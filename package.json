@@ -1,13 +1,14 @@
 {
   "name": "pwafire",
-  "description": "Bundle Check for JSHint (Code Linting)",
+  "description": "Progressive Web Apps API of APIs",
   "author": "Maye Edwin",
   "version": "1.8.7",
+  "dependencies" : {},
   "devDependencies": {
     "jshint": "^2.9.6"
   },
   "scripts": {
     "test": "jshint ./packages/npm/src/index.js"
-  },
-  "dependencies": {}
+  }
+  
 }
