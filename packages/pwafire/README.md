@@ -8,7 +8,7 @@ npm i pwafire --save
 
 ```js
 import pwafire from "https://unpkg.com/pwafire/esm/index.js";
-const pwa = pwafire;
+const pwa = pwafire.pwa;
 ```
 
 ### Import pwafire in your for e.g React App
