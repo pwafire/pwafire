@@ -91,7 +91,7 @@ const props = ['name', 'email', 'tel'];
 const options = { multiple: true };
 ```
 
-#### Call the contacts method on pwa, the promise resolves with an array of contacts selected by the user.
+#### Call the contacts method on pwa, the promise resolves with an object
 
 ```js
 // Do something with the promise value...
