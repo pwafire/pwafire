@@ -1,139 +1,385 @@
+## Setting up
 
-### [Build : Progressive Web App](https://pwafire.org/developer/pwa/started/)
+- Make sure you Progressive Web App has a [Service Worker](https://pwafire.org/developer/docs/service-worker/)
 
-#### [1. Code to register the service worker](https://pwafire.org/developer/pwa/started/#sw-register)
-This is the first step to making your web app work *offline.* Copy and paste this code to your *index file,* eg just before the end of the *body tag* or in the *head tag* in html5
+- Make sure you have a valid [Web Manifest](https://pwafire.org/developer/docs/web-manifest/)
 
-#### N/B : You need HTTPS
-You can only register service workers on Websites, Web Apps or Pages served over HTTPS.
+Learn more [in this setip docs](https://github.com/pwafire/pwadev-tips)
 
-Read more about service workers [on thid tech doc](https://pwafire.org/developer/docs/service-worker/)
+## Install pwafire via NPM
 
-```html 
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./service-worker.js')
-    .then(() => { console.log("[ PWA Fire Bundle ] Service Worker Registered"); });
+```bash
+npm i pwafire --save
+```
+
+### Get pwafire over CDN as an E6 Module
+
+```js
+import pwafire from "https://unpkg.com/pwafire/esm/index.js";
+const pwa = pwafire;
+```
+
+### Import pwafire in your for e.g React App
+
+```js
+import pwafire from 'pwafire';
+const pwa = pwafire.pwa;
+```
+
+All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
+
+### API Spec
+
+For promise types, the promise value returned is an object
+
+```js
+// Success...
+{ type: 'success', message: 'Copied' }
+ // Fail...
+{ type: 'fail', error };
+```
+
+#### Do something with the promise value returned for e.g copyText;
+
+```js
+// Copy text
+pwa.copyText(text).then((res) => {
+  // Do something with 'res'
+  if (res.type === 'success') {
+    // Success...
   }
-  
-  );
-}
-</script>
-```
-This code checks to see if the *service worker API* is available, and if it is, the service worker at `service-worker.js` is registered once the page is loaded.
-
-#### [2. Using the Web Manifest - app.webmanifest](https://pwafire.org/developer/pwa/started/#use-web-manifest)
-When you have uploaded the *manifest* and it's on your site, add a link tag to all the pages that encompass your web app, as follows;
-
-```html
-<link rel="manifest" href="./app.webmanifest">
+});
 ```
 
-Configuring the **app.webmanifest** helps you to specify how you want your web app to look like when launched on the device.
+### 1. Copy Text
 
-Read more about Web Manifest [on this tech doc](https://pwafire.org/developer/docs/web-manifest/)
+Copy text to clipboard.
 
-### [a) Service Worker // service-worker.js Guide](https://pwafire.org/developer/pwa/started/#sw-config)
+#### Copy text to clipboard
 
-Follow the steps as commented in the code below in order to correctly configure the *service-worker.js* file.
-
-```javascript
-// Fetch events, on registration of Service Worker...
-self.addEventListener('fetch', (event) => {
-  event.respondWith(caches.open('cache').then((cache) => {
-    return cache.match(event.request).then((response) => {
-      console.log("cache request: " + event.request.url);
-       var fetchPromise = fetch(event.request).then((networkResponse) => {           
-// Update the cache...                   
-console.log("fetch completed: " + event.request.url, networkResponse);
-  if (networkResponse) {
-    console.debug("updated cached page: " + event.request.url, networkResponse);
-      cache.put(event.request, networkResponse.clone());}
-        return networkResponse;
-          }, function (event) {   
-// Rejected promise - just ignore it, we're offline...  
-          console.log("Error in fetch()", event);
-          event.waitUntil(
-// Name the *cache* in the caches.open()...
-          caches.open('cache').then((cache) => { 
-          // Take a list of URLs, then fetch them from the server and add the response to the cache...
-          return cache.addAll
-          ([                    
-        './index.html', 
-        './assets/css/app.main.css', 
-        './images/*',
-        './app.webmanifest',
-// External url fetch, twitter's as an example...
-        'https://platform.twitter.com/widgets.js',       
-        ]);
-        })
-        );
-        });
-// Respond from the cache, or the network...
-  return response || fetchPromise;
-});
-}));
-});
-
-// Always updating i.e latest version available...
-self.addEventListener('install', (event) => {
-    self.skipWaiting();
-    console.log("Latest version installed!");
-});
-
+```js
+// Copy text
+pwa.copyText(text);
 ```
-### [b) Web Manifest // app.webmanifest Guide](https://pwafire.org/developer/pwa/started/#web-manifest-config)
 
-Follow the steps below as described in order to correctly configure the *app.webmanifest* file.
+### 2. Copy image (Only PNG are supported for security purposes) to clipboard
 
-Configure/edit the background and theme colors, display type, the Web App short name, the Web App name, icons size (keep icon sizes as **specified** below) and your icon/logo paths. Also state the img type eg image/ico or image/png.
+Copy png images to clipboard
 
-Leave the **start url** as recommended below though this can be anything you want; the value we're using has the advantage of being meaningful to **Google Analytics.**
+#### Call the copyImage method on pwa
 
-```json
-{
-  "background_color": "#fff",
-  "display": "standalone",
-  "orientation":"portrait",
-  "theme_color": "#fff",           
-  "short_name": "App Name",
-  "name": "App Name",
-  "description": "Description of the PWA",
-  "lang": "en-US",
-  "icons": [
-  {
-  "src": "icons/pwafire512.png",
-  "type": "image/png",
-  "sizes": "48x48"
+```js
+pwa.copyImage(imgURL);
+```
+
+### 3. Web Share
+
+Share links, text, and files to other apps installed on the device.
+
+#### Define the data object to be shared
+
+```js
+const data = {
+  // Title of what to share
+  title: `Some title..`,
+  // Text to share
+  text: `Some text...`,
+  // Url to share...
+  url: 'https://pwafire.org',
+};
+```
+
+#### Call the share method on pwa
+
+```js
+pwa.Share(data);
+```
+
+### 4. Contacts Picker
+
+[Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the mobile device's native contacts manager. 
+
+**Chrome 80** or higher running on **Android M or later** required.
+
+#### Define the "properties" and "select type" option you need
+
+```js
+const props = ['name', 'email', 'tel'];
+const options = { multiple: true };
+```
+
+#### Call the contacts method on pwa, the promise resolves with an object
+
+```js
+// Do something with the promise value...
+pwa.Contacts(props, options).then((res) => {
+  // Do something with contacts...
+  const contacts = res.type === 'success' ? res.contacts : null;
+  //...
+});
+```
+
+### 5. Show PWA Connectivity status
+
+Pass in two call back funtions, aka **online** and **offline** handlers.
+
+#### Declaring the two handlers separately
+
+```js
+// Online handler...
+const online = () => {
+  //...
+};
+// Offline handler...
+const offline = () => {
+  //...
+};
+```
+
+#### Call the connectivity method on pwa, adding the two parameters
+
+```js
+pwa.Connectivity(online, offline);
+```
+
+### 6. Fullscreen
+
+Open app in fullscreen on a click event
+
+#### Call the fullscreen method
+
+```js
+pwa.Fullscreen();
+```
+
+### 7. Notifications
+
+Show notifications. Pass a **data** object
+
+#### Add notification data
+
+```js
+const data = {
+  title: 'Hello Notification!',
+  options: {
+    body: 'Progressive Web App Hello Notification!',
+    icon: '../images/icons/icon-192x192.png',
+    tag: 'pwa',
   },
-  {
-  "src": "icons/pwafire512.png",
-  "type": "image/png",
-  "sizes": "96x96"
+};
+```
+
+#### Call the notification method, pass in `data` object, for e.g
+
+```js
+// Call the notification method...
+pwa.Notification(data);
+```
+
+### 8. Install
+
+Add custom install button
+
+#### Call the install method
+
+```js
+pwa.Install();
+```
+
+#### 9. Badging
+
+Add badging for app icons
+
+Badging makes it easy to subtly notify the user that there is some new activity that might require their attention, or indicate a small amount of information, such as an unread count.
+
+##### Set the badge
+
+Returns an object, which is either a success or an error type
+
+```js
+// Set the badge
+const unreadCount = 24;
+pwa.setBadge(unreadCount);
+```
+
+##### Clear the badge
+
+```js
+// Clear the badge
+pwa.clearBadge();
+```
+
+#### 10. Visibility
+
+Check if user is viewing a page. Pause/play video or games e.t.c
+
+##### Define page visibilty handler
+
+```js
+// Do something....
+const isVisible = () => {
+  //...
+};
+```
+
+##### If visbility api is not supported, define the handler
+
+```js
+// Do something....
+const notAvailable = () => {
+  //...
+};
+```
+
+##### Call the visibility method with the two arguments
+
+```js
+pwa.Visibility(isVisible, notAvailable);
+```
+
+### 10. Web Payments
+
+Allows users select their preferred way of **paying for things**, and make that information
+available to **a merchant.**
+
+#### Call Payment method with three arguments
+
+```js
+const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
+```
+
+#### Example : compute total amount to pay
+
+```js
+// Calculations...
+const payment = {
+  price: 1,
+  discount: 1,
+  get total() {
+    return this.price + this.tax - this.discount;
   },
+  get tax() {
+    return 0.14 * this.price;
+  },
+};
+
+// Destructure payment object...
+const { price, tax, discount, total } = payment;
+```
+
+#### Set Payment methods
+
+```js
+const paymentMethods = [
   {
-  "src": "icons/pwafire512.png",
-  "type": "image/png",
-  "sizes": "192x192"
+    supportedMethods: ['basic-card'],
+    data: {
+      supportedNetworks: ['visa', 'mastercard'],
+    },
+  },
+];
+```
+
+#### Set Payment details
+
+```js
+const paymentDetails = {
+  total: {
+    label: "Total Amount",
+    amount: {
+      currency: "KSH",
+      value: total
+    }
+  },
+```
+
+#### Set other items to display
+
+```js
+displayItems: [
+    {
+      label: "Discount",
+      amount: {
+        currency: "KSH",
+        value: discount
+      }
+    },
+    {
+      label: "Taxes, 14% V.A.T",
+      amount: {
+        currency: "KSH",
+        value: tax
+      }
+    }
+  ]
+};
+```
+
+#### Requesting additional info
+
+```js
+const options = {
+  requestPayerName: true,
+  requestPayerEmail: true,
+};
+```
+
+#### Create paydata object
+
+```js
+const paydata = {
+  paymentMethods,
+  paymentDetails,
+  options,
+};
+```
+
+#### Validate payment
+
+```js
+const validatePayment = paymentResponse => {
+  // Destructure to get payment responses
+  const { details, shippingAddress, shippingOption } = paymentResponse;
+
+  // Destructure to get card details...
+  const {
+    cardNumber,
+    cardSecurityCode,
+    cardholderName,
+    expiryMonth,
+    expiryYear
+  } = details;
+
+  // Destructure to get billing address...
+  const {
+    addressLine,
+    city,
+    country,
+    dependentLocality,
+    organization,
+    phone,
+    postalCode,
+    recipient,
+    re.gion,
+    sortingCode
+  } = details.billingAddress;
+
+  // Validate...
+  let condition;
+  if (condition) {
+    //...
+    // Return sucess
+    return paymentResponse.complete("success");
+  } else {
+    //...
+    // Return failure
+    return paymentResponse.complete("failure");
   }
-  ,
-  {
-  "src": "icons/pwafire512.png",
-  "type": "image/png",
-  "sizes": "512x512"
-  } 
-  ],
-  "start_url": "index.html?launcher=true",
-  "scope": "/"
-}
-```
-Also remember to add the theme color to all your pages as shown in the code below;
-
-```html
-<!-- theme-color -->
- <meta name="theme-color" content="#fff" />
-<!-- end-theme-color -->
+};
 ```
 
-Enjoy!
+### Call Payment method, returns a payment response
+
+```js
+const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
+```

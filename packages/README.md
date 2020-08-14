@@ -4,6 +4,13 @@
 npm i pwafire --save
 ```
 
+### Get pwafire over CDN as an E6 Module
+
+```js
+import pwafire from "https://unpkg.com/pwafire/esm/index.js";
+const pwa = pwafire;
+```
+
 ### Import pwafire in your for e.g React App
 
 ```js
@@ -82,7 +89,9 @@ pwa.Share(data);
 
 ### 4. Contacts Picker
 
-[Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the device's native contacts manager. **Chrome 77** or higher running on **Android M or later** required.
+[Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the mobile device's native contacts manager. 
+
+**Chrome 80** or higher running on **Android M or later** required.
 
 #### Define the "properties" and "select type" option you need
 

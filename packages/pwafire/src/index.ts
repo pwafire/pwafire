@@ -65,9 +65,13 @@ class PWA {
   // Contacts Picker...
   async Contacts(props: object, options: object) {
     try {
-      const contacts = await navigator.contacts.select(props, options);
-      // Return contacts...
-      return { type: 'success', message: 'Selected', contacts };
+      const supported = 'contacts' in navigator && 'ContactsManager' in window;
+      if (supported) {
+        const contacts = await navigator.contacts.select(props, options);
+        // Return contacts...
+        return { type: 'success', message: 'Selected', contacts };
+      }
+      return { type: 'fail', message: 'Not supported' };
     } catch (error) {
       // Error...
       return { type: 'fail', error };
@@ -78,16 +82,13 @@ class PWA {
   Connectivity(online: () => void, offline: () => void) {
     // Once the DOM is loaded, check for connectivity...
     try {
-      document.addEventListener('DOMContentLoaded', () => {
-        // Offline Event...
-        if (navigator.onLine) {
-          online();
-          return { type: 'success', message: `Online` };
-        } else {
-          offline();
-          return { type: 'success', message: `Offline` };
-        }
-      });
+      if (navigator.onLine) {
+        online();
+        return { type: 'success', message: `Online` };
+      } else {
+        offline();
+        return { type: 'success', message: `Offline` };
+      }
     } catch (error) {
       // Error...
       return { type: 'fail', error };
@@ -97,10 +98,7 @@ class PWA {
   // Set badge...
   async setBadge(unreadCount: number) {
     try {
-      await navigator.setAppBadge(unreadCount).catch((error: any) => {
-        // Error...
-        return { type: 'fail', error };
-      });
+      await navigator.setAppBadge(unreadCount);
       return { type: 'success', message: 'Set' };
     } catch (error) {
       // Error...
@@ -112,10 +110,7 @@ class PWA {
   async clearBadge() {
     try {
       // Clear the badge
-      await navigator.clearAppBadge().catch((error: any) => {
-        // Do something with the error.
-        return { type: 'fail', error };
-      });
+      await navigator.clearAppBadge();
       return { type: 'success', message: 'Cleared' };
     } catch (error) {
       // Error...
@@ -137,50 +132,51 @@ class PWA {
   }
 
   // Notification...
-  Notification(data: { title: string; options: object }) {
+  async Notification(data: { title: string; options: object }) {
     const { title, options } = data;
-    if ('Notification' in window) {
-      return Notification.requestPermission()
-        .then(async (permission) => {
-          if (permission === 'granted') {
-            return await navigator.serviceWorker.ready.then((registration) => {
-              registration.showNotification(title, options);
-              // Sent...
-              return { type: 'success', message: `Sent` };
-            });
-          }
-        })
-        .catch((error) => {
-          return { type: 'fail', error };
+    try {
+      const permission = await Notification.requestPermission();
+      if (permission === 'granted') {
+        await navigator.serviceWorker.ready.then((registration) => {
+          registration.showNotification(title, options);
+          // Sent...
+          return { type: 'success', message: `Sent` };
         });
-    } else {
-      return {
-        type: 'fail',
-        message: `Not supported`,
-      };
+      } else {
+        // Denied...
+        return { type: 'success', message: `Denied` };
+      }
+    } catch (error) {
+      // Error...
+      return { type: 'fail', error };
     }
   }
 
   // Install...
   Install() {
-    window.addEventListener('beforeinstallprompt', (event: any) => {
-      // Stash the event so it can be triggered later...
-      window.deferredPrompt = event;
-    });
-    const promptEvent = window.deferredPrompt;
-    if (!promptEvent) {
-      return { type: 'fail', message: `No manifest, or app exists` };
-    } else {
-      // Show the install prompt...
-      promptEvent.prompt();
-      // Log the result...
-      promptEvent.userChoice.then((result: any) => {
-        // Reset the deferred prompt variable, since rompt() can only be called once...
-        window.deferredPrompt = null;
+    try {
+      window.addEventListener('beforeinstallprompt', (event: any) => {
+        // Stash the event so it can be triggered later...
+        window.deferredPrompt = event;
       });
-      window.addEventListener('appinstalled', (event: any) => {
-        return { type: 'success', message: `Installed` };
-      });
+      const promptEvent = window.deferredPrompt;
+      if (!promptEvent) {
+        return { type: 'fail', message: `Fail` };
+      } else {
+        // Show the install prompt...
+        promptEvent.prompt();
+        // Log the result...
+        promptEvent.userChoice.then((result: any) => {
+          // Reset the deferred prompt variable, since rompt() can only be called once...
+          window.deferredPrompt = null;
+        });
+        window.addEventListener('appinstalled', (event: any) => {
+          return { type: 'success', message: `Installed` };
+        });
+      }
+    } catch (error) {
+      // Error...
+      return { type: 'fail', error };
     }
   }
 
