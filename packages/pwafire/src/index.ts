@@ -63,7 +63,7 @@ class PWA {
   }
 
   // Contacts Picker...
-  async Contacts(props: {}, options: {}) {
+  async Contacts(props: object, options: object) {
     try {
       const contacts = await navigator.contacts.select(props, options);
       // Return contacts...
