@@ -155,23 +155,27 @@ class PWA {
   // Install...
   Install() {
     try {
+      // Listen...
       window.addEventListener('beforeinstallprompt', (event: any) => {
-        // Stash the event so it can be triggered later...
+        // Stash the event so it can be triggered later.
         window.deferredPrompt = event;
       });
+      // Get prompt event...
       const promptEvent = window.deferredPrompt;
       if (!promptEvent) {
-        return { type: 'fail', message: `Fail` };
+        return { type: 'fail', message: 'Fail' };
       } else {
         // Show the install prompt...
         promptEvent.prompt();
-        // Log the result...
+        // Log the result
         promptEvent.userChoice.then((result: any) => {
-          // Reset the deferred prompt variable, since rompt() can only be called once...
+          // prompt() can only be called once.
           window.deferredPrompt = null;
+          // Hide the install button.
         });
+        // Notify...
         window.addEventListener('appinstalled', (event: any) => {
-          return { type: 'success', message: `Installed` };
+          return { type: 'success', message: 'Installed' };
         });
       }
     } catch (error) {
