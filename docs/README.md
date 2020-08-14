@@ -4,7 +4,7 @@
 
 - Make sure you have a valid [Web Manifest](https://pwafire.org/developer/docs/web-manifest/)
 
-Learn more [in this setip docs](https://github.com/pwafire/pwadev-tips)
+Learn more [in this setup docs](https://github.com/pwafire/pwadev-tips)
 
 ## Install pwafire via NPM
 
