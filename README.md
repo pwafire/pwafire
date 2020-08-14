@@ -14,10 +14,11 @@ Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
  npm i pwafire --save
 ```
 
-### Get pwafire over CDN
+### Get pwafire over CDN as an E6 Module
 
-```html
- <script src="https://pwafire.org/code/cdn/releases/@latest/pwafire.js"></script>
+```js
+import pwafire from "https://unpkg.com/pwafire/esm/index.js";
+const pwa = pwafire;
 ```
 
 ### Example : using *pwafire*
