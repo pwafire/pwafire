@@ -3,14 +3,14 @@
   "description": "Progressive Web Apps API of APIs",
   "author": "Maye Edwin",
   "version": "1.8.7",
-  "dependencies" : {},
+  "dependencies": {},
   "eslintConfig": {
-        "env": {
-            "browser": true,
-            "node": true
-        },
-  "scripts": {
-    "lint": "eslint . --ext .ts",
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "scripts": {
+      "lint": "eslint . --ext .ts"
+    }
   }
-  
 }
