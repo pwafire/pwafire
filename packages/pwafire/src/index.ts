@@ -95,12 +95,13 @@ class PWA {
   }
 
   // Set badge...
-  setBadge(unreadCount: number) {
+  async setBadge(unreadCount: number) {
     try {
-      navigator.setAppBadge(unreadCount).catch((error: any) => {
-        // Error...
-        return { type: 'fail', error };
+      await navigator.setAppBadge(unreadCount).catch((error: any) => {
+      // Error...
+      return { type: 'fail', error };
       });
+      return { type: 'success', message: 'Set' };
     } catch (error) {
       // Error...
       return { type: 'fail', error };
@@ -108,13 +109,14 @@ class PWA {
   }
 
   // Clear badge...
-  clearBadge() {
+  async clearBadge() {
     try {
       // Clear the badge
-      return navigator.clearAppBadge().catch((error: any) => {
+      await navigator.clearAppBadge().catch((error: any) => {
         // Do something with the error.
         return { type: 'fail', error };
       });
+      return { type: 'success', message: 'Cleared' };
     } catch (error) {
       // Error...
       return { type: 'fail', error };
