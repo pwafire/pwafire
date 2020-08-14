@@ -4,11 +4,13 @@
   "author": "Maye Edwin",
   "version": "1.8.7",
   "dependencies" : {},
-  "devDependencies": {
-    "jshint": "^2.9.6"
-  },
+  "eslintConfig": {
+        "env": {
+            "browser": true,
+            "node": true
+        },
   "scripts": {
-    "test": "jshint ./packages/pwafire/src/index.ts"
+    "lint": "eslint . --ext .ts",
   }
   
 }
