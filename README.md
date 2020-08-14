@@ -1,8 +1,8 @@
 ## Progressive Web Apps API of APIs
 
-[![Build Status](https://travis-ci.org/pwafire/pwafire.svg?branch=master)](https://travis-ci.org/pwafire/pwafire)
-
 Build Scalable Progressive Web Apps/First Experiences. Visit [Documentation](https://pwafire.org) site.
+
+[![Build Status](https://travis-ci.org/pwafire/pwafire.svg?branch=master)](https://travis-ci.org/pwafire/pwafire)
 
 <p>
  <img src="https://img.shields.io/github/issues/pwafire/pwafire" alt="CI" />
