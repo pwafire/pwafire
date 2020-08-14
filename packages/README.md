@@ -15,7 +15,7 @@ All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Brow
 
 ### API Spec
 
-For primise types, the promise value returned is an object
+For promise types, the promise value returned is an object
 
 ```js
 // Success...
