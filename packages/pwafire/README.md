@@ -94,9 +94,11 @@ const options = { multiple: true };
 #### Call the contacts method on pwa, the promise resolves with an array of contacts selected by the user.
 
 ```js
-// You can save the return value in a variable...
-pwa.Contacts(props, options).then((contacts) => {
-  // Do somthing with 'contacts'
+// Do something with the promise value...
+pwa.Contacts(props, options).then((res) => {
+  // Do something with contacts...
+  const contacts = res.type === 'success' ? res.contacts : null;
+  //...
 });
 ```
 
@@ -171,7 +173,7 @@ pwa.Install();
 
 Add badging for app icons
 
-Badging makes it easy to subtly notify the user that there is some new activity that might require their attention, or  indicate a small amount of information, such as an unread count.
+Badging makes it easy to subtly notify the user that there is some new activity that might require their attention, or indicate a small amount of information, such as an unread count.
 
 ##### Set the badge
 
@@ -180,14 +182,14 @@ Returns an object, which is either a success or an error type
 ```js
 // Set the badge
 const unreadCount = 24;
-pwa.setBadge(unreadCount)
+pwa.setBadge(unreadCount);
 ```
 
 ##### Clear the badge
 
 ```js
 // Clear the badge
-pwa.clearBadge()
+pwa.clearBadge();
 ```
 
 #### 10. Visibility

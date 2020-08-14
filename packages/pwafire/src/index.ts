@@ -8,7 +8,7 @@ class PWA {
       return { type: 'success', message: `Copied` };
     } catch (error) {
       // Error...
-      return { type: 'fail', error};
+      return { type: 'fail', error };
     }
   }
 
@@ -67,7 +67,7 @@ class PWA {
     try {
       const contacts = await navigator.contacts.select(props, options);
       // Return contacts...
-      return contacts;
+      return { type: 'success', message: 'Selected', contacts}
     } catch (error) {
       // Error...
       return { type: 'fail', error };
@@ -97,8 +97,8 @@ class PWA {
   // Set badge...
   setBadge(unreadCount: number) {
     try {
-      return navigator.setAppBadge(unreadCount).catch((error: any) => {
-        // Do something with the error.
+      navigator.setAppBadge(unreadCount).catch((error: any) => {
+        // Error...
         return { type: 'fail', error };
       });
     } catch (error) {
@@ -106,7 +106,7 @@ class PWA {
       return { type: 'fail', error };
     }
   }
-  
+
   // Clear badge...
   clearBadge() {
     try {
