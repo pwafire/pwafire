@@ -67,7 +67,7 @@ class PWA {
     try {
       const contacts = await navigator.contacts.select(props, options);
       // Return contacts...
-      return { type: 'success', message: 'Selected', contacts}
+      return { type: 'success', message: 'Selected', contacts };
     } catch (error) {
       // Error...
       return { type: 'fail', error };
@@ -98,8 +98,8 @@ class PWA {
   async setBadge(unreadCount: number) {
     try {
       await navigator.setAppBadge(unreadCount).catch((error: any) => {
-      // Error...
-      return { type: 'fail', error };
+        // Error...
+        return { type: 'fail', error };
       });
       return { type: 'success', message: 'Set' };
     } catch (error) {
