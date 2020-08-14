@@ -11,7 +11,7 @@ Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
 ### Install pwafire via NPM
 
 ```bash
- npm i pwafire
+ npm i pwafire --save
 ```
 
 ### Get pwafire over CDN

@@ -1,7 +1,7 @@
 ## Install pwafire via NPM
 
 ```bash
-npm i pwafire
+npm i pwafire --save
 ```
 
 ### Import pwafire in your React/Angular/Vue App
