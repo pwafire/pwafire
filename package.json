@@ -12,5 +12,14 @@
     "scripts": {
       "lint": "eslint . --ext .ts"
     }
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.9",
+    "jest": "^26.4.0",
+    "prettier": "^2.0.5",
+    "ts-jest": "^26.2.0",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
+    "typescript": "^3.9.7"
   }
 }
