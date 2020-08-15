@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "strict": true,
+    "allowJs": true
+  },
+  "include": ["**pwafire/src/*"],
+  "exclude": ["node_modules", "**/tests/*"]
+}
