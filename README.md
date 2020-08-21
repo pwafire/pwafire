@@ -26,7 +26,7 @@ Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
 
 ```js
 import pwafire from "https://unpkg.com/pwafire/esm/index.js";
-const pwa = pwafire;
+const pwa = pwafire.pwa;
 ```
 
 ### Example : using *pwafire*
