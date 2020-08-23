@@ -2,12 +2,7 @@
 
 Build Scalable Progressive Web Apps/First Experiences. Visit [Documentation](https://pwafire.org) site.
 
-[![Build Status](https://travis-ci.org/pwafire/pwafire.svg?branch=master)](https://travis-ci.org/pwafire/pwafire)
-
-<p>
-  <img src="https://img.shields.io/github/license/pwafire/pwafire" alt="CI" />
- <img src="https://img.shields.io/npm/dm/pwafire" alt="CI" />
-</p>
+<span>[![Build Status](https://travis-ci.org/pwafire/pwafire.svg?branch=master)](https://travis-ci.org/pwafire/pwafire)</span> <span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span>
 
 ## Introducing *pwafire* cdn and npm 
 
@@ -50,7 +45,7 @@ Background Sync | Native App Install Banner |
 | Badging |  Web Share | 
 | Contact Picker |  Copy Text, PNG | 
 | Share Target |  Periodic Background Sync | 
-| Page Visibility | Push Notifications |
+|  Screen Wake Lock API | Push Notifications |
 | [View All, 15 + Here](https://github.com/pwafire/pwafire/tree/master/bundle/)|
 
 ## Chat : Join the conversation 
