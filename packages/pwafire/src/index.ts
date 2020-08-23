@@ -184,6 +184,20 @@ class PWA {
     }
   }
 
+  // Wakelock...
+  async WakeLock() {
+    // The wake lock sentinel.
+    let wakeLock:null;
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      if(wakeLock) {
+        return { type: 'success', message: 'Active' };
+      }
+    } catch (err) {
+      return { type: 'fail', message: 'Fail', err };
+    }
+  }
+
   // Visibility...
   Visibility(isVisible: () => void, notAvailable: () => void) {
     try {
