@@ -153,33 +153,32 @@ class PWA {
   }
 
   // Install...
-  Install() {
+  Install(button: HTMLElement) {
     try {
-      // Listen...
       window.addEventListener('beforeinstallprompt', (event: any) => {
         // Stash the event so it can be triggered later.
         window.deferredPrompt = event;
       });
-      // Get prompt event...
-      const promptEvent = window.deferredPrompt;
-      if (!promptEvent) {
-        return { type: 'fail', message: 'Fail' };
-      } else {
+      // Install...
+      button.addEventListener('click', () => {
+        const promptEvent = window.deferredPrompt;
+        if (!promptEvent) {
+          return null;
+        }
         // Show the install prompt...
         promptEvent.prompt();
         // Log the result
         promptEvent.userChoice.then((result: any) => {
-          // prompt() can only be called once.
+          // Reset the deferred prompt variable...
           window.deferredPrompt = null;
-          // Hide the install button.
+          // Hide the install button...
         });
-        // Notify...
-        window.addEventListener('appinstalled', (event: any) => {
-          return { type: 'success', message: 'Installed' };
-        });
-      }
+      });
+      // Installed....
+      window.addEventListener('appinstalled', (event: any) => {
+        // Installed...
+      });
     } catch (error) {
-      // Error...
       return { type: 'fail', error };
     }
   }
@@ -187,14 +186,14 @@ class PWA {
   // Wakelock...
   async WakeLock() {
     // The wake lock sentinel.
-    let wakeLock:null;
+    let wakeLock: null;
     try {
       wakeLock = await navigator.wakeLock.request('screen');
-      if(wakeLock) {
+      if (wakeLock) {
         return { type: 'success', message: 'Active' };
       }
     } catch (err) {
-      return { type: 'fail', message: 'Fail', err };
+      return { type: 'fail', err };
     }
   }
 

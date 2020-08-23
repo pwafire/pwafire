@@ -170,12 +170,12 @@ pwa.Notification(data);
 
 ### 8. Install
 
-Add custom install button
+Add custom install button, provide a "button element" as the parameter
 
 #### Call the install method
 
 ```js
-pwa.Install();
+pwa.Install(button);
 ```
 
 #### 9. Badging
