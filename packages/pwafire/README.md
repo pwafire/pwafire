@@ -178,7 +178,7 @@ Add custom install button, provide a "button element" as the parameter
 pwa.Install(button);
 ```
 
-#### 9. Badging
+### 9. Badging
 
 Add badging for app icons
 
@@ -201,7 +201,7 @@ pwa.setBadge(unreadCount);
 pwa.clearBadge();
 ```
 
-#### 10. Screen Wake Lock API
+### 10. Screen Wake Lock API
 
 The Screen Wake Lock API provides a way to prevent devices from dimming or locking the screen when an application needs to keep running.
 
