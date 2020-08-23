@@ -7,7 +7,7 @@ npm i pwafire --save
 ### Get pwafire over CDN as an E6 Module
 
 ```js
-import pwafire from "https://unpkg.com/pwafire/esm/index.js";
+import pwafire from 'https://unpkg.com/pwafire/esm/index.js';
 const pwa = pwafire.pwa;
 ```
 
@@ -89,7 +89,7 @@ pwa.Share(data);
 
 ### 4. Contacts Picker
 
-[Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the mobile device's native contacts manager. 
+[Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the mobile device's native contacts manager.
 
 **Chrome 80** or higher running on **Android M or later** required.
 
@@ -201,7 +201,17 @@ pwa.setBadge(unreadCount);
 pwa.clearBadge();
 ```
 
-#### 10. Visibility
+#### 10. Screen Wake Lock API
+
+The Screen Wake Lock API provides a way to prevent devices from dimming or locking the screen when an application needs to keep running.
+
+##### Call the install method, returns a promise value
+
+```js
+pwa.WakeLock();
+```
+
+#### 11. Visibility
 
 Check if user is viewing a page. Pause/play video or games e.t.c
 
@@ -229,7 +239,7 @@ const notAvailable = () => {
 pwa.Visibility(isVisible, notAvailable);
 ```
 
-### 10. Web Payments
+### 12. Web Payments
 
 Allows users select their preferred way of **paying for things**, and make that information
 available to **a merchant.**
