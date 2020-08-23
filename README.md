@@ -5,9 +5,6 @@ Build Scalable Progressive Web Apps/First Experiences. Visit [Documentation](htt
 [![Build Status](https://travis-ci.org/pwafire/pwafire.svg?branch=master)](https://travis-ci.org/pwafire/pwafire)
 
 <p>
- <img src="https://img.shields.io/github/issues/pwafire/pwafire" alt="CI" />
- <img src="https://img.shields.io/github/forks/pwafire/pwafire" alt="CI" />
- <img src="https://img.shields.io/github/stars/pwafire/pwafire" alt="CI" />
   <img src="https://img.shields.io/github/license/pwafire/pwafire" alt="CI" />
  <img src="https://img.shields.io/npm/dm/pwafire" alt="CI" />
 </p>
