@@ -180,7 +180,7 @@ pwa.Install(button);
 
 ### 9. Badging
 
-Add badging for app icons
+#### Add badging for app icons
 
 Badging makes it easy to subtly notify the user that there is some new activity that might require their attention, or indicate a small amount of information, such as an unread count.
 
@@ -205,17 +205,17 @@ pwa.clearBadge();
 
 The Screen Wake Lock API provides a way to prevent devices from dimming or locking the screen when an application needs to keep running.
 
-##### Call the install method, returns a promise value
+#### Call the install method, returns a promise value
 
 ```js
 pwa.WakeLock();
 ```
 
-#### 11. Visibility
+### 11. Visibility
 
 Check if user is viewing a page. Pause/play video or games e.t.c
 
-##### Define page visibilty handler
+#### Define page visibilty handler
 
 ```js
 // Do something....
@@ -224,7 +224,7 @@ const isVisible = () => {
 };
 ```
 
-##### If visbility api is not supported, define the handler
+#### If visbility api is not supported, define the handler
 
 ```js
 // Do something....
@@ -233,7 +233,7 @@ const notAvailable = () => {
 };
 ```
 
-##### Call the visibility method with the two arguments
+#### Call the visibility method with the two arguments
 
 ```js
 pwa.Visibility(isVisible, notAvailable);
