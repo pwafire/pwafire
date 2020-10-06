@@ -1,4 +1,4 @@
-## Progressive Web Apps API of APIs
+## Progressive Web Apps API of APIs (Sponsor us)
 
 Build Scalable Progressive Web Apps/First Experiences. Visit [Documentation](https://pwafire.org) site.
 
