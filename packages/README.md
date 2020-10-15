@@ -344,7 +344,7 @@ const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
 ```
 
 
-#### Validate payment
+#### Validate payment (Do something with the Payment Response)
 
 ```js
 const validatePayment = paymentResponse => {
