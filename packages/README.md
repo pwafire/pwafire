@@ -336,6 +336,14 @@ const paydata = {
 };
 ```
 
+
+### Call Payment method, returns a payment response
+
+```js
+const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
+```
+
+
 #### Validate payment
 
 ```js
@@ -378,10 +386,4 @@ const validatePayment = paymentResponse => {
     return paymentResponse.complete("failure");
   }
 };
-```
-
-### Call Payment method, returns a payment response
-
-```js
-const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
 ```
