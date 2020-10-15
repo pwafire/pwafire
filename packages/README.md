@@ -252,6 +252,8 @@ const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
 
 #### Example : compute total amount to pay
 
+Test Demo Application : [Live Preview](https://webpay.glitch.me/)
+
 ```js
 // Calculations...
 const payment = {
