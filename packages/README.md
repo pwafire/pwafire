@@ -337,7 +337,7 @@ const paydata = {
 ```
 
 
-### Call Payment method, returns a payment response
+#### Call Payment method, returns a payment response
 
 ```js
 const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
@@ -370,7 +370,7 @@ const validatePayment = paymentResponse => {
     phone,
     postalCode,
     recipient,
-    re.gion,
+    region,
     sortingCode
   } = details.billingAddress;
 
