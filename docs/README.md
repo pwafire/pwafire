@@ -1,8 +1,8 @@
 ## Setting up
 
-- Make sure you Progressive Web App has a [Service Worker](https://pwafire.org/developer/docs/service-worker/)
+- Make sure your Web App has a [Service Worker](https://pwafire.org/developer/docs/service-worker/)
 
-- Make sure you have a valid [Web Manifest](https://pwafire.org/developer/docs/web-manifest/)
+- Make sure your Web App has a valid [Web Manifest](https://pwafire.org/developer/docs/web-manifest/)
 
 Learn more [in this setup docs](https://github.com/pwafire/pwadev-tips)
 
