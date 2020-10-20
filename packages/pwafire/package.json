@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "1.10.11",
+  "version": "1.10.22",
   "description": "Progressive Web App API of APIs",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -19,7 +19,6 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
-  
   "repository": {
     "type": "git",
     "url": "https://github.com/pwafire/pwafire/"
@@ -46,7 +45,7 @@
   "author": "Maye Edwin (devmaye@gmail.com) (https://pwafire.org)",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "10.0.4"
+    "@types/node": "^14.6.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.9",

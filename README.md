@@ -1,16 +1,8 @@
-## Progressive Web Apps API of APIs
+## Progressive Web Apps API of APIs (Sponsor us)
 
 Build Scalable Progressive Web Apps/First Experiences. Visit [Documentation](https://pwafire.org) site.
 
-[![Build Status](https://travis-ci.org/pwafire/pwafire.svg?branch=master)](https://travis-ci.org/pwafire/pwafire)
-
-<p>
- <img src="https://img.shields.io/github/issues/pwafire/pwafire" alt="CI" />
- <img src="https://img.shields.io/github/forks/pwafire/pwafire" alt="CI" />
- <img src="https://img.shields.io/github/stars/pwafire/pwafire" alt="CI" />
-  <img src="https://img.shields.io/github/license/pwafire/pwafire" alt="CI" />
- <img src="https://img.shields.io/npm/dm/pwafire" alt="CI" />
-</p>
+<span>[![Build Status](https://travis-ci.org/pwafire/pwafire.svg?branch=master)](https://travis-ci.org/pwafire/pwafire)</span> <span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span>
 
 ## Introducing *pwafire* cdn and npm 
 
@@ -26,7 +18,7 @@ Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
 
 ```js
 import pwafire from "https://unpkg.com/pwafire/esm/index.js";
-const pwa = pwafire;
+const pwa = pwafire.pwa;
 ```
 
 ### Example : using *pwafire*
@@ -51,9 +43,9 @@ Preview Documentation : [Get Started](https://github.com/pwafire/pwafire/tree/ma
 | Custom Install Button | Offline Capabilities | 
 Background Sync | Native App Install Banner | 
 | Badging |  Web Share | 
-| Contact Picker |  Copy Text, PNG | 
-| Share Target |  Periodic Background Sync | 
-| Page Visibility | Push Notifications |
+| Contact Picker |  Copy Text | 
+| Share Target |  Copy Images | 
+|  Screen Wake Lock | Push Notifications |
 | [View All, 15 + Here](https://github.com/pwafire/pwafire/tree/master/bundle/)|
 
 ## Chat : Join the conversation 
@@ -82,7 +74,7 @@ Become a financial contributor and help us sustain our community. [[Contribute](
 
 ### Organizations
 
-Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/pwafire/contribute)]
+Support this project with your organization. Your logo will show up here with a link to your website [[Contribute](https://opencollective.com/pwafire/contribute)]
 
 <a href="https://opencollective.com/pwafire/organization/0/website"><img src="https://opencollective.com/pwafire/organization/0/avatar.svg"></a>
 <a href="https://opencollective.com/pwafire/organization/1/website"><img src="https://opencollective.com/pwafire/organization/1/avatar.svg"></a>

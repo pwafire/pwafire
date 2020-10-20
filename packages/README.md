@@ -7,7 +7,7 @@ npm i pwafire --save
 ### Get pwafire over CDN as an E6 Module
 
 ```js
-import pwafire from "https://unpkg.com/pwafire/esm/index.js";
+import pwafire from 'https://unpkg.com/pwafire/esm/index.js';
 const pwa = pwafire.pwa;
 ```
 
@@ -89,7 +89,7 @@ pwa.Share(data);
 
 ### 4. Contacts Picker
 
-[Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the mobile device's native contacts manager. 
+[Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the mobile device's native contacts manager.
 
 **Chrome 80** or higher running on **Android M or later** required.
 
@@ -170,17 +170,17 @@ pwa.Notification(data);
 
 ### 8. Install
 
-Add custom install button
+Add custom install button, provide a "button element" as the parameter
 
 #### Call the install method
 
 ```js
-pwa.Install();
+pwa.Install(button);
 ```
 
-#### 9. Badging
+### 9. Badging
 
-Add badging for app icons
+#### Add badging for app icons
 
 Badging makes it easy to subtly notify the user that there is some new activity that might require their attention, or indicate a small amount of information, such as an unread count.
 
@@ -201,11 +201,21 @@ pwa.setBadge(unreadCount);
 pwa.clearBadge();
 ```
 
-#### 10. Visibility
+### 10. Screen Wake Lock API
+
+The Screen Wake Lock API provides a way to prevent devices from dimming or locking the screen when an application needs to keep running.
+
+#### Call the install method, returns a promise value
+
+```js
+pwa.WakeLock();
+```
+
+### 11. Visibility
 
 Check if user is viewing a page. Pause/play video or games e.t.c
 
-##### Define page visibilty handler
+#### Define page visibilty handler
 
 ```js
 // Do something....
@@ -214,7 +224,7 @@ const isVisible = () => {
 };
 ```
 
-##### If visbility api is not supported, define the handler
+#### If visbility api is not supported, define the handler
 
 ```js
 // Do something....
@@ -223,13 +233,13 @@ const notAvailable = () => {
 };
 ```
 
-##### Call the visibility method with the two arguments
+#### Call the visibility method with the two arguments
 
 ```js
 pwa.Visibility(isVisible, notAvailable);
 ```
 
-### 10. Web Payments
+### 12. Web Payments
 
 Allows users select their preferred way of **paying for things**, and make that information
 available to **a merchant.**
@@ -241,6 +251,8 @@ const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
 ```
 
 #### Example : compute total amount to pay
+
+Test Demo Application : [Live Preview](https://webpay.glitch.me/)
 
 ```js
 // Calculations...
@@ -326,7 +338,15 @@ const paydata = {
 };
 ```
 
-#### Validate payment
+
+#### Call Payment method, returns a payment response
+
+```js
+const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
+```
+
+
+#### Validate payment (Do something with the Payment Response)
 
 ```js
 const validatePayment = paymentResponse => {
@@ -352,7 +372,7 @@ const validatePayment = paymentResponse => {
     phone,
     postalCode,
     recipient,
-    re.gion,
+    region,
     sortingCode
   } = details.billingAddress;
 
@@ -368,10 +388,4 @@ const validatePayment = paymentResponse => {
     return paymentResponse.complete("failure");
   }
 };
-```
-
-### Call Payment method, returns a payment response
-
-```js
-const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
 ```
