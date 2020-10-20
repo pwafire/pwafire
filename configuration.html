@@ -1,7 +1,6 @@
 
 <!-- pwa fire bundle config file  
-Copy and paste this code to your index file, eg just before the end of the body tag
-or in the head tag in html5.
+Copy and paste this code to your index file, in the head tag
 -->
 
 <!-- register service worker -->
@@ -31,14 +30,4 @@ Also remember to add the theme color to all your pages as shown in the code belo
 -->
  <meta name="theme-color" content="#fff" />
 <!-- end-theme-color -->
-
-<!-- add workbox window -->
-<script type="module">
-  import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/4.0.0/workbox-window.prod.mjs';
-
-   if ('serviceWorker' in navigator) {
-     const wb = new Workbox('/service-worker.js');
-     wb.register();
-     }
-</script>
 
