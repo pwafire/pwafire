@@ -66,12 +66,9 @@ class PWA {
   async Contacts(props: object, options: object) {
     try {
       const supported = 'contacts' in navigator && 'ContactsManager' in window;
-      if (supported) {
-        const contacts = await navigator.contacts.select(props, options);
-        // Return contacts...
-        return { type: 'success', message: 'Selected', contacts };
-      }
-      return { type: 'fail', message: 'Not supported' };
+      const contacts = await navigator.contacts.select(props, options);
+      // Return contacts...
+      return { type: 'success', message: 'Selected', contacts };
     } catch (error) {
       // Error...
       return { type: 'fail', error };
@@ -222,7 +219,6 @@ class PWA {
   }
 
   // File system...
-  
 
   // Payment...
   async Payment(
