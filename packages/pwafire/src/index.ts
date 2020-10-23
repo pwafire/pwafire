@@ -65,7 +65,7 @@ class PWA {
   // Contacts Picker...
   async Contacts(props: object, options: object) {
     try {
-      const supported = 'contacts' in navigator && 'ContactsManager' in window;
+      // const supported = 'contacts' in navigator && 'ContactsManager' in window;
       const contacts = await navigator.contacts.select(props, options);
       // Return contacts...
       return { type: 'success', message: 'Selected', contacts };
