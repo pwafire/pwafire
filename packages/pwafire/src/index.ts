@@ -36,26 +36,16 @@ class PWA {
   async Share(data: object) {
     // Check support...
     try {
-      if (navigator.share) {
-        navigator
-          .share(data)
-          .then(() => {
-            // Shared...
-            return { type: 'success', message: `Shared` };
-          })
-          .catch((error) => {
-            // Error..
-            return { error, type: 'fail', message: `Failed` };
-          });
-      } else {
-        // No support...
-        return {
-          type: 'fail',
-          error: {
-            message: `Not supported`,
-          },
-        };
-      }
+      navigator
+        .share(data)
+        .then(() => {
+          // Shared...
+          return { type: 'success', message: `Shared` };
+        })
+        .catch((error) => {
+          // Error..
+          return { error, type: 'fail', message: `Failed` };
+        });
     } catch (error) {
       // Error..
       return { error, type: 'fail', message: `Failed` };
@@ -189,8 +179,8 @@ class PWA {
       if (wakeLock) {
         return { type: 'success', message: 'Active' };
       }
-    } catch (err) {
-      return { type: 'fail', err };
+    } catch (error) {
+      return { type: 'fail', error };
     }
   }
 
