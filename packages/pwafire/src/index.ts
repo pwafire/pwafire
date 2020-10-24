@@ -36,16 +36,9 @@ class PWA {
   async Share(data: object) {
     // Check support...
     try {
-      navigator
-        .share(data)
-        .then(() => {
-          // Shared...
-          return { type: 'success', message: `Shared` };
-        })
-        .catch((error) => {
-          // Error..
-          return { error, type: 'fail', message: `Failed` };
-        });
+      await navigator.share(data);
+      // Shared...
+      return { type: 'success', message: `Shared` };
     } catch (error) {
       // Error..
       return { error, type: 'fail', message: `Failed` };
@@ -111,6 +104,9 @@ class PWA {
       if (document.fullscreenEnabled) {
         await document.documentElement.requestFullscreen();
         return { type: 'success', message: 'Fullscreen' };
+      } else {
+        // Error...
+        return { type: 'fail', error: {} };
       }
     } catch (error) {
       // Error...
