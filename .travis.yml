@@ -1,3 +1,4 @@
-language: typescript
-node_js:
- - "node"
+language: nodejs
+
+script:
+  - npm run build-only
