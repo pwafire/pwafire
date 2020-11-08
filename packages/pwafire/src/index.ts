@@ -1,4 +1,5 @@
-//  Authors : Maye Edwin & Marta Wiśniewska @copyright : https://pwafire.org
+//  Authors : Maye Edwin & Marta Wiśniewska
+// Copyright : https://pwafire.org
 class PWA {
   // Copy text...
   async copyText(text: string) {
