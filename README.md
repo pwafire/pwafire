@@ -2,6 +2,8 @@
 
 Build Scalable Progressive Web Apps/First Experiences. Visit [Documentation](https://pwafire.org) site.
 
+<span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span>
+
 ## Introducing *pwafire* cdn and npm 
 
 Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
