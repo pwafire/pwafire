@@ -1,6 +1,6 @@
 ## Progressive Web Apps API of APIs (Sponsor us)
 
-Build Scalable Progressive Web Apps/First Experiences. Visit [Documentation](https://pwafire.org) site.
+Build Scalable Progressive Web Apps. Starte via [this documentation](https://pwafire.org) site.
 
 <span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span>
 
