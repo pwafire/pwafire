@@ -2,8 +2,6 @@
 
 Build Scalable Progressive Web Apps/First Experiences. Visit [Documentation](https://pwafire.org) site.
 
-<span>[![Build Status](https://travis-ci.org/pwafire/pwafire.svg?branch=master)](https://travis-ci.org/pwafire/pwafire)</span> <span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span>
-
 ## Introducing *pwafire* cdn and npm 
 
 Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
