@@ -1,4 +1,5 @@
-//  Authors : Maye Edwin & Marta Wiśniewska @copyright : https://pwafire.org
+//  Authors : Maye Edwin & Marta Wiśniewska
+// Copyright : https://pwafire.org
 class PWA {
   // Copy text...
   async copyText(text: string) {
@@ -36,26 +37,9 @@ class PWA {
   async Share(data: object) {
     // Check support...
     try {
-      if (navigator.share) {
-        navigator
-          .share(data)
-          .then(() => {
-            // Shared...
-            return { type: 'success', message: `Shared` };
-          })
-          .catch((error) => {
-            // Error..
-            return { error, type: 'fail', message: `Failed` };
-          });
-      } else {
-        // No support...
-        return {
-          type: 'fail',
-          error: {
-            message: `Not supported`,
-          },
-        };
-      }
+      await navigator.share(data);
+      // Shared...
+      return { type: 'success', message: `Shared` };
     } catch (error) {
       // Error..
       return { error, type: 'fail', message: `Failed` };
@@ -65,13 +49,10 @@ class PWA {
   // Contacts Picker...
   async Contacts(props: object, options: object) {
     try {
-      const supported = 'contacts' in navigator && 'ContactsManager' in window;
-      if (supported) {
-        const contacts = await navigator.contacts.select(props, options);
-        // Return contacts...
-        return { type: 'success', message: 'Selected', contacts };
-      }
-      return { type: 'fail', message: 'Not supported' };
+      // const supported = 'contacts' in navigator && 'ContactsManager' in window;
+      const contacts = await navigator.contacts.select(props, options);
+      // Return contacts...
+      return { type: 'success', message: 'Selected', contacts };
     } catch (error) {
       // Error...
       return { type: 'fail', error };
@@ -124,6 +105,9 @@ class PWA {
       if (document.fullscreenEnabled) {
         await document.documentElement.requestFullscreen();
         return { type: 'success', message: 'Fullscreen' };
+      } else {
+        // Error...
+        return { type: 'fail', error: {} };
       }
     } catch (error) {
       // Error...
@@ -192,8 +176,8 @@ class PWA {
       if (wakeLock) {
         return { type: 'success', message: 'Active' };
       }
-    } catch (err) {
-      return { type: 'fail', err };
+    } catch (error) {
+      return { type: 'fail', error };
     }
   }
 
@@ -222,7 +206,6 @@ class PWA {
   }
 
   // File system...
-  
 
   // Payment...
   async Payment(

@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "1.10.22",
+  "version": "1.10.24",
   "description": "Progressive Web App API of APIs",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,7 +9,6 @@
     "esm"
   ],
   "scripts": {
-    "test": "jest --config jestconfig.json",
     "build": "tsc && tsc -p tsconfig.browser.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
@@ -49,7 +48,6 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.9",
-    "jest": "^26.4.0",
     "prettier": "^2.0.5",
     "ts-jest": "^26.2.0",
     "tslint": "^6.1.3",
