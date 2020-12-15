@@ -2,7 +2,7 @@
 
 Build Scalable Progressive Web Apps. Start via [this documentation](https://pwafire.org) site.
 
-<span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span>
+<span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span> <span>![Build package](https://github.com/pwafire/pwafire/workflows/Build%20package/badge.svg)</span>
 
 ## Introducing *pwafire* cdn and npm 
 
