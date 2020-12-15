@@ -12,7 +12,7 @@ defaults:
   run:
     working-directory: packages/pwafire
 jobs:
-  build:
+  ci:
 
     runs-on: ubuntu-latest
 
@@ -27,5 +27,16 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-    - run: npm run build --if-present
+  
+  test:
+
+    runs-on: ubuntu-latest
+    steps:
     - run: npm test
+  
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - run: npm run build --if-present
+  
