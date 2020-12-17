@@ -247,7 +247,7 @@ available to **a merchant.**
 #### Call Payment method with three arguments
 
 ```js
-const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
+pwa.Payment(pay, paydata, validatePayment);
 ```
 
 #### Example : compute total amount to pay
