@@ -257,94 +257,84 @@ Test Demo Application : [Live Preview](https://webpay.glitch.me/)
 ```js
 // Calculations...
 const payment = {
-  price: 1,
-  discount: 1,
-  get total() {
-    return this.price + this.tax - this.discount;
-  },
-  get tax() {
-    return 0.14 * this.price;
-  },
-};
-
-// Destructure payment object...
-const { price, tax, discount, total } = payment;
+    price: sale_price,
+    get discount() {
+      return this.price * 0.005;
+    },
+    get total() {
+      return this.price + this.tax - this.discount;
+    },
+    get tax() {
+      return 0.14 * this.price;
+    },
+  };
+  
+ // Destructure payment object...
+  const { tax, discount, total } = payment;
 ```
 
 #### Set Payment methods
 
 ```js
 const paymentMethods = [
-  {
-    supportedMethods: ['basic-card'],
-    data: {
-      supportedNetworks: ['visa', 'mastercard'],
+    {
+      supportedMethods: ["basic-card"],
+      data: {
+        supportedNetworks: ["visa", "mastercard"],
+      },
     },
-  },
-];
+  ];
 ```
 
 #### Set Payment details
 
 ```js
 const paymentDetails = {
-  total: {
-    label: "Total Amount",
-    amount: {
-      currency: "KSH",
-      value: total
-    }
-  },
-```
-
-#### Set other items to display
-
-```js
-displayItems: [
-    {
-      label: "Discount",
+    total: {
+      label: "Total Amount",
       amount: {
         currency: "KSH",
-        value: discount
-      }
+        value: total.toString(),
+      },
     },
-    {
-      label: "Taxes, 14% V.A.T",
-      amount: {
-        currency: "KSH",
-        value: tax
-      }
-    }
-  ]
-};
+    displayItems: [
+      {
+        label: "Discount",
+        amount: {
+          currency: "KSH",
+          value: discount.toString(),
+        },
+      },
+      {
+        label: "Taxes, 14% V.A.T",
+        amount: {
+          currency: "KSH",
+          value: tax.toString(),
+        },
+      },
+    ],
+  };
+
 ```
 
 #### Requesting additional info
 
 ```js
 const options = {
-  requestPayerName: true,
-  requestPayerEmail: true,
-};
+    requestPayerName: true,
+    requestPayerEmail: true,
+  };
 ```
 
 #### Create paydata object
 
 ```js
 const paydata = {
-  paymentMethods,
-  paymentDetails,
-  options,
-};
+    paymentMethods,
+    paymentDetails,
+    options,
+  };
 ```
-
-
-#### Call Payment method, returns a payment response
-
-```js
-const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
-```
-
 
 #### Validate payment (Do something with the Payment Response)
 
@@ -388,4 +378,11 @@ const validatePayment = paymentResponse => {
     return paymentResponse.complete("failure");
   }
 };
+```
+
+#### Call Payment method on pwa...
+
+```js
+// Pay...
+  pwa.Payment(paydata, validatePayment);
 ```
