@@ -247,16 +247,20 @@ available to **a merchant.**
 #### Call Payment method with three arguments
 
 ```js
-const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
+pwa.Payment(pay, paydata, validatePayment);
 ```
 
 #### Example : compute total amount to pay
 
+Test Demo Application : [Live Preview](https://webpay.glitch.me/)
+
 ```js
 // Calculations...
 const payment = {
-  price: 1,
-  discount: 1,
+  price: sale_price,
+  get discount() {
+    return this.price * 0.005;
+  },
   get total() {
     return this.price + this.tax - this.discount;
   },
@@ -266,7 +270,7 @@ const payment = {
 };
 
 // Destructure payment object...
-const { price, tax, discount, total } = payment;
+const { tax, discount, total } = payment;
 ```
 
 #### Set Payment methods
@@ -287,33 +291,28 @@ const paymentMethods = [
 ```js
 const paymentDetails = {
   total: {
-    label: "Total Amount",
+    label: 'Total Amount',
     amount: {
-      currency: "KSH",
-      value: total
-    }
+      currency: 'KSH',
+      value: total.toString(),
+    },
   },
-```
-
-#### Set other items to display
-
-```js
-displayItems: [
+  displayItems: [
     {
-      label: "Discount",
+      label: 'Discount',
       amount: {
-        currency: "KSH",
-        value: discount
-      }
+        currency: 'KSH',
+        value: discount.toString(),
+      },
     },
     {
-      label: "Taxes, 14% V.A.T",
+      label: 'Taxes, 14% V.A.T',
       amount: {
-        currency: "KSH",
-        value: tax
-      }
-    }
-  ]
+        currency: 'KSH',
+        value: tax.toString(),
+      },
+    },
+  ],
 };
 ```
 
@@ -336,21 +335,15 @@ const paydata = {
 };
 ```
 
-#### Validate payment
+#### Validate payment (Do something with the Payment Response)
 
 ```js
-const validatePayment = paymentResponse => {
+const validatePayment = (paymentResponse) => {
   // Destructure to get payment responses
   const { details, shippingAddress, shippingOption } = paymentResponse;
 
   // Destructure to get card details...
-  const {
-    cardNumber,
-    cardSecurityCode,
-    cardholderName,
-    expiryMonth,
-    expiryYear
-  } = details;
+  const { cardNumber, cardSecurityCode, cardholderName, expiryMonth, expiryYear } = details;
 
   // Destructure to get billing address...
   const {
@@ -362,8 +355,8 @@ const validatePayment = paymentResponse => {
     phone,
     postalCode,
     recipient,
-    re.gion,
-    sortingCode
+    region,
+    sortingCode,
   } = details.billingAddress;
 
   // Validate...
@@ -371,17 +364,18 @@ const validatePayment = paymentResponse => {
   if (condition) {
     //...
     // Return sucess
-    return paymentResponse.complete("success");
+    return paymentResponse.complete('success');
   } else {
     //...
     // Return failure
-    return paymentResponse.complete("failure");
+    return paymentResponse.complete('failure');
   }
 };
 ```
 
-### Call Payment method, returns a payment response
+#### Call Payment method on pwa...
 
 ```js
-const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
+// Pay...
+pwa.Payment(paydata, validatePayment);
 ```
