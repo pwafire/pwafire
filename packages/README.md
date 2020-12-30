@@ -7,14 +7,14 @@ npm i pwafire --save
 ### Get pwafire over CDN as an E6 Module
 
 ```js
-import pwafire from 'https://unpkg.com/pwafire/esm/index.js';
+import pwafire from "https://unpkg.com/pwafire/esm/index.js";
 const pwa = pwafire.pwa;
 ```
 
 ### Import pwafire in your for e.g React App
 
 ```js
-import pwafire from 'pwafire';
+import pwafire from "pwafire";
 const pwa = pwafire.pwa;
 ```
 
@@ -37,7 +37,7 @@ For promise types, the promise value returned is an object
 // Copy text
 pwa.copyText(text).then((res) => {
   // Do something with 'res'
-  if (res.type === 'success') {
+  if (res.type === "success") {
     // Success...
   }
 });
@@ -77,7 +77,7 @@ const data = {
   // Text to share
   text: `Some text...`,
   // Url to share...
-  url: 'https://pwafire.org',
+  url: "https://pwafire.org",
 };
 ```
 
@@ -96,7 +96,7 @@ pwa.Share(data);
 #### Define the "properties" and "select type" option you need
 
 ```js
-const props = ['name', 'email', 'tel'];
+const props = ["name", "email", "tel"];
 const options = { multiple: true };
 ```
 
@@ -106,7 +106,7 @@ const options = { multiple: true };
 // Do something with the promise value...
 pwa.Contacts(props, options).then((res) => {
   // Do something with contacts...
-  const contacts = res.type === 'success' ? res.contacts : null;
+  const contacts = res.type === "success" ? res.contacts : null;
   //...
 });
 ```
@@ -152,11 +152,11 @@ Show notifications. Pass a **data** object
 
 ```js
 const data = {
-  title: 'Hello Notification!',
+  title: "Hello Notification!",
   options: {
-    body: 'Progressive Web App Hello Notification!',
-    icon: '../images/icons/icon-192x192.png',
-    tag: 'pwa',
+    body: "Progressive Web App Hello Notification!",
+    icon: "../images/icons/icon-192x192.png",
+    tag: "pwa",
   },
 };
 ```
@@ -247,7 +247,7 @@ available to **a merchant.**
 #### Call Payment method with three arguments
 
 ```js
-const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
+pwa.Payment(pay, paydata, validatePayment);
 ```
 
 #### Example : compute total amount to pay
@@ -257,8 +257,10 @@ Test Demo Application : [Live Preview](https://webpay.glitch.me/)
 ```js
 // Calculations...
 const payment = {
-  price: 1,
-  discount: 1,
+  price: sale_price,
+  get discount() {
+    return this.price * 0.005;
+  },
   get total() {
     return this.price + this.tax - this.discount;
   },
@@ -268,7 +270,7 @@ const payment = {
 };
 
 // Destructure payment object...
-const { price, tax, discount, total } = payment;
+const { tax, discount, total } = payment;
 ```
 
 #### Set Payment methods
@@ -276,9 +278,9 @@ const { price, tax, discount, total } = payment;
 ```js
 const paymentMethods = [
   {
-    supportedMethods: ['basic-card'],
+    supportedMethods: ["basic-card"],
     data: {
-      supportedNetworks: ['visa', 'mastercard'],
+      supportedNetworks: ["visa", "mastercard"],
     },
   },
 ];
@@ -292,30 +294,25 @@ const paymentDetails = {
     label: "Total Amount",
     amount: {
       currency: "KSH",
-      value: total
-    }
+      value: total.toString(),
+    },
   },
-```
-
-#### Set other items to display
-
-```js
-displayItems: [
+  displayItems: [
     {
       label: "Discount",
       amount: {
         currency: "KSH",
-        value: discount
-      }
+        value: discount.toString(),
+      },
     },
     {
       label: "Taxes, 14% V.A.T",
       amount: {
         currency: "KSH",
-        value: tax
-      }
-    }
-  ]
+        value: tax.toString(),
+      },
+    },
+  ],
 };
 ```
 
@@ -338,18 +335,10 @@ const paydata = {
 };
 ```
 
-
-#### Call Payment method, returns a payment response
-
-```js
-const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
-```
-
-
 #### Validate payment (Do something with the Payment Response)
 
 ```js
-const validatePayment = paymentResponse => {
+const validatePayment = (paymentResponse) => {
   // Destructure to get payment responses
   const { details, shippingAddress, shippingOption } = paymentResponse;
 
@@ -359,7 +348,7 @@ const validatePayment = paymentResponse => {
     cardSecurityCode,
     cardholderName,
     expiryMonth,
-    expiryYear
+    expiryYear,
   } = details;
 
   // Destructure to get billing address...
@@ -373,7 +362,7 @@ const validatePayment = paymentResponse => {
     postalCode,
     recipient,
     region,
-    sortingCode
+    sortingCode,
   } = details.billingAddress;
 
   // Validate...
@@ -388,4 +377,11 @@ const validatePayment = paymentResponse => {
     return paymentResponse.complete("failure");
   }
 };
+```
+
+#### Call Payment method on pwa...
+
+```js
+// Pay...
+pwa.Payment(paydata, validatePayment);
 ```
