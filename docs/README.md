@@ -1,11 +1,3 @@
-## Setting up
-
-- Make sure your Web App has a [Service Worker](https://pwafire.org/developer/docs/service-worker/)
-
-- Make sure your Web App has a valid [Web Manifest](https://pwafire.org/developer/docs/web-manifest/)
-
-Learn more [in this setup docs](https://github.com/pwafire/pwadev-tips)
-
 ## Install pwafire via NPM
 
 ```bash
@@ -22,7 +14,7 @@ const pwa = pwafire.pwa;
 ### Import pwafire in your for e.g React App
 
 ```js
-import pwafire from 'pwafire';
+import pwafire from "pwafire";
 const pwa = pwafire.pwa;
 ```
 
@@ -45,7 +37,7 @@ For promise types, the promise value returned is an object
 // Copy text
 pwa.copyText(text).then((res) => {
   // Do something with 'res'
-  if (res.type === 'success') {
+  if (res.type === "success") {
     // Success...
   }
 });
@@ -85,7 +77,7 @@ const data = {
   // Text to share
   text: `Some text...`,
   // Url to share...
-  url: 'https://pwafire.org',
+  url: "https://pwafire.org",
 };
 ```
 
@@ -97,14 +89,14 @@ pwa.Share(data);
 
 ### 4. Contacts Picker
 
-[Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the mobile device's native contacts manager. 
+[Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the mobile device's native contacts manager.
 
 **Chrome 80** or higher running on **Android M or later** required.
 
 #### Define the "properties" and "select type" option you need
 
 ```js
-const props = ['name', 'email', 'tel'];
+const props = ["name", "email", "tel"];
 const options = { multiple: true };
 ```
 
@@ -114,7 +106,7 @@ const options = { multiple: true };
 // Do something with the promise value...
 pwa.Contacts(props, options).then((res) => {
   // Do something with contacts...
-  const contacts = res.type === 'success' ? res.contacts : null;
+  const contacts = res.type === "success" ? res.contacts : null;
   //...
 });
 ```
@@ -160,11 +152,11 @@ Show notifications. Pass a **data** object
 
 ```js
 const data = {
-  title: 'Hello Notification!',
+  title: "Hello Notification!",
   options: {
-    body: 'Progressive Web App Hello Notification!',
-    icon: '../images/icons/icon-192x192.png',
-    tag: 'pwa',
+    body: "Progressive Web App Hello Notification!",
+    icon: "../images/icons/icon-192x192.png",
+    tag: "pwa",
   },
 };
 ```
@@ -178,17 +170,17 @@ pwa.Notification(data);
 
 ### 8. Install
 
-Add custom install button
+Add custom install button, provide a "button element" as the parameter
 
 #### Call the install method
 
 ```js
-pwa.Install();
+pwa.Install(button);
 ```
 
-#### 9. Badging
+### 9. Badging
 
-Add badging for app icons
+#### Add badging for app icons
 
 Badging makes it easy to subtly notify the user that there is some new activity that might require their attention, or indicate a small amount of information, such as an unread count.
 
@@ -209,11 +201,21 @@ pwa.setBadge(unreadCount);
 pwa.clearBadge();
 ```
 
-#### 10. Visibility
+### 10. Screen Wake Lock API
+
+The Screen Wake Lock API provides a way to prevent devices from dimming or locking the screen when an application needs to keep running.
+
+#### Call the install method, returns a promise value
+
+```js
+pwa.WakeLock();
+```
+
+### 11. Visibility
 
 Check if user is viewing a page. Pause/play video or games e.t.c
 
-##### Define page visibilty handler
+#### Define page visibilty handler
 
 ```js
 // Do something....
@@ -222,7 +224,7 @@ const isVisible = () => {
 };
 ```
 
-##### If visbility api is not supported, define the handler
+#### If visbility api is not supported, define the handler
 
 ```js
 // Do something....
@@ -231,13 +233,26 @@ const notAvailable = () => {
 };
 ```
 
-##### Call the visibility method with the two arguments
+#### Call the visibility method with the two arguments
 
 ```js
 pwa.Visibility(isVisible, notAvailable);
 ```
 
-### 10. Web Payments
+### 12. The File System Access API : Pick and read Text Files
+
+_The File System Access API_ allows web apps to read or save changes directly to files and folders on the user's device.
+
+#### Call the pick-text-file method on pwa
+
+The promise resolves with a text response(contents of the picked text file)
+
+```js
+// Do something with the contents...
+const contents = await pwa.pickTextFile();
+```
+
+### 13. Web Payments
 
 Allows users select their preferred way of **paying for things**, and make that information
 available to **a merchant.**
@@ -245,16 +260,20 @@ available to **a merchant.**
 #### Call Payment method with three arguments
 
 ```js
-const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
+pwa.Payment(pay, paydata, validatePayment);
 ```
 
 #### Example : compute total amount to pay
 
+Test Demo Application : [Live Preview](https://webpay.glitch.me/)
+
 ```js
 // Calculations...
 const payment = {
-  price: 1,
-  discount: 1,
+  price: sale_price,
+  get discount() {
+    return this.price * 0.005;
+  },
   get total() {
     return this.price + this.tax - this.discount;
   },
@@ -264,7 +283,7 @@ const payment = {
 };
 
 // Destructure payment object...
-const { price, tax, discount, total } = payment;
+const { tax, discount, total } = payment;
 ```
 
 #### Set Payment methods
@@ -272,9 +291,9 @@ const { price, tax, discount, total } = payment;
 ```js
 const paymentMethods = [
   {
-    supportedMethods: ['basic-card'],
+    supportedMethods: ["basic-card"],
     data: {
-      supportedNetworks: ['visa', 'mastercard'],
+      supportedNetworks: ["visa", "mastercard"],
     },
   },
 ];
@@ -288,30 +307,25 @@ const paymentDetails = {
     label: "Total Amount",
     amount: {
       currency: "KSH",
-      value: total
-    }
+      value: total.toString(),
+    },
   },
-```
-
-#### Set other items to display
-
-```js
-displayItems: [
+  displayItems: [
     {
       label: "Discount",
       amount: {
         currency: "KSH",
-        value: discount
-      }
+        value: discount.toString(),
+      },
     },
     {
       label: "Taxes, 14% V.A.T",
       amount: {
         currency: "KSH",
-        value: tax
-      }
-    }
-  ]
+        value: tax.toString(),
+      },
+    },
+  ],
 };
 ```
 
@@ -334,10 +348,10 @@ const paydata = {
 };
 ```
 
-#### Validate payment
+#### Validate payment (Do something with the Payment Response)
 
 ```js
-const validatePayment = paymentResponse => {
+const validatePayment = (paymentResponse) => {
   // Destructure to get payment responses
   const { details, shippingAddress, shippingOption } = paymentResponse;
 
@@ -347,7 +361,7 @@ const validatePayment = paymentResponse => {
     cardSecurityCode,
     cardholderName,
     expiryMonth,
-    expiryYear
+    expiryYear,
   } = details;
 
   // Destructure to get billing address...
@@ -360,8 +374,8 @@ const validatePayment = paymentResponse => {
     phone,
     postalCode,
     recipient,
-    re.gion,
-    sortingCode
+    region,
+    sortingCode,
   } = details.billingAddress;
 
   // Validate...
@@ -378,8 +392,9 @@ const validatePayment = paymentResponse => {
 };
 ```
 
-### Call Payment method, returns a payment response
+#### Call Payment method on pwa
 
 ```js
-const paymentResponse = pwa.Payment(pay, paydata, validatePayment);
+// Pay...
+pwa.Payment(paydata, validatePayment);
 ```
