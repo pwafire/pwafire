@@ -216,7 +216,6 @@ class PWA {
       if (typeList.includes('text')) {
         const file = await fileHandle.getFile();
         const contents = await file.text();
-        console.log(contents);
         return contents;
       } else {
         // Please pick text type file
