@@ -239,7 +239,20 @@ const notAvailable = () => {
 pwa.Visibility(isVisible, notAvailable);
 ```
 
-### 12. Web Payments
+### 12. The File System Access API : Pick and read Text Files
+
+_The File System Access API_ allows web apps to read or save changes directly to files and folders on the user's device.
+
+#### Call the pick text file method on pwa
+
+The promise resolves with a text response(contents of the picked text file)
+
+```js
+// Do something with the contents...
+const contents = await pwa.pickTextFile();
+```
+
+### 13. Web Payments
 
 Allows users select their preferred way of **paying for things**, and make that information
 available to **a merchant.**
@@ -373,7 +386,7 @@ const validatePayment = (paymentResponse) => {
 };
 ```
 
-#### Call Payment method on pwa...
+#### Call Payment method on pwa
 
 ```js
 // Pay...

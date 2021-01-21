@@ -206,7 +206,27 @@ class PWA {
   }
 
   // File system...
-
+  pickTextFile = async () => {
+    let fileHandle;
+    try {
+      [fileHandle] = await window.showOpenFilePicker();
+      const file = await fileHandle.getFile();
+      // const fileType = file.type;
+      const typeList = file.type.split('/');
+      if (typeList.includes('text')) {
+        const file = await fileHandle.getFile();
+        const contents = await file.text();
+        console.log(contents);
+        return contents;
+      } else {
+        // Please pick text type file
+        return 'Please pick text type file';
+      }
+    } catch (error) {
+      // Error...
+      return { type: 'fail', error };
+    }
+  };
   // Payment...
   async Payment(
     paydata: {
