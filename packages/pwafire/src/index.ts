@@ -214,7 +214,6 @@ class PWA {
       // const fileType = file.type;
       const typeList = file.type.split('/');
       if (typeList.includes('text')) {
-        const file = await fileHandle.getFile();
         const contents = await file.text();
         return contents;
       } else {
