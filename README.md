@@ -45,8 +45,8 @@ Background Sync | Native App Install Banner |
 | Badging |  Web Share | 
 | Contact Picker |  Copy Text | 
 | Share Target |  Copy Images | 
-|  Screen Wake Lock | Push Notifications | Pick and read Text Files |
-| [View All, 15 + Here](https://github.com/pwafire/pwafire/tree/master/bundle/)|
+|  Screen Wake Lock | Push Notifications
+| [View All, 10 + Here](https://github.com/pwafire/pwafire/tree/master/packages#install-pwafire-via-npm)|
 
 ## Chat : Join the conversation 
 
