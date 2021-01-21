@@ -43,7 +43,7 @@ Preview Documentation : [Get Started](https://github.com/pwafire/pwafire/tree/ma
 | Custom Install Button | Offline Capabilities | 
 Background Sync | Native App Install Banner | 
 | Badging |  Web Share | 
-| Contact Picker |  Copy Text | 
+| Contact Picker |  Copy Text | | Pick and read Text Files |
 | Share Target |  Copy Images | 
 |  Screen Wake Lock | Push Notifications |
 | [View All, 15 + Here](https://github.com/pwafire/pwafire/tree/master/bundle/)|
