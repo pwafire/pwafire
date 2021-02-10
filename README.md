@@ -34,7 +34,7 @@ const pwa = pwafire.pwa;
 ```js
  pwa.Share(data);
 ```
-Preview Documentation : [Get Started](https://github.com/pwafire/pwafire/tree/master/packages)
+Preview Documentation : [Get Started](https://docs.pwafire.org/get-started)
 
 ## PWA : New Web Capabilities
 
