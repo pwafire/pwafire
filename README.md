@@ -1,6 +1,6 @@
 ## Progressive Web Apps API of APIs (Sponsor us)
 
-Build Scalable Progressive Web Apps. Start via [this documentation](https://pwafire.org) site.
+Build Scalable Progressive Web Apps. Start via [this documentation](https://docs.pwafire.org) site.
 
 <span>![Build package](https://github.com/pwafire/pwafire/workflows/Build%20package/badge.svg)</span> <span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span>
 
@@ -34,7 +34,7 @@ const pwa = pwafire.pwa;
 ```js
  pwa.Share(data);
 ```
-Preview Documentation : [Get Started](https://github.com/pwafire/pwafire/tree/master/packages)
+Preview Documentation : [Get Started](https://docs.pwafire.org/get-started)
 
 ## PWA : New Web Capabilities
 
@@ -45,8 +45,8 @@ Background Sync | Native App Install Banner |
 | Badging |  Web Share | 
 | Contact Picker |  Copy Text | 
 | Share Target |  Copy Images | 
-|  Screen Wake Lock | Push Notifications |
-| [View All, 15 + Here](https://github.com/pwafire/pwafire/tree/master/bundle/)|
+|  Screen Wake Lock | Push Notifications
+| [View All, 10 + Here](https://github.com/pwafire/pwafire/tree/master/packages#install-pwafire-via-npm)|
 
 ## Chat : Join the conversation 
 
