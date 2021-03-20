@@ -9,7 +9,7 @@ class PWA {
       return { type: 'success', message: `Copied` };
     } catch (error) {
       // Error...
-      return { type: 'fail', error };
+      return { type: 'fail', message: 'Fail', error };
     }
   }
 
@@ -29,7 +29,7 @@ class PWA {
       return result ? { type: 'success', message: `Copied` } : { type: 'fail', message: `Fail` };
     } catch (error) {
       // Error...
-      return { type: 'fail', error };
+      return { type: 'fail', message: 'Fail', error };
     }
   }
 
@@ -55,7 +55,7 @@ class PWA {
       return { type: 'success', message: 'Selected', contacts };
     } catch (error) {
       // Error...
-      return { type: 'fail', error };
+      return { type: 'fail', message: 'Fail', error };
     }
   }
 
@@ -72,7 +72,7 @@ class PWA {
       }
     } catch (error) {
       // Error...
-      return { type: 'fail', error };
+      return { type: 'fail', message: 'Fail', error };
     }
   }
 
@@ -83,7 +83,7 @@ class PWA {
       return { type: 'success', message: 'Set' };
     } catch (error) {
       // Error...
-      return { type: 'fail', error };
+      return { type: 'fail', message: 'Fail', error };
     }
   }
 
@@ -95,7 +95,7 @@ class PWA {
       return { type: 'success', message: 'Cleared' };
     } catch (error) {
       // Error...
-      return { type: 'fail', error };
+      return { type: 'fail', message: 'Fail', error };
     }
   }
 
@@ -111,7 +111,7 @@ class PWA {
       }
     } catch (error) {
       // Error...
-      return { type: 'fail', error };
+      return { type: 'fail', message: 'Fail', error };
     }
   }
 
@@ -132,7 +132,7 @@ class PWA {
       }
     } catch (error) {
       // Error...
-      return { type: 'fail', error };
+      return { type: 'fail', message: 'Fail', error };
     }
   }
 
@@ -163,7 +163,7 @@ class PWA {
         // Installed...
       });
     } catch (error) {
-      return { type: 'fail', error };
+      return { type: 'fail', message: 'Fail', error };
     }
   }
 
@@ -177,7 +177,7 @@ class PWA {
         return { type: 'success', message: 'Active' };
       }
     } catch (error) {
-      return { type: 'fail', error };
+      return { type: 'fail', message: 'Fail', error };
     }
   }
 
@@ -201,7 +201,7 @@ class PWA {
       }
     } catch (error) {
       // Error...
-      return { type: 'fail', error };
+      return { type: 'fail', message: 'Fail', error };
     }
   }
 
@@ -222,7 +222,7 @@ class PWA {
       }
     } catch (error) {
       // Error...
-      return { type: 'fail', error };
+      return { type: 'fail', message: 'Fail', error };
     }
   };
   // Payment...
@@ -230,7 +230,7 @@ class PWA {
     paydata: {
       paymentMethods: PaymentMethodData[];
       paymentDetails: PaymentDetailsInit;
-      options: PaymentOptions | undefined;
+      options: PaymentOptions;
     },
     validatePayment: (arg0: PaymentResponse) => void,
   ) {
@@ -241,7 +241,7 @@ class PWA {
       // Validate with backend...
       validatePayment(paymentResponse);
     } catch (error) {
-      return { type: 'fail', error };
+      return { type: 'fail', message: 'Fail', error };
     }
   }
 }
