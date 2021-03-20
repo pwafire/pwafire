@@ -143,6 +143,7 @@ class PWA {
         // Stash the event so it can be triggered later.
         window.deferredPrompt = event;
       });
+
       // Install...
       button.addEventListener('click', () => {
         const promptEvent = window.deferredPrompt;
@@ -158,6 +159,7 @@ class PWA {
           // Hide the install button...
         });
       });
+
       // Installed....
       window.addEventListener('appinstalled', (event: any) => {
         // Installed...
