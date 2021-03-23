@@ -1,6 +1,6 @@
 ## Progressive Web Apps API of APIs (Sponsor us)
 
-Build Scalable Progressive Web Apps. Start via [this documentation](https://docs.pwafire.org) site.
+Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
 ## Install pwafire via NPM
 
