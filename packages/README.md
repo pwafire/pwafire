@@ -1,6 +1,6 @@
 ## Progressive Web Apps API of APIs (Sponsor us)
 
-Build Scalable Progressive Web Apps. Start via [this documentation](https://docs.pwafire.org) site.
+Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
 ## Install pwafire via NPM
 
@@ -41,9 +41,9 @@ For promise types, the promise value returned is an object
 // Copy text...
 const res = await pwa.copyText(text);
 // Do something with 'res'...
-  if (res.type === "success") {
-    // Success...
-  }
+if (res.type === "success") {
+  // Success...
+}
 ```
 
 ### 1. Copy Text
