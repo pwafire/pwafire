@@ -11,14 +11,14 @@ npm i pwafire --save
 ### Get pwafire over CDN as an E6 Module
 
 ```js
-import pwafire from "https://unpkg.com/pwafire/esm/index.js";
+import pwafire from 'https://unpkg.com/pwafire/esm/index.js';
 const pwa = pwafire.pwa;
 ```
 
 ### Import pwafire in your for e.g React App
 
 ```js
-import pwafire from "pwafire";
+import pwafire from 'pwafire';
 const pwa = pwafire.pwa;
 ```
 
@@ -41,7 +41,7 @@ For promise types, the promise value returned is an object
 // Copy text
 pwa.copyText(text).then((res) => {
   // Do something with 'res'
-  if (res.type === "success") {
+  if (res.type === 'success') {
     // Success...
   }
 });
@@ -81,7 +81,7 @@ const data = {
   // Text to share
   text: `Some text...`,
   // Url to share...
-  url: "https://pwafire.org",
+  url: 'https://pwafire.org',
 };
 ```
 
@@ -100,7 +100,7 @@ pwa.Share(data);
 #### Define the "properties" and "select type" option you need
 
 ```js
-const props = ["name", "email", "tel"];
+const props = ['name', 'email', 'tel'];
 const options = { multiple: true };
 ```
 
@@ -110,7 +110,7 @@ const options = { multiple: true };
 // Do something with the promise value...
 pwa.Contacts(props, options).then((res) => {
   // Do something with contacts...
-  const contacts = res.type === "success" ? res.contacts : null;
+  const contacts = res.type === 'success' ? res.contacts : null;
   //...
 });
 ```
@@ -156,11 +156,11 @@ Show notifications. Pass a **data** object
 
 ```js
 const data = {
-  title: "Hello Notification!",
+  title: 'Hello Notification!',
   options: {
-    body: "Progressive Web App Hello Notification!",
-    icon: "../images/icons/icon-192x192.png",
-    tag: "pwa",
+    body: 'Progressive Web App Hello Notification!',
+    icon: '../images/icons/icon-192x192.png',
+    tag: 'pwa',
   },
 };
 ```
@@ -243,17 +243,28 @@ const notAvailable = () => {
 pwa.Visibility(isVisible, notAvailable);
 ```
 
-### 12. The File System Access API : Pick and read Text Files
+### 12. The File System Access API
 
 _The File System Access API_ allows web apps to read or save changes directly to files and folders on the user's device.
 
-#### Call the pick-text-file method on pwa
+#### Call pickFile method on pwa
+
+The promise resolves with a file response
+
+```js
+// Do something with the contents...
+const res = await pwa.pickkFile();
+const file = res.type === 'success' ? res.file : null;
+```
+
+#### Call the pickTextFile method on pwa
 
 The promise resolves with a text response(contents of the picked text file)
 
 ```js
 // Do something with the contents...
-const contents = await pwa.pickTextFile();
+const res = await pwa.pickTextFile();
+const contents = res.type === 'success' ? res.contents : null;
 ```
 
 ### 13. Web Payments
@@ -295,9 +306,9 @@ const { tax, discount, total } = payment;
 ```js
 const paymentMethods = [
   {
-    supportedMethods: ["basic-card"],
+    supportedMethods: ['basic-card'],
     data: {
-      supportedNetworks: ["visa", "mastercard"],
+      supportedNetworks: ['visa', 'mastercard'],
     },
   },
 ];
@@ -308,24 +319,24 @@ const paymentMethods = [
 ```js
 const paymentDetails = {
   total: {
-    label: "Total Amount",
+    label: 'Total Amount',
     amount: {
-      currency: "KSH",
+      currency: 'KSH',
       value: total.toString(),
     },
   },
   displayItems: [
     {
-      label: "Discount",
+      label: 'Discount',
       amount: {
-        currency: "KSH",
+        currency: 'KSH',
         value: discount.toString(),
       },
     },
     {
-      label: "Taxes, 14% V.A.T",
+      label: 'Taxes, 14% V.A.T',
       amount: {
-        currency: "KSH",
+        currency: 'KSH',
         value: tax.toString(),
       },
     },
@@ -360,13 +371,7 @@ const validatePayment = (paymentResponse) => {
   const { details, shippingAddress, shippingOption } = paymentResponse;
 
   // Destructure to get card details...
-  const {
-    cardNumber,
-    cardSecurityCode,
-    cardholderName,
-    expiryMonth,
-    expiryYear,
-  } = details;
+  const { cardNumber, cardSecurityCode, cardholderName, expiryMonth, expiryYear } = details;
 
   // Destructure to get billing address...
   const {
@@ -387,11 +392,11 @@ const validatePayment = (paymentResponse) => {
   if (condition) {
     //...
     // Return sucess
-    return paymentResponse.complete("success");
+    return paymentResponse.complete('success');
   } else {
     //...
     // Return failure
-    return paymentResponse.complete("failure");
+    return paymentResponse.complete('failure');
   }
 };
 ```
