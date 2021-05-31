@@ -55,7 +55,6 @@ Follow our [Developer Account](https://twitter.com/pwafire) on [Twitter](https:/
 | Communication Channel | Talk to us |
 | --- | --- |
 | Twitter Chat | [Tweet us](https://twitter.com/pwafire) |
-| Slack Workspace | [Join Workspace](http://bit.ly/2oPNK7S) |
 
 ## Contributors
 
