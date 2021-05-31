@@ -6,7 +6,7 @@ class PWA {
     try {
       await navigator.clipboard.writeText(text);
       // Copied...
-      return { type: 'success', message: `Copied` };
+      return { type: 'success', message: 'Copied' };
     } catch (error) {
       // Error...
       return { type: 'fail', message: 'Fail', error };
@@ -26,7 +26,7 @@ class PWA {
           }),
         ),
       ]);
-      return result ? { type: 'success', message: `Copied` } : { type: 'fail', message: `Fail` };
+      return result ? { type: 'success', message: 'Copied' } : { type: 'fail', message: 'Fail' };
     } catch (error) {
       // Error...
       return { type: 'fail', message: 'Fail', error };
@@ -39,10 +39,10 @@ class PWA {
     try {
       await navigator.share(data);
       // Shared...
-      return { type: 'success', message: `Shared` };
+      return { type: 'success', message: 'Shared' };
     } catch (error) {
       // Error..
-      return { error, type: 'fail', message: `Failed` };
+      return { error, type: 'fail', message: 'Failed' };
     }
   }
 
@@ -65,10 +65,10 @@ class PWA {
     try {
       if (navigator.onLine) {
         online();
-        return { type: 'success', message: `Online` };
+        return { type: 'success', message: 'Online' };
       } else {
         offline();
-        return { type: 'success', message: `Offline` };
+        return { type: 'success', message: 'Offline' };
       }
     } catch (error) {
       // Error...
@@ -124,11 +124,11 @@ class PWA {
         await navigator.serviceWorker.ready.then((registration) => {
           registration.showNotification(title, options);
           // Sent...
-          return { type: 'success', message: `Sent` };
+          return { type: 'success', message: 'Sent' };
         });
       } else {
         // Denied...
-        return { type: 'success', message: `Denied` };
+        return { type: 'success', message: 'Denied' };
       }
     } catch (error) {
       // Error...
@@ -188,17 +188,17 @@ class PWA {
     try {
       if (document.visibilityState) {
         const state = document.visibilityState;
-        if (state === `visible`) {
+        if (state === 'visible') {
           // Call back function...
           isVisible();
-          return { type: 'success', message: `Visible` };
+          return { type: 'success', message: 'Visible' };
         }
       } else {
         // Alternative...
         notAvailable();
         return {
           type: 'fail',
-          message: `Not supported`,
+          message: 'Not supported',
         };
       }
     } catch (error) {
@@ -212,7 +212,7 @@ class PWA {
     let fileHandle;
     try {
       [fileHandle] = await window.showOpenFilePicker();
-      const file = await fileHandle.getFile();
+      const file: File = await fileHandle.getFile();
       // const fileType = file.type;
       const typeList = file.type.split('/');
       if (typeList.includes('text')) {
@@ -233,7 +233,7 @@ class PWA {
     let fileHandle;
     try {
       [fileHandle] = await window.showOpenFilePicker();
-      const file = await fileHandle.getFile();
+      const file: File = await fileHandle.getFile();
       return {
         file: file,
         success: true,
