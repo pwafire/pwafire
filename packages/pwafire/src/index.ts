@@ -207,8 +207,8 @@ class PWA {
     }
   }
 
-  // File system...
-  pickTextFile = async () => {
+  // Pick text file..
+  async pickTextFile() {
     let fileHandle;
     try {
       [fileHandle] = await window.showOpenFilePicker();
@@ -217,16 +217,36 @@ class PWA {
       const typeList = file.type.split('/');
       if (typeList.includes('text')) {
         const contents = await file.text();
-        return contents;
+        return { type: 'success', message: 'File picked', contents };
       } else {
         // Please pick text type file
-        return 'Please pick text type file';
+        return { type: 'fail', message: 'Please pick text type file' };
       }
     } catch (error) {
       // Error...
       return { type: 'fail', message: 'Fail', error };
     }
-  };
+  }
+
+  // Pick any file...
+  async pickFile() {
+    let fileHandle;
+    try {
+      [fileHandle] = await window.showOpenFilePicker();
+      const file = await fileHandle.getFile();
+      return {
+        file: file,
+        success: true,
+        message: 'File picked',
+      };
+    } catch (error) {
+      return {
+        type: 'fail',
+        message: 'Fail',
+        error,
+      };
+    }
+  }
   // Payment...
   async Payment(
     paydata: {
@@ -246,6 +266,9 @@ class PWA {
       return { type: 'fail', message: 'Fail', error };
     }
   }
+
+  // Content indexing...
+  async indexContent() {}
 }
 
 // Create pwafire object
