@@ -212,8 +212,7 @@ class PWA {
     let fileHandle;
     try {
       [fileHandle] = await window.showOpenFilePicker();
-      const file: File = await fileHandle.getFile();
-      // const fileType = file.type;
+      const file = await fileHandle.getFile();
       const typeList = file.type.split('/');
       if (typeList.includes('text')) {
         const contents = await file.text();
@@ -230,12 +229,12 @@ class PWA {
 
   // Pick any file...
   async pickFile() {
-    let fileHandle;
+    let fileHandle: any;
     try {
       [fileHandle] = await window.showOpenFilePicker();
-      const file: File = await fileHandle.getFile();
+      const file: any = await fileHandle.getFile();
       return {
-        file: file,
+        file: file ?? null,
         success: true,
         message: 'File picked',
       };
@@ -266,9 +265,6 @@ class PWA {
       return { type: 'fail', message: 'Fail', error };
     }
   }
-
-  // Content indexing...
-  async indexContent() {}
 }
 
 // Create pwafire object
