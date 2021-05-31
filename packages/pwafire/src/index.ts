@@ -235,7 +235,7 @@ class PWA {
       const file: any = await fileHandle.getFile();
       return {
         file: file ?? null,
-        success: true,
+        type: 'success',
         message: 'File picked',
       };
     } catch (error) {
