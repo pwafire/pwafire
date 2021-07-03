@@ -26,13 +26,13 @@ All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Brow
 
 ### API Spec
 
-For promise types, the promise value returned is an object
+For all promise types, the promise value returned is an object - might include additional data for example, **Contacts API** returns an additional **contacts** value.
 
 ```js
-// Success...
-{ res.success, message: 'Copied' }
- // Fail...
-{ type: 'fail', error };
+// Success value is true...
+{ success, message: 'Copied' }
+ // Fail...success value is false...
+{ success, error };
 ```
 
 #### Do something with the promise value returned for e.g copyText;
