@@ -41,7 +41,7 @@ For promise types, the promise value returned is an object
 // Copy text
 pwa.copyText(text).then((res) => {
   // Do something with 'res'
-  if (res.type === 'success') {
+  if (res.success) {
     // Success...
   }
 });
@@ -110,7 +110,7 @@ const options = { multiple: true };
 // Do something with the promise value...
 pwa.Contacts(props, options).then((res) => {
   // Do something with contacts...
-  const contacts = res.type === 'success' ? res.contacts : null;
+  const contacts = res.success ? res.contacts : null;
   //...
 });
 ```
@@ -254,7 +254,7 @@ The promise resolves with a file response
 ```js
 // Do something with the contents...
 const res = await pwa.pickkFile();
-const file = res.type === 'success' ? res.file : null;
+const file = res.success ? res.file : null;
 ```
 
 #### Call the pickTextFile method on pwa
@@ -264,7 +264,7 @@ The promise resolves with a text response(contents of the picked text file)
 ```js
 // Do something with the contents...
 const res = await pwa.pickTextFile();
-const contents = res.type === 'success' ? res.contents : null;
+const contents = res.success ? res.contents : null;
 ```
 
 ### 13. Web Payments
