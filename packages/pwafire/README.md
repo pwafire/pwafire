@@ -6,7 +6,7 @@ Welcome to **@pwafire v.3.0.0** which is oout foundation for our next generation
 
 ### Breaking change for v3.0.0 moving forward
 
-All async responses returned have a new `success` a boolean, filed which replaces `type` a string. here is the differences;
+All async responses returned have a new `success` a boolean, field which replaces `type` a string. here is the differences;
 
 ```js
 
