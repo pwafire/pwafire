@@ -253,7 +253,7 @@ class PWA {
       paymentDetails: PaymentDetailsInit;
       options: PaymentOptions;
     },
-    validatePayment: (arg0: PaymentResponse) => void,
+    validatePayment: (arg0: PaymentResponse) => null,
   ) {
     // Initiate user interface...
     try {
@@ -267,7 +267,7 @@ class PWA {
   }
 }
 
-// Create pwafire object
+// Create pwafire object...
 const pwafire = {
   pwa: new PWA(),
 };
