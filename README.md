@@ -11,7 +11,7 @@ All async responses returned have a new `success` a boolean, field which replace
 ```js
 
 // Async API...
-const res await pwa.CopyText(text);
+const res = await pwa.CopyText(text);
 
 // Lower versions...
  if(res.type === 'success')  {
