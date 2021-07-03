@@ -6,7 +6,7 @@ Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.p
 
 ### Breaking change for v3.0.0 moving forward
 
-All async responses returned have a new `success` a boolean, field which replaces `type` a string. here is the differences;
+All async responses returned have a new `success` a boolean field which replaces `type` a string, here is the differences;
 
 ```js
 
