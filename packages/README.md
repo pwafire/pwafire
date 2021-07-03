@@ -30,7 +30,7 @@ For promise types, the promise value returned is an object
 
 ```js
 // Success...
-{ type: 'success', message: 'Copied' }
+{ res.success, message: 'Copied' }
  // Fail...
 { type: 'fail', error };
 ```
