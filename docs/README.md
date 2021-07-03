@@ -51,7 +51,7 @@ pwa.copyText(text).then((res) => {
 
 Copy text to clipboard.
 
-#### Copy text to clipboard
+#### Call the copyText method on pwa
 
 ```js
 // Copy text
