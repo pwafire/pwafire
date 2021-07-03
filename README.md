@@ -4,7 +4,28 @@ Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.p
 
 <span>![Build package](https://github.com/pwafire/pwafire/workflows/Build%20package/badge.svg)</span> <span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span>
 
-## Introducing *pwafire* cdn and npm 
+### Breaking change for v3.0.0 moving forward
+
+All async responses returned have a new `success` a boolean, filed which replaces `type` a string. here is the differences;
+
+```js
+
+// Async API...
+const res await pwa.CopyText(text);
+
+// Lower versions...
+ if(res.type === 'success')  {
+   // Do something...
+ }
+
+// New version starting v3.0.0
+ if(res.success)  {
+   // Do something...
+ }
+
+```
+
+## Introducing _pwafire_ cdn and npm
 
 Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
 
@@ -21,40 +42,42 @@ import pwafire from "https://unpkg.com/pwafire/esm/index.js";
 const pwa = pwafire.pwa;
 ```
 
-### Example : using *pwafire*
+### Example : using _pwafire_
 
 #### Import pwafire in your react app
 
 ```js
- import pwafire from "pwafire";
- const pwa = pwafire.pwa;
+import pwafire from "pwafire";
+const pwa = pwafire.pwa;
 ```
+
 #### Call the share method on pwa
 
 ```js
- pwa.Share(data);
+pwa.Share(data);
 ```
+
 Preview Documentation : [Get Started](https://docs.pwafire.org/get-started)
 
 ## PWA : New Web Capabilities
 
-| Feature | Feature |
-| --- | --- |
-| Custom Install Button | Offline Capabilities | 
-Background Sync | Native App Install Banner | 
-| Badging |  Web Share | 
-| Contact Picker |  Copy Text | 
-| Share Target |  Copy Images | 
-|  Screen Wake Lock | Push Notifications
-| [View All, 10 + Here](https://github.com/pwafire/pwafire/tree/master/packages#install-pwafire-via-npm)|
+| Feature                                                                                                | Feature                   |
+| ------------------------------------------------------------------------------------------------------ | ------------------------- |
+| Custom Install Button                                                                                  | Offline Capabilities      |
+| Background Sync                                                                                        | Native App Install Banner |
+| Badging                                                                                                | Web Share                 |
+| Contact Picker                                                                                         | Copy Text                 |
+| Share Target                                                                                           | Copy Images               |
+| Screen Wake Lock                                                                                       | Push Notifications        |
+| [View All, 10 + Here](https://github.com/pwafire/pwafire/tree/master/packages#install-pwafire-via-npm) |
 
-## Chat : Join the conversation 
+## Chat : Join the conversation
 
-Follow our [Developer Account](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI). 
+Follow our [Developer Account](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI).
 
-| Communication Channel | Talk to us |
-| --- | --- |
-| Twitter Chat | [Tweet us](https://twitter.com/pwafire) |
+| Communication Channel | Talk to us                              |
+| --------------------- | --------------------------------------- |
+| Twitter Chat          | [Tweet us](https://twitter.com/pwafire) |
 
 ## Contributors
 
@@ -86,11 +109,12 @@ Support this project with your organization. Your logo will show up here with a 
 <a href="https://opencollective.com/pwafire/organization/8/website"><img src="https://opencollective.com/pwafire/organization/8/avatar.svg"></a>
 <a href="https://opencollective.com/pwafire/organization/9/website"><img src="https://opencollective.com/pwafire/organization/9/avatar.svg"></a>
 
-
 ### Contribute
+
 Propose your Feature by [Creating an Issue](https://github.com/pwafire/pwafire/issues/new)
 
 ### License
-| License | Link |
-| --- | --- |
+
+| License     | Link                                                                           |
+| ----------- | ------------------------------------------------------------------------------ |
 | MIT License | [View License](https://github.com/pwafire/pwafire/blob/master/.github/LICENSE) |
