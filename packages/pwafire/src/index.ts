@@ -60,7 +60,7 @@ class PWA {
   }
 
   // Connectivity...
-  Connectivity(online: () => void, offline: () => void) {
+  Connectivity(online: () => 'online', offline: () => 'offline') {
     // Once the DOM is loaded, check for connectivity...
     try {
       if (navigator.onLine) {
