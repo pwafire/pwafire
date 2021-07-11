@@ -2,6 +2,27 @@
 
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
+Welcome to **@pwafire v.3.0.0** which is the foundation for our next generation of the pwafire api. Note that, these release is a breaking change, before upgrading, check the documentations first.
+
+### Breaking change for v3.0.0 moving forward
+
+All **async responses** returned have a new `success` value, a boolean type which replaces `type` value, a string as shown below;
+
+```js
+// Async API...
+const res = await pwa.CopyText(text);
+
+// Lower versions...
+if (res.type === 'success') {
+  // Do something...
+}
+
+// New version starting v3.0.0
+if (res.success) {
+  // Do something...
+}
+```
+
 ## Install pwafire via NPM
 
 ```bash
@@ -10,8 +31,19 @@ npm i pwafire --save
 
 ### Get pwafire over CDN as an E6 Module
 
+Note that you can still use a specific version over the pwafire cdn
+
+#### Latest version
+
 ```js
 import pwafire from 'https://unpkg.com/pwafire/esm/index.js';
+const pwa = pwafire.pwa;
+```
+
+#### Specific version
+
+```js
+import pwafire from 'https://unpkg.com/pwafire@3.0.1/esm/index.js';
 const pwa = pwafire.pwa;
 ```
 
@@ -26,13 +58,17 @@ All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Brow
 
 ### API Spec
 
-For promise types, the promise value returned is an object
+For all promise types, the promise value returned is an object - might include additional data for example, **Contacts API** returns an additional **contacts** value.
 
 ```js
-// Success...
-{ type: 'success', message: 'Copied' }
- // Fail...
-{ type: 'fail', error };
+// Success...success value is true...
+{
+  success, message;
+}
+// Fail...success value is false...
+{
+  success, error;
+}
 ```
 
 #### Do something with the promise value returned for e.g copyText;
@@ -41,7 +77,7 @@ For promise types, the promise value returned is an object
 // Copy text
 pwa.copyText(text).then((res) => {
   // Do something with 'res'
-  if (res.type === 'success') {
+  if (res.success) {
     // Success...
   }
 });
@@ -51,7 +87,7 @@ pwa.copyText(text).then((res) => {
 
 Copy text to clipboard.
 
-#### Copy text to clipboard
+#### Call the copyText method on pwa
 
 ```js
 // Copy text
@@ -110,7 +146,7 @@ const options = { multiple: true };
 // Do something with the promise value...
 pwa.Contacts(props, options).then((res) => {
   // Do something with contacts...
-  const contacts = res.type === 'success' ? res.contacts : null;
+  const contacts = res.success ? res.contacts : null;
   //...
 });
 ```
@@ -254,7 +290,7 @@ The promise resolves with a file response
 ```js
 // Do something with the contents...
 const res = await pwa.pickkFile();
-const file = res.type === 'success' ? res.file : null;
+const file = res.success ? res.file : null;
 ```
 
 #### Call the pickTextFile method on pwa
@@ -264,7 +300,7 @@ The promise resolves with a text response(contents of the picked text file)
 ```js
 // Do something with the contents...
 const res = await pwa.pickTextFile();
-const contents = res.type === 'success' ? res.contents : null;
+const contents = res.success ? res.contents : null;
 ```
 
 ### 13. Web Payments

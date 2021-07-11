@@ -6,10 +6,10 @@ class PWA {
     try {
       await navigator.clipboard.writeText(text);
       // Copied...
-      return { type: 'success', message: 'Copied' };
+      return { success: true, message: 'Copied' };
     } catch (error) {
       // Error...
-      return { type: 'fail', message: 'Fail', error };
+      return { success: false, message: 'Fail', error };
     }
   }
 
@@ -26,10 +26,10 @@ class PWA {
           }),
         ),
       ]);
-      return result ? { type: 'success', message: 'Copied' } : { type: 'fail', message: 'Fail' };
+      return result ? { success: true, message: 'Copied' } : { success: false, message: 'Fail' };
     } catch (error) {
       // Error...
-      return { type: 'fail', message: 'Fail', error };
+      return { success: false, message: 'Fail', error };
     }
   }
 
@@ -39,10 +39,10 @@ class PWA {
     try {
       await navigator.share(data);
       // Shared...
-      return { type: 'success', message: 'Shared' };
+      return { success: true, message: 'Shared' };
     } catch (error) {
       // Error..
-      return { error, type: 'fail', message: 'Failed' };
+      return { error, success: false, message: 'Failed' };
     }
   }
 
@@ -52,27 +52,27 @@ class PWA {
       // const supported = 'contacts' in navigator && 'ContactsManager' in window;
       const contacts = await navigator.contacts.select(props, options);
       // Return contacts...
-      return { type: 'success', message: 'Selected', contacts };
+      return { success: true, message: 'Selected', contacts };
     } catch (error) {
       // Error...
-      return { type: 'fail', message: 'Fail', error };
+      return { success: false, message: 'Fail', error };
     }
   }
 
   // Connectivity...
-  Connectivity(online: () => void, offline: () => void) {
+  Connectivity(online: () => 'online', offline: () => 'offline') {
     // Once the DOM is loaded, check for connectivity...
     try {
       if (navigator.onLine) {
         online();
-        return { type: 'success', message: 'Online' };
+        return { success: true, message: 'Online' };
       } else {
         offline();
-        return { type: 'success', message: 'Offline' };
+        return { success: true, message: 'Offline' };
       }
     } catch (error) {
       // Error...
-      return { type: 'fail', message: 'Fail', error };
+      return { success: false, message: 'Fail', error };
     }
   }
 
@@ -80,10 +80,10 @@ class PWA {
   async setBadge(unreadCount: number) {
     try {
       await navigator.setAppBadge(unreadCount);
-      return { type: 'success', message: 'Set' };
+      return { success: true, message: 'Set' };
     } catch (error) {
       // Error...
-      return { type: 'fail', message: 'Fail', error };
+      return { success: false, message: 'Fail', error };
     }
   }
 
@@ -92,10 +92,10 @@ class PWA {
     try {
       // Clear the badge
       await navigator.clearAppBadge();
-      return { type: 'success', message: 'Cleared' };
+      return { success: true, message: 'Cleared' };
     } catch (error) {
       // Error...
-      return { type: 'fail', message: 'Fail', error };
+      return { success: false, message: 'Fail', error };
     }
   }
 
@@ -104,14 +104,14 @@ class PWA {
     try {
       if (document.fullscreenEnabled) {
         await document.documentElement.requestFullscreen();
-        return { type: 'success', message: 'Fullscreen' };
+        return { success: true, message: 'Fullscreen' };
       } else {
         // Error...
-        return { type: 'fail', error: {} };
+        return { success: false, error: {} };
       }
     } catch (error) {
       // Error...
-      return { type: 'fail', message: 'Fail', error };
+      return { success: false, message: 'Fail', error };
     }
   }
 
@@ -124,15 +124,15 @@ class PWA {
         await navigator.serviceWorker.ready.then((registration) => {
           registration.showNotification(title, options);
           // Sent...
-          return { type: 'success', message: 'Sent' };
+          return { success: true, message: 'Sent' };
         });
       } else {
         // Denied...
-        return { type: 'success', message: 'Denied' };
+        return { success: true, message: 'Denied' };
       }
     } catch (error) {
       // Error...
-      return { type: 'fail', message: 'Fail', error };
+      return { success: false, message: 'Fail', error };
     }
   }
 
@@ -165,7 +165,7 @@ class PWA {
         // Installed...
       });
     } catch (error) {
-      return { type: 'fail', message: 'Fail', error };
+      return { success: false, message: 'Fail', error };
     }
   }
 
@@ -176,10 +176,10 @@ class PWA {
     try {
       wakeLock = await navigator.wakeLock.request('screen');
       if (wakeLock) {
-        return { type: 'success', message: 'Active' };
+        return { success: true, message: 'Active' };
       }
     } catch (error) {
-      return { type: 'fail', message: 'Fail', error };
+      return { success: false, message: 'Fail', error };
     }
   }
 
@@ -191,19 +191,19 @@ class PWA {
         if (state === 'visible') {
           // Call back function...
           isVisible();
-          return { type: 'success', message: 'Visible' };
+          return { success: true, message: 'Visible' };
         }
       } else {
         // Alternative...
         notAvailable();
         return {
-          type: 'fail',
+          success: false,
           message: 'Not supported',
         };
       }
     } catch (error) {
       // Error...
-      return { type: 'fail', message: 'Fail', error };
+      return { success: false, message: 'Fail', error };
     }
   }
 
@@ -216,14 +216,14 @@ class PWA {
       const typeList = file.type.split('/');
       if (typeList.includes('text')) {
         const contents = await file.text();
-        return { type: 'success', message: 'File picked', contents };
+        return { success: true, message: 'File picked', contents };
       } else {
         // Please pick text type file
-        return { type: 'fail', message: 'Please pick text type file' };
+        return { success: false, message: 'Please pick text type file' };
       }
     } catch (error) {
       // Error...
-      return { type: 'fail', message: 'Fail', error };
+      return { success: false, message: 'Fail', error };
     }
   }
 
@@ -235,12 +235,12 @@ class PWA {
       const file: any = await fileHandle.getFile();
       return {
         file: file ?? null,
-        type: 'success',
+        success: true,
         message: 'File picked',
       };
     } catch (error) {
       return {
-        type: 'fail',
+        success: false,
         message: 'Fail',
         error,
       };
@@ -253,7 +253,7 @@ class PWA {
       paymentDetails: PaymentDetailsInit;
       options: PaymentOptions;
     },
-    validatePayment: (arg0: PaymentResponse) => void,
+    validatePayment: (arg0: PaymentResponse) => null,
   ) {
     // Initiate user interface...
     try {
@@ -262,12 +262,12 @@ class PWA {
       // Validate with backend...
       validatePayment(paymentResponse);
     } catch (error) {
-      return { type: 'fail', message: 'Fail', error };
+      return { success: false, message: 'Fail', error };
     }
   }
 }
 
-// Create pwafire object
+// Create pwafire object...
 const pwafire = {
   pwa: new PWA(),
 };
