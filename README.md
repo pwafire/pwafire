@@ -6,7 +6,7 @@ Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.p
 
 ### Breaking change for v3.0.0 moving forward
 
-All async responses returned have a new `success` a boolean field which replaces `type` a string, here is the differences;
+All **async responses** returned have a new `success` value, a boolean type which replaces `type` value, a string as shown below;
 
 ```js
 
@@ -36,9 +36,19 @@ Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
 ```
 
 ### Get pwafire over CDN as an E6 Module
+Note that you can still use a specific version over the pwafire cdn
+
+#### Latest version
 
 ```js
 import pwafire from "https://unpkg.com/pwafire/esm/index.js";
+const pwa = pwafire.pwa;
+```
+
+#### Specific version
+
+```js
+import pwafire from "https://unpkg.com/pwafire@3.0.1/esm/index.js";
 const pwa = pwafire.pwa;
 ```
 
