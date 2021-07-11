@@ -2,6 +2,27 @@
 
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
+Welcome to **@pwafire v.3.0.0** which is the foundation for our next generation of the pwafire api. Note that, these release is a breaking change, before upgrading, check the documentations first.
+
+### Breaking change for v3.0.0 moving forward
+
+All **async responses** returned have a new `success` value, a boolean type which replaces `type` value, a string as shown below;
+
+```js
+// Async API...
+const res = await pwa.CopyText(text);
+
+// Lower versions...
+if (res.type === 'success') {
+  // Do something...
+}
+
+// New version starting v3.0.0
+if (res.success) {
+  // Do something...
+}
+```
+
 ## Install pwafire via NPM
 
 ```bash
@@ -10,8 +31,19 @@ npm i pwafire --save
 
 ### Get pwafire over CDN as an E6 Module
 
+Note that you can still use a specific version over the pwafire cdn
+
+#### Latest version
+
 ```js
 import pwafire from 'https://unpkg.com/pwafire/esm/index.js';
+const pwa = pwafire.pwa;
+```
+
+#### Specific version
+
+```js
+import pwafire from 'https://unpkg.com/pwafire@3.0.1/esm/index.js';
 const pwa = pwafire.pwa;
 ```
 
@@ -30,9 +62,13 @@ For all promise types, the promise value returned is an object - might include a
 
 ```js
 // Success...success value is true...
-{ success, message }
- // Fail...success value is false...
-{ success, error };
+{
+  success, message;
+}
+// Fail...success value is false...
+{
+  success, error;
+}
 ```
 
 #### Do something with the promise value returned for e.g copyText;
