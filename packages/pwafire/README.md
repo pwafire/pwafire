@@ -6,23 +6,21 @@ Welcome to **@pwafire v.3.0.0** which is the foundation for our next generation 
 
 ### Breaking change for v3.0.0 moving forward
 
-All async responses returned have a new `success` a boolean field which replaces `type` a string, here is the differences;
+All **async responses** returned have a new `success` value, a boolean type which replaces `type` value, a string as shown below;
 
 ```js
-
 // Async API...
 const res = await pwa.CopyText(text);
 
 // Lower versions...
- if(res.type === 'success')  {
-   // Do something...
- }
+if (res.type === 'success') {
+  // Do something...
+}
 
 // New version starting v3.0.0
- if(res.success)  {
-   // Do something...
- }
-
+if (res.success) {
+  // Do something...
+}
 ```
 
 ## Install pwafire via NPM
@@ -33,8 +31,19 @@ npm i pwafire --save
 
 ### Get pwafire over CDN as an E6 Module
 
+Note that you can still use a specific version over the pwafire cdn
+
+#### Latest version
+
 ```js
 import pwafire from 'https://unpkg.com/pwafire/esm/index.js';
+const pwa = pwafire.pwa;
+```
+
+#### Specific version
+
+```js
+import pwafire from 'https://unpkg.com/pwafire@3.0.1/esm/index.js';
 const pwa = pwafire.pwa;
 ```
 
