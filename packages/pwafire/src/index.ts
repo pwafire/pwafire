@@ -18,18 +18,18 @@ class PWA {
     try {
       const data = await fetch(imgURL);
       const blob = await data.blob();
-      const result = await navigator.clipboard.write([
+      const result = (await navigator.clipboard.write([
         new ClipboardItem(
           Object.defineProperty({}, blob.type, {
             value: blob,
             enumerable: true,
           }),
         ),
-      ]);
+      ])) as any;
       return result ? { success: true, message: 'Copied' } : { success: false, message: 'Fail' };
     } catch (error) {
       // Error...
-      return { success: false, message: 'Fail', error };
+      throw error;
     }
   }
 
@@ -42,7 +42,7 @@ class PWA {
       return { success: true, message: 'Shared' };
     } catch (error) {
       // Error..
-      return { error, success: false, message: 'Failed' };
+      throw error;
     }
   }
 
@@ -55,7 +55,7 @@ class PWA {
       return { success: true, message: 'Selected', contacts };
     } catch (error) {
       // Error...
-      return { success: false, message: 'Fail', error };
+      throw error;
     }
   }
 
@@ -72,7 +72,7 @@ class PWA {
       }
     } catch (error) {
       // Error...
-      return { success: false, message: 'Fail', error };
+      throw error;
     }
   }
 
@@ -83,7 +83,7 @@ class PWA {
       return { success: true, message: 'Set' };
     } catch (error) {
       // Error...
-      return { success: false, message: 'Fail', error };
+      throw error;
     }
   }
 
@@ -95,7 +95,7 @@ class PWA {
       return { success: true, message: 'Cleared' };
     } catch (error) {
       // Error...
-      return { success: false, message: 'Fail', error };
+      throw error;
     }
   }
 
@@ -111,7 +111,7 @@ class PWA {
       }
     } catch (error) {
       // Error...
-      return { success: false, message: 'Fail', error };
+      throw error;
     }
   }
 
@@ -132,7 +132,7 @@ class PWA {
       }
     } catch (error) {
       // Error...
-      return { success: false, message: 'Fail', error };
+      throw error;
     }
   }
 
@@ -165,7 +165,7 @@ class PWA {
         // Installed...
       });
     } catch (error) {
-      return { success: false, message: 'Fail', error };
+      throw error;
     }
   }
 
@@ -179,7 +179,7 @@ class PWA {
         return { success: true, message: 'Active' };
       }
     } catch (error) {
-      return { success: false, message: 'Fail', error };
+      throw error;
     }
   }
 
@@ -203,7 +203,7 @@ class PWA {
       }
     } catch (error) {
       // Error...
-      return { success: false, message: 'Fail', error };
+      throw error;
     }
   }
 
@@ -223,7 +223,7 @@ class PWA {
       }
     } catch (error) {
       // Error...
-      return { success: false, message: 'Fail', error };
+      throw error;
     }
   }
 
@@ -239,30 +239,22 @@ class PWA {
         message: 'File picked',
       };
     } catch (error) {
-      return {
-        success: false,
-        message: 'Fail',
-        error,
-      };
+      throw error;
     }
   }
   // Payment...
   async Payment(
-    paydata: {
-      paymentMethods: PaymentMethodData[];
-      paymentDetails: PaymentDetailsInit;
-      options: PaymentOptions;
-    },
-    validatePayment: (arg0: PaymentResponse) => null,
+    paydata: { paymentMethods: PaymentMethodData[]; paymentDetails: PaymentDetailsInit; options: any },
+    validatePayment: (arg0: PaymentResponse) => void,
   ) {
     // Initiate user interface...
     try {
-      const paymentRequest = new PaymentRequest(paydata.paymentMethods, paydata.paymentDetails, paydata.options);
+      const paymentRequest = new PaymentRequest(paydata.paymentMethods, paydata.paymentDetails);
       const paymentResponse = await paymentRequest.show();
       // Validate with backend...
       validatePayment(paymentResponse);
     } catch (error) {
-      return { success: false, message: 'Fail', error };
+      throw error;
     }
   }
 }
