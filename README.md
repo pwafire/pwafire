@@ -2,6 +2,10 @@
 
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
+### Other Languages
+
+    - French
+
 <span>![Build package](https://github.com/pwafire/pwafire/workflows/Build%20package/badge.svg)</span> <span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span>
 
 ### Breaking change for v3.0.0 moving forward
