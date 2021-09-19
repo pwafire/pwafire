@@ -264,5 +264,7 @@ const pwafire = {
   pwa: new PWA(),
 };
 
-// Export...
+// Exports...
+const pwa = pwafire.pwa;
+export { pwafire, pwa };
 export default pwafire;
