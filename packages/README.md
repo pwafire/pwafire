@@ -36,22 +36,19 @@ Note that you can still use a specific version over the pwafire cdn
 #### Latest version
 
 ```js
-import pwafire from 'https://unpkg.com/pwafire/esm/index.js';
-const pwa = pwafire.pwa;
+import { pwa } from 'https://unpkg.com/pwafire/esm/index.js';
 ```
 
 #### Specific version
 
 ```js
-import pwafire from 'https://unpkg.com/pwafire@3.0.1/esm/index.js';
-const pwa = pwafire.pwa;
+import { pwa } from 'https://unpkg.com/pwafire@3.0.4/esm/index.js';
 ```
 
 ### Import pwafire in your for e.g React App
 
 ```js
-import pwafire from 'pwafire';
-const pwa = pwafire.pwa;
+import { pwa }from 'pwafire';
 ```
 
 All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
