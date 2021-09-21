@@ -48,7 +48,7 @@ import { pwa } from 'https://unpkg.com/pwafire@3.0.4/esm/index.js';
 ### Import pwafire in your for e.g React App
 
 ```js
-import { pwa }from 'pwafire';
+import { pwa } from 'pwafire';
 ```
 
 All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
