@@ -55,32 +55,27 @@ class PWA {
   }
 
   // Web Share...
-  async Share(data: { title: string; text: string; url: string }) {
+  async Share(data: ShareData) {
     try {
-      // Check support...
-      if (navigator.share) {
-        await navigator.share(data);
-        // Shared...
-        return { success: true, message: 'Shared' };
+      if (data.files) {
+        if (navigator.canShare && navigator.canShare(data)) {
+          await navigator.share(data);
+          return { success: true, message: 'Shared' };
+        } else {
+          return { success: false, message: 'Share Files not supported' };
+        }
       } else {
-        return { success: false, message: 'Web Share not supported' };
+        // Check support...
+        if (navigator.share) {
+          await navigator.share(data);
+          // Shared...
+          return { success: true, message: 'Shared' };
+        } else {
+          return { success: false, message: 'Web Share not supported' };
+        }
       }
     } catch (error) {
       // Error..
-      throw error;
-    }
-  }
-
-  // Share files...
-  async shareFiles(data: ShareData) {
-    try {
-      if (navigator.canShare && navigator.canShare(data)) {
-        await navigator.share(data);
-        return { success: true, message: 'Shared' };
-      } else {
-        return { success: false, message: 'Share Files not supported' };
-      }
-    } catch (error) {
       throw error;
     }
   }
