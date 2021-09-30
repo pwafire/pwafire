@@ -319,6 +319,7 @@ class PWA {
       throw error;
     }
   }
+
   // Payment...
   async Payment(
     paydata: { paymentMethods: PaymentMethodData[]; paymentDetails: PaymentDetailsInit; options: any },
