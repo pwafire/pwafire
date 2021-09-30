@@ -11,9 +11,9 @@ interface Navigator {
   setAppBadge: (unreadCount: any) => any;
   clearAppBadge: () => any;
   canShare: any;
-  hid : any;
+  hid: any;
 }
 
 interface Clipboard {
-  write: (data: ClipboardItems) => Promise<void>;
+  write: (data: ClipboardItem[]) => Promise<void>;
 }

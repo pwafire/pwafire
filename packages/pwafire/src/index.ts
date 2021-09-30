@@ -26,15 +26,14 @@ class PWA {
       if (navigator.clipboard) {
         const data = await fetch(imgURL);
         const blob = await data.blob();
-        const result = (await navigator.clipboard.write([
-          new ClipboardItem(
-            Object.defineProperty({}, blob.type, {
-              value: blob,
-              enumerable: true,
-            }),
-          ),
-        ])) as any;
-        return result ? { success: true, message: 'Copied' } : { success: false, message: 'Fail' };
+        if(blob) {
+          await navigator.clipboard.write([
+            new ClipboardItem({
+              [blob.type]: blob
+            })
+          ]);
+        }
+        return { success: true, message: 'Copied' };
       } else {
         return { success: false, message: 'Copy Image not supported' };
       }
@@ -62,14 +61,10 @@ class PWA {
   }
 
   // Share files...
-  async shareFiles({ files, title, text }: { files: File[]; title: string; text: string }) {
+  async shareFiles(data: ShareData) {
     try {
-      if (navigator.canShare && navigator.canShare({ files })) {
-        await navigator.share({
-          files,
-          title,
-          text,
-        });
+      if (navigator.canShare && navigator.canShare(data)) {
+        await navigator.share(data);
         return { success: true, message: 'Shared' };
       } else {
         return { success: false, message: 'Share Files not supported' };
