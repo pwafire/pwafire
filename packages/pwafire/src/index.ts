@@ -1,5 +1,7 @@
 //  Authors : Maye Edwin & Marta Wiśniewska
 // Copyright : https://pwafire.org
+
+declare var ClipboardItem: any;
 class PWA {
   // Copy text...
   async copyText(text: string) {
@@ -21,25 +23,34 @@ class PWA {
   }
 
   // Copy image
-  async copyImage(imgURL: RequestInfo) {
+  async copyImage(imgURL: string) {
     try {
       if (navigator.clipboard) {
         const data = await fetch(imgURL);
         const blob = await data.blob();
-        if(blob) {
-          await navigator.clipboard.write([
-            new ClipboardItem({
-              [blob.type]: blob
-            })
+        const clip: any = navigator.clipboard;
+        if (clip && clip.write) {
+          await clip.write([
+            new ClipboardItem(
+              Object.defineProperty({}, blob.type, {
+                value: blob,
+                enumerable: true,
+              }),
+            ),
           ]);
+          return { success: true, message: 'Copied' };
+        } else {
+          return {
+            success: false,
+            message: 'Failed',
+          };
         }
-        return { success: true, message: 'Copied' };
       } else {
         return { success: false, message: 'Copy Image not supported' };
       }
     } catch (error) {
       // Error...
-      throw error;
+      return { success: false, message: 'Fail', error };
     }
   }
 

@@ -13,7 +13,3 @@ interface Navigator {
   canShare: any;
   hid: any;
 }
-
-interface Clipboard {
-  write: (data: ClipboardItem[]) => Promise<void>;
-}
