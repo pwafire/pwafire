@@ -55,7 +55,7 @@ class PWA {
   }
 
   // Web Share...
-  async Share(data: ShareData) {
+  async Share(data: ShareData | any) {
     try {
       if (data.files) {
         if (navigator.canShare && navigator.canShare(data)) {
