@@ -4,9 +4,16 @@ class PWA {
   // Copy text...
   async copyText(text: string) {
     try {
-      await navigator.clipboard.writeText(text);
-      // Copied...
-      return { success: true, message: 'Copied' };
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(text);
+        // Copied...
+        return { success: true, message: 'Copied' };
+      } else {
+        return {
+          success: false,
+          message: 'Copy Text not supported',
+        };
+      }
     } catch (error) {
       // Error...
       throw error;
@@ -16,17 +23,21 @@ class PWA {
   // Copy image
   async copyImage(imgURL: RequestInfo) {
     try {
-      const data = await fetch(imgURL);
-      const blob = await data.blob();
-      const result = (await navigator.clipboard.write([
-        new ClipboardItem(
-          Object.defineProperty({}, blob.type, {
-            value: blob,
-            enumerable: true,
-          }),
-        ),
-      ])) as any;
-      return result ? { success: true, message: 'Copied' } : { success: false, message: 'Fail' };
+      if (navigator.clipboard) {
+        const data = await fetch(imgURL);
+        const blob = await data.blob();
+        const result = (await navigator.clipboard.write([
+          new ClipboardItem(
+            Object.defineProperty({}, blob.type, {
+              value: blob,
+              enumerable: true,
+            }),
+          ),
+        ])) as any;
+        return result ? { success: true, message: 'Copied' } : { success: false, message: 'Fail' };
+      } else {
+        return { success: false, message: 'Copy Image not supported' };
+      }
     } catch (error) {
       // Error...
       throw error;
@@ -34,25 +45,55 @@ class PWA {
   }
 
   // Web Share...
-  async Share(data: object) {
-    // Check support...
+  async Share(data: { title: string; text: string; url: string }) {
     try {
-      await navigator.share(data);
-      // Shared...
-      return { success: true, message: 'Shared' };
+      // Check support...
+      if (navigator.share) {
+        await navigator.share(data);
+        // Shared...
+        return { success: true, message: 'Shared' };
+      } else {
+        return { success: false, message: 'Web Share not supported' };
+      }
     } catch (error) {
       // Error..
       throw error;
     }
   }
 
-  // Contacts Picker...
-  async Contacts(props: object, options: object) {
+  // Share files...
+  async shareFiles({ files, title, text }: { files: File[]; title: string; text: string }) {
     try {
-      // const supported = 'contacts' in navigator && 'ContactsManager' in window;
-      const contacts = await navigator.contacts.select(props, options);
-      // Return contacts...
-      return { success: true, message: 'Selected', contacts };
+      if (navigator.canShare && navigator.canShare({ files: files })) {
+        await navigator.share({
+          files: files,
+          title: title,
+          text: text,
+        });
+        return { success: true, message: 'Shared' };
+      } else {
+        return { success: false, message: 'Share Files not supported' };
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Contacts Picker...
+  async Contacts(
+    props: string[],
+    options?: {
+      multiple: boolean;
+    },
+  ) {
+    try {
+      if ('contacts' in navigator && 'ContactsManager' in window) {
+        const contacts = await navigator.contacts.select(props, options);
+        // Return contacts...
+        return { success: true, message: 'Selected', contacts };
+      } else {
+        return { success: false, message: 'Contacts picker not supported' };
+      }
     } catch (error) {
       // Error...
       throw error;
@@ -79,8 +120,15 @@ class PWA {
   // Set badge...
   async setBadge(unreadCount: number) {
     try {
-      await navigator.setAppBadge(unreadCount);
-      return { success: true, message: 'Set' };
+      if (navigator.setAppBadge) {
+        await navigator.setAppBadge(unreadCount);
+        return { success: true, message: 'Set' };
+      } else {
+        return {
+          success: false,
+          message: 'Badging not supported',
+        };
+      }
     } catch (error) {
       // Error...
       throw error;
@@ -90,9 +138,12 @@ class PWA {
   // Clear badge...
   async clearBadge() {
     try {
-      // Clear the badge
-      await navigator.clearAppBadge();
-      return { success: true, message: 'Cleared' };
+      if (navigator.clearAppBadge) {
+        await navigator.clearAppBadge();
+        return { success: true, message: 'Cleared' };
+      } else {
+        return { success: false, message: 'Badging not supported' };
+      }
     } catch (error) {
       // Error...
       throw error;
@@ -107,7 +158,7 @@ class PWA {
         return { success: true, message: 'Fullscreen' };
       } else {
         // Error...
-        return { success: false, error: {} };
+        return { success: false, message: 'Fullscreen disabled' };
       }
     } catch (error) {
       // Error...
@@ -119,16 +170,21 @@ class PWA {
   async Notification(data: { title: string; options: object }) {
     const { title, options } = data;
     try {
-      const permission = await Notification.requestPermission();
-      if (permission === 'granted') {
-        await navigator.serviceWorker.ready.then((registration) => {
-          registration.showNotification(title, options);
-          // Sent...
-          return { success: true, message: 'Sent' };
-        });
+      if ('Notification' in window) {
+        const permission = await Notification.requestPermission();
+        if (permission === 'granted') {
+          await navigator.serviceWorker.ready.then((registration) => {
+            registration.showNotification(title, options);
+            // Sent...
+            return { success: true, message: 'Sent' };
+          });
+        } else {
+          // Denied...
+          return { success: true, message: 'Denied' };
+        }
       } else {
-        // Denied...
-        return { success: true, message: 'Denied' };
+        // Error...
+        return { success: false, message: 'Notification not supported' };
       }
     } catch (error) {
       // Error...
@@ -139,31 +195,36 @@ class PWA {
   // Install...
   Install(button: HTMLElement) {
     try {
-      window.addEventListener('beforeinstallprompt', (event: any) => {
-        // Stash the event so it can be triggered later.
-        window.deferredPrompt = event;
-      });
-
-      // Install...
-      button.addEventListener('click', () => {
-        const promptEvent = window.deferredPrompt;
-        if (!promptEvent) {
-          return null;
-        }
-        // Show the install prompt...
-        promptEvent.prompt();
-        // Log the result
-        promptEvent.userChoice.then((result: any) => {
-          // Reset the deferred prompt variable...
-          window.deferredPrompt = null;
-          // Hide the install button...
+      if (navigator.serviceWorker) {
+        window.addEventListener('beforeinstallprompt', (event: any) => {
+          // Stash the event so it can be triggered later.
+          window.deferredPrompt = event;
         });
-      });
 
-      // Installed....
-      window.addEventListener('appinstalled', (event: any) => {
-        // Installed...
-      });
+        // Install...
+        button.addEventListener('click', () => {
+          const promptEvent = window.deferredPrompt;
+          if (!promptEvent) {
+            return null;
+          }
+          // Show the install prompt...
+          promptEvent.prompt();
+          // Log the result
+          promptEvent.userChoice.then((result: any) => {
+            // Reset the deferred prompt variable...
+            window.deferredPrompt = null;
+            // Hide the install button...
+          });
+        });
+
+        // Installed....
+        window.addEventListener('appinstalled', (event: any) => {
+          // Installed...
+        });
+      } else {
+        // Error...
+        return { success: false, message: 'Service Worker not supported' };
+      }
     } catch (error) {
       throw error;
     }
@@ -171,12 +232,16 @@ class PWA {
 
   // Wakelock...
   async WakeLock() {
-    // The wake lock sentinel.
-    let wakeLock: null;
     try {
-      wakeLock = await navigator.wakeLock.request('screen');
-      if (wakeLock) {
-        return { success: true, message: 'Active' };
+      if ('wakeLock' in navigator) {
+        const wakeLock = await navigator.wakeLock.request('screen');
+        if (wakeLock) {
+          return { success: true, message: 'WakeLock Active' };
+        } else {
+          return { success: false, message: 'WakeLock Failed' };
+        }
+      } else {
+        return { success: false, message: 'WakeLock not supported' };
       }
     } catch (error) {
       throw error;
@@ -213,10 +278,14 @@ class PWA {
     try {
       [fileHandle] = await window.showOpenFilePicker();
       const file = await fileHandle.getFile();
-      const typeList = file.type.split('/');
-      if (typeList.includes('text')) {
-        const contents = await file.text();
-        return { success: true, message: 'File picked', contents };
+      if (file) {
+        const typeList = file.type.split('/');
+        if (typeList.includes('text')) {
+          const contents = await file.text();
+          return { success: true, message: 'File picked', contents };
+        } else {
+          return { success: false, message: 'File Picker not supported' };
+        }
       } else {
         // Please pick text type file
         return { success: false, message: 'Please pick text type file' };
@@ -233,11 +302,19 @@ class PWA {
     try {
       [fileHandle] = await window.showOpenFilePicker();
       const file: any = await fileHandle.getFile();
-      return {
-        file: file ?? null,
-        success: true,
-        message: 'File picked',
-      };
+      if (file) {
+        return {
+          file: file,
+          success: true,
+          message: 'File picked',
+        };
+      } else {
+        return {
+          file: null,
+          success: false,
+          message: 'File Picker not supported',
+        };
+      }
     } catch (error) {
       throw error;
     }
@@ -250,9 +327,14 @@ class PWA {
     // Initiate user interface...
     try {
       const paymentRequest = new PaymentRequest(paydata.paymentMethods, paydata.paymentDetails);
-      const paymentResponse = await paymentRequest.show();
-      // Validate with backend...
-      validatePayment(paymentResponse);
+      if (paymentRequest) {
+        const paymentResponse = await paymentRequest.show();
+        // Validate with backend...
+        validatePayment(paymentResponse);
+        return { success: true, message: 'Payment' };
+      } else {
+        return { success: false, message: 'Payment not supported' };
+      }
     } catch (error) {
       throw error;
     }

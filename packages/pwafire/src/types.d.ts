@@ -1,6 +1,3 @@
-declare class ClipboardItem {
-  constructor(data: { [mimeType: string]: Blob });
-}
 interface Window {
   addEventListener(arg0: string, arg1: () => { type: string; message: string }): any;
   deferredPrompt?: any;
@@ -13,8 +10,10 @@ interface Navigator {
   wakeLock: any;
   setAppBadge: (unreadCount: any) => any;
   clearAppBadge: () => any;
+  canShare: any;
+  hid : any;
 }
 
 interface Clipboard {
-  write: (arg0: any[]) => any;
+  write: (data: ClipboardItems) => Promise<void>;
 }
