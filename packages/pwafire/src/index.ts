@@ -64,11 +64,11 @@ class PWA {
   // Share files...
   async shareFiles({ files, title, text }: { files: File[]; title: string; text: string }) {
     try {
-      if (navigator.canShare && navigator.canShare({ files: files })) {
+      if (navigator.canShare && navigator.canShare({ files })) {
         await navigator.share({
-          files: files,
-          title: title,
-          text: text,
+          files,
+          title,
+          text,
         });
         return { success: true, message: 'Shared' };
       } else {
@@ -304,7 +304,7 @@ class PWA {
       const file: any = await fileHandle.getFile();
       if (file) {
         return {
-          file: file,
+          file,
           success: true,
           message: 'File picked',
         };
