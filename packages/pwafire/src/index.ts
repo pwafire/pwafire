@@ -1,5 +1,6 @@
 //  Authors : Maye Edwin & Marta Wiśniewska
 // Copyright : https://pwafire.org
+declare var ClipboardItem:any;
 class PWA {
   // Copy text...
   async copyText(text: string) {
