@@ -1,7 +1,5 @@
 //  Authors : Maye Edwin & Marta Wiśniewska
 // Copyright : https://pwafire.org
-
-declare var ClipboardItem: any;
 class PWA {
   // Copy text...
   async copyText(text: string) {
@@ -225,6 +223,61 @@ class PWA {
       } else {
         // Error...
         return { success: false, message: 'Service Worker not supported' };
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Idle detection...
+  async idleDetection(
+    action = 'start',
+    callback = () => {
+      // Idle...
+      console.log('Idle');
+    },
+    threshold = 60000,
+  ) {
+    try {
+      //  Idle Detection...
+      if ('IdleDetector' in window) {
+        // Make sure 'idle-detection' permission is granted...
+        const state = await IdleDetector.requestPermission();
+        if (state === 'granted') {
+          // Permission granted...
+          const controller = new AbortController();
+          const signal = controller.signal;
+          const idleDetector = new IdleDetector();
+          idleDetector.addEventListener('change', () => {
+            const userState = idleDetector.userState;
+            const screenState = idleDetector.screenState;
+            console.log(`Idle change : ${userState}, ${screenState}.`);
+            // Handle states...
+            if (userState === 'idle') {
+              callback();
+            } else {
+            }
+          });
+          // Handle detector...
+          if (action === 'start') {
+            // Start...
+            await idleDetector.start({
+              threshold: threshold > 60000 ? threshold : 60000,
+              signal,
+            });
+            return { success: true, message: 'Started' };
+          } else {
+            // Abort...
+            controller.abort();
+            return { success: true, message: 'Aborted' };
+          }
+        } else {
+          // Need to request permission first...
+          return { success: false, message: 'Need to request permission first' };
+        }
+      } else {
+        // Not supported...
+        return { success: false, message: 'Not supported' };
       }
     } catch (error) {
       throw error;

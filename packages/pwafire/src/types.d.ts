@@ -2,6 +2,7 @@ interface Window {
   addEventListener(arg0: string, arg1: () => { type: string; message: string }): any;
   deferredPrompt?: any;
   showOpenFilePicker: () => [any] | PromiseLike<[any]>;
+  showSaveFilePicker: () => [any] | PromiseLike<[any]>;
 }
 
 interface Navigator {
@@ -10,6 +11,8 @@ interface Navigator {
   wakeLock: any;
   setAppBadge: (unreadCount: any) => any;
   clearAppBadge: () => any;
-  canShare: any;
+  canShare: (data?: ShareData | undefined) => boolean;
   hid: any;
 }
+
+declare var IdleDetector: any;
