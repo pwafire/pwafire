@@ -235,7 +235,6 @@ class PWA {
     action = 'start',
     callback = () => {
       // Idle...
-      console.log('Idle');
     },
     threshold = 60000,
   ) {
@@ -251,8 +250,7 @@ class PWA {
           const idleDetector = new IdleDetector();
           idleDetector.addEventListener('change', () => {
             const userState = idleDetector.userState;
-            const screenState = idleDetector.screenState;
-            console.log(`Idle change : ${userState}, ${screenState}.`);
+            // const screenState = idleDetector.screenState;
             // Handle states...
             if (userState === 'idle') {
               callback();
