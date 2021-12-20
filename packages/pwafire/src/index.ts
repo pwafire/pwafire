@@ -259,7 +259,6 @@ class PWA {
                 message: 'Idle',
               }
             } else {
-              // Not idle...
               return {
                 success: true,
                 message: 'Not idle',
