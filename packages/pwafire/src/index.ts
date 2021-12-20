@@ -254,7 +254,16 @@ class PWA {
             // Handle states...
             if (userState === 'idle') {
               callback();
+              return {
+                success: true,
+                message: 'Idle',
+              }
             } else {
+              // Not idle...
+              return {
+                success: true,
+                message: 'Not idle',
+              }
             }
           });
           // Handle detector...
