@@ -49,7 +49,7 @@ class PWA {
       }
     } catch (error) {
       // Error...
-      return { success: false, message: 'Fail', error };
+     throw error;
     }
   }
 
