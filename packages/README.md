@@ -13,7 +13,7 @@ All **async responses** returned have a new `success` value, a boolean type whic
 const res = await pwa.CopyText(text);
 
 // Lower versions...
-if (res.type === 'success') {
+if (res.type === "success") {
   // Do something...
 }
 
@@ -36,19 +36,19 @@ Note that you can still use a specific version over the pwafire cdn
 #### Latest version
 
 ```js
-import { pwa } from 'https://unpkg.com/pwafire/esm/index.js';
+import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
 ```
 
 #### Specific version
 
 ```js
-import { pwa } from 'https://unpkg.com/pwafire@3.0.4/esm/index.js';
+import { pwa } from "https://unpkg.com/pwafire@3.0.4/esm/index.js";
 ```
 
 ### Import pwafire in your for e.g React App
 
 ```js
-import { pwa } from 'pwafire';
+import { pwa } from "pwafire";
 ```
 
 All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
@@ -114,7 +114,7 @@ const data = {
   // Text to share
   text: `Some text...`,
   // Url to share...
-  url: 'https://pwafire.org',
+  url: "https://pwafire.org",
 };
 ```
 
@@ -133,7 +133,7 @@ pwa.Share(data);
 #### Define the "properties" and "select type" option you need
 
 ```js
-const props = ['name', 'email', 'tel'];
+const props = ["name", "email", "tel"];
 const options = { multiple: true };
 ```
 
@@ -189,11 +189,11 @@ Show notifications. Pass a **data** object
 
 ```js
 const data = {
-  title: 'Hello Notification!',
+  title: "Hello Notification!",
   options: {
-    body: 'Progressive Web App Hello Notification!',
-    icon: '../images/icons/icon-192x192.png',
-    tag: 'pwa',
+    body: "Progressive Web App Hello Notification!",
+    icon: "../images/icons/icon-192x192.png",
+    tag: "pwa",
   },
 };
 ```
@@ -339,9 +339,9 @@ const { tax, discount, total } = payment;
 ```js
 const paymentMethods = [
   {
-    supportedMethods: ['basic-card'],
+    supportedMethods: ["basic-card"],
     data: {
-      supportedNetworks: ['visa', 'mastercard'],
+      supportedNetworks: ["visa", "mastercard"],
     },
   },
 ];
@@ -352,24 +352,24 @@ const paymentMethods = [
 ```js
 const paymentDetails = {
   total: {
-    label: 'Total Amount',
+    label: "Total Amount",
     amount: {
-      currency: 'KSH',
+      currency: "KSH",
       value: total.toString(),
     },
   },
   displayItems: [
     {
-      label: 'Discount',
+      label: "Discount",
       amount: {
-        currency: 'KSH',
+        currency: "KSH",
         value: discount.toString(),
       },
     },
     {
-      label: 'Taxes, 14% V.A.T',
+      label: "Taxes, 14% V.A.T",
       amount: {
-        currency: 'KSH',
+        currency: "KSH",
         value: tax.toString(),
       },
     },
@@ -399,39 +399,24 @@ const paydata = {
 #### Validate payment (Do something with the Payment Response)
 
 ```js
-const validatePayment = (paymentResponse) => {
-  // Destructure to get payment responses
-  const { details, shippingAddress, shippingOption } = paymentResponse;
-
-  // Destructure to get card details...
-  const { cardNumber, cardSecurityCode, cardholderName, expiryMonth, expiryYear } = details;
-
-  // Destructure to get billing address...
-  const {
-    addressLine,
-    city,
-    country,
-    dependentLocality,
-    organization,
-    phone,
-    postalCode,
-    recipient,
-    region,
-    sortingCode,
-  } = details.billingAddress;
-
-  // Validate...
-  let condition;
-  if (condition) {
-    //...
-    // Return sucess
-    return paymentResponse.complete('success');
-  } else {
-    //...
-    // Return failure
-    return paymentResponse.complete('failure');
+const validatePayment = async(paymentResponse) => {
+  try {
+    // Check if payment was successful based on your payment gateway...
+    const condition = await yourSuccessHandler(paymentResponse);
+  // Please note that complete status can only be "success" or "fail"...
+    if (condition) {
+      //...
+      // Return sucesss...
+      await paymentResponse.complete("success");
+    } else {
+      //...
+      // Return fail...
+      await paymentResponse.complete("fail");
+    }
+  };
+  } catch(error) {
+    throw error;
   }
-};
 ```
 
 #### Call Payment method on pwa
