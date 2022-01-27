@@ -399,39 +399,24 @@ const paydata = {
 #### Validate payment (Do something with the Payment Response)
 
 ```js
-const validatePayment = (paymentResponse) => {
-  // Destructure to get payment responses
-  const { details, shippingAddress, shippingOption } = paymentResponse;
-
-  // Destructure to get card details...
-  const { cardNumber, cardSecurityCode, cardholderName, expiryMonth, expiryYear } = details;
-
-  // Destructure to get billing address...
-  const {
-    addressLine,
-    city,
-    country,
-    dependentLocality,
-    organization,
-    phone,
-    postalCode,
-    recipient,
-    region,
-    sortingCode,
-  } = details.billingAddress;
-
-  // Validate...
-  let condition;
-  if (condition) {
-    //...
-    // Return sucess
-    return paymentResponse.complete('success');
-  } else {
-    //...
-    // Return failure
-    return paymentResponse.complete('failure');
+const validatePayment = async(paymentResponse) => {
+  try {
+    // Check if payment was successful based on your payment gateway...
+    const condition = await yourSuccessHandler(paymentResponse);
+  // Please note that complete status can only be "success" or "fail"...
+    if (condition) {
+      //...
+      // Return sucesss...
+      await paymentResponse.complete("success");
+    } else {
+      //...
+      // Return fail...
+      await paymentResponse.complete("fail");
+    }
+  };
+  } catch(error) {
+    throw error;
   }
-};
 ```
 
 #### Call Payment method on pwa
