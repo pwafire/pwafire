@@ -1,6 +1,6 @@
 //  Authors : Maye Edwin & Marta Wiśniewska
 // Copyright : https://pwafire.org
-declare var ClipboardItem:any;
+declare var ClipboardItem: any;
 class PWA {
   // Copy text...
   async copyText(text: string) {
@@ -49,7 +49,7 @@ class PWA {
       }
     } catch (error) {
       // Error...
-     throw error;
+      throw error;
     }
   }
 
@@ -383,12 +383,17 @@ class PWA {
     try {
       const paymentRequest = new PaymentRequest(paydata.paymentMethods, paydata.paymentDetails);
       if (paymentRequest) {
-        const paymentResponse = await paymentRequest.show();
-        // Validate with backend...
-        validatePayment(paymentResponse);
-        return { success: true, message: 'Payment' };
+        const canPay = await paymentRequest.canMakePayment();
+        if (canPay) {
+          const paymentResponse = await paymentRequest.show();
+          // Validate with backend...
+          validatePayment(paymentResponse);
+          return { success: true, message: 'Payment' };
+        } else {
+          return { success: false, message: 'Payment method(s) not supported' };
+        }
       } else {
-        return { success: false, message: 'Payment not supported' };
+        return { success: false, message: 'Payment Request API not supported' };
       }
     } catch (error) {
       throw error;
