@@ -4,25 +4,23 @@ Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.p
 
 <span>![Build package](https://github.com/pwafire/pwafire/workflows/Build%20package/badge.svg)</span> <span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span>
 
-### Breaking change for v3.0.0 moving forward
+### Breaking change for v4.0.0 moving forward
 
-All **async responses** returned have a new `success` value, a boolean type which replaces `type` value, a string as shown below;
+All **responses** returned have a new `ok` value, a boolean type which replaces `success` value, a boolean as shown below;
 
 ```js
-
 // Async API...
 const res = await pwa.CopyText(text);
 
 // Lower versions...
- if(res.type === 'success')  {
-   // Do something...
- }
+if (res.success) {
+  // Do something...
+}
 
-// New version starting v3.0.0
- if(res.success)  {
-   // Do something...
- }
-
+// New version starting v4.0.0
+if (res.ok) {
+  // Do something...
+}
 ```
 
 ## Introducing _pwafire_ cdn and npm
@@ -47,7 +45,7 @@ import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
 #### Specific version
 
 ```js
-import { pwa } from "https://unpkg.com/pwafire@3.0.4/esm/index.js";
+import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
 ```
 
 ### Example : using _pwafire_
@@ -68,15 +66,20 @@ Preview Documentation : [Get Started](https://docs.pwafire.org/get-started)
 
 ## PWA : New Web Capabilities
 
-| Feature                                                                                                | Feature                   |
-| ------------------------------------------------------------------------------------------------------ | ------------------------- |
-| Custom Install Button                                                                                  | Offline Capabilities      |
-| Background Sync                                                                                        | Native App Install Banner |
-| Badging                                                                                                | Web Share                 |
-| Contact Picker                                                                                         | Copy Text                 |
-| Share Target                                                                                           | Copy Images               |
-| Screen Wake Lock                                                                                       | Push Notifications        |
-| [View All, 10 + Here](https://github.com/pwafire/pwafire/tree/master/packages#install-pwafire-via-npm) |
+| Feature                                                                                                | Stabilty  |
+| ------------------------------------------------------------------------------------------------------ | --------- |
+| Custom Install Button                                                                                  | ok        |
+| Background Sync                                                                                        | ok        |
+| Badging                                                                                                | ok        |
+| Contact Picker                                                                                         | ok        |
+| Share Target                                                                                           | ok        |
+| Screen Wake Lock                                                                                       | ok        |
+| Content Indexing                                                                                       | ok        |
+| Web payments                                                                                           | ok        |
+| Copy Images                                                                                            | ok        |
+| Push Notifications                                                                                     | ok        |
+| Web Share                                                                                              | ok        |
+| [View All, 10 + Here](https://docs.pwafire.org/get-started)                                            | 14        |
 
 ## Chat : Join the conversation
 

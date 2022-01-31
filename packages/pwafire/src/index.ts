@@ -1,6 +1,5 @@
-//  Authors : Maye Edwin & Marta Wiśniewska
+//  Authors : Maye Edwin & Marta Wiśniewska (Google Developer Experts)
 // Copyright : https://pwafire.org
-declare var ClipboardItem:any;
 class PWA {
   // Copy text...
   async copyText(text: string) {
@@ -8,11 +7,11 @@ class PWA {
       if (navigator.clipboard) {
         await navigator.clipboard.writeText(text);
         // Copied...
-        return { success: true, message: 'Copied' };
+        return { ok: true, message: 'Copied' };
       } else {
         return {
-          success: false,
-          message: 'Copy Text not supported',
+          ok: false,
+          message: 'Copy Text API not supported',
         };
       }
     } catch (error) {
@@ -27,29 +26,21 @@ class PWA {
       if (navigator.clipboard) {
         const data = await fetch(imgURL);
         const blob = await data.blob();
-        const clip: any = navigator.clipboard;
-        if (clip && clip.write) {
-          await clip.write([
-            new ClipboardItem(
-              Object.defineProperty({}, blob.type, {
-                value: blob,
-                enumerable: true,
-              }),
-            ),
-          ]);
-          return { success: true, message: 'Copied' };
-        } else {
-          return {
-            success: false,
-            message: 'Failed',
-          };
-        }
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            [blob.type]: blob,
+          }),
+        ]);
+        return {
+          ok: true,
+          message: 'Image copied',
+        };
       } else {
-        return { success: false, message: 'Copy Image not supported' };
+        return { ok: false, message: 'Copy Image API not supported' };
       }
     } catch (error) {
       // Error...
-     throw error;
+      throw error;
     }
   }
 
@@ -59,18 +50,18 @@ class PWA {
       if (data.files) {
         if (navigator.canShare && navigator.canShare(data)) {
           await navigator.share(data);
-          return { success: true, message: 'Shared' };
+          return { ok: true, message: 'Shared' };
         } else {
-          return { success: false, message: 'Share Files not supported' };
+          return { ok: false, message: 'Share Files API not supported' };
         }
       } else {
         // Check support...
         if (navigator.share) {
           await navigator.share(data);
           // Shared...
-          return { success: true, message: 'Shared' };
+          return { ok: true, message: 'Shared' };
         } else {
-          return { success: false, message: 'Web Share not supported' };
+          return { ok: false, message: 'Web Share API not supported' };
         }
       }
     } catch (error) {
@@ -90,9 +81,9 @@ class PWA {
       if ('contacts' in navigator && 'ContactsManager' in window) {
         const contacts = await navigator.contacts.select(props, options);
         // Return contacts...
-        return { success: true, message: 'Selected', contacts };
+        return { ok: true, message: 'Selected', contacts };
       } else {
-        return { success: false, message: 'Contacts picker not supported' };
+        return { ok: false, message: 'Contacts Picker API not supported' };
       }
     } catch (error) {
       // Error...
@@ -106,10 +97,10 @@ class PWA {
     try {
       if (navigator.onLine) {
         online();
-        return { success: true, message: 'Online' };
+        return { ok: true, message: 'Online' };
       } else {
         offline();
-        return { success: true, message: 'Offline' };
+        return { ok: true, message: 'Offline' };
       }
     } catch (error) {
       // Error...
@@ -122,11 +113,11 @@ class PWA {
     try {
       if (navigator.setAppBadge) {
         await navigator.setAppBadge(unreadCount);
-        return { success: true, message: 'Set' };
+        return { ok: true, message: 'Set' };
       } else {
         return {
-          success: false,
-          message: 'Badging not supported',
+          ok: false,
+          message: 'Badging API not supported',
         };
       }
     } catch (error) {
@@ -140,12 +131,75 @@ class PWA {
     try {
       if (navigator.clearAppBadge) {
         await navigator.clearAppBadge();
-        return { success: true, message: 'Cleared' };
+        return { ok: true, message: 'Cleared' };
       } else {
-        return { success: false, message: 'Badging not supported' };
+        return { ok: false, message: 'Badging API not supported' };
       }
     } catch (error) {
       // Error...
+      throw error;
+    }
+  }
+
+  // Content Indexing...
+  async contentIndexing() {
+    try {
+      const registration = (await navigator.serviceWorker.ready) as any;
+      // Remember to feature-detect before using the API:
+      if ('index' in registration) {
+        return {
+          ok: true,
+          getAll: async () => {
+            try {
+              return (await registration.index.getAll()) as {
+                [key: string]: string | number | boolean | object | any;
+              }[];
+            } catch (error) {
+              throw error;
+            }
+          },
+          addItem: async (item: {
+            id: string;
+            title: string;
+            // Optional; valid categories are currently:
+            // 'homepage', 'article', 'video', 'audio', or '' (default).
+            category?: 'homepage' | 'article' | 'video' | 'audio' | '';
+            description: string;
+            icons: {
+              src: string;
+              sizes: string;
+              type: string;
+            }[];
+            url: string;
+          }) => {
+            try {
+              // Add to content index...
+              await registration.index.add({
+                ...item,
+                category: item.category || '',
+              });
+              return { ok: true, message: 'Added' };
+            } catch (error) {
+              throw error;
+            }
+          },
+          removeItem: async (id: string) => {
+            try {
+              await registration.index.delete(id);
+              return { ok: true, message: 'Removed' };
+            } catch (error) {
+              throw error;
+            }
+          },
+          message: 'Context Indexing ready',
+        };
+      } else {
+        return {
+          ok: false,
+          message: 'Content Indexing API not supported',
+        };
+      }
+    } catch (error) {
       throw error;
     }
   }
@@ -155,10 +209,10 @@ class PWA {
     try {
       if (document.fullscreenEnabled) {
         await document.documentElement.requestFullscreen();
-        return { success: true, message: 'Fullscreen' };
+        return { ok: true, message: 'Fullscreen' };
       } else {
         // Error...
-        return { success: false, message: 'Fullscreen disabled' };
+        return { ok: false, message: 'Fullscreen disabled' };
       }
     } catch (error) {
       // Error...
@@ -176,15 +230,15 @@ class PWA {
           await navigator.serviceWorker.ready.then((registration) => {
             registration.showNotification(title, options);
             // Sent...
-            return { success: true, message: 'Sent' };
+            return { ok: true, message: 'Sent' };
           });
         } else {
           // Denied...
-          return { success: true, message: 'Denied' };
+          return { ok: true, message: 'Denied' };
         }
       } else {
         // Error...
-        return { success: false, message: 'Notification not supported' };
+        return { ok: false, message: 'Notification API not supported' };
       }
     } catch (error) {
       // Error...
@@ -223,7 +277,7 @@ class PWA {
         });
       } else {
         // Error...
-        return { success: false, message: 'Service Worker not supported' };
+        return { ok: false, message: 'Service Worker not supported' };
       }
     } catch (error) {
       throw error;
@@ -241,7 +295,7 @@ class PWA {
     try {
       //  Idle Detection...
       if ('IdleDetector' in window) {
-        // Make sure 'idle-detection' permission is granted...
+        // Make sure "idle-detection" permission is granted...
         const state = await IdleDetector.requestPermission();
         if (state === 'granted') {
           // Permission granted...
@@ -265,19 +319,19 @@ class PWA {
               threshold: threshold > 60000 ? threshold : 60000,
               signal,
             });
-            return { success: true, message: 'Started' };
+            return { ok: true, message: 'Started' };
           } else {
             // Abort...
             controller.abort();
-            return { success: true, message: 'Aborted' };
+            return { ok: true, message: 'Aborted' };
           }
         } else {
           // Need to request permission first...
-          return { success: false, message: 'Need to request permission first' };
+          return { ok: false, message: 'Need to request permission first' };
         }
       } else {
         // Not supported...
-        return { success: false, message: 'Not supported' };
+        return { ok: false, message: 'Idle Detection API not supported' };
       }
     } catch (error) {
       throw error;
@@ -290,12 +344,12 @@ class PWA {
       if ('wakeLock' in navigator) {
         const wakeLock = await navigator.wakeLock.request('screen');
         if (wakeLock) {
-          return { success: true, message: 'WakeLock Active' };
+          return { ok: true, message: 'WakeLock Active' };
         } else {
-          return { success: false, message: 'WakeLock Failed' };
+          return { ok: false, message: 'WakeLock Failed' };
         }
       } else {
-        return { success: false, message: 'WakeLock not supported' };
+        return { ok: false, message: 'WakeLock API not supported' };
       }
     } catch (error) {
       throw error;
@@ -310,14 +364,14 @@ class PWA {
         if (state === 'visible') {
           // Call back function...
           isVisible();
-          return { success: true, message: 'Visible' };
+          return { ok: true, message: 'Visible' };
         }
       } else {
         // Alternative...
         notAvailable();
         return {
-          success: false,
-          message: 'Not supported',
+          ok: false,
+          message: 'Visibility API not supported',
         };
       }
     } catch (error) {
@@ -336,13 +390,13 @@ class PWA {
         const typeList = file.type.split('/');
         if (typeList.includes('text')) {
           const contents = await file.text();
-          return { success: true, message: 'File picked', contents };
+          return { ok: true, message: 'File picked', contents };
         } else {
-          return { success: false, message: 'File Picker not supported' };
+          return { ok: false, message: 'File Picker API not supported' };
         }
       } else {
         // Please pick text type file
-        return { success: false, message: 'Please pick text type file' };
+        return { ok: false, message: 'Please pick text type file' };
       }
     } catch (error) {
       // Error...
@@ -359,14 +413,14 @@ class PWA {
       if (file) {
         return {
           file,
-          success: true,
+          ok: true,
           message: 'File picked',
         };
       } else {
         return {
           file: null,
-          success: false,
-          message: 'File Picker not supported',
+          ok: false,
+          message: 'File Picker API not supported',
         };
       }
     } catch (error) {
@@ -383,12 +437,17 @@ class PWA {
     try {
       const paymentRequest = new PaymentRequest(paydata.paymentMethods, paydata.paymentDetails);
       if (paymentRequest) {
-        const paymentResponse = await paymentRequest.show();
-        // Validate with backend...
-        validatePayment(paymentResponse);
-        return { success: true, message: 'Payment' };
+        const canPay = await paymentRequest.canMakePayment();
+        if (canPay) {
+          const paymentResponse = await paymentRequest.show();
+          // Validate with backend...
+          validatePayment(paymentResponse);
+          return { ok: true, message: 'Payment' };
+        } else {
+          return { ok: false, message: 'Payment method(s) not supported' };
+        }
       } else {
-        return { success: false, message: 'Payment not supported' };
+        return { ok: false, message: 'Payment Request API not supported' };
       }
     } catch (error) {
       throw error;

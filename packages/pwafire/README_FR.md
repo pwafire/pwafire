@@ -9,20 +9,18 @@ Bienvenue à **@pwafire v.3.0.0** qui est la base de notre prochaine génératio
 Toutes les **async responses** retournées ont une nouvelle valeur `success`, un type booléen qui remplace la valeur `type`, une chaîne de caractères comme indiqué ci-dessous ;
 
 ```js
-
 // Async API...
 const res = await pwa.CopyText(text);
 
 // Versions antérieures...
- if(res.type === 'success')  {
-   // Exécutez votre code...
- }
+if (res.type === 'success') {
+  // Exécutez votre code...
+}
 
 //  Nouvelle version à partir de v3.0.0
- if(res.success)  {
-   // Exécutez votre code...
- }
-
+if (res.success) {
+  // Exécutez votre code...
+}
 ```
 
 ## Installez pwafire via NPM
@@ -403,39 +401,24 @@ const paydata = {
 #### Valider le paiement (faire quelque chose avec la réponse du paiement)
 
 ```js
-const validatePayment = (paymentResponse) => {
-  // Destructure to get payment responses
-  const { details, shippingAddress, shippingOption } = paymentResponse;
-
-  // Destructure to get card details...
-  const { cardNumber, cardSecurityCode, cardholderName, expiryMonth, expiryYear } = details;
-
-  // Destructure to get billing address...
-  const {
-    addressLine,
-    city,
-    country,
-    dependentLocality,
-    organization,
-    phone,
-    postalCode,
-    recipient,
-    region,
-    sortingCode,
-  } = details.billingAddress;
-
-  // Validate...
-  let condition;
-  if (condition) {
-    //...
-    // Return sucess
-    return paymentResponse.complete('success');
-  } else {
-    //...
-    // Return failure
-    return paymentResponse.complete('failure');
+const validatePayment = async(paymentResponse) => {
+  try {
+    // Check if payment was successful based on your payment gateway...
+    const condition = await yourSuccessHandler(paymentResponse);
+  // Please note that complete status can only be "success" or "fail"...
+    if (condition) {
+      //...
+      // Return sucesss...
+      await paymentResponse.complete("success");
+    } else {
+      //...
+      // Return fail...
+      await paymentResponse.complete("fail");
+    }
+  };
+  } catch(error) {
+    throw error;
   }
-};
 ```
 
 #### Appeler le mode de paiement le pwa

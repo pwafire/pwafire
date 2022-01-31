@@ -9,10 +9,9 @@ interface Navigator {
   contacts: any;
   write: any;
   wakeLock: any;
-  setAppBadge: (unreadCount: any) => any;
+  setAppBadge: (unreadCount: number) => any;
   clearAppBadge: () => any;
   canShare: (data?: ShareData | undefined) => boolean;
-  hid: any;
 }
 
-declare var IdleDetector: any;
+declare var IdleDetector: { new (): any; requestPermission: () => any };
