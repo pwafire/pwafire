@@ -142,62 +142,65 @@ class PWA {
   }
 
   // Content Indexing...
-  async ContentIndexing() {
-    const registration = (await navigator.serviceWorker.ready) as any;
-    // Remember to feature-detect before using the API:
-    if ('index' in registration) {
-      // Your Content Indexing API code goes here!
-      return {
-        ok: true,
-        getAll: async () => {
-          try {
-            return (await registration.index.getAll()) as {
-              [key: string]: string | number | boolean | object | any;
+  async contentIndexing() {
+    try {
+      const registration = (await navigator.serviceWorker.ready) as any;
+      // Remember to feature-detect before using the API:
+      if ('index' in registration) {
+        return {
+          ok: true,
+          getAll: async () => {
+            try {
+              return (await registration.index.getAll()) as {
+                [key: string]: string | number | boolean | object | any;
+              }[];
+            } catch (error) {
+              throw error;
+            }
+          },
+          addItem: async (item: {
+            id: string;
+            title: string;
+            // Optional; valid categories are currently:
+            // 'homepage', 'article', 'video', 'audio', or '' (default).
+            category?: 'homepage' | 'article' | 'video' | 'audio' | '';
+            description: string;
+            icons: {
+              src: string;
+              sizes: string;
+              type: string;
             }[];
-          } catch (error) {
-            throw error;
-          }
-        },
-        addItem: async (item: {
-          id: string;
-          title: string;
-          // Optional; valid categories are currently:
-          // 'homepage', 'article', 'video', 'audio', or '' (default).
-          category?: 'homepage' | 'article' | 'video' | 'audio' | '';
-          description: string;
-          icons: {
-            src: string;
-            sizes: string;
-            type: string;
-          }[];
-          url: string;
-        }) => {
-          try {
-            // Add to content index...
-            await registration.index.add({
-              ...item,
-              category: item.category || '',
-            });
-            return { ok: true, message: 'Added' };
-          } catch (error) {
-            throw error;
-          }
-        },
-        removeItem: async (id: string) => {
-          try {
-            await registration.index.delete(id);
-            return { ok: true, message: 'Removed' };
-          } catch (error) {
-            throw error;
-          }
-        },
-        message: 'Context Indexing ready',
-      };
-    } else {
-      return {
-        ok: false,
-        message: 'Content Indexing API not supported',
-      };
+            url: string;
+          }) => {
+            try {
+              // Add to content index...
+              await registration.index.add({
+                ...item,
+                category: item.category || '',
+              });
+              return { ok: true, message: 'Added' };
+            } catch (error) {
+              throw error;
+            }
+          },
+          removeItem: async (id: string) => {
+            try {
+              await registration.index.delete(id);
+              return { ok: true, message: 'Removed' };
+            } catch (error) {
+              throw error;
+            }
+          },
+          message: 'Context Indexing ready',
+        };
+      } else {
+        return {
+          ok: false,
+          message: 'Content Indexing API not supported',
+        };
+      }
+    } catch (error) {
+      throw error;
     }
   }
 
