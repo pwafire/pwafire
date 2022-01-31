@@ -2,23 +2,23 @@
 
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
-Welcome to **@pwafire v.3.0.0** which is the foundation for our next generation of the pwafire api. Note that, these release is a breaking change, before upgrading, check the documentations first.
+Welcome to **@pwafire v.4.0.0** which is the second iterational foundation for our next generation of the pwafire api. Note that, these release is a breaking change, before upgrading, check the documentations first.
 
-### Breaking change for v3.0.0 moving forward
+### Breaking change for v4.0.0 moving forward
 
-All **async responses** returned have a new `success` value, a boolean type which replaces `type` value, a string as shown below;
+All **responses** returned have a new `ok` value, a boolean type which replaces `success` value, a boolean as shown below;
 
 ```js
 // Async API...
 const res = await pwa.CopyText(text);
 
 // Lower versions...
-if (res.type === 'success') {
+if (res.success) {
   // Do something...
 }
 
-// New version starting v3.0.0
-if (res.success) {
+// New version starting v4.0.0
+if (res.ok) {
   // Do something...
 }
 ```
@@ -42,7 +42,7 @@ import { pwa } from 'https://unpkg.com/pwafire/esm/index.js';
 #### Specific version
 
 ```js
-import { pwa } from 'https://unpkg.com/pwafire@3.0.4/esm/index.js';
+import { pwa } from 'https://unpkg.com/pwafire@3.0.8/esm/index.js';
 ```
 
 ### Import pwafire in your for e.g React App
@@ -58,26 +58,35 @@ All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Brow
 For all promise types, the promise value returned is an object - might include additional data for example, **Contacts API** returns an additional **contacts** value.
 
 ```js
-// Success...success value is true...
+// Success...ok value is true...
 {
-  success, message;
+  ok : true,
+  message : "Success message",
 }
 // Fail...success value is false...
 {
-  success, error;
+  ok : false,
+  message : "Error message..."
 }
 ```
 
-#### Do something with the promise value returned for e.g copyText;
+#### Do something with the response returned for e.g copyText;
 
 ```js
 // Copy text
-pwa.copyText(text).then((res) => {
-  // Do something with 'res'
-  if (res.success) {
-    // Success...
-  }
-});
+pwa
+  .copyText(text)
+  .then((res) => {
+    // Do something with 'res'
+    if (res.ok) {
+      // Success...
+    } else {
+      // Fail...
+    }
+  })
+  .catch((err) => {
+    // Do something with 'err'
+  });
 ```
 
 ### 1. Copy Text
@@ -143,7 +152,7 @@ const options = { multiple: true };
 // Do something with the promise value...
 pwa.Contacts(props, options).then((res) => {
   // Do something with contacts...
-  const contacts = res.success ? res.contacts : null;
+  const contacts = res.ok ? res.contacts : null;
   //...
 });
 ```
@@ -287,7 +296,7 @@ The promise resolves with a file response
 ```js
 // Do something with the contents...
 const res = await pwa.pickkFile();
-const file = res.success ? res.file : null;
+const file = res.ok ? res.file : null;
 ```
 
 #### Call the pickTextFile method on pwa
@@ -297,14 +306,16 @@ The promise resolves with a text response(contents of the picked text file)
 ```js
 // Do something with the contents...
 const res = await pwa.pickTextFile();
-const contents = res.success ? res.contents : null;
+const contents = res.ok ? res.contents : null;
 ```
 
 ### 13. Content Indexing
 
-This API allows you to index your offline-capable pages. Important to NOTE that The Content Indexing API was launched in Chrome 84 for Android.
+This API allows you to index your offline-capable pages.
 
 #### Call the contentIndexing method on pwa
+
+Note : The Content Indexing API was launched in Chrome 84 for Android.
 
 ```js
 const index = await pwa.contentIndexing();
