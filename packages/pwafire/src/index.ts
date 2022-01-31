@@ -151,7 +151,9 @@ class PWA {
         ok: true,
         getAll: async () => {
           try {
-            return await registration.index.getAll();
+            return (await registration.index.getAll()) as {
+              [key: string]: string | number | boolean | object | any;
+            }[];
           } catch (error) {
             throw error;
           }
@@ -176,6 +178,7 @@ class PWA {
               ...item,
               category: item.category || '',
             });
+            return { ok: true, message: 'Added' };
           } catch (error) {
             throw error;
           }
@@ -183,6 +186,7 @@ class PWA {
         removeItem: async (id: string) => {
           try {
             await registration.index.delete(id);
+            return { ok: true, message: 'Removed' };
           } catch (error) {
             throw error;
           }
