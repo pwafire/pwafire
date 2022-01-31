@@ -13,7 +13,7 @@ All **async responses** returned have a new `success` value, a boolean type whic
 const res = await pwa.CopyText(text);
 
 // Lower versions...
-if (res.type === "success") {
+if (res.type === 'success') {
   // Do something...
 }
 
@@ -36,19 +36,19 @@ Note that you can still use a specific version over the pwafire cdn
 #### Latest version
 
 ```js
-import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
+import { pwa } from 'https://unpkg.com/pwafire/esm/index.js';
 ```
 
 #### Specific version
 
 ```js
-import { pwa } from "https://unpkg.com/pwafire@3.0.4/esm/index.js";
+import { pwa } from 'https://unpkg.com/pwafire@3.0.4/esm/index.js';
 ```
 
 ### Import pwafire in your for e.g React App
 
 ```js
-import { pwa } from "pwafire";
+import { pwa } from 'pwafire';
 ```
 
 All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
@@ -114,7 +114,7 @@ const data = {
   // Text to share
   text: `Some text...`,
   // Url to share...
-  url: "https://pwafire.org",
+  url: 'https://pwafire.org',
 };
 ```
 
@@ -133,7 +133,7 @@ pwa.Share(data);
 #### Define the "properties" and "select type" option you need
 
 ```js
-const props = ["name", "email", "tel"];
+const props = ['name', 'email', 'tel'];
 const options = { multiple: true };
 ```
 
@@ -189,11 +189,11 @@ Show notifications. Pass a **data** object
 
 ```js
 const data = {
-  title: "Hello Notification!",
+  title: 'Hello Notification!',
   options: {
-    body: "Progressive Web App Hello Notification!",
-    icon: "../images/icons/icon-192x192.png",
-    tag: "pwa",
+    body: 'Progressive Web App Hello Notification!',
+    icon: '../images/icons/icon-192x192.png',
+    tag: 'pwa',
   },
 };
 ```
@@ -300,7 +300,64 @@ const res = await pwa.pickTextFile();
 const contents = res.success ? res.contents : null;
 ```
 
-### 13. Web Payments
+### 13. Content Indexing
+
+This API allows you to index your offline-capable pages. Important to NOTE that The Content Indexing API was launched in Chrome 84 for Android.
+
+#### Call the contentIndexing method on pwa
+
+```js
+const index = await pwa.contentIndexing();
+if (index.ok) {
+  // Do something...like
+  // 1. Add a page to the index...
+  // 2. Remove a page from the index...
+  // 3. Get all indexed pages...
+}
+```
+
+#### Add a page to the index
+
+```js
+const res = await index.addItem({
+  // Required; set to something unique within your web app.
+  id: 'article-123',
+  // Required; url needs to be an offline-capable HTML page.
+  url: '/articles/123',
+  // Required; used in user-visible lists of content.
+  title: 'Article title',
+  // Required; used in user-visible lists of content.
+  description: 'Amazing article about things!',
+  // Required; used in user-visible lists of content.
+  icons: [
+    {
+      src: '/img/article-123.png',
+      sizes: '64x64',
+      type: 'image/png',
+    },
+  ],
+  // Optional; valid categories are currently:
+  // 'homepage', 'article', 'video', 'audio', or '' (default).
+  category: 'article',
+});
+```
+
+#### Remove a page from the index
+
+```js
+const res = index.removeItem({
+  // Required; provide the id of the item to remove...
+  id: 'article-123',
+});
+```
+
+#### Get all indexed pages
+
+```js
+const items = await index.getAll();
+```
+
+### 14. Web Payments
 
 Allows users select their preferred way of **paying for things**, and make that information
 available to **a merchant.**
@@ -339,9 +396,9 @@ const { tax, discount, total } = payment;
 ```js
 const paymentMethods = [
   {
-    supportedMethods: ["basic-card"],
+    supportedMethods: ['basic-card'],
     data: {
-      supportedNetworks: ["visa", "mastercard"],
+      supportedNetworks: ['visa', 'mastercard'],
     },
   },
 ];
@@ -352,24 +409,24 @@ const paymentMethods = [
 ```js
 const paymentDetails = {
   total: {
-    label: "Total Amount",
+    label: 'Total Amount',
     amount: {
-      currency: "KSH",
+      currency: 'KSH',
       value: total.toString(),
     },
   },
   displayItems: [
     {
-      label: "Discount",
+      label: 'Discount',
       amount: {
-        currency: "KSH",
+        currency: 'KSH',
         value: discount.toString(),
       },
     },
     {
-      label: "Taxes, 14% V.A.T",
+      label: 'Taxes, 14% V.A.T',
       amount: {
-        currency: "KSH",
+        currency: 'KSH',
         value: tax.toString(),
       },
     },
