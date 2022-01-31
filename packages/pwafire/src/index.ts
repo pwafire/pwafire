@@ -11,7 +11,7 @@ class PWA {
       } else {
         return {
           ok: false,
-          message: 'Copy Text not supported',
+          message: 'Copy Text API not supported',
         };
       }
     } catch (error) {
@@ -36,7 +36,7 @@ class PWA {
           message: 'Image copied',
         };
       } else {
-        return { ok: false, message: 'Copy Image not supported' };
+        return { ok: false, message: 'Copy Image API not supported' };
       }
     } catch (error) {
       // Error...
@@ -52,7 +52,7 @@ class PWA {
           await navigator.share(data);
           return { ok: true, message: 'Shared' };
         } else {
-          return { ok: false, message: 'Share Files not supported' };
+          return { ok: false, message: 'Share Files API not supported' };
         }
       } else {
         // Check support...
@@ -61,7 +61,7 @@ class PWA {
           // Shared...
           return { ok: true, message: 'Shared' };
         } else {
-          return { ok: false, message: 'Web Share not supported' };
+          return { ok: false, message: 'Web Share API not supported' };
         }
       }
     } catch (error) {
@@ -83,7 +83,7 @@ class PWA {
         // Return contacts...
         return { ok: true, message: 'Selected', contacts };
       } else {
-        return { ok: false, message: 'Contacts picker not supported' };
+        return { ok: false, message: 'Contacts Picker API not supported' };
       }
     } catch (error) {
       // Error...
@@ -117,7 +117,7 @@ class PWA {
       } else {
         return {
           ok: false,
-          message: 'Badging not supported',
+          message: 'Badging API not supported',
         };
       }
     } catch (error) {
@@ -133,7 +133,7 @@ class PWA {
         await navigator.clearAppBadge();
         return { ok: true, message: 'Cleared' };
       } else {
-        return { ok: false, message: 'Badging not supported' };
+        return { ok: false, message: 'Badging API not supported' };
       }
     } catch (error) {
       // Error...
@@ -175,7 +175,7 @@ class PWA {
         }
       } else {
         // Error...
-        return { ok: false, message: 'Notification not supported' };
+        return { ok: false, message: 'Notification API not supported' };
       }
     } catch (error) {
       // Error...
@@ -268,7 +268,7 @@ class PWA {
         }
       } else {
         // Not supported...
-        return { ok: false, message: 'Not supported' };
+        return { ok: false, message: 'Idle Detection API not supported' };
       }
     } catch (error) {
       throw error;
@@ -286,7 +286,7 @@ class PWA {
           return { ok: false, message: 'WakeLock Failed' };
         }
       } else {
-        return { ok: false, message: 'WakeLock not supported' };
+        return { ok: false, message: 'WakeLock API not supported' };
       }
     } catch (error) {
       throw error;
@@ -308,7 +308,7 @@ class PWA {
         notAvailable();
         return {
           ok: false,
-          message: 'Not supported',
+          message: 'Visibility API not supported',
         };
       }
     } catch (error) {
@@ -329,7 +329,7 @@ class PWA {
           const contents = await file.text();
           return { ok: true, message: 'File picked', contents };
         } else {
-          return { ok: false, message: 'File Picker not supported' };
+          return { ok: false, message: 'File Picker API not supported' };
         }
       } else {
         // Please pick text type file
@@ -357,7 +357,7 @@ class PWA {
         return {
           file: null,
           ok: false,
-          message: 'File Picker not supported',
+          message: 'File Picker API not supported',
         };
       }
     } catch (error) {
