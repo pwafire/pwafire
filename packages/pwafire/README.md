@@ -322,16 +322,12 @@ if (index.ok) {
 const res = await index.addItem({
   // Required; set to something unique within your web app.
   id: 'article-123',
-
   // Required; url needs to be an offline-capable HTML page.
   url: '/articles/123',
-
   // Required; used in user-visible lists of content.
   title: 'Article title',
-
   // Required; used in user-visible lists of content.
   description: 'Amazing article about things!',
-
   // Required; used in user-visible lists of content.
   icons: [
     {
@@ -340,7 +336,6 @@ const res = await index.addItem({
       type: 'image/png',
     },
   ],
-
   // Optional; valid categories are currently:
   // 'homepage', 'article', 'video', 'audio', or '' (default).
   category: 'article',
