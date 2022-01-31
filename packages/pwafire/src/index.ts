@@ -1,4 +1,4 @@
-//  Authors : Maye Edwin & Marta Wiśniewska
+//  Authors : Maye Edwin & Marta Wiśniewska (Google Developer Experts)
 // Copyright : https://pwafire.org
 class PWA {
   // Copy text...
@@ -138,6 +138,62 @@ class PWA {
     } catch (error) {
       // Error...
       throw error;
+    }
+  }
+
+  // Content Indexing...
+  async ContentIndexing() {
+    const registration = (await navigator.serviceWorker.ready) as any;
+    // Remember to feature-detect before using the API:
+    if ('index' in registration) {
+      // Your Content Indexing API code goes here!
+      return {
+        ok: true,
+        getAll: async () => {
+          try {
+            return await registration.index.getAll();
+          } catch (error) {
+            throw error;
+          }
+        },
+        addItem: async (item: {
+          id: string;
+          title: string;
+          // Optional; valid categories are currently:
+          // 'homepage', 'article', 'video', 'audio', or '' (default).
+          category?: 'homepage' | 'article' | 'video' | 'audio' | '';
+          description: string;
+          icons: {
+            src: string;
+            sizes: string;
+            type: string;
+          }[];
+          url: string;
+        }) => {
+          try {
+            // Add to content index...
+            await registration.index.add({
+              ...item,
+              category: item.category || '',
+            });
+          } catch (error) {
+            throw error;
+          }
+        },
+        removeItem: async (id: string) => {
+          try {
+            await registration.index.delete(id);
+          } catch (error) {
+            throw error;
+          }
+        },
+        message: 'Context Indexing ready',
+      };
+    } else {
+      return {
+        ok: false,
+        message: 'Content Indexing API not supported',
+      };
     }
   }
 
