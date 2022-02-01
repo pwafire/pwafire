@@ -8,6 +8,31 @@ Welcome to **@pwafire v.4.0.0** which is the second iterational foundation for o
 
 All **responses** returned have a new `ok` value, a boolean type which replaces `success` value, a boolean as shown below;
 
+## API Feature Detection
+
+- Goal is to allow room for custom handlers if need be
+- This approach is going to be experimental and will be updated
+- This addition is going to be built for available stable apis
+
+### Example and use case
+
+- Web Share is both on Edge desktop and mobile, but not with chrome. I'd like to show a copy link button for chrome
+- Install latest pwafire version, already up for testing in v4 alpha-3\*
+
+```bash
+ npm i --save pwafire@latest
+```
+
+- Try it out
+
+```js
+// Get the check instance from pwafire...
+import { check } from "pwafire";
+//...
+// The response is a boolean, true or false...
+const supported = await check.Share();
+```
+
 ```js
 // Async API...
 const res = await pwa.CopyText(text);
@@ -36,19 +61,19 @@ Note that you can still use a specific version over the pwafire cdn
 #### Latest version
 
 ```js
-import { pwa } from 'https://unpkg.com/pwafire/esm/index.js';
+import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
 ```
 
 #### Specific version
 
 ```js
-import { pwa } from 'https://unpkg.com/pwafire@3.0.8/esm/index.js';
+import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
 ```
 
 ### Import pwafire in your for e.g React App
 
 ```js
-import { pwa } from 'pwafire';
+import { pwa } from "pwafire";
 ```
 
 All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
@@ -123,7 +148,7 @@ const data = {
   // Text to share
   text: `Some text...`,
   // Url to share...
-  url: 'https://pwafire.org',
+  url: "https://pwafire.org",
 };
 ```
 
@@ -142,7 +167,7 @@ pwa.Share(data);
 #### Define the "properties" and "select type" option you need
 
 ```js
-const props = ['name', 'email', 'tel'];
+const props = ["name", "email", "tel"];
 const options = { multiple: true };
 ```
 
@@ -198,11 +223,11 @@ Show notifications. Pass a **data** object
 
 ```js
 const data = {
-  title: 'Hello Notification!',
+  title: "Hello Notification!",
   options: {
-    body: 'Progressive Web App Hello Notification!',
-    icon: '../images/icons/icon-192x192.png',
-    tag: 'pwa',
+    body: "Progressive Web App Hello Notification!",
+    icon: "../images/icons/icon-192x192.png",
+    tag: "pwa",
   },
 };
 ```
@@ -332,24 +357,24 @@ if (index.ok) {
 ```js
 const res = await index.addItem({
   // Required; set to something unique within your web app.
-  id: 'article-123',
+  id: "article-123",
   // Required; url needs to be an offline-capable HTML page.
-  url: '/articles/123',
+  url: "/articles/123",
   // Required; used in user-visible lists of content.
-  title: 'Article title',
+  title: "Article title",
   // Required; used in user-visible lists of content.
-  description: 'Amazing article about things!',
+  description: "Amazing article about things!",
   // Required; used in user-visible lists of content.
   icons: [
     {
-      src: '/img/article-123.png',
-      sizes: '64x64',
-      type: 'image/png',
+      src: "/img/article-123.png",
+      sizes: "64x64",
+      type: "image/png",
     },
   ],
   // Optional; valid categories are currently:
   // 'homepage', 'article', 'video', 'audio', or '' (default).
-  category: 'article',
+  category: "article",
 });
 ```
 
@@ -358,7 +383,7 @@ const res = await index.addItem({
 ```js
 const res = index.removeItem({
   // Required; provide the id of the item to remove...
-  id: 'article-123',
+  id: "article-123",
 });
 ```
 
@@ -407,9 +432,9 @@ const { tax, discount, total } = payment;
 ```js
 const paymentMethods = [
   {
-    supportedMethods: ['basic-card'],
+    supportedMethods: ["basic-card"],
     data: {
-      supportedNetworks: ['visa', 'mastercard'],
+      supportedNetworks: ["visa", "mastercard"],
     },
   },
 ];
@@ -420,24 +445,24 @@ const paymentMethods = [
 ```js
 const paymentDetails = {
   total: {
-    label: 'Total Amount',
+    label: "Total Amount",
     amount: {
-      currency: 'KSH',
+      currency: "KSH",
       value: total.toString(),
     },
   },
   displayItems: [
     {
-      label: 'Discount',
+      label: "Discount",
       amount: {
-        currency: 'KSH',
+        currency: "KSH",
         value: discount.toString(),
       },
     },
     {
-      label: 'Taxes, 14% V.A.T',
+      label: "Taxes, 14% V.A.T",
       amount: {
-        currency: 'KSH',
+        currency: "KSH",
         value: tax.toString(),
       },
     },
