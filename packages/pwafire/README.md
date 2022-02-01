@@ -8,46 +8,6 @@ Welcome to **@pwafire v.4.0.0** which is the second iterational foundation for o
 
 All **responses** returned have a new `ok` value, a boolean type which replaces `success` value, a boolean as shown below;
 
-## API Feature Detection
-
-- Goal is to allow room for custom handlers if need be
-- This approach is going to be experimental and will be updated
-- This addition is going to be built for available stable apis
-
-### Example and use case
-
-- Web Share is both on Edge desktop and mobile, but not with chrome. I'd like to show a copy link button for chrome
-- Install latest pwafire version, already up for testing in v4 alpha-3\*
-
-```bash
- npm i --save pwafire@latest
-```
-
-- Try it out
-
-```js
-// Get the check instance from pwafire...
-import { check } from "pwafire";
-//...
-// The response is a boolean, true or false...
-const supported = await check.Share();
-```
-
-```js
-// Async API...
-const res = await pwa.CopyText(text);
-
-// Lower versions...
-if (res.success) {
-  // Do something...
-}
-
-// New version starting v4.0.0
-if (res.ok) {
-  // Do something...
-}
-```
-
 ## Install pwafire via NPM
 
 ```bash
@@ -92,6 +52,46 @@ For all promise types, the promise value returned is an object - might include a
 {
   ok : false,
   message : "Error message..."
+}
+```
+
+## API Feature Detection
+
+- Goal is to allow room for custom handlers if need be
+- This approach is going to be experimental and will be updated
+- This addition is going to be built for available stable apis
+
+### Example and use case
+
+- Web Share is both on Edge desktop and mobile, but not with chrome. I'd like to show a copy link button for chrome
+- Install latest pwafire version, already up for testing in v4 alpha-3\*
+
+```bash
+ npm i --save pwafire@latest
+```
+
+- Try it out
+
+```js
+// Get the check instance from pwafire...
+import { check } from "pwafire";
+//...
+// The response is a boolean, true or false...
+const supported = await check.Share();
+```
+
+```js
+// Async API...
+const res = await pwa.CopyText(text);
+
+// Lower versions...
+if (res.success) {
+  // Do something...
+}
+
+// New version starting v4.0.0
+if (res.ok) {
+  // Do something...
 }
 ```
 
