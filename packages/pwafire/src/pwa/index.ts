@@ -25,9 +25,11 @@ class PWA {
       if (navigator.clipboard) {
         const data = await fetch(imgURL);
         const blob = await data.blob();
-        const item = {} as any;
-        (item[blob.type] = blob),
-          await navigator.clipboard.write([new ClipboardItem(item)]);
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            [blob.type]: blob,
+          }),
+        ]);
         return {
           ok: true,
           message: "Image copied",
@@ -72,7 +74,7 @@ class PWA {
     props: string[],
     options?: {
       multiple: boolean;
-    }
+    },
   ) {
     try {
       if ("contacts" in navigator && "ContactsManager" in window) {
@@ -287,7 +289,7 @@ class PWA {
     callback = () => {
       // Idle...
     },
-    threshold = 60000
+    threshold = 60000,
   ) {
     try {
       //  Idle Detection...
@@ -432,14 +434,11 @@ class PWA {
       paymentDetails: PaymentDetailsInit;
       options: any;
     },
-    validatePayment: (arg0: PaymentResponse) => void
+    validatePayment: (arg0: PaymentResponse) => void,
   ) {
     // Initiate user interface...
     try {
-      const paymentRequest = new PaymentRequest(
-        paydata.paymentMethods,
-        paydata.paymentDetails
-      );
+      const paymentRequest = new PaymentRequest(paydata.paymentMethods, paydata.paymentDetails);
       if (paymentRequest) {
         const canPay = await paymentRequest.canMakePayment();
         if (canPay) {
