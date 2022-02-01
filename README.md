@@ -65,23 +65,6 @@ pwa.Share(data);
 
 Preview Documentation : [Get Started](https://docs.pwafire.org/get-started)
 
-## PWA : New Web Capabilities
-
-| Feature                                                     | Stabilty |
-| ----------------------------------------------------------- | -------- |
-| Custom Install Button                                       | ok       |
-| Background Sync                                             | ok       |
-| Badging                                                     | ok       |
-| Contact Picker                                              | ok       |
-| Share Target                                                | ok       |
-| Screen Wake Lock                                            | ok       |
-| Content Indexing                                            | ok       |
-| Web payments                                                | ok       |
-| Copy Images                                                 | ok       |
-| Push Notifications                                          | ok       |
-| Web Share                                                   | ok       |
-| [View All, 10 + Here](https://docs.pwafire.org/get-started) | 14       |
-
 ## API Feature Detection
 
 - Goal is to allow room for custom handlers if need be
@@ -106,6 +89,23 @@ import { check } from "pwafire";
 // The response is a boolean, true or false...
 const supported = await check.Share();
 ```
+
+## PWA : New Web Capabilities
+
+| Feature                                                     | Stabilty |
+| ----------------------------------------------------------- | -------- |
+| Custom Install Button                                       | ok       |
+| Background Sync                                             | ok       |
+| Badging                                                     | ok       |
+| Contact Picker                                              | ok       |
+| Share Target                                                | ok       |
+| Screen Wake Lock                                            | ok       |
+| Content Indexing                                            | ok       |
+| Web payments                                                | ok       |
+| Copy Images                                                 | ok       |
+| Push Notifications                                          | ok       |
+| Web Share                                                   | ok       |
+| [View All, 10 + Here](https://docs.pwafire.org/get-started) | 14       |
 
 ## Chat : Join the conversation
 
