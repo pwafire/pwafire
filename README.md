@@ -34,6 +34,7 @@ Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
 ```
 
 ### Get pwafire over CDN as an E6 Module
+
 Note that you can still use a specific version over the pwafire cdn
 
 #### Latest version
@@ -64,22 +65,47 @@ pwa.Share(data);
 
 Preview Documentation : [Get Started](https://docs.pwafire.org/get-started)
 
+## API Feature Detection
+
+- Goal is to allow room for custom handlers if need be
+- This approach is going to be experimental and will be updated
+- This addition is going to be built for available stable apis
+
+### Example and use case
+
+- Web Share is both on Edge desktop and mobile, but not with chrome. I'd like to show a copy link button for chrome
+- Install latest pwafire version, already up for testing in v4 alpha-3\*
+
+```bash
+ npm i --save pwafire@latest
+```
+
+- Try it out
+
+```js
+// Get the check instance from pwafire...
+import { check } from "pwafire";
+//...
+// The response is a boolean, true or false...
+const supported = await check.Share();
+```
+
 ## PWA : New Web Capabilities
 
-| Feature                                                                                                | Stabilty  |
-| ------------------------------------------------------------------------------------------------------ | --------- |
-| Custom Install Button                                                                                  | ok        |
-| Background Sync                                                                                        | ok        |
-| Badging                                                                                                | ok        |
-| Contact Picker                                                                                         | ok        |
-| Share Target                                                                                           | ok        |
-| Screen Wake Lock                                                                                       | ok        |
-| Content Indexing                                                                                       | ok        |
-| Web payments                                                                                           | ok        |
-| Copy Images                                                                                            | ok        |
-| Push Notifications                                                                                     | ok        |
-| Web Share                                                                                              | ok        |
-| [View All, 10 + Here](https://docs.pwafire.org/get-started)                                            | 14        |
+| Feature                                                     | Stabilty |
+| ----------------------------------------------------------- | -------- |
+| Custom Install Button                                       | ok       |
+| Background Sync                                             | ok       |
+| Badging                                                     | ok       |
+| Contact Picker                                              | ok       |
+| Share Target                                                | ok       |
+| Screen Wake Lock                                            | ok       |
+| Content Indexing                                            | ok       |
+| Web payments                                                | ok       |
+| Copy Images                                                 | ok       |
+| Push Notifications                                          | ok       |
+| Web Share                                                   | ok       |
+| [View All, 10 + Here](https://docs.pwafire.org/get-started) | 14       |
 
 ## Chat : Join the conversation
 
