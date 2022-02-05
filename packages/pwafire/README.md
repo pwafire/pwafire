@@ -33,7 +33,7 @@ import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
 ### Import pwafire in your for e.g React App
 
 ```js
-import { pwa } from "pwafire";
+import { check, pwa } from "pwafire";
 ```
 
 All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
@@ -87,6 +87,13 @@ pwa
   .catch((err) => {
     // Do something with 'err'
   });
+```
+
+### Check if the browser supports the API
+
+```js
+// Returns true or false...
+const isSupported = check.copyText();
 ```
 
 ## API Feature Detection
