@@ -39,7 +39,9 @@
     "connectivity",
     "olline handler",
     "offline handler",
-    "new web capabilities"
+    "new web capabilities",
+    "fugu",
+    "project-fugu"
   ],
   "author": "Maye Edwin (devmaye@gmail.com) (https://pwafire.org)",
   "license": "MIT",
