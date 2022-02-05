@@ -89,13 +89,6 @@ pwa
   });
 ```
 
-### Check if the browser supports the API
-
-```js
-// Returns true or false...
-const isSupported = check.copyText();
-```
-
 ## API Feature Detection
 
 - Goal is to allow room for custom handlers if need be
@@ -118,7 +111,7 @@ const isSupported = check.copyText();
 import { check } from "pwafire";
 //...
 // The response is a boolean, true or false...
-const supported = await check.Share();
+const isSupported = await check.Share();
 ```
 
 ### 1. Copy Text
