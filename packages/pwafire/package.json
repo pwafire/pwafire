@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "4.0.0-alpha-4",
+  "version": "4.0.0",
   "description": "Progressive Web App API of APIs",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -39,7 +39,9 @@
     "connectivity",
     "olline handler",
     "offline handler",
-    "new web capabilities"
+    "new web capabilities",
+    "fugu",
+    "project-fugu"
   ],
   "author": "Maye Edwin (devmaye@gmail.com) (https://pwafire.org)",
   "license": "MIT",
