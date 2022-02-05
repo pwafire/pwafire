@@ -33,7 +33,7 @@ import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
 ### Import pwafire in your for e.g React App
 
 ```js
-import { pwa } from "pwafire";
+import { check, pwa } from "pwafire";
 ```
 
 All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
@@ -111,7 +111,7 @@ pwa
 import { check } from "pwafire";
 //...
 // The response is a boolean, true or false...
-const supported = await check.Share();
+const isSupported = await check.Share();
 ```
 
 ### 1. Copy Text
