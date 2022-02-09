@@ -68,6 +68,16 @@ class Check {
     }
   }
 
+  // Badging api support...
+  async Badging() {
+    try {
+      // Check for Badging support...
+      return "setAppBadge" in navigator && "clearAppBadge" in navigator ? true : false;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   // Check for notifications...
   async Notifications() {
     try {
@@ -94,7 +104,6 @@ class Check {
     }
   }
 
-  // Extras...
   // Check for geolocation...
   async Geolocation() {
     try {
