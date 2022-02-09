@@ -4,9 +4,9 @@
 name: Build APIs
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master, develop ]
+    branches: [ main, develop ]
 defaults:
   run:
     working-directory: packages/pwafire
