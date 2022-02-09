@@ -91,7 +91,7 @@ class PWA {
   }
 
   // Connectivity...
-  Connectivity(online: () => "online", offline: () => "offline") {
+  async Connectivity(online: () => "online", offline: () => "offline") {
     // Once the DOM is loaded, check for connectivity...
     try {
       if (navigator.onLine) {
@@ -250,7 +250,7 @@ class PWA {
     try {
       if (navigator.serviceWorker) {
         window.addEventListener("beforeinstallprompt", (event: any) => {
-          // Stash the event so it can be triggered later.
+          // Stash the event so it can be triggered later...
           window.deferredPrompt = event;
         });
 
@@ -356,7 +356,7 @@ class PWA {
   }
 
   // Visibility...
-  Visibility(isVisible: () => void, notAvailable: () => void) {
+  async Visibility(isVisible: () => void, notAvailable: () => void) {
     try {
       if (document.visibilityState) {
         const state = document.visibilityState;
@@ -381,8 +381,8 @@ class PWA {
 
   // Pick text file..
   async pickTextFile() {
-    let fileHandle;
     try {
+      let fileHandle;
       [fileHandle] = await window.showOpenFilePicker();
       const file = await fileHandle.getFile();
       if (file) {
@@ -405,8 +405,8 @@ class PWA {
 
   // Pick any file...
   async pickFile() {
-    let fileHandle: any;
     try {
+      let fileHandle: any;
       [fileHandle] = await window.showOpenFilePicker();
       const file: any = await fileHandle.getFile();
       if (file) {
