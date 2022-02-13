@@ -104,11 +104,152 @@ class Check {
     }
   }
 
-  // Check for geolocation...
-  async Geolocation() {
+  // Check service worker support...
+  async serviceWorker() {
     try {
-      // Check for geolocation...
-      return "geolocation" in navigator ? true : false;
+      // Check service worker support...
+      return "serviceWorker" in navigator ? true : false;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Bluetooth support...
+  async Bluetooth() {
+    try {
+      // Check for bluetooth support...
+      return "bluetooth" in navigator ? true : false;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Payment api support...
+  async Payment() {
+    try {
+      // Check for payments api support...
+      return "PaymentRequest" in window ? true : false;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Check for web otp support...
+  async webOTP() {
+    try {
+      // Check for web otp support...
+      return "OTPCredential" in window ? true : false;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Check for web nfc support...
+  async webNFC() {
+    try {
+      // Check for web nfc support...
+      return "NDEFReader" in window ? true : false;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Camera pan, tilt and zoom support...
+  async cameraPanAndTiltZoom() {
+    try {
+      const supports = navigator.mediaDevices.getSupportedConstraints() as any;
+      return supports.pan && supports.tilt && supports.zoom ? true : false;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Check for all api support...
+  async All() {
+    try {
+      // Check for all api support...
+      return [
+        {
+          name: "share",
+          message: (await this.Share()) ? "Supported" : "Not supported",
+          ok: await this.Share(),
+        },
+        {
+          name: "clipboard",
+          message: (await this.Clipboard()) ? "Supported" : "Not supported",
+          ok: await this.Clipboard(),
+        },
+        {
+          name: "copy text",
+          message: (await this.copyText()) ? "Supported" : "Not supported",
+          ok: await this.copyText(),
+        },
+        {
+          name: "copy image",
+          message: (await this.copyImage()) ? "Supported" : "Not supported",
+          ok: await this.copyImage(),
+        },
+        {
+          name: "idle detection",
+          message: (await this.idleDetection()) ? "Supported" : "Not supported",
+          ok: await this.idleDetection(),
+        },
+        {
+          name: "wakelock",
+          message: (await this.wakeLock()) ? "Supported" : "Not supported",
+          ok: await this.wakeLock(),
+        },
+        {
+          name: "contacts",
+          message: (await this.Contacts()) ? "Supported" : "Not supported",
+          ok: await this.Contacts(),
+        },
+        {
+          name: "badging",
+          message: (await this.Badging()) ? "Supported" : "Not supported",
+          ok: await this.Badging(),
+        },
+        {
+          name: "notifications",
+          message: (await this.Notifications()) ? "Supported" : "Not supported",
+          ok: await this.Notifications(),
+        },
+        {
+          name: "notification permission",
+          message: (await this.notificationPermission()) ? "Granted" : "Not granted",
+          ok: await this.notificationPermission(),
+        },
+        {
+          name: "service worker",
+          message: (await this.serviceWorker()) ? "Supported" : "Not supported",
+          ok: await this.serviceWorker(),
+        },
+        {
+          name: "bluetooth",
+          message: (await this.Bluetooth()) ? "Supported" : "Not supported",
+          ok: await this.Bluetooth(),
+        },
+        {
+          name: "payment",
+          message: (await this.Payment()) ? "Supported" : "Not supported",
+          ok: await this.Payment(),
+        },
+        {
+          name: "web otp",
+          message: (await this.webOTP()) ? "Supported" : "Not supported",
+          ok: await this.webOTP(),
+        },
+        {
+          name: "web nfc",
+          message: (await this.webNFC()) ? "Supported" : "Not supported",
+          ok: await this.webNFC(),
+        },
+        {
+          name: "camera pan and tilt zoom",
+          message: (await this.cameraPanAndTiltZoom()) ? "Supported" : "Not supported",
+          ok: await this.cameraPanAndTiltZoom(),
+        },
+      ];
     } catch (error) {
       throw error;
     }
