@@ -10,5 +10,5 @@ const pwafire = {
 
 // Exports...
 const { pwa, check } = pwafire;
-export { pwafire, pwa, check };
+export { pwa, check };
 export default pwafire;
