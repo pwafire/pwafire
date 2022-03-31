@@ -7,7 +7,6 @@ const pwafire = {
   pwa: new PWA(),
   check: new Check(),
 };
-
 // Exports...
 const { pwa, check } = pwafire;
 export { pwa, check };
