@@ -1,9 +1,11 @@
 // PWA class => project fugu and other apis...
+import { check } from "../";
 class PWA {
   // Copy text...
   async copyText(text: string) {
     try {
-      if (navigator.clipboard) {
+      const supported = await check.copyText();
+      if (supported) {
         await navigator.clipboard.writeText(text);
         // Copied...
         return { ok: true, message: "Copied" };
@@ -22,7 +24,8 @@ class PWA {
   // Copy image
   async copyImage(imgURL: string) {
     try {
-      if (navigator.clipboard) {
+      const supported = await check.copyImage();
+      if (supported) {
         const data = await fetch(imgURL);
         const blob = await data.blob();
         await navigator.clipboard.write([
@@ -46,16 +49,18 @@ class PWA {
   // Web Share...
   async Share(data: ShareData) {
     try {
+      const canShareFiles = await check.shareFiles();
+      const share = await check.Share();
       if (data.files) {
-        if (navigator.canShare && navigator.canShare(data)) {
+        if (canShareFiles && navigator.canShare(data)) {
           await navigator.share(data);
           return { ok: true, message: "Shared" };
         } else {
-          return { ok: false, message: "Share Files API not supported" };
+          return { ok: false, message: "Files Share API not supported" };
         }
       } else {
         // Check support...
-        if (navigator.share) {
+        if (share) {
           await navigator.share(data);
           // Shared...
           return { ok: true, message: "Shared" };
@@ -77,7 +82,8 @@ class PWA {
     },
   ) {
     try {
-      if ("contacts" in navigator && "ContactsManager" in window) {
+      const supported = await check.Contacts();
+      if (supported) {
         const contacts = await navigator.contacts.select(props, options);
         // Return contacts...
         return { ok: true, message: "Selected", contacts };
@@ -94,12 +100,13 @@ class PWA {
   async Connectivity(online: () => "online", offline: () => "offline") {
     // Once the DOM is loaded, check for connectivity...
     try {
-      if (navigator.onLine) {
+      const isOnline = await check.onlineStatus();
+      if (isOnline) {
         online();
-        return { ok: true, message: "Online" };
+        return { ok: true, message: "Device is online" };
       } else {
         offline();
-        return { ok: true, message: "Offline" };
+        return { ok: true, message: "Device is offline" };
       }
     } catch (error) {
       // Error...
@@ -110,7 +117,8 @@ class PWA {
   // Set badge...
   async setBadge(unreadCount: number) {
     try {
-      if (navigator.setAppBadge) {
+      const supported = await check.Badging();
+      if (supported) {
         await navigator.setAppBadge(unreadCount);
         return { ok: true, message: "Set" };
       } else {
@@ -128,7 +136,8 @@ class PWA {
   // Clear badge...
   async clearBadge() {
     try {
-      if (navigator.clearAppBadge) {
+      const supported = await check.Badging();
+      if (supported) {
         await navigator.clearAppBadge();
         return { ok: true, message: "Cleared" };
       } else {
@@ -144,8 +153,8 @@ class PWA {
   async contentIndexing() {
     try {
       const registration = (await navigator.serviceWorker.ready) as any;
-      // Remember to feature-detect before using the API:
-      if ("index" in registration) {
+      const supported = await check.contentIndexing();
+      if (supported) {
         return {
           ok: true,
           getAll: async () => {
@@ -223,7 +232,8 @@ class PWA {
   async Notification(data: { title: string; options: object }) {
     const { title, options } = data;
     try {
-      if ("Notification" in window) {
+      const supported = await check.Notifications();
+      if (supported) {
         const permission = await Notification.requestPermission();
         if (permission === "granted") {
           await navigator.serviceWorker.ready.then((registration) => {
@@ -246,9 +256,10 @@ class PWA {
   }
 
   // Install...
-  Install(button: HTMLElement) {
+  async Install(button: HTMLElement) {
     try {
-      if (navigator.serviceWorker) {
+      const supported = await check.serviceWorker();
+      if (supported) {
         window.addEventListener("beforeinstallprompt", (event: any) => {
           // Stash the event so it can be triggered later...
           window.deferredPrompt = event;
@@ -293,7 +304,8 @@ class PWA {
   ) {
     try {
       //  Idle Detection...
-      if ("IdleDetector" in window) {
+      const supported = await check.idleDetection();
+      if (supported) {
         // Make sure "idle-detection" permission is granted...
         const state = await IdleDetector.requestPermission();
         if (state === "granted") {
@@ -340,7 +352,8 @@ class PWA {
   // Wakelock...
   async wakeLock() {
     try {
-      if ("wakeLock" in navigator) {
+      const supported = await check.wakeLock();
+      if (supported) {
         const wakeLock = await navigator.wakeLock.request("screen");
         if (wakeLock) {
           return { ok: true, message: "WakeLock Active" };

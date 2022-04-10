@@ -8,36 +8,6 @@ Welcome to **@pwafire v.4.0.0** which is the second iterational foundation for o
 
 All **responses** returned have a new `ok` value, a boolean type which replaces `success` value, a boolean as shown below;
 
-## Install pwafire via NPM
-
-```bash
-npm i pwafire --save
-```
-
-### Get pwafire over CDN as an E6 Module
-
-Note that you can still use a specific version over the pwafire cdn
-
-#### Latest version
-
-```js
-import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
-```
-
-#### Specific version
-
-```js
-import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
-```
-
-### Import pwafire in your for e.g React App
-
-```js
-import { check, pwa } from "pwafire";
-```
-
-All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
-
 ### API Spec
 
 For all promise types, the promise value returned is an object - might include additional data for example, **Contacts API** returns an additional **contacts** value.
@@ -90,6 +60,36 @@ pwa
 ```
 
 ## API Feature Detection
+
+## Install pwafire via NPM
+
+```bash
+npm i pwafire --save
+```
+
+### Get pwafire over CDN as an E6 Module
+
+Note that you can still use a specific version over the pwafire cdn
+
+#### Latest version
+
+```js
+import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
+```
+
+#### Specific version
+
+```js
+import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
+```
+
+### Import pwafire in your for e.g React App
+
+```js
+import { check, pwa } from "pwafire";
+```
+
+All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
 
 - Goal is to allow room for custom handlers if need be
 - This approach is going to be experimental and will be updated

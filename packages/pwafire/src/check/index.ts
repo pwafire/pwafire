@@ -10,6 +10,16 @@ class Check {
     }
   }
 
+  // Check for share files support...
+  async shareFiles() {
+    try {
+      // Check for files share support...
+      return "canShare" in navigator ? true : false;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   // Check for clipboard...
   async Clipboard() {
     try {
@@ -68,6 +78,16 @@ class Check {
     }
   }
 
+  // Check if online status is supported...
+  async onlineStatus() {
+    try {
+      // Check if online status is supported...
+      return "onLine" in navigator ? true : false;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   // Badging api support...
   async Badging() {
     try {
@@ -83,6 +103,17 @@ class Check {
     try {
       // Check for notifications...
       return "Notification" in window ? true : false;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Check if content indexing api is supported...
+  async contentIndexing() {
+    try {
+      // Check if content indexing api is supported...
+      const registration = (await navigator.serviceWorker.ready) as any;
+      return "index" in registration ? true : false;
     } catch (error) {
       throw error;
     }
@@ -175,6 +206,11 @@ class Check {
           ok: await this.Share(),
         },
         {
+          name: "shareFiles",
+          message: (await this.shareFiles()) ? "Supported" : "Not supported",
+          ok: await this.shareFiles(),
+        },
+        {
           name: "clipboard",
           message: (await this.Clipboard()) ? "Supported" : "Not supported",
           ok: await this.Clipboard(),
@@ -213,6 +249,16 @@ class Check {
           name: "notifications",
           message: (await this.Notifications()) ? "Supported" : "Not supported",
           ok: await this.Notifications(),
+        },
+        {
+          name: "content indexing",
+          message: (await this.contentIndexing()) ? "Supported" : "Not supported",
+          ok: await this.contentIndexing(),
+        },
+        {
+          name: "online status",
+          message: (await this.onlineStatus()) ? "Supported" : "Not supported",
+          ok: await this.onlineStatus(),
         },
         {
           name: "notification permission",

@@ -14,4 +14,8 @@ interface Navigator {
   canShare: (data?: ShareData | undefined) => boolean;
 }
 
+interface Credentials {
+  otp: string;
+}
+
 declare var IdleDetector: { new (): any; requestPermission: () => any };
