@@ -1,7 +1,10 @@
-// PWA class => project fugu and other apis...
+// PWA class => project fugu and other apis.
 class PWA {
-  // Copy text...
-  async copyText(text: string) {
+  /**
+   * Copy text to the clipboard.
+   * @method copyText
+   */
+  async copyText(text: string): Promise<{ ok: boolean; message: string }> {
     try {
       if (navigator.clipboard) {
         await navigator.clipboard.writeText(text);
@@ -19,7 +22,10 @@ class PWA {
     }
   }
 
-  // Copy image
+  /**
+   * Copy an image to the clipboard.
+   * @method copyImage
+   */
   async copyImage(imgURL: string) {
     try {
       if (navigator.clipboard) {
@@ -43,7 +49,10 @@ class PWA {
     }
   }
 
-  // Web Share...
+  /**
+   * Share stuff to other apps.
+   * @method Share
+   */
   async Share(data: ShareData) {
     try {
       if (data.files) {
@@ -69,7 +78,10 @@ class PWA {
     }
   }
 
-  // Contacts Picker...
+  /**
+   * Read contacts from the device.
+   * @method Contacts
+   */
   async Contacts(
     props: string[],
     options?: {
@@ -90,7 +102,10 @@ class PWA {
     }
   }
 
-  // Connectivity...
+  /**
+   * Get the connectivity status, offline, online, etc.
+   * @method Connectivity
+   */
   async Connectivity(online: () => "online", offline: () => "offline") {
     // Once the DOM is loaded, check for connectivity...
     try {
@@ -107,7 +122,10 @@ class PWA {
     }
   }
 
-  // Set badge...
+  /**
+   * Set notification icon badge, count.
+   * @method setBadge
+   */
   async setBadge(unreadCount: number) {
     try {
       if (navigator.setAppBadge) {
@@ -125,7 +143,10 @@ class PWA {
     }
   }
 
-  // Clear badge...
+  /**
+   * Clear all notification icon badge counts.
+   * @method clearBadge
+   */
   async clearBadge() {
     try {
       if (navigator.clearAppBadge) {
@@ -140,7 +161,10 @@ class PWA {
     }
   }
 
-  // Content Indexing...
+  /**
+   * Index content for offline access in the browser.
+   * @method contentIndexing
+   */
   async contentIndexing() {
     try {
       const registration = (await navigator.serviceWorker.ready) as any;
@@ -203,7 +227,10 @@ class PWA {
     }
   }
 
-  // Fullscreen...
+  /**
+   * Set fullscreen mode.
+   * @method Fullscreen
+   */
   async Fullscreen() {
     try {
       if (document.fullscreenEnabled) {
@@ -219,7 +246,10 @@ class PWA {
     }
   }
 
-  // Notification...
+  /**
+   * Send notification to the user.
+   * @method Notification
+   */
   async Notification(data: { title: string; options: object }) {
     const { title, options } = data;
     try {
@@ -245,7 +275,10 @@ class PWA {
     }
   }
 
-  // Install...
+  /**
+   * Install a PWA to the device.
+   * @method Install
+   */
   Install(button: HTMLElement) {
     try {
       if (navigator.serviceWorker) {
@@ -283,7 +316,10 @@ class PWA {
     }
   }
 
-  // Idle detection...
+  /**
+   * Idle detection for the device, when the user is not doing anything.
+   * @method idleDetection
+   */
   async idleDetection(
     action = "start",
     callback = () => {
@@ -337,7 +373,11 @@ class PWA {
     }
   }
 
-  // Wakelock...
+  /**
+   * Prevent the device's screen from turning off so that the user can see the information
+   * that's displayed on screen.
+   * @method wakeLock
+   */
   async wakeLock() {
     try {
       if ("wakeLock" in navigator) {
@@ -355,7 +395,10 @@ class PWA {
     }
   }
 
-  // Visibility...
+  /**
+   * Check if user is viewing a page. Pause/play video or games.
+   * @method Visibility
+   */
   async Visibility(isVisible: () => void, notAvailable: () => void) {
     try {
       if (document.visibilityState) {
@@ -379,7 +422,10 @@ class PWA {
     }
   }
 
-  // Pick text file..
+  /**
+   * Pick text files from the device.
+   * @method pickTextFile
+   */
   async pickTextFile() {
     try {
       let fileHandle;
@@ -403,7 +449,10 @@ class PWA {
     }
   }
 
-  // Pick any file...
+  /**
+   * Pick any file types from the device.
+   * @method pickFile
+   */
   async pickFile() {
     try {
       let fileHandle: any;
@@ -427,7 +476,11 @@ class PWA {
     }
   }
 
-  // Payment...
+  /**
+   * Allows users select their preferred way of paying for things,
+   * and make that information available to a merchant.
+   * @method Payment
+   */
   async Payment(
     paydata: {
       paymentMethods: PaymentMethodData[];
