@@ -239,9 +239,9 @@ const data = {
 pwa.Notification(data);
 ```
 
-### 8. Add Custom Installation prompt
+### 8. Install, add custom installation logic
 
-Add custom install button, provide a installation step **type** (`before, installed or install`), and a **callback** function. This is a new feature in v4.0.7+
+Provide a installation step **type** (`before, installed or install`), and a **callback** function to the **Install** method on pwa . This is a new feature in v4.0.7+
 
 #### Installation steps;
 
