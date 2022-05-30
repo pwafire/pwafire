@@ -239,7 +239,7 @@ const data = {
 pwa.Notification(data);
 ```
 
-### 8. Cunstom Installation prompt
+### 8. Add Custom Installation prompt
 
 Add custom install button, provide a installation step **type** (`before, installed or install`), and a **callback** function. This is a new feature in v4.0.7+
 
@@ -263,7 +263,7 @@ Add custom install button, provide a installation step **type** (`before, instal
   });
   ```
 
-  - Step `before` => Check if the app is installed, e.g for react it'd be:
+- Step `before` => Check if the app is installed, e.g for react it'd be:
 
   ```js
   // 2. Before install prompt is shown.
@@ -285,7 +285,7 @@ Add custom install button, provide a installation step **type** (`before, instal
   });
   ```
 
-  - Step `install` => Install the app, e.g for react it'd be:
+- Step `install` => Install the app, e.g for react it'd be:
 
   ```js
   // 3. Show the install prompt.
