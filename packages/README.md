@@ -8,50 +8,20 @@ Welcome to **@pwafire v.4.0.0** which is the second iterational foundation for o
 
 All **responses** returned have a new `ok` value, a boolean type which replaces `success` value, a boolean as shown below;
 
-## Install pwafire via NPM
-
-```bash
-npm i pwafire --save
-```
-
-### Get pwafire over CDN as an E6 Module
-
-Note that you can still use a specific version over the pwafire cdn
-
-#### Latest version
-
-```js
-import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
-```
-
-#### Specific version
-
-```js
-import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
-```
-
-### Import pwafire in your for e.g React App
-
-```js
-import { check, pwa } from "pwafire";
-```
-
-All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
-
 ### API Spec
 
 For all promise types, the promise value returned is an object - might include additional data for example, **Contacts API** returns an additional **contacts** value.
 
 ```js
-// Success...ok value is true...
+// For Success, ok value is true...
 {
   ok : true,
   message : "Success message",
 }
-// Fail...success value is false...
+// For Fail, ok value is false...
 {
   ok : false,
-  message : "Error message..."
+  message : "Error message"
 }
 ```
 
@@ -90,6 +60,36 @@ pwa
 ```
 
 ## API Feature Detection
+
+## Install pwafire via NPM
+
+```bash
+npm i pwafire --save
+```
+
+### Get pwafire over CDN as an E6 Module
+
+Note that you can still use a specific version over the pwafire cdn
+
+#### Latest version
+
+```js
+import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
+```
+
+#### Specific version
+
+```js
+import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
+```
+
+### Import pwafire in your for e.g React App
+
+```js
+import { check, pwa } from "pwafire";
+```
+
+All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
 
 - Goal is to allow room for custom handlers if need be
 - This approach is going to be experimental and will be updated
@@ -239,15 +239,72 @@ const data = {
 pwa.Notification(data);
 ```
 
-### 8. Install
+### 8. Cunstom Installation prompt
 
-Add custom install button, provide a "button element" as the parameter
+Add custom install button, provide a installation step **type** (`before, installed or install`), and a **callback** function. This is a new feature in v4.0.7+
 
-#### Call the install method
+#### Installation steps;
 
-```js
-pwa.Install(button);
-```
+- Step `installed` => Check if the app is installed, e.g for react it'd be:
+
+  ```js
+  // 1. Check if app was installed...
+  pwa.Install("installed", () => {
+    // b) => Hide the app-provided install promotion custom button.
+    setIsInstalled(true);
+    // c) => Clear the deferredPrompt so it can be garbage collected.
+    setSavedDefferedPrompt(null);
+    // d) => Optionally, send analytics event to indicate successful install, e.g with custom analytics:
+    analytics.track({
+      event: "install",
+      category: "pwa",
+      label: "install",
+    });
+  });
+  ```
+
+  - Step `before` => Check if the app is installed, e.g for react it'd be:
+
+  ```js
+  // 2. Before install prompt is shown.
+  pwa.Install("before", (event) => {
+    // Prevent the mini-infobar from appearing e.g for mobile.
+    if (window.matchMedia("(min-width: 767px)").matches) {
+      event.preventDefault();
+    }
+    // a) => Stash the event so it can be triggered later on.
+    setSavedDefferedPrompt(event);
+    // b) => Update UI notify the user they can install the PWA.
+    setIsInstalled(false);
+    // c) => Optionally, send analytics event that PWA install promo was shown, e.g with custom analytics:
+    analytics.track({
+      event: "install",
+      category: "pwa",
+      label: "install-prompt",
+    });
+  });
+  ```
+
+  - Step `install` => Install the app, e.g for react it'd be:
+
+  ```js
+  // 3. Show the install prompt.
+  pwa.Install("install", async (event: string) => {
+    // Event type is install.
+    console.log(event);
+    // a) => Show the install prompt.
+    savedDefferedPrompt.prompt();
+    // b) =>  Wait for the user to respond to the prompt.
+    const { outcome } = await savedDefferedPrompt.userChoice;
+    if (outcome === "accepted") {
+      // c, i) =>  Optionally, send analytics event with outcome of user choice.
+    } else {
+      // c, ii) => Optionally, send analytics event with outcome of user choice.
+    }
+    // d) => We've used the prompt, and can't use it again, throw it away.
+    setSavedDefferedPrompt(null);
+  });
+  ```
 
 ### 9. Badging
 
@@ -494,9 +551,9 @@ const paydata = {
 ```js
 const validatePayment = async(paymentResponse) => {
   try {
-    // Check if payment was successful based on your payment gateway...
+    // Check if payment was successful based on your payment gateway.
     const condition = await yourSuccessHandler(paymentResponse);
-  // Please note that complete status can only be "success" or "fail"...
+  // Please note that complete status can only be "success" or "fail".
     if (condition) {
       //...
       // Return sucesss...
