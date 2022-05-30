@@ -241,7 +241,7 @@ pwa.Notification(data);
 
 ### 8. Install, add custom installation logic
 
-Provide a installation step **type** (`before, installed or install`), and a **callback** function to the **Install** method on pwa . This is a new feature in v4.0.7+
+Provide an installation step **type** (`before, installed or install`), and a **callback** function as a parameters to the **Install** method on pwa . This is a new feature in v4.0.7+
 
 #### Installation steps;
 
