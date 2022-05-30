@@ -306,6 +306,8 @@ Provide an installation step **type** (`before, installed or install`), and a **
   });
   ```
 
+### Things to note with the installation steps
+
 - Note that the first two steps should be in a **useEffect** hook, and the third step should
   be called inside a button click event.
 
