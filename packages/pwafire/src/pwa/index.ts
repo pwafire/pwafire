@@ -279,7 +279,7 @@ class PWA {
    * Install a PWA to the user's device.
    * @method Install
    */
-  async Install(type: "before" | "install" | "installed" = "installed", callback = (event: string | any) => {}) {
+  async Install(type: "before" | "install" | "installed" = "installed", callback: (event: string | any) => any) {
     try {
       if (navigator.serviceWorker) {
         // Check if app was installed...
