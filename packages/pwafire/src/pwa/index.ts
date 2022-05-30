@@ -276,37 +276,57 @@ class PWA {
   }
 
   /**
-   * Install a PWA to the device.
+   * Install a PWA to the user's device.
    * @method Install
    */
-  Install(button: HTMLElement) {
+  async Install(type: "before" | "install" | "installed" = "installed", callback = (event: string | any) => {}) {
     try {
       if (navigator.serviceWorker) {
-        window.addEventListener("beforeinstallprompt", (event: any) => {
-          // Stash the event so it can be triggered later...
-          window.deferredPrompt = event;
-        });
-
-        // Install...
-        button.addEventListener("click", () => {
-          const promptEvent = window.deferredPrompt;
-          if (!promptEvent) {
-            return null;
+        // Check if app was installed...
+        const checkIfAppInstalled = async () => {
+          try {
+            // Notify the user the install was successful..
+            window.addEventListener("appinstalled", () => {
+              callback("installed");
+            });
+            return { ok: true, message: "Check if installed" };
+          } catch (error) {
+            throw error;
           }
-          // Show the install prompt...
-          promptEvent.prompt();
-          // Log the result
-          promptEvent.userChoice.then((result: any) => {
-            // Reset the deferred prompt variable...
-            window.deferredPrompt = null;
-            // Hide the install button...
-          });
-        });
+        };
+        // Before install prompt is shown...
+        const beforeInstallPromptEvent = async () => {
+          try {
+            window.addEventListener("beforeinstallprompt", (event: any) => {
+              // Stash the event so it can be triggered later...
+              callback(event);
+            });
+            return { ok: true, message: "Before install prompt" };
+          } catch (error) {
+            throw error;
+          }
+        };
+        // Install the app...
+        const installApp = async () => {
+          try {
+            callback("install");
+            return { ok: true, message: "Install App" };
+          } catch (error) {
+            throw error;
+          }
+        };
 
-        // Installed....
-        window.addEventListener("appinstalled", (event: any) => {
-          // Installed...
-        });
+        // Switch on the type...
+        switch (type) {
+          case "before":
+            return await beforeInstallPromptEvent();
+          case "install":
+            return await installApp();
+          case "installed":
+            return await checkIfAppInstalled();
+          default:
+            return { ok: false, message: "Type can be 'install', 'installed' or 'before'" };
+        }
       } else {
         // Error...
         return { ok: false, message: "Service Worker not supported" };
