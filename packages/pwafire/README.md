@@ -263,7 +263,7 @@ Add custom install button, provide a installation step **type** (`before, instal
   });
   ```
 
-  - Step `before` => Check if the app is installed, e.g for react it'd be:
+- Step `before` => Check if the app is installed, e.g for react it'd be:
 
   ```js
   // 2. Before install prompt is shown.
@@ -285,7 +285,7 @@ Add custom install button, provide a installation step **type** (`before, instal
   });
   ```
 
-  - Step `install` => Install the app, e.g for react it'd be:
+- Step `install` => Install the app, e.g for react it'd be:
 
   ```js
   // 3. Show the install prompt.
