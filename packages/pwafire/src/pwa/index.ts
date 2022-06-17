@@ -497,6 +497,20 @@ class PWA {
   }
 
   /**
+   * Get the display mode of you progressive web app.
+   * @method displayMode
+   */
+  async displayMode(callback: (mode: "standalone" | "tab") => void) {
+    try {
+      window.addEventListener("DOMContentLoaded", () => {
+        const displayMode = window.matchMedia("(display-mode: standalone)").matches ? "standalone" : "tab";
+        callback(displayMode);
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
+  /**
    * Allows users select their preferred way of paying for things,
    * and make that information available to a merchant.
    * @method Payment
