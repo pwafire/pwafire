@@ -497,7 +497,7 @@ class PWA {
   }
 
   /**
-   * Get the display mode of you progressive web app.
+   * Get the display mode of your progressive web app.
    * @method displayMode
    */
   async displayMode(callback: (mode: "standalone" | "tab") => void) {
