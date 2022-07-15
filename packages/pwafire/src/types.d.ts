@@ -18,4 +18,10 @@ interface Credentials {
   otp: string;
 }
 
+declare var BarcodeDetector: {
+  new ({ formats: [] }?: { formats: string[] }): any;
+  detect: () => any;
+  getSupportedFormats: () => any;
+};
+
 declare var IdleDetector: { new (): any; requestPermission: () => any };
