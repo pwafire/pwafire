@@ -1,36 +1,36 @@
-// Experimental (unstable) : check for api support...
+// Experimental (unstable) : check for api support.
 class Check {
-  // Check for share...
+  // Check for share.
   async Share() {
     try {
-      // Check for share...
+      // Check for share.
       return "share" in navigator ? true : false;
     } catch (error) {
       throw error;
     }
   }
 
-  // Check for share files support...
+  // Check for share files support.
   async shareFiles() {
     try {
-      // Check for files share support...
+      // Check for files share support.
       return "canShare" in navigator ? true : false;
     } catch (error) {
       throw error;
     }
   }
 
-  // Check for clipboard...
+  // Check for clipboard.
   async Clipboard() {
     try {
-      // Check for clipboard...
+      // Check for clipboard.
       return "clipboard" in navigator ? true : false;
     } catch (error) {
       throw error;
     }
   }
 
-  // Check for copy text...
+  // Check for copy text.
   async copyText() {
     try {
       return (await this.Clipboard()) ? true : false;
@@ -39,7 +39,7 @@ class Check {
     }
   }
 
-  // Check copy image...
+  // Check copy image.
   async copyImage() {
     try {
       return (await this.Clipboard()) ? true : false;
@@ -48,70 +48,70 @@ class Check {
     }
   }
 
-  // Check for idle detection...
+  // Check for idle detection.
   async idleDetection() {
     try {
-      // Check for idle detection...
+      // Check for idle detection.
       return "IdleDetector" in window ? true : false;
     } catch (error) {
       throw error;
     }
   }
 
-  // Check for wakelock...
+  // Check for wakelock.
   async wakeLock() {
     try {
-      // Check for wakelock...
+      // Check for wakelock.
       return "wakeLock" in navigator ? true : false;
     } catch (error) {
       throw error;
     }
   }
 
-  // Check for contacts...
+  // Check for contacts.
   async Contacts() {
     try {
-      // Check for contacts...
+      // Check for contacts.
       return "contacts" in navigator && "ContactsManager" in window ? true : false;
     } catch (error) {
       throw error;
     }
   }
 
-  // Check if online status is supported...
+  // Check if online status is supported.
   async onlineStatus() {
     try {
-      // Check if online status is supported...
+      // Check if online status is supported.
       return "onLine" in navigator ? true : false;
     } catch (error) {
       throw error;
     }
   }
 
-  // Badging api support...
+  // Badging api support.
   async Badging() {
     try {
-      // Check for Badging support...
+      // Check for Badging support.
       return "setAppBadge" in navigator && "clearAppBadge" in navigator ? true : false;
     } catch (error) {
       throw error;
     }
   }
 
-  // Check for notifications...
+  // Check for notifications.
   async Notifications() {
     try {
-      // Check for notifications...
+      // Check for notifications.
       return "Notification" in window ? true : false;
     } catch (error) {
       throw error;
     }
   }
 
-  // Check if content indexing api is supported...
+  // Check if content indexing api is supported.
   async contentIndexing() {
     try {
-      // Check if content indexing api is supported...
+      // Check if content indexing api is supported.
       const registration = (await navigator.serviceWorker.ready) as any;
       return "index" in registration ? true : false;
     } catch (error) {
@@ -119,15 +119,15 @@ class Check {
     }
   }
 
-  // If the browser supports the Notification API, check if the user has granted permission to display notifications...
+  // If the browser supports the Notification API, check if the user has granted permission to display notifications.
   async notificationPermission() {
     try {
-      // If the browser supports the Notification API, check if the user has granted permission to display notifications...
+      // If the browser supports the Notification API, check if the user has granted permission to display notifications.
       if (await this.Notifications()) {
-        // Check if the user has granted permission to display notifications...
+        // Check if the user has granted permission to display notifications.
         return Notification.permission === "granted" ? true : false;
       } else {
-        // Return false if the browser doesn't support the Notification API...
+        // Return false if the browser doesn't support the Notification API.
         return false;
       }
     } catch (error) {
@@ -135,57 +135,67 @@ class Check {
     }
   }
 
-  // Check service worker support...
+  // Check for barcode detection support.
+  async barcodeDetector() {
+    try {
+      // Check for barcode detection support.
+      return "BarcodeDetector" in window ? true : false;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Check service worker support.
   async serviceWorker() {
     try {
-      // Check service worker support...
+      // Check service worker support.
       return "serviceWorker" in navigator ? true : false;
     } catch (error) {
       throw error;
     }
   }
 
-  // Bluetooth support...
+  // Bluetooth support.
   async Bluetooth() {
     try {
-      // Check for bluetooth support...
+      // Check for bluetooth support.
       return "bluetooth" in navigator ? true : false;
     } catch (error) {
       throw error;
     }
   }
 
-  // Payment api support...
+  // Payment api support.
   async Payment() {
     try {
-      // Check for payments api support...
+      // Check for payments api support.
       return "PaymentRequest" in window ? true : false;
     } catch (error) {
       throw error;
     }
   }
 
-  // Check for web otp support...
+  // Check for web otp support.
   async webOTP() {
     try {
-      // Check for web otp support...
+      // Check for web otp support.
       return "OTPCredential" in window ? true : false;
     } catch (error) {
       throw error;
     }
   }
 
-  // Check for web nfc support...
+  // Check for web nfc support.
   async webNFC() {
     try {
-      // Check for web nfc support...
+      // Check for web nfc support.
       return "NDEFReader" in window ? true : false;
     } catch (error) {
       throw error;
     }
   }
 
-  // Camera pan, tilt and zoom support...
+  // Camera pan, tilt and zoom support.
   async cameraPanAndTiltZoom() {
     try {
       const supports = navigator.mediaDevices.getSupportedConstraints() as any;
@@ -195,10 +205,10 @@ class Check {
     }
   }
 
-  // Check for all api support...
+  // Check for all api support.
   async All() {
     try {
-      // Check for all api support...
+      // Check for all api support.
       return [
         {
           name: "share",
@@ -264,6 +274,11 @@ class Check {
           name: "notification permission",
           message: (await this.notificationPermission()) ? "Granted" : "Not granted",
           ok: await this.notificationPermission(),
+        },
+        {
+          name: "barcode detection",
+          message: (await this.barcodeDetector()) ? "Supported" : "Not supported",
+          ok: await this.barcodeDetector(),
         },
         {
           name: "service worker",
