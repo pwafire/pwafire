@@ -523,7 +523,7 @@ class PWA {
    */
   async barcodeDetector(
     options: {
-      image: string;
+      image: Blob | HTMLCanvasElement | HTMLImageElement | HTMLVideoElement | ImageBitmap;
       format:
         | "aztec"
         | "code_128"
@@ -538,12 +538,12 @@ class PWA {
         | "qr_code"
         | "upc_a"
         | "upc_e";
-    } = {
-      image: "",
-      format: "qr_code",
     },
     callback: (barcodes: any[]) => void,
   ) {
+    /*
+    Blob or HTMLCanvasElement or HTMLImageElement or HTMLVideoElement or ImageBitmap
+    */
     try {
       // Feature detection.
       if ("BarcodeDetector" in window) {
@@ -558,8 +558,15 @@ class PWA {
           });
           // Get barcodes.
           const barcodes = await barcodeDetector.detect(options.image);
-          // Run callback function.
-          callback(barcodes);
+          if (barcodes) {
+            // Run callback function.
+            callback(barcodes);
+            // Return.
+            return { ok: true, message: "Barcode detected" };
+          } else {
+            // No barcodes detected.
+            return { ok: false, message: "No barcodes detected" };
+          }
         } else {
           return {
             ok: false,
