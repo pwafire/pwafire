@@ -236,7 +236,7 @@ class Check {
           ok: await this.copyImage(),
         },
         {
-          name: "idle Detection",
+          name: "Idle Detection",
           message: (await this.idleDetection()) ? "Supported" : "Not supported",
           ok: await this.idleDetection(),
         },
