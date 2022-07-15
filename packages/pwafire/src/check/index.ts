@@ -310,7 +310,7 @@ class Check {
           message: (await this.cameraPanAndTiltZoom()) ? "Supported" : "Not supported",
           ok: await this.cameraPanAndTiltZoom(),
         },
-      ];
+      ].sort((a, b) => a.name.localeCompare(b.name));
     } catch (error) {
       throw error;
     }
