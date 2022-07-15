@@ -541,9 +541,6 @@ class PWA {
     },
     callback: (barcodes: any[]) => void,
   ) {
-    /*
-    Blob or HTMLCanvasElement or HTMLImageElement or HTMLVideoElement or ImageBitmap
-    */
     try {
       // Feature detection.
       if ("BarcodeDetector" in window) {
@@ -556,7 +553,7 @@ class PWA {
             // Not all formats may be supported on all platforms
             formats: [options.format],
           });
-          // Get barcodes.
+          // Detect barcodes.
           const barcodes = await barcodeDetector.detect(options.image);
           if (barcodes) {
             // Run callback function.
@@ -570,7 +567,9 @@ class PWA {
         } else {
           return {
             ok: false,
-            message: `${options.format.charAt(0).toUpperCase() + options.format.slice(1)} format not supported`,
+            message: `Sorry, "${
+              options.format.charAt(0).toUpperCase() + options.format.slice(1)
+            }" format not supported`,
           };
         }
       } else {
