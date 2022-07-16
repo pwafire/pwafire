@@ -466,9 +466,9 @@ This is API is part of the **Shape Detection API**.
 
 #### Call the barcodeDetector method on pwa
 
-Receives 1 arguments, an **options** object with two properties, **image** and **format** The image type could be of types; _Blob or HTMLCanvasElement or HTMLImageElement or HTMLVideoElement or ImageBitmap._
+Receives 1 arguments, an **options** object with two properties, **image** and **format**. The image should be of types; _Blob or HTMLCanvasElement or HTMLImageElement or HTMLVideoElement or ImageBitmap._
 
-Supported barcode types are;
+Supported barcode format values are;
 
 ```bash
 "aztec", "code_128", "code_39", "code_93", "data_matrix", "ean_13",
