@@ -458,7 +458,36 @@ const res = index.removeItem({
 const items = await index.getAll();
 ```
 
-### 14. Web Payments
+### 14. Barcode Detection
+
+Unlock interesting use cases like online payments or web navigation, or use barcodes for establishing social connections on messenger applications.
+
+This is API is part of the **Shape Detection API**.
+
+#### Call the barcodeDetection method on pwa
+
+The method receives two arguments, an **options** object and a **callback** function. The image type could be of types; _Blob or HTMLCanvasElement or HTMLImageElement or HTMLVideoElement or ImageBitmap._
+
+Supported barcode types are; 
+
+```bash
+"aztec", "code_128", "code_39", "code_93", "data_matrix", "ean_13",
+"ean_8", "itf", "pdf417", "qr_code", "upc_e"
+```
+
+```js
+const res = await pwa.barcodeDetector(
+  {
+    image: image,
+    format: "qr_code",
+  },
+  (barcodes) => {
+    // Do something with the barcodes...
+  },
+);
+```
+
+### 15. Web Payments
 
 Allows users select their preferred way of **paying for things**, and make that information
 available to **a merchant.**
