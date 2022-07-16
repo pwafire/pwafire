@@ -464,7 +464,7 @@ Unlock interesting use cases like online payments or web navigation, or use barc
 
 This is API is part of the **Shape Detection API**.
 
-#### Call the barcodeDetection method on pwa
+#### Call the barcodeDetector method on pwa
 
 The method receives two arguments, an **options** object and a **callback** function. The image type could be of types; _Blob or HTMLCanvasElement or HTMLImageElement or HTMLVideoElement or ImageBitmap._
 
