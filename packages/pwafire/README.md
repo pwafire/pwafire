@@ -466,7 +466,7 @@ This is API is part of the **Shape Detection API**.
 
 #### Call the barcodeDetector method on pwa
 
-The method receives two arguments, an **options** object and a **callback** function. The image type could be of types; _Blob or HTMLCanvasElement or HTMLImageElement or HTMLVideoElement or ImageBitmap._
+The method receives two arguments, an **options** object with two properties, **image** and **format** The image type could be of types; _Blob or HTMLCanvasElement or HTMLImageElement or HTMLVideoElement or ImageBitmap._
 
 Supported barcode types are;
 
@@ -476,15 +476,14 @@ Supported barcode types are;
 ```
 
 ```js
-const res = await pwa.barcodeDetector(
-  {
-    image: image,
-    format: "qr_code",
-  },
-  (barcodes) => {
-    // Do something with the barcodes...
-  },
-);
+const res = await pwa.barcodeDetector({ image: image, format: "qr_code" });
+// Do something with the result...
+if (res.ok) {
+  // Do something...
+  const barcodes = res.barcodes;
+} else {
+  // Do something...
+}
 ```
 
 ### 15. Web Payments

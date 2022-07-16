@@ -521,26 +521,23 @@ class PWA {
    * Detect barcodes in an image.
    * @method barcodeDetector
    */
-  async barcodeDetector(
-    options: {
-      image: Blob | HTMLCanvasElement | HTMLImageElement | HTMLVideoElement | ImageBitmap;
-      format:
-        | "aztec"
-        | "code_128"
-        | "code_39"
-        | "code_93"
-        | "codabar"
-        | "data_matrix"
-        | "ean_13"
-        | "ean_8"
-        | "itf"
-        | "pdf417"
-        | "qr_code"
-        | "upc_a"
-        | "upc_e";
-    },
-    callback: (barcodes: any[]) => void,
-  ) {
+  async barcodeDetector(options: {
+    image: Blob | HTMLCanvasElement | HTMLImageElement | HTMLVideoElement | ImageBitmap;
+    format:
+      | "aztec"
+      | "code_128"
+      | "code_39"
+      | "code_93"
+      | "codabar"
+      | "data_matrix"
+      | "ean_13"
+      | "ean_8"
+      | "itf"
+      | "pdf417"
+      | "qr_code"
+      | "upc_a"
+      | "upc_e";
+  }) {
     try {
       // Feature detection.
       if ("BarcodeDetector" in window) {
@@ -555,15 +552,12 @@ class PWA {
           });
           // Detect barcodes.
           const barcodes = await barcodeDetector.detect(options.image);
-          if (barcodes) {
-            // Run callback function.
-            callback(barcodes);
-            // Return.
-            return { ok: true, message: "Barcode detected" };
-          } else {
-            // No barcodes detected.
-            return { ok: false, message: "No barcodes detected" };
-          }
+          // Return barcodes.
+          return {
+            ok: barcodes ? true : false,
+            message: barcodes ? "Barcode detected" : "No barcode detected",
+            barcodes,
+          };
         } else {
           return {
             ok: false,
