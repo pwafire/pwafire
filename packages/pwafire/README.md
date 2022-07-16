@@ -468,7 +468,7 @@ This is API is part of the **Shape Detection API**.
 
 The method receives two arguments, an **options** object and a **callback** function. The image type could be of types; _Blob or HTMLCanvasElement or HTMLImageElement or HTMLVideoElement or ImageBitmap._
 
-Supported barcode types are; 
+Supported barcode types are;
 
 ```bash
 "aztec", "code_128", "code_39", "code_93", "data_matrix", "ean_13",
