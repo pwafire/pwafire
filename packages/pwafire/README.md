@@ -125,7 +125,18 @@ Copy text to clipboard.
 pwa.copyText(text);
 ```
 
-### 2. Copy image (Only PNG are supported for security purposes) to clipboard
+### 2. Read Text
+
+Read text from clipboard.
+
+#### Call the readText method on pwa
+
+```js
+// Read text
+pwa.readText();
+```
+
+### 3. Copy image (Only PNG are supported for security purposes) to clipboard
 
 Copy png images to clipboard
 
@@ -135,7 +146,17 @@ Copy png images to clipboard
 pwa.copyImage(imgURL);
 ```
 
-### 3. Web Share
+### 4. Read files e.g images from clipboard
+
+Read png images from clipboard
+
+#### Call the readFiles method on pwa
+
+```js
+pwa.readFiles();
+```
+
+### 5. Web Share
 
 Share links, text, and files to other apps installed on the device.
 
@@ -158,7 +179,7 @@ const data = {
 pwa.Share(data);
 ```
 
-### 4. Contacts Picker
+### 6. Contacts Picker
 
 [Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the mobile device's native contacts manager.
 
@@ -182,7 +203,7 @@ pwa.Contacts(props, options).then((res) => {
 });
 ```
 
-### 5. Show PWA Connectivity status
+### 7. Show PWA Connectivity status
 
 Pass in two call back funtions, aka **online** and **offline** handlers.
 
@@ -205,7 +226,7 @@ const offline = () => {
 pwa.Connectivity(online, offline);
 ```
 
-### 6. Fullscreen
+### 8. Fullscreen
 
 Open app in fullscreen on a click event
 
@@ -215,7 +236,7 @@ Open app in fullscreen on a click event
 pwa.Fullscreen();
 ```
 
-### 7. Notifications
+### 9. Notifications
 
 Show notifications. Pass a **data** object
 
@@ -239,7 +260,7 @@ const data = {
 pwa.Notification(data);
 ```
 
-### 8. Install, add custom installation logic
+### 10. Install, add custom installation logic
 
 Provide an installation step **type** (`before, installed or install`), and a **callback** function as a parameters to the **Install** method on pwa . This is a new feature in v4.0.7+
 
@@ -314,7 +335,7 @@ Provide an installation step **type** (`before, installed or install`), and a **
 - For other apps, make sure the first two steps run on **page load**, and the third step is called
   on button click.
 
-### 9. Badging
+### 11. Badging
 
 #### Add badging for app icons
 
@@ -337,7 +358,7 @@ pwa.setBadge(unreadCount);
 pwa.clearBadge();
 ```
 
-### 10. Screen Wake Lock API
+### 12. Screen Wake Lock API
 
 The Screen Wake Lock API provides a way to prevent devices from dimming or locking the screen when an application needs to keep running.
 
@@ -347,7 +368,7 @@ The Screen Wake Lock API provides a way to prevent devices from dimming or locki
 pwa.WakeLock();
 ```
 
-### 11. Visibility
+### 13. Visibility
 
 Check if user is viewing a page. Pause/play video or games e.t.c
 
@@ -375,7 +396,7 @@ const notAvailable = () => {
 pwa.Visibility(isVisible, notAvailable);
 ```
 
-### 12. The File System Access API
+### 14. The File System Access API
 
 _The File System Access API_ allows web apps to read or save changes directly to files and folders on the user's device.
 
@@ -399,7 +420,7 @@ const res = await pwa.pickTextFile();
 const contents = res.ok ? res.contents : null;
 ```
 
-### 13. Content Indexing
+### 15. Content Indexing
 
 This API allows you to index your offline-capable pages.
 
@@ -458,7 +479,7 @@ const res = index.removeItem({
 const items = await index.getAll();
 ```
 
-### 14. Barcode Detection
+### 16. Barcode Detection
 
 Unlock interesting use cases like online payments or web navigation, or use barcodes for establishing social connections on messenger applications.
 
@@ -486,7 +507,7 @@ if (res.ok) {
 }
 ```
 
-### 15. Web Payments
+### 17. Web Payments
 
 Allows users select their preferred way of **paying for things**, and make that information
 available to **a merchant.**
@@ -611,10 +632,6 @@ const validatePayment = async(paymentResponse) => {
 // Pay...
 pwa.Payment(paydata, validatePayment);
 ```
-
-### 16. Others (APIs)
-
-Please head over to the [APIs](https://docs.pwafire.org) for all the other APIs.
 
 ## License
 
