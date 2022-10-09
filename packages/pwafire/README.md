@@ -13,12 +13,12 @@ All **responses** returned have a new `ok` value, a boolean type which replaces 
 For all promise types, the promise value returned is an object - might include additional data for example, **Contacts API** returns an additional **contacts** value.
 
 ```js
-// For Success, ok value is true...
+// For Success, ok value is true.
 {
   ok : true,
   message : "Success message",
 }
-// For Fail, ok value is false...
+// For Fail, ok value is false.
 {
   ok : false,
   message : "Error message"
@@ -26,17 +26,17 @@ For all promise types, the promise value returned is an object - might include a
 ```
 
 ```js
-// Async API...
+// Async API.
 const res = await pwa.CopyText(text);
 
-// Lower versions...
+// Lower versions.
 if (res.success) {
-  // Do something...
+  // Do something.
 }
 
 // New version starting v4.0.0
 if (res.ok) {
-  // Do something...
+  // Do something.
 }
 ```
 
@@ -49,9 +49,9 @@ pwa
   .then((res) => {
     // Do something with 'res'
     if (res.ok) {
-      // Success...
+      // Success.
     } else {
-      // Fail...
+      // Fail.
     }
   })
   .catch((err) => {
@@ -107,10 +107,10 @@ All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Brow
 - Try it out
 
 ```js
-// Get the check instance from pwafire...
+// Get the check instance from pwafire.
 import { check } from "pwafire";
 //...
-// The response is a boolean, true or false...
+// The response is a boolean, true or false.
 const isSupported = await check.Share();
 ```
 
@@ -167,8 +167,8 @@ const data = {
   // Title of what to share
   title: `Some title..`,
   // Text to share
-  text: `Some text...`,
-  // Url to share...
+  text: `Some text.`,
+  // Url to share.
   url: "https://pwafire.org",
 };
 ```
@@ -195,9 +195,9 @@ const options = { multiple: true };
 #### Call the contacts method on pwa, the promise resolves with an object
 
 ```js
-// Do something with the promise value...
+// Do something with the promise value.
 pwa.Contacts(props, options).then((res) => {
-  // Do something with contacts...
+  // Do something with contacts.
   const contacts = res.ok ? res.contacts : null;
   //...
 });
@@ -210,11 +210,11 @@ Pass in two call back funtions, aka **online** and **offline** handlers.
 #### Declaring the two handlers separately
 
 ```js
-// Online handler...
+// Online handler.
 const online = () => {
   //...
 };
-// Offline handler...
+// Offline handler.
 const offline = () => {
   //...
 };
@@ -256,7 +256,7 @@ const data = {
 #### Call the notification method, pass in `data` object, for e.g
 
 ```js
-// Call the notification method...
+// Call the notification method.
 pwa.Notification(data);
 ```
 
@@ -269,7 +269,7 @@ Provide an installation step **type** (`before, installed or install`), and a **
 - Step `installed` => Check if the app is installed, e.g for react it'd be:
 
   ```js
-  // 1. Check if app was installed...
+  // 1. Check if app was installed.
   pwa.Install("installed", () => {
     // b) => Hide the app-provided install promotion custom button.
     setIsInstalled(true);
@@ -375,7 +375,7 @@ Check if user is viewing a page. Pause/play video or games e.t.c
 #### Define page visibilty handler
 
 ```js
-// Do something....
+// Do something.
 const isVisible = () => {
   //...
 };
@@ -384,7 +384,7 @@ const isVisible = () => {
 #### If visbility api is not supported, define the handler
 
 ```js
-// Do something....
+// Do something.
 const notAvailable = () => {
   //...
 };
@@ -405,7 +405,7 @@ _The File System Access API_ allows web apps to read or save changes directly to
 The promise resolves with a file response
 
 ```js
-// Do something with the contents...
+// Do something with the contents.
 const res = await pwa.pickkFile();
 const file = res.ok ? res.file : null;
 ```
@@ -415,7 +415,7 @@ const file = res.ok ? res.file : null;
 The promise resolves with a text response(contents of the picked text file)
 
 ```js
-// Do something with the contents...
+// Do something with the contents.
 const res = await pwa.pickTextFile();
 const contents = res.ok ? res.contents : null;
 ```
@@ -431,10 +431,10 @@ Note : The Content Indexing API was launched in Chrome 84 for Android.
 ```js
 const index = await pwa.contentIndexing();
 if (index.ok) {
-  // Do something...like
-  // 1. Add a page to the index...
-  // 2. Remove a page from the index...
-  // 3. Get all indexed pages...
+  // Do something like;
+  // 1. Add a page to the index.
+  // 2. Remove a page from the index.
+  // 3. Get all indexed pages.
 }
 ```
 
@@ -468,7 +468,7 @@ const res = await index.addItem({
 
 ```js
 const res = index.removeItem({
-  // Required; provide the id of the item to remove...
+  // Required; provide the id of the item to remove.
   id: "article-123",
 });
 ```
@@ -498,12 +498,12 @@ Supported barcode format values are;
 
 ```js
 const res = await pwa.barcodeDetector({ image: image, format: "qr_code" });
-// Do something with the result...
+// Do something with the result.
 if (res.ok) {
-  // Do something...
+  // Do something.
   const barcodes = res.barcodes;
 } else {
-  // Do something...
+  // Do something.
 }
 ```
 
@@ -523,7 +523,7 @@ pwa.Payment(pay, paydata, validatePayment);
 Test Demo Application : [Live Preview](https://webpay.glitch.me/)
 
 ```js
-// Calculations...
+// Calculations.
 const payment = {
   price: sale_price,
   get discount() {
@@ -537,7 +537,7 @@ const payment = {
   },
 };
 
-// Destructure payment object...
+// Destructure payment object.
 const { tax, discount, total } = payment;
 ```
 
@@ -613,11 +613,11 @@ const validatePayment = async(paymentResponse) => {
   // Please note that complete status can only be "success" or "fail".
     if (condition) {
       //...
-      // Return sucesss...
+      // Return sucesss.
       await paymentResponse.complete("success");
     } else {
       //...
-      // Return fail...
+      // Return fail.
       await paymentResponse.complete("fail");
     }
   };
@@ -629,7 +629,7 @@ const validatePayment = async(paymentResponse) => {
 #### Call Payment method on pwa
 
 ```js
-// Pay...
+// Pay.
 pwa.Payment(paydata, validatePayment);
 ```
 
