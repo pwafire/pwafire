@@ -611,3 +611,11 @@ const validatePayment = async(paymentResponse) => {
 // Pay...
 pwa.Payment(paydata, validatePayment);
 ```
+
+### 16. Others (APIs)
+
+Please head over to the [APIs](https://docs.pwafire.org) for all the other APIs.
+
+## License
+
+[MIT] © [Maye Edwin](https://maye.pwafire.org)
