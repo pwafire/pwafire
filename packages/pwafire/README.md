@@ -2,7 +2,7 @@
 
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
-Welcome to **@pwafire v.4.0.0** which is the second iterational foundation for our next generation of the pwafire api. Note that, these release is a breaking change, before upgrading, check the documentations first.
+Welcome to **@pwafire v.4.0.0** which is the second iterational foundation for our next generation of the pwafire api. Note that, this release was a breaking change, before upgrading, check the documentations first.
 
 ### Breaking change for v4.0.0 moving forward
 
@@ -13,12 +13,12 @@ All **responses** returned have a new `ok` value, a boolean type which replaces 
 For all promise types, the promise value returned is an object - might include additional data for example, **Contacts API** returns an additional **contacts** value.
 
 ```js
-// For Success, ok value is true...
+// For Success, ok value is true.
 {
   ok : true,
   message : "Success message",
 }
-// For Fail, ok value is false...
+// For Fail, ok value is false.
 {
   ok : false,
   message : "Error message"
@@ -26,17 +26,17 @@ For all promise types, the promise value returned is an object - might include a
 ```
 
 ```js
-// Async API...
+// Async API.
 const res = await pwa.CopyText(text);
 
-// Lower versions...
+// Lower versions.
 if (res.success) {
-  // Do something...
+  // Do something.
 }
 
 // New version starting v4.0.0
 if (res.ok) {
-  // Do something...
+  // Do something.
 }
 ```
 
@@ -49,9 +49,9 @@ pwa
   .then((res) => {
     // Do something with 'res'
     if (res.ok) {
-      // Success...
+      // Success.
     } else {
-      // Fail...
+      // Fail.
     }
   })
   .catch((err) => {
@@ -107,10 +107,10 @@ All stable in **Chrome 80** and later versions, also in **MS Edge**. Check [Brow
 - Try it out
 
 ```js
-// Get the check instance from pwafire...
+// Get the check instance from pwafire.
 import { check } from "pwafire";
 //...
-// The response is a boolean, true or false...
+// The response is a boolean, true or false.
 const isSupported = await check.Share();
 ```
 
@@ -125,7 +125,18 @@ Copy text to clipboard.
 pwa.copyText(text);
 ```
 
-### 2. Copy image (Only PNG are supported for security purposes) to clipboard
+### 2. Read Text
+
+Read text from clipboard.
+
+#### Call the readText method on pwa
+
+```js
+// Read text
+pwa.readText();
+```
+
+### 3. Copy image (Only PNG are supported for security purposes) to clipboard
 
 Copy png images to clipboard
 
@@ -135,7 +146,17 @@ Copy png images to clipboard
 pwa.copyImage(imgURL);
 ```
 
-### 3. Web Share
+### 4. Read files e.g images from clipboard
+
+Read png images from clipboard
+
+#### Call the readFiles method on pwa
+
+```js
+pwa.readFiles();
+```
+
+### 5. Web Share
 
 Share links, text, and files to other apps installed on the device.
 
@@ -146,8 +167,8 @@ const data = {
   // Title of what to share
   title: `Some title..`,
   // Text to share
-  text: `Some text...`,
-  // Url to share...
+  text: `Some text.`,
+  // Url to share.
   url: "https://pwafire.org",
 };
 ```
@@ -158,7 +179,7 @@ const data = {
 pwa.Share(data);
 ```
 
-### 4. Contacts Picker
+### 6. Contacts Picker
 
 [Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the mobile device's native contacts manager.
 
@@ -174,26 +195,26 @@ const options = { multiple: true };
 #### Call the contacts method on pwa, the promise resolves with an object
 
 ```js
-// Do something with the promise value...
+// Do something with the promise value.
 pwa.Contacts(props, options).then((res) => {
-  // Do something with contacts...
+  // Do something with contacts.
   const contacts = res.ok ? res.contacts : null;
   //...
 });
 ```
 
-### 5. Show PWA Connectivity status
+### 7. Show PWA Connectivity status
 
 Pass in two call back funtions, aka **online** and **offline** handlers.
 
 #### Declaring the two handlers separately
 
 ```js
-// Online handler...
+// Online handler.
 const online = () => {
   //...
 };
-// Offline handler...
+// Offline handler.
 const offline = () => {
   //...
 };
@@ -205,7 +226,7 @@ const offline = () => {
 pwa.Connectivity(online, offline);
 ```
 
-### 6. Fullscreen
+### 8. Fullscreen
 
 Open app in fullscreen on a click event
 
@@ -215,7 +236,7 @@ Open app in fullscreen on a click event
 pwa.Fullscreen();
 ```
 
-### 7. Notifications
+### 9. Notifications
 
 Show notifications. Pass a **data** object
 
@@ -235,11 +256,11 @@ const data = {
 #### Call the notification method, pass in `data` object, for e.g
 
 ```js
-// Call the notification method...
+// Call the notification method.
 pwa.Notification(data);
 ```
 
-### 8. Install, add custom installation logic
+### 10. Install, add custom installation logic
 
 Provide an installation step **type** (`before, installed or install`), and a **callback** function as a parameters to the **Install** method on pwa . This is a new feature in v4.0.7+
 
@@ -248,7 +269,7 @@ Provide an installation step **type** (`before, installed or install`), and a **
 - Step `installed` => Check if the app is installed, e.g for react it'd be:
 
   ```js
-  // 1. Check if app was installed...
+  // 1. Check if app was installed.
   pwa.Install("installed", () => {
     // b) => Hide the app-provided install promotion custom button.
     setIsInstalled(true);
@@ -314,7 +335,7 @@ Provide an installation step **type** (`before, installed or install`), and a **
 - For other apps, make sure the first two steps run on **page load**, and the third step is called
   on button click.
 
-### 9. Badging
+### 11. Badging
 
 #### Add badging for app icons
 
@@ -337,7 +358,7 @@ pwa.setBadge(unreadCount);
 pwa.clearBadge();
 ```
 
-### 10. Screen Wake Lock API
+### 12. Screen Wake Lock API
 
 The Screen Wake Lock API provides a way to prevent devices from dimming or locking the screen when an application needs to keep running.
 
@@ -347,14 +368,14 @@ The Screen Wake Lock API provides a way to prevent devices from dimming or locki
 pwa.WakeLock();
 ```
 
-### 11. Visibility
+### 13. Visibility
 
 Check if user is viewing a page. Pause/play video or games e.t.c
 
 #### Define page visibilty handler
 
 ```js
-// Do something....
+// Do something.
 const isVisible = () => {
   //...
 };
@@ -363,7 +384,7 @@ const isVisible = () => {
 #### If visbility api is not supported, define the handler
 
 ```js
-// Do something....
+// Do something.
 const notAvailable = () => {
   //...
 };
@@ -375,7 +396,7 @@ const notAvailable = () => {
 pwa.Visibility(isVisible, notAvailable);
 ```
 
-### 12. The File System Access API
+### 14. The File System Access API
 
 _The File System Access API_ allows web apps to read or save changes directly to files and folders on the user's device.
 
@@ -384,7 +405,7 @@ _The File System Access API_ allows web apps to read or save changes directly to
 The promise resolves with a file response
 
 ```js
-// Do something with the contents...
+// Do something with the contents.
 const res = await pwa.pickkFile();
 const file = res.ok ? res.file : null;
 ```
@@ -394,12 +415,12 @@ const file = res.ok ? res.file : null;
 The promise resolves with a text response(contents of the picked text file)
 
 ```js
-// Do something with the contents...
+// Do something with the contents.
 const res = await pwa.pickTextFile();
 const contents = res.ok ? res.contents : null;
 ```
 
-### 13. Content Indexing
+### 15. Content Indexing
 
 This API allows you to index your offline-capable pages.
 
@@ -410,10 +431,10 @@ Note : The Content Indexing API was launched in Chrome 84 for Android.
 ```js
 const index = await pwa.contentIndexing();
 if (index.ok) {
-  // Do something...like
-  // 1. Add a page to the index...
-  // 2. Remove a page from the index...
-  // 3. Get all indexed pages...
+  // Do something like;
+  // 1. Add a page to the index.
+  // 2. Remove a page from the index.
+  // 3. Get all indexed pages.
 }
 ```
 
@@ -447,7 +468,7 @@ const res = await index.addItem({
 
 ```js
 const res = index.removeItem({
-  // Required; provide the id of the item to remove...
+  // Required; provide the id of the item to remove.
   id: "article-123",
 });
 ```
@@ -458,7 +479,7 @@ const res = index.removeItem({
 const items = await index.getAll();
 ```
 
-### 14. Barcode Detection
+### 16. Barcode Detection
 
 Unlock interesting use cases like online payments or web navigation, or use barcodes for establishing social connections on messenger applications.
 
@@ -477,16 +498,16 @@ Supported barcode format values are;
 
 ```js
 const res = await pwa.barcodeDetector({ image: image, format: "qr_code" });
-// Do something with the result...
+// Do something with the result.
 if (res.ok) {
-  // Do something...
+  // Do something.
   const barcodes = res.barcodes;
 } else {
-  // Do something...
+  // Do something.
 }
 ```
 
-### 15. Web Payments
+### 17. Web Payments
 
 Allows users select their preferred way of **paying for things**, and make that information
 available to **a merchant.**
@@ -502,7 +523,7 @@ pwa.Payment(pay, paydata, validatePayment);
 Test Demo Application : [Live Preview](https://webpay.glitch.me/)
 
 ```js
-// Calculations...
+// Calculations.
 const payment = {
   price: sale_price,
   get discount() {
@@ -516,7 +537,7 @@ const payment = {
   },
 };
 
-// Destructure payment object...
+// Destructure payment object.
 const { tax, discount, total } = payment;
 ```
 
@@ -592,11 +613,11 @@ const validatePayment = async(paymentResponse) => {
   // Please note that complete status can only be "success" or "fail".
     if (condition) {
       //...
-      // Return sucesss...
+      // Return sucesss.
       await paymentResponse.complete("success");
     } else {
       //...
-      // Return fail...
+      // Return fail.
       await paymentResponse.complete("fail");
     }
   };
@@ -608,6 +629,10 @@ const validatePayment = async(paymentResponse) => {
 #### Call Payment method on pwa
 
 ```js
-// Pay...
+// Pay.
 pwa.Payment(paydata, validatePayment);
 ```
+
+## License
+
+[MIT] © [Maye Edwin](https://maye.pwafire.org)
