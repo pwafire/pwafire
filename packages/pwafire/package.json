@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "5.0.1-alpha",
+  "version": "5.0.1-beta",
   "description": "Progressive Web App API of APIs",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
