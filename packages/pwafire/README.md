@@ -2,7 +2,7 @@
 
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
-Welcome to **@pwafire v.4.0.0** which is the second iterational foundation for our next generation of the pwafire api. Note that, these release is a breaking change, before upgrading, check the documentations first.
+Welcome to **@pwafire v.4.0.0** which is the second iterational foundation for our next generation of the pwafire api. Note that, this release was a breaking change, before upgrading, check the documentations first.
 
 ### Breaking change for v4.0.0 moving forward
 
