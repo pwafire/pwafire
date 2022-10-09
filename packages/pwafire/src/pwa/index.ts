@@ -72,10 +72,10 @@ class PWA {
    * Read files from the clipboard.
    * @method readFiles
    */
-  async readFiles() {
+  async readFiles(): Promise<{ ok: boolean; message: string; files: File[] | null }> {
     try {
       if (navigator.clipboard) {
-        const files = [];
+        const files = [] as File[];
         const items = await navigator.clipboard.read();
         for (const item of items) {
           for (const type of item.types) {
