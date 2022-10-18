@@ -92,21 +92,23 @@ const supported = await check.Share();
 const all = await check.All();
 ```
 
-## PWA : New Web Capabilities
+## PWAs : New Web Capabilities(Project Fugu)
 
 | Feature                                                     | Stabilty |
 | ----------------------------------------------------------- | -------- |
-| Custom Install Button                                       | ok       |
+| Install(Custom)                                             | ok       |
 | Background Sync                                             | ok       |
 | Badging                                                     | ok       |
 | Contact Picker                                              | ok       |
-| Share Target                                                | ok       |
 | Screen Wake Lock                                            | ok       |
 | Content Indexing                                            | ok       |
-| Web payments                                                | ok       |
+| Copy Text                                                   | ok       |
+| Read Text(Clipboard)                                        | ok       |
 | Copy Images                                                 | ok       |
+| Read Files(Clipboard)                                       | ok       |
 | Push Notifications                                          | ok       |
 | Web Share                                                   | ok       |
+| Web payments                                                | ok       |
 | [View All, 10 + Here](https://docs.pwafire.org/get-started) | 14       |
 
 ## Chat : Join the conversation

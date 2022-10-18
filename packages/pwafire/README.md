@@ -133,7 +133,7 @@ Read text from clipboard.
 
 ```js
 // Read text
-pwa.readText();
+const res = await pwa.readText();
 ```
 
 ### 3. Copy image (Only PNG are supported for security purposes) to clipboard
@@ -143,7 +143,7 @@ Copy png images to clipboard
 #### Call the copyImage method on pwa
 
 ```js
-pwa.copyImage(imgURL);
+const res = await pwa.copyImage(imgURL);
 ```
 
 ### 4. Read files e.g images from clipboard
@@ -153,7 +153,7 @@ Read png images from clipboard
 #### Call the readFiles method on pwa
 
 ```js
-pwa.readFiles();
+const res = await pwa.readFiles();
 ```
 
 ### 5. Web Share
@@ -176,7 +176,7 @@ const data = {
 #### Call the share method on pwa
 
 ```js
-pwa.Share(data);
+const res = await pwa.Share(data);
 ```
 
 ### 6. Contacts Picker
