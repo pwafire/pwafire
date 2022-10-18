@@ -537,7 +537,7 @@ if (res.ok) {
 }
 ```
 
-### Get subset of fonts
+#### Get subset of fonts
 
 You can also filter them based on the `PostScript` names by adding a postscriptNames parameter, an array of strings.
 
