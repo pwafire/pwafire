@@ -28,4 +28,12 @@ declare var BarcodeDetector: {
   getSupportedFormats: () => any;
 };
 
+interface FontData {
+  postscriptName: string;
+  fullName: string;
+  family: string;
+  style: string;
+  blob: any;
+}
+
 declare var IdleDetector: { new (): any; requestPermission: () => any };

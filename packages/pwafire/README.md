@@ -114,7 +114,7 @@ import { check } from "pwafire";
 const isSupported = await check.Share();
 ```
 
-### 1. Copy Text
+### Copy Text
 
 Copy text to clipboard.
 
@@ -125,7 +125,7 @@ Copy text to clipboard.
 pwa.copyText(text);
 ```
 
-### 2. Read Text
+### Read Text
 
 Read text from clipboard.
 
@@ -136,7 +136,7 @@ Read text from clipboard.
 const res = await pwa.readText();
 ```
 
-### 3. Copy image (Only PNG are supported for security purposes) to clipboard
+### Copy image (Only PNG are supported for security purposes) to clipboard
 
 Copy png images to clipboard
 
@@ -146,7 +146,7 @@ Copy png images to clipboard
 const res = await pwa.copyImage(imgURL);
 ```
 
-### 4. Read files e.g images from clipboard
+### Read files e.g images from clipboard
 
 Read png images from clipboard
 
@@ -156,7 +156,7 @@ Read png images from clipboard
 const res = await pwa.readFiles();
 ```
 
-### 5. Web Share
+### Web Share
 
 Share links, text, and files to other apps installed on the device.
 
@@ -179,7 +179,7 @@ const data = {
 const res = await pwa.Share(data);
 ```
 
-### 6. Contacts Picker
+### Contacts Picker
 
 [Contacts Picker API](https://github.com/pwafire/pwafire/tree/master/bundle/contact-picker) allows a PWA to access contacts from the mobile device's native contacts manager.
 
@@ -203,7 +203,7 @@ pwa.Contacts(props, options).then((res) => {
 });
 ```
 
-### 7. Show PWA Connectivity status
+### Show PWA Connectivity status
 
 Pass in two call back funtions, aka **online** and **offline** handlers.
 
@@ -226,7 +226,7 @@ const offline = () => {
 pwa.Connectivity(online, offline);
 ```
 
-### 8. Fullscreen
+### Fullscreen
 
 Open app in fullscreen on a click event
 
@@ -236,7 +236,7 @@ Open app in fullscreen on a click event
 pwa.Fullscreen();
 ```
 
-### 9. Notifications
+### Notifications
 
 Show notifications. Pass a **data** object
 
@@ -260,7 +260,7 @@ const data = {
 pwa.Notification(data);
 ```
 
-### 10. Install, add custom installation logic
+### Install, add custom installation logic
 
 Provide an installation step **type** (`before, installed or install`), and a **callback** function as a parameters to the **Install** method on pwa . This is a new feature in v4.0.7+
 
@@ -335,7 +335,7 @@ Provide an installation step **type** (`before, installed or install`), and a **
 - For other apps, make sure the first two steps run on **page load**, and the third step is called
   on button click.
 
-### 11. Badging
+### Badging
 
 #### Add badging for app icons
 
@@ -358,7 +358,7 @@ pwa.setBadge(unreadCount);
 pwa.clearBadge();
 ```
 
-### 12. Screen Wake Lock API
+### Screen Wake Lock API
 
 The Screen Wake Lock API provides a way to prevent devices from dimming or locking the screen when an application needs to keep running.
 
@@ -368,7 +368,7 @@ The Screen Wake Lock API provides a way to prevent devices from dimming or locki
 pwa.WakeLock();
 ```
 
-### 13. Visibility
+### Visibility
 
 Check if user is viewing a page. Pause/play video or games e.t.c
 
@@ -396,7 +396,7 @@ const notAvailable = () => {
 pwa.Visibility(isVisible, notAvailable);
 ```
 
-### 14. The File System Access API
+### The File System Access API
 
 _The File System Access API_ allows web apps to read or save changes directly to files and folders on the user's device.
 
@@ -420,7 +420,7 @@ const res = await pwa.pickTextFile();
 const contents = res.ok ? res.contents : null;
 ```
 
-### 15. Content Indexing
+### Content Indexing
 
 This API allows you to index your offline-capable pages.
 
@@ -479,7 +479,7 @@ const res = index.removeItem({
 const items = await index.getAll();
 ```
 
-### 16. Barcode Detection
+### Barcode Detection
 
 Unlock interesting use cases like online payments or web navigation, or use barcodes for establishing social connections on messenger applications.
 
@@ -507,7 +507,54 @@ if (res.ok) {
 }
 ```
 
-### 17. Web Payments
+### Font Access
+
+Allows you to access the user's locally installed fonts and obtain low-level details about them.
+
+#### Call the fontAccess method on pwa
+
+```js
+const res = await pwa.fontAccess();
+if (res.ok) {
+  // Do something.
+  const fonts = res.fonts;
+} else {
+  // Do something.
+}
+```
+
+#### Accessing SFNT data
+
+```js
+const res = await pwa.fontAccess({
+  sfnt: true,
+});
+if (res.ok) {
+  // Do something.
+  const fonts = res.fonts;
+  const sfntFormats = res.sfntFormats;
+} else {
+  // Do something.
+}
+```
+
+### Get subset of fonts
+
+You can also filter them based on the `PostScript` names by adding a postscriptNames parameter, an array of strings.
+
+```js
+const res = await pwa.fontAccess({
+  postscriptNames: ["Verdana", "Verdana-Bold", "Verdana-Italic"],
+});
+if (res.ok) {
+  // Do something.
+  const fonts = res.fonts;
+} else {
+  // Do something.
+}
+```
+
+### Web Payments
 
 Allows users select their preferred way of **paying for things**, and make that information
 available to **a merchant.**
