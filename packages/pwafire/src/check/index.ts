@@ -145,6 +145,16 @@ class Check {
     }
   }
 
+  // Check for font access support.
+  async fontAccess() {
+    try {
+      // Check for font access support.
+      return "queryLocalFonts" in window ? true : false;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   // Check service worker support.
   async serviceWorker() {
     try {
@@ -279,6 +289,12 @@ class Check {
           name: "Barcode Detector",
           message: (await this.barcodeDetector()) ? "Supported" : "Not supported",
           ok: await this.barcodeDetector(),
+        },
+
+        {
+          name: "Font Access",
+          message: (await this.fontAccess()) ? "Supported" : "Not supported",
+          ok: await this.fontAccess(),
         },
         {
           name: "Service Worker",

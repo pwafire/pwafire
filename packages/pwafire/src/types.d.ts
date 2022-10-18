@@ -1,8 +1,12 @@
+interface FontAccess {
+  postscriptNames?: string[];
+}
 interface Window {
   addEventListener(arg0: string, arg1: () => { type: string; message: string }): any;
   deferredPrompt?: any;
   showOpenFilePicker: () => [any] | PromiseLike<[any]>;
   showSaveFilePicker: () => [any] | PromiseLike<[any]>;
+  queryLocalFonts: (config?: FontAccess) => [any] | PromiseLike<[any]>;
 }
 
 interface Navigator {

@@ -624,8 +624,78 @@ class PWA {
   }
 
   /**
-   * Allows users select their preferred way of paying for things,
-   * and make that information available to a merchant.
+   * Access local device fonts.
+   * @method localFontsAccess
+   */
+  async localFontsAccess(config?: { postscriptNames?: string[]; accessSFNT?: boolean }) {
+    try {
+      //  SFNT is a font file format that is used by OpenType, TrueType, and PostScript fonts.
+      const getSFNT = async (availableFonts: any[]) => {
+        try {
+          // Outline formats.
+          const outlineFormats = [];
+          for (const fontData of availableFonts) {
+            // Get a blob containing valid and complete SFNT-wrapped font data.
+            const sfnt = await fontData.blob();
+            // Slice out only the bytes we need: the first 4 bytes are the SFNT.
+            const sfntVersion = await sfnt.slice(0, 4).text();
+            let outlineFormat = "";
+            switch (sfntVersion) {
+              case "\x00\x01\x00\x00":
+              case "true":
+              case "typ1":
+                outlineFormat = "truetype";
+                break;
+              case "OTTO":
+                outlineFormat = "cff";
+                break;
+            }
+            // Add outline format to array.
+            outlineFormat !== "" ? outlineFormats.push(outlineFormat) : null;
+          }
+          // Return outline formats.
+          return outlineFormats;
+        } catch (error) {
+          throw error;
+        }
+      };
+      // Feature detection.
+      if ("queryLocalFonts" in window) {
+        // Supported.
+        if (config && config.postscriptNames) {
+          const fonts = await window.queryLocalFonts({ postscriptNames: config.postscriptNames });
+
+          return {
+            ok: true,
+            message: "Fonts access",
+            fonts,
+            outlineFormats: config.accessSFNT ? await getSFNT(fonts) : [],
+          };
+        } else {
+          const fonts = await window.queryLocalFonts();
+          return {
+            ok: true,
+            message: "Fonts access",
+            fonts,
+            outlineFormats: config && config.accessSFNT ? await getSFNT(fonts) : [],
+          };
+        }
+      } else {
+        // Not supported.
+        return {
+          ok: false,
+          message: "Local Fonts Access API not supported",
+          fonts: null,
+        };
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  /**
+   * Select preferred way of paying for things, and make that information
+   * available to a merchant.
    * @method Payment
    */
   async Payment(
