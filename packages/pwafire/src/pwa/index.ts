@@ -651,7 +651,7 @@ class PWA {
                 break;
             }
             // Add outline format to array.
-            outlineFormat !== "" ? outlineFormats.push(outlineFormat) : null;
+            if (outlineFormat !== "") outlineFormats.push(outlineFormat);
           }
           // Return outline formats.
           return outlineFormats;
