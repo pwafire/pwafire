@@ -625,20 +625,20 @@ class PWA {
 
   /**
    * Access local device fonts.
-   * @method localFontsAccess
+   * @method accessFonts
    */
-  async localFontsAccess(config?: { postscriptNames?: string[]; accessSFNT?: boolean }) {
+  async accessFonts(config?: { postscriptNames?: string[]; sfnt?: boolean }) {
     try {
-      //  SFNT is a font file format that is used by OpenType, TrueType, and PostScript fonts.
-      const getSFNT = async (availableFonts: any[]) => {
+      // SFNT is a font file format that is used by OpenType, TrueType, and PostScript fonts.
+      const getSFNT = async (availableFonts: FontData[]) => {
         try {
           // Outline formats.
           const outlineFormats = [];
           for (const fontData of availableFonts) {
             // Get a blob containing valid and complete SFNT-wrapped font data.
-            const sfnt = await fontData.blob();
+            const sfntBlob = await fontData.blob();
             // Slice out only the bytes we need: the first 4 bytes are the SFNT.
-            const sfntVersion = await sfnt.slice(0, 4).text();
+            const sfntVersion = await sfntBlob.slice(0, 4).text();
             let outlineFormat = "";
             switch (sfntVersion) {
               case "\x00\x01\x00\x00":
@@ -651,7 +651,7 @@ class PWA {
                 break;
             }
             // Add outline format to array.
-            outlineFormat !== "" ? outlineFormats.push(outlineFormat) : null;
+            if (outlineFormat !== "") outlineFormats.push(outlineFormat);
           }
           // Return outline formats.
           return outlineFormats;
@@ -663,21 +663,20 @@ class PWA {
       if ("queryLocalFonts" in window) {
         // Supported.
         if (config && config.postscriptNames) {
-          const fonts = await window.queryLocalFonts({ postscriptNames: config.postscriptNames });
-
+          const fonts: FontData[] = await window.queryLocalFonts({ postscriptNames: config.postscriptNames });
           return {
             ok: true,
             message: "Fonts access",
             fonts,
-            outlineFormats: config.accessSFNT ? await getSFNT(fonts) : [],
+            sfnt: config.sfnt ? await getSFNT(fonts) : [],
           };
         } else {
-          const fonts = await window.queryLocalFonts();
+          const fonts: FontData[] = await window.queryLocalFonts();
           return {
             ok: true,
             message: "Fonts access",
             fonts,
-            outlineFormats: config && config.accessSFNT ? await getSFNT(fonts) : [],
+            sfnt: config && config.sfnt ? await getSFNT(fonts) : [],
           };
         }
       } else {
