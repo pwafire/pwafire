@@ -530,9 +530,8 @@ const res = await pwa.accessFonts({
   sfnt: true,
 });
 if (res.ok) {
-  // Do something.
-  const fonts = res.fonts;
-  const sfntFormats = res.sfntFormats;
+  // Do something with the sfnt data.
+  const sfntFormats = res.sfnt;
 } else {
   // Do something.
 }

@@ -668,7 +668,7 @@ class PWA {
             ok: true,
             message: "Fonts access",
             fonts,
-            outlineFormats: config.sfnt ? await getSFNT(fonts) : [],
+            sfnt: config.sfnt ? await getSFNT(fonts) : [],
           };
         } else {
           const fonts: FontData[] = await window.queryLocalFonts();
@@ -676,7 +676,7 @@ class PWA {
             ok: true,
             message: "Fonts access",
             fonts,
-            outlineFormats: config && config.sfnt ? await getSFNT(fonts) : [],
+            sfnt: config && config.sfnt ? await getSFNT(fonts) : [],
           };
         }
       } else {
