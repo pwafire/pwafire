@@ -362,7 +362,6 @@ class PWA {
             throw error;
           }
         };
-
         // Switch on the type.
         switch (type) {
           case "before":
