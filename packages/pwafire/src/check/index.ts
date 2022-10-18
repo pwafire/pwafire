@@ -146,7 +146,7 @@ class Check {
   }
 
   // Check for font access support.
-  async fontAccess() {
+  async accessFonts() {
     try {
       // Check for font access support.
       return "queryLocalFonts" in window ? true : false;
@@ -293,8 +293,8 @@ class Check {
 
         {
           name: "Font Access",
-          message: (await this.fontAccess()) ? "Supported" : "Not supported",
-          ok: await this.fontAccess(),
+          message: (await this.accessFonts()) ? "Supported" : "Not supported",
+          ok: await this.accessFonts(),
         },
         {
           name: "Service Worker",

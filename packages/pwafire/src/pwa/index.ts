@@ -625,7 +625,7 @@ class PWA {
 
   /**
    * Access local device fonts.
-   * @method localFontsAccess
+   * @method accessFonts
    */
   async accessFonts(config?: { postscriptNames?: string[]; sfnt?: boolean }) {
     try {

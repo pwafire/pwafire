@@ -511,10 +511,10 @@ if (res.ok) {
 
 Allows you to access the user's locally installed fonts and obtain low-level details about them.
 
-#### Call the fontAccess method on pwa
+#### Call the accessFonts method on pwa
 
 ```js
-const res = await pwa.fontAccess();
+const res = await pwa.accessFonts();
 if (res.ok) {
   // Do something.
   const fonts = res.fonts;
@@ -526,7 +526,7 @@ if (res.ok) {
 #### Accessing SFNT data
 
 ```js
-const res = await pwa.fontAccess({
+const res = await pwa.accessFonts({
   sfnt: true,
 });
 if (res.ok) {
@@ -543,7 +543,7 @@ if (res.ok) {
 You can also filter them based on the `PostScript` names by adding a postscriptNames parameter, an array of strings.
 
 ```js
-const res = await pwa.fontAccess({
+const res = await pwa.accessFonts({
   postscriptNames: ["Verdana", "Verdana-Bold", "Verdana-Italic"],
 });
 if (res.ok) {
