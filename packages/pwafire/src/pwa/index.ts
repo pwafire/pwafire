@@ -149,6 +149,48 @@ class PWA {
     }
   }
 
+    /**
+   * Requesting an address to deliver a gift to.
+   * @method SendGift
+   */
+     async SendGift(
+      callback: (address: string) => {},
+    ) {
+      try {
+        if ("contacts" in navigator && "ContactsManager" in window) {
+
+          // We are unsure if addresses are supported, or can be provided by the browser.
+          if ((await navigator.contacts.getProperties()).includes('address')) {
+
+            const res = await this.Contacts(["address"], {multiple: false})
+            const contacts = res.ok ? res.contacts : null;
+            if (!contacts.length) {
+              // No contacts were selected in the picker.
+              return;
+            }
+
+            // Callback is a developer defined function to send a gift to the gotten address
+            // length is 1 since we didn’t request multiple contacts.
+            try {
+              const sendGiftResponse = callback(contacts[0].address);
+              // Return Delivery Address.
+              return { ok: true, message: "Send gift response", sendGiftResponse }; 
+            } catch (error) {
+              return { ok: false, message: "Callback function failed when executing", error }
+            }
+          } else {
+            return { ok: false, message: "Address property not present" };
+          }
+
+        } else {
+          return { ok: false, message: "Contacts Picker API not supported" };
+        }
+      } catch (error) {
+        // Error.
+        throw error;
+      }
+    }
+
   /**
    * Get the connectivity status, offline, online, etc.
    * @method Connectivity
