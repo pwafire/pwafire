@@ -151,9 +151,9 @@ class PWA {
 
     /**
    * Requesting an address to deliver a gift to.
-   * @method SendGift
+   * @method sendGift
    */
-     async SendGift(
+     async sendGift(
       callback: (address: string) => {},
     ) {
       try {
