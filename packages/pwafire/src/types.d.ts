@@ -36,4 +36,17 @@ interface FontData {
   blob: any;
 }
 
+interface OTPCredential extends Credential {
+  code: string;
+  type: "otp";
+  otp: {
+    transport: "sms" | "email";
+    code: string;
+  };
+}
+
+interface OTPCredentialOptions extends CredentialRequestOptions {
+  otp: { transport: string[] };
+}
+
 declare var IdleDetector: { new (): any; requestPermission: () => any };
