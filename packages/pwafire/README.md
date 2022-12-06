@@ -514,14 +514,15 @@ Verify phone numbers on the web with the WebOTP API, which allows you to receive
 #### Call the webOTP method on pwa
 
 ```js
-const res = await pwa.webOTP();
-// Do something with the result.
-if (res.ok) {
-  // Do something.
-  const code = res.code;
-} else {
-  // Do something.
-}
+await pwa.webOTP((res) => {
+  // Do something with the result.
+  if (res.ok) {
+    // Do something.
+    const code = res.code;
+  } else {
+    // Do something.
+  }
+});
 ```
 
 ### Font Access
