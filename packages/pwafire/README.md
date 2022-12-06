@@ -507,7 +507,7 @@ if (res.ok) {
 }
 ```
 
-### Web OTP API
+### Web OTP
 
 Verify phone numbers on the web with the WebOTP API, which allows you to receive one-time passwords (OTPs) from the SMS message and automatically fill them into the form.
 
