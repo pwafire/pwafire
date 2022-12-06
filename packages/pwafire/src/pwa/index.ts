@@ -696,62 +696,43 @@ class PWA {
    * Use web OTP API to get the one-time code sent to the user's device.
    * @method webOTP
    */
-  async webOTP(callback: (res: { message: string; ok: boolean; code: string }) => void) {
+  async webOTP(callback: (res: { code: string | null; ok: boolean; message: string }) => void) {
     try {
       // Feature detection.
       if ("OTPCredential" in window) {
         window.addEventListener("DOMContentLoaded", async () => {
-          try {
-            const input = document.querySelector('input[autocomplete="one-time-code"]');
-            if (!input) {
-              callback({
-                ok: false,
-                message: "No input field with autocomplete='one-time-code' found",
-                code: "",
+          const input = document.querySelector('input[autocomplete="one-time-code"]');
+          if (input) {
+            const ac = new AbortController();
+            const form = input.closest("form");
+            if (form) {
+              form.addEventListener("submit", () => {
+                ac.abort();
               });
-            } else {
-              //  Instantiate an abort controller
-              const ac = new AbortController();
-              const form = input.closest("form");
-              if (form) {
-                // Abort auto submission if otp is entered manually.
-                form.addEventListener("submit", (e) => {
-                  ac.abort();
-                  // Call callback.
-                  callback({
-                    ok: false,
-                    message: "OTP entered manually",
-                    code: "",
-                  });
-                });
-              } else {
-                // Listen for the 'otp-form' event.
-                const otp = (await navigator.credentials.get({
-                  otp: { transport: ["sms"], signal: ac.signal },
-                } as OTPCredentialOptions)) as OTPCredential;
-                // Return the one-time code.
-                callback({
-                  ok: true,
-                  message: "OTP received",
-                  code: otp.code,
-                });
-              }
             }
-          } catch (error) {
+            const otp = (await navigator.credentials.get({
+              otp: { transport: ["sms"] },
+              signal: ac.signal,
+            } as OTPCredentialOptions)) as OTPCredential;
             callback({
+              code: otp.code,
+              ok: true,
+              message: "OTP received",
+            });
+          } else {
+            callback({
+              code: null,
               ok: false,
-              message: "OTP not received. Please try again or enter the OTP manually.",
-              code: "",
+              message: "No input with autocomplete='one-time-code' found",
             });
           }
         });
       } else {
-        // Not supported.
-        return {
+        callback({
+          code: null,
           ok: false,
           message: "Web OTP API not supported",
-          content: null,
-        };
+        });
       }
     } catch (error) {
       throw error;
