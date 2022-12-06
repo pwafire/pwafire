@@ -40,7 +40,7 @@ if (res.ok) {
 }
 ```
 
-#### Do something with the response returned for e.g copyText;
+#### Do something with the response returned for e.g copyText
 
 ```js
 // Copy text
@@ -264,7 +264,7 @@ pwa.Notification(data);
 
 Provide an installation step **type** (`before, installed or install`), and a **callback** function as a parameters to the **Install** method on pwa . This is a new feature in v4.0.7+
 
-#### Installation steps;
+#### Installation steps
 
 - Step `installed` => Check if the app is installed, e.g for react it'd be:
 
@@ -505,6 +505,24 @@ if (res.ok) {
 } else {
   // Do something.
 }
+```
+
+### Web OTP
+
+Verify phone numbers on the web with the WebOTP API, which allows you to receive one-time passwords (OTPs) from the SMS message and automatically fill them into the form.
+
+#### Call the webOTP method on pwa
+
+```js
+await pwa.webOTP((res) => {
+  // Do something with the result.
+  if (res.ok) {
+    // Do something.
+    const code = res.code;
+  } else {
+    // Do something.
+  }
+});
 ```
 
 ### Font Access
