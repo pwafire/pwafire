@@ -524,12 +524,13 @@ class PWA {
       {
         description: string;
         accept: {
-          "image/*": string[];
-          "audio/*": string[];
-          "video/*": string[];
+          "image/*"?: string[];
+          "audio/*"?: string[];
+          "video/*"?: string[];
         };
       },
     ];
+    multiple?: boolean;
   }) {
     try {
       let fileHandle: any;
