@@ -641,15 +641,11 @@ class PWA {
    */
   async accessFonts(config?: { postscriptNames?: string[]; sfnt?: boolean }) {
     try {
-      // SFNT is a font file format that is used by OpenType, TrueType, and PostScript fonts.
-      const getSFNT = async (availableFonts: FontData[]) => {
+      const getSFNT = async (availableFonts: [any]) => {
         try {
-          // Outline formats.
           const outlineFormats = [];
           for (const fontData of availableFonts) {
-            // Get a blob containing valid and complete SFNT-wrapped font data.
             const sfntBlob = await fontData.blob();
-            // Slice out only the bytes we need: the first 4 bytes are the SFNT.
             const sfntVersion = await sfntBlob.slice(0, 4).text();
             let outlineFormat = "";
             switch (sfntVersion) {
@@ -662,20 +658,16 @@ class PWA {
                 outlineFormat = "cff";
                 break;
             }
-            // Add outline format to array.
             if (outlineFormat !== "") outlineFormats.push(outlineFormat);
           }
-          // Return outline formats.
           return outlineFormats;
         } catch (error) {
           throw error;
         }
       };
-      // Feature detection.
       if ("queryLocalFonts" in window) {
-        // Supported.
         if (config && config.postscriptNames) {
-          const fonts: FontData[] = await window.queryLocalFonts({ postscriptNames: config.postscriptNames });
+          const fonts = await window.queryLocalFonts({ postscriptNames: config.postscriptNames });
           return {
             ok: true,
             message: "Fonts access",
@@ -683,7 +675,7 @@ class PWA {
             sfnt: config.sfnt ? await getSFNT(fonts) : [],
           };
         } else {
-          const fonts: FontData[] = await window.queryLocalFonts();
+          const fonts = await window.queryLocalFonts();
           return {
             ok: true,
             message: "Fonts access",
@@ -692,7 +684,6 @@ class PWA {
           };
         }
       } else {
-        // Not supported.
         return {
           ok: false,
           message: "Local Fonts Access API not supported",
