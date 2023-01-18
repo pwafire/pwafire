@@ -519,10 +519,21 @@ class PWA {
    * Pick any file types from the device.
    * @method pickFile
    */
-  async pickFile() {
+  async pickFile(options?: {
+    types: [
+      {
+        description: string;
+        accept: {
+          "image/*": string[];
+          "audio/*": string[];
+          "video/*": string[];
+        };
+      },
+    ];
+  }) {
     try {
       let fileHandle: any;
-      [fileHandle] = await window.showOpenFilePicker();
+      [fileHandle] = options ? await window.showOpenFilePicker(options) : await window.showOpenFilePicker();
       const file: any = await fileHandle.getFile();
       if (file) {
         return {
