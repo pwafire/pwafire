@@ -410,6 +410,23 @@ const res = await pwa.pickkFile();
 const file = res.ok ? res.file : null;
 ```
 
+You can provide an options object as a parameter to the pickFile method to filter the file types you want to pick, e.g
+
+```js
+// Do something with the contents.
+const res = await pwa.pickkFile({
+  types: [
+    {
+      description: "Text files",
+      accept: {
+        "text/plain": [".txt"],
+      },
+    },
+  ],
+});
+const file = res.ok ? res.file : null;
+```
+
 #### Call the pickTextFile method on pwa
 
 The promise resolves with a text response(contents of the picked text file)
