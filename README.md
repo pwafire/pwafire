@@ -1,27 +1,8 @@
-## Progressive Web Apps API of APIs (Sponsor us)
+# Progressive Web Apps API of APIs (Sponsor us)
 
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
 <span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span>
-
-### Breaking change for v4.0.0 moving forward
-
-All **responses** returned have a new `ok` value, a boolean type which replaces `success` value, a boolean as shown below;
-
-```js
-// Async API...
-const res = await pwa.CopyText(text);
-
-// Lower versions...
-if (res.success) {
-  // Do something...
-}
-
-// New version starting v4.0.0
-if (res.ok) {
-  // Do something...
-}
-```
 
 ## Introducing _pwafire_ cdn and npm
 
@@ -77,18 +58,18 @@ Preview Documentation : [Get Started](https://docs.pwafire.org/get-started)
 - Install latest pwafire version, already up for testing in v4 alpha-3\*
 
 ```bash
- npm i --save pwafire@latest
+ npm i --save pwafire
 ```
 
 - Try it out
 
 ```js
-// Get the check instance from pwafire...
+// Get the check instance from pwafire.
 import { check } from "pwafire";
 //...
-// The response is a boolean, true or false...
+// The response is a boolean, true or false.
 const supported = await check.Share();
-// You can get a list of all apis and their support status as well...
+// You can get a list of all apis and their support status as well.
 const all = await check.All();
 ```
 
