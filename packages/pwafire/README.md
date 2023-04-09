@@ -1,14 +1,12 @@
-## Progressive Web Apps API of APIs (Sponsor us)
+# Progressive Web Apps API of APIs (Sponsor us)
 
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
-Welcome to **@pwafire v.4.0.0** which is the second iterational foundation for our next generation of the pwafire api. Note that, this release was a breaking change, before upgrading, check the documentations first.
+## About pwafire library
 
-### Breaking change for v4.0.0 moving forward
+An open-source library and framework for building fast, reliable, and engaging Progressive Web Apps (PWAs). It provides developers with a set of tools and resources to simplify the process of creating PWAs, including pre-built components, templates, and best practices. PWA Fire is designed to be easy to use and adaptable to a wide range of use cases, from simple blogs to complex web applications. Its goal is to empower developers to build high-quality PWAs that provide a native app-like experience to users, regardless of their device or platform
 
-All **responses** returned have a new `ok` value, a boolean type which replaces `success` value, a boolean as shown below;
-
-### API Spec
+## API Spec
 
 For all promise types, the promise value returned is an object - might include additional data for example, **Contacts API** returns an additional **contacts** value.
 
@@ -37,10 +35,12 @@ if (res.success) {
 // New version starting v4.0.0
 if (res.ok) {
   // Do something.
+} else {
+  // Do something.
 }
 ```
 
-#### Do something with the response returned for e.g copyText
+### Do something with the response returned for e.g copyText
 
 ```js
 // Copy text
