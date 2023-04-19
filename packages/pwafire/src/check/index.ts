@@ -4,7 +4,7 @@ class Check {
   async Share() {
     try {
       // Check for share.
-      return "share" in navigator ? true : false;
+      return "share" in navigator;
     } catch (error) {
       throw error;
     }
@@ -14,7 +14,7 @@ class Check {
   async shareFiles() {
     try {
       // Check for files share support.
-      return "canShare" in navigator ? true : false;
+      return "canShare" in navigator;
     } catch (error) {
       throw error;
     }
@@ -24,7 +24,7 @@ class Check {
   async Clipboard() {
     try {
       // Check for clipboard.
-      return "clipboard" in navigator ? true : false;
+      return "clipboard" in navigator;
     } catch (error) {
       throw error;
     }
@@ -33,7 +33,7 @@ class Check {
   // Check for copy text.
   async copyText() {
     try {
-      return (await this.Clipboard()) ? true : false;
+      return await this.Clipboard();
     } catch (error) {
       throw error;
     }
@@ -42,7 +42,7 @@ class Check {
   // Check copy image.
   async copyImage() {
     try {
-      return (await this.Clipboard()) ? true : false;
+      return await this.Clipboard();
     } catch (error) {
       throw error;
     }
@@ -52,7 +52,7 @@ class Check {
   async idleDetection() {
     try {
       // Check for idle detection.
-      return "IdleDetector" in window ? true : false;
+      return "IdleDetector" in window;
     } catch (error) {
       throw error;
     }
@@ -62,7 +62,7 @@ class Check {
   async wakeLock() {
     try {
       // Check for wakelock.
-      return "wakeLock" in navigator ? true : false;
+      return "wakeLock" in navigator;
     } catch (error) {
       throw error;
     }
@@ -72,7 +72,7 @@ class Check {
   async Contacts() {
     try {
       // Check for contacts.
-      return "contacts" in navigator && "ContactsManager" in window ? true : false;
+      return "contacts" in navigator && "ContactsManager" in window;
     } catch (error) {
       throw error;
     }
@@ -82,7 +82,7 @@ class Check {
   async onlineStatus() {
     try {
       // Check if online status is supported.
-      return "onLine" in navigator ? true : false;
+      return "onLine" in navigator;
     } catch (error) {
       throw error;
     }
@@ -92,7 +92,7 @@ class Check {
   async Badging() {
     try {
       // Check for Badging support.
-      return "setAppBadge" in navigator && "clearAppBadge" in navigator ? true : false;
+      return "setAppBadge" in navigator && "clearAppBadge" in navigator;
     } catch (error) {
       throw error;
     }
@@ -102,7 +102,7 @@ class Check {
   async Notifications() {
     try {
       // Check for notifications.
-      return "Notification" in window ? true : false;
+      return "Notification" in window;
     } catch (error) {
       throw error;
     }
@@ -113,7 +113,7 @@ class Check {
     try {
       // Check if content indexing api is supported.
       const registration = (await navigator.serviceWorker.ready) as any;
-      return "index" in registration ? true : false;
+      return "index" in registration;
     } catch (error) {
       throw error;
     }
@@ -125,7 +125,7 @@ class Check {
       // If the browser supports the Notification API, check if the user has granted permission to display notifications.
       if (await this.Notifications()) {
         // Check if the user has granted permission to display notifications.
-        return Notification.permission === "granted" ? true : false;
+        return Notification.permission === "granted";
       } else {
         // Return false if the browser doesn't support the Notification API.
         return false;
@@ -139,7 +139,7 @@ class Check {
   async barcodeDetector() {
     try {
       // Check for barcode detection support.
-      return "BarcodeDetector" in window ? true : false;
+      return "BarcodeDetector" in window;
     } catch (error) {
       throw error;
     }
@@ -149,7 +149,7 @@ class Check {
   async accessFonts() {
     try {
       // Check for font access support.
-      return "queryLocalFonts" in window ? true : false;
+      return "queryLocalFonts" in window;
     } catch (error) {
       throw error;
     }
@@ -159,7 +159,7 @@ class Check {
   async serviceWorker() {
     try {
       // Check service worker support.
-      return "serviceWorker" in navigator ? true : false;
+      return "serviceWorker" in navigator;
     } catch (error) {
       throw error;
     }
@@ -169,7 +169,7 @@ class Check {
   async Bluetooth() {
     try {
       // Check for bluetooth support.
-      return "bluetooth" in navigator ? true : false;
+      return "bluetooth" in navigator;
     } catch (error) {
       throw error;
     }
@@ -179,7 +179,7 @@ class Check {
   async Payment() {
     try {
       // Check for payments api support.
-      return "PaymentRequest" in window ? true : false;
+      return "PaymentRequest" in window;
     } catch (error) {
       throw error;
     }
@@ -189,7 +189,7 @@ class Check {
   async webOTP() {
     try {
       // Check for web otp support.
-      return "OTPCredential" in window ? true : false;
+      return "OTPCredential" in window;
     } catch (error) {
       throw error;
     }
@@ -199,7 +199,7 @@ class Check {
   async webNFC() {
     try {
       // Check for web nfc support.
-      return "NDEFReader" in window ? true : false;
+      return "NDEFReader" in window;
     } catch (error) {
       throw error;
     }
@@ -209,7 +209,7 @@ class Check {
   async cameraPanAndTiltZoom() {
     try {
       const supports = navigator.mediaDevices.getSupportedConstraints() as any;
-      return supports.pan && supports.tilt && supports.zoom ? true : false;
+      return !!(supports.pan && supports.tilt && supports.zoom);
     } catch (error) {
       throw error;
     }

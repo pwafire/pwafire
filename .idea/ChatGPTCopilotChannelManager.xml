@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChatGPTCopilotChannelManager">
+    <dynamicCommends>
+      <option value="explain" />
+      <option value="translate to chinese" />
+      <option value="translate to english" />
+      <option value="check bugs" />
+      <option value="optimize code" />
+    </dynamicCommends>
+    <chatChannels>
+      <chatChannel>
+        <option name="model" value="gpt-3.5-turbo" />
+        <option name="messages" />
+      </chatChannel>
+    </chatChannels>
+  </component>
+</project>
