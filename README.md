@@ -1,27 +1,10 @@
-## Progressive Web Apps API of APIs (Sponsor us)
+# Progressive Web Apps API of APIs (Sponsor us)
 
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
-<span>![Build package](https://github.com/pwafire/pwafire/workflows/Build%20package/badge.svg)</span> <span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span>
+An open-source library and framework for building fast, reliable, and engaging Progressive Web Apps (PWAs). It provides developers with a set of tools and resources to simplify the process of creating PWAs, including pre-built components, templates, and best practices. PWA Fire is designed to be easy to use and adaptable to a wide range of use cases, from simple blogs to complex web applications. Its goal is to empower developers to build high-quality PWAs that provide a native app-like experience to users, regardless of their device or platform
 
-### Breaking change for v4.0.0 moving forward
-
-All **responses** returned have a new `ok` value, a boolean type which replaces `success` value, a boolean as shown below;
-
-```js
-// Async API...
-const res = await pwa.CopyText(text);
-
-// Lower versions...
-if (res.success) {
-  // Do something...
-}
-
-// New version starting v4.0.0
-if (res.ok) {
-  // Do something...
-}
-```
+<span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span>
 
 ## Introducing _pwafire_ cdn and npm
 
@@ -77,18 +60,18 @@ Preview Documentation : [Get Started](https://docs.pwafire.org/get-started)
 - Install latest pwafire version, already up for testing in v4 alpha-3\*
 
 ```bash
- npm i --save pwafire@latest
+ npm i --save pwafire
 ```
 
 - Try it out
 
 ```js
-// Get the check instance from pwafire...
+// Get the check instance from pwafire.
 import { check } from "pwafire";
 //...
-// The response is a boolean, true or false...
+// The response is a boolean, true or false.
 const supported = await check.Share();
-// You can get a list of all apis and their support status as well...
+// You can get a list of all apis and their support status as well.
 const all = await check.All();
 ```
 

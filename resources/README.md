@@ -1,3 +1,0 @@
-### [PWA Resources Pool]()
-
-Enjoy!

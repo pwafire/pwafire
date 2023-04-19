@@ -1,14 +1,12 @@
-## Progressive Web Apps API of APIs (Sponsor us)
+# Progressive Web Apps API of APIs (Sponsor us)
 
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
-Welcome to **@pwafire v.4.0.0** which is the second iterational foundation for our next generation of the pwafire api. Note that, this release was a breaking change, before upgrading, check the documentations first.
+## About pwafire library
 
-### Breaking change for v4.0.0 moving forward
+An open-source library and framework for building fast, reliable, and engaging Progressive Web Apps (PWAs). It provides developers with a set of tools and resources to simplify the process of creating PWAs, including pre-built components, templates, and best practices. PWA Fire is designed to be easy to use and adaptable to a wide range of use cases, from simple blogs to complex web applications. Its goal is to empower developers to build high-quality PWAs that provide a native app-like experience to users, regardless of their device or platform
 
-All **responses** returned have a new `ok` value, a boolean type which replaces `success` value, a boolean as shown below;
-
-### API Spec
+## API Spec
 
 For all promise types, the promise value returned is an object - might include additional data for example, **Contacts API** returns an additional **contacts** value.
 
@@ -37,10 +35,12 @@ if (res.success) {
 // New version starting v4.0.0
 if (res.ok) {
   // Do something.
+} else {
+  // Do something.
 }
 ```
 
-#### Do something with the response returned for e.g copyText;
+### Do something with the response returned for e.g copyText
 
 ```js
 // Copy text
@@ -264,7 +264,7 @@ pwa.Notification(data);
 
 Provide an installation step **type** (`before, installed or install`), and a **callback** function as a parameters to the **Install** method on pwa . This is a new feature in v4.0.7+
 
-#### Installation steps;
+#### Installation steps
 
 - Step `installed` => Check if the app is installed, e.g for react it'd be:
 
@@ -410,6 +410,23 @@ const res = await pwa.pickkFile();
 const file = res.ok ? res.file : null;
 ```
 
+You can provide an options object as a parameter to the pickFile method to filter the file types you want to pick, e.g
+
+```js
+// Do something with the contents.
+const res = await pwa.pickkFile({
+  types: [
+    {
+      description: "Text files",
+      accept: {
+        "text/plain": [".txt"],
+      },
+    },
+  ],
+});
+const file = res.ok ? res.file : null;
+```
+
 #### Call the pickTextFile method on pwa
 
 The promise resolves with a text response(contents of the picked text file)
@@ -505,6 +522,24 @@ if (res.ok) {
 } else {
   // Do something.
 }
+```
+
+### Web OTP
+
+Verify phone numbers on the web with the WebOTP API, which allows you to receive one-time passwords (OTPs) from the SMS message and automatically fill them into the form.
+
+#### Call the webOTP method on pwa
+
+```js
+await pwa.webOTP((res) => {
+  // Do something with the result.
+  if (res.ok) {
+    // Do something.
+    const code = res.code;
+  } else {
+    // Do something.
+  }
+});
 ```
 
 ### Font Access

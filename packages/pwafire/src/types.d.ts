@@ -4,7 +4,7 @@ interface FontAccess {
 interface Window {
   addEventListener(arg0: string, arg1: () => { type: string; message: string }): any;
   deferredPrompt?: any;
-  showOpenFilePicker: () => [any] | PromiseLike<[any]>;
+  showOpenFilePicker: (options?: any) => [any] | PromiseLike<[any]>;
   showSaveFilePicker: () => [any] | PromiseLike<[any]>;
   queryLocalFonts: (config?: FontAccess) => [any] | PromiseLike<[any]>;
 }
@@ -34,6 +34,19 @@ interface FontData {
   family: string;
   style: string;
   blob: any;
+}
+
+interface OTPCredential extends Credential {
+  code: string;
+  type: "otp";
+  otp: {
+    transport: "sms" | "email";
+    code: string;
+  };
+}
+
+interface OTPCredentialOptions extends CredentialRequestOptions {
+  otp: { transport: string[] };
 }
 
 declare var IdleDetector: { new (): any; requestPermission: () => any };

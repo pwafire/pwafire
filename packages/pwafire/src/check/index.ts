@@ -111,23 +111,18 @@ class Check {
   // Check if content indexing api is supported.
   async contentIndexing() {
     try {
-      // Check if content indexing api is supported.
       const registration = (await navigator.serviceWorker.ready) as any;
       return "index" in registration;
     } catch (error) {
       throw error;
     }
   }
-
-  // If the browser supports the Notification API, check if the user has granted permission to display notifications.
   async notificationPermission() {
     try {
-      // If the browser supports the Notification API, check if the user has granted permission to display notifications.
       if (await this.Notifications()) {
         // Check if the user has granted permission to display notifications.
         return Notification.permission === "granted";
       } else {
-        // Return false if the browser doesn't support the Notification API.
         return false;
       }
     } catch (error) {
@@ -218,7 +213,6 @@ class Check {
   // Check for all api support.
   async All() {
     try {
-      // Check for all api support.
       return [
         {
           name: "Share",
