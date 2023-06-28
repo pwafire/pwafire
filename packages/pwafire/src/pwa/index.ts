@@ -278,16 +278,51 @@ class PWA {
    * Send notification to the user.
    * @method Notification
    */
-  async Notification(data: { title: string; options: object }) {
+  async Notification(data: {
+    title: string;
+    options: {
+      body: string;
+      icon?: string;
+      badge?: string;
+      vibrate?: number[];
+      sound?: string;
+      timestamp: number;
+      data?: any;
+      dir?: "auto" | "ltr" | "rtl";
+      tag?: string;
+      requireInteraction?: boolean;
+      renotify?: boolean;
+      silent?: boolean;
+      actions?: {
+        action: string;
+        type: "button" | "text";
+        title: string;
+        icon?: string;
+        placeholder?: string;
+      }[];
+    };
+  }) {
     const { title, options } = data;
     try {
       if ("Notification" in window) {
         const permission = await Notification.requestPermission();
         if (permission === "granted") {
-          await navigator.serviceWorker.ready.then((registration) => {
-            registration.showNotification(title, options);
-            return { ok: true, message: "Sent" };
-          });
+          const registration = await navigator.serviceWorker.ready;
+          if (registration.showNotification) {
+            await registration.showNotification(title, options);
+            return {
+              ok: true,
+              message:
+                "actions" in window.Notification?.prototype
+                  ? "Notification sent"
+                  : "Notification sent, but actions not supported",
+            };
+          } else {
+            return {
+              ok: false,
+              message: "Notification not sent, there is an issue with your service worker registration",
+            };
+          }
         } else {
           return { ok: true, message: "Denied" };
         }
@@ -306,7 +341,6 @@ class PWA {
   async Install(type: "before" | "install" | "installed" = "installed", callback: (event: string | any) => any) {
     try {
       if (navigator.serviceWorker) {
-        // Check if app was installed.
         const checkIfAppInstalled = async () => {
           try {
             window.addEventListener("appinstalled", () => {
@@ -317,7 +351,6 @@ class PWA {
             throw error;
           }
         };
-        // Before install prompt is shown.
         const beforeInstallPromptEvent = async () => {
           try {
             window.addEventListener("beforeinstallprompt", (event: any) => {
