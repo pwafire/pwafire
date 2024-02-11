@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "5.0.9",
+  "version": "6.0.0-alpha",
   "description": "Progressive Web App API of APIs",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -43,7 +43,7 @@
     "fugu",
     "project-fugu"
   ],
-  "author": "Maye Edwin (devmaye@gmail.com) (https://pwafire.org)",
+  "author": "Maye Edwin (https://maye.pwafire.org)",
   "license": "MIT",
   "dependencies": {
     "@types/node": "^14.6.0"
