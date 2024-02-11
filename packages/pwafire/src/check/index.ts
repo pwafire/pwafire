@@ -1,291 +1,148 @@
 // Experimental (unstable) : check for api support.
 class Check {
-  async Share() {
-    try {
-      return "share" in navigator ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  Share() {
+    return "share" in navigator ? true : false;
   }
 
-  async shareFiles() {
-    try {
-      return "canShare" in navigator ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  shareFiles() {
+    return "canShare" in navigator ? true : false;
   }
 
-  async Clipboard() {
-    try {
-      return "clipboard" in navigator ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  Clipboard() {
+    return "clipboard" in navigator ? true : false;
   }
 
-  async copyText() {
-    try {
-      return (await this.Clipboard()) ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  copyText() {
+    return this.Clipboard() ? true : false;
   }
 
-  async copyImage() {
-    try {
-      return (await this.Clipboard()) ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  copyImage() {
+    return this.Clipboard() ? true : false;
   }
 
-  async idleDetection() {
-    try {
-      return "IdleDetector" in window ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  idleDetection() {
+    return "IdleDetector" in window ? true : false;
   }
 
-  async wakeLock() {
-    try {
-      return "wakeLock" in navigator ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  wakeLock() {
+    return "wakeLock" in navigator ? true : false;
   }
 
-  async Contacts() {
-    try {
-      return "contacts" in navigator && "ContactsManager" in window ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  Contacts() {
+    return "contacts" in navigator && "ContactsManager" in window ? true : false;
   }
 
-  async onlineStatus() {
-    try {
-      return "onLine" in navigator ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  onlineStatus() {
+    return "onLine" in navigator ? true : false;
   }
 
-  async Badging() {
-    try {
-      return "setAppBadge" in navigator && "clearAppBadge" in navigator ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  Badging() {
+    return "setAppBadge" in navigator && "clearAppBadge" in navigator ? true : false;
   }
 
-  async Notifications() {
-    try {
-      return "Notification" in window ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  Notifications() {
+    return "Notification" in window ? true : false;
   }
 
   async contentIndexing() {
-    try {
-      const registration = (await navigator.serviceWorker.ready) as any;
-      return "index" in registration ? true : false;
-    } catch (error) {
-      throw error;
-    }
+    const registration = (await navigator.serviceWorker.ready) as any;
+    return "index" in registration ? true : false;
   }
-  async notificationPermission() {
-    try {
-      if (await this.Notifications()) {
-        return Notification.permission === "granted" ? true : false;
-      } else {
-        return false;
-      }
-    } catch (error) {
-      throw error;
+
+  notificationPermission() {
+    if (this.Notifications()) {
+      return Notification.permission === "granted" ? true : false;
+    } else {
+      return false;
     }
   }
 
-  async barcodeDetector() {
-    try {
-      return "BarcodeDetector" in window ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  barcodeDetector() {
+    return "BarcodeDetector" in window ? true : false;
   }
 
-  async accessFonts() {
-    try {
-      return "queryLocalFonts" in window ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  accessFonts() {
+    return "queryLocalFonts" in window ? true : false;
   }
 
-  async serviceWorker() {
-    try {
-      return "serviceWorker" in navigator ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  serviceWorker() {
+    return "serviceWorker" in navigator ? true : false;
   }
 
-  async Bluetooth() {
-    try {
-      return "bluetooth" in navigator ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  Bluetooth() {
+    return "bluetooth" in navigator ? true : false;
   }
 
-  async Payment() {
-    try {
-      return "PaymentRequest" in window ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  Payment() {
+    return "PaymentRequest" in window ? true : false;
   }
 
-  async webOTP() {
-    try {
-      return "OTPCredential" in window ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  webOTP() {
+    return "OTPCredential" in window ? true : false;
   }
 
-  async webNFC() {
-    try {
-      return "NDEFReader" in window ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  webNFC() {
+    return "NDEFReader" in window ? true : false;
   }
 
-  async cameraPanAndTiltZoom() {
-    try {
-      const supports = navigator.mediaDevices.getSupportedConstraints() as any;
-      return supports.pan && supports.tilt && supports.zoom ? true : false;
-    } catch (error) {
-      throw error;
-    }
+  cameraPanAndTiltZoom() {
+    const supports = navigator.mediaDevices.getSupportedConstraints() as any;
+    return supports.pan && supports.tilt && supports.zoom ? true : false;
   }
 
   async All() {
-    try {
-      return [
-        {
-          name: "Share",
-          message: (await this.Share()) ? "Supported" : "Not supported",
-          ok: await this.Share(),
-        },
-        {
-          name: "File Share",
-          message: (await this.shareFiles()) ? "Supported" : "Not supported",
-          ok: await this.shareFiles(),
-        },
-        {
-          name: "Clipboard",
-          message: (await this.Clipboard()) ? "Supported" : "Not supported",
-          ok: await this.Clipboard(),
-        },
-        {
-          name: "Copy Text",
-          message: (await this.copyText()) ? "Supported" : "Not supported",
-          ok: await this.copyText(),
-        },
-        {
-          name: "Copy Image",
-          message: (await this.copyImage()) ? "Supported" : "Not supported",
-          ok: await this.copyImage(),
-        },
-        {
-          name: "Idle Detection",
-          message: (await this.idleDetection()) ? "Supported" : "Not supported",
-          ok: await this.idleDetection(),
-        },
-        {
-          name: "Wakelock",
-          message: (await this.wakeLock()) ? "Supported" : "Not supported",
-          ok: await this.wakeLock(),
-        },
-        {
-          name: "Contacts Picker",
-          message: (await this.Contacts()) ? "Supported" : "Not supported",
-          ok: await this.Contacts(),
-        },
-        {
-          name: "Badging",
-          message: (await this.Badging()) ? "Supported" : "Not supported",
-          ok: await this.Badging(),
-        },
-        {
-          name: "Notifications",
-          message: (await this.Notifications()) ? "Supported" : "Not supported",
-          ok: await this.Notifications(),
-        },
-        {
-          name: "Content Indexing",
-          message: (await this.contentIndexing()) ? "Supported" : "Not supported",
-          ok: await this.contentIndexing(),
-        },
-        {
-          name: "Online Status",
-          message: (await this.onlineStatus()) ? "Supported" : "Not supported",
-          ok: await this.onlineStatus(),
-        },
-        {
-          name: "Notification Permission",
-          message: (await this.notificationPermission()) ? "Granted" : "Not granted",
-          ok: await this.notificationPermission(),
-        },
-        {
-          name: "Barcode Detector",
-          message: (await this.barcodeDetector()) ? "Supported" : "Not supported",
-          ok: await this.barcodeDetector(),
-        },
-
-        {
-          name: "Font Access",
-          message: (await this.accessFonts()) ? "Supported" : "Not supported",
-          ok: await this.accessFonts(),
-        },
-        {
-          name: "Service Worker",
-          message: (await this.serviceWorker()) ? "Supported" : "Not supported",
-          ok: await this.serviceWorker(),
-        },
-        {
-          name: "Bluetooth",
-          message: (await this.Bluetooth()) ? "Supported" : "Not supported",
-          ok: await this.Bluetooth(),
-        },
-        {
-          name: "Payment",
-          message: (await this.Payment()) ? "Supported" : "Not supported",
-          ok: await this.Payment(),
-        },
-        {
-          name: "Web OTP",
-          message: (await this.webOTP()) ? "Supported" : "Not supported",
-          ok: await this.webOTP(),
-        },
-        {
-          name: "Web NFC",
-          message: (await this.webNFC()) ? "Supported" : "Not supported",
-          ok: await this.webNFC(),
-        },
-        {
-          name: "Camera(Pan and Tilt Zoom)",
-          message: (await this.cameraPanAndTiltZoom()) ? "Supported" : "Not supported",
-          ok: await this.cameraPanAndTiltZoom(),
-        },
-      ].sort((a, b) => a.name.localeCompare(b.name));
-    } catch (error) {
-      throw error;
-    }
+    const share = this.Share();
+    const shareFiles = this.shareFiles();
+    const clipboard = this.Clipboard();
+    const copyText = this.copyText();
+    const copyImage = this.copyImage();
+    const idleDetection = this.idleDetection();
+    const wakeLock = this.wakeLock();
+    const contacts = this.Contacts();
+    const badging = this.Badging();
+    const notifications = this.Notifications();
+    const contentIndexing = await this.contentIndexing();
+    const onlineStatus = this.onlineStatus();
+    const notificationPermission = this.notificationPermission();
+    const barcodeDetector = this.barcodeDetector();
+    const accessFonts = this.accessFonts();
+    const serviceWorker = this.serviceWorker();
+    const bluetooth = this.Bluetooth();
+    const payment = this.Payment();
+    const webOTP = this.webOTP();
+    const webNFC = this.webNFC();
+    const cameraPanAndTiltZoom = this.cameraPanAndTiltZoom();
+    return [
+      { name: "Share", message: share ? "Supported" : "Not supported", ok: share },
+      { name: "File Share", message: shareFiles ? "Supported" : "Not supported", ok: shareFiles },
+      { name: "Clipboard", message: clipboard ? "Supported" : "Not supported", ok: clipboard },
+      { name: "Copy Text", message: copyText ? "Supported" : "Not supported", ok: copyText },
+      { name: "Copy Image", message: copyImage ? "Supported" : "Not supported", ok: copyImage },
+      { name: "Idle Detection", message: idleDetection ? "Supported" : "Not supported", ok: idleDetection },
+      { name: "Wakelock", message: wakeLock ? "Supported" : "Not supported", ok: wakeLock },
+      { name: "Contacts Picker", message: contacts ? "Supported" : "Not supported", ok: contacts },
+      { name: "Badging", message: badging ? "Supported" : "Not supported", ok: badging },
+      { name: "Notifications", message: notifications ? "Supported" : "Not supported", ok: notifications },
+      { name: "Content Indexing", message: contentIndexing ? "Supported" : "Not supported", ok: contentIndexing },
+      { name: "Online Status", message: onlineStatus ? "Supported" : "Not supported", ok: onlineStatus },
+      {
+        name: "Notification Permission",
+        message: notificationPermission ? "Granted" : "Not granted",
+        ok: notificationPermission,
+      },
+      { name: "Barcode Detector", message: barcodeDetector ? "Supported" : "Not supported", ok: barcodeDetector },
+      { name: "Font Access", message: accessFonts ? "Supported" : "Not supported", ok: accessFonts },
+      { name: "Service Worker", message: serviceWorker ? "Supported" : "Not supported", ok: serviceWorker },
+      { name: "Bluetooth", message: bluetooth ? "Supported" : "Not supported", ok: bluetooth },
+      { name: "Payment", message: payment ? "Supported" : "Not supported", ok: payment },
+      { name: "Web OTP", message: webOTP ? "Supported" : "Not supported", ok: webOTP },
+      { name: "Web NFC", message: webNFC ? "Supported" : "Not supported", ok: webNFC },
+      {
+        name: "Camera(Pan and Tilt Zoom)",
+        message: cameraPanAndTiltZoom ? "Supported" : "Not supported",
+        ok: cameraPanAndTiltZoom,
+      },
+    ].sort((a, b) => a.name.localeCompare(b.name));
   }
 }
 
