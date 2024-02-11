@@ -53,18 +53,18 @@ export const FilesApi = {
     multiple?: boolean;
   }) => {
     try {
-      let fileHandle: any;
-      [fileHandle] = options ? await window.showOpenFilePicker(options) : await window.showOpenFilePicker();
-      const file: any = await fileHandle.getFile();
-      if (file) {
+      let fileHandles: any[];
+      fileHandles = options ? await window.showOpenFilePicker(options) : await window.showOpenFilePicker();
+      if (fileHandles.length > 0) {
+        const files = await Promise.all(fileHandles.map((fileHandle) => fileHandle.getFile()));
         return {
-          file,
+          files,
           ok: true,
-          message: "File picked",
+          message: `${files.length} file(s) picked`,
         };
       } else {
         return {
-          file: null,
+          files: [],
           ok: false,
           message: "File Picker API not supported",
         };
