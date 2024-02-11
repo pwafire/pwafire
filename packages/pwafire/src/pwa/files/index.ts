@@ -40,10 +40,10 @@ export const FilesApi = {
     }
   },
   pickFile: async (options?: {
-    types: [
+    types?: [
       {
-        description: string;
-        accept: {
+        description?: string;
+        accept?: {
           "image/*"?: string[];
           "audio/*"?: string[];
           "video/*"?: string[];
