@@ -1,12 +1,18 @@
+import { FileType, ISaveFileOptions } from "./pwa/files";
+
 interface FontAccess {
   postscriptNames?: string[];
 }
-interface Window {
-  addEventListener(arg0: string, arg1: () => { type: string; message: string }): any;
-  deferredPrompt?: any;
-  showOpenFilePicker: (options?: any) => [any] | PromiseLike<[any]>;
-  showSaveFilePicker: () => [any] | PromiseLike<[any]>;
-  queryLocalFonts: (config?: FontAccess) => [any] | PromiseLike<[any]>;
+
+declare global {
+  interface Window {
+    addEventListener(arg0: string, arg1: () => { type: string; message: string }): any;
+    deferredPrompt?: any;
+    queryLocalFonts: (config?: FontAccess) => [any] | PromiseLike<[any]>;
+    showSaveFilePicker: (options?: ISaveFileOptions) => Promise<FileSystemHandle>;
+    showOpenFilePicker: (options?: { types?: FileType[]; multiple?: boolean }) => Promise<FileSystemFileHandle[]>;
+    showDirectoryPicker: () => Promise<FileSystemDirectoryHandle>;
+  }
 }
 
 interface Navigator {

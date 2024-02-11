@@ -1,3 +1,17 @@
+type AcceptTypes = "text/plain" | "image/*" | "audio/*" | "video/*" | "application/*";
+
+export interface FileType {
+  description: string;
+  accept: Partial<Record<AcceptTypes, string[]>>;
+}
+
+export interface ISaveFileOptions {
+  id?: string;
+  startIn?: string;
+  suggestedName?: string;
+  types?: FileType[];
+}
+
 export const FilesApi = {
   readFiles: async (): Promise<{ ok: boolean; message: string; files: File[] | null }> => {
     try {
@@ -39,19 +53,7 @@ export const FilesApi = {
       throw error;
     }
   },
-  pickFile: async (options?: {
-    types?: [
-      {
-        description?: string;
-        accept?: {
-          "image/*"?: string[];
-          "audio/*"?: string[];
-          "video/*"?: string[];
-        };
-      },
-    ];
-    multiple?: boolean;
-  }) => {
+  pickFile: async (options?: { types?: FileType[]; multiple?: boolean }) => {
     try {
       let fileHandles: any[];
       fileHandles = options ? await window.showOpenFilePicker(options) : await window.showOpenFilePicker();
@@ -69,6 +71,65 @@ export const FilesApi = {
           message: "File Picker API not supported",
         };
       }
+    } catch (error) {
+      throw error;
+    }
+  },
+  saveFile: async (contents: string, options?: ISaveFileOptions) => {
+    try {
+      const handle = await window.showSaveFilePicker(options);
+      const writable = await (handle as FileSystemFileHandle).createWritable();
+      await writable.write(contents);
+      await writable.close();
+      return { ok: true, message: "File saved", handle };
+    } catch (error) {
+      throw error;
+    }
+  },
+  directoryPicker: async () => {
+    try {
+      const handle = await window.showDirectoryPicker();
+      return { ok: true, message: "Directory picked", handle };
+    } catch (error) {
+      throw error;
+    }
+  },
+  createNewDirectory: async (name: string, handle: FileSystemDirectoryHandle) => {
+    try {
+      await handle.getDirectoryHandle(name, { create: true });
+      return { ok: true, message: "Directory created" };
+    } catch (error) {
+      throw error;
+    }
+  },
+  resolveDirectory: async (name: string, handle: FileSystemDirectoryHandle) => {
+    try {
+      const newHandle = await handle.getDirectoryHandle(name);
+      return { ok: true, message: "Directory resolved", handle: newHandle };
+    } catch (error) {
+      throw error;
+    }
+  },
+  deleteDirectory: async (name: string, handle: FileSystemDirectoryHandle) => {
+    try {
+      await handle.removeEntry(name);
+      return { ok: true, message: "Directory deleted" };
+    } catch (error) {
+      throw error;
+    }
+  },
+  deleteFile: async (name: string, handle: FileSystemDirectoryHandle) => {
+    try {
+      await handle.removeEntry(name);
+      return { ok: true, message: "File deleted" };
+    } catch (error) {
+      throw error;
+    }
+  },
+  moveFile: async (name: string, handle: FileSystemDirectoryHandle, newHandle: FileSystemDirectoryHandle) => {
+    try {
+      await handle.getFileHandle(name).then(() => newHandle.getFileHandle(name, { create: true }));
+      return { ok: true, message: "File moved" };
     } catch (error) {
       throw error;
     }

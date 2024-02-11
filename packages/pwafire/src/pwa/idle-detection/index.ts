@@ -1,3 +1,5 @@
+import { IdleDetector } from "../../types";
+
 export const IdleDetectionApi = {
   idleDetection: async (
     action = "start",
