@@ -1,16 +1,13 @@
 // Experimental (unstable) : check for api support.
 class Check {
-  // Check for share.
   async Share() {
     try {
-      // Check for share.
       return "share" in navigator ? true : false;
     } catch (error) {
       throw error;
     }
   }
 
-  // Check for share files support.
   async shareFiles() {
     try {
       return "canShare" in navigator ? true : false;
@@ -19,7 +16,6 @@ class Check {
     }
   }
 
-  // Check for clipboard.
   async Clipboard() {
     try {
       return "clipboard" in navigator ? true : false;
@@ -28,7 +24,6 @@ class Check {
     }
   }
 
-  // Check for copy text.
   async copyText() {
     try {
       return (await this.Clipboard()) ? true : false;
@@ -37,7 +32,6 @@ class Check {
     }
   }
 
-  // Check copy image.
   async copyImage() {
     try {
       return (await this.Clipboard()) ? true : false;
@@ -46,7 +40,6 @@ class Check {
     }
   }
 
-  // Check for idle detection.
   async idleDetection() {
     try {
       return "IdleDetector" in window ? true : false;
@@ -55,7 +48,6 @@ class Check {
     }
   }
 
-  // Check for wakelock.
   async wakeLock() {
     try {
       return "wakeLock" in navigator ? true : false;
@@ -64,7 +56,6 @@ class Check {
     }
   }
 
-  // Check for contacts.
   async Contacts() {
     try {
       return "contacts" in navigator && "ContactsManager" in window ? true : false;
@@ -73,7 +64,6 @@ class Check {
     }
   }
 
-  // Check if online status is supported.
   async onlineStatus() {
     try {
       return "onLine" in navigator ? true : false;
@@ -82,7 +72,6 @@ class Check {
     }
   }
 
-  // Badging api support.
   async Badging() {
     try {
       return "setAppBadge" in navigator && "clearAppBadge" in navigator ? true : false;
@@ -91,7 +80,6 @@ class Check {
     }
   }
 
-  // Check for notifications.
   async Notifications() {
     try {
       return "Notification" in window ? true : false;
@@ -100,7 +88,6 @@ class Check {
     }
   }
 
-  // Check if content indexing api is supported.
   async contentIndexing() {
     try {
       const registration = (await navigator.serviceWorker.ready) as any;
@@ -121,7 +108,6 @@ class Check {
     }
   }
 
-  // Check for barcode detection support.
   async barcodeDetector() {
     try {
       return "BarcodeDetector" in window ? true : false;
@@ -130,7 +116,6 @@ class Check {
     }
   }
 
-  // Check for font access support.
   async accessFonts() {
     try {
       return "queryLocalFonts" in window ? true : false;
@@ -139,7 +124,6 @@ class Check {
     }
   }
 
-  // Check service worker support.
   async serviceWorker() {
     try {
       return "serviceWorker" in navigator ? true : false;
@@ -148,7 +132,6 @@ class Check {
     }
   }
 
-  // Bluetooth support.
   async Bluetooth() {
     try {
       return "bluetooth" in navigator ? true : false;
@@ -157,7 +140,6 @@ class Check {
     }
   }
 
-  // Payment api support.
   async Payment() {
     try {
       return "PaymentRequest" in window ? true : false;
@@ -166,7 +148,6 @@ class Check {
     }
   }
 
-  // Check for web otp support.
   async webOTP() {
     try {
       return "OTPCredential" in window ? true : false;
@@ -175,7 +156,6 @@ class Check {
     }
   }
 
-  // Check for web nfc support.
   async webNFC() {
     try {
       return "NDEFReader" in window ? true : false;
@@ -184,7 +164,6 @@ class Check {
     }
   }
 
-  // Camera pan, tilt and zoom support.
   async cameraPanAndTiltZoom() {
     try {
       const supports = navigator.mediaDevices.getSupportedConstraints() as any;
@@ -194,7 +173,6 @@ class Check {
     }
   }
 
-  // Check for all api support.
   async All() {
     try {
       return [
