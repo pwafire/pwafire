@@ -7,12 +7,12 @@ interface Window {
   showOpenFilePicker: (options?: any) => [any] | PromiseLike<[any]>;
   showSaveFilePicker: () => [any] | PromiseLike<[any]>;
   queryLocalFonts: (config?: FontAccess) => [any] | PromiseLike<[any]>;
+  documentPictureInPicture?: any;
 }
 
 interface Navigator {
   contacts: any;
   write: any;
-  wakeLock: any;
   setAppBadge: (unreadCount: number) => any;
   clearAppBadge: () => any;
   canShare: (data?: ShareData | undefined) => boolean;
