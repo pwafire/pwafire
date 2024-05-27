@@ -1,5 +1,5 @@
 export const screenSharingControls = async (config: {
-  video?: { displaySurface: "browser" | "monitor" | "window" } | boolean;
+  video: { displaySurface: "browser" | "monitor" | "window" } | boolean;
   monitorTypeSurfaces?: "exclude" | "include";
   surfaceSwitching?: "include" | "exclude";
   selfBrowserSurface?: "include" | "exclude";
@@ -7,7 +7,7 @@ export const screenSharingControls = async (config: {
   systemAudio: "exclude" | "include";
 }) => {
   if (navigator.mediaDevices && "getDisplayMedia" in navigator.mediaDevices) {
-    return navigator.mediaDevices.getDisplayMedia(config);
+    return navigator.mediaDevices.getDisplayMedia(config as any);
   } else {
     throw new Error("Screen sharing is not supported in this browser.");
   }

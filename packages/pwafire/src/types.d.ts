@@ -13,6 +13,7 @@ interface Window {
 interface Navigator {
   contacts: any;
   write: any;
+  wakeLock: any;
   setAppBadge: (unreadCount: number) => any;
   clearAppBadge: () => any;
   canShare: (data?: ShareData | undefined) => boolean;
