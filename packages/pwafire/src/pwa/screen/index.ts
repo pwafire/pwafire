@@ -24,6 +24,7 @@ export const screenApi = {
     try {
       const pipButton = document.getElementById("pipButton") as HTMLElement;
       const player = document.getElementById("pipPlayer") as HTMLElement;
+      if (!pipButton || !player) throw new Error("No player or button found.");
       pipButton.addEventListener("click", async () => {
         if ("documentPictureInPicture" in window) {
           const pipWindow = await window.documentPictureInPicture.requestWindow({
