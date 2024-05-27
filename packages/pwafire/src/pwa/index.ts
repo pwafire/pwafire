@@ -11,6 +11,7 @@ export { IdleDetectionApi } from "./idle-detection";
 export { InstallApi } from "./install";
 export { NotificationApi } from "./notification";
 export { PaymentApi } from "./payment";
+export { screenSharingControls, windowPIP } from "./screen";
 export { VisibilityApi } from "./visibility";
 export { WakeLockApi } from "./wake-lock";
 export { WebOTPApi } from "./web-otp";
