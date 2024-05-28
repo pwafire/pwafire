@@ -173,6 +173,14 @@ class Check {
     }
   }
 
+  async webPIP() {
+    try {
+      return "documentPictureInPicture" in window ? true : false;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async All() {
     try {
       return [
