@@ -22,5 +22,5 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm run install
-      - run: npm run build
+      - run: cd packages && cd pwafire && npm run install
+      - run: cd packages && cd pwafire && npm run build
