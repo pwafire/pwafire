@@ -18,6 +18,7 @@ import {
   VisibilityApi,
   WakeLockApi,
   WebOTPApi,
+  screenApi,
 } from "./pwa";
 
 const pwafire = {
@@ -39,6 +40,7 @@ const pwafire = {
     ...ShareApi,
     ...VisibilityApi,
     ...WakeLockApi,
+    ...screenApi,
   },
   check: new Check(),
 };

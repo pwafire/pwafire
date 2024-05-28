@@ -7,6 +7,7 @@ interface Window {
   showOpenFilePicker: (options?: any) => [any] | PromiseLike<[any]>;
   showSaveFilePicker: () => [any] | PromiseLike<[any]>;
   queryLocalFonts: (config?: FontAccess) => [any] | PromiseLike<[any]>;
+  documentPictureInPicture?: any;
 }
 
 interface Navigator {

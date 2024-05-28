@@ -2,7 +2,7 @@ export const WakeLockApi = {
   wakeLock: async () => {
     try {
       if ("wakeLock" in navigator) {
-        const wakeLock = await navigator.wakeLock.request("screen");
+        const wakeLock = await navigator?.wakeLock?.request("screen");
         if (wakeLock) {
           return { ok: true, message: "WakeLock Active" };
         } else {
