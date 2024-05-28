@@ -29,8 +29,8 @@ export const screenApi = {
         if ("documentPictureInPicture" in window) {
           const pipWindow = await window.documentPictureInPicture.requestWindow({
             ...config,
-            width: config?.width ?? player?.clientWidth ?? 300,
-            height: config?.height ?? player?.clientHeight ?? 150,
+            width: config?.width ?? player?.clientWidth,
+            height: config?.height ?? player?.clientHeight,
           });
           pipWindow.document.body.append(player);
           callback({ ok: true, window: pipWindow, message: "Picture in Picture mode enabled." });
