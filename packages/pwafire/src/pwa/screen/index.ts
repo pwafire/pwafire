@@ -13,7 +13,7 @@ export const screenApi = {
       throw new Error("Screen sharing is not supported in this browser.");
     }
   },
-  windowPIP: async (
+  webPIP: async (
     callback: (data: { ok: boolean; message: string; window: any }) => void,
     config: {
       height?: number;
