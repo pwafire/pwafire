@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "5.1.3-2",
+  "version": "5.1.3-3",
   "description": "Progressive Web App API of APIs",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -46,7 +46,7 @@
   "author": "Maye Edwin (https://maye.pwafire.org)",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "^14.6.0"
+    "@types/node": "^22.1.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.9",
@@ -54,6 +54,6 @@
     "ts-jest": "^29.1.4",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^4.5.5"
+    "typescript": "^5.5.4"
   }
 }
