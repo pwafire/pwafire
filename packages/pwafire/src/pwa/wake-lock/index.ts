@@ -4,12 +4,12 @@ export const WakeLockApi = {
       if ("wakeLock" in navigator) {
         const wakeLock = await navigator?.wakeLock?.request("screen");
         if (wakeLock) {
-          return { message: "WakeLock Active", status: "active" };
+          return { ok: true, message: "WakeLock Active" };
         } else {
-          return { message: "WakeLock Failed", status: "failed" };
+          return { ok: false, message: "WakeLock Failed" };
         }
       } else {
-        throw new Error("WakeLock API not supported");
+        return { ok: false, message: "WakeLock API not supported" };
       }
     } catch (error) {
       throw error;

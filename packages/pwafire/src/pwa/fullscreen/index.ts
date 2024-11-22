@@ -3,9 +3,9 @@ export const FullscreenApi = {
     try {
       if (document.fullscreenEnabled) {
         await document.documentElement.requestFullscreen();
-        return { message: "Fullscreen" };
+        return { ok: true, message: "Fullscreen" };
       } else {
-        throw new Error("Fullscreen API not supported");
+        return { ok: false, message: "Fullscreen disabled" };
       }
     } catch (error) {
       throw error;

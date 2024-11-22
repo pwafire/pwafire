@@ -3,11 +3,15 @@ export const compressionApi = {
     try {
       if ("CompressionStream" in window) {
         return {
+          ok: true,
           message: "Compressed",
           stream: readableStream.pipeThrough(new CompressionStream("gzip")),
         };
       } else {
-        throw new Error("Compression Stream API not supported");
+        return {
+          ok: false,
+          message: "Compression Stream API not supported",
+        };
       }
     } catch (error) {
       throw error;
@@ -17,11 +21,15 @@ export const compressionApi = {
     try {
       if ("DecompressionStream" in window) {
         return {
+          ok: true,
           message: "Decompressed",
           stream: compressedReadableStream.pipeThrough(new DecompressionStream("gzip")),
         };
       } else {
-        throw new Error("Decompression Stream API not supported");
+        return {
+          ok: false,
+          message: "Decompression Stream API not supported",
+        };
       }
     } catch (error) {
       throw error;

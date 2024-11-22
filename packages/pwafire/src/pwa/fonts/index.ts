@@ -29,6 +29,7 @@ export const FontsApi = {
         if (config && config.postscriptNames) {
           const fonts = await window.queryLocalFonts({ postscriptNames: config.postscriptNames });
           return {
+            ok: true,
             message: "Fonts access",
             fonts,
             sfnt: config.sfnt ? await getSFNT(fonts) : [],
@@ -36,13 +37,18 @@ export const FontsApi = {
         } else {
           const fonts = await window.queryLocalFonts();
           return {
+            ok: true,
             message: "Fonts access",
             fonts,
             sfnt: config && config.sfnt ? await getSFNT(fonts) : [],
           };
         }
       } else {
-        throw new Error("Fonts API not supported");
+        return {
+          ok: false,
+          message: "Local Fonts Access API not supported",
+          fonts: null,
+        };
       }
     } catch (error) {
       throw error;

@@ -1,5 +1,5 @@
 export const FilesApi = {
-  readFiles: async (): Promise<{ message: string; files: File[] | null }> => {
+  readFiles: async (): Promise<{ ok: boolean; message: string; files: File[] | null }> => {
     try {
       if (navigator.clipboard) {
         const files = [] as File[];
@@ -11,9 +11,9 @@ export const FilesApi = {
             files.push(file);
           }
         }
-        return { message: "Read", files };
+        return { ok: true, message: "Read", files };
       } else {
-        throw new Error("Clipboard API not supported");
+        return { ok: false, message: "Read Files API not supported", files: null };
       }
     } catch (error) {
       throw error;
@@ -28,12 +28,12 @@ export const FilesApi = {
         const typeList = file.type.split("/");
         if (typeList.includes("text")) {
           const contents = await file.text();
-          return { message: "File picked", contents };
+          return { ok: true, message: "File picked", contents };
         } else {
-          throw new Error("File is not a text file");
+          return { ok: false, message: "File Picker API not supported" };
         }
       } else {
-        throw new Error("File Picker API not supported");
+        return { ok: false, message: "Please pick text type file" };
       }
     } catch (error) {
       throw error;
@@ -59,10 +59,15 @@ export const FilesApi = {
       if (file) {
         return {
           file,
+          ok: true,
           message: "File picked",
         };
       } else {
-        throw new Error("File Picker API not supported");
+        return {
+          file: null,
+          ok: false,
+          message: "File Picker API not supported",
+        };
       }
     } catch (error) {
       throw error;

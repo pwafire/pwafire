@@ -1,5 +1,5 @@
 export const WebOTPApi = {
-  webOTP: async (callback: (res: { code: string | null; message: string }) => void) => {
+  webOTP: async (callback: (res: { code: string | null; ok: boolean; message: string }) => void) => {
     try {
       if ("OTPCredential" in window) {
         window.addEventListener("DOMContentLoaded", async () => {
@@ -18,14 +18,23 @@ export const WebOTPApi = {
             } as OTPCredentialOptions)) as OTPCredential;
             callback({
               code: otp.code,
+              ok: true,
               message: "OTP received",
             });
           } else {
-            throw new Error(`No input with autocomplete='one-time-code' found`);
+            callback({
+              code: null,
+              ok: false,
+              message: "No input with autocomplete='one-time-code' found",
+            });
           }
         });
       } else {
-        throw new Error(`WebOTP API not supported`);
+        callback({
+          code: null,
+          ok: false,
+          message: "Web OTP API not supported",
+        });
       }
     } catch (error) {
       throw error;

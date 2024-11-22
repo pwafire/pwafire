@@ -5,7 +5,10 @@ export const ClipboardApi = {
         await navigator.clipboard.writeText(text);
         return { ok: true, message: "Copied" };
       } else {
-        throw "Clipboard API not supported";
+        return {
+          ok: false,
+          message: "Copy Text API not supported",
+        };
       }
     } catch (error) {
       throw error;
@@ -18,7 +21,7 @@ export const ClipboardApi = {
         const text = await navigator.clipboard.readText();
         return { ok: true, message: "Read", text };
       } else {
-        throw "Clipboard API not supported";
+        return { ok: false, message: "Read Text API not supported", text: null };
       }
     } catch (error) {
       throw error;
@@ -40,7 +43,7 @@ export const ClipboardApi = {
           message: "Image copied",
         };
       } else {
-        throw "Clipboard API not supported for images";
+        return { ok: false, message: "Copy Image API not supported" };
       }
     } catch (error) {
       throw error;

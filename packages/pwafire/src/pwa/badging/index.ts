@@ -3,9 +3,12 @@ export const BadgingApi = {
     try {
       if (navigator.setAppBadge) {
         await navigator.setAppBadge(unreadCount);
-        return { message: "Badge set" };
+        return { ok: true, message: "Set" };
       } else {
-        throw new Error("Badging API not supported");
+        return {
+          ok: false,
+          message: "Badging API not supported",
+        };
       }
     } catch (error) {
       throw error;
@@ -16,9 +19,9 @@ export const BadgingApi = {
     try {
       if (navigator.clearAppBadge) {
         await navigator.clearAppBadge();
-        return { message: "Badge cleared" };
+        return { ok: true, message: "Cleared" };
       } else {
-        throw new Error("Badging API not supported");
+        return { ok: false, message: "Badging API not supported" };
       }
     } catch (error) {
       throw error;

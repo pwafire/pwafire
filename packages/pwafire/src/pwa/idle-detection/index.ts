@@ -1,5 +1,11 @@
 export const IdleDetectionApi = {
-  idleDetection: async (action = "start", callback = () => {}, threshold = 60000) => {
+  idleDetection: async (
+    action = "start",
+    callback = () => {
+      // do something
+    },
+    threshold = 60000,
+  ) => {
     try {
       if ("IdleDetector" in window) {
         const state = await IdleDetector.requestPermission();
@@ -16,16 +22,16 @@ export const IdleDetectionApi = {
               threshold: threshold > 60000 ? threshold : 60000,
               signal,
             });
-            return { message: "Started", status: "started" };
+            return { ok: true, message: "Started" };
           } else {
             controller.abort();
-            return { message: "Aborted", status: "aborted" };
+            return { ok: true, message: "Aborted" };
           }
         } else {
-          throw new Error("Idle Detection API not supported");
+          return { ok: false, message: "Need to request permission first" };
         }
       } else {
-        throw new Error("Idle Detection API not supported");
+        return { ok: false, message: "Idle Detection API not supported" };
       }
     } catch (error) {
       throw error;

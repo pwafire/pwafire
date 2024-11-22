@@ -1,13 +1,16 @@
 export const ContentIndexingApi = {
   contentIndexing: async () => {
     try {
-      const registration = (await navigator.serviceWorker.ready) as ServiceWorkerRegistration & { index: any };
+      const registration = (await navigator.serviceWorker.ready) as any;
       if ("index" in registration) {
         return {
+          ok: true,
           message: "Context Indexing ready",
           getAll: async () => {
             try {
-              return ((await registration.index.getAll()) as Record<string, any>) > [];
+              return (await registration.index.getAll()) as {
+                [key: string]: string | number | boolean | object | any;
+              }[];
             } catch (error) {
               throw error;
             }
@@ -29,7 +32,7 @@ export const ContentIndexingApi = {
                 ...item,
                 category: item.category || "",
               });
-              return { message: "Added" };
+              return { ok: true, message: "Added" };
             } catch (error) {
               throw error;
             }
@@ -37,14 +40,17 @@ export const ContentIndexingApi = {
           removeItem: async (id: string) => {
             try {
               await registration.index.delete(id);
-              return { message: "Removed" };
+              return { ok: true, message: "Removed" };
             } catch (error) {
               throw error;
             }
           },
         };
       } else {
-        throw new Error("Content Indexing API not supported");
+        return {
+          ok: false,
+          message: "Content Indexing API not supported",
+        };
       }
     } catch (error) {
       throw error;

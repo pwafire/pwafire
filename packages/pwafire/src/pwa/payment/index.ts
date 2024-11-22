@@ -14,12 +14,12 @@ export const PaymentApi = {
         if (canPay) {
           const paymentResponse = await paymentRequest.show();
           validatePayment(paymentResponse);
-          return { message: "Payment" };
+          return { ok: true, message: "Payment" };
         } else {
-          throw new Error("Cannot make payment, check payment methods");
+          return { ok: false, message: "Payment method(s) not supported" };
         }
       } else {
-        throw new Error("Payment Request API not supported");
+        return { ok: false, message: "Payment Request API not supported" };
       }
     } catch (error) {
       throw error;

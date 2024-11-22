@@ -24,16 +24,24 @@ export const BarcodeDetectorApi = {
             formats: [options.format],
           });
           const barcodes = await barcodeDetector.detect(options.image);
-          if (!barcodes) throw new Error("No barcode detected");
           return {
+            ok: barcodes ? true : false,
             message: barcodes ? "Barcode detected" : "No barcode detected",
             barcodes,
           };
         } else {
-          throw `Sorry, "${options.format.charAt(0).toUpperCase() + options.format.slice(1)}" format not supported`;
+          return {
+            ok: false,
+            message: `Sorry, "${
+              options.format.charAt(0).toUpperCase() + options.format.slice(1)
+            }" format not supported`,
+          };
         }
       } else {
-        throw new Error("Barcode Detector API not supported");
+        return {
+          ok: false,
+          message: "Barcode Detector API not supported",
+        };
       }
     } catch (error) {
       throw error;

@@ -14,7 +14,7 @@ export const screenApi = {
     }
   },
   webPIP: async (
-    callback: (data: { message: string; window: any }) => void,
+    callback: (data: { ok: boolean; message: string; window: any }) => void,
     config: {
       height?: number;
       width?: number;
@@ -33,9 +33,9 @@ export const screenApi = {
             height: config?.height ?? player?.clientHeight,
           });
           pipWindow.document.body.append(player);
-          callback({ window: pipWindow, message: "Picture in Picture mode enabled." });
+          callback({ ok: true, window: pipWindow, message: "Picture in Picture mode enabled." });
         } else {
-          throw new Error("Picture in Picture mode is not supported in this browser");
+          callback({ ok: false, window: null, message: "Picture in Picture is not supported in this browser." });
         }
       });
     } catch (error) {

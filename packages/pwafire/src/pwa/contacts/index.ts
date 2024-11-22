@@ -12,9 +12,9 @@ export const ContactsApi = {
             select: (props: string[], options?: { multiple: boolean }) => Promise<any>;
           }
         ).select(props, options);
-        return { message: "Selected", contacts };
+        return { ok: true, message: "Selected", contacts };
       } else {
-        throw new Error("Contacts API not supported");
+        return { ok: false, message: "Contacts Picker API not supported" };
       }
     } catch (error) {
       throw error;
