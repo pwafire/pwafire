@@ -24,8 +24,6 @@ import {
   compressionApi,
 } from "./pwa";
 
-console.log("pwafire", "🔥");
-
 const pwafire = {
   pwa: {
     ...BadgingApi,
