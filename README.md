@@ -2,9 +2,9 @@
 
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
-An open-source library and framework for building fast, reliable, and engaging Progressive Web Apps (PWAs). 
+An open-source library and framework for building fast, reliable, and engaging Progressive Web Apps (PWAs).
 
-<span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span>
+![CI](https://img.shields.io/npm/dm/pwafire)
 
 ## Introducing _pwafire_ cdn and npm
 
