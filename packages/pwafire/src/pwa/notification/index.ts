@@ -30,13 +30,13 @@ export const NotificationApi = {
         if (permission === "granted") {
           await navigator.serviceWorker.ready.then((registration) => {
             registration.showNotification(title, options);
-            return { ok: true, message: "Sent" };
+            return { message: "Sent", status: "sent" };
           });
         } else {
-          return { ok: true, message: "Denied" };
+          return { message: "Denied", status: "denied" };
         }
       } else {
-        return { ok: false, message: "Notification API not supported" };
+        throw new Error("Notification API not supported");
       }
     } catch (error) {
       throw error;

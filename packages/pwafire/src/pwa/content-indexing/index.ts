@@ -4,7 +4,6 @@ export const ContentIndexingApi = {
       const registration = (await navigator.serviceWorker.ready) as any;
       if ("index" in registration) {
         return {
-          ok: true,
           message: "Context Indexing ready",
           getAll: async () => {
             try {
@@ -47,10 +46,7 @@ export const ContentIndexingApi = {
           },
         };
       } else {
-        return {
-          ok: false,
-          message: "Content Indexing API not supported",
-        };
+        throw new Error("Content Indexing API not supported");
       }
     } catch (error) {
       throw error;

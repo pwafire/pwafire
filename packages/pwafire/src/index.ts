@@ -19,7 +19,10 @@ import {
   WakeLockApi,
   WebOTPApi,
   screenApi,
+  compressionApi,
 } from "./pwa";
+
+console.log("pwafire", "🔥");
 
 const pwafire = {
   pwa: {
@@ -41,6 +44,7 @@ const pwafire = {
     ...VisibilityApi,
     ...WakeLockApi,
     ...screenApi,
+    ...compressionApi,
   },
   check: new Check(),
 };

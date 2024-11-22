@@ -8,7 +8,7 @@ export const InstallApi = {
               window.addEventListener("appinstalled", () => {
                 callback("installed");
               });
-              return { ok: true, message: "Check if installed" };
+              return { message: "Check if installed" };
             } catch (error) {
               throw error;
             }
@@ -18,7 +18,7 @@ export const InstallApi = {
               window.addEventListener("beforeinstallprompt", (event: any) => {
                 callback(event);
               });
-              return { ok: true, message: "Before install prompt" };
+              return { message: "Before install prompt" };
             } catch (error) {
               throw error;
             }
@@ -26,7 +26,7 @@ export const InstallApi = {
           installApp: async () => {
             try {
               callback("install");
-              return { ok: true, message: "Install App" };
+              return { message: "Install App" };
             } catch (error) {
               throw error;
             }
@@ -41,10 +41,10 @@ export const InstallApi = {
           case "installed":
             return await methods.checkIfAppInstalled();
           default:
-            return { ok: false, message: "Type can be 'install', 'installed' or 'before'" };
+            return { message: "Type can be 'install', 'installed' or 'before'" };
         }
       } else {
-        return { ok: false, message: "Service Worker not supported" };
+        throw new Error("Service Worker not supported");
       }
     } catch (error) {
       throw error;

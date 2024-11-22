@@ -5,13 +5,13 @@ export const VisibilityApi = {
         const state = document.visibilityState;
         if (state === "visible") {
           isVisible();
-          return { ok: true, message: "Visible" };
+          return { message: "Visible", status: "visible" };
         }
       } else {
         notAvailable();
         return {
-          ok: false,
           message: "Visibility API not supported",
+          status: "not-supported",
         };
       }
     } catch (error) {

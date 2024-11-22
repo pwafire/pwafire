@@ -3,10 +3,10 @@ export const ConnectivityApi = {
     try {
       if (navigator.onLine) {
         online();
-        return { ok: true, message: "Online" };
+        return { message: "Online" };
       } else {
         offline();
-        return { ok: true, message: "Offline" };
+        return { message: "Offline" };
       }
     } catch (error) {
       throw error;
