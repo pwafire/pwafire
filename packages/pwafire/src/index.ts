@@ -1,4 +1,6 @@
-// Developer : Maye Edwin (Google Developer Expert):> Copyright : https://pwafire.org */
+/* Author :  Maye Edwin (Google Developer Expert)
+  Copyright : https://pwafire.org 
+  */
 import Check from "./check";
 import {
   BadgingApi,
@@ -19,6 +21,7 @@ import {
   WakeLockApi,
   WebOTPApi,
   screenApi,
+  compressionStreamsApi,
 } from "./pwa";
 
 const pwafire = {
@@ -41,6 +44,7 @@ const pwafire = {
     ...VisibilityApi,
     ...WakeLockApi,
     ...screenApi,
+    ...compressionStreamsApi,
   },
   check: new Check(),
 };
