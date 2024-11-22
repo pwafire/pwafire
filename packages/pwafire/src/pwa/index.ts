@@ -16,3 +16,4 @@ export { VisibilityApi } from "./visibility";
 export { WakeLockApi } from "./wake-lock";
 export { WebOTPApi } from "./web-otp";
 export { ShareApi } from "./web-share";
+export { compressionStreamsApi } from "./compression";
