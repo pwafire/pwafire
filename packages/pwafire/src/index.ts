@@ -1,4 +1,6 @@
-// Developer : Maye Edwin (Google Developer Expert):> Copyright : https://pwafire.org */
+/* Author :  Maye Edwin (Google Developer Expert)
+  Copyright : https://pwafire.org 
+  */
 import Check from "./check";
 import {
   BadgingApi,

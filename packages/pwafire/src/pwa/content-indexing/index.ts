@@ -1,15 +1,13 @@
 export const ContentIndexingApi = {
   contentIndexing: async () => {
     try {
-      const registration = (await navigator.serviceWorker.ready) as any;
+      const registration = (await navigator.serviceWorker.ready) as ServiceWorkerRegistration & { index: any };
       if ("index" in registration) {
         return {
           message: "Context Indexing ready",
           getAll: async () => {
             try {
-              return (await registration.index.getAll()) as {
-                [key: string]: string | number | boolean | object | any;
-              }[];
+              return ((await registration.index.getAll()) as Record<string, any>) > [];
             } catch (error) {
               throw error;
             }
@@ -31,7 +29,7 @@ export const ContentIndexingApi = {
                 ...item,
                 category: item.category || "",
               });
-              return { ok: true, message: "Added" };
+              return { message: "Added" };
             } catch (error) {
               throw error;
             }
@@ -39,7 +37,7 @@ export const ContentIndexingApi = {
           removeItem: async (id: string) => {
             try {
               await registration.index.delete(id);
-              return { ok: true, message: "Removed" };
+              return { message: "Removed" };
             } catch (error) {
               throw error;
             }
