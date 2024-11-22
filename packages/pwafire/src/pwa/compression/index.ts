@@ -1,5 +1,5 @@
-export const compressionApi = {
-  compress: async (readableStream: ReadableStream) => {
+export const compressionStreamsApi = {
+  compressStream: async (readableStream: ReadableStream) => {
     try {
       if ("CompressionStream" in window) {
         return {
@@ -10,14 +10,14 @@ export const compressionApi = {
       } else {
         return {
           ok: false,
-          message: "Compression Stream API not supported",
+          message: "Compression Streams API not supported",
         };
       }
     } catch (error) {
       throw error;
     }
   },
-  decompress: async (compressedReadableStream: ReadableStream) => {
+  decompressStream: async (compressedReadableStream: ReadableStream) => {
     try {
       if ("DecompressionStream" in window) {
         return {
@@ -28,7 +28,7 @@ export const compressionApi = {
       } else {
         return {
           ok: false,
-          message: "Decompression Stream API not supported",
+          message: "DeCompression Streams API not supported",
         };
       }
     } catch (error) {

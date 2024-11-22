@@ -19,7 +19,7 @@ import {
   WakeLockApi,
   WebOTPApi,
   screenApi,
-  compressionApi,
+  compressionStreamsApi,
 } from "./pwa";
 
 describe("pwafire", () => {
@@ -57,7 +57,7 @@ describe("pwafire", () => {
       ...VisibilityApi,
       ...WakeLockApi,
       ...screenApi,
-      ...compressionApi,
+      ...compressionStreamsApi,
     });
   });
 });
