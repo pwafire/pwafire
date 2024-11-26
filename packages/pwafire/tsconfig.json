@@ -2,13 +2,15 @@
   "compilerOptions": {
     "target": "ES2015",
     "module": "commonjs",
-    "declaration": true,
     "outDir": "./lib",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "allowJs": true
+    "allowJs": true,
+    "declaration": true,
+    "declarationMap": false,
+    "sourceMap": false
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/tests/*"]
