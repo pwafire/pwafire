@@ -23,13 +23,13 @@ Note that you can still use a specific version over the pwafire cdn
 #### Latest version
 
 ```js
-import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
+import { pwa } from "https://unpkg.com/pwafire/dist/index.js";
 ```
 
 #### Specific version
 
 ```js
-import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
+import { pwa } from "https://unpkg.com/pwafire@5.1.4-rc.1/dist/index.js";
 ```
 
 ### Example : using _pwafire_
