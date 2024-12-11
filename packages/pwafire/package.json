@@ -1,16 +1,23 @@
 {
   "name": "pwafire",
-  "version": "5.1.4-rc.0",
+  "version": "5.1.4-rc.1",
   "description": "Progressive Web App API of APIs",
+  "type": "module",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && npm run build:js && npm run build:bundle",
+    "build": "npm run clean && tsc -p tsconfig.browser.json",
     "build:js": "tsc",
     "build:bundle": "esbuild src/index.ts --bundle --minify --sourcemap --format=iife --global-name=YourLibrary --outfile=dist/index.min.js",
     "format": "prettier --write \"src/**/*.ts\"",
@@ -20,8 +27,7 @@
     "prepublishOnly": "npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags",
-    "publish": "npm run test && npm run version && npm publish"
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",

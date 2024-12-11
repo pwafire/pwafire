@@ -10,7 +10,9 @@
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
     "sourceMap": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "lib": ["ES2015", "DOM"],
+    "rootDir": "src"
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/tests/*"]
