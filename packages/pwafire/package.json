@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "5.1.4",
+  "version": "5.1.4-rc.0",
   "description": "Progressive Web App API of APIs",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -21,7 +21,7 @@
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "publish": "npm run version && npm publish"
+    "publish": "npm run test && npm run version && npm publish"
   },
   "repository": {
     "type": "git",
