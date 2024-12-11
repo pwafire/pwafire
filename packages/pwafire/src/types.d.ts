@@ -11,7 +11,6 @@ interface Window {
   wakeLock?: WakeLock;
 }
 
-
 interface Credentials {
   otp: string;
 }
