@@ -1,131 +1,143 @@
-## Des APIs pour les Progressive Web Apps (Sponsorisez-nous)
+# Documentation PWAfire - Guide Complet
 
-Créez des Progressive Web Apps évolutives. Commencez avec notre site web [docs.pwafire.org](https://docs.pwafire.org/get-started).
+## Introduction
 
-<span>![Build package](https://github.com/pwafire/pwafire/workflows/Build%20package/badge.svg)</span> <span><img src="https://img.shields.io/npm/dm/pwafire" alt="CI" /></span>
+PWAfire est une bibliothèque open-source conçue pour simplifier le développement d'Applications Web Progressives (PWA) en fournissant une interface unifiée vers les fonctionnalités web modernes. Cette bibliothèque sert d'"API des APIs", regroupant diverses fonctionnalités des Progressive Web Apps dans un package unique et facile à utiliser.
 
-### Les changements pour la version 3.0.0 à venir
+## Concepts Fondamentaux
 
-Toutes les **async responses** retournées ont une nouvelle valeur `success`, un type booléen qui remplace la valeur `type`, une chaîne de caractères comme indiqué ci-dessous ;
+Les Progressive Web Apps représentent une approche moderne du développement web qui permet aux sites web d'offrir aux utilisateurs une expérience similaire à celle d'une application native. PWAfire simplifie la mise en œuvre des fonctionnalités PWA en fournissant une interface cohérente sur différents navigateurs et plateformes.
 
-```js
+## Options d'Installation
 
-// Async API...
-const res = await pwa.CopyText(text);
+Vous disposez de deux méthodes principales pour intégrer PWAfire à votre projet :
 
-// Versions antérieures...
- if(res.type === 'success')  {
-   // Exécutez votre code...
- }
+### Installation via NPM
 
-//  Nouvelle version à partir de v3.0.0
- if(res.success)  {
-   // Exécutez votre code...
- }
-
-```
-
-## Présentation de _pwafire_ cdn et npm
-
-Progressive Web Apps **API des APIs**. Toutes les nouvelles fonctionnalités Web en un seul paquet.
-
-### Installez pwafire via NPM
+Pour les projets utilisant la gestion de packages Node.js :
 
 ```bash
- npm i pwafire --save
+npm i pwafire --save
 ```
 
-### Obtenir pwafire par CDN comme module E6
+### Intégration via CDN
 
-Notez que vous pouvez toujours utiliser une version spécifique sur le cdn de pwafire
+Pour une utilisation directe dans le navigateur via les modules ES6 :
 
-#### Dernière version
+Version la plus récente :
 
-```js
-import pwafire from "https://unpkg.com/pwafire/esm/index.js";
-const pwa = pwafire.pwa;
+```javascript
+import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
 ```
 
-#### Version spécifique
+Pour la stabilité en production, vous pouvez spécifier une version particulière :
 
-```js
-import pwafire from "https://unpkg.com/pwafire@3.0.1/esm/index.js";
-const pwa = pwafire.pwa;
+```javascript
+import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
 ```
 
-### Exemple : utilisation de _pwafire_
+## Système de Détection des Fonctionnalités
 
-#### Importez pwafire dans votre application react
+PWAfire inclut un système sophistiqué de détection des fonctionnalités qui aide les développeurs à mettre en œuvre des solutions de repli élégantes lorsque certaines fonctionnalités PWA ne sont pas disponibles dans le navigateur de l'utilisateur. Ce système est particulièrement précieux pour créer des applications robustes et compatibles avec différents navigateurs.
 
-```js
-import pwafire from "pwafire";
-const pwa = pwafire.pwa;
+### Utilisation de la Détection des Fonctionnalités
+
+La bibliothèque propose deux approches principales pour la détection des fonctionnalités :
+
+1. **Vérification des Fonctionnalités Individuelles** :
+
+```javascript
+import { check } from "pwafire";
+
+// Fonction asynchrone pour vérifier si le partage est pris en charge
+async function vérifierSupportPartage() {
+    const partageSupporte = await check.Share();
+    if (partageSupporte) {
+        // Implémenter la fonctionnalité de partage
+    } else {
+        // Fournir une solution alternative (par exemple, copier dans le presse-papiers)
+    }
+}
 ```
 
-#### Appelez la méthode de partage sur pwa
+2. **Évaluation Complète des Fonctionnalités** :
 
-```js
-pwa.Share(data);
+```javascript
+import { check } from "pwafire";
+
+async function vérifierToutesFonctionnalités() {
+    const fonctionnalitésSupportées = await check.All();
+    // Renvoie un objet contenant le statut de support pour toutes les APIs disponibles
+}
 ```
 
-Prévisualiser la documentation : [Démarrer](https://docs.pwafire.org/get-started)
+## Fonctionnalités Web Supportées
 
-## PWA : Nouvelles fonctionnalités Web
+PWAfire prend en charge un ensemble complet de fonctionnalités web modernes, toutes testées et stabilisées. Voici les principales fonctionnalités disponibles :
 
-| Feature                                                                                                | Feature                   |
-| ------------------------------------------------------------------------------------------------------ | ------------------------- |
-| Custom Install Button                                                                                  | Offline Capabilities      |
-| Background Sync                                                                                        | Native App Install Banner |
-| Badging                                                                                                | Web Share                 |
-| Contact Picker                                                                                         | Copy Text                 |
-| Share Target                                                                                           | Copy Images               |
-| Screen Wake Lock                                                                                       | Push Notifications        |
-| [View All, 10 + Here](https://github.com/pwafire/pwafire/tree/master/packages#install-pwafire-via-npm) |
+### Fonctionnalités de Base
 
-## Chat : Participez à la conversation
+1. **Installation Personnalisée** : Permet des expériences d'installation PWA personnalisées
+2. **Synchronisation en Arrière-plan** : Permet la synchronisation des données même lorsque l'application n'est pas active
+3. **Badges** : Prend en charge les mises à jour des badges d'application pour les notifications
+4. **Sélecteur de Contacts** : Fournit l'accès aux contacts de l'appareil (avec permission de l'utilisateur)
+5. **Verrouillage d'Écran** : Empêche l'écran de l'appareil de se mettre en veille
+6. **Indexation du Contenu** : Permet la découverte de contenu hors ligne
+7. **Opérations de Presse-papiers** :
+   - Copie et lecture de texte
+   - Copie d'images
+   - Capacités de lecture de fichiers
 
-Suivez notre [Compte de développeur](https://twitter.com/pwafire) sur [Twitter](https://twitter.com/pwafire). Obtenez une aide en direct sur notre [espace de travail Slack](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI).
+### Fonctionnalités de Communication
 
-| Canal de communication |  Parlez-nous                              |
-| --------------------- | --------------------------------------- |
-| Twitter Chat          | [Tweet us](https://twitter.com/pwafire) |
+1. **Notifications Push** : Permet l'envoi de mises à jour aux utilisateurs
+2. **Partage Web** : Permet le partage de contenu entre applications
+3. **Paiements Web** : Prend en charge le traitement intégré des paiements
 
-## Contributeurs
+## Exemples d'Implémentation
 
-### Contributeurs au code
+Voici un exemple pratique d'implémentation de la fonctionnalité de partage dans une application React :
 
-Ce projet existe grâce à toutes les personnes qui y contribuent. [[Contribuer](CONTRIBUTING.md)].
-<a href="https://github.com/pwafire/pwafire/graphs/contributors"><img src="https://opencollective.com/pwafire/contributors.svg?width=890&button=false" /></a>
+```javascript
+import { pwa } from "pwafire";
 
-### Contributeurs financiers
+function ComposantPartage() {
+    const partagerContenu = async () => {
+        const données = {
+            title: "Exemple PWAfire",
+            text: "Découvrez cette superbe bibliothèque PWA !",
+            url: "https://docs.pwafire.org"
+        };
+        
+        try {
+            await pwa.Share(données);
+        } catch (erreur) {
+            console.log("Échec du partage :", erreur);
+        }
+    };
+    
+    return <button onClick={partagerContenu}>Partager</button>;
+}
+```
 
-Devenez un contributeur financier et aidez-nous à soutenir notre communauté. [Contribuer](https://opencollective.com/pwafire/contribute)]
+## Communauté et Support
 
-### Particuliers
+La communauté PWAfire propose plusieurs canaux pour le support et la collaboration :
 
-<a href="https://opencollective.com/pwafire"><img src="https://opencollective.com/pwafire/individuals.svg?width=890"></a>
+1. **Documentation** : Guides complets disponibles sur docs.pwafire.org
+2. **Support Développeur** : Communauté active sur Twitter (@pwafire)
+3. **Aide en Temps Réel** : Disponible via leur espace de travail Slack
+4. **Contribution** : Ouvert aux propositions de fonctionnalités via GitHub Issues
 
-### Organisations
+## Considérations pour le Développement
 
-Soutenez ce projet avec votre organisation. Votre logo apparaîtra ici avec un lien vers votre site web. [[Contribuer](https://opencollective.com/pwafire/contribute)]
+Lors de l'implémentation de PWAfire dans votre projet, considérez ces bonnes pratiques :
 
-<a href="https://opencollective.com/pwafire/organization/0/website"><img src="https://opencollective.com/pwafire/organization/0/avatar.svg"></a>
-<a href="https://opencollective.com/pwafire/organization/1/website"><img src="https://opencollective.com/pwafire/organization/1/avatar.svg"></a>
-<a href="https://opencollective.com/pwafire/organization/2/website"><img src="https://opencollective.com/pwafire/organization/2/avatar.svg"></a>
-<a href="https://opencollective.com/pwafire/organization/3/website"><img src="https://opencollective.com/pwafire/organization/3/avatar.svg"></a>
-<a href="https://opencollective.com/pwafire/organization/4/website"><img src="https://opencollective.com/pwafire/organization/4/avatar.svg"></a>
-<a href="https://opencollective.com/pwafire/organization/5/website"><img src="https://opencollective.com/pwafire/organization/5/avatar.svg"></a>
-<a href="https://opencollective.com/pwafire/organization/6/website"><img src="https://opencollective.com/pwafire/organization/6/avatar.svg"></a>
-<a href="https://opencollective.com/pwafire/organization/7/website"><img src="https://opencollective.com/pwafire/organization/7/avatar.svg"></a>
-<a href="https://opencollective.com/pwafire/organization/8/website"><img src="https://opencollective.com/pwafire/organization/8/avatar.svg"></a>
-<a href="https://opencollective.com/pwafire/organization/9/website"><img src="https://opencollective.com/pwafire/organization/9/avatar.svg"></a>
+1. Toujours implémenter la détection des fonctionnalités avant d'utiliser des capacités avancées
+2. Fournir des mécanismes de repli pour les fonctionnalités non supportées
+3. Tester sur différents navigateurs et appareils pour assurer un comportement cohérent
+4. Suivre les mises à jour de version pour la sécurité et les améliorations de fonctionnalités
 
-### Contribuer
+## Licence
 
-Proposez votre fonctionnalité en [créant une question](https://github.com/pwafire/pwafire/issues/new)
-
-### Licence
-
-| Licence     | Lien                                                                           |
-| ----------- | ------------------------------------------------------------------------------ |
-| Licence MIT | [Voir la licence](https://github.com/pwafire/pwafire/blob/master/.github/LICENSE) |
+PWAfire est disponible sous la licence MIT, ce qui le rend adapté aux projets personnels et commerciaux. Le texte complet de la licence peut être trouvé dans leur dépôt GitHub.
