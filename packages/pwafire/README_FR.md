@@ -1,10 +1,10 @@
-## Des APIs pour les Progressive Web Apps (Sponsorisez-nous)
+# Des APIs pour les Progressive Web Apps (Sponsorisez-nous)
 
 Créez des Progressive Web Apps évolutives. Commencez avec notre site web [docs.pwafire.org](https://docs.pwafire.org/get-started) .
 
 Bienvenue à **@pwafire v.3.0.0** qui est la base de notre prochaine génération d'API pwafire. Notez que, cette version est un changement radical, avant de mettre à jour, vérifiez les documentations d'abord.
 
-### Les changements pour la version 3.0.0 à venir
+## Les changements pour la version 3.0.0 à venir
 
 Toutes les **async responses** retournées ont une nouvelle valeur `success`, un type booléen qui remplace la valeur `type`, une chaîne de caractères comme indiqué ci-dessous ;
 

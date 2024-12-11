@@ -1,113 +1,93 @@
-# Progressive Web Apps API of APIs (Sponsor us)
+# Progressive Web Apps API of APIs
 
-Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
+An open-source library and framework for building fast, reliable, and engaging Progressive Web Apps (PWAs). Build scalable Progressive Web Apps with our comprehensive API collection.
 
-An open-source library and framework for building fast, reliable, and engaging Progressive Web Apps (PWAs).
+[![NPM Downloads](https://img.shields.io/npm/dm/pwafire)](https://www.npmjs.com/package/pwafire)
 
-![CI](https://img.shields.io/npm/dm/pwafire)
+[Get Started with Documentation](https://docs.pwafire.org/get-started)
 
-## Introducing _pwafire_ cdn and npm
+## Installation Options
 
-Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
+You can integrate pwafire into your project using either NPM or CDN.
 
-### Install pwafire via NPM
+### NPM Installation
+
+To add pwafire to your project using NPM, run:
 
 ```bash
- npm i pwafire --save
+npm i pwafire --save
 ```
 
-### Get pwafire over CDN as an E6 Module
+### CDN Integration
 
-Note that you can still use a specific version over the pwafire cdn
+Access pwafire directly through our CDN as an ES6 Module. You can use either the latest version or specify a particular release.
 
-#### Latest version
+For the latest version:
 
 ```js
 import { pwa } from "https://unpkg.com/pwafire/dist/index.js";
 ```
 
-#### Specific version
+For a specific version:
 
 ```js
 import { pwa } from "https://unpkg.com/pwafire@5.1.4-rc.1/dist/index.js";
 ```
 
-### Example : using _pwafire_
+## Usage Example
 
-#### Import pwafire in your react app
+Here's a simple example of how to use pwafire in your application:
 
 ```js
+// Import pwafire in your application
 import { pwa } from "pwafire";
-```
 
-#### Call the share method on pwa
-
-```js
+// Use the share functionality
 pwa.Share(data);
 ```
 
-Preview Documentation : [Get Started](https://docs.pwafire.org/get-started)
+## Feature Detection
 
-## API Feature Detection
-
-- Goal is to allow room for custom handlers if need be
-- This approach is going to be experimental and will be updated
-- This addition is going to be built for available stable apis
-
-### Example and use case
-
-- Web Share is both on Edge desktop and mobile, but not with chrome. I'd like to show a copy link button for chrome
-- Install latest pwafire version, already up for testing in v4 alpha-3\*
-
-```bash
- npm i --save pwafire
-```
-
-- Try it out
+Pwafire includes built-in feature detection to help you provide the best experience across different browsers and platforms. Our feature detection system allows for custom handlers and adapts to varying browser support levels.
 
 ```js
-// Get the check instance from pwafire.
+// Import the check functionality
 import { check } from "pwafire";
-//...
-// The response is a boolean, true or false.
-const supported = await check.Share();
-// You can get a list of all apis and their support status as well.
-const all = await check.All();
+
+// Check if specific features are supported
+const isShareSupported = await check.Share();
+
+// Get support status for all features
+const allFeatures = await check.All();
 ```
 
-## PWAs : New Web Capabilities(Project Fugu)
+## Available Web Capabilities
 
-| Feature                                                     | Stabilty |
-| ----------------------------------------------------------- | -------- |
-| Install(Custom)                                             | ok       |
-| Background Sync                                             | ok       |
-| Badging                                                     | ok       |
-| Contact Picker                                              | ok       |
-| Screen Wake Lock                                            | ok       |
-| Content Indexing                                            | ok       |
-| Copy Text                                                   | ok       |
-| Read Text(Clipboard)                                        | ok       |
-| Copy Images                                                 | ok       |
-| Read Files(Clipboard)                                       | ok       |
-| Push Notifications                                          | ok       |
-| Web Share                                                   | ok       |
-| Web payments                                                | ok       |
-| [View All, 10 + Here](https://docs.pwafire.org/get-started) | 14       |
+Pwafire implements Project Fugu APIs to provide modern web capabilities. Here are the stable features currently available:
 
-## Chat : Join the conversation
+| Feature            | Status | Description                                    |
+|-------------------|---------|------------------------------------------------|
+| Custom Install    | Stable  | Customizable PWA installation experience       |
+| Background Sync   | Stable  | Defer actions until network is available       |
+| Badging          | Stable  | Add notification badges to app icons           |
+| Contact Picker    | Stable  | Access device's contact list                   |
+| Screen Wake Lock  | Stable  | Keep screen active when needed                 |
+| Content Indexing  | Stable  | Make app content searchable                    |
+| Clipboard Access  | Stable  | Read/write text, images, and files            |
+| Push Notifications| Stable  | Engage users with timely updates              |
+| Web Share        | Stable  | Native sharing capabilities                    |
+| Web Payments     | Stable  | Streamlined payment processing                 |
 
-Follow our [Developer Account](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI).
+[View All Features](https://docs.pwafire.org/get-started)
 
-| Communication Channel | Talk to us                              |
-| --------------------- | --------------------------------------- |
-| Twitter Chat          | [Tweet us](https://twitter.com/pwafire) |
+## Community and Support
 
-### Contribute
+Join our active community to get help and share your experiences:
 
-Propose your Feature by [Creating an Issue](https://github.com/pwafire/pwafire/issues/new)
+- Follow our [Developer Account on Twitter](https://twitter.com/pwafire)
+- Join our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI) for live support
+- [Create an Issue](https://github.com/pwafire/pwafire/issues/new) to propose features or report bugs
 
-### License
+## License
 
-| License     | Link                                                                           |
-| ----------- | ------------------------------------------------------------------------------ |
-| MIT License | [View License](https://github.com/pwafire/pwafire/blob/master/.github/LICENSE) |
+This project is licensed under the [MIT License](https://github.com/pwafire/pwafire/blob/master/.github/LICENSE).
