@@ -1,113 +1,143 @@
-# Progressive Web Apps API of APIs (Sponsor us)
+# PWAfire Library Documentation - A Comprehensive Guide
 
-Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
+## Introduction
 
-An open-source library and framework for building fast, reliable, and engaging Progressive Web Apps (PWAs).
+PWAfire is an open-source library designed to simplify the development of Progressive Web Apps (PWAs) by providing a unified interface to modern web capabilities. This library serves as an "API of APIs," bundling various Progressive Web App features into a single, easy-to-use package.
 
-![CI](https://img.shields.io/npm/dm/pwafire)
+## Core Concepts
 
-## Introducing _pwafire_ cdn and npm
+Progressive Web Apps represent a modern approach to web development that allows websites to offer app-like experiences to users. PWAfire streamlines the implementation of PWA features by providing a consistent interface across different browsers and platforms.
 
-Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
+## Installation Options
 
-### Install pwafire via NPM
+You have two primary methods to incorporate PWAfire into your project:
+
+### NPM Installation
+
+For projects using Node.js package management:
 
 ```bash
- npm i pwafire --save
+npm i pwafire --save
 ```
 
-### Get pwafire over CDN as an E6 Module
+### CDN Integration
 
-Note that you can still use a specific version over the pwafire cdn
+For direct browser usage through ES6 modules:
 
-#### Latest version
+Latest version:
 
-```js
+```javascript
 import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
 ```
 
-#### Specific version
+For stability in production environments, you can specify a particular version:
 
-```js
+```javascript
 import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
 ```
 
-### Example : using _pwafire_
+## Feature Detection System
 
-#### Import pwafire in your react app
+PWAfire includes a sophisticated feature detection system that helps developers implement graceful fallbacks when certain PWA features aren't available in the user's browser. This system is particularly valuable for creating robust, cross-browser compatible applications.
 
-```js
-import { pwa } from "pwafire";
-```
+### Using Feature Detection
 
-#### Call the share method on pwa
+The library provides two main approaches to feature detection:
 
-```js
-pwa.Share(data);
-```
+1. **Individual Feature Checking**:
 
-Preview Documentation : [Get Started](https://docs.pwafire.org/get-started)
-
-## API Feature Detection
-
-- Goal is to allow room for custom handlers if need be
-- This approach is going to be experimental and will be updated
-- This addition is going to be built for available stable apis
-
-### Example and use case
-
-- Web Share is both on Edge desktop and mobile, but not with chrome. I'd like to show a copy link button for chrome
-- Install latest pwafire version, already up for testing in v4 alpha-3\*
-
-```bash
- npm i --save pwafire
-```
-
-- Try it out
-
-```js
-// Get the check instance from pwafire.
+```javascript
 import { check } from "pwafire";
-//...
-// The response is a boolean, true or false.
-const supported = await check.Share();
-// You can get a list of all apis and their support status as well.
-const all = await check.All();
+
+// Async function to check if sharing is supported
+async function checkShareSupport() {
+    const isShareSupported = await check.Share();
+    if (isShareSupported) {
+        // Implement sharing functionality
+    } else {
+        // Provide alternative solution (e.g., copy to clipboard)
+    }
+}
 ```
 
-## PWAs : New Web Capabilities(Project Fugu)
+2. **Comprehensive Feature Assessment**:
 
-| Feature                                                     | Stabilty |
-| ----------------------------------------------------------- | -------- |
-| Install(Custom)                                             | ok       |
-| Background Sync                                             | ok       |
-| Badging                                                     | ok       |
-| Contact Picker                                              | ok       |
-| Screen Wake Lock                                            | ok       |
-| Content Indexing                                            | ok       |
-| Copy Text                                                   | ok       |
-| Read Text(Clipboard)                                        | ok       |
-| Copy Images                                                 | ok       |
-| Read Files(Clipboard)                                       | ok       |
-| Push Notifications                                          | ok       |
-| Web Share                                                   | ok       |
-| Web payments                                                | ok       |
-| [View All, 10 + Here](https://docs.pwafire.org/get-started) | 14       |
+```javascript
+import { check } from "pwafire";
 
-## Chat : Join the conversation
+async function checkAllFeatures() {
+    const supportedFeatures = await check.All();
+    // Returns an object containing support status for all available APIs
+}
+```
 
-Follow our [Developer Account](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI).
+## Supported Web Capabilities
 
-| Communication Channel | Talk to us                              |
-| --------------------- | --------------------------------------- |
-| Twitter Chat          | [Tweet us](https://twitter.com/pwafire) |
+PWAfire supports a comprehensive set of modern web capabilities, all of which have been tested and stabilized. Here are the key features available:
 
-### Contribute
+### Core Features
 
-Propose your Feature by [Creating an Issue](https://github.com/pwafire/pwafire/issues/new)
+1. **Custom Installation**: Enables customized PWA installation experiences
+2. **Background Sync**: Allows data synchronization even when the app is not active
+3. **Badging**: Supports app badge updates for notifications
+4. **Contact Picker**: Provides access to device contacts (with user permission)
+5. **Screen Wake Lock**: Prevents device screen from sleeping
+6. **Content Indexing**: Enables offline content discovery
+7. **Clipboard Operations**:
+   - Text copying and reading
+   - Image copying
+   - File reading capabilities
 
-### License
+### Communication Features
 
-| License     | Link                                                                           |
-| ----------- | ------------------------------------------------------------------------------ |
-| MIT License | [View License](https://github.com/pwafire/pwafire/blob/master/.github/LICENSE) |
+1. **Push Notifications**: Enables sending updates to users
+2. **Web Share**: Allows content sharing between applications
+3. **Web Payments**: Supports integrated payment processing
+
+## Implementation Examples
+
+Here's a practical example of implementing sharing functionality in a React application:
+
+```javascript
+import { pwa } from "pwafire";
+
+function ShareComponent() {
+    const shareContent = async () => {
+        const data = {
+            title: "PWAfire Example",
+            text: "Check out this awesome PWA library!",
+            url: "https://docs.pwafire.org"
+        };
+        
+        try {
+            await pwa.Share(data);
+        } catch (error) {
+            console.log("Sharing failed:", error);
+        }
+    };
+    
+    return <button onClick={shareContent}>Share</button>;
+}
+```
+
+## Community and Support
+
+The PWAfire community provides several channels for support and collaboration:
+
+1. **Documentation**: Comprehensive guides available at docs.pwafire.org
+2. **Developer Support**: Active community on Twitter (@pwafire)
+3. **Real-time Help**: Available through their Slack workspace
+4. **Contribution**: Open to feature proposals through GitHub Issues
+
+## Development Considerations
+
+When implementing PWAfire in your project, consider these best practices:
+
+1. Always implement feature detection before using advanced capabilities
+2. Provide fallback mechanisms for unsupported features
+3. Test across different browsers and devices to ensure consistent behavior
+4. Keep up with version updates for security and feature improvements
+
+## License
+
+PWAfire is available under the MIT License, making it suitable for both personal and commercial projects. The full license text can be found in their GitHub repository.
