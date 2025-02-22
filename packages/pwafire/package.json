@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "5.1.5-rc1",
+  "version": "5.1.5--rc1",
   "description": "Progressive Web App API of APIs",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pwafire/pwafire/"
+    "url": "git+https://github.com/pwafire/pwafire.git"
   },
   "keywords": [
     "pwafire",
