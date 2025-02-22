@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "5.1.5--rc1",
+  "version": "5.1.5-rc.1",
   "description": "Progressive Web App API of APIs",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -13,7 +13,7 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
-    "test": "npx jest",
+    "test": "jest",
     "prepublishOnly": "npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
