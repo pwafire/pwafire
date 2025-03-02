@@ -61,9 +61,7 @@ interface CreateFileResponse {
 interface FilePickerOptions {
   types: {
     description: string;
-    accept: {
-      [mimeType: string]: string[];
-    };
+    accept: { [mimeType: string]: string[] };
   }[];
   id?: string;
   multiple?: boolean;

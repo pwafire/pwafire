@@ -27,7 +27,7 @@ export const FilesApi = {
       return { ok: false, message: "File System Access API not supported" };
     }
     try {
-      const [fileHandle] = await window.showOpenFilePicker();
+      const [fileHandle] = await self.showOpenFilePicker();
       const file = await fileHandle.getFile();
 
       if (!file.type.includes("text")) {
@@ -54,7 +54,7 @@ export const FilesApi = {
     }
 
     try {
-      const [fileHandle] = options ? await window.showOpenFilePicker(options) : await window.showOpenFilePicker();
+      const [fileHandle] = options ? await self.showOpenFilePicker(options) : await self.showOpenFilePicker();
       const file = await fileHandle.getFile();
       return {
         ok: true,
@@ -85,13 +85,13 @@ export const FilesApi = {
       return {
         ok: true,
         message: "File created successfully",
-        handle: await window.showSaveFilePicker(options),
+        handle: await self.showSaveFilePicker(options),
       };
     } catch (error) {
       return { ok: false, message: `Failed to create file: ${error}` };
     }
   },
-  writeToFile: async (handle: FileSystemFileHandle, contents: string | BufferSource | Blob): Promise<FileResponse> => {
+  writeFile: async (handle: FileSystemFileHandle, contents: string | BufferSource | Blob): Promise<FileResponse> => {
     if (!("showSaveFilePicker" in self)) return { ok: false, message: "File System Access API not supported" };
     try {
       const writable = await handle.createWritable();
