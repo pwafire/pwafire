@@ -43,17 +43,17 @@ class Check {
     return "Notification" in window;
   }
 
-  contentIndexing() {
-    const registration = navigator.serviceWorker.ready;
-    return registration && "index" in registration;
+  async contentIndexing() {
+    try {
+      const registration = await navigator.serviceWorker.ready;
+      return registration && "index" in registration;
+    } catch {
+      return false;
+    }
   }
 
   notificationPermission() {
-    if (this.Notifications()) {
-      return Notification.permission === "granted";
-    } else {
-      return false;
-    }
+    return this.Notifications() && Notification.permission === "granted";
   }
 
   barcodeDetector() {
@@ -84,8 +84,8 @@ class Check {
     return "NDEFReader" in window;
   }
 
-  All() {
-    return [
+  async All() {
+    const checks = [
       this.createSupportObject("Share", this.Share()),
       this.createSupportObject("File Share", this.shareFiles()),
       this.createSupportObject("Clipboard", this.Clipboard()),
@@ -96,7 +96,7 @@ class Check {
       this.createSupportObject("Contacts Picker", this.Contacts()),
       this.createSupportObject("Badging", this.Badging()),
       this.createSupportObject("Notifications", this.Notifications()),
-      this.createSupportObject("Content Indexing", this.contentIndexing()),
+      this.createSupportObject("Content Indexing", await this.contentIndexing()),
       this.createSupportObject("Online Status", this.onlineStatus()),
       this.createSupportObject("Notification Permission", this.notificationPermission()),
       this.createSupportObject("Barcode Detector", this.barcodeDetector()),
@@ -106,10 +106,12 @@ class Check {
       this.createSupportObject("Payment", this.Payment()),
       this.createSupportObject("Web OTP", this.webOTP()),
       this.createSupportObject("Web NFC", this.webNFC()),
-    ].sort((a, b) => a.name.localeCompare(b.name));
+    ];
+
+    return checks.sort((a, b) => a.name.localeCompare(b.name));
   }
 
-  createSupportObject(name: string, isSupported: boolean) {
+  private createSupportObject(name: string, isSupported: boolean) {
     return {
       name,
       message: isSupported ? "Supported" : "Not supported",

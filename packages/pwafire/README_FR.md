@@ -13,12 +13,12 @@ Toutes les **async responses** retournées ont une nouvelle valeur `success`, un
 const res = await pwa.CopyText(text);
 
 // Versions antérieures...
-if (res.type === 'success') {
+if (res.type === "success") {
   // Exécutez votre code...
 }
 
 //  Nouvelle version à partir de v3.0.0
-if (res.success) {
+if (res.ok) {
   // Exécutez votre code...
 }
 ```
@@ -36,21 +36,21 @@ Notez que vous pouvez toujours utiliser une version spécifique sur le cdn de pw
 #### Dernière version
 
 ```js
-import pwafire from 'https://unpkg.com/pwafire/esm/index.js';
+import pwafire from "https://unpkg.com/pwafire/esm/index.js";
 const pwa = pwafire.pwa;
 ```
 
 #### Version spécifique
 
 ```js
-import pwafire from 'https://unpkg.com/pwafire@3.0.1/esm/index.js';
+import pwafire from "https://unpkg.com/pwafire@3.0.1/esm/index.js";
 const pwa = pwafire.pwa;
 ```
 
 ### Importez pwafire dans votre application react
 
 ```js
-import pwafire from 'pwafire';
+import pwafire from "pwafire";
 const pwa = pwafire.pwa;
 ```
 
@@ -61,11 +61,11 @@ Tout est stable dans **Chrome 80** et les versions ultérieures, également dans
 Pour tous les types de `promise`, la valeur de `promise` renvoyée est un objet - pouvant inclure des données supplémentaires ; par exemple, **Contacts API** renvoie une valeur supplémentaire **contacts**.
 
 ```js
-// Success...success value is true...
+// Success...ok value is true...
 {
   success, message;
 }
-// Fail...success value is false...
+// Fail...ok value is false...
 {
   success, error;
 }
@@ -77,7 +77,7 @@ Pour tous les types de `promise`, la valeur de `promise` renvoyée est un objet 
 // Copy text
 pwa.copyText(text).then((res) => {
   // Do something with 'res'
-  if (res.success) {
+  if (res.ok) {
     // Success...
   }
 });
@@ -117,7 +117,7 @@ const data = {
   // Text to share
   text: `Some text...`,
   // Url to share...
-  url: 'https://pwafire.org',
+  url: "https://pwafire.org",
 };
 ```
 
@@ -136,7 +136,7 @@ pwa.Share(data);
 #### Définissez les "propriétés" et l'option "sélectionner le type" dont vous avez besoin
 
 ```js
-const props = ['name', 'email', 'tel'];
+const props = ["name", "email", "tel"];
 const options = { multiple: true };
 ```
 
@@ -146,7 +146,7 @@ const options = { multiple: true };
 // Do something with the promise value...
 pwa.Contacts(props, options).then((res) => {
   // Do something with contacts...
-  const contacts = res.success ? res.contacts : null;
+  const contacts = res.ok ? res.contacts : null;
   //...
 });
 ```
@@ -192,11 +192,11 @@ Afficher les notifications. Passez un objet **data**.
 
 ```js
 const data = {
-  title: 'Hello Notification!',
+  title: "Hello Notification!",
   options: {
-    body: 'Progressive Web App Hello Notification!',
-    icon: '../images/icons/icon-192x192.png',
-    tag: 'pwa',
+    body: "Progressive Web App Hello Notification!",
+    icon: "../images/icons/icon-192x192.png",
+    tag: "pwa",
   },
 };
 ```
@@ -290,7 +290,7 @@ Le `promise` est résolue avec une réponse de fichier
 ```js
 // Do something with the contents...
 const res = await pwa.pickkFile();
-const file = res.success ? res.file : null;
+const file = res.ok ? res.file : null;
 ```
 
 #### Appel de la méthode pickTextFile sur un pwa
@@ -300,7 +300,7 @@ Le `promise` est résolue par une réponse textuelle (contenu du fichier texte s
 ```js
 // Do something with the contents...
 const res = await pwa.pickTextFile();
-const contents = res.success ? res.contents : null;
+const contents = res.ok ? res.contents : null;
 ```
 
 ### 13. Web Payments
@@ -341,9 +341,9 @@ const { tax, discount, total } = payment;
 ```js
 const paymentMethods = [
   {
-    supportedMethods: ['basic-card'],
+    supportedMethods: ["basic-card"],
     data: {
-      supportedNetworks: ['visa', 'mastercard'],
+      supportedNetworks: ["visa", "mastercard"],
     },
   },
 ];
@@ -354,24 +354,24 @@ const paymentMethods = [
 ```js
 const paymentDetails = {
   total: {
-    label: 'Total Amount',
+    label: "Total Amount",
     amount: {
-      currency: 'KSH',
+      currency: "KSH",
       value: total.toString(),
     },
   },
   displayItems: [
     {
-      label: 'Discount',
+      label: "Discount",
       amount: {
-        currency: 'KSH',
+        currency: "KSH",
         value: discount.toString(),
       },
     },
     {
-      label: 'Taxes, 14% V.A.T',
+      label: "Taxes, 14% V.A.T",
       amount: {
-        currency: 'KSH',
+        currency: "KSH",
         value: tax.toString(),
       },
     },

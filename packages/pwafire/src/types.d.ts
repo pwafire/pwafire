@@ -4,13 +4,12 @@ interface FontAccess {
 interface Window {
   addEventListener(arg0: string, arg1: () => { type: string; message: string }): any;
   deferredPrompt?: any;
-  showOpenFilePicker: (options?: any) => [any] | PromiseLike<[any]>;
-  showSaveFilePicker: () => [any] | PromiseLike<[any]>;
+  showOpenFilePicker: (options?: FilePickerOptions) => [any] | PromiseLike<[any]>;
+  showSaveFilePicker: (options?: FilePickerOptions) => Promise<FileSystemFileHandle>;
   queryLocalFonts: (config?: FontAccess) => [any] | PromiseLike<[any]>;
   documentPictureInPicture?: any;
   wakeLock?: WakeLock;
 }
-
 
 interface Credentials {
   otp: string;
@@ -44,3 +43,28 @@ interface OTPCredentialOptions extends CredentialRequestOptions {
 }
 
 declare var IdleDetector: { new (): any; requestPermission: () => any };
+
+interface FileResponse {
+  ok: boolean;
+  message: string;
+  files?: File[];
+  file?: File;
+  contents?: string;
+}
+
+interface CreateFileResponse {
+  ok: boolean;
+  message: string;
+  handle?: FileSystemFileHandle;
+}
+
+interface FilePickerOptions {
+  types: {
+    description: string;
+    accept: { [mimeType: string]: string[] };
+  }[];
+  id?: string;
+  multiple?: boolean;
+  suggestedName?: string;
+  startIn?: string;
+}

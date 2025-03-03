@@ -9,20 +9,18 @@ Créez des Progressive Web Apps évolutives. Commencez avec notre site web [docs
 Toutes les **async responses** retournées ont une nouvelle valeur `success`, un type booléen qui remplace la valeur `type`, une chaîne de caractères comme indiqué ci-dessous ;
 
 ```js
-
 // Async API...
 const res = await pwa.CopyText(text);
 
 // Versions antérieures...
- if(res.type === 'success')  {
-   // Exécutez votre code...
- }
+if (res.ok === "success") {
+  // Exécutez votre code...
+}
 
 //  Nouvelle version à partir de v3.0.0
- if(res.success)  {
-   // Exécutez votre code...
- }
-
+if (res.ok) {
+  // Exécutez votre code...
+}
 ```
 
 ## Présentation de _pwafire_ cdn et npm
@@ -80,15 +78,15 @@ Prévisualiser la documentation : [Démarrer](https://docs.pwafire.org/get-start
 | Contact Picker                                                                                         | Copy Text                 |
 | Share Target                                                                                           | Copy Images               |
 | Screen Wake Lock                                                                                       | Push Notifications        |
-| [View All, 10 + Here](https://github.com/pwafire/pwafire/tree/master/packages#install-pwafire-via-npm) |
+| [View All, 10 + Here](https://github.com/pwafire/pwafire/tree/master/packages#install-pwafire-via-npm) |                           |
 
 ## Chat : Participez à la conversation
 
 Suivez notre [Compte de développeur](https://twitter.com/pwafire) sur [Twitter](https://twitter.com/pwafire). Obtenez une aide en direct sur notre [espace de travail Slack](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI).
 
-| Canal de communication |  Parlez-nous                              |
-| --------------------- | --------------------------------------- |
-| Twitter Chat          | [Tweet us](https://twitter.com/pwafire) |
+| Canal de communication | Parlez-nous                             |
+| ---------------------- | --------------------------------------- |
+| Twitter Chat           | [Tweet us](https://twitter.com/pwafire) |
 
 ### Contribuer
 
@@ -96,6 +94,6 @@ Proposez votre fonctionnalité en [créant une question](https://github.com/pwaf
 
 ### Licence
 
-| Licence     | Lien                                                                           |
-| ----------- | ------------------------------------------------------------------------------ |
+| Licence     | Lien                                                                              |
+| ----------- | --------------------------------------------------------------------------------- |
 | Licence MIT | [Voir la licence](https://github.com/pwafire/pwafire/blob/master/.github/LICENSE) |

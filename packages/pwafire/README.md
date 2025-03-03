@@ -28,7 +28,7 @@ For all promise types, the promise value returned is an object - might include a
 const res = await pwa.CopyText(text);
 
 // Lower versions.
-if (res.success) {
+if (res.ok) {
   // Do something.
 }
 

@@ -1,15 +1,25 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
-    "module": "commonjs",
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
     "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
     "outDir": "./lib",
+    "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "allowJs": true
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext", "WebWorker"],
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/tests/*"]
+  "exclude": ["node_modules", "**/tests/*", "lib", "esm"]
 }

@@ -24,10 +24,10 @@ export const VisibilityApi = {
         const displayMode = window.matchMedia("(display-mode: standalone)").matches
           ? "standalone"
           : window.matchMedia("(display-mode: minimal-ui)").matches
-          ? "minimal-ui"
-          : window.matchMedia("(display-mode: fullscreen)").matches
-          ? "fullscreen"
-          : "broswer-tab";
+            ? "minimal-ui"
+            : window.matchMedia("(display-mode: fullscreen)").matches
+              ? "fullscreen"
+              : "broswer-tab";
         callback(displayMode);
       });
     } catch (error) {
