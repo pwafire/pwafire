@@ -13,12 +13,12 @@ Toutes les **async responses** retournées ont une nouvelle valeur `success`, un
 const res = await pwa.CopyText(text);
 
 // Versions antérieures...
-if (res.type === "success") {
+if (res.ok === "success") {
   // Exécutez votre code...
 }
 
 //  Nouvelle version à partir de v3.0.0
-if (res.success) {
+if (res.ok) {
   // Exécutez votre code...
 }
 ```
