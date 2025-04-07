@@ -1,5 +1,5 @@
 /* Author :  Maye Edwin (Google Developer Expert)
-  Copyright : https://pwafire.org 
+  Copyright : https://pwafire.org
   */
 import Check from "./check";
 import {
@@ -20,9 +20,10 @@ import {
   VisibilityApi,
   WakeLockApi,
   WebOTPApi,
-  screenApi,
-  compressionStreamsApi,
+  ScreenApi,
+  CompressionStreamsApi,
 } from "./pwa";
+import { LazyLoadApi } from "./pwa/lazy-load";
 
 const pwafire = {
   pwa: {
@@ -43,8 +44,9 @@ const pwafire = {
     ...ShareApi,
     ...VisibilityApi,
     ...WakeLockApi,
-    ...screenApi,
-    ...compressionStreamsApi,
+    ...ScreenApi,
+    ...CompressionStreamsApi,
+    ...LazyLoadApi,
   },
   check: new Check(),
 };

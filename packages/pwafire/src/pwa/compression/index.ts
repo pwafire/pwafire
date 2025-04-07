@@ -1,4 +1,4 @@
-export const compressionStreamsApi = {
+export const CompressionStreamsApi = {
   compressStream: async (readableStream: ReadableStream) => {
     try {
       if ("CompressionStream" in window) {

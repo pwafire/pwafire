@@ -18,8 +18,9 @@ import {
   VisibilityApi,
   WakeLockApi,
   WebOTPApi,
-  screenApi,
-  compressionStreamsApi,
+  ScreenApi,
+  CompressionStreamsApi,
+  LazyLoadApi,
 } from "./pwa";
 
 describe("pwafire", () => {
@@ -56,8 +57,9 @@ describe("pwafire", () => {
       ...ShareApi,
       ...VisibilityApi,
       ...WakeLockApi,
-      ...screenApi,
-      ...compressionStreamsApi,
+      ...ScreenApi,
+      ...CompressionStreamsApi,
+      ...LazyLoadApi,
     });
   });
 });

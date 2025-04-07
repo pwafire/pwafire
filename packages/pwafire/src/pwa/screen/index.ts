@@ -1,4 +1,4 @@
-export const screenApi = {
+export const ScreenApi = {
   screenSharingControls: async (config: {
     video: { displaySurface: "browser" | "monitor" | "window" } | boolean;
     monitorTypeSurfaces?: "exclude" | "include";
