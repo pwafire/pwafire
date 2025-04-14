@@ -1,6 +1,6 @@
 # Progressive Web Apps API of APIs (Sponsor us)
 
-## 🎉 What's New in v5.1.6-rc.2
+## 🎉 What's New in v5.1.6-rc.6
 
 We've made PWAFire even more flexible! Now you can import APIs directly:
 

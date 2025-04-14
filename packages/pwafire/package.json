@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "5.1.6-rc.3",
+  "version": "5.1.6-rc.6",
   "description": "A collection of PWA APIs and utilities",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
@@ -25,7 +25,8 @@
     "dev": "tsup src/index.ts --format cjs,esm --dts --out-dir lib --watch",
     "test": "jest",
     "lint": "eslint src --ext .ts",
-    "format": "prettier --write \"src/**/*.ts\""
+    "format": "prettier --write \"src/**/*.ts\"",
+    "publish": "npm run build && npm publish"
   },
   "keywords": [
     "pwa",
