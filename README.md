@@ -54,8 +54,24 @@ const result = await idleDetection(
 
 ### Installation
 
+#### Via NPM
+
 ```bash
+# Install latest version
 npm install pwafire@latest
+
+# Or with save flag
+npm install pwafire --save
+```
+
+#### Via CDN (ES6 Module)
+
+```js
+// Latest version
+import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
+
+// Specific version
+import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
 ```
 
 ### Documentation
@@ -83,28 +99,6 @@ Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.p
 An open-source library and framework for building fast, reliable, and engaging Progressive Web Apps (PWAs).
 
 ![CI](https://img.shields.io/npm/dm/pwafire)
-
-## Installation
-
-### Via NPM
-
-```bash
-npm install pwafire --save
-```
-
-### Via CDN (ES6 Module)
-
-#### Latest version
-
-```js
-import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
-```
-
-#### Specific version
-
-```js
-import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
-```
 
 ## Quick Start
 

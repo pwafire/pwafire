@@ -54,8 +54,24 @@ const result = await idleDetection(
 
 ### Installation
 
+#### Via NPM
+
 ```bash
+# Installer la dernière version
 npm install pwafire@latest
+
+# Ou avec le flag save
+npm install pwafire --save
+```
+
+#### Via CDN (Module ES6)
+
+```js
+// Dernière version
+import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
+
+// Version spécifique
+import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
 ```
 
 ### Documentation
@@ -83,28 +99,6 @@ Construisez des Applications Web Progressives Évolutives. Commencez via le site
 Une bibliothèque et un framework open-source pour construire des Applications Web Progressives (PWA) rapides, fiables et engageantes.
 
 ![CI](https://img.shields.io/npm/dm/pwafire)
-
-## Installation
-
-### Via NPM
-
-```bash
-npm install pwafire --save
-```
-
-### Via CDN (Module ES6)
-
-#### Dernière version
-
-```js
-import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
-```
-
-#### Version spécifique
-
-```js
-import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
-```
 
 ## Démarrage Rapide
 
