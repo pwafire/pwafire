@@ -22,8 +22,8 @@ export const webPIP = async (
   } = {},
 ) => {
   try {
-    const pipButton = document.getElementById("pipButton") as HTMLElement;
-    const player = document.getElementById("pipPlayer") as HTMLElement;
+    const pipButton = document.getElementById("pip-button") as HTMLElement;
+    const player = document.getElementById("pip-player") as HTMLElement;
     if (!pipButton || !player) throw new Error("No player or button found.");
     pipButton.addEventListener("click", async () => {
       if ("documentPictureInPicture" in window) {

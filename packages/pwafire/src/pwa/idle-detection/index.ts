@@ -1,13 +1,33 @@
-export const idleDetection = async (action = "start") => {
+export const idleDetection = async (
+  action = "start",
+  callback = () => {
+    // do something
+  },
+  threshold = 60000,
+) => {
   try {
     if ("IdleDetector" in window) {
-      const idleDetector = new IdleDetector();
-      if (action === "start") {
-        await idleDetector.start();
-        return { ok: true, message: "Idle detection started" };
+      const state = await IdleDetector.requestPermission();
+      if (state === "granted") {
+        const controller = new AbortController();
+        const signal = controller.signal;
+        const idleDetector = new IdleDetector();
+        idleDetector.addEventListener("change", () => {
+          const userState = idleDetector.userState;
+          if (userState === "idle") callback();
+        });
+        if (action === "start") {
+          await idleDetector.start({
+            threshold: threshold > 60000 ? threshold : 60000,
+            signal,
+          });
+          return { ok: true, message: "Started" };
+        } else {
+          controller.abort();
+          return { ok: true, message: "Aborted" };
+        }
       } else {
-        await idleDetector.stop();
-        return { ok: true, message: "Idle detection stopped" };
+        return { ok: false, message: "Need to request permission first" };
       }
     } else {
       return { ok: false, message: "Idle Detection API not supported" };
