@@ -163,10 +163,9 @@ const supported = await check.webShare();
 
 ### Communication Channels
 
-| Channel | Link                                                                                                                                                                         |
-| ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Twitter | [@pwafire](https://twitter.com/pwafire)                                                                                                                                      |
-| Slack   | [Join Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI) |
+| Channel | Link                                    |
+| ------- | --------------------------------------- |
+| Twitter | [@pwafire](https://twitter.com/pwafire) |
 
 ### Contribute
 
