@@ -1,23 +1,16 @@
-export const ShareApi = {
-  Share: async (data: ShareData) => {
-    try {
-      if (data.files) {
-        if (navigator.canShare && navigator.canShare(data)) {
-          await navigator.share(data);
-          return { ok: true, message: "Shared" };
-        } else {
-          return { ok: false, message: "Share Files API not supported" };
-        }
+export const webShare = async (data: ShareData) => {
+  try {
+    if ("canShare" in navigator && "share" in navigator) {
+      if (navigator.canShare(data)) {
+        await navigator.share(data);
+        return { ok: true, message: "Shared" };
       } else {
-        if (navigator.share) {
-          await navigator.share(data);
-          return { ok: true, message: "Shared" };
-        } else {
-          return { ok: false, message: "Web Share API not supported" };
-        }
+        return { ok: false, message: "Cannot share this data" };
       }
-    } catch (error) {
-      throw error;
+    } else {
+      return { ok: false, message: "Web Share API not supported" };
     }
-  },
+  } catch (error) {
+    throw error;
+  }
 };

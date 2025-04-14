@@ -1,5 +1,42 @@
 # Progressive Web Apps API of APIs (Sponsor us)
 
+## 🎉 What's New in v5.1.6
+
+We've modernized PWAFire with cleaner, more modular APIs! Now you can import APIs directly or use the namespace:
+
+```js
+// Import specific APIs (recommended for tree-shaking)
+import { visibility } from 'pwafire';
+import { loadOnScroll } from 'pwafire';
+import { install } from 'pwafire';
+import { copyText, readText } from 'pwafire';
+
+// Or use the namespace (for backward compatibility)
+import { pwa } from 'pwafire';
+pwa.visibility();
+pwa.lazyLoad.loadOnScroll();
+pwa.install();
+pwa.clipboard.copyText();
+```
+
+### New Standalone Functions
+
+Many APIs are now available as standalone functions for better modularity:
+
+```js
+// Contacts API
+import { contacts } from 'pwafire';
+const result = await contacts(['name', 'email'], { multiple: true });
+
+// Idle Detection API
+import { idleDetection } from 'pwafire';
+const result = await idleDetection('start', () => {
+  console.log('User is idle');
+}, 120000);
+```
+
+> **Note**: Both import styles are supported. Direct imports enable better tree-shaking while the namespace provides backward compatibility. 🚀
+
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
 ## About pwafire library
@@ -8,55 +45,39 @@ An open-source library and framework for building fast, reliable, and engaging P
 
 ## API Spec
 
-For all promise types, the promise value returned is an object - might include additional data for example, **Contacts API** returns an additional **contacts** value.
+All APIs return a promise that resolves to a result object:
 
 ```js
-// For Success, ok value is true.
+// For Success
 {
-  ok : true,
-  message : "Success message",
+  ok: true,
+  message: "Success message",
+  // Additional data specific to the API
+  ...data
 }
-// For Fail, ok value is false.
+
+// For Failure
 {
-  ok : false,
-  message : "Error message"
+  ok: false,
+  message: "Error message"
 }
 ```
 
-```js
-// Async API.
-const res = await pwa.CopyText(text);
-
-// Lower versions.
-if (res.ok) {
-  // Do something.
-}
-
-// New version starting v4.0.0
-if (res.ok) {
-  // Do something.
-} else {
-  // Do something.
-}
-```
-
-### Do something with the response returned for e.g copyText
+### Example Usage
 
 ```js
-// Copy text
-pwa
-  .copyText(text)
-  .then((res) => {
-    // Do something with 'res'
-    if (res.ok) {
-      // Success.
-    } else {
-      // Fail.
-    }
-  })
-  .catch((err) => {
-    // Do something with 'err'
-  });
+import { copyText } from 'pwafire/clipboard';
+
+try {
+  const result = await copyText('Hello World');
+  if (result.ok) {
+    console.log('Text copied successfully');
+  } else {
+    console.log('Failed to copy text:', result.message);
+  }
+} catch (err) {
+  console.error('Error:', err);
+}
 ```
 
 ## API Feature Detection

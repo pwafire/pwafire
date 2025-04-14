@@ -1,55 +1,27 @@
-/* Author :  Maye Edwin (Google Developer Expert)
-  Copyright : https://pwafire.org 
-  */
-import Check from "./check";
-import {
-  BadgingApi,
-  BarcodeDetectorApi,
-  ClipboardApi,
-  ConnectivityApi,
-  ContactsApi,
-  ContentIndexingApi,
-  FilesApi,
-  FontsApi,
-  FullscreenApi,
-  IdleDetectionApi,
-  InstallApi,
-  NotificationApi,
-  PaymentApi,
-  ShareApi,
-  VisibilityApi,
-  WakeLockApi,
-  WebOTPApi,
-  screenApi,
-  compressionStreamsApi,
-} from "./pwa";
+export * from "./pwa/badging";
+export * from "./pwa/barcode";
+export * from "./pwa/clipboard";
+export * from "./pwa/compression";
+export * from "./pwa/connectivity";
+export * from "./pwa/contacts";
+export * from "./pwa/content-indexing";
+export * from "./pwa/files";
+export * from "./pwa/fonts";
+export * from "./pwa/fullscreen";
+export * from "./pwa/idle-detection";
+export * from "./pwa/install";
+export * from "./pwa/lazy-load";
+export * from "./pwa/notification";
+export * from "./pwa/payment";
+export * from "./pwa/screen";
+export * from "./pwa/visibility";
+export * from "./pwa/wake-lock";
+export * from "./pwa/web-otp";
+export * from "./pwa/web-share";
+export * from "./check";
 
-const pwafire = {
-  pwa: {
-    ...BadgingApi,
-    ...BarcodeDetectorApi,
-    ...ClipboardApi,
-    ...ConnectivityApi,
-    ...ContactsApi,
-    ...ContentIndexingApi,
-    ...FilesApi,
-    ...FontsApi,
-    ...FullscreenApi,
-    ...IdleDetectionApi,
-    ...InstallApi,
-    ...NotificationApi,
-    ...WebOTPApi,
-    ...PaymentApi,
-    ...ShareApi,
-    ...VisibilityApi,
-    ...WakeLockApi,
-    ...screenApi,
-    ...compressionStreamsApi,
-  },
-  check: new Check(),
-};
+// Create namespace exports
+import * as pwa from "./pwa";
+import * as check from "./check";
 
-const { pwa, check } = pwafire;
-export { check, pwa };
-
-export default pwafire;
+export { pwa, check };
