@@ -1,56 +1,82 @@
-# Progressive Web Apps API of APIs (Sponsor us)
+# PWAFire 🔥
 
-## 🎉 What's New in v5.1.6+
+A modern, modular library for building Progressive Web Apps with ease. PWAFire provides a comprehensive set of APIs and utilities to enhance your web applications with PWA capabilities.
 
-We've modernized PWAFire with cleaner, more modular APIs! Now you can import APIs directly or use the namespace:
+[![npm version](https://badge.fury.io/js/pwafire.svg)](https://badge.fury.io/js/pwafire)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Documentation](https://img.shields.io/badge/Docs-docs.pwafire.org-blue)](https://docs.pwafire.org)
+
+## ✨ Features
+
+- 🔥 Modern, tree-shakeable API design
+- 📱 Comprehensive PWA capabilities
+- 🚀 Zero dependencies
+- ⚡️ TypeScript support
+- 🌐 Universal browser support
+- 📦 Multiple import options (ESM, CJS, CDN)
+
+## 🚀 Quick Start
+
+### Installation
+
+```bash
+# Using npm
+npm install pwafire
+
+# Using yarn
+yarn add pwafire
+
+# Using pnpm
+pnpm add pwafire
+```
+
+### Usage
+
+#### Modern Import (Recommended)
 
 ```js
-// Import specific APIs (recommended for tree-shaking)
+// Import specific APIs for better tree-shaking
 import { copyText, readText } from "pwafire";
+import { contacts } from "pwafire/contacts";
+import { visibility } from "pwafire/visibility";
 
-// Or use the namespace (for backward compatibility)
+// Use the APIs
+const result = await contacts(["name", "email"], { multiple: true });
+const state = await visibility();
+```
+
+#### Namespace Import (Legacy Support)
+
+```js
 import { pwa } from "pwafire";
+
+// Use the namespace
 pwa.visibility();
 pwa.lazyLoad.loadOnScroll();
 pwa.install();
 pwa.clipboard.copyText();
 ```
 
-### New Standalone Functions
+#### CDN Usage
 
-Many APIs are now available as standalone functions for better modularity:
+```html
+<script type="module">
+  import { pwa } from "https://unpkg.com/pwafire@latest/esm/index.js";
 
-```js
-// Contacts API
-import { contacts } from "pwafire/contacts";
-const result = await contacts(["name", "email"], { multiple: true });
+  // Use the API
+  pwa.visibility();
+</script>
 ```
 
-> **Note**: Both import styles are supported. Direct imports enable better tree-shaking while the namespace provides backward compatibility. 🚀
+## 📚 API Reference
 
-Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started).
+All APIs return a standardized response object:
 
-## About pwafire library
-
-An open-source library and framework for building fast, reliable, and engaging Progressive Web Apps (PWAs). It provides developers with a set of tools and resources to simplify the process of creating PWAs, including pre-built components, templates, and best practices. PWA Fire is designed to be easy to use and adaptable to a wide range of use cases, from simple blogs to complex web applications. Its goal is to empower developers to build high-quality PWAs that provide a native app-like experience to users, regardless of their device or platform
-
-## API Spec
-
-All APIs return a promise that resolves to a result object:
-
-```js
-// For Success
-{
-  ok: true,
-  message: "Success message",
-  // Additional data specific to the API
-  ...data
-}
-
-// For Failure
-{
-  ok: false,
-  message: "Error message"
+```typescript
+interface APIResponse<T = any> {
+  ok: boolean;
+  message: string;
+  data?: T;
 }
 ```
 
@@ -61,38 +87,54 @@ import { copyText } from "pwafire/clipboard";
 
 try {
   const result = await copyText("Hello World");
+
   if (result.ok) {
-    console.log("Text copied successfully");
+    console.log("Success:", result.message);
   } else {
-    console.log("Failed to copy text:", result.message);
+    console.error("Error:", result.message);
   }
-} catch (err) {
-  console.error("Error:", err);
+} catch (error) {
+  console.error("Unexpected error:", error);
 }
 ```
 
-## API Feature Detection
+## 🛠 Available APIs
 
-## Install pwafire via NPM
+- **Clipboard**: `copyText`, `readText`
+- **Contacts**: `contacts`
+- **Install**: `install`
+- **LazyLoad**: `loadOnScroll`
+- **Visibility**: `visibility`
+- **Web Share**: `webShare`
+- **And more...**
 
-```bash
-npm i pwafire --save
-```
+## 🔍 Feature Detection
 
-### Get pwafire over CDN as an E6 Module
-
-Note that you can still use a specific version over the pwafire cdn
-
-#### Latest version
-
-```js
-import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
-```
-
-#### Specific version
+PWAFire includes built-in feature detection:
 
 ```js
-import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
+import { check } from "pwafire";
+
+// Check if Web Share is supported
+const isShareSupported = await check.webShare();
+
+// Check if Clipboard API is supported
+const isClipboardSupported = await check.clipboard();
 ```
 
-Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started).
+## 🤝 Contributing
+
+We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) to get started.
+
+## 📄 License
+
+MIT © [PWAFire](https://github.com/pwafire)
+
+## 📖 Documentation
+
+For detailed documentation, visit [docs.pwafire.org](https://docs.pwafire.org).
+
+## 💬 Community
+
+- [Twitter](https://twitter.com/pwafire)
+- [GitHub Discussions](https://github.com/pwafire/pwafire/discussions)
