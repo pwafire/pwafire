@@ -26,9 +26,9 @@ describe("pwafire", () => {
       const notAvailable = jest.fn();
 
       // Mock document.visibilityState
-      Object.defineProperty(document, 'visibilityState', {
+      Object.defineProperty(document, "visibilityState", {
         configurable: true,
-        get: () => 'visible'
+        get: () => "visible",
       });
 
       await visibility(isVisible, notAvailable);
