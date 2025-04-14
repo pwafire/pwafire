@@ -1,18 +1,41 @@
 # Progressive Web Apps API of APIs (Sponsor us)
 
-## 🎉 What's New in v5.1.6-rc.6
+## 🎉 What's New in v5.1.6
 
-We've modernized PWAFire with a cleaner, more modular API! Now you can import APIs directly:
+We've modernized PWAFire with cleaner, more modular APIs! Now you can import APIs directly or use the namespace:
 
 ```js
-// Import specific APIs (recommended)
-import { visibility } from 'pwafire/visibility';
-import { loadOnScroll } from 'pwafire/lazy-load';
-import { install } from 'pwafire/install';
-import { copyText, readText } from 'pwafire/clipboard';
+// Import specific APIs (recommended for tree-shaking)
+import { visibility } from 'pwafire';
+import { loadOnScroll } from 'pwafire';
+import { install } from 'pwafire';
+import { copyText, readText } from 'pwafire';
+
+// Or use the namespace (for backward compatibility)
+import { pwa } from 'pwafire';
+pwa.visibility();
+pwa.lazyLoad.loadOnScroll();
+pwa.install();
+pwa.clipboard.copyText();
 ```
 
-> **Note**: The old `pwa` namespace is deprecated in favor of direct imports. This new approach enables better tree-shaking and bundle optimization! 🚀
+### New Standalone Functions
+
+Many APIs are now available as standalone functions for better modularity:
+
+```js
+// Contacts API
+import { contacts } from 'pwafire';
+const result = await contacts(['name', 'email'], { multiple: true });
+
+// Idle Detection API
+import { idleDetection } from 'pwafire';
+const result = await idleDetection('start', () => {
+  console.log('User is idle');
+}, 120000);
+```
+
+> **Note**: Both import styles are supported. Direct imports enable better tree-shaking while the namespace provides backward compatibility. 🚀
 
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
