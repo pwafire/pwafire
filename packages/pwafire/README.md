@@ -6,13 +6,13 @@ We've modernized PWAFire with cleaner, more modular APIs! Now you can import API
 
 ```js
 // Import specific APIs (recommended for tree-shaking)
-import { visibility } from 'pwafire';
-import { loadOnScroll } from 'pwafire';
-import { install } from 'pwafire';
-import { copyText, readText } from 'pwafire';
+import { visibility } from "pwafire";
+import { loadOnScroll } from "pwafire";
+import { install } from "pwafire";
+import { copyText, readText } from "pwafire";
 
 // Or use the namespace (for backward compatibility)
-import { pwa } from 'pwafire';
+import { pwa } from "pwafire";
 pwa.visibility();
 pwa.lazyLoad.loadOnScroll();
 pwa.install();
@@ -25,14 +25,18 @@ Many APIs are now available as standalone functions for better modularity:
 
 ```js
 // Contacts API
-import { contacts } from 'pwafire';
-const result = await contacts(['name', 'email'], { multiple: true });
+import { contacts } from "pwafire";
+const result = await contacts(["name", "email"], { multiple: true });
 
 // Idle Detection API
-import { idleDetection } from 'pwafire';
-const result = await idleDetection('start', () => {
-  console.log('User is idle');
-}, 120000);
+import { idleDetection } from "pwafire";
+const result = await idleDetection(
+  "start",
+  () => {
+    console.log("User is idle");
+  },
+  120000,
+);
 ```
 
 > **Note**: Both import styles are supported. Direct imports enable better tree-shaking while the namespace provides backward compatibility. 🚀
@@ -66,17 +70,17 @@ All APIs return a promise that resolves to a result object:
 ### Example Usage
 
 ```js
-import { copyText } from 'pwafire/clipboard';
+import { copyText } from "pwafire/clipboard";
 
 try {
-  const result = await copyText('Hello World');
+  const result = await copyText("Hello World");
   if (result.ok) {
-    console.log('Text copied successfully');
+    console.log("Text copied successfully");
   } else {
-    console.log('Failed to copy text:', result.message);
+    console.log("Failed to copy text:", result.message);
   }
 } catch (err) {
-  console.error('Error:', err);
+  console.error("Error:", err);
 }
 ```
 
@@ -244,7 +248,7 @@ const offline = () => {
 #### Call the connectivity method on pwa, adding the two parameters
 
 ```js
-pwa.Connectivity(online, offline);
+pwa.connectivity(online, offline);
 ```
 
 ### Fullscreen
@@ -254,7 +258,7 @@ Open app in fullscreen on a click event
 #### Call the fullscreen method
 
 ```js
-pwa.Fullscreen();
+pwa.fullscreen();
 ```
 
 ### Notifications
@@ -278,7 +282,7 @@ const data = {
 
 ```js
 // Call the notification method.
-pwa.Notification(data);
+pwa.notification(data);
 ```
 
 ### Install, add custom installation logic
@@ -291,7 +295,7 @@ Provide an installation step **type** (`before, installed or install`), and a **
 
   ```js
   // 1. Check if app was installed.
-  pwa.Install("installed", () => {
+  pwa.install("installed", () => {
     // b) => Hide the app-provided install promotion custom button.
     setIsInstalled(true);
     // c) => Clear the deferredPrompt so it can be garbage collected.
@@ -309,7 +313,7 @@ Provide an installation step **type** (`before, installed or install`), and a **
 
   ```js
   // 2. Before install prompt is shown.
-  pwa.Install("before", (event) => {
+  pwa.install("before", (event) => {
     // Prevent the mini-infobar from appearing e.g for mobile.
     if (window.matchMedia("(min-width: 767px)").matches) {
       event.preventDefault();
@@ -331,7 +335,7 @@ Provide an installation step **type** (`before, installed or install`), and a **
 
   ```js
   // 3. Show the install prompt.
-  pwa.Install("install", async (event: string) => {
+  pwa.install("install", async (event: string) => {
     // Event type is install.
     console.log(event);
     // a) => Show the install prompt.
@@ -386,7 +390,7 @@ The Screen Wake Lock API provides a way to prevent devices from dimming or locki
 #### Call the install method, returns a promise value
 
 ```js
-pwa.WakeLock();
+pwa.wakeLock();
 ```
 
 ### Visibility
@@ -414,7 +418,7 @@ const notAvailable = () => {
 #### Call the visibility method with the two arguments
 
 ```js
-pwa.Visibility(isVisible, notAvailable);
+pwa.visibility(isVisible, notAvailable);
 ```
 
 ### The File System Access API
@@ -617,7 +621,7 @@ available to **a merchant.**
 #### Call Payment method with three arguments
 
 ```js
-pwa.Payment(pay, paydata, validatePayment);
+pwa.payment(pay, paydata, validatePayment);
 ```
 
 #### Example : compute total amount to pay
@@ -732,7 +736,7 @@ const validatePayment = async(paymentResponse) => {
 
 ```js
 // Pay.
-pwa.Payment(paydata, validatePayment);
+pwa.payment(paydata, validatePayment);
 ```
 
 ## License
