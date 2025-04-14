@@ -1,8 +1,8 @@
 # PWAFire - Progressive Web Apps API of APIs
 
-## 🎉 Announcing PWAFire v5.1.7
+## 🎉 Announcing PWAFire v5.1.8
 
-We're excited to announce the release of PWAFire v5.1.7! This version brings significant improvements to the API structure and developer experience.
+We're excited to announce the release of PWAFire v5.1.8! This version brings significant improvements to the API structure and developer experience.
 
 ### Key Features
 

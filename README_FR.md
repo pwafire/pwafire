@@ -1,99 +1,176 @@
-# Des APIs pour les Progressive Web Apps (Sponsorisez-nous)
+# PWAFire - API Progressive Web Apps des APIs
 
-Créez des Progressive Web Apps évolutives. Commencez avec notre site web [docs.pwafire.org](https://docs.pwafire.org/get-started).
+## 🎉 Annonce de PWAFire v5.1.8
 
-![Build package](https://github.com/pwafire/pwafire/workflows/Build%20package/badge.svg) ![CI](https://img.shields.io/npm/dm/pwafire)
+Nous sommes ravis d'annoncer la sortie de PWAFire v5.1.8 ! Cette version apporte des améliorations significatives à la structure de l'API et à l'expérience développeur.
 
-## Les changements pour la version 3.0.0 à venir
+### Fonctionnalités Principales
 
-Toutes les **async responses** retournées ont une nouvelle valeur `success`, un type booléen qui remplace la valeur `type`, une chaîne de caractères comme indiqué ci-dessous ;
+1. **Structure d'API Moderne**
+
+   - Importations directes pour un meilleur tree-shaking
+   - Importations par espace de noms pour la compatibilité ascendante
+   - Fonctions autonomes pour une meilleure modularité
+   - Convention de nommage camelCase cohérente
+
+2. **Nouveaux Styles d'Importation**
 
 ```js
-// Async API...
-const res = await pwa.CopyText(text);
+// Importations directes (recommandé pour le tree-shaking)
+import { visibility } from "pwafire";
 
-// Versions antérieures...
-if (res.ok === "success") {
-  // Exécutez votre code...
-}
+// Importation directe avec chemin
+import { visibility } from "pwafire/visibility";
 
-//  Nouvelle version à partir de v3.0.0
-if (res.ok) {
-  // Exécutez votre code...
-}
+// Importations par espace de noms (compatibilité ascendante)
+import { pwa } from "pwafire";
+
+pwa.visibility();
 ```
 
-## Présentation de _pwafire_ cdn et npm
+3. **Fonctions Autonomes**
 
-Progressive Web Apps **API des APIs**. Toutes les nouvelles fonctionnalités Web en un seul paquet.
+```js
+// API Contacts
+import { contacts } from "pwafire";
+const result = await contacts(["name", "email"], { multiple: true });
 
-### Installez pwafire via NPM
+// API Détection d'Inactivité
+import { idleDetection } from "pwafire";
+const result = await idleDetection(
+  "start",
+  () => {
+    console.log("L'utilisateur est inactif");
+  },
+  120000
+);
+```
+
+### Conventions de Nommage
+
+- Les méthodes à un seul mot sont en minuscules (ex : `visibility`)
+- Les méthodes à plusieurs mots utilisent le camelCase (ex : `webShare`, `loadOnScroll`)
+- Toutes les méthodes d'API suivent des modèles de nommage cohérents
+
+### Installation
 
 ```bash
- npm i pwafire --save
+npm install pwafire@latest
 ```
 
-### Obtenir pwafire par CDN comme module E6
+### Documentation
 
-Notez que vous pouvez toujours utiliser une version spécifique sur le cdn de pwafire
+Pour une documentation détaillée et des exemples, visitez [docs.pwafire.org](https://docs.pwafire.org/get-started).
+
+### Support des Navigateurs
+
+Toutes les APIs sont stables dans **Chrome 80** et les versions ultérieures, y compris **MS Edge**. Vérifiez le statut du [Support des Navigateurs](https://pwafire.org/developer/tools/browser-test/).
+
+### Contribution
+
+Nous accueillons les contributions ! Veuillez lire notre [Guide de Contribution](CONTRIBUTING.md) pour plus de détails sur notre code de conduite et le processus de soumission des pull requests.
+
+### Licence
+
+Ce projet est sous licence MIT - voir le fichier [LICENCE](LICENSE) pour plus de détails.
+
+---
+
+## API Progressive Web Apps des APIs
+
+Construisez des Applications Web Progressives Évolutives. Commencez via le site [docs.pwafire.org](https://docs.pwafire.org/get-started).
+
+Une bibliothèque et un framework open-source pour construire des Applications Web Progressives (PWA) rapides, fiables et engageantes.
+
+![CI](https://img.shields.io/npm/dm/pwafire)
+
+## Installation
+
+### Via NPM
+
+```bash
+npm install pwafire --save
+```
+
+### Via CDN (Module ES6)
 
 #### Dernière version
 
 ```js
-import pwafire from "https://unpkg.com/pwafire/esm/index.js";
-const pwa = pwafire.pwa;
+import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
 ```
 
 #### Version spécifique
 
 ```js
-import pwafire from "https://unpkg.com/pwafire@3.0.1/esm/index.js";
-const pwa = pwafire.pwa;
+import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
 ```
 
-### Exemple : utilisation de _pwafire_
+## Démarrage Rapide
 
-#### Importez pwafire dans votre application react
+### Importation dans votre application React
 
 ```js
-import pwafire from "pwafire";
-const pwa = pwafire.pwa;
+import { pwa } from "pwafire";
 ```
 
-#### Appelez la méthode de partage sur pwa
+### Partage de données
 
 ```js
-pwa.Share(data);
+// Utilisation de webShare (camelCase pour les méthodes à plusieurs mots)
+pwa.webShare(data);
+
+// Utilisation de visibility (minuscules pour les mots simples)
+pwa.visibility();
 ```
 
-Prévisualiser la documentation : [Démarrer](https://docs.pwafire.org/get-started)
+## Détection des Fonctionnalités API
 
-## PWA : Nouvelles fonctionnalités Web
+- Permet des gestionnaires personnalisés lorsque nécessaire
+- Approche expérimentale qui sera mise à jour
+- Construit pour les APIs stables disponibles
 
-| Feature                                                                                                | Feature                   |
-| ------------------------------------------------------------------------------------------------------ | ------------------------- |
-| Custom Install Button                                                                                  | Offline Capabilities      |
-| Background Sync                                                                                        | Native App Install Banner |
-| Badging                                                                                                | Web Share                 |
-| Contact Picker                                                                                         | Copy Text                 |
-| Share Target                                                                                           | Copy Images               |
-| Screen Wake Lock                                                                                       | Push Notifications        |
-| [View All, 10 + Here](https://github.com/pwafire/pwafire/tree/master/packages#install-pwafire-via-npm) |                           |
+### Exemple : Détection du Partage Web
 
-## Chat : Participez à la conversation
+```js
+// Obtenir l'instance de vérification depuis pwafire
+import { check } from "pwafire";
 
-Suivez notre [Compte de développeur](https://twitter.com/pwafire) sur [Twitter](https://twitter.com/pwafire). Obtenez une aide en direct sur notre [espace de travail Slack](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI).
+// Vérifier si le Partage Web est supporté
+const supported = await check.webShare();
+```
 
-| Canal de communication | Parlez-nous                             |
-| ---------------------- | --------------------------------------- |
-| Twitter Chat           | [Tweet us](https://twitter.com/pwafire) |
+## Capacités Web Supportées
+
+| Fonctionnalité                                          | Stabilité |
+| ------------------------------------------------------- | --------- |
+| Installation (Personnalisée)                            | ✅        |
+| Synchronisation en Arrière-plan                         | ✅        |
+| Badging                                                 | ✅        |
+| Sélecteur de Contacts                                   | ✅        |
+| Verrouillage d'Écran                                    | ✅        |
+| Indexation de Contenu                                   | ✅        |
+| Copie de Texte                                          | ✅        |
+| Lecture de Texte (Presse-papiers)                       | ✅        |
+| Copie d'Images                                          | ✅        |
+| Lecture de Fichiers (Presse-papiers)                    | ✅        |
+| Notifications Push                                      | ✅        |
+| Partage Web                                             | ✅        |
+| Paiements Web                                           | ✅        |
+| [Voir Tout (14+)](https://docs.pwafire.org/get-started) | ✅        |
+
+## Communauté
+
+### Canaux de Communication
+
+| Canal   | Lien                                    |
+| ------- | --------------------------------------- |
+| Twitter | [@pwafire](https://twitter.com/pwafire) |
 
 ### Contribuer
 
-Proposez votre fonctionnalité en [créant une question](https://github.com/pwafire/pwafire/issues/new)
+Proposez votre fonctionnalité en [créant une issue](https://github.com/pwafire/pwafire/issues/new).
 
 ### Licence
 
-| Licence     | Lien                                                                              |
-| ----------- | --------------------------------------------------------------------------------- |
-| Licence MIT | [Voir la licence](https://github.com/pwafire/pwafire/blob/master/.github/LICENSE) |
+[Licence MIT](https://github.com/pwafire/pwafire/blob/master/.github/LICENSE)
