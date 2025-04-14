@@ -1,34 +1,66 @@
-# PWAFire - Progressive Web Apps API of APIs
+# PWAFire 🔥
 
-## 🎉 Announcing PWAFire v5.1.8
+A modern, modular library for building Progressive Web Apps with ease. PWAFire provides a comprehensive set of APIs and utilities to enhance your web applications with PWA capabilities.
 
-We're excited to announce the release of PWAFire v5.1.8! This version brings significant improvements to the API structure and developer experience.
+[![npm version](https://badge.fury.io/js/pwafire.svg)](https://badge.fury.io/js/pwafire)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Documentation](https://img.shields.io/badge/Docs-docs.pwafire.org-blue)](https://docs.pwafire.org)
+[![Downloads](https://img.shields.io/npm/dm/pwafire)](https://www.npmjs.com/package/pwafire)
 
-### Key Features
+## ✨ Features
 
-1. **Modern API Structure**
+- 🔥 Modern, tree-shakeable API design
+- 📱 Comprehensive PWA capabilities
+- 🚀 Zero dependencies
+- ⚡️ TypeScript support
+- 🌐 Universal browser support
+- 📦 Multiple import options (ESM, CJS, CDN)
+- 🎯 Consistent camelCase naming convention
+- 🔄 Built-in feature detection
 
-   - Direct imports for better tree-shaking
-   - Namespace imports for backward compatibility
-   - Standalone functions for better modularity
-   - Consistent camelCase naming convention
+## 🚀 Quick Start
 
-2. **New Import Styles**
+### Installation
+
+```bash
+# Using npm
+npm install pwafire@latest
+
+# Using yarn
+yarn add pwafire@latest
+
+# Using pnpm
+pnpm add pwafire@latest
+```
+
+### Usage
+
+#### Modern Import (Recommended)
 
 ```js
-// Direct imports (recommended for tree-shaking)
+// Direct imports for better tree-shaking
 import { visibility } from "pwafire";
 
 // Direct import with path
 import { visibility } from "pwafire/visibility";
 
-// Namespace imports (backward compatibility)
-import { pwa } from "pwafire";
-
-pwa.visibility();
+// Use the APIs
+const state = await visibility();
 ```
 
-3. **Standalone Functions**
+#### Namespace Import (Legacy Support)
+
+```js
+import { pwa } from "pwafire";
+
+// Use the namespace
+pwa.visibility();
+pwa.lazyLoad.loadOnScroll();
+pwa.install();
+pwa.clipboard.copyText();
+```
+
+#### Standalone Functions
 
 ```js
 // Contacts API
@@ -46,125 +78,116 @@ const result = await idleDetection(
 );
 ```
 
-### Naming Conventions
+#### CDN Usage
 
-- Single word methods are lowercase (e.g., `visibility`)
-- Multi-word methods use camelCase (e.g., `webShare`, `loadOnScroll`)
-- All API methods follow consistent naming patterns
+```html
+<script type="module">
+  import { pwa } from "https://unpkg.com/pwafire@latest/esm/index.js";
 
-### Installation
-
-#### Via NPM
-
-```bash
-# Install latest version
-npm install pwafire@latest
-
-# Or with save flag
-npm install pwafire --save
+  // Use the API
+  pwa.visibility();
+</script>
 ```
 
-#### Via CDN (ES6 Module)
+## 📚 API Reference
 
-```js
-// Latest version
-import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
+All APIs return a standardized response object:
 
-// Specific version
-import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
+```typescript
+interface APIResponse<T = any> {
+  ok: boolean;
+  message: string;
+  data?: T;
+}
 ```
 
-### Documentation
-
-For detailed documentation and examples, visit [docs.pwafire.org](https://docs.pwafire.org/get-started).
-
-### Browser Support
-
-All APIs are stable in **Chrome 80** and later versions, including **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
-
-### Contributing
-
-We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
-
-### License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## Progressive Web Apps API of APIs
-
-Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
-
-An open-source library and framework for building fast, reliable, and engaging Progressive Web Apps (PWAs).
-
-![CI](https://img.shields.io/npm/dm/pwafire)
-
-## Quick Start
-
-### Import in your React app
+### Example Usage
 
 ```js
-import { pwa } from "pwafire";
+import { copyText } from "pwafire/clipboard";
+
+try {
+  const result = await copyText("Hello World");
+
+  if (result.ok) {
+    console.log("Success:", result.message);
+  } else {
+    console.error("Error:", result.message);
+  }
+} catch (error) {
+  console.error("Unexpected error:", error);
+}
 ```
 
-### Share data
+## 🛠 Available APIs
+
+| Feature                                                | Stability | Description                     |
+| ------------------------------------------------------ | --------- | ------------------------------- |
+| Install (Custom)                                       | ✅        | Custom PWA installation         |
+| Background Sync                                        | ✅        | Background data synchronization |
+| Badging                                                | ✅        | App badge management            |
+| Contact Picker                                         | ✅        | Contact selection               |
+| Screen Wake Lock                                       | ✅        | Prevent screen from sleeping    |
+| Content Indexing                                       | ✅        | Content search indexing         |
+| Clipboard                                              | ✅        | Copy/read text and files        |
+| Push Notifications                                     | ✅        | Web push notifications          |
+| Web Share                                              | ✅        | Native sharing                  |
+| Web Payments                                           | ✅        | Payment processing              |
+| Visibility                                             | ✅        | Page visibility detection       |
+| LazyLoad                                               | ✅        | Image lazy loading              |
+| [View All (14+)](https://docs.pwafire.org/get-started) | ✅        | Complete API list               |
+
+## 🔍 Feature Detection
+
+PWAFire includes built-in feature detection:
 
 ```js
-// Using webShare (camelCase for multi-word methods)
-pwa.webShare(data);
-
-// Using visibility (lowercase for single word)
-pwa.visibility();
-```
-
-## API Feature Detection
-
-- Allows custom handlers when needed
-- Experimental approach that will be updated
-- Built for available stable APIs
-
-### Example: Web Share Detection
-
-```js
-// Get the check instance from pwafire
 import { check } from "pwafire";
 
 // Check if Web Share is supported
-const supported = await check.webShare();
+const isShareSupported = await check.webShare();
+
+// Check if Clipboard API is supported
+const isClipboardSupported = await check.clipboard();
 ```
 
-## Supported Web Capabilities
+## 🌐 Browser Support
 
-| Feature                                                | Stability |
-| ------------------------------------------------------ | --------- |
-| Install (Custom)                                       | ✅        |
-| Background Sync                                        | ✅        |
-| Badging                                                | ✅        |
-| Contact Picker                                         | ✅        |
-| Screen Wake Lock                                       | ✅        |
-| Content Indexing                                       | ✅        |
-| Copy Text                                              | ✅        |
-| Read Text (Clipboard)                                  | ✅        |
-| Copy Images                                            | ✅        |
-| Read Files (Clipboard)                                 | ✅        |
-| Push Notifications                                     | ✅        |
-| Web Share                                              | ✅        |
-| Web Payments                                           | ✅        |
-| [View All (14+)](https://docs.pwafire.org/get-started) | ✅        |
+All APIs are stable in:
 
-## Community
+- Chrome 80+
+- Microsoft Edge
+- Firefox
+- Safari
 
-### Communication Channels
+Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) for detailed compatibility information.
 
-| Channel | Link                                    |
-| ------- | --------------------------------------- |
-| Twitter | [@pwafire](https://twitter.com/pwafire) |
+## 🤝 Contributing
 
-### Contribute
+We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) to get started.
 
-Propose your feature by [creating an issue](https://github.com/pwafire/pwafire/issues/new).
+### How to Contribute
 
-### License
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-[MIT License](https://github.com/pwafire/pwafire/blob/master/.github/LICENSE)
+## 📄 License
+
+MIT © [PWAFire](https://github.com/pwafire)
+
+## 📖 Documentation
+
+For detailed documentation and examples, visit [docs.pwafire.org](https://docs.pwafire.org).
+
+## 💬 Community
+
+- [Twitter](https://twitter.com/pwafire)
+- [GitHub Discussions](https://github.com/pwafire/pwafire/discussions)
+- [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI)
+
+## 🐛 Issues
+
+Found a bug? Please [create an issue](https://github.com/pwafire/pwafire/issues/new) to help us improve!
