@@ -18,4 +18,10 @@ export * from "./pwa/visibility";
 export * from "./pwa/wake-lock";
 export * from "./pwa/web-otp";
 export * from "./pwa/web-share";
-export * from "./index";
+export * from "./check";
+
+// Create namespace exports
+import * as pwa from "./pwa";
+import * as check from "./check";
+
+export { pwa, check };

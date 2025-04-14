@@ -2,14 +2,17 @@
 
 ## 🎉 What's New in v5.1.6-rc.6
 
-We've made PWAFire even more flexible! Now you can import APIs directly:
+We've modernized PWAFire with a cleaner, more modular API! Now you can import APIs directly:
 
 ```js
-// Import any API directly
+// Import specific APIs (recommended)
 import { visibility } from 'pwafire/visibility';
+import { loadOnScroll } from 'pwafire/lazy-load';
+import { install } from 'pwafire/install';
+import { copyText, readText } from 'pwafire/clipboard';
 ```
 
-> **Note**: Your existing code will continue to work just fine. This is just a new, cleaner way to import APIs! 🚀
+> **Note**: The old `pwa` namespace is deprecated in favor of direct imports. This new approach enables better tree-shaking and bundle optimization! 🚀
 
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
@@ -19,55 +22,39 @@ An open-source library and framework for building fast, reliable, and engaging P
 
 ## API Spec
 
-For all promise types, the promise value returned is an object - might include additional data for example, **Contacts API** returns an additional **contacts** value.
+All APIs return a promise that resolves to a result object:
 
 ```js
-// For Success, ok value is true.
+// For Success
 {
-  ok : true,
-  message : "Success message",
+  ok: true,
+  message: "Success message",
+  // Additional data specific to the API
+  ...data
 }
-// For Fail, ok value is false.
+
+// For Failure
 {
-  ok : false,
-  message : "Error message"
+  ok: false,
+  message: "Error message"
 }
 ```
 
-```js
-// Async API.
-const res = await pwa.CopyText(text);
-
-// Lower versions.
-if (res.ok) {
-  // Do something.
-}
-
-// New version starting v4.0.0
-if (res.ok) {
-  // Do something.
-} else {
-  // Do something.
-}
-```
-
-### Do something with the response returned for e.g copyText
+### Example Usage
 
 ```js
-// Copy text
-pwa
-  .copyText(text)
-  .then((res) => {
-    // Do something with 'res'
-    if (res.ok) {
-      // Success.
-    } else {
-      // Fail.
-    }
-  })
-  .catch((err) => {
-    // Do something with 'err'
-  });
+import { copyText } from 'pwafire/clipboard';
+
+try {
+  const result = await copyText('Hello World');
+  if (result.ok) {
+    console.log('Text copied successfully');
+  } else {
+    console.log('Failed to copy text:', result.message);
+  }
+} catch (err) {
+  console.error('Error:', err);
+}
 ```
 
 ## API Feature Detection

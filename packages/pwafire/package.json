@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "5.1.6-rc.6",
+  "version": "5.1.6-rc.8",
   "description": "A collection of PWA APIs and utilities",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
@@ -12,17 +12,17 @@
       "require": "./lib/index.js"
     },
     "./*": {
-      "types": "./lib/*/index.d.ts",
-      "import": "./lib/*/index.mjs",
-      "require": "./lib/*/index.js"
+      "types": "./lib/pwa/*/index.d.ts",
+      "import": "./lib/pwa/*/index.mjs",
+      "require": "./lib/pwa/*/index.js"
     }
   },
   "files": [
     "lib"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts --out-dir lib",
-    "dev": "tsup src/index.ts --format cjs,esm --dts --out-dir lib --watch",
+    "build": "tsup src/index.ts src/pwa/**/index.ts --format cjs,esm --dts --out-dir lib",
+    "dev": "tsup src/index.ts src/pwa/**/index.ts --format cjs,esm --dts --out-dir lib --watch",
     "test": "jest",
     "lint": "eslint src --ext .ts",
     "format": "prettier --write \"src/**/*.ts\"",
