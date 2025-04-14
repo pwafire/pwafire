@@ -1,23 +1,20 @@
-export const ContactsApi = {
-  Contacts: async (
-    props: string[],
-    options?: {
-      multiple: boolean;
-    },
-  ) => {
-    try {
-      if ("contacts" in navigator && "ContactsManager" in window) {
-        const contacts = await (
-          navigator.contacts as {
-            select: (props: string[], options?: { multiple: boolean }) => Promise<any>;
-          }
-        ).select(props, options);
-        return { ok: true, message: "Selected", contacts };
-      } else {
-        return { ok: false, message: "Contacts Picker API not supported" };
-      }
-    } catch (error) {
-      throw error;
+declare global {
+  interface Navigator {
+    contacts: {
+      select: (props: string[]) => Promise<any>;
+    };
+  }
+}
+
+export const contacts = async (props: string[]) => {
+  try {
+    if ("contacts" in navigator && "ContactsManager" in window) {
+      const contacts = await navigator.contacts.select(props);
+      return { ok: true, message: "Contacts", contacts };
+    } else {
+      return { ok: false, message: "Contacts API not supported", contacts: [] };
     }
-  },
+  } catch (error) {
+    throw error;
+  }
 };

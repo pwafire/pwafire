@@ -1,14 +1,17 @@
-export const FullscreenApi = {
-  Fullscreen: async () => {
-    try {
-      if (document.fullscreenEnabled) {
+export const fullscreen = async () => {
+  try {
+    if (document.fullscreenEnabled) {
+      if (!document.fullscreenElement) {
         await document.documentElement.requestFullscreen();
         return { ok: true, message: "Fullscreen" };
       } else {
-        return { ok: false, message: "Fullscreen disabled" };
+        await document.exitFullscreen();
+        return { ok: true, message: "Exit fullscreen" };
       }
-    } catch (error) {
-      throw error;
+    } else {
+      return { ok: false, message: "Fullscreen API not supported" };
     }
-  },
+  } catch (error) {
+    throw error;
+  }
 };

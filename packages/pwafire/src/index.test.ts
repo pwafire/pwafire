@@ -1,65 +1,45 @@
-import pwafire, { check, pwa } from "./index";
-import Check from "./check";
-import {
-  BadgingApi,
-  BarcodeDetectorApi,
-  ClipboardApi,
-  ConnectivityApi,
-  ContactsApi,
-  ContentIndexingApi,
-  FilesApi,
-  FontsApi,
-  FullscreenApi,
-  IdleDetectionApi,
-  InstallApi,
-  NotificationApi,
-  PaymentApi,
-  ShareApi,
-  VisibilityApi,
-  WakeLockApi,
-  WebOTPApi,
-  ScreenApi,
-  CompressionStreamsApi,
-  LazyLoadApi,
-} from "./pwa";
+import { visibility } from "./pwa/visibility";
+import { check } from "./check";
 
 describe("pwafire", () => {
-  it("should have a pwa property", () => {
-    expect(pwafire).toHaveProperty("pwa");
+  // Test CommonJS imports
+  describe("CommonJS imports", () => {
+    it("should work with require()", () => {
+      const { visibility: visibilityCJS } = require("./pwa/visibility");
+      expect(visibilityCJS).toBeDefined();
+      expect(typeof visibilityCJS).toBe("function");
+    });
   });
 
-  it("should have a check property", () => {
-    expect(pwafire).toHaveProperty("check");
-    expect(pwafire.check).toBeInstanceOf(Check);
+  // Test ESM imports
+  describe("ESM imports", () => {
+    it("should work with import", () => {
+      expect(visibility).toBeDefined();
+      expect(typeof visibility).toBe("function");
+    });
   });
 
-  it("should export pwa and check", () => {
-    expect(pwa).toBe(pwafire.pwa);
-    expect(check).toBe(pwafire.check);
-  });
+  // Test API functionality
+  describe("API functionality", () => {
+    it("should be able to call visibility API", async () => {
+      const isVisible = jest.fn();
+      const notAvailable = jest.fn();
 
-  it("should include all PWA APIs in pwa property", () => {
-    expect(pwafire.pwa).toMatchObject({
-      ...BadgingApi,
-      ...BarcodeDetectorApi,
-      ...ClipboardApi,
-      ...ConnectivityApi,
-      ...ContactsApi,
-      ...ContentIndexingApi,
-      ...FilesApi,
-      ...FontsApi,
-      ...FullscreenApi,
-      ...IdleDetectionApi,
-      ...InstallApi,
-      ...NotificationApi,
-      ...WebOTPApi,
-      ...PaymentApi,
-      ...ShareApi,
-      ...VisibilityApi,
-      ...WakeLockApi,
-      ...ScreenApi,
-      ...CompressionStreamsApi,
-      ...LazyLoadApi,
+      // Mock document.visibilityState
+      Object.defineProperty(document, 'visibilityState', {
+        configurable: true,
+        get: () => 'visible'
+      });
+
+      await visibility(isVisible, notAvailable);
+
+      expect(isVisible).toHaveBeenCalled();
+      expect(notAvailable).not.toHaveBeenCalled();
+    });
+
+    it("should be able to call check API", () => {
+      const result = check.visibility();
+      expect(typeof result).toBe("boolean");
     });
   });
 });

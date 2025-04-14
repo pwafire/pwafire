@@ -1,5 +1,16 @@
 # Progressive Web Apps API of APIs (Sponsor us)
 
+## 🎉 What's New in v5.1.6-rc.2
+
+We've made PWAFire even more flexible! Now you can import APIs directly:
+
+```js
+// Import any API directly
+import { visibility } from 'pwafire/visibility';
+```
+
+> **Note**: Your existing code will continue to work just fine. This is just a new, cleaner way to import APIs! 🚀
+
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
 ## About pwafire library
