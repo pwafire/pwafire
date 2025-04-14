@@ -1,4 +1,98 @@
-# Progressive Web Apps API of APIs (Sponsor us)
+# PWAFire - Progressive Web Apps API of APIs
+
+## 🎉 Announcing PWAFire v5.1.8
+
+We're excited to announce the release of PWAFire v5.1.8! This version brings significant improvements to the API structure and developer experience.
+
+### Key Features
+
+1. **Modern API Structure**
+
+   - Direct imports for better tree-shaking
+   - Namespace imports for backward compatibility
+   - Standalone functions for better modularity
+   - Consistent camelCase naming convention
+
+2. **New Import Styles**
+
+```js
+// Direct imports (recommended for tree-shaking)
+import { visibility } from "pwafire";
+
+// Direct import with path
+import { visibility } from "pwafire/visibility";
+
+// Namespace imports (backward compatibility)
+import { pwa } from "pwafire";
+
+pwa.visibility();
+```
+
+3. **Standalone Functions**
+
+```js
+// Contacts API
+import { contacts } from "pwafire";
+const result = await contacts(["name", "email"], { multiple: true });
+
+// Idle Detection API
+import { idleDetection } from "pwafire";
+const result = await idleDetection(
+  "start",
+  () => {
+    console.log("User is idle");
+  },
+  120000
+);
+```
+
+### Naming Conventions
+
+- Single word methods are lowercase (e.g., `visibility`)
+- Multi-word methods use camelCase (e.g., `webShare`, `loadOnScroll`)
+- All API methods follow consistent naming patterns
+
+### Installation
+
+#### Via NPM
+
+```bash
+# Install latest version
+npm install pwafire@latest
+
+# Or with save flag
+npm install pwafire --save
+```
+
+#### Via CDN (ES6 Module)
+
+```js
+// Latest version
+import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
+
+// Specific version
+import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
+```
+
+### Documentation
+
+For detailed documentation and examples, visit [docs.pwafire.org](https://docs.pwafire.org/get-started).
+
+### Browser Support
+
+All APIs are stable in **Chrome 80** and later versions, including **MS Edge**. Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) status.
+
+### Contributing
+
+We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Progressive Web Apps API of APIs
 
 Build Scalable Progressive Web Apps. Start via [docs.pwafire.org](https://docs.pwafire.org/get-started) site.
 
@@ -6,108 +100,71 @@ An open-source library and framework for building fast, reliable, and engaging P
 
 ![CI](https://img.shields.io/npm/dm/pwafire)
 
-## Introducing _pwafire_ cdn and npm
+## Quick Start
 
-Progressive Web Apps **API of APIs**. All New Web Capabilities as one Package.
-
-### Install pwafire via NPM
-
-```bash
- npm i pwafire --save
-```
-
-### Get pwafire over CDN as an E6 Module
-
-Note that you can still use a specific version over the pwafire cdn
-
-#### Latest version
-
-```js
-import { pwa } from "https://unpkg.com/pwafire/esm/index.js";
-```
-
-#### Specific version
-
-```js
-import { pwa } from "https://unpkg.com/pwafire@3.0.8/esm/index.js";
-```
-
-### Example : using _pwafire_
-
-#### Import pwafire in your react app
+### Import in your React app
 
 ```js
 import { pwa } from "pwafire";
 ```
 
-#### Call the share method on pwa
+### Share data
 
 ```js
-pwa.Share(data);
-```
+// Using webShare (camelCase for multi-word methods)
+pwa.webShare(data);
 
-Preview Documentation : [Get Started](https://docs.pwafire.org/get-started)
+// Using visibility (lowercase for single word)
+pwa.visibility();
+```
 
 ## API Feature Detection
 
-- Goal is to allow room for custom handlers if need be
-- This approach is going to be experimental and will be updated
-- This addition is going to be built for available stable apis
+- Allows custom handlers when needed
+- Experimental approach that will be updated
+- Built for available stable APIs
 
-### Example and use case
-
-- Web Share is both on Edge desktop and mobile, but not with chrome. I'd like to show a copy link button for chrome
-- Install latest pwafire version, already up for testing in v4 alpha-3\*
-
-```bash
- npm i --save pwafire
-```
-
-- Try it out
+### Example: Web Share Detection
 
 ```js
-// Get the check instance from pwafire.
+// Get the check instance from pwafire
 import { check } from "pwafire";
-//...
-// The response is a boolean, true or false.
-const supported = await check.Share();
-// You can get a list of all apis and their support status as well.
-const all = await check.All();
+
+// Check if Web Share is supported
+const supported = await check.webShare();
 ```
 
-## PWAs : New Web Capabilities(Project Fugu)
+## Supported Web Capabilities
 
-| Feature                                                     | Stabilty |
-| ----------------------------------------------------------- | -------- |
-| Install(Custom)                                             | ok       |
-| Background Sync                                             | ok       |
-| Badging                                                     | ok       |
-| Contact Picker                                              | ok       |
-| Screen Wake Lock                                            | ok       |
-| Content Indexing                                            | ok       |
-| Copy Text                                                   | ok       |
-| Read Text(Clipboard)                                        | ok       |
-| Copy Images                                                 | ok       |
-| Read Files(Clipboard)                                       | ok       |
-| Push Notifications                                          | ok       |
-| Web Share                                                   | ok       |
-| Web payments                                                | ok       |
-| [View All, 10 + Here](https://docs.pwafire.org/get-started) | 14       |
+| Feature                                                | Stability |
+| ------------------------------------------------------ | --------- |
+| Install (Custom)                                       | ✅        |
+| Background Sync                                        | ✅        |
+| Badging                                                | ✅        |
+| Contact Picker                                         | ✅        |
+| Screen Wake Lock                                       | ✅        |
+| Content Indexing                                       | ✅        |
+| Copy Text                                              | ✅        |
+| Read Text (Clipboard)                                  | ✅        |
+| Copy Images                                            | ✅        |
+| Read Files (Clipboard)                                 | ✅        |
+| Push Notifications                                     | ✅        |
+| Web Share                                              | ✅        |
+| Web Payments                                           | ✅        |
+| [View All (14+)](https://docs.pwafire.org/get-started) | ✅        |
 
-## Chat : Join the conversation
+## Community
 
-Follow our [Developer Account](https://twitter.com/pwafire) on [Twitter](https://twitter.com/pwafire). Get Live Help on our [Slack Workspace](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI).
+### Communication Channels
 
-| Communication Channel | Talk to us                              |
-| --------------------- | --------------------------------------- |
-| Twitter Chat          | [Tweet us](https://twitter.com/pwafire) |
+| Channel | Link                                    |
+| ------- | --------------------------------------- |
+| Twitter | [@pwafire](https://twitter.com/pwafire) |
 
 ### Contribute
 
-Propose your Feature by [Creating an Issue](https://github.com/pwafire/pwafire/issues/new)
+Propose your feature by [creating an issue](https://github.com/pwafire/pwafire/issues/new).
 
 ### License
 
-| License     | Link                                                                           |
-| ----------- | ------------------------------------------------------------------------------ |
-| MIT License | [View License](https://github.com/pwafire/pwafire/blob/master/.github/LICENSE) |
+[MIT License](https://github.com/pwafire/pwafire/blob/master/.github/LICENSE)
