@@ -18,9 +18,6 @@ We're excited to announce the release of PWAFire v5.1.7! This version brings sig
 ```js
 // Direct imports (recommended for tree-shaking)
 import { visibility } from "pwafire";
-import { loadOnScroll } from "pwafire";
-import { install } from "pwafire";
-import { copyText, readText } from "pwafire";
 
 // Direct import with path
 import { visibility } from "pwafire/visibility";
@@ -29,9 +26,6 @@ import { visibility } from "pwafire/visibility";
 import { pwa } from "pwafire";
 
 pwa.visibility();
-pwa.lazyLoad.loadOnScroll();
-pwa.install();
-pwa.clipboard.copyText();
 ```
 
 3. **Standalone Functions**
