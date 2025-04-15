@@ -15,6 +15,11 @@
       "types": "./lib/pwa/*/index.d.ts",
       "import": "./lib/pwa/*/index.mjs",
       "require": "./lib/pwa/*/index.js"
+    },
+    "./check": {
+      "types": "./lib/check/index.d.ts",
+      "import": "./lib/check/index.mjs",
+      "require": "./lib/check/index.js"
     }
   },
   "files": [
