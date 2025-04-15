@@ -39,28 +39,10 @@ pnpm add pwafire@latest
 
 ```js
 // Modern import (recommended)
-import { visibility, install } from "pwafire";
+import { copyText } from "pwafire";
 
 // Check page visibility
-const state = await visibility();
-
-// Handle PWA installation
-const installResult = await install();
-```
-
-### Advanced Usage
-
-```js
-// Import specific features
-import { contacts, clipboard } from "pwafire";
-
-// Use Contacts API
-const contactsResult = await contacts(["name", "email"], {
-  multiple: true,
-});
-
-// Use Clipboard API
-const copyResult = await clipboard.copyText("Hello World");
+const state = await copyText("Text to copy");
 ```
 
 ### CDN Usage
