@@ -41,7 +41,6 @@ pnpm add pwafire@latest
 // Modern import (recommended)
 import { copyText } from "pwafire";
 
-// Check page visibility
 const state = await copyText("Text to copy");
 ```
 
