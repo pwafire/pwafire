@@ -37,10 +37,32 @@ yarn add pwafire@latest
 pnpm add pwafire@latest
 ```
 
+### Import Patterns
+
+PWAFire supports two import patterns for optimal flexibility and tree-shaking:
+
+1. **Root Import** (Recommended for multiple features):
+
+   ```ts
+   import { copyText, webShare } from "pwafire";
+   ```
+
+2. **Scoped Import** (Recommended for single features):
+   ```ts
+   import { copyText } from "pwafire/clipboard";
+   import { webShare } from "pwafire/web-share";
+   ```
+
+The scoped import pattern is recommended when you only need specific features, as it enables better tree-shaking and smaller bundle sizes.
+
 ### Basic Usage
 
 ```ts
+// Using root import
 import { copyText } from "pwafire";
+
+// Using scoped import (recommended for single features)
+import { copyText } from "pwafire/clipboard";
 
 const { ok, message } = await copyText("Text to copy");
 ```
@@ -49,7 +71,11 @@ const { ok, message } = await copyText("Text to copy");
 
 ```html
 <script type="module">
+  // Using root import
   import { copyText } from "https://unpkg.com/pwafire@latest/lib/index.mjs";
+
+  // Using scoped import
+  import { copyText } from "https://unpkg.com/pwafire@latest/lib/pwa/clipboard/index.mjs";
 
   const result = await copyText("Text to copy");
 </script>
@@ -74,7 +100,11 @@ await handleCopy("Hello World");
 ## Feature Detection
 
 ```ts
+// Using root import
 import { check } from "pwafire";
+
+// Using scoped import
+import { check } from "pwafire/check";
 
 const checkFeatures = async () => {
   const [isShareSupported, isClipboardSupported] = await Promise.all([check.webShare(), check.clipboard()]);
