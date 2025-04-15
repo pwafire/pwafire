@@ -55,18 +55,6 @@ const state = await copyText("Text to copy");
 </script>
 ```
 
-## 📚 API Reference
-
-All APIs return a standardized response object:
-
-```typescript
-interface APIResponse<T = any> {
-  ok: boolean;
-  message: string;
-  data?: T;
-}
-```
-
 ### Error Handling
 
 ```js
