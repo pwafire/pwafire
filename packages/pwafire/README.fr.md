@@ -48,10 +48,10 @@ const state = await copyText("Texte à copier");
 
 ```html
 <script type="module">
-  import { pwa } from "https://unpkg.com/pwafire@5.1.8/lib/index.mjs";
+  import { copyText } from "https://unpkg.com/pwafire@5.1.8/lib/index.mjs";
 
-  // Utiliser l'API
-  pwa.visibility();
+  // Use the API
+  await copyText("Text to copy");
 </script>
 ```
 
