@@ -1,5 +1,5 @@
 import { visibility } from "./pwa/visibility";
-import { check } from "./check";
+import * as check from "./check";
 
 describe("pwafire", () => {
   // Test CommonJS imports

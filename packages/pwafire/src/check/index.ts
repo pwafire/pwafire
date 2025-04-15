@@ -1,22 +1,21 @@
-export const check = {
-  badging: () => "setAppBadge" in navigator,
-  barcode: () => "BarcodeDetector" in window,
-  clipboard: () => "clipboard" in navigator,
-  compression: () => "CompressionStream" in window,
-  connectivity: () => "onLine" in navigator,
-  contacts: () => "contacts" in navigator && "ContactsManager" in window,
-  contentIndexing: async () => "index" in (await navigator.serviceWorker.ready),
-  files: () => "showOpenFilePicker" in self && "showSaveFilePicker" in self,
-  fonts: () => "queryLocalFonts" in window,
-  fullscreen: () => document.fullscreenEnabled,
-  idleDetection: () => "IdleDetector" in window,
-  install: () => "serviceWorker" in navigator,
-  lazyLoad: () => "IntersectionObserver" in window,
-  notification: () => "Notification" in window,
-  payment: () => "PaymentRequest" in window,
-  screen: () => "mediaDevices" in navigator && "getDisplayMedia" in navigator.mediaDevices,
-  visibility: () => "visibilityState" in document,
-  wakeLock: () => "wakeLock" in navigator,
-  webOTP: () => "OTPCredential" in window,
-  webShare: () => "canShare" in navigator && "share" in navigator,
-};
+// Feature detection methods
+export const badging = () => "badging" in navigator;
+export const barcode = () => "BarcodeDetector" in window;
+export const clipboard = () => "clipboard" in navigator;
+export const compression = () => "CompressionStream" in window;
+export const connectivity = () => "connection" in navigator;
+export const contacts = () => "contacts" in navigator;
+export const contentIndexing = () => "index" in window;
+export const files = () => "showOpenFilePicker" in window;
+export const fonts = () => "fonts" in navigator;
+export const fullscreen = () => "requestFullscreen" in document.documentElement;
+export const idleDetection = () => "requestIdleCallback" in window;
+export const install = () => "getInstalledRelatedApps" in navigator;
+export const lazyLoad = () => "loading" in HTMLImageElement.prototype;
+export const notification = () => "Notification" in window;
+export const payment = () => "PaymentRequest" in window;
+export const screen = () => "getScreenDetails" in window;
+export const visibility = () => "visibilityState" in document;
+export const wakeLock = () => "wakeLock" in navigator;
+export const webOtp = () => "OTPCredential" in window;
+export const webShare = () => "share" in navigator;
