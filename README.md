@@ -1,4 +1,4 @@
-# PWAFire 🔥
+# PWAFire (Progressive Web Apps APIs)
 
 A modern, modular library for building Progressive Web Apps with ease. PWAFire provides a comprehensive set of APIs and utilities to enhance your web applications with PWA capabilities. Built on top of Project Fugu, PWAFire helps bridge the gap between web and native app capabilities.
 
@@ -7,20 +7,20 @@ A modern, modular library for building Progressive Web Apps with ease. PWAFire p
 [![Documentation](https://img.shields.io/badge/Docs-docs.pwafire.org-blue)](https://docs.pwafire.org)
 [![Downloads](https://img.shields.io/npm/dm/pwafire)](https://www.npmjs.com/package/pwafire)
 
-## ✨ Features
+## Features
 
-- 🔥 Modern, tree-shakeable API design
-- 📱 Comprehensive PWA capabilities
-- 🚀 Zero dependencies
-- ⚡️ TypeScript support
-- 🌐 Universal browser support
-- 📦 Multiple import options (ESM, CJS, CDN)
-- 🎯 Consistent camelCase naming convention
-- 🔄 Built-in feature detection
-- 📝 Comprehensive documentation
-- 🧪 Extensive test coverage
+- Modern, tree-shakeable API design
+- Comprehensive PWA capabilities
+- Zero dependencies
+- TypeScript support
+- Universal browser support
+- Multiple import options (ESM, CJS, CDN)
+- Consistent camelCase naming convention
+- Built-in feature detection
+- Comprehensive documentation
+- Extensive test coverage
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -37,43 +37,39 @@ pnpm add pwafire@latest
 
 ### Basic Usage
 
-```js
-// Modern import (recommended)
+```ts
 import { copyText } from "pwafire";
 
-const state = await copyText("Text to copy");
+const { ok, message } = await copyText("Text to copy");
 ```
 
 ### CDN Usage
 
 ```html
 <script type="module">
-  import { copyText } from "https://unpkg.com/pwafire@5.1.8/lib/index.mjs";
+  import { copyText } from "https://unpkg.com/pwafire@latest/lib/index.mjs";
 
-  // Use the API
-  await copyText("Text to copy");
+  const result = await copyText("Text to copy");
 </script>
 ```
 
 ### Error Handling
 
-```js
+```ts
 import { copyText } from "pwafire/clipboard";
 
-try {
-  const result = await copyText("Hello World");
-
-  if (result.ok) {
-    console.log("Success:", result.message);
-  } else {
-    console.error("Error:", result.message);
+const handleCopy = async (text: string) => {
+  try {
+    const { ok, message } = await copyText(text);
+  } catch (error) {
+    // Handle error
   }
-} catch (error) {
-  console.error("Unexpected error:", error);
-}
+};
+
+await handleCopy("Hello World");
 ```
 
-## 🛠 Available APIs
+## Available APIs
 
 | Feature                                                | Stability | Description                     | Documentation                                         |
 | ------------------------------------------------------ | --------- | ------------------------------- | ----------------------------------------------------- |
@@ -91,21 +87,22 @@ try {
 | LazyLoad                                               | ✅        | Image lazy loading              | [Docs](https://docs.pwafire.org/api/lazy-load)        |
 | [View All (14+)](https://docs.pwafire.org/get-started) | ✅        | Complete API list               | [Docs](https://docs.pwafire.org/api)                  |
 
-## 🔍 Feature Detection
+## Feature Detection
 
-PWAFire includes built-in feature detection:
-
-```js
+```ts
 import { check } from "pwafire";
 
-// Check if Web Share is supported
-const isShareSupported = await check.webShare();
+const checkFeatures = async () => {
+  const [isShareSupported, isClipboardSupported] = await Promise.all([
+    check.webShare(),
+    check.clipboard()
+  ]);
+};
 
-// Check if Clipboard API is supported
-const isClipboardSupported = await check.clipboard();
+await checkFeatures();
 ```
 
-## 🌐 Browser Support
+## Browser Support
 
 All APIs are stable in:
 
@@ -116,7 +113,7 @@ All APIs are stable in:
 
 Check [Browser Support](https://pwafire.org/developer/tools/browser-test/) for detailed compatibility information.
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Run tests
@@ -126,7 +123,7 @@ npm test
 npm run test:coverage
 ```
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) to get started.
 
@@ -151,24 +148,22 @@ npm run dev
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 MIT © [PWAFire](https://github.com/pwafire)
 
-## 📖 Documentation
+## Documentation
 
 For detailed documentation and examples, visit [docs.pwafire.org](https://docs.pwafire.org).
 
-## 💬 Community
+## Community
 
 - [Twitter](https://twitter.com/pwafire) - Follow us for updates and announcements
 
-## 🐛 Issues
+## Issues
 
 Found a bug? Please [create an issue](https://github.com/pwafire/pwafire/issues/new) to help us improve!
 
-## 📦 Related Projects
+## Related Projects
 
-- [PWAFire CLI](https://github.com/pwafire/cli) - Command line tool for PWAFire
-- [PWAFire VS Code Extension](https://marketplace.visualstudio.com/items?itemName=pwafire.pwafire) - VS Code extension for PWAFire
-- [PWAFire Templates](https://github.com/pwafire/templates) - Starter templates for PWAFire
+- [PWA VS Code](https://marketplace.visualstudio.com/items?itemName=mayeedwin.vscode-pwa) - Progressive Web Apps Code Snippets (Including Workbox Support)
