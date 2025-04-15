@@ -103,9 +103,6 @@ const isShareSupported = await check.webShare();
 
 // Check if Clipboard API is supported
 const isClipboardSupported = await check.clipboard();
-
-// Check multiple features
-const features = await check.all();
 ```
 
 ## 🌐 Browser Support

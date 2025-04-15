@@ -1,11 +1,11 @@
 # PWAFire 🔥
 
-Une bibliothèque moderne et modulaire pour créer des Progressive Web Apps avec facilité. PWAFire fournit un ensemble complet d'APIs et d'utilitaires pour améliorer vos applications web avec des capacités PWA.
+Une bibliothèque moderne et modulaire pour créer des Progressive Web Apps facilement. PWAFire fournit un ensemble complet d'APIs et d'utilitaires pour améliorer vos applications web avec des capacités PWA. Construit sur Project Fugu, PWAFire aide à combler l'écart entre les capacités web et natives.
 
 [![npm version](https://badge.fury.io/js/pwafire.svg)](https://badge.fury.io/js/pwafire)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Documentation](https://img.shields.io/badge/Docs-docs.pwafire.org-blue)](https://docs.pwafire.org)
-[![Téléchargements](https://img.shields.io/npm/dm/pwafire)](https://www.npmjs.com/package/pwafire)
+[![Downloads](https://img.shields.io/npm/dm/pwafire)](https://www.npmjs.com/package/pwafire)
 
 ## ✨ Fonctionnalités
 
@@ -17,6 +17,8 @@ Une bibliothèque moderne et modulaire pour créer des Progressive Web Apps avec
 - 📦 Options d'importation multiples (ESM, CJS, CDN)
 - 🎯 Convention de nommage camelCase cohérente
 - 🔄 Détection de fonctionnalités intégrée
+- 📝 Documentation complète
+- 🧪 Couverture de tests étendue
 
 ## 🚀 Démarrage Rapide
 
@@ -33,75 +35,27 @@ yarn add pwafire@latest
 pnpm add pwafire@latest
 ```
 
-### Utilisation
-
-#### Importation Moderne (Recommandée)
+### Utilisation de Base
 
 ```js
-// Importations directes pour une meilleure optimisation
-import { visibility } from "pwafire";
+// Import moderne (recommandé)
+import { copyText } from "pwafire";
 
-// Importation directe avec chemin
-import { visibility } from "pwafire/visibility";
-
-// Utilisation des APIs
-const state = await visibility();
+const state = await copyText("Texte à copier");
 ```
 
-#### Importation par Espace de Noms (Support Hérité)
-
-```js
-import { pwa } from "pwafire";
-
-// Utilisation de l'espace de noms
-pwa.visibility();
-pwa.lazyLoad.loadOnScroll();
-pwa.install();
-pwa.clipboard.copyText();
-```
-
-#### Fonctions Autonomes
-
-```js
-// API Contacts
-import { contacts } from "pwafire";
-const result = await contacts(["name", "email"], { multiple: true });
-
-// API Détection d'Inactivité
-import { idleDetection } from "pwafire";
-const result = await idleDetection(
-  "start",
-  () => {
-    console.log("L'utilisateur est inactif");
-  },
-  120000,
-);
-```
-
-#### Utilisation via CDN
+### Utilisation CDN
 
 ```html
 <script type="module">
-  import { pwa } from "https://unpkg.com/pwafire@latest/esm/index.js";
+  import { pwa } from "https://unpkg.com/pwafire@5.1.8/lib/index.mjs";
 
-  // Utilisation de l'API
+  // Utiliser l'API
   pwa.visibility();
 </script>
 ```
 
-## 📚 Référence API
-
-Toutes les APIs retournent un objet de réponse standardisé :
-
-```typescript
-interface APIResponse<T = any> {
-  ok: boolean;
-  message: string;
-  data?: T;
-}
-```
-
-### Exemple d'Utilisation
+### Gestion des Erreurs
 
 ```js
 import { copyText } from "pwafire/clipboard";
@@ -110,32 +64,32 @@ try {
   const result = await copyText("Bonjour le monde");
 
   if (result.ok) {
-    console.log("Succès :", result.message);
+    console.log("Succès:", result.message);
   } else {
-    console.error("Erreur :", result.message);
+    console.error("Erreur:", result.message);
   }
 } catch (error) {
-  console.error("Erreur inattendue :", error);
+  console.error("Erreur inattendue:", error);
 }
 ```
 
 ## 🛠 APIs Disponibles
 
-| Fonctionnalité                                          | Stabilité | Description                      |
-| ------------------------------------------------------- | --------- | -------------------------------- |
-| Installation (Personnalisée)                            | ✅        | Installation PWA personnalisée   |
-| Synchronisation en Arrière-plan                         | ✅        | Synchronisation des données      |
-| Badges                                                  | ✅        | Gestion des badges d'application |
-| Sélecteur de Contacts                                   | ✅        | Sélection de contacts            |
-| Verrouillage d'Écran                                    | ✅        | Empêcher l'écran de s'éteindre   |
-| Indexation de Contenu                                   | ✅        | Indexation de recherche          |
-| Presse-papiers                                          | ✅        | Copier/lire texte et fichiers    |
-| Notifications Push                                      | ✅        | Notifications web push           |
-| Partage Web                                             | ✅        | Partage natif                    |
-| Paiements Web                                           | ✅        | Traitement des paiements         |
-| Visibilité                                              | ✅        | Détection de visibilité          |
-| Chargement Différé                                      | ✅        | Chargement d'images différé      |
-| [Voir Tout (14+)](https://docs.pwafire.org/get-started) | ✅        | Liste complète des APIs          |
+| Fonctionnalité                                          | Stabilité | Description                      | Documentation                                         |
+| ------------------------------------------------------- | --------- | -------------------------------- | ----------------------------------------------------- |
+| Installation (Personnalisée)                            | ✅        | Installation PWA personnalisée   | [Docs](https://docs.pwafire.org/api/install)          |
+| Synchronisation en Arrière-plan                         | ✅        | Synchronisation des données      | [Docs](https://docs.pwafire.org/api/background-sync)  |
+| Badges                                                  | ✅        | Gestion des badges d'application | [Docs](https://docs.pwafire.org/api/badging)          |
+| Sélecteur de Contacts                                   | ✅        | Sélection de contacts            | [Docs](https://docs.pwafire.org/api/contacts)         |
+| Verrouillage d'Écran                                    | ✅        | Empêcher l'écran de s'éteindre   | [Docs](https://docs.pwafire.org/api/wake-lock)        |
+| Indexation de Contenu                                   | ✅        | Indexation de recherche          | [Docs](https://docs.pwafire.org/api/content-indexing) |
+| Presse-papiers                                          | ✅        | Copier/lire texte et fichiers    | [Docs](https://docs.pwafire.org/api/clipboard)        |
+| Notifications Push                                      | ✅        | Notifications web push           | [Docs](https://docs.pwafire.org/api/notifications)    |
+| Partage Web                                             | ✅        | Partage natif                    | [Docs](https://docs.pwafire.org/api/web-share)        |
+| Paiements Web                                           | ✅        | Traitement des paiements         | [Docs](https://docs.pwafire.org/api/payment)          |
+| Visibilité                                              | ✅        | Détection de visibilité          | [Docs](https://docs.pwafire.org/api/visibility)       |
+| Chargement Différé                                      | ✅        | Chargement différé d'images      | [Docs](https://docs.pwafire.org/api/lazy-load)        |
+| [Voir Tout (14+)](https://docs.pwafire.org/get-started) | ✅        | Liste complète des APIs          | [Docs](https://docs.pwafire.org/api)                  |
 
 ## 🔍 Détection de Fonctionnalités
 
@@ -160,11 +114,34 @@ Toutes les APIs sont stables dans :
 - Firefox
 - Safari
 
-Consultez le [Support des Navigateurs](https://pwafire.org/developer/tools/browser-test/) pour des informations détaillées sur la compatibilité.
+Consultez [Support des Navigateurs](https://pwafire.org/developer/tools/browser-test/) pour des informations détaillées sur la compatibilité.
+
+## 🧪 Tests
+
+```bash
+# Exécuter les tests
+npm test
+
+# Exécuter les tests avec couverture
+npm run test:coverage
+```
 
 ## 🤝 Contribution
 
 Nous accueillons les contributions ! Veuillez lire notre [Guide de Contribution](CONTRIBUTING.md) pour commencer.
+
+### Configuration du Développement
+
+```bash
+# Cloner le dépôt
+git clone https://github.com/pwafire/pwafire.git
+
+# Installer les dépendances
+npm install
+
+# Démarrer le développement
+npm run dev
+```
 
 ### Comment Contribuer
 
@@ -184,10 +161,14 @@ Pour une documentation détaillée et des exemples, visitez [docs.pwafire.org](h
 
 ## 💬 Communauté
 
-- [Twitter](https://twitter.com/pwafire)
-- [Discussions GitHub](https://github.com/pwafire/pwafire/discussions)
-- [Espace de Travail Slack](https://join.slack.com/t/pwafire/shared_invite/enQtMjk1MjUzNDY5NDkyLWQzYTFhOTNjMTU2NzBjMTBhMjZkNDJkOTY0YzgxYWViNTI4YzgyZDUxNGIyYzlkM2RiZjc2NTAwMzRhMmZkZmI)
+- [Twitter](https://twitter.com/pwafire) - Suivez-nous pour les mises à jour et annonces
 
 ## 🐛 Problèmes
 
 Vous avez trouvé un bug ? Veuillez [créer un ticket](https://github.com/pwafire/pwafire/issues/new) pour nous aider à nous améliorer !
+
+## 📦 Projets Associés
+
+- [PWAFire CLI](https://github.com/pwafire/cli) - Outil en ligne de commande pour PWAFire
+- [Extension VS Code PWAFire](https://marketplace.visualstudio.com/items?itemName=pwafire.pwafire) - Extension VS Code pour PWAFire
+- [Modèles PWAFire](https://github.com/pwafire/templates) - Modèles de démarrage pour PWAFire
