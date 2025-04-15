@@ -37,10 +37,32 @@ yarn add pwafire@latest
 pnpm add pwafire@latest
 ```
 
+### Modes d'Importation
+
+PWAFire prend en charge deux modes d'importation pour une flexibilité et une optimisation optimales :
+
+1. **Importation depuis la racine** (Recommandé pour plusieurs fonctionnalités) :
+
+   ```ts
+   import { copyText, webShare } from "pwafire";
+   ```
+
+2. **Importation ciblée** (Recommandé pour des fonctionnalités individuelles) :
+   ```ts
+   import { copyText } from "pwafire/clipboard";
+   import { webShare } from "pwafire/web-share";
+   ```
+
+Le mode d'importation ciblé est recommandé lorsque vous n'avez besoin que de fonctionnalités spécifiques, car il permet une meilleure optimisation (tree-shaking) et des tailles de bundle plus petites.
+
 ### Utilisation de Base
 
 ```ts
+// Utilisation de l'importation depuis la racine
 import { copyText } from "pwafire";
+
+// Utilisation de l'importation ciblée (recommandé pour des fonctionnalités individuelles)
+import { copyText } from "pwafire/clipboard";
 
 const { ok, message } = await copyText("Texte à copier");
 ```
@@ -49,7 +71,11 @@ const { ok, message } = await copyText("Texte à copier");
 
 ```html
 <script type="module">
+  // Utilisation de l'importation depuis la racine
   import { copyText } from "https://unpkg.com/pwafire@latest/lib/index.mjs";
+
+  // Utilisation de l'importation ciblée
+  import { copyText } from "https://unpkg.com/pwafire@latest/lib/pwa/clipboard/index.mjs";
 
   const result = await copyText("Texte à copier");
 </script>
@@ -74,7 +100,11 @@ await handleCopy("Bonjour le monde");
 ## Détection de Fonctionnalités
 
 ```ts
+// Utilisation de l'importation depuis la racine
 import { check } from "pwafire";
+
+// Utilisation de l'importation ciblée
+import { check } from "pwafire/check";
 
 const checkFeatures = async () => {
   const [isShareSupported, isClipboardSupported] = await Promise.all([check.webShare(), check.clipboard()]);
