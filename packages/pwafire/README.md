@@ -57,7 +57,6 @@ import { contacts, clipboard } from "pwafire";
 // Use Contacts API
 const contactsResult = await contacts(["name", "email"], {
   multiple: true,
-  select: "multiple",
 });
 
 // Use Clipboard API
