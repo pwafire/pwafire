@@ -4,8 +4,10 @@ A modern, modular library for building Progressive Web Apps with ease. PWAFire p
 
 [![npm version](https://badge.fury.io/js/pwafire.svg)](https://badge.fury.io/js/pwafire)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Documentation](https://img.shields.io/badge/Docs-docs.pwafire.org-blue)](https://docs.pwafire.org)
+[![Documentation](https://img.shields.io/badge/Docs-docs.pwafire.org-blue)](https://docs.pwafire.org/get-started)
 [![Downloads](https://img.shields.io/npm/dm/pwafire)](https://www.npmjs.com/package/pwafire)
+
+For complete documentation and examples, visit [Get Started with PWAFire](https://docs.pwafire.org/get-started).
 
 ## Features
 
@@ -68,24 +70,6 @@ const handleCopy = async (text: string) => {
 
 await handleCopy("Hello World");
 ```
-
-## Available APIs
-
-| Feature                                                | Stability | Description                     | Documentation                                         |
-| ------------------------------------------------------ | --------- | ------------------------------- | ----------------------------------------------------- |
-| Install (Custom)                                       | ✅        | Custom PWA installation         | [Docs](https://docs.pwafire.org/api/install)          |
-| Background Sync                                        | ✅        | Background data synchronization | [Docs](https://docs.pwafire.org/api/background-sync)  |
-| Badging                                                | ✅        | App badge management            | [Docs](https://docs.pwafire.org/api/badging)          |
-| Contact Picker                                         | ✅        | Contact selection               | [Docs](https://docs.pwafire.org/api/contacts)         |
-| Screen Wake Lock                                       | ✅        | Prevent screen from sleeping    | [Docs](https://docs.pwafire.org/api/wake-lock)        |
-| Content Indexing                                       | ✅        | Content search indexing         | [Docs](https://docs.pwafire.org/api/content-indexing) |
-| Clipboard                                              | ✅        | Copy/read text and files        | [Docs](https://docs.pwafire.org/api/clipboard)        |
-| Push Notifications                                     | ✅        | Web push notifications          | [Docs](https://docs.pwafire.org/api/notifications)    |
-| Web Share                                              | ✅        | Native sharing                  | [Docs](https://docs.pwafire.org/api/web-share)        |
-| Web Payments                                           | ✅        | Payment processing              | [Docs](https://docs.pwafire.org/api/payment)          |
-| Visibility                                             | ✅        | Page visibility detection       | [Docs](https://docs.pwafire.org/api/visibility)       |
-| LazyLoad                                               | ✅        | Image lazy loading              | [Docs](https://docs.pwafire.org/api/lazy-load)        |
-| [View All (14+)](https://docs.pwafire.org/get-started) | ✅        | Complete API list               | [Docs](https://docs.pwafire.org/api)                  |
 
 ## Feature Detection
 
@@ -151,7 +135,7 @@ MIT © [PWAFire](https://github.com/pwafire)
 
 ## Documentation
 
-For detailed documentation and examples, visit [docs.pwafire.org](https://docs.pwafire.org).
+For detailed documentation and examples, visit [Get Started with PWAFire](https://docs.pwafire.org/get-started).
 
 ## Community
 
