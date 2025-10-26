@@ -1,23 +1,16 @@
-/**
- * Sanitizes a URL for safe use in CSS backgroundImage property
- * Prevents CSS injection by validating the URL scheme and escaping special characters
- */
 const sanitizeUrl = (url: string): string | null => {
   if (!url) return null;
   
   const trimmedUrl = url.trim();
   
-  // Check for dangerous protocols that could lead to XSS
   const dangerousProtocols = /^(javascript|data|vbscript):/i;
   if (dangerousProtocols.test(trimmedUrl)) {
     console.warn(`[pwafire] Blocked potentially dangerous URL: ${trimmedUrl}`);
     return null;
   }
   
-  // For absolute URLs (with protocol), validate structure
   if (/^[a-z][a-z0-9+.-]*:/i.test(trimmedUrl)) {
     try {
-      // Validate URL structure for absolute URLs
       new URL(trimmedUrl);
     } catch {
       console.warn(`[pwafire] Invalid URL structure: ${trimmedUrl}`);
@@ -25,8 +18,6 @@ const sanitizeUrl = (url: string): string | null => {
     }
   }
   
-  // Escape backslashes and single quotes for CSS safety
-  // Must escape backslashes first to avoid double-escaping
   return trimmedUrl.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
 };
 
