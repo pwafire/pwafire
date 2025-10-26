@@ -103,13 +103,24 @@ await handleCopy("Hello World");
 // Using root import
 import { check } from "pwafire";
 
-// Using scoped import
-import { check } from "pwafire/check";
-
 const checkFeatures = async () => {
   const [isShareSupported, isClipboardSupported] = await Promise.all([
     check.webShare(),
     check.clipboard()
+  ]);
+};
+
+await checkFeatures();
+```
+
+```ts
+// Using scoped import
+import { webShare, clipboard } from "pwafire/check";
+
+const checkFeatures = async () => {
+  const [isShareSupported, isClipboardSupported] = await Promise.all([
+    webShare(),
+    clipboard()
   ]);
 };
 
