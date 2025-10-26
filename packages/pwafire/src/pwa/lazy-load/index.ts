@@ -14,8 +14,9 @@ const sanitizeUrl = (url: string): string | null => {
     return null;
   }
   
-  // Escape single quotes in the URL to prevent CSS injection
-  return trimmedUrl.replace(/'/g, "\\'");
+  // Escape backslashes and single quotes in the URL to prevent CSS injection
+  // Must escape backslashes first to avoid double-escaping
+  return trimmedUrl.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
 };
 
 export const loadImage = async (element: string, options: ImageOptions = {}): Promise<LazyLoadResult> => {
