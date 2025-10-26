@@ -1,3 +1,26 @@
+const sanitizeUrl = (url: string): string | null => {
+  if (!url) return null;
+  
+  const trimmedUrl = url.trim();
+  
+  const dangerousProtocols = /^(javascript|data|vbscript):/i;
+  if (dangerousProtocols.test(trimmedUrl)) {
+    console.warn(`[pwafire] Blocked potentially dangerous URL: ${trimmedUrl}`);
+    return null;
+  }
+  
+  if (/^[a-z][a-z0-9+.-]*:/i.test(trimmedUrl)) {
+    try {
+      new URL(trimmedUrl);
+    } catch {
+      console.warn(`[pwafire] Invalid URL structure: ${trimmedUrl}`);
+      return null;
+    }
+  }
+  
+  return trimmedUrl.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
+};
+
 export const loadImage = async (element: string, options: ImageOptions = {}): Promise<LazyLoadResult> => {
   try {
     if (!("IntersectionObserver" in window)) {
@@ -75,7 +98,10 @@ export const loadBackground = async (element: string, options: BackgroundOptions
           if (placeholder.startsWith("#") || placeholder.startsWith("rgb")) {
             el.style.backgroundColor = placeholder;
           } else {
-            el.style.backgroundImage = `url('${placeholder}')`;
+            const sanitizedUrl = sanitizeUrl(placeholder);
+            if (sanitizedUrl) {
+              el.style.backgroundImage = `url('${sanitizedUrl}')`;
+            }
           }
         }
       });
@@ -89,7 +115,12 @@ export const loadBackground = async (element: string, options: BackgroundOptions
           const el = entry.target;
           if (el instanceof HTMLElement) {
             const dataBg = el.getAttribute(background);
-            if (dataBg) el.style.backgroundImage = `url('${dataBg}')`;
+            if (dataBg) {
+              const sanitizedUrl = sanitizeUrl(dataBg);
+              if (sanitizedUrl) {
+                el.style.backgroundImage = `url('${sanitizedUrl}')`;
+              }
+            }
           }
 
           el.classList.add("loaded");
