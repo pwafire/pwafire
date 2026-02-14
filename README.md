@@ -97,6 +97,18 @@ const handleCopy = async (text: string) => {
 await handleCopy("Hello World");
 ```
 
+## Try it Live
+
+Test all PWA features in your browser with our interactive test console:
+
+**[Launch Test Console →](https://pwafire-test-console.web.app)**
+
+The test console allows you to:
+- Test all PWA APIs interactively
+- Check browser feature support
+- View real-time console logs
+- See live API responses
+
 ## Feature Detection
 
 ```ts

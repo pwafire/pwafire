@@ -97,6 +97,18 @@ const handleCopy = async (text: string) => {
 await handleCopy("Bonjour le monde");
 ```
 
+## Essayez-le en Direct
+
+Testez toutes les fonctionnalités PWA dans votre navigateur avec notre console de test interactive :
+
+**[Lancer la Console de Test →](https://pwafire-test-console.web.app)**
+
+La console de test vous permet de :
+- Tester toutes les APIs PWA de manière interactive
+- Vérifier la prise en charge des fonctionnalités du navigateur
+- Afficher les logs de console en temps réel
+- Voir les réponses des APIs en direct
+
 ## Détection de Fonctionnalités
 
 ```ts
