@@ -15,15 +15,9 @@ npm install pwafire
 ## Quick Start
 
 ```typescript
-import { copyText, webShare } from "pwafire";
+import { copyText } from "pwafire";
 
 const { ok, message } = await copyText("Hello World");
-
-await webShare({
-  title: "PWAFire",
-  text: "Check out PWAFire!",
-  url: "https://pwafire.org"
-});
 ```
 
 ## Try it Live
