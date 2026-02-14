@@ -8,20 +8,11 @@
     ],
     "headers": [
       {
-        "source": "**/*.@(js|mjs)",
+        "source": "**/*",
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=3600"
-          }
-        ]
-      },
-      {
-        "source": "**/*.@(css|html)",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "no-cache, must-revalidate"
+            "value": "no-cache, no-store, must-revalidate"
           }
         ]
       }
