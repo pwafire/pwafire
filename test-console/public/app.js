@@ -85,15 +85,25 @@ const apiConfigs = {
     }]
   },
   copyText: {
-    title: 'Clipboard',
+    title: 'Copy Text',
     params: () => ['Hello from PWAFire Console!']
+  },
+  readText: {
+    title: 'Read Text'
+  },
+  copyImage: {
+    title: 'Copy Image',
+    params: () => ['https://pwafire.org/images/logo.png']
   },
   wakeLock: {
     title: 'Wake Lock'
   },
   setBadge: {
-    title: 'Badging',
+    title: 'Set Badge',
     params: () => [5]
+  },
+  clearBadge: {
+    title: 'Clear Badge'
   },
   connectivity: {
     title: 'Network'
@@ -103,6 +113,9 @@ const apiConfigs = {
   },
   visibility: {
     title: 'Visibility'
+  },
+  displayMode: {
+    title: 'Display Mode'
   },
   contacts: {
     title: 'Contacts',
@@ -148,11 +161,18 @@ const apiConfigs = {
       systemAudio: "include"
     }]
   },
+  webPIP: {
+    title: 'Picture in Picture',
+    params: () => [(data) => { logConsole(`PiP: ${data.message}`, data.ok ? 'success' : 'error'); }, { width: 400, height: 300 }]
+  },
   barcodeDetector: {
     title: 'Barcode'
   },
   compressStream: {
-    title: 'Compression'
+    title: 'Compress Stream'
+  },
+  decompressStream: {
+    title: 'Decompress Stream'
   },
   lazyLoad: {
     title: 'Lazy Load',
@@ -215,6 +235,7 @@ const featureDisplayNames = {
   connectivity: 'Network Info',
   contacts: 'Contacts API',
   contentIndexing: 'Content Index',
+  displayMode: 'Display Mode',
   files: 'File System',
   fonts: 'Font Access',
   fullscreen: 'Fullscreen API',

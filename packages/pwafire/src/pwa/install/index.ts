@@ -14,25 +14,16 @@ export const install = async (
 
     const methods = {
       checkIfAppInstalled: async () => {
-        if (callback) {
-          window.addEventListener("appinstalled", () => {
-            callback("installed");
-          });
-        }
+        if (callback) window.addEventListener("appinstalled", () => callback("installed"));
         return { ok: true, message: "Listening for app installed event" };
       },
       beforeInstallPromptEvent: async () => {
-        if (callback) {
-          window.addEventListener("beforeinstallprompt", (event: Event) => {
-            callback(event as BeforeInstallPromptEvent);
-          });
-        }
+        if (callback)
+          window.addEventListener("beforeinstallprompt", (event: Event) => callback(event as BeforeInstallPromptEvent));
         return { ok: true, message: "Listening for before install prompt" };
       },
       installApp: async () => {
-        if (callback) {
-          callback("install");
-        }
+        if (callback) callback("install");
         return { ok: true, message: "Install triggered" };
       },
     };
