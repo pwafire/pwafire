@@ -1,22 +1,10 @@
-/**
- * PWAFire Test Console
- * Main application logic
- */
-
-// Import pwafire package
 import * as pwafire from './lib/index.mjs';
 import * as check from './lib/check/index.mjs';
 
-// Make available globally for inline event handlers
 window.pwafire = pwafire;
 window.check = check;
 
-// Test statistics
 let stats = { run: 0, success: 0, failed: 0 };
-
-// ============================================================================
-// Matrix Background Effect
-// ============================================================================
 
 function initMatrixEffect() {
   const canvas = document.getElementById('matrix');
@@ -49,9 +37,7 @@ function initMatrixEffect() {
   setInterval(drawMatrix, 35);
 }
 
-// ============================================================================
 // Console Logging
-// ============================================================================
 
 function logConsole(message, type = 'info') {
   const consoleEl = document.getElementById('console');
@@ -76,14 +62,13 @@ function showResult(elementId, data) {
 }
 
 function updateStats() {
+  document.getElementById('test-count').textContent = stats.run;
   document.getElementById('tests-run').textContent = stats.run;
   document.getElementById('tests-success').textContent = stats.success;
   document.getElementById('tests-failed').textContent = stats.failed;
 }
 
-// ============================================================================
 // API Test Functions
-// ============================================================================
 
 window.testWebShare = async function() {
   logConsole('Executing Web Share test...', 'info');
@@ -231,9 +216,7 @@ window.testVisibility = async function() {
   updateStats();
 };
 
-// ============================================================================
 // Feature Detection
-// ============================================================================
 
 window.checkAllFeatures = function() {
   logConsole('Scanning for PWA features...', 'info');
@@ -285,9 +268,7 @@ window.checkAllFeatures = function() {
   logConsole(`Feature scan complete: ${supported}/20 supported`, 'success');
 };
 
-// ============================================================================
 // Batch Operations
-// ============================================================================
 
 window.runAllTests = async function() {
   logConsole('='.repeat(50), 'info');
@@ -312,9 +293,7 @@ window.runAllTests = async function() {
   logConsole('='.repeat(50), 'info');
 };
 
-// ============================================================================
 // Keyboard Shortcuts
-// ============================================================================
 
 function initKeyboardShortcuts() {
   document.addEventListener('keydown', (e) => {
@@ -331,9 +310,7 @@ function initKeyboardShortcuts() {
   });
 }
 
-// ============================================================================
 // Initialization
-// ============================================================================
 
 function init() {
   logConsole('PWAFire package loaded successfully', 'success');
@@ -341,7 +318,7 @@ function init() {
   logConsole('Check API loaded with ' + Object.keys(check).length +
     ' feature checks', 'info');
 
-  // Initialize components
+  updateStats();
   initMatrixEffect();
   initKeyboardShortcuts();
   checkAllFeatures();

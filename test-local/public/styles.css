@@ -5,8 +5,7 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   background: #000;
   color: #fff;
   overflow: hidden;
@@ -23,7 +22,6 @@ body {
   background: #222;
 }
 
-/* Header */
 .header {
   grid-column: 1 / -1;
   background: #000;
@@ -49,7 +47,6 @@ body {
   font-weight: 400;
 }
 
-/* Panels */
 .panel {
   background: #0a0a0a;
   padding: 16px;
@@ -80,7 +77,6 @@ body {
   font-weight: 500;
 }
 
-/* Features */
 .feature-item {
   display: flex;
   justify-content: space-between;
@@ -120,7 +116,6 @@ body {
   color: #333;
 }
 
-/* Tests */
 .test-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -205,7 +200,6 @@ body {
   font-family: "Courier New", monospace;
 }
 
-/* Console */
 .console {
   grid-column: 1 / -1;
   background: #000;
@@ -236,7 +230,6 @@ body {
   color: #444;
 }
 
-/* Actions */
 .action-button {
   background: #000;
   padding: 10px;
@@ -281,7 +274,6 @@ body {
   color: #888;
 }
 
-/* Stats */
 .stats-panel {
   margin-top: 16px;
   padding: 12px;
@@ -303,7 +295,6 @@ body {
   color: #fff;
 }
 
-/* Shortcuts */
 .shortcuts-panel {
   margin-top: 16px;
   padding: 12px;
@@ -332,7 +323,6 @@ body {
   flex-direction: column;
 }
 
-/* Matrix Background */
 .matrix-bg {
   position: fixed;
   top: 0;
@@ -344,23 +334,15 @@ body {
   z-index: 0;
 }
 
-/* Animations */
 .blink {
   animation: blink 1s infinite;
 }
 
 @keyframes blink {
-  0%,
-  50% {
-    opacity: 1;
-  }
-  51%,
-  100% {
-    opacity: 0;
-  }
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 
-/* Minimal scrollbar */
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;

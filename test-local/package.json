@@ -8,7 +8,9 @@
     "test:exports": "node tests/test-exports.js",
     "test:features": "node tests/test-features.js",
     "serve": "python3 -m http.server 8080 --directory public",
-    "test": "npm run test:exports && npm run test:features"
+    "test": "npm run test:exports && npm run test:features",
+    "deploy": "./deploy.sh",
+    "deploy:preview": "./deploy.sh && firebase hosting:channel:deploy preview"
   },
   "dependencies": {
     "pwafire": "file:../packages/pwafire"
