@@ -32,16 +32,6 @@ await webShare({
 });
 ```
 
-## Features
-
-| Feature | Description |
-|---------|-------------|
-| **Simple API** | Consistent `{ ok, message }` response format |
-| **No Try/Catch** | Built-in error handling |
-| **Tree-shakeable** | Import only what you need |
-| **TypeScript** | Full type support |
-| **Zero Dependencies** | Lightweight and fast |
-
 ## Try it Live
 
 Test all PWA APIs in your browser:
