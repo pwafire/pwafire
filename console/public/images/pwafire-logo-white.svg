@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" fill="#FFFFFF"/>
+  
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="200" fill="none" stroke="#D0D0D0" stroke-width="32"/>
+  
+  <!-- Inner ring -->
+  <circle cx="256" cy="256" r="128" fill="none" stroke="#A0A0A0" stroke-width="32"/>
+  
+  <!-- Core -->
+  <circle cx="256" cy="256" r="56" fill="#000000"/>
+</svg>
