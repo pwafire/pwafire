@@ -216,54 +216,61 @@ window.runTest = async function(apiName) {
 
 // Feature Detection
 
+const featureDisplayNames = {
+  badging: 'Badging API',
+  barcode: 'Barcode Detector',
+  clipboard: 'Clipboard API',
+  compression: 'Compression',
+  connectivity: 'Network Info',
+  contacts: 'Contacts API',
+  contentIndexing: 'Content Index',
+  files: 'File System',
+  fonts: 'Font Access',
+  fullscreen: 'Fullscreen API',
+  idleDetection: 'Idle Detection',
+  install: 'Install API',
+  lazyLoad: 'Lazy Loading',
+  notification: 'Notification',
+  payment: 'Payment Request',
+  screen: 'Screen Details',
+  visibility: 'Visibility API',
+  wakeLock: 'Wake Lock',
+  webOtp: 'Web OTP',
+  webShare: 'Web Share'
+};
+
 window.checkAllFeatures = function() {
   logConsole('Scanning for PWA features...', 'info');
-
-  const features = {
-    'Badging API': check.badging(),
-    'Barcode Detector': check.barcode(),
-    'Clipboard API': check.clipboard(),
-    'Compression': check.compression(),
-    'Network Info': check.connectivity(),
-    'Contacts API': check.contacts(),
-    'Content Index': check.contentIndexing(),
-    'File System': check.files(),
-    'Font Access': check.fonts(),
-    'Fullscreen API': check.fullscreen(),
-    'Idle Detection': check.idleDetection(),
-    'Install API': check.install(),
-    'Lazy Loading': check.lazyLoad(),
-    'Notification': check.notification(),
-    'Payment Request': check.payment(),
-    'Screen Details': check.screen(),
-    'Visibility API': check.visibility(),
-    'Wake Lock': check.wakeLock(),
-    'Web OTP': check.webOtp(),
-    'Web Share': check.webShare(),
-  };
 
   const listEl = document.getElementById('feature-list');
   listEl.innerHTML = '';
   let supported = 0;
+  let total = 0;
 
-  for (const [name, isSupported] of Object.entries(features)) {
-    const item = document.createElement('div');
-    item.className = `feature-item ${isSupported ? 'supported' : 'not-supported'}`;
-    item.innerHTML = `
-      <span class="feature-name">${name}</span>
-      <span class="feature-status ${isSupported ? 'yes' : 'no'}">
-        ${isSupported ? 'YES' : 'NO'}
-      </span>
-    `;
-    listEl.appendChild(item);
-    if (isSupported) supported++;
-    logConsole(`${name}: ${isSupported ? 'SUPPORTED' : 'NOT SUPPORTED'}`,
-      isSupported ? 'success' : 'error');
-  }
+  Object.keys(check).forEach((key) => {
+    if (typeof check[key] === 'function') {
+      total++;
+      const isSupported = check[key]();
+      const displayName = featureDisplayNames[key] || key;
+
+      const item = document.createElement('div');
+      item.className = `feature-item ${isSupported ? 'supported' : 'not-supported'}`;
+      item.innerHTML = `
+        <span class="feature-name">${displayName}</span>
+        <span class="feature-status ${isSupported ? 'yes' : 'no'}">
+          ${isSupported ? 'YES' : 'NO'}
+        </span>
+      `;
+      listEl.appendChild(item);
+      if (isSupported) supported++;
+      logConsole(`${displayName}: ${isSupported ? 'SUPPORTED' : 'NOT SUPPORTED'}`,
+        isSupported ? 'success' : 'error');
+    }
+  });
 
   document.getElementById('feature-count').innerHTML =
-    `<span style="color: #00ff41;">${supported}/20</span>`;
-  logConsole(`Feature scan complete: ${supported}/20 supported`, 'success');
+    `<span style="color: #00ff41;">${supported}/${total}</span>`;
+  logConsole(`Feature scan complete: ${supported}/${total} supported`, 'success');
 };
 
 // Batch Operations
