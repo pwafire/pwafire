@@ -1,8 +1,6 @@
 export const idleDetection = async (
   action = "start",
-  callback = () => {
-    // do something
-  },
+  callback = () => {},
   threshold = 60000,
 ) => {
   try {

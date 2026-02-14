@@ -164,7 +164,6 @@ export const loadOnScroll = async (element: string, options: ScrollOptions = {})
       return { ok: false, message: "No elements found" };
     }
 
-    // Apply base animation style
     if (style !== "none" && !document.getElementById("pwafire-lazy-styles")) {
       const styleEl = document.createElement("style");
       styleEl.id = "pwafire-lazy-styles";

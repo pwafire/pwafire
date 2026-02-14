@@ -1,4 +1,3 @@
-// Export PWA modules
 export * from "./pwa/badging";
 export * from "./pwa/barcode";
 export * from "./pwa/clipboard";
@@ -20,9 +19,7 @@ export * from "./pwa/wake-lock";
 export * from "./pwa/web-otp";
 export * from "./pwa/web-share";
 
-// Import namespaces
 import * as pwa from "./pwa";
 import * as check from "./check";
 
-// Export namespaces
 export { pwa, check };
