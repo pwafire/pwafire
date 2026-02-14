@@ -55,6 +55,19 @@ window.clearConsole = function() {
   logConsole('Console cleared', 'info');
 };
 
+window.toggleConsole = function() {
+  const consoleEl = document.getElementById('console');
+  const toggleText = document.getElementById('console-toggle-text');
+
+  if (consoleEl.style.display === 'none') {
+    consoleEl.style.display = 'block';
+    toggleText.textContent = 'Hide Terminal';
+  } else {
+    consoleEl.style.display = 'none';
+    toggleText.textContent = 'Show Terminal';
+  }
+};
+
 function showResult(elementId, data) {
   const el = document.getElementById(elementId);
   el.style.display = 'block';
@@ -318,6 +331,9 @@ function initKeyboardShortcuts() {
     } else if (e.ctrlKey && e.key === 's') {
       e.preventDefault();
       checkAllFeatures();
+    } else if (e.ctrlKey && e.key === 't') {
+      e.preventDefault();
+      toggleConsole();
     }
   });
 }
