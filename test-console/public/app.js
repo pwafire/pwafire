@@ -93,7 +93,7 @@ const apiConfigs = {
   },
   copyImage: {
     title: 'Copy Image',
-    params: () => ['https://pwafire.org/images/logo.png']
+    params: () => ['https://pixabay.com/images/download/sunriseforever-woman-10093781_1920.jpg']
   },
   wakeLock: {
     title: 'Wake Lock'

@@ -31,7 +31,7 @@ export const screenShare = async (config: {
 };
 
 export const webPIP = async (
-  callback: (data: { ok: boolean; message: string; window: Window | null }) => void,
+  callback?: (data: { ok: boolean; message: string; window: Window | null }) => void,
   config: {
     height?: number;
     width?: number;
@@ -41,7 +41,14 @@ export const webPIP = async (
   try {
     const pipButton = document.getElementById("pip-button") as HTMLElement;
     const player = document.getElementById("pip-player") as HTMLElement;
-    if (!pipButton || !player) throw new Error("No player or button found.");
+    if (!pipButton || !player) {
+      return {
+        ok: false,
+        message: "No player or button found.",
+        window: null,
+      };
+    }
+
     pipButton.addEventListener("click", async () => {
       if ("documentPictureInPicture" in window && window.documentPictureInPicture) {
         const pipWindow = await (window.documentPictureInPicture as any).requestWindow({
@@ -50,16 +57,22 @@ export const webPIP = async (
           height: config?.height ?? player?.clientHeight,
         });
         pipWindow.document.body.append(player);
-        callback({ ok: true, window: pipWindow, message: "Picture in Picture mode enabled." });
+        if (callback) callback({ ok: true, window: pipWindow, message: "Picture in Picture mode enabled." });
       } else {
-        callback({ ok: false, window: null, message: "Picture in Picture is not supported in this browser." });
+        if (callback) callback({ ok: false, window: null, message: "Picture in Picture is not supported in this browser." });
       }
     });
+
+    return {
+      ok: true,
+      message: "Picture in Picture listener setup complete",
+      window: null,
+    };
   } catch (error) {
-    callback({
+    return {
       ok: false,
       window: null,
-      message: error instanceof Error ? error.message : "Failed to enable Picture in Picture",
-    });
+      message: error instanceof Error ? error.message : "Failed to setup Picture in Picture",
+    };
   }
 };
