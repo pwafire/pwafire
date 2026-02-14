@@ -15,57 +15,26 @@ npm install pwafire
 ## Quick Start
 
 ```typescript
-import { copyText, webShare } from "pwafire";
+import { copyText } from "pwafire";
 
-// Copy text to clipboard
 const { ok, message } = await copyText("Hello World");
-
-if (ok) {
-  console.log("Success:", message);
-}
-
-// Share content
-await webShare({
-  title: "PWAFire",
-  text: "Check out PWAFire!",
-  url: "https://pwafire.org"
-});
 ```
-
-## Features
-
-- **Simple API** - Consistent `{ ok, message }` response format
-- **No Try/Catch** - Built-in error handling
-- **Tree-shakeable** - Import only what you need
-- **TypeScript** - Full type support
-- **Zero Dependencies** - Lightweight and fast
 
 ## Try it Live
 
-Test all PWA APIs in your browser:
-
-**[Launch Console →](https://console.pwafire.org)**
+| Resource                                      | Description                       |
+| --------------------------------------------- | --------------------------------- |
+| [Launch Console](https://console.pwafire.org) | Test all PWA APIs in your browser |
 
 ## Documentation
 
-For detailed guides, API reference, and examples:
-
-**[docs.pwafire.org](https://docs.pwafire.org/get-started)**
-
-**Additional Documentation:**
-- [Breaking Changes](./docs/breaking-changes.md) - Migration guide for v6.0.0
-- [Contributing](./.github/CONTRIBUTING.md) - Contribution guidelines
-- [Code of Conduct](./.github/CODE_OF_CONDUCT.md) - Community standards
-- [Security](./.github/SECURITY.md) - Security policy
-
-More docs in [`docs/`](./docs) folder.
-
-## Browser Support
-
-- Chrome 80+
-- Edge
-- Firefox
-- Safari
+| Document                                                 | Description                         |
+| -------------------------------------------------------- | ----------------------------------- |
+| [docs.pwafire.org](https://docs.pwafire.org/get-started) | API reference, guides, and examples |
+| [Breaking Changes](./docs/breaking-changes.md)           | Migration guide for v6.0.0          |
+| [Contributing](./.github/CONTRIBUTING.md)                | Contribution guidelines             |
+| [Code of Conduct](./.github/CODE_OF_CONDUCT.md)          | Community standards                 |
+| [Security](./.github/SECURITY.md)                        | Security policy                     |
 
 ## Contributing
 
