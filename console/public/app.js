@@ -106,7 +106,7 @@ const apiConfigs = {
   },
   copyImage: {
     title: 'Copy Image',
-    params: () => [window.location.origin + '/images/pwafire-logo-white.svg']
+    params: () => [window.location.origin + '/favicon.ico']
   },
   wakeLock: {
     title: 'Wake Lock'
@@ -165,7 +165,7 @@ const apiConfigs = {
         logConsole('Create a file first using Create File test', 'error');
         return null;
       }
-      return [handle, window.location.origin + '/images/pwafire-logo-transparent.svg'];
+      return [handle, window.location.origin + '/favicon.ico'];
     }
   },
   accessFonts: {
