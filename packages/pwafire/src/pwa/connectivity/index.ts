@@ -1,16 +1,16 @@
-export const connectivity = async (online: () => void, offline: () => void) => {
+export const connectivity = async () => {
   try {
-    if (navigator.onLine) {
-      online();
-      return { ok: true, message: "Online" };
-    } else {
-      offline();
-      return { ok: true, message: "Offline" };
-    }
+    const isOnline = navigator.onLine;
+    return {
+      ok: true,
+      message: isOnline ? "Online" : "Offline",
+      online: isOnline,
+    };
   } catch (error) {
     return {
       ok: false,
       message: error instanceof Error ? error.message : "Failed to check connectivity",
+      online: false,
     };
   }
 };

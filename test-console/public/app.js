@@ -96,21 +96,13 @@ const apiConfigs = {
     params: () => [5]
   },
   connectivity: {
-    title: 'Network',
-    params: () => [
-      () => { logConsole('Network: Online', 'success'); },
-      () => { logConsole('Network: Offline', 'info'); }
-    ]
+    title: 'Network'
   },
   fullscreen: {
     title: 'Fullscreen'
   },
   visibility: {
-    title: 'Visibility',
-    params: () => [
-      () => { logConsole('Visibility: Page is visible', 'success'); },
-      () => { logConsole('Visibility: API not available', 'error'); }
-    ]
+    title: 'Visibility'
   },
   contacts: {
     title: 'Contacts',
@@ -134,8 +126,7 @@ const apiConfigs = {
     params: () => ["start", () => { logConsole('User is idle', 'info'); }, 60000]
   },
   webOtp: {
-    title: 'Web OTP',
-    params: () => [(result) => { logConsole(`OTP: ${JSON.stringify(result)}`, 'info'); }]
+    title: 'Web OTP'
   },
   payment: {
     title: 'Payment',

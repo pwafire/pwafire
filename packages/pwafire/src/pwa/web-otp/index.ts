@@ -1,57 +1,41 @@
-export const webOtp = async (callback: (res: { code: string | null; ok: boolean; message: string }) => void) => {
+export const webOtp = async () => {
   try {
     if (!("OTPCredential" in window)) {
-      const result = { ok: false, message: "Web OTP API not supported", code: null };
-      callback(result);
-      return { ok: false, message: "Web OTP API not supported" };
+      return { ok: false, message: "Web OTP API not supported", code: null };
     }
 
-    setTimeout(async () => {
-      try {
-        const input = document.querySelector('input[autocomplete="one-time-code"]');
-        if (!input) {
-          callback({
-            code: null,
-            ok: false,
-            message: "No input with autocomplete='one-time-code' found",
-          });
-          return;
-        }
+    const input = document.querySelector('input[autocomplete="one-time-code"]');
+    if (!input) {
+      return {
+        ok: false,
+        message: "No input with autocomplete='one-time-code' found",
+        code: null,
+      };
+    }
 
-        const ac = new AbortController();
-        const form = input.closest("form");
-        if (form) {
-          form.addEventListener("submit", () => {
-            ac.abort();
-          });
-        }
+    const ac = new AbortController();
+    const form = input.closest("form");
+    if (form) {
+      form.addEventListener("submit", () => {
+        ac.abort();
+      });
+    }
 
-        const otp = (await navigator.credentials.get({
-          otp: { transport: ["sms"] },
-          signal: ac.signal,
-        } as OTPCredentialOptions)) as OTPCredential;
+    const otp = (await navigator.credentials.get({
+      otp: { transport: ["sms"] },
+      signal: ac.signal,
+    } as OTPCredentialOptions)) as OTPCredential;
 
-        callback({
-          code: otp.code,
-          ok: true,
-          message: "OTP received",
-        });
-      } catch (error) {
-        callback({
-          code: null,
-          ok: false,
-          message: error instanceof Error ? error.message : "Failed to get OTP",
-        });
-      }
-    }, 0);
-
-    return { ok: true, message: "Web OTP listener registered - awaiting SMS" };
-  } catch (error) {
-    const result = {
-      ok: false,
-      message: error instanceof Error ? error.message : "Failed to setup OTP",
+    return {
+      ok: true,
+      message: "OTP received",
+      code: otp.code,
     };
-    callback({ ...result, code: null });
-    return result;
+  } catch (error) {
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to get OTP",
+      code: null,
+    };
   }
 };

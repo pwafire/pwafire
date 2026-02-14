@@ -5,41 +5,47 @@ interface BeforeInstallPromptEvent extends Event {
 
 export const install = async (
   type: "before" | "install" | "installed" = "installed",
-  callback: (event: string | BeforeInstallPromptEvent) => void,
+  callback?: (event: string | BeforeInstallPromptEvent) => void,
 ) => {
   try {
-    if (navigator.serviceWorker) {
-      const methods = {
-        checkIfAppInstalled: async () => {
+    if (!navigator.serviceWorker) {
+      return { ok: false, message: "Service Worker not supported" };
+    }
+
+    const methods = {
+      checkIfAppInstalled: async () => {
+        if (callback) {
           window.addEventListener("appinstalled", () => {
             callback("installed");
           });
-          return { ok: true, message: "Check if installed" };
-        },
-        beforeInstallPromptEvent: async () => {
+        }
+        return { ok: true, message: "Listening for app installed event" };
+      },
+      beforeInstallPromptEvent: async () => {
+        if (callback) {
           window.addEventListener("beforeinstallprompt", (event: Event) => {
             callback(event as BeforeInstallPromptEvent);
           });
-          return { ok: true, message: "Before install prompt" };
-        },
-        installApp: async () => {
+        }
+        return { ok: true, message: "Listening for before install prompt" };
+      },
+      installApp: async () => {
+        if (callback) {
           callback("install");
-          return { ok: true, message: "Install App" };
-        },
-      };
+        }
+        return { ok: true, message: "Install triggered" };
+      },
+    };
 
-      switch (type) {
-        case "before":
-          return await methods.beforeInstallPromptEvent();
-        case "install":
-          return await methods.installApp();
-        case "installed":
-          return await methods.checkIfAppInstalled();
-        default:
-          return { ok: false, message: "Type can be 'install', 'installed' or 'before'" };
-      }
-    } else {
-      return { ok: false, message: "Service Worker not supported" };
+    switch (type) {
+      case "before":
+        return await methods.beforeInstallPromptEvent();
+      case "install":
+        return await methods.installApp();
+      case "installed":
+        return await methods.checkIfAppInstalled();
+      default:
+        return { ok: false, message: "Type can be 'install', 'installed' or 'before'" };
     }
   } catch (error) {
     return {

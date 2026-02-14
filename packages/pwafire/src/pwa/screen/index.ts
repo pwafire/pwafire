@@ -7,13 +7,26 @@ export const screenShare = async (config: {
   systemAudio: "exclude" | "include";
 }) => {
   try {
-    if (navigator.mediaDevices && "getDisplayMedia" in navigator.mediaDevices) {
-      return navigator.mediaDevices.getDisplayMedia(config as DisplayMediaStreamOptions);
-    } else {
-      throw new Error("Screen sharing is not supported in this browser.");
+    if (!navigator.mediaDevices || !("getDisplayMedia" in navigator.mediaDevices)) {
+      return {
+        ok: false,
+        message: "Screen sharing is not supported in this browser",
+        stream: null,
+      };
     }
+
+    const stream = await navigator.mediaDevices.getDisplayMedia(config as DisplayMediaStreamOptions);
+    return {
+      ok: true,
+      message: "Screen sharing started",
+      stream,
+    };
   } catch (error) {
-    throw error instanceof Error ? error : new Error("Failed to start screen sharing");
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to start screen sharing",
+      stream: null,
+    };
   }
 };
 
