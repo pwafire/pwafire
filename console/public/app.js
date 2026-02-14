@@ -106,7 +106,7 @@ const apiConfigs = {
   },
   copyImage: {
     title: 'Copy Image',
-    params: () => ['https://res.cloudinary.com/duqxmomkm/image/upload/v1741034800/samples/chair.png']
+    params: () => [window.location.origin + '/images/pwafire-logo-white.svg']
   },
   wakeLock: {
     title: 'Wake Lock'
@@ -165,7 +165,7 @@ const apiConfigs = {
         logConsole('Create a file first using Create File test', 'error');
         return null;
       }
-      return [handle, 'https://res.cloudinary.com/duqxmomkm/image/upload/v1741034800/samples/chair.png'];
+      return [handle, window.location.origin + '/images/pwafire-logo-transparent.svg'];
     }
   },
   accessFonts: {
