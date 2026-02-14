@@ -433,3 +433,224 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #333;
 }
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px auto auto 1fr auto;
+  }
+
+  .panel:first-of-type {
+    grid-row: 2;
+  }
+
+  .panel-center {
+    grid-row: 3;
+    min-height: 400px;
+  }
+
+  .panel:last-of-type {
+    grid-row: 4;
+  }
+
+  .header-left {
+    gap: 16px;
+  }
+
+  .header h1 {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  .header-links {
+    gap: 8px;
+  }
+
+  .header-link {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+  .header .status {
+    font-size: 9px;
+    gap: 12px;
+  }
+
+  .test-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .action-button {
+    font-size: 11px;
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto;
+  }
+
+  .container {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .header {
+    padding: 0 12px;
+    height: auto;
+    min-height: 60px;
+    flex-wrap: wrap;
+  }
+
+  .header-left {
+    gap: 12px;
+  }
+
+  .header h1 {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .header-links {
+    gap: 6px;
+  }
+
+  .header-link {
+    font-size: 9px;
+    padding: 4px 6px;
+  }
+
+  .header-link svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .header .status {
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+    padding-bottom: 8px;
+    font-size: 8px;
+    gap: 16px;
+  }
+
+  .panel {
+    padding: 12px;
+  }
+
+  .panel-title {
+    font-size: 10px;
+    margin-bottom: 12px;
+  }
+
+  .test-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .test-card {
+    padding: 16px;
+  }
+
+  .test-card h3 {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .test-card button {
+    font-size: 11px;
+    padding: 10px 20px;
+    min-height: 44px;
+  }
+
+  .console {
+    max-height: 300px;
+    font-size: 10px;
+    padding: 12px;
+  }
+
+  .console-line {
+    padding: 4px 0;
+    line-height: 1.6;
+  }
+
+  .action-button {
+    font-size: 11px;
+    padding: 12px 16px;
+    min-height: 44px;
+  }
+
+  .actions-container {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .stats-panel,
+  .shortcuts-panel {
+    font-size: 10px;
+    padding: 12px;
+  }
+
+  .stats-title,
+  .shortcuts-title {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+
+  .feature-item {
+    font-size: 9px;
+    padding: 6px 0;
+  }
+
+  .feature-status {
+    font-size: 8px;
+  }
+
+  .matrix-bg {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 10px;
+  }
+
+  .header-links {
+    display: none;
+  }
+
+  .panel {
+    padding: 8px;
+  }
+
+  .test-card {
+    padding: 12px;
+  }
+
+  .test-card h3 {
+    font-size: 11px;
+  }
+
+  .test-card button {
+    font-size: 10px;
+    padding: 8px 16px;
+  }
+
+  .console {
+    max-height: 250px;
+    font-size: 9px;
+  }
+
+  .action-button {
+    font-size: 10px;
+    padding: 10px 12px;
+  }
+
+  .stats-panel,
+  .shortcuts-panel {
+    font-size: 9px;
+    padding: 10px;
+  }
+}
