@@ -1,4 +1,4 @@
-export const screenSharingControls = async (config: {
+export const screenShare = async (config: {
   video: { displaySurface: "browser" | "monitor" | "window" } | boolean;
   monitorTypeSurfaces?: "exclude" | "include";
   surfaceSwitching?: "include" | "exclude";

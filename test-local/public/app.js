@@ -149,11 +149,12 @@ const apiConfigs = {
       }
     }, (response) => { logConsole(`Payment: ${JSON.stringify(response)}`, 'info'); }]
   },
-  screenSharingControls: {
+  screenShare: {
     title: 'Screen Share',
     params: () => [{
       video: { displaySurface: "monitor" },
-      audio: true
+      audio: true,
+      systemAudio: "include"
     }]
   },
   barcodeDetector: {
