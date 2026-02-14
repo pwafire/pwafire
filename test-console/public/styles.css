@@ -16,7 +16,7 @@ body {
 .container {
   display: grid;
   grid-template-columns: 280px 1fr 280px;
-  grid-template-rows: 60px 1fr 160px;
+  grid-template-rows: 60px 1fr;
   height: 100vh;
   gap: 1px;
   background: #222;
@@ -237,16 +237,26 @@ body {
 }
 
 .console {
-  grid-column: 1 / -1;
   background: #000;
-  padding: 16px;
-  padding-left: max(16px, calc(50% - 400px));
-  padding-right: max(16px, calc(50% - 400px));
+  padding: 12px;
   overflow-y: auto;
   font-size: 10px;
   line-height: 1.6;
-  border-top: 1px solid #333;
+  border-top: 1px solid #1a1a1a;
   font-family: "Courier New", monospace;
+  margin-top: 12px;
+  border-radius: 2px;
+  max-height: 300px;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.console.hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0;
+  margin-top: 0;
+  border: none;
 }
 
 .console-line {

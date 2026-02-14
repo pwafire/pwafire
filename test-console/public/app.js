@@ -59,11 +59,11 @@ window.toggleConsole = function() {
   const consoleEl = document.getElementById('console');
   const toggleText = document.getElementById('console-toggle-text');
 
-  if (consoleEl.style.display === 'none') {
-    consoleEl.style.display = 'block';
+  if (consoleEl.classList.contains('hidden')) {
+    consoleEl.classList.remove('hidden');
     toggleText.textContent = 'Hide Terminal';
   } else {
-    consoleEl.style.display = 'none';
+    consoleEl.classList.add('hidden');
     toggleText.textContent = 'Show Terminal';
   }
 };
