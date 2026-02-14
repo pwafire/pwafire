@@ -22,7 +22,7 @@ export const barcodeDetector = async (options: {
         const barcodeDetector = new BarcodeDetector({
           formats: [options.format],
         });
-        const barcodes = await barcodeDetector.detect(options.image);
+        const barcodes = await (barcodeDetector as any).detect(options.image);
         return {
           ok: barcodes ? true : false,
           message: barcodes ? "Barcode detected" : "No barcode detected",
@@ -41,6 +41,9 @@ export const barcodeDetector = async (options: {
       };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to detect barcode",
+    };
   }
 };

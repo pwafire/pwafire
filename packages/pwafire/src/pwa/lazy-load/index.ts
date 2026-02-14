@@ -71,7 +71,10 @@ export const loadImage = async (element: string, options: ImageOptions = {}): Pr
     elements.forEach((el) => observer.observe(el));
     return { ok: true, message: "Images set up for lazy loading" };
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to set up lazy loading for images",
+    };
   }
 };
 
@@ -137,7 +140,10 @@ export const loadBackground = async (element: string, options: BackgroundOptions
     elements.forEach((el) => observer.observe(el));
     return { ok: true, message: "Background images set up for lazy loading" };
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to set up lazy loading for backgrounds",
+    };
   }
 };
 
@@ -210,7 +216,10 @@ export const loadOnScroll = async (element: string, options: ScrollOptions = {})
     elements.forEach((el) => observer.observe(el));
     return { ok: true, message: "Elements set up for scroll reveal" };
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to set up scroll reveal",
+    };
   }
 };
 
@@ -255,6 +264,9 @@ export const lazyLoad = async (options?: InitOptions): Promise<LazyLoadResult> =
     await Promise.all(promises);
     return { ok: true, message: "Lazy loading initialized" };
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to initialize lazy loading",
+    };
   }
 };

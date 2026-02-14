@@ -8,6 +8,9 @@ export const connectivity = async (online: () => void, offline: () => void) => {
       return { ok: true, message: "Offline" };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to check connectivity",
+    };
   }
 };

@@ -36,6 +36,10 @@ export const webOtp = async (callback: (res: { code: string | null; ok: boolean;
       });
     }
   } catch (error) {
-    throw error;
+    callback({
+      code: null,
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to get OTP",
+    });
   }
 };

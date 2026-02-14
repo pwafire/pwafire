@@ -2,7 +2,7 @@ export const payment = async (
   paydata: {
     paymentMethods: PaymentMethodData[];
     paymentDetails: PaymentDetailsInit;
-    options: any;
+    options?: PaymentOptions;
   },
   validatePayment: (arg0: PaymentResponse) => void,
 ) => {
@@ -21,6 +21,9 @@ export const payment = async (
       return { ok: false, message: "Payment Request API not supported" };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to process payment",
+    };
   }
 };

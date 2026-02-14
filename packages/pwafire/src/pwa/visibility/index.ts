@@ -14,7 +14,10 @@ export const visibility = async (isVisible: () => void, notAvailable: () => void
       };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to check visibility",
+    };
   }
 };
 
@@ -32,7 +35,7 @@ export const displayMode = async (
         : "broswer-tab";
       callback(displayMode);
     });
-  } catch (error) {
-    throw error;
+  } catch {
+    callback("broswer-tab");
   }
 };

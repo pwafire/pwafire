@@ -4,10 +4,10 @@ import * as check from "./check";
 describe("pwafire", () => {
   // Test CommonJS imports
   describe("CommonJS imports", () => {
-    it("should work with require()", () => {
-      const { visibility: visibilityCJS } = require("./pwa/visibility");
-      expect(visibilityCJS).toBeDefined();
-      expect(typeof visibilityCJS).toBe("function");
+    it("should work with require()", async () => {
+      const visibilityModule = await import("./pwa/visibility");
+      expect(visibilityModule.visibility).toBeDefined();
+      expect(typeof visibilityModule.visibility).toBe("function");
     });
   });
 

@@ -13,7 +13,10 @@ export const compressStream = async (readableStream: ReadableStream) => {
       };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to compress stream",
+    };
   }
 };
 
@@ -32,6 +35,9 @@ export const decompressStream = async (compressedReadableStream: ReadableStream)
       };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to decompress stream",
+    };
   }
 };

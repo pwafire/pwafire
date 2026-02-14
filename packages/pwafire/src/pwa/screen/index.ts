@@ -6,15 +6,19 @@ export const screenSharingControls = async (config: {
   audio?: boolean;
   systemAudio: "exclude" | "include";
 }) => {
-  if (navigator.mediaDevices && "getDisplayMedia" in navigator.mediaDevices) {
-    return navigator.mediaDevices.getDisplayMedia(config as any);
-  } else {
-    throw new Error("Screen sharing is not supported in this browser.");
+  try {
+    if (navigator.mediaDevices && "getDisplayMedia" in navigator.mediaDevices) {
+      return navigator.mediaDevices.getDisplayMedia(config as DisplayMediaStreamOptions);
+    } else {
+      throw new Error("Screen sharing is not supported in this browser.");
+    }
+  } catch (error) {
+    throw error instanceof Error ? error : new Error("Failed to start screen sharing");
   }
 };
 
 export const webPIP = async (
-  callback: (data: { ok: boolean; message: string; window: any }) => void,
+  callback: (data: { ok: boolean; message: string; window: Window | null }) => void,
   config: {
     height?: number;
     width?: number;
@@ -26,8 +30,8 @@ export const webPIP = async (
     const player = document.getElementById("pip-player") as HTMLElement;
     if (!pipButton || !player) throw new Error("No player or button found.");
     pipButton.addEventListener("click", async () => {
-      if ("documentPictureInPicture" in window) {
-        const pipWindow = await window.documentPictureInPicture.requestWindow({
+      if ("documentPictureInPicture" in window && window.documentPictureInPicture) {
+        const pipWindow = await (window.documentPictureInPicture as any).requestWindow({
           ...config,
           width: config?.width ?? player?.clientWidth,
           height: config?.height ?? player?.clientHeight,
@@ -39,6 +43,10 @@ export const webPIP = async (
       }
     });
   } catch (error) {
-    throw error;
+    callback({
+      ok: false,
+      window: null,
+      message: error instanceof Error ? error.message : "Failed to enable Picture in Picture",
+    });
   }
 };

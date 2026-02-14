@@ -26,7 +26,7 @@ export const pickTextFile = async (): Promise<FileResponse> => {
     return { ok: false, message: "File System Access API not supported" };
   }
   try {
-    const [fileHandle] = await self.showOpenFilePicker();
+    const [fileHandle] = (await self.showOpenFilePicker()) as any;
     const file = await fileHandle.getFile();
 
     if (!file.type.includes("text")) {
@@ -54,7 +54,7 @@ export const pickFile = async (options?: FilePickerOptions): Promise<FileRespons
   }
 
   try {
-    const [fileHandle] = options ? await self.showOpenFilePicker(options) : await self.showOpenFilePicker();
+    const [fileHandle] = (options ? await self.showOpenFilePicker(options) : await self.showOpenFilePicker()) as any;
     const file = await fileHandle.getFile();
     return {
       ok: true,

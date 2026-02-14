@@ -7,7 +7,7 @@ export const notification = async (data: {
     vibrate?: number[];
     sound?: string;
     timestamp: number;
-    data?: any;
+    data?: unknown;
     dir?: "auto" | "ltr" | "rtl";
     requireInteraction?: boolean;
     renotify?: boolean;
@@ -37,6 +37,9 @@ export const notification = async (data: {
       return { ok: false, message: "Notification API not supported" };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to send notification",
+    };
   }
 };
