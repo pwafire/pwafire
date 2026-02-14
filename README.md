@@ -17,14 +17,8 @@ npm install pwafire
 ```typescript
 import { copyText, webShare } from "pwafire";
 
-// Copy text to clipboard
 const { ok, message } = await copyText("Hello World");
 
-if (ok) {
-  console.log("Success:", message);
-}
-
-// Share content
 await webShare({
   title: "PWAFire",
   text: "Check out PWAFire!",
