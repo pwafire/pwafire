@@ -83,19 +83,22 @@ const { ok, message } = await copyText("Text to copy");
 
 ### Error Handling
 
+PWAFire features robust built-in error handling. All APIs return a consistent response format with `{ ok, message }`, so you can safely `await` without wrapping in try/catch:
+
 ```ts
 import { copyText } from "pwafire/clipboard";
 
-const handleCopy = async (text: string) => {
-  try {
-    const { ok, message } = await copyText(text);
-  } catch (error) {
-    // Handle error
-  }
-};
+// Simple usage - no try/catch needed!
+const { ok, message } = await copyText("Hello World");
 
-await handleCopy("Hello World");
+if (ok) {
+  console.log("Success:", message);
+} else {
+  console.log("Failed:", message);
+}
 ```
+
+This works because PWAFire handles errors internally and never throws. The `ok` field indicates success/failure, and `message` provides user-friendly feedback.
 
 ## Try it Live
 

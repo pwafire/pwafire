@@ -83,19 +83,22 @@ const { ok, message } = await copyText("Texte à copier");
 
 ### Gestion des Erreurs
 
+PWAFire dispose d'une gestion d'erreurs robuste intégrée. Toutes les APIs retournent un format de réponse cohérent avec `{ ok, message }`, vous pouvez donc utiliser `await` en toute sécurité sans bloc try/catch :
+
 ```ts
 import { copyText } from "pwafire/clipboard";
 
-const handleCopy = async (text: string) => {
-  try {
-    const { ok, message } = await copyText(text);
-  } catch (error) {
-    // Gérer l'erreur
-  }
-};
+// Utilisation simple - pas besoin de try/catch !
+const { ok, message } = await copyText("Bonjour le monde");
 
-await handleCopy("Bonjour le monde");
+if (ok) {
+  console.log("Succès:", message);
+} else {
+  console.log("Échec:", message);
+}
 ```
+
+Cela fonctionne car PWAFire gère les erreurs en interne et ne lance jamais d'exceptions. Le champ `ok` indique le succès/échec, et `message` fournit un retour convivial.
 
 ## Essayez-le en Direct
 
