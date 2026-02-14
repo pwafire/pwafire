@@ -32,11 +32,47 @@ body {
   border-bottom: 1px solid #333;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
 .header h1 {
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 4px;
   color: #fff;
+}
+
+.header-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.header-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #888;
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.header-link:hover {
+  color: #fff;
+  border-color: #666;
+  background: #111;
+}
+
+.header-link svg {
+  width: 14px;
+  height: 14px;
 }
 
 .header .status {
