@@ -40,20 +40,13 @@ Test all PWA APIs in your browser:
 
 ## Documentation
 
-For detailed guides, API reference, and examples:
-
-**[docs.pwafire.org](https://docs.pwafire.org/get-started)**
-
-### Additional Documentation
-
 | Document | Description |
 |----------|-------------|
+| [docs.pwafire.org](https://docs.pwafire.org/get-started) | API reference, guides, and examples |
 | [Breaking Changes](./docs/breaking-changes.md) | Migration guide for v6.0.0 |
 | [Contributing](./.github/CONTRIBUTING.md) | Contribution guidelines |
 | [Code of Conduct](./.github/CODE_OF_CONDUCT.md) | Community standards |
 | [Security](./.github/SECURITY.md) | Security policy |
-
-More docs in [`docs/`](./docs) folder.
 
 ## Contributing
 
