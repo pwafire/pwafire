@@ -44,7 +44,7 @@ await webShare({
 
 Test all PWA APIs in your browser:
 
-**[Launch Test Console →](https://pwafire-test-console.web.app)**
+**[Launch Console →](https://pwafire-test-console.web.app)**
 
 ## Documentation
 

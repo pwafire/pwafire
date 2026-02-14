@@ -1,7 +1,7 @@
 {
-  "name": "pwafire-local-test",
+  "name": "pwafire-console",
   "version": "1.0.0",
-  "description": "Local testing environment for pwafire package",
+  "description": "Interactive console for testing pwafire package",
   "type": "module",
   "scripts": {
     "start": "./start.sh",
