@@ -22,9 +22,9 @@ const { ok, message } = await copyText("Hello World");
 
 ## Try it Live
 
-Test all PWA APIs in your browser:
-
-**[Launch Console →](https://console.pwafire.org)**
+| Resource | Description |
+|----------|-------------|
+| [Launch Console](https://console.pwafire.org) | Test all PWA APIs in your browser |
 
 ## Documentation
 
