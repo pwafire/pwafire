@@ -25,7 +25,7 @@ Opens at **http://localhost:8080**
 npm run deploy
 ```
 
-Deploys to: **https://pwafire-test-console.web.app**
+Deploys to: **https://console.pwafire.org**
 
 ## 📋 Available Commands
 

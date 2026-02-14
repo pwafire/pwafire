@@ -104,7 +104,7 @@ Cela fonctionne car PWAFire gère les erreurs en interne et ne lance jamais d'ex
 
 Testez toutes les fonctionnalités PWA dans votre navigateur avec notre console de test interactive :
 
-**[Lancer la Console de Test →](https://pwafire-test-console.web.app)**
+**[Lancer la Console →](https://console.pwafire.org)**
 
 La console de test vous permet de :
 - Tester toutes les APIs PWA de manière interactive
