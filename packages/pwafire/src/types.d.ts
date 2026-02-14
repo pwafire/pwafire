@@ -2,12 +2,12 @@ interface FontAccess {
   postscriptNames?: string[];
 }
 interface Window {
-  addEventListener(arg0: string, arg1: () => { type: string; message: string }): any;
-  deferredPrompt?: any;
-  showOpenFilePicker: (options?: FilePickerOptions) => [any] | PromiseLike<[any]>;
+  addEventListener(arg0: string, arg1: () => { type: string; message: string }): unknown;
+  deferredPrompt?: unknown;
+  showOpenFilePicker: (options?: FilePickerOptions) => Promise<unknown>;
   showSaveFilePicker: (options?: FilePickerOptions) => Promise<FileSystemFileHandle>;
-  queryLocalFonts: (config?: FontAccess) => [any] | PromiseLike<[any]>;
-  documentPictureInPicture?: any;
+  queryLocalFonts: (config?: FontAccess) => Promise<unknown>;
+  documentPictureInPicture?: unknown;
   wakeLock?: WakeLock;
 }
 
@@ -15,10 +15,9 @@ interface Credentials {
   otp: string;
 }
 
-declare var BarcodeDetector: {
-  new ({ formats: [] }?: { formats: string[] }): any;
-  detect: () => any;
-  getSupportedFormats: () => any;
+declare let BarcodeDetector: {
+  new (options?: { formats: string[] }): unknown;
+  getSupportedFormats(): Promise<string[]>;
 };
 
 interface FontData {
@@ -26,7 +25,7 @@ interface FontData {
   fullName: string;
   family: string;
   style: string;
-  blob: any;
+  blob: unknown;
 }
 
 interface OTPCredential extends Credential {
@@ -42,7 +41,7 @@ interface OTPCredentialOptions extends CredentialRequestOptions {
   otp: { transport: string[] };
 }
 
-declare var IdleDetector: { new (): any; requestPermission: () => any };
+declare let IdleDetector: { new (): unknown; requestPermission(): Promise<PermissionState> };
 
 interface FileResponse {
   ok: boolean;

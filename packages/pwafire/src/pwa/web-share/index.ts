@@ -11,6 +11,9 @@ export const webShare = async (data: ShareData) => {
       return { ok: false, message: "Web Share API not supported" };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to share",
+    };
   }
 };

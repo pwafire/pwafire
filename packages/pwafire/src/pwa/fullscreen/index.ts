@@ -12,6 +12,9 @@ export const fullscreen = async () => {
       return { ok: false, message: "Fullscreen API not supported" };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to toggle fullscreen",
+    };
   }
 };

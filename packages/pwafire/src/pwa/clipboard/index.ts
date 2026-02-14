@@ -10,7 +10,10 @@ export const copyText = async (text: string): Promise<{ ok: boolean; message: st
       };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to copy text",
+    };
   }
 };
 
@@ -23,7 +26,11 @@ export const readText = async (): Promise<{ ok: boolean; message: string; text: 
       return { ok: false, message: "Read Text API not supported", text: null };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to read text",
+      text: null,
+    };
   }
 };
 
@@ -45,6 +52,9 @@ export const copyImage = async (imgURL: string) => {
       return { ok: false, message: "Copy Image API not supported" };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to copy image",
+    };
   }
 };

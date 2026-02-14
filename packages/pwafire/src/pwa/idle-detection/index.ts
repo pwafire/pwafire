@@ -1,8 +1,6 @@
 export const idleDetection = async (
   action = "start",
-  callback = () => {
-    // do something
-  },
+  callback = () => {},
   threshold = 60000,
 ) => {
   try {
@@ -11,7 +9,7 @@ export const idleDetection = async (
       if (state === "granted") {
         const controller = new AbortController();
         const signal = controller.signal;
-        const idleDetector = new IdleDetector();
+        const idleDetector = new IdleDetector() as any;
         idleDetector.addEventListener("change", () => {
           const userState = idleDetector.userState;
           if (userState === "idle") callback();
@@ -33,6 +31,9 @@ export const idleDetection = async (
       return { ok: false, message: "Idle Detection API not supported" };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to detect idle state",
+    };
   }
 };

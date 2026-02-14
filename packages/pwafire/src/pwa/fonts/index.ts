@@ -7,6 +7,10 @@ export const accessFonts = async (config?: { postscriptNames?: string[]; sfnt?: 
       return { ok: false, message: "Font Access API not supported", fonts: [] };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to access fonts",
+      fonts: [],
+    };
   }
 };

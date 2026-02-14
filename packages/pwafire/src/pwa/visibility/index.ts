@@ -1,38 +1,48 @@
-export const visibility = async (isVisible: () => void, notAvailable: () => void) => {
+export const visibility = async () => {
   try {
-    if (document.visibilityState) {
-      const state = document.visibilityState;
-      if (state === "visible") {
-        isVisible();
-        return { ok: true, message: "Visible" };
-      }
-    } else {
-      notAvailable();
+    if (!document.visibilityState) {
       return {
         ok: false,
         message: "Visibility API not supported",
+        state: null,
       };
     }
+
+    const state = document.visibilityState;
+    return {
+      ok: true,
+      message: `Page is ${state}`,
+      state,
+    };
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to check visibility",
+      state: null,
+    };
   }
 };
 
-export const displayMode = async (
-  callback: (mode: "standalone" | "minimal-ui" | "fullscreen" | "broswer-tab") => void,
-) => {
+export const displayMode = async () => {
   try {
-    window.addEventListener("DOMContentLoaded", () => {
-      const displayMode = window.matchMedia("(display-mode: standalone)").matches
-        ? "standalone"
-        : window.matchMedia("(display-mode: minimal-ui)").matches
-        ? "minimal-ui"
-        : window.matchMedia("(display-mode: fullscreen)").matches
-        ? "fullscreen"
-        : "broswer-tab";
-      callback(displayMode);
-    });
+    const mode = window.matchMedia("(display-mode: standalone)").matches
+      ? "standalone"
+      : window.matchMedia("(display-mode: minimal-ui)").matches
+      ? "minimal-ui"
+      : window.matchMedia("(display-mode: fullscreen)").matches
+      ? "fullscreen"
+      : "browser-tab";
+
+    return {
+      ok: true,
+      message: `Display mode: ${mode}`,
+      mode,
+    };
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to detect display mode",
+      mode: "browser-tab",
+    };
   }
 };

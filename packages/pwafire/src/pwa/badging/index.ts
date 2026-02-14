@@ -10,7 +10,10 @@ export const setBadge = async (unreadCount: number) => {
       };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to set badge",
+    };
   }
 };
 
@@ -23,6 +26,9 @@ export const clearBadge = async () => {
       return { ok: false, message: "Badging API not supported" };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to clear badge",
+    };
   }
 };

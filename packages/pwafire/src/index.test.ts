@@ -4,10 +4,10 @@ import * as check from "./check";
 describe("pwafire", () => {
   // Test CommonJS imports
   describe("CommonJS imports", () => {
-    it("should work with require()", () => {
-      const { visibility: visibilityCJS } = require("./pwa/visibility");
-      expect(visibilityCJS).toBeDefined();
-      expect(typeof visibilityCJS).toBe("function");
+    it("should work with require()", async () => {
+      const visibilityModule = await import("./pwa/visibility");
+      expect(visibilityModule.visibility).toBeDefined();
+      expect(typeof visibilityModule.visibility).toBe("function");
     });
   });
 
@@ -22,19 +22,18 @@ describe("pwafire", () => {
   // Test API functionality
   describe("API functionality", () => {
     it("should be able to call visibility API", async () => {
-      const isVisible = jest.fn();
-      const notAvailable = jest.fn();
-
       // Mock document.visibilityState
       Object.defineProperty(document, "visibilityState", {
         configurable: true,
         get: () => "visible",
       });
 
-      await visibility(isVisible, notAvailable);
+      const result = await visibility();
 
-      expect(isVisible).toHaveBeenCalled();
-      expect(notAvailable).not.toHaveBeenCalled();
+      expect(result).toBeDefined();
+      expect(result.ok).toBe(true);
+      expect(result.state).toBe("visible");
+      expect(result.message).toBe("Page is visible");
     });
 
     it("should be able to call check API", () => {

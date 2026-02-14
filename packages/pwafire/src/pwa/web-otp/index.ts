@@ -1,41 +1,41 @@
-export const webOtp = async (callback: (res: { code: string | null; ok: boolean; message: string }) => void) => {
+export const webOtp = async () => {
   try {
-    if ("OTPCredential" in window) {
-      window.addEventListener("DOMContentLoaded", async () => {
-        const input = document.querySelector('input[autocomplete="one-time-code"]');
-        if (input) {
-          const ac = new AbortController();
-          const form = input.closest("form");
-          if (form) {
-            form.addEventListener("submit", () => {
-              ac.abort();
-            });
-          }
-          const otp = (await navigator.credentials.get({
-            otp: { transport: ["sms"] },
-            signal: ac.signal,
-          } as OTPCredentialOptions)) as OTPCredential;
-          callback({
-            code: otp.code,
-            ok: true,
-            message: "OTP received",
-          });
-        } else {
-          callback({
-            code: null,
-            ok: false,
-            message: "No input with autocomplete='one-time-code' found",
-          });
-        }
-      });
-    } else {
-      callback({
-        code: null,
+    if (!("OTPCredential" in window)) {
+      return { ok: false, message: "Web OTP API not supported", code: null };
+    }
+
+    const input = document.querySelector('input[autocomplete="one-time-code"]');
+    if (!input) {
+      return {
         ok: false,
-        message: "Web OTP API not supported",
+        message: "No input with autocomplete='one-time-code' found",
+        code: null,
+      };
+    }
+
+    const ac = new AbortController();
+    const form = input.closest("form");
+    if (form) {
+      form.addEventListener("submit", () => {
+        ac.abort();
       });
     }
+
+    const otp = (await navigator.credentials.get({
+      otp: { transport: ["sms"] },
+      signal: ac.signal,
+    } as OTPCredentialOptions)) as OTPCredential;
+
+    return {
+      ok: true,
+      message: "OTP received",
+      code: otp.code,
+    };
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to get OTP",
+      code: null,
+    };
   }
 };

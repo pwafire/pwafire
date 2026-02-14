@@ -83,19 +83,34 @@ const { ok, message } = await copyText("Texte à copier");
 
 ### Gestion des Erreurs
 
+PWAFire dispose d'une gestion d'erreurs robuste intégrée. Toutes les APIs retournent un format de réponse cohérent avec `{ ok, message }`, vous pouvez donc utiliser `await` en toute sécurité sans bloc try/catch :
+
 ```ts
 import { copyText } from "pwafire/clipboard";
 
-const handleCopy = async (text: string) => {
-  try {
-    const { ok, message } = await copyText(text);
-  } catch (error) {
-    // Gérer l'erreur
-  }
-};
+// Utilisation simple - pas besoin de try/catch !
+const { ok, message } = await copyText("Bonjour le monde");
 
-await handleCopy("Bonjour le monde");
+if (ok) {
+  console.log("Succès:", message);
+} else {
+  console.log("Échec:", message);
+}
 ```
+
+Cela fonctionne car PWAFire gère les erreurs en interne et ne lance jamais d'exceptions. Le champ `ok` indique le succès/échec, et `message` fournit un retour convivial.
+
+## Essayez-le en Direct
+
+Testez toutes les fonctionnalités PWA dans votre navigateur avec notre console de test interactive :
+
+**[Lancer la Console →](https://console.pwafire.org)**
+
+La console de test vous permet de :
+- Tester toutes les APIs PWA de manière interactive
+- Vérifier la prise en charge des fonctionnalités du navigateur
+- Afficher les logs de console en temps réel
+- Voir les réponses des APIs en direct
 
 ## Détection de Fonctionnalités
 
@@ -139,7 +154,7 @@ npm run test:coverage
 
 ## Contribution
 
-Nous accueillons les contributions ! Veuillez lire notre [Guide de Contribution](CONTRIBUTING.md) pour commencer.
+Nous accueillons les contributions ! Veuillez lire notre [Guide de Contribution](./.github/CONTRIBUTING.md) pour commencer.
 
 ### Configuration du Développement
 
@@ -169,6 +184,14 @@ MIT © [PWAFire](https://github.com/pwafire)
 ## Documentation
 
 Pour une documentation détaillée et des exemples, visitez [Démarrer avec PWAFire](https://docs.pwafire.org/get-started).
+
+**Documentation Supplémentaire:**
+- [Breaking Changes](./docs/breaking-changes.md) - Guide de migration pour v6.0.0 (English)
+- [Contributing](./.github/CONTRIBUTING.md) - Directives de contribution (English)
+- [Code of Conduct](./.github/CODE_OF_CONDUCT.md) - Normes communautaires (English)
+- [Security](./.github/SECURITY.md) - Politique de sécurité (English)
+
+Plus de documentation dans le dossier [`docs/`](./docs).
 
 ## Communauté
 

@@ -7,6 +7,9 @@ export const wakeLock = async () => {
       return { ok: false, message: "Wake Lock API not supported" };
     }
   } catch (error) {
-    throw error;
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed to acquire wake lock",
+    };
   }
 };
