@@ -52,7 +52,13 @@ For detailed guides, API reference, and examples:
 
 📚 **[docs.pwafire.org](https://docs.pwafire.org/get-started)**
 
-Or check the [`docs/`](./docs) folder for additional documentation.
+**Additional Documentation:**
+- [Breaking Changes](./breaking-changes.md) - Migration guide for v6.0.0
+- [Contributing](./.github/contributing.md) - Contribution guidelines
+- [Code of Conduct](./.github/code-of-conduct.md) - Community standards
+- [Security](./.github/security.md) - Security policy
+
+More docs in [`docs/`](./docs) folder.
 
 ## Browser Support
 
@@ -63,7 +69,7 @@ Or check the [`docs/`](./docs) folder for additional documentation.
 
 ## Contributing
 
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+We welcome contributions! See [contributing.md](./.github/contributing.md) for guidelines.
 
 ## License
 
