@@ -154,7 +154,7 @@ npm run test:coverage
 
 ## Contribution
 
-Nous accueillons les contributions ! Veuillez lire notre [Guide de Contribution](CONTRIBUTING.md) pour commencer.
+Nous accueillons les contributions ! Veuillez lire notre [Guide de Contribution](./.github/CONTRIBUTING.md) pour commencer.
 
 ### Configuration du Développement
 
@@ -184,6 +184,14 @@ MIT © [PWAFire](https://github.com/pwafire)
 ## Documentation
 
 Pour une documentation détaillée et des exemples, visitez [Démarrer avec PWAFire](https://docs.pwafire.org/get-started).
+
+**Documentation Supplémentaire:**
+- [Breaking Changes](./docs/breaking-changes.md) - Guide de migration pour v6.0.0 (English)
+- [Contributing](./.github/CONTRIBUTING.md) - Directives de contribution (English)
+- [Code of Conduct](./.github/CODE_OF_CONDUCT.md) - Normes communautaires (English)
+- [Security](./.github/SECURITY.md) - Politique de sécurité (English)
+
+Plus de documentation dans le dossier [`docs/`](./docs).
 
 ## Communauté
 

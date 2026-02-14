@@ -53,10 +53,10 @@ For detailed guides, API reference, and examples:
 📚 **[docs.pwafire.org](https://docs.pwafire.org/get-started)**
 
 **Additional Documentation:**
-- [Breaking Changes](./breaking-changes.md) - Migration guide for v6.0.0
-- [Contributing](./.github/contributing.md) - Contribution guidelines
-- [Code of Conduct](./.github/code-of-conduct.md) - Community standards
-- [Security](./.github/security.md) - Security policy
+- [Breaking Changes](./docs/breaking-changes.md) - Migration guide for v6.0.0
+- [Contributing](./.github/CONTRIBUTING.md) - Contribution guidelines
+- [Code of Conduct](./.github/CODE_OF_CONDUCT.md) - Community standards
+- [Security](./.github/SECURITY.md) - Security policy
 
 More docs in [`docs/`](./docs) folder.
 
@@ -69,7 +69,7 @@ More docs in [`docs/`](./docs) folder.
 
 ## Contributing
 
-We welcome contributions! See [contributing.md](./.github/contributing.md) for guidelines.
+We welcome contributions! See [CONTRIBUTING.md](./.github/CONTRIBUTING.md) for guidelines.
 
 ## License
 

@@ -49,9 +49,13 @@ feat(notifications) - add support for notification actions
 - Boolean prefix: `isValid`, `hasPermission`, `canEdit`
 
 #### Files & Directories
-- Use kebab-case for directories: `web-share`, `idle-detection`
-- Use camelCase for TypeScript files when exporting single function
-- Index files: Always use `index.ts` for module exports
+- **All filenames**: Use kebab-case (lowercase with dashes): `breaking-changes.md`, `deploy.md`
+- **Exceptions**:
+  - `README.md` and `LICENSE` remain capitalized
+  - `.github/` directory files: `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, `SECURITY.md`, `FUNDING.yml`
+- **Directories**: Use kebab-case: `web-share`, `idle-detection`, `test-console`
+- **TypeScript files**: Use camelCase when exporting single function
+- **Index files**: Always use `index.ts` for module exports
 
 #### API Naming
 - Keep names concise and descriptive
