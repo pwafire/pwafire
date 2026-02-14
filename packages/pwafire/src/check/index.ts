@@ -1,4 +1,3 @@
-// Feature detection methods
 export const badging = () => "setAppBadge" in navigator;
 export const barcode = () => "BarcodeDetector" in window;
 export const clipboard = () => "clipboard" in navigator;
