@@ -232,7 +232,7 @@ const featureDisplayNames = {
   lazyLoad: 'Lazy Loading',
   notification: 'Notification',
   payment: 'Payment Request',
-  screen: 'Screen Details',
+  screenDetails: 'Screen Details',
   visibility: 'Visibility API',
   wakeLock: 'Wake Lock',
   webOtp: 'Web OTP',

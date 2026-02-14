@@ -14,7 +14,7 @@ export const install = () => "getInstalledRelatedApps" in navigator;
 export const lazyLoad = () => "loading" in HTMLImageElement.prototype;
 export const notification = () => "Notification" in window;
 export const payment = () => "PaymentRequest" in window;
-export const screen = () => "getScreenDetails" in window;
+export const screenDetails = () => "getScreenDetails" in window;
 export const visibility = () => "visibilityState" in document;
 export const wakeLock = () => "wakeLock" in navigator;
 export const webOtp = () => "OTPCredential" in window;
