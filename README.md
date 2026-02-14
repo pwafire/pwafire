@@ -34,11 +34,11 @@ await webShare({
 
 ## Features
 
-- 🎯 **Simple API** - Consistent `{ ok, message }` response format
-- 🔥 **No Try/Catch** - Built-in error handling
-- 📦 **Tree-shakeable** - Import only what you need
-- 🎨 **TypeScript** - Full type support
-- ⚡ **Zero Dependencies** - Lightweight and fast
+- **Simple API** - Consistent `{ ok, message }` response format
+- **No Try/Catch** - Built-in error handling
+- **Tree-shakeable** - Import only what you need
+- **TypeScript** - Full type support
+- **Zero Dependencies** - Lightweight and fast
 
 ## Try it Live
 
@@ -50,7 +50,7 @@ Test all PWA APIs in your browser:
 
 For detailed guides, API reference, and examples:
 
-📚 **[docs.pwafire.org](https://docs.pwafire.org/get-started)**
+**[docs.pwafire.org](https://docs.pwafire.org/get-started)**
 
 **Additional Documentation:**
 - [Breaking Changes](./docs/breaking-changes.md) - Migration guide for v6.0.0
