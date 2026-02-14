@@ -238,20 +238,20 @@ body {
 
 .console {
   background: #000;
-  padding: 12px;
+  padding: 16px;
   overflow-y: auto;
   font-size: 10px;
   line-height: 1.6;
   border-top: 1px solid #1a1a1a;
   font-family: "Courier New", monospace;
-  margin-top: 12px;
+  margin-top: 16px;
   border-radius: 2px;
-  max-height: 300px;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
+  height: 200px;
+  transition: height 0.3s ease, opacity 0.3s ease, padding 0.3s ease, margin 0.3s ease;
 }
 
 .console.hidden {
-  max-height: 0;
+  height: 0;
   opacity: 0;
   overflow: hidden;
   padding: 0;
