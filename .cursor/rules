@@ -1,0 +1,179 @@
+# PWAFire Code Style Guide
+
+## Naming Conventions
+
+### Functions & Variables
+- Use camelCase for all function and variable names
+- Examples: `webShare`, `copyText`, `screenShare`, `accessFonts`
+- Check API functions match main API names: `check.webShare()` for `webShare()`
+
+### Files & Directories
+- Use kebab-case for directories: `web-share`, `idle-detection`
+- Use camelCase for TypeScript files when exporting single function
+- Index files: Always use `index.ts` for module exports
+
+### API Naming
+- Keep names concise and descriptive
+- Avoid verbose names: `screenShare` not `screenSharingControls`
+- Be consistent: if main API is `webShare`, check is `webShare()`
+
+## Code Structure
+
+### PWA API Modules
+- Each API in separate folder: `src/pwa/{api-name}/index.ts`
+- Export all from main `src/index.ts`
+- Follow existing pattern:
+  ```typescript
+  export const apiName = async (params) => {
+    try {
+      // Implementation
+      return result;
+    } catch (error) {
+      throw error instanceof Error ? error : new Error("message");
+    }
+  };
+  ```
+
+### Response Format
+- ALL APIs must return consistent format: `{ ok: boolean, message: string, ...data }`
+- Never throw errors to consumers - handle internally
+- Success: `{ ok: true, message: "Success message", ...data }`
+- Failure: `{ ok: false, message: "Error message" }`
+
+### Error Handling
+- Handle ALL errors internally
+- NEVER throw to consumer
+- Return `{ ok: false, message }` on failure
+- This allows users to safely `await` without try/catch
+
+## TypeScript
+
+### Type Definitions
+- Use explicit types for all function parameters
+- Use type inference for return types when obvious
+- Export types when used by consumers
+- Place types inline or in same file
+
+### Strict Mode
+- TypeScript strict mode enabled
+- No implicit any
+- Null checks enforced
+
+## Comments
+
+### Code Comments
+- **DO NOT add comments to implementation code**
+- Code should be self-documenting
+- Use clear variable and function names instead
+- Comments removed on user request
+
+### Documentation
+- Add JSDoc for public APIs only when needed for IDE hints
+- Keep README examples clear and concise
+- Emphasize built-in error handling in docs
+
+## Testing
+
+### Test Console
+- Use dynamic test generation from exports
+- No hardcoded test lists
+- Auto-sync with package exports
+- Pattern:
+  ```javascript
+  Object.keys(pwafire).forEach(key => {
+    if (typeof pwafire[key] === 'function') {
+      // Generate test
+    }
+  });
+  ```
+
+### Feature Detection
+- Dynamic feature scanning from check API
+- Match check names to main API names
+- Pattern: `check.apiName()` corresponds to `pwafire.apiName()`
+
+## File Organization
+
+### Source Structure
+```
+packages/pwafire/
+├── src/
+│   ├── pwa/              # Individual PWA APIs
+│   │   ├── web-share/
+│   │   ├── clipboard/
+│   │   └── ...
+│   ├── check/            # Feature detection
+│   └── index.ts          # Main exports
+├── lib/                  # Build output (git ignored)
+└── tests/               # Test files
+```
+
+### Test Structure
+```
+test-local/
+├── public/
+│   ├── index.html       # Minimal, dynamic grid
+│   ├── app.js           # Dynamic test generation
+│   └── styles.css       # Monochrome design
+└── tests/               # Node.js tests
+```
+
+## Git Conventions
+
+### Commit Messages
+- Format: `type(scope): description`
+- Types: feat, fix, docs, refactor, test, chore
+- Examples:
+  - `feat(clipboard): add copyText API`
+  - `fix(check): align screenShare naming`
+  - `docs: highlight built-in error handling`
+- Always include co-author:
+  ```
+  Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
+  ```
+
+### Branch Naming
+- Feature: `feat/feature-name`
+- Fix: `fix/issue-description`
+- Chore: `chore/task-description`
+
+## Best Practices
+
+### API Design
+1. **Consistency**: All APIs follow same patterns
+2. **Simplicity**: No over-engineering, minimal abstractions
+3. **Safety**: Built-in error handling, never throw
+4. **Clarity**: Response format always `{ ok, message }`
+
+### Code Quality
+1. **DRY**: Don't repeat yourself
+2. **YAGNI**: You aren't gonna need it - don't add unused features
+3. **KISS**: Keep it simple - no complex abstractions
+4. **Self-documenting**: Clear names over comments
+
+### Deployment
+- Local tests use local `./lib/` files
+- Deployed tests use CDN imports from jsdelivr
+- Deploy script handles transformation automatically
+- Never commit built files
+
+## Anti-Patterns to Avoid
+
+❌ **DO NOT:**
+- Add code comments (removed on purpose)
+- Add try/catch in examples (error handling is built-in)
+- Use verbose function names
+- Hardcode test lists or feature lists
+- Over-engineer with unnecessary abstractions
+- Add features "just in case"
+- Throw errors to consumers
+- Use inconsistent naming between main and check APIs
+
+✅ **DO:**
+- Keep code clean and self-documenting
+- Use dynamic generation for tests and features
+- Follow consistent naming conventions
+- Handle all errors internally
+- Return consistent response format
+- Make APIs safe to use without try/catch
+- Keep main and check API names aligned
