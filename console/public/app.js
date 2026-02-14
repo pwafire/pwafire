@@ -106,7 +106,7 @@ const apiConfigs = {
   },
   copyImage: {
     title: 'Copy Image',
-    params: () => ['https://pixabay.com/images/download/sunriseforever-woman-10093781_1920.jpg']
+    params: () => ['https://res.cloudinary.com/duqxmomkm/image/upload/v1741034800/samples/chair.png']
   },
   wakeLock: {
     title: 'Wake Lock'
@@ -135,7 +135,38 @@ const apiConfigs = {
     params: () => [["name", "email", "tel"], { multiple: true }]
   },
   pickFile: {
-    title: 'Files'
+    title: 'Pick File'
+  },
+  pickTextFile: {
+    title: 'Pick Text File'
+  },
+  readFiles: {
+    title: 'Read Files'
+  },
+  createFile: {
+    title: 'Create File'
+  },
+  writeFile: {
+    title: 'Write File',
+    params: () => {
+      const handle = window.__lastFileHandle;
+      if (!handle) {
+        logConsole('Create a file first using Create File test', 'error');
+        return null;
+      }
+      return [handle, 'Hello from PWAFire Console!'];
+    }
+  },
+  writeUrlToFile: {
+    title: 'Write URL to File',
+    params: () => {
+      const handle = window.__lastFileHandle;
+      if (!handle) {
+        logConsole('Create a file first using Create File test', 'error');
+        return null;
+      }
+      return [handle, 'https://res.cloudinary.com/duqxmomkm/image/upload/v1741034800/samples/chair.png'];
+    }
   },
   accessFonts: {
     title: 'Fonts'
@@ -223,7 +254,17 @@ window.runTest = async function(apiName) {
 
   try {
     const params = config.params ? config.params() : [];
+    if (params === null) {
+      stats.failed++;
+      updateStats();
+      return;
+    }
     const result = await pwafire[apiName](...params);
+
+    if (apiName === 'createFile' && result.ok && result.handle) {
+      window.__lastFileHandle = result.handle;
+      logConsole('File handle saved for writeFile/writeUrlToFile tests', 'info');
+    }
 
     showResult(`${id}-result`, result);
     logConsole(`${config.title}: ${result.ok ? 'SUCCESS' : 'FAILED'} - ${result.message}`,
