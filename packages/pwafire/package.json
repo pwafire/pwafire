@@ -31,7 +31,8 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "lint": "eslint src --ext .ts",
-    "format": "prettier --write \"src/**/*.ts\""
+    "format": "prettier --write \"src/**/*.ts\"",
+    "verify": "npm run lint && npm run build && npm test"
   },
   "keywords": [
     "pwa",

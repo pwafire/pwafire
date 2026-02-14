@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PWAFire Test Console</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas class="matrix-bg" id="matrix"></canvas>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>PWAFIRE</h1>
+      <div class="status">
+        <span>ONLINE</span>
+        <span>LOCAL</span>
+        <span id="test-count">0/22</span>
+      </div>
+    </div>
+
+    <!-- Left Panel -->
+    <div class="panel">
+      <div class="panel-title">Features</div>
+      <div id="feature-list"></div>
+    </div>
+
+    <!-- Center Panel -->
+    <div class="panel">
+      <div class="panel-title">Tests</div>
+      <div class="test-grid">
+        <div class="test-card">
+          <h3>Web Share</h3>
+          <button onclick="testWebShare()">Execute</button>
+          <div id="share-result" class="result" style="display:none;"></div>
+        </div>
+
+        <div class="test-card">
+          <h3>Notification</h3>
+          <button onclick="testNotification()">Execute</button>
+          <div id="notification-result" class="result" style="display:none;"></div>
+        </div>
+
+        <div class="test-card">
+          <h3>Clipboard</h3>
+          <input type="text" id="clipboard-input" placeholder="Enter text...">
+          <button onclick="testClipboard()">Execute</button>
+          <div id="clipboard-result" class="result" style="display:none;"></div>
+        </div>
+
+        <div class="test-card">
+          <h3>Wake Lock</h3>
+          <button onclick="testWakeLock()">Execute</button>
+          <div id="wakelock-result" class="result" style="display:none;"></div>
+        </div>
+
+        <div class="test-card">
+          <h3>Badging</h3>
+          <button onclick="testBadging(5)">Set Badge</button>
+          <button onclick="testBadging(0)">Clear Badge</button>
+          <div id="badging-result" class="result" style="display:none;"></div>
+        </div>
+
+        <div class="test-card">
+          <h3>Network</h3>
+          <button onclick="testConnectivity()">Execute</button>
+          <div id="connectivity-result" class="result" style="display:none;"></div>
+        </div>
+
+        <div class="test-card">
+          <h3>Fullscreen</h3>
+          <button onclick="testFullscreen()">Execute</button>
+          <div id="fullscreen-result" class="result" style="display:none;"></div>
+        </div>
+
+        <div class="test-card">
+          <h3>Visibility</h3>
+          <button onclick="testVisibility()">Execute</button>
+          <div id="visibility-result" class="result" style="display:none;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="panel">
+      <div class="panel-title">Actions</div>
+
+      <div class="actions-container">
+        <button class="action-button primary" onclick="runAllTests()">
+          Run All Tests
+        </button>
+        <button class="action-button secondary" onclick="clearConsole()">
+          Clear Console
+        </button>
+        <button class="action-button danger" onclick="checkAllFeatures()">
+          Scan Features
+        </button>
+      </div>
+
+      <div class="stats-panel">
+        <div class="stats-title">Statistics</div>
+        <div>Exports <span>22/22</span></div>
+        <div>Features <span id="feature-count">0/20</span></div>
+        <div>Tests Run <span id="tests-run">0</span></div>
+        <div>Success <span id="tests-success">0</span></div>
+        <div>Failed <span id="tests-failed">0</span></div>
+      </div>
+
+      <div class="shortcuts-panel">
+        <div class="shortcuts-title">Shortcuts</div>
+        <div><code>Ctrl+R</code> Run All</div>
+        <div><code>Ctrl+L</code> Clear</div>
+        <div><code>Ctrl+S</code> Scan</div>
+      </div>
+    </div>
+
+    <!-- Console -->
+    <div class="console" id="console">
+      <div class="console-line info">> System initialized</div>
+      <div class="console-line info">> Loading test environment</div>
+      <div class="console-line success">> Ready <span class="blink">_</span></div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

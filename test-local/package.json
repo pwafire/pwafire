@@ -1,0 +1,16 @@
+{
+  "name": "pwafire-local-test",
+  "version": "1.0.0",
+  "description": "Local testing environment for pwafire package",
+  "type": "module",
+  "scripts": {
+    "start": "./start.sh",
+    "test:exports": "node tests/test-exports.js",
+    "test:features": "node tests/test-features.js",
+    "serve": "python3 -m http.server 8080 --directory public",
+    "test": "npm run test:exports && npm run test:features"
+  },
+  "dependencies": {
+    "pwafire": "file:../packages/pwafire"
+  }
+}
