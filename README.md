@@ -48,15 +48,6 @@ Test all PWA APIs in your browser:
 
 **[Launch Console →](https://console.pwafire.org)**
 
-## Browser Support
-
-| Browser | Version |
-|---------|---------|
-| Chrome | 80+ |
-| Edge | Latest |
-| Firefox | Latest |
-| Safari | Latest |
-
 ## Documentation
 
 For detailed guides, API reference, and examples:
