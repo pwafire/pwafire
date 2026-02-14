@@ -106,7 +106,7 @@ const apiConfigs = {
   },
   copyImage: {
     title: 'Copy Image',
-    params: () => ['https://pixabay.com/images/download/sunriseforever-woman-10093781_1920.jpg']
+    params: () => ['https://res.cloudinary.com/duqxmomkm/image/upload/v1741034800/samples/chair.png']
   },
   wakeLock: {
     title: 'Wake Lock'
