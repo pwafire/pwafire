@@ -68,151 +68,148 @@ function updateStats() {
   document.getElementById('tests-failed').textContent = stats.failed;
 }
 
-// API Test Functions
-
-window.testWebShare = async function() {
-  logConsole('Executing Web Share test...', 'info');
-  stats.run++;
-  try {
-    const result = await pwafire.webShare({
+const apiConfigs = {
+  webShare: {
+    title: 'Web Share',
+    params: () => [{
       title: 'PWAFire Test',
       text: 'Testing the Web Share API',
       url: window.location.href
-    });
-    showResult('share-result', result);
-    logConsole(`Web Share: ${result.ok ? 'SUCCESS' : 'FAILED'} - ${result.message}`,
-      result.ok ? 'success' : 'error');
-    if (result.ok) stats.success++; else stats.failed++;
-  } catch (err) {
-    logConsole(`Web Share: ERROR - ${err.message}`, 'error');
-    stats.failed++;
-  }
-  updateStats();
-};
-
-window.testNotification = async function() {
-  logConsole('Executing Notification test...', 'info');
-  stats.run++;
-  try {
-    const result = await pwafire.notification({
+    }]
+  },
+  notification: {
+    title: 'Notification',
+    params: () => [{
       title: 'PWAFire Test',
-      options: {
-        body: 'Test notification from console',
-        timestamp: Date.now()
-      }
-    });
-    showResult('notification-result', result);
-    logConsole(`Notification: ${result.ok ? 'SUCCESS' : 'FAILED'} - ${result.message}`,
-      result.ok ? 'success' : 'error');
-    if (result.ok) stats.success++; else stats.failed++;
-  } catch (err) {
-    logConsole(`Notification: ERROR - ${err.message}`, 'error');
-    stats.failed++;
-  }
-  updateStats();
-};
-
-window.testClipboard = async function() {
-  const text = document.getElementById('clipboard-input').value ||
-    'Hello from PWAFire Console!';
-  logConsole(`Executing Clipboard test with: "${text}"`, 'info');
-  stats.run++;
-  try {
-    const result = await pwafire.copyText(text);
-    showResult('clipboard-result', result);
-    logConsole(`Clipboard: ${result.ok ? 'SUCCESS' : 'FAILED'} - ${result.message}`,
-      result.ok ? 'success' : 'error');
-    if (result.ok) stats.success++; else stats.failed++;
-  } catch (err) {
-    logConsole(`Clipboard: ERROR - ${err.message}`, 'error');
-    stats.failed++;
-  }
-  updateStats();
-};
-
-window.testWakeLock = async function() {
-  logConsole('Executing Wake Lock test...', 'info');
-  stats.run++;
-  try {
-    const result = await pwafire.wakeLock();
-    showResult('wakelock-result', result);
-    logConsole(`Wake Lock: ${result.ok ? 'SUCCESS' : 'FAILED'} - ${result.message}`,
-      result.ok ? 'success' : 'error');
-    if (result.ok) stats.success++; else stats.failed++;
-  } catch (err) {
-    logConsole(`Wake Lock: ERROR - ${err.message}`, 'error');
-    stats.failed++;
-  }
-  updateStats();
-};
-
-window.testBadging = async function(count) {
-  logConsole(`Executing Badging test with count: ${count}`, 'info');
-  stats.run++;
-  try {
-    const result = await pwafire.setBadge(count);
-    showResult('badging-result', result);
-    logConsole(`Badging: ${result.ok ? 'SUCCESS' : 'FAILED'} - ${result.message}`,
-      result.ok ? 'success' : 'error');
-    if (result.ok) stats.success++; else stats.failed++;
-  } catch (err) {
-    logConsole(`Badging: ERROR - ${err.message}`, 'error');
-    stats.failed++;
-  }
-  updateStats();
-};
-
-window.testConnectivity = async function() {
-  logConsole('Executing Network Info test...', 'info');
-  stats.run++;
-  try {
-    const result = await pwafire.connectivity(
+      options: { body: 'Test notification from console', timestamp: Date.now() }
+    }]
+  },
+  copyText: {
+    title: 'Clipboard',
+    params: () => ['Hello from PWAFire Console!']
+  },
+  wakeLock: {
+    title: 'Wake Lock'
+  },
+  setBadge: {
+    title: 'Badging',
+    params: () => [5]
+  },
+  connectivity: {
+    title: 'Network',
+    params: () => [
       () => { logConsole('Network: Online', 'success'); },
       () => { logConsole('Network: Offline', 'info'); }
-    );
-    showResult('connectivity-result', result);
-    logConsole(`Network: ${result.ok ? 'SUCCESS' : 'FAILED'} - ${result.message}`,
-      result.ok ? 'success' : 'error');
-    if (result.ok) stats.success++; else stats.failed++;
-  } catch (err) {
-    logConsole(`Network: ERROR - ${err.message}`, 'error');
-    stats.failed++;
-  }
-  updateStats();
-};
-
-window.testFullscreen = async function() {
-  logConsole('Executing Fullscreen test...', 'info');
-  stats.run++;
-  try {
-    const result = await pwafire.fullscreen();
-    showResult('fullscreen-result', result);
-    logConsole(`Fullscreen: ${result.ok ? 'SUCCESS' : 'FAILED'} - ${result.message}`,
-      result.ok ? 'success' : 'error');
-    if (result.ok) stats.success++; else stats.failed++;
-  } catch (err) {
-    logConsole(`Fullscreen: ERROR - ${err.message}`, 'error');
-    stats.failed++;
-  }
-  updateStats();
-};
-
-window.testVisibility = async function() {
-  logConsole('Executing Visibility test...', 'info');
-  stats.run++;
-  try {
-    const result = await pwafire.visibility(
+    ]
+  },
+  fullscreen: {
+    title: 'Fullscreen'
+  },
+  visibility: {
+    title: 'Visibility',
+    params: () => [
       () => { logConsole('Visibility: Page is visible', 'success'); },
       () => { logConsole('Visibility: API not available', 'error'); }
-    );
-    showResult('visibility-result', result);
-    logConsole(`Visibility: ${result.ok ? 'SUCCESS' : 'FAILED'} - ${result.message}`,
+    ]
+  },
+  contacts: {
+    title: 'Contacts',
+    params: () => [["name", "email", "tel"], { multiple: true }]
+  },
+  pickFile: {
+    title: 'Files'
+  },
+  accessFonts: {
+    title: 'Fonts'
+  },
+  contentIndexing: {
+    title: 'Content Index'
+  },
+  install: {
+    title: 'Install',
+    params: () => ["before", (e) => { logConsole('Install event triggered', 'info'); }]
+  },
+  idleDetection: {
+    title: 'Idle Detection',
+    params: () => ["start", () => { logConsole('User is idle', 'info'); }, 60000]
+  },
+  webOtp: {
+    title: 'Web OTP',
+    params: () => [(result) => { logConsole(`OTP: ${JSON.stringify(result)}`, 'info'); }]
+  },
+  payment: {
+    title: 'Payment',
+    params: () => [{
+      paymentMethods: [{
+        supportedMethods: "basic-card",
+        data: { supportedNetworks: ["visa", "mastercard"] }
+      }],
+      paymentDetails: {
+        total: { label: "Total", amount: { currency: "USD", value: "10.00" } }
+      }
+    }, (response) => { logConsole(`Payment: ${JSON.stringify(response)}`, 'info'); }]
+  },
+  screenSharingControls: {
+    title: 'Screen Share',
+    params: () => [{
+      video: { displaySurface: "monitor" },
+      audio: true
+    }]
+  },
+  barcodeDetector: {
+    title: 'Barcode'
+  },
+  compressStream: {
+    title: 'Compression'
+  },
+  lazyLoad: {
+    title: 'Lazy Load',
+    params: () => [{ images: ".lazy-image", style: "fade" }]
+  }
+};
+
+function generateTests() {
+  const testGrid = document.getElementById('test-grid');
+  testGrid.innerHTML = '';
+
+  Object.keys(pwafire).forEach((key) => {
+    if (typeof pwafire[key] === 'function' && apiConfigs[key]) {
+      const config = apiConfigs[key];
+      const id = key.toLowerCase().replace(/[A-Z]/g, m => '-' + m.toLowerCase());
+
+      const card = document.createElement('div');
+      card.className = 'test-card';
+      card.innerHTML = `
+        <h3>${config.title}</h3>
+        <button onclick="runTest('${key}')">Execute</button>
+        <div id="${id}-result" class="result" style="display:none;"></div>
+      `;
+      testGrid.appendChild(card);
+    }
+  });
+}
+
+window.runTest = async function(apiName) {
+  const config = apiConfigs[apiName];
+  const id = apiName.toLowerCase().replace(/[A-Z]/g, m => '-' + m.toLowerCase());
+
+  logConsole(`Executing ${config.title} test...`, 'info');
+  stats.run++;
+
+  try {
+    const params = config.params ? config.params() : [];
+    const result = await pwafire[apiName](...params);
+
+    showResult(`${id}-result`, result);
+    logConsole(`${config.title}: ${result.ok ? 'SUCCESS' : 'FAILED'} - ${result.message}`,
       result.ok ? 'success' : 'error');
+
     if (result.ok) stats.success++; else stats.failed++;
   } catch (err) {
-    logConsole(`Visibility: ERROR - ${err.message}`, 'error');
+    logConsole(`${config.title}: ERROR - ${err.message}`, 'error');
     stats.failed++;
   }
+
   updateStats();
 };
 
@@ -275,17 +272,12 @@ window.runAllTests = async function() {
   logConsole('RUNNING ALL TESTS...', 'info');
   logConsole('='.repeat(50), 'info');
 
-  await testWebShare();
-  await new Promise(r => setTimeout(r, 500));
-  await testNotification();
-  await new Promise(r => setTimeout(r, 500));
-  await testClipboard();
-  await new Promise(r => setTimeout(r, 500));
-  await testWakeLock();
-  await new Promise(r => setTimeout(r, 500));
-  await testConnectivity();
-  await new Promise(r => setTimeout(r, 500));
-  await testVisibility();
+  for (const apiName of Object.keys(apiConfigs)) {
+    if (typeof pwafire[apiName] === 'function') {
+      await runTest(apiName);
+      await new Promise(r => setTimeout(r, 500));
+    }
+  }
 
   logConsole('='.repeat(50), 'info');
   logConsole(`ALL TESTS COMPLETE: ${stats.success} passed, ${stats.failed} failed`,
@@ -318,6 +310,7 @@ function init() {
   logConsole('Check API loaded with ' + Object.keys(check).length +
     ' feature checks', 'info');
 
+  generateTests();
   updateStats();
   initMatrixEffect();
   initKeyboardShortcuts();
