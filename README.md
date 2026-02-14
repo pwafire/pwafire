@@ -22,19 +22,19 @@ const { ok, message } = await copyText("Hello World");
 
 ## Try it Live
 
-| Resource | Description |
-|----------|-------------|
+| Resource                                      | Description                       |
+| --------------------------------------------- | --------------------------------- |
 | [Launch Console](https://console.pwafire.org) | Test all PWA APIs in your browser |
 
 ## Documentation
 
-| Document | Description |
-|----------|-------------|
+| Document                                                 | Description                         |
+| -------------------------------------------------------- | ----------------------------------- |
 | [docs.pwafire.org](https://docs.pwafire.org/get-started) | API reference, guides, and examples |
-| [Breaking Changes](./docs/breaking-changes.md) | Migration guide for v6.0.0 |
-| [Contributing](./.github/CONTRIBUTING.md) | Contribution guidelines |
-| [Code of Conduct](./.github/CODE_OF_CONDUCT.md) | Community standards |
-| [Security](./.github/SECURITY.md) | Security policy |
+| [Breaking Changes](./docs/breaking-changes.md)           | Migration guide for v6.0.0          |
+| [Contributing](./.github/CONTRIBUTING.md)                | Contribution guidelines             |
+| [Code of Conduct](./.github/CODE_OF_CONDUCT.md)          | Community standards                 |
+| [Security](./.github/SECURITY.md)                        | Security policy                     |
 
 ## Contributing
 
