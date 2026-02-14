@@ -197,7 +197,7 @@ function generateTests() {
   const testGrid = document.getElementById('test-grid');
   testGrid.innerHTML = '';
 
-  Object.keys(pwafire).forEach((key) => {
+  Object.keys(pwafire).sort().forEach((key) => {
     if (typeof pwafire[key] === 'function' && apiConfigs[key]) {
       const config = apiConfigs[key];
       const id = key.toLowerCase().replace(/[A-Z]/g, m => '-' + m.toLowerCase());
@@ -272,7 +272,7 @@ window.checkAllFeatures = function() {
   let supported = 0;
   let total = 0;
 
-  Object.keys(check).forEach((key) => {
+  Object.keys(check).sort().forEach((key) => {
     if (typeof check[key] === 'function') {
       total++;
       const isSupported = check[key]();
