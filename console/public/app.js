@@ -117,9 +117,13 @@ const showSummarizerModal = (isStreaming) => {
     const lengthSelect = document.getElementById("summarizer-length");
 
     // Set default sample text
-    const defaultText = isStreaming
-      ? `Artificial Intelligence is revolutionizing technology. Machine learning algorithms process vast amounts of data to identify patterns and make predictions. Deep learning uses neural networks to solve complex problems. AI applications include natural language processing, computer vision, and robotics. The field continues to evolve rapidly with breakthroughs in generative AI and large language models.`
-      : `Progressive Web Apps (PWAs) deliver app-like experiences using modern web capabilities. Built with HTML, CSS, and JavaScript, PWAs are reliable, fast, and engaging. They work offline, receive push notifications, and access device hardware. PWAs are discoverable via search engines, installable on home screens, and linkable via URLs, providing seamless experiences across devices and platforms.`;
+    const defaultText = `I'm a Software Engineer and Google Developer Expert in Web Technologies, passionate about building amazing web experiences and contributing to the developer community.
+
+I'm the creator and maintainer of PWAFire, an open-source library that simplifies Progressive Web App development. Through PWAFire, I've helped developers around the world build fast, reliable, and engaging web applications.
+
+As a Google Developer Expert in Web Technologies, I'm recognized by Google for my expertise and contributions to the web development ecosystem. I actively speak at conferences, write technical content, and contribute to open-source projects.
+
+I'm particularly interested in Progressive Web Apps, Web Performance, JavaScript/TypeScript, and building tools that make developers' lives easier.`;
 
     textarea.value = defaultText;
     title.textContent = isStreaming ? "Summarizer Stream Config" : "Summarizer Config";
