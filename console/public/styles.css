@@ -321,7 +321,6 @@ body {
   padding: var(--spacing-2xl);
   overflow-y: auto;
   font-size: var(--font-size-base);
-  line-height: 1.6;
   border-top: var(--border-width-sm) solid var(--color-gray-dark);
   font-family: "Courier New", monospace;
   margin-top: var(--spacing-2xl);
@@ -407,7 +406,6 @@ body {
   padding: var(--spacing-xl);
   border: var(--border-width-sm) solid var(--color-gray-dark);
   font-size: var(--font-size-sm);
-  line-height: 1.8;
   color: var(--color-gray-500);
 }
 
@@ -428,7 +426,6 @@ body {
   padding: var(--spacing-xl);
   border: var(--border-width-sm) solid var(--color-gray-dark);
   font-size: var(--font-size-sm);
-  line-height: 1.8;
   color: var(--color-gray-500);
 }
 
@@ -566,7 +563,6 @@ body {
   align-items: center;
   justify-content: center;
   transition: color var(--transition-fast);
-  line-height: 1;
 }
 
 .sidebar-close:hover {
@@ -585,7 +581,6 @@ body {
   padding: var(--spacing-2xl);
   overflow-x: auto;
   font-size: var(--font-size-md);
-  line-height: 1.6;
   margin: 0;
   color: var(--color-gray-200);
   border: var(--border-width-sm) solid var(--color-gray-800);
@@ -677,7 +672,6 @@ body {
   margin: var(--spacing-lg) 0;
   font-size: var(--font-size-lg);
   color: var(--color-gray-400);
-  line-height: 1.6;
 }
 
 .stream-info p strong {
@@ -823,8 +817,7 @@ body {
 
   .console-line {
     padding: var(--spacing-sm) 0;
-    line-height: 1.6;
-  }
+    }
 
   .action-button {
     font-size: var(--font-size-md);
@@ -946,7 +939,6 @@ body {
   color: var(--color-white);
   font-family: 'Courier New', monospace;
   font-size: var(--font-size-2xl);
-  line-height: 1.6;
   resize: vertical;
   margin-bottom: var(--spacing-2xl);
 }
@@ -1068,7 +1060,6 @@ body {
   color: var(--color-white);
   font-family: 'Courier New', monospace;
   font-size: var(--font-size-base);
-  line-height: 1.5;
   white-space: pre-wrap;
   word-break: break-word;
 }
