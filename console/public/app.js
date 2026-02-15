@@ -301,6 +301,18 @@ const showResult = async (elementId, data, apiName) => {
   const title = document.getElementById("sidebar-title");
   const content = document.getElementById("sidebar-content");
 
+  // Reset sidebar state before showing new results
+  content.innerHTML = "";
+  title.textContent = "Loading...";
+
+  // Clear global state variables from previous API calls
+  if (window.__currentStreamBlob) {
+    delete window.__currentStreamBlob;
+  }
+  if (window.__currentStreamType) {
+    delete window.__currentStreamType;
+  }
+
   sidebar.classList.add("active");
   overlay.classList.add("active");
 
