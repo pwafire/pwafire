@@ -78,7 +78,8 @@ const showResult = async (elementId, data, apiName) => {
   overlay.classList.add("active");
 
   if (data.stream) {
-    const streamType = apiName === "decompressStream" ? "decompressed" : "compressed";
+    const streamType =
+      apiName === "decompressStream" ? "decompressed" : "compressed";
     await showStreamResult(title, content, data, streamType);
   } else if (data.file) {
     showFileResult(title, content, data);
@@ -103,7 +104,9 @@ const showStreamResult = async (title, content, data, streamType) => {
         <div class="${statusClass}">✓ ${data.message}</div>
         <div class="stream-info">
           <p><strong>Stream Status:</strong> Ready</p>
-          <p><strong>Type:</strong> ${streamType === "decompressed" ? "Decompressed" : "Compressed"} ReadableStream</p>
+          <p><strong>Type:</strong> ${
+            streamType === "decompressed" ? "Decompressed" : "Compressed"
+          } ReadableStream</p>
           <p><strong>Size:</strong> ${(blob.size / 1024).toFixed(2)} KB</p>
           <p>Stream can be downloaded or processed further.</p>
         </div>
@@ -129,13 +132,17 @@ const showFileResult = (title, content, data) => {
 
   content.innerHTML = `
     <div class="${statusClass}">${data.ok ? "✓" : "✗"} ${data.message}</div>
-    ${data.file ? `
+    ${
+      data.file
+        ? `
       <div class="stream-info">
         <p><strong>File:</strong> ${data.file.name || "Unknown"}</p>
         <p><strong>Size:</strong> ${(data.file.size / 1024).toFixed(2)} KB</p>
         <p><strong>Type:</strong> ${data.file.type || "Unknown"}</p>
       </div>
-    ` : ""}
+    `
+        : ""
+    }
   `;
 };
 
@@ -361,17 +368,18 @@ const apiConfigs = {
   compressStream: {
     title: "Compress Stream",
     params: async () => {
-      const url = "https://res.cloudinary.com/dejzqkmfw/image/upload/v1763466883/cld-sample-5.jpg";
+      const url =
+        "https://res.cloudinary.com/dejzqkmfw/image/upload/v1763466883/cld-sample-5.jpg";
       try {
         const response = await fetch(url);
         if (!response.ok) {
-          logConsole(`Fetch failed: ${response.status}`, 'error');
+          logConsole(`Fetch failed: ${response.status}`, "error");
           return null;
         }
         const blob = await response.blob();
         return [blob.stream()];
       } catch (err) {
-        logConsole(`Error: ${err.message}`, 'error');
+        logConsole(`Error: ${err.message}`, "error");
         return null;
       }
     }
@@ -381,18 +389,20 @@ const apiConfigs = {
     params: async () => {
       try {
         const [fileHandle] = await window.showOpenFilePicker({
-          types: [{
-            description: 'Compressed files',
-            accept: { 'application/gzip': ['.gz'] }
-          }]
+          types: [
+            {
+              description: "Compressed files",
+              accept: { "application/gzip": [".gz"] }
+            }
+          ]
         });
         const file = await fileHandle.getFile();
         return [file.stream()];
       } catch (err) {
-        if (err.name === 'AbortError') {
-          logConsole('File selection cancelled', 'info');
+        if (err.name === "AbortError") {
+          logConsole("File selection cancelled", "info");
         } else {
-          logConsole(`Error: ${err.message}`, 'error');
+          logConsole(`Error: ${err.message}`, "error");
         }
         return null;
       }
@@ -542,7 +552,6 @@ window.checkAllFeatures = () => {
 };
 
 // Batch Operations
-
 window.runAllTests = async () => {
   logConsole("=".repeat(50), "info");
   logConsole("RUNNING ALL TESTS...", "info");
@@ -584,7 +593,6 @@ const initKeyboardShortcuts = () => {
 };
 
 // Initialization
-
 const init = () => {
   logConsole("PWAFire package loaded successfully", "success");
   logConsole("Available exports: " + Object.keys(pwafire).length, "info");
