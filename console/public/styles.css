@@ -945,7 +945,8 @@ body {
   padding: var(--spacing-lg);
   color: var(--color-white);
   font-family: 'Courier New', monospace;
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-2xl);
+  line-height: 1.6;
   resize: vertical;
   margin-bottom: var(--spacing-2xl);
 }
