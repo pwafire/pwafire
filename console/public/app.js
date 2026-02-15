@@ -239,13 +239,38 @@ const apiConfigs = {
   compressStream: {
     title: "Compress Stream",
     params: async () => {
-      const url = 'https://res.cloudinary.com/dejzqkmfw/image/upload/v1763466883/cld-sample-5.jpg';
-      const response = await fetch(url);
-      return [response.body];
+      const url = "https://res.cloudinary.com/dejzqkmfw/image/upload/v1763466883/cld-sample-5.jpg";
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          logConsole(`Fetch failed: ${response.status}`, 'error');
+          return null;
+        }
+        const blob = await response.blob();
+        return [blob.stream()];
+      } catch (err) {
+        logConsole(`Error: ${err.message}`, 'error');
+        return null;
+      }
     }
   },
   decompressStream: {
-    title: "Decompress Stream"
+    title: "Decompress Stream",
+    params: async () => {
+      const compressedUrl = ""; // TODO: Add compressed file URL after compress test
+      if (!compressedUrl) {
+        logConsole('Run Compress Stream first to get compressed data', 'error');
+        return null;
+      }
+      try {
+        const response = await fetch(compressedUrl);
+        const blob = await response.blob();
+        return [blob.stream()];
+      } catch (err) {
+        logConsole(`Error: ${err.message}`, 'error');
+        return null;
+      }
+    }
   },
   lazyLoad: {
     title: "Lazy Load",
