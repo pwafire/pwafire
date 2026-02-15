@@ -586,8 +586,18 @@ window.runTest = async (apiName) => {
     const result = await pwafire[apiName](...params);
 
     if (window.__summarizerCloseModal) {
-      window.__summarizerCloseModal();
-      window.__summarizerCloseModal = null;
+      if (apiName === "summarizerStream") {
+        const submitBtn = document.getElementById("summarizer-submit");
+        submitBtn.textContent = "Close";
+        submitBtn.disabled = false;
+        submitBtn.onclick = () => {
+          window.__summarizerCloseModal();
+          window.__summarizerCloseModal = null;
+        };
+      } else {
+        window.__summarizerCloseModal();
+        window.__summarizerCloseModal = null;
+      }
     }
 
     if (apiName === "createFile" && result.ok && result.handle) {
@@ -598,7 +608,10 @@ window.runTest = async (apiName) => {
       );
     }
 
-    showResult(`${id}-result`, result, apiName);
+    if (apiName !== "summarizerStream") {
+      showResult(`${id}-result`, result, apiName);
+    }
+
     logConsole(
       `${config.title}: ${result.ok ? "SUCCESS" : "FAILED"} - ${
         result.message
@@ -610,8 +623,18 @@ window.runTest = async (apiName) => {
     else stats.failed++;
   } catch (err) {
     if (window.__summarizerCloseModal) {
-      window.__summarizerCloseModal();
-      window.__summarizerCloseModal = null;
+      if (apiName === "summarizerStream") {
+        const submitBtn = document.getElementById("summarizer-submit");
+        submitBtn.textContent = "Close";
+        submitBtn.disabled = false;
+        submitBtn.onclick = () => {
+          window.__summarizerCloseModal();
+          window.__summarizerCloseModal = null;
+        };
+      } else {
+        window.__summarizerCloseModal();
+        window.__summarizerCloseModal = null;
+      }
     }
     logConsole(`${config.title}: ERROR - ${err.message}`, "error");
     stats.failed++;
