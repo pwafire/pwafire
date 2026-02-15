@@ -14,7 +14,7 @@
       content="PWA, Progressive Web Apps, Web APIs, PWA testing, Web Share API, Notification API, Service Worker"
     />
     <link rel="canonical" href="https://console.pwafire.org" />
-    <link rel="stylesheet" href="styles.css?v=6.0.0" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <canvas class="matrix-bg" id="matrix"></canvas>
@@ -124,16 +124,24 @@
       </div>
     </div>
 
-    <dialog id="result-modal" class="result-modal">
-      <div class="modal-header">
-        <h3 id="modal-title">API Result</h3>
-        <button class="modal-close" onclick="window.closeResultModal()">&times;</button>
+    <div id="result-sidebar" class="result-sidebar">
+      <div class="sidebar-header">
+        <h3 id="sidebar-title">API Result</h3>
+        <button class="sidebar-close" onclick="window.closeSidebar()">
+          &times;
+        </button>
       </div>
-      <div class="modal-content" id="modal-content"></div>
-      <div class="modal-footer">
-        <button class="modal-button secondary" onclick="window.closeResultModal()">Close</button>
+      <div class="sidebar-content" id="sidebar-content"></div>
+      <div class="sidebar-footer">
+        <button
+          class="sidebar-button secondary"
+          onclick="window.closeSidebar()"
+        >
+          Close
+        </button>
       </div>
-    </dialog>
+    </div>
+    <div id="sidebar-overlay" class="sidebar-overlay" onclick="window.closeSidebar()"></div>
 
     <script type="module" src="app.js"></script>
   </body>

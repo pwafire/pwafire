@@ -68,42 +68,58 @@ window.toggleConsole = () => {
   }
 };
 
-const showResult = (elementId, data) => {
-  const modal = document.getElementById("result-modal");
-  const title = document.getElementById("modal-title");
-  const content = document.getElementById("modal-content");
+const showResult = async (elementId, data, apiName) => {
+  const sidebar = document.getElementById("result-sidebar");
+  const overlay = document.getElementById("sidebar-overlay");
+  const title = document.getElementById("sidebar-title");
+  const content = document.getElementById("sidebar-content");
+
+  sidebar.classList.add("active");
+  overlay.classList.add("active");
 
   if (data.stream) {
-    showStreamResult(title, content, data);
+    const streamType = apiName === "decompressStream" ? "decompressed" : "compressed";
+    await showStreamResult(title, content, data, streamType);
   } else if (data.file) {
     showFileResult(title, content, data);
   } else {
     showJsonResult(title, content, data);
   }
-
-  modal.showModal();
 };
 
-const showStreamResult = (title, content, data) => {
+const showStreamResult = async (title, content, data, streamType) => {
   title.textContent = data.ok ? "Stream Result" : "Stream Error";
 
   const statusClass = data.ok ? "result-success" : "result-error";
-  content.innerHTML = `
-    <div class="${statusClass}">${data.ok ? "✓" : "✗"} ${data.message}</div>
-    ${data.ok ? `
-      <div class="stream-info">
-        <p><strong>Stream Status:</strong> Ready</p>
-        <p><strong>Type:</strong> ReadableStream</p>
-        <p>Stream can be downloaded or processed further.</p>
-      </div>
-      <button class="modal-button primary" onclick="window.downloadStream()">
-        Download Stream
-      </button>
-    ` : ""}
-  `;
 
   if (data.ok && data.stream) {
-    window.__currentStream = data.stream;
+    try {
+      const response = new Response(data.stream);
+      const blob = await response.blob();
+      window.__currentStreamBlob = blob;
+      window.__currentStreamType = streamType;
+
+      content.innerHTML = `
+        <div class="${statusClass}">✓ ${data.message}</div>
+        <div class="stream-info">
+          <p><strong>Stream Status:</strong> Ready</p>
+          <p><strong>Type:</strong> ${streamType === "decompressed" ? "Decompressed" : "Compressed"} ReadableStream</p>
+          <p><strong>Size:</strong> ${(blob.size / 1024).toFixed(2)} KB</p>
+          <p>Stream can be downloaded or processed further.</p>
+        </div>
+        <button class="sidebar-button primary" onclick="window.downloadStream()">
+          Download Stream
+        </button>
+      `;
+    } catch (err) {
+      content.innerHTML = `
+        <div class="result-error">✗ Failed to process stream: ${err.message}</div>
+      `;
+    }
+  } else {
+    content.innerHTML = `
+      <div class="${statusClass}">${data.ok ? "✓" : "✗"} ${data.message}</div>
+    `;
   }
 };
 
@@ -133,29 +149,50 @@ const showJsonResult = (title, content, data) => {
   `;
 };
 
-window.closeResultModal = () => {
-  document.getElementById("result-modal").close();
+window.closeSidebar = () => {
+  const sidebar = document.getElementById("result-sidebar");
+  const overlay = document.getElementById("sidebar-overlay");
+  sidebar.classList.remove("active");
+  overlay.classList.remove("active");
 };
 
-window.downloadStream = async () => {
-  const stream = window.__currentStream;
-  if (!stream) {
+window.downloadStream = () => {
+  const blob = window.__currentStreamBlob;
+  const streamType = window.__currentStreamType || "compressed";
+
+  if (!blob) {
     logConsole("No stream available", "error");
     return;
   }
 
+  logConsole(`Blob size: ${blob.size} bytes, type: ${blob.type}`, "info");
+
+  if (blob.size === 0) {
+    logConsole("Blob is empty - cannot download", "error");
+    return;
+  }
+
   try {
-    const response = new Response(stream);
-    const blob = await response.blob();
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `compressed-${Date.now()}.gz`;
+
+    if (streamType === "compressed") {
+      a.download = `compressed-${Date.now()}.gz`;
+    } else {
+      a.download = `decompressed-${Date.now()}.jpg`;
+    }
+
     a.click();
-    URL.revokeObjectURL(url);
+
+    setTimeout(() => {
+      URL.revokeObjectURL(url);
+    }, 100);
+
     logConsole("Stream downloaded successfully", "success");
   } catch (err) {
     logConsole(`Download failed: ${err.message}`, "error");
+    console.error("Download error:", err);
   }
 };
 
@@ -342,17 +379,21 @@ const apiConfigs = {
   decompressStream: {
     title: "Decompress Stream",
     params: async () => {
-      const compressedUrl = ""; // TODO: Add compressed file URL after compress test
-      if (!compressedUrl) {
-        logConsole('Run Compress Stream first to get compressed data', 'error');
-        return null;
-      }
       try {
-        const response = await fetch(compressedUrl);
-        const blob = await response.blob();
-        return [blob.stream()];
+        const [fileHandle] = await window.showOpenFilePicker({
+          types: [{
+            description: 'Compressed files',
+            accept: { 'application/gzip': ['.gz'] }
+          }]
+        });
+        const file = await fileHandle.getFile();
+        return [file.stream()];
       } catch (err) {
-        logConsole(`Error: ${err.message}`, 'error');
+        if (err.name === 'AbortError') {
+          logConsole('File selection cancelled', 'info');
+        } else {
+          logConsole(`Error: ${err.message}`, 'error');
+        }
         return null;
       }
     }
@@ -414,7 +455,7 @@ window.runTest = async (apiName) => {
       );
     }
 
-    showResult(`${id}-result`, result);
+    showResult(`${id}-result`, result, apiName);
     logConsole(
       `${config.title}: ${result.ok ? "SUCCESS" : "FAILED"} - ${
         result.message
