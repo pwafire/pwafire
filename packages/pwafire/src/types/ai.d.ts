@@ -25,3 +25,21 @@ declare const Summarizer: {
   availability(): Promise<"unavailable" | "downloadable">;
   create(options?: SummarizerOptions): Promise<SummarizerSession>;
 };
+
+// Translator API
+interface TranslatorOptions {
+  sourceLanguage: string;
+  targetLanguage: string;
+  monitor?: (monitor: AICreateMonitor) => void;
+}
+
+interface TranslatorSession {
+  translate(text: string): Promise<string>;
+  translateStreaming(text: string): AsyncIterable<string>;
+  destroy(): void;
+}
+
+declare const Translator: {
+  availability(options: { sourceLanguage: string; targetLanguage: string }): Promise<string>;
+  create(options: TranslatorOptions): Promise<TranslatorSession>;
+};

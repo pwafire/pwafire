@@ -146,6 +146,108 @@ const showSummarizerModal = (isStreaming) => {
   });
 };
 
+const showTranslatorModal = (isStreaming) => {
+  return new Promise((resolve) => {
+    const modal = document.getElementById("summarizer-modal");
+    const overlay = document.getElementById("summarizer-overlay");
+    const textarea = document.getElementById("summarizer-text");
+    const title = document.getElementById("summarizer-modal-title");
+    const submitBtn = document.getElementById("summarizer-submit");
+    const cancelBtn = document.getElementById("summarizer-cancel");
+    const optionsContainer = document.querySelector(".modal-options");
+
+    const defaultText = "Hello! How are you today? I hope you're having a wonderful day.";
+
+    textarea.value = defaultText;
+    title.textContent = isStreaming ? "Translator Stream Config" : "Translator Config";
+    modal.classList.add("active");
+    overlay.classList.add("active");
+    textarea.focus();
+    textarea.disabled = false;
+    submitBtn.disabled = false;
+    cancelBtn.disabled = false;
+    submitBtn.textContent = "Translate";
+
+    optionsContainer.innerHTML = `
+      <div class="option-group">
+        <label>Source Language:</label>
+        <select id="translator-source">
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
+          <option value="it">Italian</option>
+          <option value="pt">Portuguese</option>
+          <option value="zh">Chinese</option>
+          <option value="ja">Japanese</option>
+          <option value="ko">Korean</option>
+        </select>
+      </div>
+      <div class="option-group">
+        <label>Target Language:</label>
+        <select id="translator-target">
+          <option value="en">English</option>
+          <option value="es" selected>Spanish</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
+          <option value="it">Italian</option>
+          <option value="pt">Portuguese</option>
+          <option value="zh">Chinese</option>
+          <option value="ja">Japanese</option>
+          <option value="ko">Korean</option>
+        </select>
+      </div>
+    `;
+
+    const sourceLangSelect = document.getElementById("translator-source");
+    const targetLangSelect = document.getElementById("translator-target");
+
+    const closeModal = () => {
+      modal.classList.remove("active");
+      overlay.classList.remove("active");
+      const streamOutput = document.getElementById("summarizer-stream-output");
+      streamOutput.style.display = "none";
+    };
+
+    const handleSubmit = () => {
+      const text = textarea.value.trim();
+      if (!text) {
+        logConsole("Please enter some text to translate", "error");
+        return;
+      }
+
+      textarea.disabled = true;
+      sourceLangSelect.disabled = true;
+      targetLangSelect.disabled = true;
+      submitBtn.disabled = true;
+      cancelBtn.disabled = true;
+      submitBtn.textContent = "Processing...";
+
+      resolve({
+        text,
+        options: {
+          sourceLanguage: sourceLangSelect.value,
+          targetLanguage: targetLangSelect.value
+        },
+        closeModal
+      });
+    };
+
+    const handleCancel = () => {
+      closeModal();
+      resolve(null);
+    };
+
+    submitBtn.onclick = handleSubmit;
+    cancelBtn.onclick = handleCancel;
+    overlay.onclick = (e) => {
+      if (!submitBtn.disabled) {
+        handleCancel();
+      }
+    };
+  });
+};
+
 const showResult = async (elementId, data, apiName) => {
   const sidebar = document.getElementById("result-sidebar");
   const overlay = document.getElementById("sidebar-overlay");
@@ -521,11 +623,43 @@ const apiConfigs = {
         config.options
       ];
     }
+  },
+  translator: {
+    title: "Translator",
+    params: async () => {
+      const config = await showTranslatorModal(false);
+      if (!config) return null;
+      window.__summarizerCloseModal = config.closeModal;
+      return [config.text, config.options];
+    }
+  },
+  translatorStream: {
+    title: "Translator Stream",
+    params: async () => {
+      const config = await showTranslatorModal(true);
+      if (!config) return null;
+      window.__summarizerCloseModal = config.closeModal;
+
+      const streamOutput = document.getElementById("summarizer-stream-output");
+      const streamText = document.getElementById("summarizer-stream-text");
+      streamOutput.style.display = "block";
+      streamText.textContent = "";
+
+      return [
+        config.text,
+        (chunk) => {
+          streamText.textContent = chunk;
+          streamText.scrollTop = streamText.scrollHeight;
+          logConsole(`Stream: ${chunk.substring(0, 60)}...`, "info");
+        },
+        config.options
+      ];
+    }
   }
 };
 
 const apiGroups = {
-  "🤖 AI": ["summarizer", "summarizerStream"],
+  "🤖 AI": ["summarizer", "summarizerStream", "translator", "translatorStream"],
   "📋 Clipboard": ["copyText", "readText", "copyImage"],
   "📁 File System": ["pickFile", "pickTextFile", "readFiles", "createFile", "writeFile", "writeUrlToFile"],
   "🔔 Notifications": ["notification", "setBadge", "clearBadge"],
@@ -586,7 +720,7 @@ window.runTest = async (apiName) => {
     const result = await pwafire[apiName](...params);
 
     if (window.__summarizerCloseModal) {
-      if (apiName === "summarizerStream") {
+      if (apiName === "summarizerStream" || apiName === "translatorStream") {
         const submitBtn = document.getElementById("summarizer-submit");
         submitBtn.textContent = "Close";
         submitBtn.disabled = false;
@@ -608,7 +742,7 @@ window.runTest = async (apiName) => {
       );
     }
 
-    if (apiName !== "summarizerStream") {
+    if (apiName !== "summarizerStream" && apiName !== "translatorStream") {
       showResult(`${id}-result`, result, apiName);
     }
 
@@ -623,7 +757,7 @@ window.runTest = async (apiName) => {
     else stats.failed++;
   } catch (err) {
     if (window.__summarizerCloseModal) {
-      if (apiName === "summarizerStream") {
+      if (apiName === "summarizerStream" || apiName === "translatorStream") {
         const submitBtn = document.getElementById("summarizer-submit");
         submitBtn.textContent = "Close";
         submitBtn.disabled = false;
@@ -662,13 +796,14 @@ const featureDisplayNames = {
   payment: "Payment Request",
   screenShare: "Screen Share",
   summarizer: "Summarizer",
+  translator: "Translator",
   visibility: "Visibility",
   wakeLock: "Wake Lock",
   webOtp: "Web OTP",
   webShare: "Web Share"
 };
 
-const aiFeatures = ["summarizer"];
+const aiFeatures = ["summarizer", "translator"];
 
 window.checkAllFeatures = () => {
   logConsole("Scanning for PWA features...", "info");
