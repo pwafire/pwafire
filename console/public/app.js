@@ -238,9 +238,10 @@ const apiConfigs = {
   },
   compressStream: {
     title: "Compress Stream",
-    params: () => {
+    params: async () => {
       const url = 'https://res.cloudinary.com/dejzqkmfw/image/upload/v1763466883/cld-sample-5.jpg';
-      return [url];
+      const response = await fetch(url);
+      return [response.body];
     }
   },
   decompressStream: {
@@ -287,7 +288,7 @@ window.runTest = async (apiName) => {
   stats.run++;
 
   try {
-    const params = config.params ? config.params() : [];
+    const params = config.params ? await config.params() : [];
     if (params === null) {
       stats.failed++;
       updateStats();
