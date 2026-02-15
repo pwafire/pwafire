@@ -316,9 +316,9 @@ const showResult = async (elementId, data, apiName) => {
   sidebar.classList.add("active");
   overlay.classList.add("active");
 
-  if (data.stream) {
-    const streamType =
-      apiName === "decompressStream" ? "decompressed" : "compressed";
+  // Only treat as compression stream if it's actually a compression API
+  if (data.stream && (apiName === "compressStream" || apiName === "decompressStream")) {
+    const streamType = apiName === "decompressStream" ? "decompressed" : "compressed";
     await showStreamResult(title, content, data, streamType);
   } else if (data.file) {
     showFileResult(title, content, data);
