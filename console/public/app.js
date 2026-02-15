@@ -722,9 +722,35 @@ window.runTest = async (apiName) => {
     if (window.__summarizerCloseModal) {
       if (apiName === "summarizerStream" || apiName === "translatorStream") {
         const submitBtn = document.getElementById("summarizer-submit");
-        submitBtn.textContent = "Close";
+        const cancelBtn = document.getElementById("summarizer-cancel");
+        const textarea = document.getElementById("summarizer-text");
+
+        textarea.disabled = false;
         submitBtn.disabled = false;
+        cancelBtn.disabled = false;
+        submitBtn.textContent = apiName === "translatorStream" ? "Translate Again" : "Summarize Again";
+
+        if (apiName === "translatorStream") {
+          const sourceLangSelect = document.getElementById("translator-source");
+          const targetLangSelect = document.getElementById("translator-target");
+          if (sourceLangSelect) sourceLangSelect.disabled = false;
+          if (targetLangSelect) targetLangSelect.disabled = false;
+        } else {
+          const typeSelect = document.getElementById("summarizer-type");
+          const formatSelect = document.getElementById("summarizer-format");
+          const lengthSelect = document.getElementById("summarizer-length");
+          if (typeSelect) typeSelect.disabled = false;
+          if (formatSelect) formatSelect.disabled = false;
+          if (lengthSelect) lengthSelect.disabled = false;
+        }
+
         submitBtn.onclick = () => {
+          window.__summarizerCloseModal();
+          window.__summarizerCloseModal = null;
+          setTimeout(() => runTest(apiName), 100);
+        };
+
+        cancelBtn.onclick = () => {
           window.__summarizerCloseModal();
           window.__summarizerCloseModal = null;
         };
@@ -759,9 +785,35 @@ window.runTest = async (apiName) => {
     if (window.__summarizerCloseModal) {
       if (apiName === "summarizerStream" || apiName === "translatorStream") {
         const submitBtn = document.getElementById("summarizer-submit");
-        submitBtn.textContent = "Close";
+        const cancelBtn = document.getElementById("summarizer-cancel");
+        const textarea = document.getElementById("summarizer-text");
+
+        textarea.disabled = false;
         submitBtn.disabled = false;
+        cancelBtn.disabled = false;
+        submitBtn.textContent = apiName === "translatorStream" ? "Translate Again" : "Summarize Again";
+
+        if (apiName === "translatorStream") {
+          const sourceLangSelect = document.getElementById("translator-source");
+          const targetLangSelect = document.getElementById("translator-target");
+          if (sourceLangSelect) sourceLangSelect.disabled = false;
+          if (targetLangSelect) targetLangSelect.disabled = false;
+        } else {
+          const typeSelect = document.getElementById("summarizer-type");
+          const formatSelect = document.getElementById("summarizer-format");
+          const lengthSelect = document.getElementById("summarizer-length");
+          if (typeSelect) typeSelect.disabled = false;
+          if (formatSelect) formatSelect.disabled = false;
+          if (lengthSelect) lengthSelect.disabled = false;
+        }
+
         submitBtn.onclick = () => {
+          window.__summarizerCloseModal();
+          window.__summarizerCloseModal = null;
+          setTimeout(() => runTest(apiName), 100);
+        };
+
+        cancelBtn.onclick = () => {
           window.__summarizerCloseModal();
           window.__summarizerCloseModal = null;
         };
@@ -825,7 +877,7 @@ window.checkAllFeatures = () => {
         item.className = `feature-item ${
           isSupported ? "supported" : "not-supported"
         }`;
-        const aiTag = aiFeatures.includes(key) ? '<span class="ai-tag">🤖 AI</span>' : '';
+        const aiTag = aiFeatures.includes(key) ? '<span class="ai-tag">AI</span>' : '';
         item.innerHTML = `
         <span class="feature-name">${displayName}${aiTag}</span>
         <span class="feature-status ${isSupported ? "yes" : "no"}">
