@@ -33,6 +33,14 @@
               📚 Docs
             </a>
             <a
+              href="https://stackblitz.com/edit/pwafire?file=src%2Findex.ts"
+              target="_blank"
+              rel="noopener"
+              class="header-link"
+            >
+              ⚡ Playground
+            </a>
+            <a
               href="https://github.com/pwafire/pwafire"
               target="_blank"
               rel="noopener"
@@ -115,6 +123,17 @@
         </div>
       </div>
     </div>
+
+    <dialog id="result-modal" class="result-modal">
+      <div class="modal-header">
+        <h3 id="modal-title">API Result</h3>
+        <button class="modal-close" onclick="window.closeResultModal()">&times;</button>
+      </div>
+      <div class="modal-content" id="modal-content"></div>
+      <div class="modal-footer">
+        <button class="modal-button secondary" onclick="window.closeResultModal()">Close</button>
+      </div>
+    </dialog>
 
     <script type="module" src="app.js"></script>
   </body>

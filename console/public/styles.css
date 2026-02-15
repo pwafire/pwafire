@@ -434,6 +434,141 @@ body {
   background: #333;
 }
 
+.result-modal {
+  background: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 0;
+  max-width: 800px;
+  width: 90vw;
+  max-height: 80vh;
+  color: #fff;
+}
+
+.result-modal::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #333;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+.modal-content {
+  padding: 24px;
+  overflow-y: auto;
+  max-height: 60vh;
+}
+
+.modal-content pre {
+  background: #111;
+  padding: 16px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid #333;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.modal-button {
+  padding: 10px 20px;
+  border: 1px solid #333;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.modal-button:hover {
+  background: #222;
+  border-color: #666;
+}
+
+.modal-button.primary {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.modal-button.primary:hover {
+  background: #ddd;
+}
+
+.modal-button.secondary {
+  background: transparent;
+}
+
+.result-success {
+  color: #4ade80;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.result-error {
+  color: #f87171;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.result-info {
+  color: #60a5fa;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.stream-info {
+  background: #111;
+  padding: 16px;
+  border-radius: 4px;
+  margin: 16px 0;
+}
+
+.stream-info p {
+  margin: 8px 0;
+  font-size: 13px;
+  color: #888;
+}
+
 @media (max-width: 1024px) {
   .container {
     grid-template-columns: 1fr;

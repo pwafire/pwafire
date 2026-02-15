@@ -69,9 +69,94 @@ window.toggleConsole = () => {
 };
 
 const showResult = (elementId, data) => {
-  const el = document.getElementById(elementId);
-  el.style.display = "block";
-  el.textContent = JSON.stringify(data, null, 2);
+  const modal = document.getElementById("result-modal");
+  const title = document.getElementById("modal-title");
+  const content = document.getElementById("modal-content");
+
+  if (data.stream) {
+    showStreamResult(title, content, data);
+  } else if (data.file) {
+    showFileResult(title, content, data);
+  } else {
+    showJsonResult(title, content, data);
+  }
+
+  modal.showModal();
+};
+
+const showStreamResult = (title, content, data) => {
+  title.textContent = data.ok ? "Stream Result" : "Stream Error";
+
+  const statusClass = data.ok ? "result-success" : "result-error";
+  content.innerHTML = `
+    <div class="${statusClass}">${data.ok ? "✓" : "✗"} ${data.message}</div>
+    ${data.ok ? `
+      <div class="stream-info">
+        <p><strong>Stream Status:</strong> Ready</p>
+        <p><strong>Type:</strong> ReadableStream</p>
+        <p>Stream can be downloaded or processed further.</p>
+      </div>
+      <button class="modal-button primary" onclick="window.downloadStream()">
+        Download Stream
+      </button>
+    ` : ""}
+  `;
+
+  if (data.ok && data.stream) {
+    window.__currentStream = data.stream;
+  }
+};
+
+const showFileResult = (title, content, data) => {
+  title.textContent = "File Result";
+  const statusClass = data.ok ? "result-success" : "result-error";
+
+  content.innerHTML = `
+    <div class="${statusClass}">${data.ok ? "✓" : "✗"} ${data.message}</div>
+    ${data.file ? `
+      <div class="stream-info">
+        <p><strong>File:</strong> ${data.file.name || "Unknown"}</p>
+        <p><strong>Size:</strong> ${(data.file.size / 1024).toFixed(2)} KB</p>
+        <p><strong>Type:</strong> ${data.file.type || "Unknown"}</p>
+      </div>
+    ` : ""}
+  `;
+};
+
+const showJsonResult = (title, content, data) => {
+  title.textContent = data.ok ? "Success" : "Error";
+  const statusClass = data.ok ? "result-success" : "result-error";
+
+  content.innerHTML = `
+    <div class="${statusClass}">${data.ok ? "✓" : "✗"} ${data.message}</div>
+    <pre>${JSON.stringify(data, null, 2)}</pre>
+  `;
+};
+
+window.closeResultModal = () => {
+  document.getElementById("result-modal").close();
+};
+
+window.downloadStream = async () => {
+  const stream = window.__currentStream;
+  if (!stream) {
+    logConsole("No stream available", "error");
+    return;
+  }
+
+  try {
+    const response = new Response(stream);
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `compressed-${Date.now()}.gz`;
+    a.click();
+    URL.revokeObjectURL(url);
+    logConsole("Stream downloaded successfully", "success");
+  } catch (err) {
+    logConsole(`Download failed: ${err.message}`, "error");
+  }
 };
 
 const updateStats = () => {
