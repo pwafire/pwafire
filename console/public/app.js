@@ -68,6 +68,84 @@ window.toggleConsole = () => {
   }
 };
 
+const showSummarizerModal = (isStreaming) => {
+  return new Promise((resolve) => {
+    const modal = document.getElementById("summarizer-modal");
+    const overlay = document.getElementById("summarizer-overlay");
+    const textarea = document.getElementById("summarizer-text");
+    const typeSelect = document.getElementById("summarizer-type");
+    const formatSelect = document.getElementById("summarizer-format");
+    const lengthSelect = document.getElementById("summarizer-length");
+    const title = document.getElementById("summarizer-modal-title");
+    const submitBtn = document.getElementById("summarizer-submit");
+    const cancelBtn = document.getElementById("summarizer-cancel");
+
+    // Set default sample text
+    const defaultText = isStreaming
+      ? `Artificial Intelligence is revolutionizing technology. Machine learning algorithms process vast amounts of data to identify patterns and make predictions. Deep learning uses neural networks to solve complex problems. AI applications include natural language processing, computer vision, and robotics. The field continues to evolve rapidly with breakthroughs in generative AI and large language models.`
+      : `Progressive Web Apps (PWAs) deliver app-like experiences using modern web capabilities. Built with HTML, CSS, and JavaScript, PWAs are reliable, fast, and engaging. They work offline, receive push notifications, and access device hardware. PWAs are discoverable via search engines, installable on home screens, and linkable via URLs, providing seamless experiences across devices and platforms.`;
+
+    textarea.value = defaultText;
+    title.textContent = isStreaming ? "Summarizer Stream Config" : "Summarizer Config";
+    modal.classList.add("active");
+    overlay.classList.add("active");
+    textarea.focus();
+    textarea.disabled = false;
+    typeSelect.disabled = false;
+    formatSelect.disabled = false;
+    lengthSelect.disabled = false;
+    submitBtn.disabled = false;
+    cancelBtn.disabled = false;
+    submitBtn.textContent = "Summarize";
+
+    const closeModal = () => {
+      modal.classList.remove("active");
+      overlay.classList.remove("active");
+      const streamOutput = document.getElementById("summarizer-stream-output");
+      streamOutput.style.display = "none";
+    };
+
+    const handleSubmit = () => {
+      const text = textarea.value.trim();
+      if (!text) {
+        logConsole("Please enter some text to summarize", "error");
+        return;
+      }
+
+      textarea.disabled = true;
+      typeSelect.disabled = true;
+      formatSelect.disabled = true;
+      lengthSelect.disabled = true;
+      submitBtn.disabled = true;
+      cancelBtn.disabled = true;
+      submitBtn.textContent = "Processing...";
+
+      resolve({
+        text,
+        options: {
+          type: typeSelect.value,
+          format: formatSelect.value,
+          length: lengthSelect.value
+        },
+        closeModal
+      });
+    };
+
+    const handleCancel = () => {
+      closeModal();
+      resolve(null);
+    };
+
+    submitBtn.onclick = handleSubmit;
+    cancelBtn.onclick = handleCancel;
+    overlay.onclick = (e) => {
+      if (!submitBtn.disabled) {
+        handleCancel();
+      }
+    };
+  });
+};
+
 const showResult = async (elementId, data, apiName) => {
   const sidebar = document.getElementById("result-sidebar");
   const overlay = document.getElementById("sidebar-overlay");
@@ -411,16 +489,65 @@ const apiConfigs = {
   lazyLoad: {
     title: "Lazy Load",
     params: () => [{ images: ".lazy-image", style: "fade" }]
+  },
+  summarizer: {
+    title: "Summarizer",
+    params: async () => {
+      const config = await showSummarizerModal(false);
+      if (!config) return null;
+      window.__summarizerCloseModal = config.closeModal;
+      return [config.text, config.options];
+    }
+  },
+  summarizerStream: {
+    title: "Summarizer Stream",
+    params: async () => {
+      const config = await showSummarizerModal(true);
+      if (!config) return null;
+      window.__summarizerCloseModal = config.closeModal;
+
+      const streamOutput = document.getElementById("summarizer-stream-output");
+      const streamText = document.getElementById("summarizer-stream-text");
+      streamOutput.style.display = "block";
+      streamText.textContent = "";
+
+      return [
+        config.text,
+        (chunk) => {
+          streamText.textContent += chunk;
+          streamText.scrollTop = streamText.scrollHeight;
+          logConsole(`Stream: ${chunk.substring(0, 60)}...`, "info");
+        },
+        config.options
+      ];
+    }
   }
+};
+
+const apiGroups = {
+  "🤖 AI": ["summarizer", "summarizerStream"],
+  "📋 Clipboard": ["copyText", "readText", "copyImage"],
+  "📁 File System": ["pickFile", "pickTextFile", "readFiles", "createFile", "writeFile", "writeUrlToFile"],
+  "🔔 Notifications": ["notification", "setBadge", "clearBadge"],
+  "🔗 Sharing": ["webShare"],
+  "🖥️ Screen": ["screenShare", "webPIP", "fullscreen"],
+  "⚡ System": ["wakeLock", "idleDetection", "connectivity", "visibility", "displayMode"],
+  "🎨 Media": ["barcodeDetector", "compressStream", "decompressStream", "lazyLoad", "accessFonts"],
+  "👤 User Data": ["contacts", "payment", "webOtp"],
+  "📦 Other": ["contentIndexing", "install"]
 };
 
 const generateTests = () => {
   const testGrid = document.getElementById("test-grid");
   testGrid.innerHTML = "";
 
-  Object.keys(pwafire)
-    .sort()
-    .forEach((key) => {
+  Object.entries(apiGroups).forEach(([groupName, apis]) => {
+    const groupHeader = document.createElement("div");
+    groupHeader.className = "test-group-header";
+    groupHeader.textContent = groupName;
+    testGrid.appendChild(groupHeader);
+
+    apis.forEach((key) => {
       if (typeof pwafire[key] === "function" && apiConfigs[key]) {
         const config = apiConfigs[key];
         const id = key
@@ -437,6 +564,7 @@ const generateTests = () => {
         testGrid.appendChild(card);
       }
     });
+  });
 };
 
 window.runTest = async (apiName) => {
@@ -457,6 +585,11 @@ window.runTest = async (apiName) => {
     }
     const result = await pwafire[apiName](...params);
 
+    if (window.__summarizerCloseModal) {
+      window.__summarizerCloseModal();
+      window.__summarizerCloseModal = null;
+    }
+
     if (apiName === "createFile" && result.ok && result.handle) {
       window.__lastFileHandle = result.handle;
       logConsole(
@@ -476,6 +609,10 @@ window.runTest = async (apiName) => {
     if (result.ok) stats.success++;
     else stats.failed++;
   } catch (err) {
+    if (window.__summarizerCloseModal) {
+      window.__summarizerCloseModal();
+      window.__summarizerCloseModal = null;
+    }
     logConsole(`${config.title}: ERROR - ${err.message}`, "error");
     stats.failed++;
   }
@@ -501,11 +638,14 @@ const featureDisplayNames = {
   notification: "Notification",
   payment: "Payment Request",
   screenShare: "Screen Share",
+  summarizer: "Summarizer",
   visibility: "Visibility",
   wakeLock: "Wake Lock",
   webOtp: "Web OTP",
   webShare: "Web Share"
 };
+
+const aiFeatures = ["summarizer"];
 
 window.checkAllFeatures = () => {
   logConsole("Scanning for PWA features...", "info");
@@ -527,8 +667,9 @@ window.checkAllFeatures = () => {
         item.className = `feature-item ${
           isSupported ? "supported" : "not-supported"
         }`;
+        const aiTag = aiFeatures.includes(key) ? '<span class="ai-tag">🤖 AI</span>' : '';
         item.innerHTML = `
-        <span class="feature-name">${displayName}</span>
+        <span class="feature-name">${displayName}${aiTag}</span>
         <span class="feature-status ${isSupported ? "yes" : "no"}">
           ${isSupported ? "YES" : "NO"}
         </span>

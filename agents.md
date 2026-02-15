@@ -496,3 +496,16 @@ Identified but not implemented to keep changes focused:
 - [Progressive Web Apps](https://web.dev/progressive-web-apps/)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 - [Conventional Commits](https://www.conventionalcommits.org/)
+
+## Console App Organization
+
+For complete console app documentation including API grouping, response patterns, testing instructions, and development workflow, see:
+
+**[Console App Documentation](./docs/console.md)**
+
+Key highlights:
+- 10 API groups (AI, Clipboard, File System, Notifications, Sharing, Screen, System, Media, User Data, Other)
+- Consistent response pattern with status codes
+- Interactive modal for AI APIs
+- Dynamic test generation from exports
+- Local testing at http://localhost:8080

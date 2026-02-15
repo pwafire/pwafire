@@ -14,6 +14,7 @@ export * from "./lazy-load";
 export * from "./notification";
 export * from "./payment";
 export * from "./screen";
+export * from "./summarizer";
 export * from "./visibility";
 export * from "./wake-lock";
 export * from "./web-otp";

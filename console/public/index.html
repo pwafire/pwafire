@@ -141,6 +141,58 @@
       class="sidebar-overlay"
       onclick="window.closeSidebar()"
     ></div>
+
+    <!-- Summarizer Modal -->
+    <div id="summarizer-modal" class="summarizer-modal">
+      <div class="modal-content">
+        <h3 id="summarizer-modal-title">Summarizer Config</h3>
+        <textarea
+          id="summarizer-text"
+          placeholder="Paste or type your text here..."
+          rows="10"
+        ></textarea>
+        <div id="summarizer-stream-output" class="stream-output" style="display:none;">
+          <div class="stream-label">Streaming output:</div>
+          <div id="summarizer-stream-text" class="stream-text"></div>
+        </div>
+        <div class="modal-options">
+          <div class="option-group">
+            <label>Type:</label>
+            <select id="summarizer-type">
+              <option value="key-points">Key Points</option>
+              <option value="tldr">TL;DR</option>
+              <option value="teaser">Teaser</option>
+              <option value="headline">Headline</option>
+            </select>
+          </div>
+          <div class="option-group">
+            <label>Format:</label>
+            <select id="summarizer-format">
+              <option value="markdown">Markdown</option>
+              <option value="plain-text">Plain Text</option>
+            </select>
+          </div>
+          <div class="option-group">
+            <label>Length:</label>
+            <select id="summarizer-length">
+              <option value="short">Short</option>
+              <option value="medium" selected>Medium</option>
+              <option value="long">Long</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-buttons">
+          <button id="summarizer-cancel" class="modal-button secondary">
+            Cancel
+          </button>
+          <button id="summarizer-submit" class="modal-button primary">
+            Summarize
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="summarizer-overlay" class="modal-overlay"></div>
+
     <script type="module" src="app.js"></script>
   </body>
 </html>
