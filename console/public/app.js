@@ -289,7 +289,6 @@ const featureDisplayNames = {
   connectivity: 'Network Info',
   contacts: 'Contacts API',
   contentIndexing: 'Content Index',
-  displayMode: 'Display Mode',
   files: 'File System',
   fonts: 'Font Access',
   fullscreen: 'Fullscreen API',
