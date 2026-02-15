@@ -23,22 +23,52 @@ export const notification = async (data: {
 }) => {
   const { title, options } = data;
   try {
-    if ("Notification" in window) {
-      const permission = await Notification.requestPermission();
-      if (permission === "granted") {
-        await navigator.serviceWorker.ready.then((registration) => {
-          registration.showNotification(title, options);
-          return { ok: true, message: "Sent" };
-        });
-      } else {
-        return { ok: true, message: "Denied" };
-      }
-    } else {
-      return { ok: false, message: "Notification API not supported" };
+    if (!("Notification" in window)) {
+      return {
+        ok: false,
+        status: "not-supported",
+        message: "Notification API not supported",
+      };
     }
+
+    const permission = await Notification.requestPermission();
+
+    if (permission === "denied") {
+      return {
+        ok: false,
+        status: "permission-denied",
+        message: "Notification permission denied",
+      };
+    }
+
+    if (permission === "granted") {
+      if ("serviceWorker" in navigator && navigator.serviceWorker.controller) {
+        const registration = await navigator.serviceWorker.ready;
+        await registration.showNotification(title, options);
+        return {
+          ok: true,
+          status: "success",
+          message: "Notification sent via service worker",
+        };
+      } else {
+        new Notification(title, options);
+        return {
+          ok: true,
+          status: "success",
+          message: "Notification sent",
+        };
+      }
+    }
+
+    return {
+      ok: false,
+      status: "permission-default",
+      message: "Notification permission not granted",
+    };
   } catch (error) {
     return {
       ok: false,
+      status: "error",
       message: error instanceof Error ? error.message : "Failed to send notification",
     };
   }

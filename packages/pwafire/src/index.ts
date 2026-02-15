@@ -14,6 +14,8 @@ export * from "./pwa/lazy-load";
 export * from "./pwa/notification";
 export * from "./pwa/payment";
 export * from "./pwa/screen";
+export * from "./pwa/summarizer";
+export * from "./pwa/translator";
 export * from "./pwa/visibility";
 export * from "./pwa/wake-lock";
 export * from "./pwa/web-otp";
