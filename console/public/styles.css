@@ -1075,7 +1075,7 @@ body {
 /* AI Feature Tag */
 .ai-tag {
   display: inline-block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--color-gray-500);
   color: var(--color-white);
   font-size: var(--font-size-xs);
   padding: 2px 6px;

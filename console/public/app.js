@@ -73,12 +73,48 @@ const showSummarizerModal = (isStreaming) => {
     const modal = document.getElementById("summarizer-modal");
     const overlay = document.getElementById("summarizer-overlay");
     const textarea = document.getElementById("summarizer-text");
-    const typeSelect = document.getElementById("summarizer-type");
-    const formatSelect = document.getElementById("summarizer-format");
-    const lengthSelect = document.getElementById("summarizer-length");
     const title = document.getElementById("summarizer-modal-title");
     const submitBtn = document.getElementById("summarizer-submit");
     const cancelBtn = document.getElementById("summarizer-cancel");
+    const optionsContainer = document.querySelector(".modal-options");
+    const streamOutput = document.getElementById("summarizer-stream-output");
+    const streamText = document.getElementById("summarizer-stream-text");
+
+    // Reset modal state
+    streamOutput.style.display = "none";
+    streamText.textContent = "";
+
+    // Restore summarizer options HTML
+    optionsContainer.innerHTML = `
+      <div class="option-group">
+        <label>Type:</label>
+        <select id="summarizer-type">
+          <option value="key-points">Key Points</option>
+          <option value="tldr">TL;DR</option>
+          <option value="teaser">Teaser</option>
+          <option value="headline">Headline</option>
+        </select>
+      </div>
+      <div class="option-group">
+        <label>Format:</label>
+        <select id="summarizer-format">
+          <option value="markdown">Markdown</option>
+          <option value="plain-text">Plain Text</option>
+        </select>
+      </div>
+      <div class="option-group">
+        <label>Length:</label>
+        <select id="summarizer-length">
+          <option value="short">Short</option>
+          <option value="medium" selected>Medium</option>
+          <option value="long">Long</option>
+        </select>
+      </div>
+    `;
+
+    const typeSelect = document.getElementById("summarizer-type");
+    const formatSelect = document.getElementById("summarizer-format");
+    const lengthSelect = document.getElementById("summarizer-length");
 
     // Set default sample text
     const defaultText = isStreaming
@@ -155,6 +191,12 @@ const showTranslatorModal = (isStreaming) => {
     const submitBtn = document.getElementById("summarizer-submit");
     const cancelBtn = document.getElementById("summarizer-cancel");
     const optionsContainer = document.querySelector(".modal-options");
+    const streamOutput = document.getElementById("summarizer-stream-output");
+    const streamText = document.getElementById("summarizer-stream-text");
+
+    // Reset modal state
+    streamOutput.style.display = "none";
+    streamText.textContent = "";
 
     const defaultText = "Hello! How are you today? I hope you're having a wonderful day.";
 
@@ -168,6 +210,7 @@ const showTranslatorModal = (isStreaming) => {
     cancelBtn.disabled = false;
     submitBtn.textContent = "Translate";
 
+    // Restore translator options HTML
     optionsContainer.innerHTML = `
       <div class="option-group">
         <label>Source Language:</label>
