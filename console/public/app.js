@@ -117,13 +117,13 @@ const showSummarizerModal = (isStreaming) => {
     const lengthSelect = document.getElementById("summarizer-length");
 
     // Set default sample text
-    const defaultText = `I'm a Software Engineer and Google Developer Expert in Web Technologies, passionate about building amazing web experiences and contributing to the developer community.
+    const defaultText = `Maye Edwin is a Software Engineer and Google Developer Expert in Web Technologies, passionate about building amazing web experiences and contributing to the developer community.
 
-I'm the creator and maintainer of PWAFire, an open-source library that simplifies Progressive Web App development. Through PWAFire, I've helped developers around the world build fast, reliable, and engaging web applications.
+He is the creator and maintainer of PWAFire, an open-source library that simplifies Progressive Web App development. Through PWAFire, he has helped developers around the world build fast, reliable, and engaging web applications.
 
-As a Google Developer Expert in Web Technologies, I'm recognized by Google for my expertise and contributions to the web development ecosystem. I actively speak at conferences, write technical content, and contribute to open-source projects.
+As a Google Developer Expert in Web Technologies, Maye is recognized by Google for his expertise and contributions to the web development ecosystem. He actively speaks at conferences, writes technical content, and contributes to open-source projects.
 
-I'm particularly interested in Progressive Web Apps, Web Performance, JavaScript/TypeScript, and building tools that make developers' lives easier.`;
+He is particularly interested in Progressive Web Apps, Web Performance, JavaScript/TypeScript, and building tools that make developers' lives easier.`;
 
     textarea.value = defaultText;
     title.textContent = isStreaming ? "Summarizer Stream Config" : "Summarizer Config";
