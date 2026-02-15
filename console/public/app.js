@@ -237,7 +237,11 @@ const apiConfigs = {
     title: "Barcode"
   },
   compressStream: {
-    title: "Compress Stream"
+    title: "Compress Stream",
+    params: () => {
+      const url = 'https://res.cloudinary.com/dejzqkmfw/image/upload/v1763466883/cld-sample-5.jpg';
+      return [url];
+    }
   },
   decompressStream: {
     title: "Decompress Stream"
