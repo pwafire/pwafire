@@ -12,6 +12,7 @@ Quick reference for working on PWAFire. For detailed guidelines, see `/docs/*.md
 
 ## Quick Links
 
+- [Versioning & Release](./docs/versioning-and-release.md) - How to version and release packages
 - [Commit Style](./docs/commit-style.md) - Commit messages, PR and release summaries
 - [Naming Conventions](./docs/naming-conventions.md) - Functions, files, constants, types, APIs
 - [Code Style](./docs/code-style.md) - Formatting, error handling, type safety, async/await
@@ -78,97 +79,19 @@ chore(cleanup) - standardize error handling across modules
 
 ## Versioning & Releases
 
-**Semantic Versioning (SemVer):** `MAJOR.MINOR.PATCH`
-
-Using current version `6.1.0` as example:
-
-### Bump MAJOR (6.x.x) - Breaking Changes
-```bash
-npm version major
-# 6.1.0 → 7.0.0
-
-# Examples:
-# - Change API function signatures
-# - Remove deprecated APIs
-# - Rename exports
-# - Change response formats
-```
-
-### Bump MINOR (x.1.x) - New Features
-```bash
-npm version minor
-# 6.1.0 → 6.2.0
-
-# Examples:
-# - Add new PWA APIs
-# - Add optional parameters (backward compatible)
-# - Add new utility functions
-# - New check functions
-```
-
-### Bump PATCH (x.x.0) - Fixes & Minor Changes
-```bash
-npm version patch
-# 6.1.0 → 6.1.1
-
-# Examples:
-# - Bug fixes
-# - Documentation updates
-# - Dependency updates
-# - Performance improvements
-# - Code refactoring (no behavior change)
-```
-
-### Release Process
-
-**Automated via GitHub Actions (OIDC Trusted Publisher):**
+**Quick Reference:** See [Versioning & Release Guide](./docs/versioning-and-release.md) for complete details.
 
 ```bash
-# 1. Make your changes and commit
-git add .
-git commit -m "feat(api) - add new feature"
+# Bump version and release
+npm version patch   # 6.1.0 → 6.1.1 (fixes)
+npm version minor   # 6.1.0 → 6.2.0 (new APIs)
+npm version major   # 6.1.0 → 7.0.0 (breaking changes)
 
-# 2. Bump version (choose one)
-npm version patch   # For fixes
-npm version minor   # For new APIs
-npm version major   # For breaking changes
-
-# 3. Push with tags
+# Push to trigger auto-release
 git push origin main --tags
-
-# 4. GitHub Actions automatically:
-#    - Runs tests
-#    - Builds package
-#    - Publishes to npm (via OIDC, no secrets!)
-#    - Creates GitHub release with changelog
 ```
 
-**What happens:**
-- `npm version` updates `package.json` and creates a git tag
-- Git tag format: `v6.1.0`
-- Push tag triggers `.github/workflows/publish.yml`
-- Workflow authenticates via OIDC (npm Trusted Publisher)
-- Package published with provenance attestation
-
-**No secrets needed!** ✨ The workflow uses OIDC authentication configured at [npmjs.com/package/pwafire/access](https://www.npmjs.com/package/pwafire/access)
-
-### Version Guidelines
-
-**When to bump MAJOR:**
-- Users need to change their code
-- Breaking API changes
-- Removing features
-
-**When to bump MINOR:**
-- Adding new APIs (backward compatible)
-- New features that don't break existing code
-- New optional parameters
-
-**When to bump PATCH:**
-- Fixing bugs
-- Security patches
-- Documentation only
-- Internal refactoring
+Automated via GitHub Actions with OIDC trusted publisher (no secrets needed!).
 
 ## Best Practices
 
