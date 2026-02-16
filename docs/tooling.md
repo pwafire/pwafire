@@ -67,6 +67,15 @@ npm run lint           # Lint TypeScript files
 npm run format         # Format code with Prettier
 ```
 
+## Testing
+
+See [Testing Guide](./testing.md) for philosophy and patterns.
+
+**Quick reference:**
+- Run tests: `npm test`
+- Coverage report: `npm run test:coverage`
+- Pre-commit hook runs tests automatically
+
 ## Testing Requirements
 
 **Before committing:**

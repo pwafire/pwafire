@@ -17,6 +17,7 @@ Quick reference for working on PWAFire. For detailed guidelines, see `/docs/*.md
 - [Naming Conventions](./docs/naming-conventions.md) - Functions, files, constants, types, APIs
 - [Code Style](./docs/code-style.md) - Formatting, error handling, type safety, async/await
 - [File Organization](./docs/file-organization.md) - Project structure, modules, imports/exports
+- [Testing](./docs/testing.md) - Testing philosophy and patterns
 - [Testing Style](./docs/testing-style.md) - Dynamic generation, test configuration
 - [HTML/CSS Style](./docs/html-css-style.md) - Test console styling guidelines
 - [Tooling](./docs/tooling.md) - Prettier, ESLint, NPM scripts, testing requirements
@@ -164,6 +165,35 @@ These are experimental browser APIs without TypeScript definitions.
 - Outputs: CJS (`lib/*.js`), ESM (`lib/*.mjs`), Types (`lib/*.d.ts`)
 - Build time: ~8-9 seconds for type definitions
 
+## Testing Philosophy
+
+PWAFire follows **pattern-based testing** rather than exhaustive module testing.
+
+**Why:**
+- All 23 PWA API modules follow consistent patterns:
+  - Check API support (`if (!("API" in navigator))`)
+  - Try operation in try-catch block
+  - Return `{ok: boolean, message: string, ...data?}`
+- Testing every module would be repetitive copy-paste
+- Testing representative patterns validates the approach
+
+**Current Coverage:**
+- 66% statement coverage with 4 tests
+- Tests cover: import validation, basic API pattern, check functions
+- Pre-commit hooks enforce tests pass before commit
+- CI/CD runs tests on every PR
+
+**When to Add Tests:**
+- New API patterns not covered by existing tests
+- Complex logic with multiple branches (permissions, streaming, DOM manipulation)
+- Bug fixes (add regression test)
+- Breaking changes to API signatures
+
+**When NOT to Add Tests:**
+- New modules following existing patterns (clipboard → web-share)
+- Simple wrappers with no branching logic
+- Cosmetic changes (error messages, formatting)
+
 ### For Future Agents
 
 **When working on PWAFire:**
@@ -189,13 +219,10 @@ npm test        # All tests pass
 Identified but not implemented to keep changes focused:
 
 1. **Add JSDoc comments** - Document error scenarios
-2. **Expand test coverage** - Need 80%+ coverage (currently ~65%)
-3. **Error codes/enums** - For programmatic error handling
-4. **TypeDoc generation** - Auto-generate API docs
-5. **Bundle size monitoring** - Track ESM chunk sizes
-6. **Update CI/CD** - Test Node 18.x, 20.x, 22.x (currently 16.x EOL)
-7. **Pre-commit hooks** - Enforce formatting/linting
-8. **Coverage thresholds** - Add to Jest config
+2. **Error codes/enums** - For programmatic error handling
+3. **TypeDoc generation** - Auto-generate API docs
+4. **Bundle size monitoring** - Track ESM chunk sizes
+5. **Update CI/CD** - Test Node 18.x, 20.x, 22.x (currently 16.x EOL)
 
 ## Related Resources
 
