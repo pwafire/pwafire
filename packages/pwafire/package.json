@@ -33,8 +33,7 @@
     "lint": "eslint src --ext .ts",
     "format": "prettier --write \"src/**/*.ts\"",
     "verify": "npm run lint && npm run build && npm test",
-    "prepublishOnly": "npm run verify",
-    "prepare": "husky"
+    "prepublishOnly": "npm run verify"
   },
   "keywords": [
     "pwa",
