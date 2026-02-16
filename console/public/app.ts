@@ -1,5 +1,5 @@
-import * as pwafire from "./lib/index.mjs";
-import * as check from "./lib/check/index.mjs";
+import * as pwafire from "pwafire";
+import * as check from "pwafire/check";
 
 window.pwafire = pwafire;
 window.check = check;
@@ -126,7 +126,9 @@ As a Google Developer Expert in Web Technologies, Maye is recognized by Google f
 He is particularly interested in Progressive Web Apps, Web Performance, JavaScript/TypeScript, and building tools that make developers' lives easier.`;
 
     textarea.value = defaultText;
-    title.textContent = isStreaming ? "Summarizer Stream Config" : "Summarizer Config";
+    title.textContent = isStreaming
+      ? "Summarizer Stream Config"
+      : "Summarizer Config";
     modal.classList.add("active");
     overlay.classList.add("active");
     textarea.focus();
@@ -202,10 +204,13 @@ const showTranslatorModal = (isStreaming) => {
     streamOutput.style.display = "none";
     streamText.textContent = "";
 
-    const defaultText = "Hello! How are you today? I hope you're having a wonderful day.";
+    const defaultText =
+      "Hello! How are you today? I hope you're having a wonderful day.";
 
     textarea.value = defaultText;
-    title.textContent = isStreaming ? "Translator Stream Config" : "Translator Config";
+    title.textContent = isStreaming
+      ? "Translator Stream Config"
+      : "Translator Config";
     modal.classList.add("active");
     overlay.classList.add("active");
     textarea.focus();
@@ -317,8 +322,12 @@ const showResult = async (elementId, data, apiName) => {
   overlay.classList.add("active");
 
   // Only treat as compression stream if it's actually a compression API
-  if (data.stream && (apiName === "compressStream" || apiName === "decompressStream")) {
-    const streamType = apiName === "decompressStream" ? "decompressed" : "compressed";
+  if (
+    data.stream &&
+    (apiName === "compressStream" || apiName === "decompressStream")
+  ) {
+    const streamType =
+      apiName === "decompressStream" ? "decompressed" : "compressed";
     await showStreamResult(title, content, data, streamType);
   } else if (data.file) {
     showFileResult(title, content, data);
@@ -717,7 +726,9 @@ const apiConfigs = {
   },
   languageDetector: {
     title: "Language Detector",
-    params: () => ["Bonjour! Comment allez-vous? Je suis très content de vous voir aujourd'hui."]
+    params: () => [
+      "Bonjour! Comment allez-vous? Je suis très content de vous voir aujourd'hui."
+    ]
   },
   languageDetectorTopLanguage: {
     title: "Language Detector (Top)",
@@ -726,14 +737,40 @@ const apiConfigs = {
 };
 
 const apiGroups = {
-  "🤖 AI": ["summarizer", "summarizerStream", "translator", "translatorStream", "languageDetector", "languageDetectorTopLanguage"],
+  "🤖 AI": [
+    "summarizer",
+    "summarizerStream",
+    "translator",
+    "translatorStream",
+    "languageDetector",
+    "languageDetectorTopLanguage"
+  ],
   "📋 Clipboard": ["copyText", "readText", "copyImage"],
-  "📁 File System": ["pickFile", "pickTextFile", "readFiles", "createFile", "writeFile", "writeUrlToFile"],
+  "📁 File System": [
+    "pickFile",
+    "pickTextFile",
+    "readFiles",
+    "createFile",
+    "writeFile",
+    "writeUrlToFile"
+  ],
   "🔔 Notifications": ["notification", "setBadge", "clearBadge"],
   "🔗 Sharing": ["webShare"],
   "🖥️ Screen": ["screenShare", "webPIP", "fullscreen"],
-  "⚡ System": ["wakeLock", "idleDetection", "connectivity", "visibility", "displayMode"],
-  "🎨 Media": ["barcodeDetector", "compressStream", "decompressStream", "lazyLoad", "accessFonts"],
+  "⚡ System": [
+    "wakeLock",
+    "idleDetection",
+    "connectivity",
+    "visibility",
+    "displayMode"
+  ],
+  "🎨 Media": [
+    "barcodeDetector",
+    "compressStream",
+    "decompressStream",
+    "lazyLoad",
+    "accessFonts"
+  ],
   "👤 User Data": ["contacts", "payment", "webOtp"],
   "📦 Other": ["contentIndexing", "install"]
 };
@@ -818,7 +855,8 @@ window.runTest = async (apiName) => {
           window.__summarizerCloseModal();
           window.__summarizerCloseModal = null;
           // Reset button for next use
-          submitBtn.textContent = apiName === "translatorStream" ? "Translate" : "Summarize";
+          submitBtn.textContent =
+            apiName === "translatorStream" ? "Translate" : "Summarize";
           cancelBtn.style.display = "inline-block";
         };
 
@@ -861,7 +899,10 @@ window.runTest = async (apiName) => {
         textarea.disabled = false;
         submitBtn.disabled = false;
         cancelBtn.disabled = false;
-        submitBtn.textContent = apiName === "translatorStream" ? "Translate Again" : "Summarize Again";
+        submitBtn.textContent =
+          apiName === "translatorStream"
+            ? "Translate Again"
+            : "Summarize Again";
 
         if (apiName === "translatorStream") {
           const sourceLangSelect = document.getElementById("translator-source");
@@ -948,7 +989,9 @@ window.checkAllFeatures = () => {
         item.className = `feature-item ${
           isSupported ? "supported" : "not-supported"
         }`;
-        const aiTag = aiFeatures.includes(key) ? '<span class="ai-tag">AI</span>' : '';
+        const aiTag = aiFeatures.includes(key)
+          ? '<span class="ai-tag">AI</span>'
+          : "";
         item.innerHTML = `
         <span class="feature-name">${displayName}${aiTag}</span>
         <span class="feature-status ${isSupported ? "yes" : "no"}">
