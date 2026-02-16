@@ -1,6 +1,3 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 # Navigate to pwafire package
 cd packages/pwafire || exit 1
 

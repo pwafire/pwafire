@@ -34,7 +34,7 @@ jobs:
       - name: Install package dependencies
         run: |
           rm -rf node_modules package-lock.json
-          npm install
+          npm_config_platform=all npm install
 
       - name: Lint
         run: npm run lint
