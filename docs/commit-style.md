@@ -64,11 +64,13 @@ feat(notifications) - add support for notification actions
 
 ```markdown
 ## What's New
+
 - Add Summarizer API (batch + streaming)
 - Add Translator API with language pairs
 - Status codes for error handling
 
 ## Install
+
 npm install pwafire@6.1.0
 ```
 
@@ -76,6 +78,7 @@ npm install pwafire@6.1.0
 
 ```markdown
 ## What's New
+
 This PR adds support for Chrome's built-in Web AI APIs...
 [3 paragraphs of explanation]
 [Detailed code examples for every scenario]
