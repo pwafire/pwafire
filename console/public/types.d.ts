@@ -3,8 +3,15 @@
 import * as PwafireModule from 'pwafire';
 import * as CheckModule from 'pwafire/check';
 
+interface OpenFilePickerOptions {
+  types?: Array<{ description?: string; accept?: Record<string, string[]> }>;
+}
+
 declare global {
   interface Window {
+    showOpenFilePicker?: (
+      options?: OpenFilePickerOptions
+    ) => Promise<FileSystemFileHandle[]>;
     pwafire: typeof PwafireModule;
     check: typeof CheckModule;
     runTest: (apiName: string) => Promise<void>;

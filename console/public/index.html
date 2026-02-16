@@ -193,6 +193,31 @@
     </div>
     <div id="summarizer-overlay" class="modal-overlay"></div>
 
+    <!-- Language Detector Modal -->
+    <div id="language-detector-modal" class="summarizer-modal">
+      <div class="modal-content">
+        <h3 id="language-detector-modal-title">Language Detector</h3>
+        <textarea
+          id="language-detector-text"
+          placeholder="Paste or type text in any language here..."
+          rows="10"
+        ></textarea>
+        <div id="language-detector-results" class="stream-output" style="display:none;">
+          <div class="stream-label">Detection Results:</div>
+          <div id="language-detector-results-text" class="stream-text"></div>
+        </div>
+        <div class="modal-buttons">
+          <button id="language-detector-cancel" class="modal-button secondary">
+            Cancel
+          </button>
+          <button id="language-detector-submit" class="modal-button primary">
+            Detect Language
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="language-detector-overlay" class="modal-overlay"></div>
+
     <script type="module" src="/app.ts"></script>
   </body>
 </html>

@@ -1,6 +1,6 @@
 {
   "name": "pwafire",
-  "version": "6.1.0",
+  "version": "6.2.0",
   "description": "A collection of PWA APIs and utilities",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
