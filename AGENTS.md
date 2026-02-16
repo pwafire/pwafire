@@ -85,18 +85,23 @@ chore(cleanup) - standardize error handling across modules
 
 ```bash
 # Ask user: "Which version bump? (patch/minor/major)"
-npm version patch   # 6.1.0 → 6.1.1 (fixes)
-npm version minor   # 6.1.0 → 6.2.0 (new APIs)
-npm version major   # 6.1.0 → 7.0.0 (breaking changes)
+npm version patch -m "chore(release): bump version to %s"   # 6.1.0 → 6.1.1 (fixes)
+npm version minor -m "chore(release): bump version to %s"   # 6.1.0 → 6.2.0 (new APIs)
+npm version major -m "chore(release): bump version to %s"   # 6.1.0 → 7.0.0 (breaking changes)
 
-# Push to trigger auto-release
-git push origin main --tags
+# Push branch and create PR
+git push origin <branch-name>
+gh pr create
+
+# Merge to main → auto-publishes!
+gh pr merge --merge
 ```
 
 **How it works:**
-1. `npm version` runs locally → updates package.json, creates tag
-2. `git push --tags` → triggers GitHub Actions
-3. Workflow publishes to npm automatically (OIDC, no secrets!)
+1. `npm version` runs locally → updates package.json, creates commit
+2. Create PR and merge to main
+3. Workflow detects version change → publishes to npm (OIDC, no secrets!)
+4. Creates GitHub release with tag automatically
 
 ## Best Practices
 

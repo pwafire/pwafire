@@ -85,33 +85,45 @@ return { ok: false, message: error instanceof Error ? error.message : "Failed" }
 
 PWAFire uses **npm Trusted Publisher** with OIDC authentication - no secrets required!
 
-**Important:** The version bump happens LOCALLY (not in CI). The workflow only publishes.
+**Important:** Publishing happens when you **merge to main**, not when you create tags.
 
 ```bash
+# Working on a feature branch (e.g., fix/console)
+
 # 1. Make your changes and commit
 git add .
 git commit -m "feat(clipboard) - add paste image support"
 
 # 2. Bump version (YOU choose the level based on changes)
-npm version patch   # For fixes → 6.1.0 → 6.1.1
-npm version minor   # For new APIs → 6.1.0 → 6.2.0
-npm version major   # For breaking changes → 6.1.0 → 7.0.0
+npm version patch -m "chore(release): bump version to %s"
+# For fixes → 6.1.0 → 6.1.1
+# OR
+npm version minor -m "chore(release): bump version to %s"
+# For new APIs → 6.1.0 → 6.2.0
+# OR
+npm version major -m "chore(release): bump version to %s"
+# For breaking changes → 6.1.0 → 7.0.0
 
-# This command does THREE things locally:
+# This command does TWO things locally:
 # ✅ Updates package.json version
-# ✅ Creates git commit: "6.1.1"
-# ✅ Creates git tag: "v6.1.1"
+# ✅ Creates git commit: "chore(release): bump version to 6.1.1"
 
-# 3. Push the tag to trigger workflow
-git push origin main --tags
+# 3. Push your branch and create PR
+git push origin fix/console
+gh pr create --title "Release v6.1.1" --body "Bug fixes and improvements"
 
-# 4. GitHub Actions automatically:
-#    ✅ Detects tag (e.g., "v6.1.1")
+# 4. Merge PR to main (via GitHub UI or CLI)
+gh pr merge --merge
+
+# 5. GitHub Actions automatically (on merge to main):
+#    ✅ Detects version change in package.json
 #    ✅ Runs lint, test, build
 #    ✅ Publishes to npm (via OIDC)
-#    ✅ Creates GitHub release
+#    ✅ Creates GitHub release with tag
 #    ✅ Generates changelog
 ```
+
+**Key difference:** No manual tag pushing! Workflow triggers on merge to main when package.json changes.
 
 ### For AI Agents
 
@@ -138,35 +150,45 @@ The user knows their changes best and should decide the semantic version level.
 #### Step 1: Local Version Bump (YOU run this)
 
 ```bash
-npm version patch  # or minor, or major
+npm version patch -m "chore(release): bump version to %s"
+# or minor, or major
 ```
 
 This runs on YOUR machine and does:
 - ✅ Updates `package.json`: `"version": "6.1.1"`
-- ✅ Creates git commit: `"6.1.1"`
-- ✅ Creates git tag: `v6.1.1`
+- ✅ Creates git commit: `"chore(release): bump version to 6.1.1"`
 
-**Note:** Nothing is published yet! This is all local.
+**Note:** No tag is created yet! This is all local.
 
-#### Step 2: Push the Tag (YOU run this)
+#### Step 2: Create PR and Merge to Main
 
 ```bash
-git push origin main --tags
+# Push your branch
+git push origin fix/console
+
+# Create PR
+gh pr create --title "Release v6.1.1"
+
+# Merge to main (after review/approval)
+gh pr merge --merge
 ```
 
-This pushes:
-- The commit with updated package.json
-- The version tag (e.g., `v6.1.1`)
-
-#### Step 3: GitHub Actions Detects Tag
+#### Step 3: GitHub Actions Detects Version Change
 
 `.github/workflows/publish.yml` triggers on:
 ```yaml
 on:
   push:
-    tags:
-      - 'v*'  # Matches v6.1.1, v6.2.0, v7.0.0, etc.
+    branches:
+      - main
+    paths:
+      - 'packages/pwafire/package.json'
 ```
+
+**Only runs if:**
+- Push to main ✅
+- package.json changed ✅
+- Commit message indicates version bump ✅
 
 #### Step 4: Workflow Runs
 
@@ -196,21 +218,35 @@ on:
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│  LOCAL (Your Machine)                               │
+│  LOCAL (Your Machine - Feature Branch)              │
 ├─────────────────────────────────────────────────────┤
-│  $ npm version patch                                │
-│    → package.json: "6.1.1"                         │
-│    → git commit: "6.1.1"                           │
-│    → git tag: "v6.1.1"                             │
+│  $ git checkout -b fix/console                      │
+│  $ # make changes...                                │
+│  $ git commit -m "feat: add new feature"            │
 │                                                     │
-│  $ git push origin main --tags                      │
+│  $ npm version patch -m "chore(release): %s"        │
+│    → package.json: "6.1.1"                         │
+│    → git commit: "chore(release): 6.1.1"           │
+│                                                     │
+│  $ git push origin fix/console                      │
+│  $ gh pr create                                     │
 └─────────────────────────────────────────────────────┘
                       ↓
 ┌─────────────────────────────────────────────────────┐
-│  GITHUB (Remote)                                    │
+│  GITHUB (Pull Request)                              │
 ├─────────────────────────────────────────────────────┤
-│  Tag "v6.1.1" detected                              │
-│    → Triggers publish.yml workflow                  │
+│  ✅ CI runs (tests pass)                            │
+│  ✅ Review & approve                                │
+│  ✅ Merge to main                                   │
+└─────────────────────────────────────────────────────┘
+                      ↓
+┌─────────────────────────────────────────────────────┐
+│  GITHUB (Main Branch)                               │
+├─────────────────────────────────────────────────────┤
+│  Push to main detected!                             │
+│  ├─ package.json changed? ✅                        │
+│  ├─ Commit is version bump? ✅                      │
+│  └─ Triggers publish.yml workflow                   │
 └─────────────────────────────────────────────────────┘
                       ↓
 ┌─────────────────────────────────────────────────────┐
@@ -221,6 +257,8 @@ on:
 │  3. Build package ✅                                 │
 │  4. Issue OIDC token                                │
 │  5. npm publish pwafire@6.1.1                       │
+│  6. Create git tag: v6.1.1                          │
+│  7. Create GitHub release                           │
 └─────────────────────────────────────────────────────┘
                       ↓
 ┌─────────────────────────────────────────────────────┐
