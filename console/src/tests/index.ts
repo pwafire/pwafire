@@ -33,6 +33,24 @@ const setupStreamModalClose = (apiName: string): void => {
   (submitBtn as HTMLButtonElement).disabled = false;
   (cancelBtn as HTMLButtonElement).disabled = false;
 
+  // Enable select dropdowns for editing
+  if (!isLanguageDetector) {
+    const typeSelect = document.getElementById("summarizer-type");
+    const formatSelect = document.getElementById("summarizer-format");
+    const lengthSelect = document.getElementById("summarizer-length");
+    const sourceLangSelect = document.getElementById("translator-source");
+    const targetLangSelect = document.getElementById("translator-target");
+
+    if (isTranslator) {
+      if (sourceLangSelect) (sourceLangSelect as HTMLSelectElement).disabled = false;
+      if (targetLangSelect) (targetLangSelect as HTMLSelectElement).disabled = false;
+    } else {
+      if (typeSelect) (typeSelect as HTMLSelectElement).disabled = false;
+      if (formatSelect) (formatSelect as HTMLSelectElement).disabled = false;
+      if (lengthSelect) (lengthSelect as HTMLSelectElement).disabled = false;
+    }
+  }
+
   // All AI modals get retry button based on their action
   let retryText = "Summarize Again";
   if (isTranslator) {
@@ -93,6 +111,21 @@ const setupStreamModalClose = (apiName: string): void => {
       (cancelBtn as HTMLButtonElement).disabled = true;
       (submitBtn as HTMLButtonElement).textContent = "Processing...";
 
+      // Disable select dropdowns during processing
+      if (isSummarizer) {
+        const typeSelect = document.getElementById("summarizer-type") as HTMLSelectElement;
+        const formatSelect = document.getElementById("summarizer-format") as HTMLSelectElement;
+        const lengthSelect = document.getElementById("summarizer-length") as HTMLSelectElement;
+        if (typeSelect) typeSelect.disabled = true;
+        if (formatSelect) formatSelect.disabled = true;
+        if (lengthSelect) lengthSelect.disabled = true;
+      } else if (isTranslator) {
+        const sourceLangSelect = document.getElementById("translator-source") as HTMLSelectElement;
+        const targetLangSelect = document.getElementById("translator-target") as HTMLSelectElement;
+        if (sourceLangSelect) sourceLangSelect.disabled = true;
+        if (targetLangSelect) targetLangSelect.disabled = true;
+      }
+
       try {
         // Get current options for summarizer/translator
         let params: unknown[] = [text];
@@ -139,6 +172,21 @@ const setupStreamModalClose = (apiName: string): void => {
         (submitBtn as HTMLButtonElement).disabled = false;
         (cancelBtn as HTMLButtonElement).disabled = false;
 
+        // Re-enable select dropdowns
+        if (isSummarizer) {
+          const typeSelect = document.getElementById("summarizer-type") as HTMLSelectElement;
+          const formatSelect = document.getElementById("summarizer-format") as HTMLSelectElement;
+          const lengthSelect = document.getElementById("summarizer-length") as HTMLSelectElement;
+          if (typeSelect) typeSelect.disabled = false;
+          if (formatSelect) formatSelect.disabled = false;
+          if (lengthSelect) lengthSelect.disabled = false;
+        } else if (isTranslator) {
+          const sourceLangSelect = document.getElementById("translator-source") as HTMLSelectElement;
+          const targetLangSelect = document.getElementById("translator-target") as HTMLSelectElement;
+          if (sourceLangSelect) sourceLangSelect.disabled = false;
+          if (targetLangSelect) targetLangSelect.disabled = false;
+        }
+
         let retryText = "Summarize Again";
         if (isTranslator) retryText = "Translate Again";
         else if (isLanguageDetector) retryText = "Detect Again";
@@ -152,6 +200,21 @@ const setupStreamModalClose = (apiName: string): void => {
         // Reset on error
         (submitBtn as HTMLButtonElement).disabled = false;
         (cancelBtn as HTMLButtonElement).disabled = false;
+
+        // Re-enable select dropdowns
+        if (isSummarizer) {
+          const typeSelect = document.getElementById("summarizer-type") as HTMLSelectElement;
+          const formatSelect = document.getElementById("summarizer-format") as HTMLSelectElement;
+          const lengthSelect = document.getElementById("summarizer-length") as HTMLSelectElement;
+          if (typeSelect) typeSelect.disabled = false;
+          if (formatSelect) formatSelect.disabled = false;
+          if (lengthSelect) lengthSelect.disabled = false;
+        } else if (isTranslator) {
+          const sourceLangSelect = document.getElementById("translator-source") as HTMLSelectElement;
+          const targetLangSelect = document.getElementById("translator-target") as HTMLSelectElement;
+          if (sourceLangSelect) sourceLangSelect.disabled = false;
+          if (targetLangSelect) targetLangSelect.disabled = false;
+        }
 
         let retryText = "Summarize Again";
         if (isTranslator) retryText = "Translate Again";
