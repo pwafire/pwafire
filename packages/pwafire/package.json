@@ -46,6 +46,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@types/dom-chromium-ai": "^0.0.14",
     "@types/jest": "^29.5.0",
     "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^8.55.0",

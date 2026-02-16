@@ -714,11 +714,19 @@ const apiConfigs = {
         config.options
       ];
     }
+  },
+  languageDetector: {
+    title: "Language Detector",
+    params: () => ["Bonjour! Comment allez-vous? Je suis très content de vous voir aujourd'hui."]
+  },
+  languageDetectorTopLanguage: {
+    title: "Language Detector (Top)",
+    params: () => ["Hola! ¿Cómo estás? Espero que tengas un buen día."]
   }
 };
 
 const apiGroups = {
-  "🤖 AI": ["summarizer", "summarizerStream", "translator", "translatorStream"],
+  "🤖 AI": ["summarizer", "summarizerStream", "translator", "translatorStream", "languageDetector", "languageDetectorTopLanguage"],
   "📋 Clipboard": ["copyText", "readText", "copyImage"],
   "📁 File System": ["pickFile", "pickTextFile", "readFiles", "createFile", "writeFile", "writeUrlToFile"],
   "🔔 Notifications": ["notification", "setBadge", "clearBadge"],
@@ -784,10 +792,12 @@ window.runTest = async (apiName) => {
         const cancelBtn = document.getElementById("summarizer-cancel");
         const textarea = document.getElementById("summarizer-text");
 
+        // Re-enable inputs for viewing/editing
         textarea.disabled = false;
         submitBtn.disabled = false;
         cancelBtn.disabled = false;
-        submitBtn.textContent = apiName === "translatorStream" ? "Translate Again" : "Summarize Again";
+        submitBtn.textContent = "Close";
+        cancelBtn.style.display = "none"; // Hide cancel button after completion
 
         if (apiName === "translatorStream") {
           const sourceLangSelect = document.getElementById("translator-source");
@@ -803,16 +813,17 @@ window.runTest = async (apiName) => {
           if (lengthSelect) lengthSelect.disabled = false;
         }
 
-        submitBtn.onclick = () => {
+        // Replace onclick handlers with clean close action
+        const closeHandler = () => {
           window.__summarizerCloseModal();
           window.__summarizerCloseModal = null;
-          setTimeout(() => runTest(apiName), 100);
+          // Reset button for next use
+          submitBtn.textContent = apiName === "translatorStream" ? "Translate" : "Summarize";
+          cancelBtn.style.display = "inline-block";
         };
 
-        cancelBtn.onclick = () => {
-          window.__summarizerCloseModal();
-          window.__summarizerCloseModal = null;
-        };
+        submitBtn.onclick = closeHandler;
+        cancelBtn.onclick = closeHandler;
       } else {
         window.__summarizerCloseModal();
         window.__summarizerCloseModal = null;
@@ -908,13 +919,14 @@ const featureDisplayNames = {
   screenShare: "Screen Share",
   summarizer: "Summarizer",
   translator: "Translator",
+  languageDetector: "Language Detector",
   visibility: "Visibility",
   wakeLock: "Wake Lock",
   webOtp: "Web OTP",
   webShare: "Web Share"
 };
 
-const aiFeatures = ["summarizer", "translator"];
+const aiFeatures = ["summarizer", "translator", "languageDetector"];
 
 window.checkAllFeatures = () => {
   logConsole("Scanning for PWA features...", "info");

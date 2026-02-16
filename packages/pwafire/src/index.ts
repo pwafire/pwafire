@@ -10,6 +10,7 @@ export * from "./pwa/fonts";
 export * from "./pwa/fullscreen";
 export * from "./pwa/idle-detection";
 export * from "./pwa/install";
+export * from "./pwa/language-detector";
 export * from "./pwa/lazy-load";
 export * from "./pwa/notification";
 export * from "./pwa/payment";

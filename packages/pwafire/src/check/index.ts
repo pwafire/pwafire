@@ -10,6 +10,7 @@ export const fonts = () => "queryLocalFonts" in window;
 export const fullscreen = () => "requestFullscreen" in document.documentElement;
 export const idleDetection = () => "IdleDetector" in window;
 export const install = () => "getInstalledRelatedApps" in navigator;
+export const languageDetector = () => "LanguageDetector" in self;
 export const lazyLoad = () => "loading" in HTMLImageElement.prototype;
 export const notification = () => "Notification" in window;
 export const payment = () => "PaymentRequest" in window;
