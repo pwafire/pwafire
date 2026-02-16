@@ -32,9 +32,16 @@ const setupStreamModalClose = (apiName: string): void => {
   (submitBtn as HTMLButtonElement).disabled = false;
   (cancelBtn as HTMLButtonElement).disabled = false;
 
-  // After results are shown, button should say "Close"
-  (submitBtn as HTMLButtonElement).textContent = "Close";
-  cancelBtn.style.display = "none";
+  // Language detector gets both buttons: "Detect Again" and "Close"
+  if (isLanguageDetector) {
+    (submitBtn as HTMLButtonElement).textContent = "Detect Again";
+    (cancelBtn as HTMLButtonElement).textContent = "Close";
+    cancelBtn.style.display = "inline-block";
+  } else {
+    // Other modals get single "Close" button
+    (submitBtn as HTMLButtonElement).textContent = "Close";
+    cancelBtn.style.display = "none";
+  }
 
   if (!isLanguageDetector) {
     const typeSelect = document.getElementById("summarizer-type");
@@ -55,6 +62,28 @@ const setupStreamModalClose = (apiName: string): void => {
     }
   }
 
+  const retryHandler = (): void => {
+    // For language detector, retry means run test again
+    if (isLanguageDetector) {
+      window.__summarizerCloseModal?.();
+      window.__summarizerCloseModal = null;
+      setTimeout(() => runTest(apiName), 100);
+    } else {
+      // For others, just close
+      window.__summarizerCloseModal?.();
+      window.__summarizerCloseModal = null;
+
+      // Reset button text for next use
+      let buttonText = "Summarize";
+      if (apiName === "translator" || apiName === "translatorStream") {
+        buttonText = "Translate";
+      }
+
+      (submitBtn as HTMLButtonElement).textContent = buttonText;
+      cancelBtn.style.display = "inline-block";
+    }
+  };
+
   const closeHandler = (): void => {
     window.__summarizerCloseModal?.();
     window.__summarizerCloseModal = null;
@@ -68,10 +97,11 @@ const setupStreamModalClose = (apiName: string): void => {
     }
 
     (submitBtn as HTMLButtonElement).textContent = buttonText;
+    (cancelBtn as HTMLButtonElement).textContent = "Cancel";
     cancelBtn.style.display = "inline-block";
   };
 
-  submitBtn.onclick = closeHandler;
+  submitBtn.onclick = retryHandler;
   cancelBtn.onclick = closeHandler;
 };
 
