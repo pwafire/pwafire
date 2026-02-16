@@ -19,8 +19,8 @@ jobs:
   publish:
     name: Publish to npm
     runs-on: ubuntu-latest
-    # Only run if commit message indicates version bump
-    if: startsWith(github.event.head_commit.message, 'chore(release)') || startsWith(github.event.head_commit.message, 'v') || contains(github.event.head_commit.message, 'bump version')
+    # Only publish for feat() or fix() commits, not chore()
+    if: startsWith(github.event.head_commit.message, 'feat(') || startsWith(github.event.head_commit.message, 'fix(')
     steps:
       - uses: actions/checkout@v4
 

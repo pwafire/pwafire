@@ -87,26 +87,26 @@ PWAFire uses **npm Trusted Publisher** with OIDC authentication - no secrets req
 
 **Important:** Publishing happens when you **merge to main**, not when you create tags.
 
+**Commit Scope Requirements:**
+- ✅ `feat()` - new features → triggers auto-publish
+- ✅ `fix()` - bug fixes → triggers auto-publish
+- ❌ `chore()` - maintenance work → NO publish
+
 ```bash
 # Working on a feature branch (e.g., fix/console)
 
-# 1. Make your changes and commit
+# 1. Make your changes and commit (use feat or fix scope!)
 git add .
 git commit -m "feat(clipboard) - add paste image support"
+# OR
+git commit -m "fix(clipboard) - resolve Safari copy error"
 
 # 2. Bump version (YOU choose the level based on changes)
-npm version patch -m "chore(release): bump version to %s"
-# For fixes → 6.1.0 → 6.1.1
-# OR
-npm version minor -m "chore(release): bump version to %s"
-# For new APIs → 6.1.0 → 6.2.0
-# OR
-npm version major -m "chore(release): bump version to %s"
-# For breaking changes → 6.1.0 → 7.0.0
+npm version patch   # For fixes → 6.1.0 → 6.1.1
+npm version minor   # For new APIs → 6.1.0 → 6.2.0
+npm version major   # For breaking changes → 6.1.0 → 7.0.0
 
-# This command does TWO things locally:
-# ✅ Updates package.json version
-# ✅ Creates git commit: "chore(release): bump version to 6.1.1"
+# This command updates package.json and creates a commit
 
 # 3. Push your branch and create PR
 git push origin fix/console
@@ -116,6 +116,7 @@ gh pr create --title "Release v6.1.1" --body "Bug fixes and improvements"
 gh pr merge --merge
 
 # 5. GitHub Actions automatically (on merge to main):
+#    ✅ Detects feat() or fix() commit
 #    ✅ Detects version change in package.json
 #    ✅ Runs lint, test, build
 #    ✅ Publishes to npm (via OIDC)
@@ -123,7 +124,10 @@ gh pr merge --merge
 #    ✅ Generates changelog
 ```
 
-**Key difference:** No manual tag pushing! Workflow triggers on merge to main when package.json changes.
+**Key points:**
+- Workflow triggers on merge to main when package.json changes
+- Only publishes for `feat()` or `fix()` commits (not `chore()`)
+- No manual tag pushing needed!
 
 ### For AI Agents
 
@@ -141,6 +145,14 @@ Which version bump should I use?
 - patch (6.1.0 → 6.1.1) - bug fixes only
 - minor (6.1.0 → 6.2.0) - new features/APIs
 - major (6.1.0 → 7.0.0) - breaking changes
+```
+
+✅ **Ensure feat() or fix() scope:**
+```
+Is your last commit using feat() or fix() scope?
+- feat() = new features
+- fix() = bug fixes
+- NOT chore() (won't trigger publish)
 ```
 
 The user knows their changes best and should decide the semantic version level.
