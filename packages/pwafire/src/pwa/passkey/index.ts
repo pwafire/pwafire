@@ -19,6 +19,14 @@ type PasskeyResult = {
 const getPubKey = (): unknown =>
   typeof window !== "undefined" ? (window as unknown as { PublicKeyCredential?: unknown }).PublicKeyCredential : undefined;
 
+let passkeyAbortController: AbortController | null = null;
+
+const getOrCreateSignal = (): AbortSignal => {
+  if (passkeyAbortController) passkeyAbortController.abort();
+  passkeyAbortController = new AbortController();
+  return passkeyAbortController.signal;
+};
+
 const parseCreationOptions = (json: Record<string, unknown>): ParseCreationResult => {
   try {
     const PubKey = getPubKey();
@@ -53,14 +61,14 @@ const parseRequestOptions = (json: Record<string, unknown>): ParseRequestResult 
   }
 };
 
-const create = async (options: PublicKeyCredentialCreationOptions, signal?: AbortSignal): Promise<PasskeyResult> => {
+const create = async (options: PublicKeyCredentialCreationOptions): Promise<PasskeyResult> => {
   try {
     if (!("PublicKeyCredential" in window) || !("credentials" in navigator)) {
       return { ok: false, message: "Passkey API not supported" };
     }
     const credential = (await navigator.credentials.create({
       publicKey: options,
-      signal,
+      signal: getOrCreateSignal(),
     })) as PublicKeyCredential | null;
     if (!credential) {
       return { ok: false, message: "Failed to create passkey" };
@@ -83,14 +91,14 @@ const create = async (options: PublicKeyCredentialCreationOptions, signal?: Abor
   }
 };
 
-const get = async (options: PublicKeyCredentialRequestOptions, signal?: AbortSignal): Promise<PasskeyResult> => {
+const get = async (options: PublicKeyCredentialRequestOptions): Promise<PasskeyResult> => {
   try {
     if (!("PublicKeyCredential" in window) || !("credentials" in navigator)) {
       return { ok: false, message: "Passkey API not supported" };
     }
     const credential = (await navigator.credentials.get({
       publicKey: options,
-      signal,
+      signal: getOrCreateSignal(),
     })) as PublicKeyCredential | null;
     if (!credential) {
       return { ok: false, message: "Failed to authenticate" };
@@ -110,7 +118,7 @@ const get = async (options: PublicKeyCredentialRequestOptions, signal?: AbortSig
   }
 };
 
-const getConditional = async (options: PublicKeyCredentialRequestOptions, signal?: AbortSignal): Promise<PasskeyResult> => {
+const getConditional = async (options: PublicKeyCredentialRequestOptions): Promise<PasskeyResult> => {
   try {
     if (!("PublicKeyCredential" in window) || !("credentials" in navigator)) {
       return { ok: false, message: "Passkey API not supported" };
@@ -118,7 +126,7 @@ const getConditional = async (options: PublicKeyCredentialRequestOptions, signal
     const credential = (await navigator.credentials.get({
       publicKey: options,
       mediation: "conditional",
-      signal,
+      signal: getOrCreateSignal(),
     })) as PublicKeyCredential | null;
     if (!credential) {
       return { ok: false, message: "Failed to authenticate" };
@@ -154,12 +162,20 @@ const signalUnknown = async (rpId: string, credentialId: string): Promise<{ ok: 
   }
 };
 
+const abort = (): void => {
+  if (passkeyAbortController) {
+    passkeyAbortController.abort();
+    passkeyAbortController = null;
+  }
+};
+
 export const passkey = {
   parseCreationOptions,
   parseRequestOptions,
   create,
   get,
   getConditional,
+  abort,
   signalUnknown,
   get signalUnknownCredential(): boolean {
     const PubKey = getPubKey();

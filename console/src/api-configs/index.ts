@@ -3,18 +3,13 @@ import { logConsole } from "../log";
 import {
   showSummarizerModal,
   showTranslatorModal,
-  showLanguageDetectorModal,
+  showLanguageDetectorModal
 } from "../modals";
 import { passkey } from "pwafire";
-import { getMockCreationOptions, getMockRequestOptions } from "../mocks/passkey-mock";
-
-let passkeyAbortController: AbortController | null = null;
-
-const getPasskeySignal = (): AbortSignal => {
-  if (passkeyAbortController) passkeyAbortController.abort();
-  passkeyAbortController = new AbortController();
-  return passkeyAbortController.signal;
-};
+import {
+  getMockCreationOptions,
+  getMockRequestOptions
+} from "../mocks/passkey-mock";
 
 export const apiConfigs: Record<string, ApiConfig> = {
   webShare: {
@@ -114,8 +109,8 @@ export const apiConfigs: Record<string, ApiConfig> = {
         logConsole(parsed.message, "error");
         return null;
       }
-      return [parsed.options, getPasskeySignal()];
-    },
+      return [parsed.options];
+    }
   },
   "passkey.get": {
     title: "Passkey Get",
@@ -132,8 +127,8 @@ export const apiConfigs: Record<string, ApiConfig> = {
         logConsole(parsed.message, "error");
         return null;
       }
-      return [parsed.options, getPasskeySignal()];
-    },
+      return [parsed.options];
+    }
   },
   "passkey.getConditional": {
     title: "Passkey Get (Conditional)",
@@ -150,8 +145,8 @@ export const apiConfigs: Record<string, ApiConfig> = {
         logConsole(parsed.message, "error");
         return null;
       }
-      return [parsed.options, getPasskeySignal()];
-    },
+      return [parsed.options];
+    }
   },
   payment: {
     title: "Payment",
@@ -332,7 +327,7 @@ export const apiConfigs: Record<string, ApiConfig> = {
       if (!config) return null;
       window.__summarizerCloseModal = config.closeModal;
       return [config.text];
-    },
+    }
   }
 };
 

@@ -8,13 +8,16 @@ Implementation notes for the passkey module.
 passkey = {
   parseCreationOptions(json): { ok, message, options?: PublicKeyCredentialCreationOptions }
   parseRequestOptions(json): { ok, message, options?: PublicKeyCredentialRequestOptions }
-  create(options: PublicKeyCredentialCreationOptions, signal?): Promise<PasskeyResult>
-  get(options: PublicKeyCredentialRequestOptions, signal?): Promise<PasskeyResult>
-  getConditional(options: PublicKeyCredentialRequestOptions, signal?): Promise<PasskeyResult>
+  create(options: PublicKeyCredentialCreationOptions): Promise<PasskeyResult>
+  get(options: PublicKeyCredentialRequestOptions): Promise<PasskeyResult>
+  getConditional(options: PublicKeyCredentialRequestOptions): Promise<PasskeyResult>
+  abort(): void
   signalUnknown(rpId, credentialId): Promise<{ ok, message }>
   signalUnknownCredential: boolean
 }
 ```
+
+Abort handling is internal: each create/get/getConditional aborts any pending request before starting. Use `passkey.abort()` to cancel manually (e.g. on form submit).
 
 Types follow [PublicKeyCredentialCreationOptions](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialCreationOptions) and [PublicKeyCredentialRequestOptions](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialRequestOptions).
 
@@ -35,19 +38,10 @@ For more details, see [userVerification deep dive](https://web.dev/articles/weba
 
 ## Request Already Pending
 
-WebAuthn allows only one credential operation at a time. If you see "A request is already pending with passkeys", a previous `create`, `get`, or `getConditional` call is still in progress.
+WebAuthn allows only one credential operation at a time. The passkey API handles this internally: each `create`, `get`, or `getConditional` aborts any pending request before starting.
 
-**Solution:** Use `AbortController` to cancel the previous request before starting a new one:
+To cancel manually (e.g. when the user submits a form with a password instead of passkey):
 
 ```typescript
-let passkeyAbortController: AbortController | null = null;
-
-const runCreate = async () => {
-  if (passkeyAbortController) passkeyAbortController.abort();
-  passkeyAbortController = new AbortController();
-  const { ok, credential } = await passkey.create(options, passkeyAbortController.signal);
-  // ...
-};
+form.addEventListener("submit", () => passkey.abort());
 ```
-
-When switching between passkey operations (e.g. from `getConditional` to `create`), abort the previous controller first. See [Create a passkey for passwordless logins](https://web.dev/articles/passkey-registration) for the full flow.
