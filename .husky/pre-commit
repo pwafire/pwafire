@@ -4,6 +4,5 @@
 # Navigate to pwafire package
 cd packages/pwafire || exit 1
 
-# Run lint and format check
-npm run lint
-npx prettier --check "src/**/*.ts"
+# Run tests before commit
+npm test

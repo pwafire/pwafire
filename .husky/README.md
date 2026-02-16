@@ -25,16 +25,17 @@ Validates commit messages using commitlint.
 ```
 
 ### `pre-commit`
-Runs linting and format checks before commit.
+Runs tests before commit to ensure code quality.
 
 **Checks:**
-- ESLint (no errors)
-- Prettier formatting
+- Jest test suite (all tests must pass)
 
 **To skip hooks (use sparingly):**
 ```bash
 git commit --no-verify -m "feat(scope): emergency fix"
 ```
+
+**Note:** Linting is checked in CI, not pre-commit.
 
 ## Configuration
 
