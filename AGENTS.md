@@ -81,8 +81,10 @@ chore(cleanup) - standardize error handling across modules
 
 **Quick Reference:** See [Versioning & Release Guide](./docs/versioning-and-release.md) for complete details.
 
+**IMPORTANT for AI Agents:** Always ASK the user which version bump to use. Don't assume!
+
 ```bash
-# Bump version and release
+# Ask user: "Which version bump? (patch/minor/major)"
 npm version patch   # 6.1.0 → 6.1.1 (fixes)
 npm version minor   # 6.1.0 → 6.2.0 (new APIs)
 npm version major   # 6.1.0 → 7.0.0 (breaking changes)
@@ -91,7 +93,10 @@ npm version major   # 6.1.0 → 7.0.0 (breaking changes)
 git push origin main --tags
 ```
 
-Automated via GitHub Actions with OIDC trusted publisher (no secrets needed!).
+**How it works:**
+1. `npm version` runs locally → updates package.json, creates tag
+2. `git push --tags` → triggers GitHub Actions
+3. Workflow publishes to npm automatically (OIDC, no secrets!)
 
 ## Best Practices
 

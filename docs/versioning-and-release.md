@@ -85,52 +85,153 @@ return { ok: false, message: error instanceof Error ? error.message : "Failed" }
 
 PWAFire uses **npm Trusted Publisher** with OIDC authentication - no secrets required!
 
+**Important:** The version bump happens LOCALLY (not in CI). The workflow only publishes.
+
 ```bash
 # 1. Make your changes and commit
 git add .
 git commit -m "feat(clipboard) - add paste image support"
 
-# 2. Bump version (choose appropriate level)
-npm version patch   # For fixes
-npm version minor   # For new APIs
-npm version major   # For breaking changes
+# 2. Bump version (YOU choose the level based on changes)
+npm version patch   # For fixes → 6.1.0 → 6.1.1
+npm version minor   # For new APIs → 6.1.0 → 6.2.0
+npm version major   # For breaking changes → 6.1.0 → 7.0.0
 
-# 3. Push with tags
+# This command does THREE things locally:
+# ✅ Updates package.json version
+# ✅ Creates git commit: "6.1.1"
+# ✅ Creates git tag: "v6.1.1"
+
+# 3. Push the tag to trigger workflow
 git push origin main --tags
 
 # 4. GitHub Actions automatically:
+#    ✅ Detects tag (e.g., "v6.1.1")
 #    ✅ Runs lint, test, build
 #    ✅ Publishes to npm (via OIDC)
 #    ✅ Creates GitHub release
 #    ✅ Generates changelog
 ```
 
+### For AI Agents
+
+**When assisting with releases, ALWAYS ask the user which version bump to use:**
+
+❌ **Don't assume:**
+```bash
+# Wrong - don't decide for the user!
+npm version patch
+```
+
+✅ **Always ask:**
+```
+Which version bump should I use?
+- patch (6.1.0 → 6.1.1) - bug fixes only
+- minor (6.1.0 → 6.2.0) - new features/APIs
+- major (6.1.0 → 7.0.0) - breaking changes
+```
+
+The user knows their changes best and should decide the semantic version level.
+
 ### What Happens Behind the Scenes
 
-1. **`npm version`** command:
-   - Updates `package.json` version
-   - Creates a git commit
-   - Creates a git tag (format: `v6.1.0`)
+#### Step 1: Local Version Bump (YOU run this)
 
-2. **`git push --tags`** triggers:
-   - `.github/workflows/publish.yml` workflow
-   - Runs on: `push.tags: ['v*']`
+```bash
+npm version patch  # or minor, or major
+```
 
-3. **GitHub Actions workflow**:
-   ```yaml
-   - Checkout code
-   - Setup Node.js with npm registry
-   - Install dependencies (npm ci)
-   - Run full verification (npm run verify)
-   - Publish to npm (OIDC authentication)
-   - Create GitHub release (auto-generated notes)
-   ```
+This runs on YOUR machine and does:
+- ✅ Updates `package.json`: `"version": "6.1.1"`
+- ✅ Creates git commit: `"6.1.1"`
+- ✅ Creates git tag: `v6.1.1`
 
-4. **npm Trusted Publisher**:
-   - GitHub issues OIDC token
-   - npm verifies token against trusted publisher config
-   - Publishes with provenance attestation
-   - No `NPM_TOKEN` secret needed! 🎉
+**Note:** Nothing is published yet! This is all local.
+
+#### Step 2: Push the Tag (YOU run this)
+
+```bash
+git push origin main --tags
+```
+
+This pushes:
+- The commit with updated package.json
+- The version tag (e.g., `v6.1.1`)
+
+#### Step 3: GitHub Actions Detects Tag
+
+`.github/workflows/publish.yml` triggers on:
+```yaml
+on:
+  push:
+    tags:
+      - 'v*'  # Matches v6.1.1, v6.2.0, v7.0.0, etc.
+```
+
+#### Step 4: Workflow Runs
+
+```yaml
+- Checkout code (includes your package.json with new version)
+- Setup Node.js with npm registry
+- Install dependencies (npm ci)
+- Run full verification (npm run verify)
+  → lint, test, build all must pass
+- Publish to npm (OIDC authentication)
+  → npm reads version from package.json (e.g., 6.1.1)
+  → publishes as pwafire@6.1.1
+- Create GitHub release (auto-generated notes)
+```
+
+#### Step 5: npm Trusted Publisher (The Magic ✨)
+
+- GitHub Actions issues an OIDC token
+- npm verifies token against trusted publisher config:
+  - Repository: `pwafire/pwafire` ✅
+  - Workflow: `publish.yml` ✅
+  - Tag format: `v*` ✅
+- Publishes with provenance attestation
+- **No `NPM_TOKEN` secret needed!**
+
+### The Full Flow Visualized
+
+```
+┌─────────────────────────────────────────────────────┐
+│  LOCAL (Your Machine)                               │
+├─────────────────────────────────────────────────────┤
+│  $ npm version patch                                │
+│    → package.json: "6.1.1"                         │
+│    → git commit: "6.1.1"                           │
+│    → git tag: "v6.1.1"                             │
+│                                                     │
+│  $ git push origin main --tags                      │
+└─────────────────────────────────────────────────────┘
+                      ↓
+┌─────────────────────────────────────────────────────┐
+│  GITHUB (Remote)                                    │
+├─────────────────────────────────────────────────────┤
+│  Tag "v6.1.1" detected                              │
+│    → Triggers publish.yml workflow                  │
+└─────────────────────────────────────────────────────┘
+                      ↓
+┌─────────────────────────────────────────────────────┐
+│  GITHUB ACTIONS (CI/CD)                             │
+├─────────────────────────────────────────────────────┤
+│  1. Checkout code                                   │
+│  2. Run tests ✅                                     │
+│  3. Build package ✅                                 │
+│  4. Issue OIDC token                                │
+│  5. npm publish pwafire@6.1.1                       │
+└─────────────────────────────────────────────────────┘
+                      ↓
+┌─────────────────────────────────────────────────────┐
+│  NPM REGISTRY                                       │
+├─────────────────────────────────────────────────────┤
+│  ✅ Verify OIDC token (trusted publisher)           │
+│  ✅ Publish pwafire@6.1.1                           │
+│  ✅ Add provenance attestation                      │
+│  🎉 Package live at npmjs.com/package/pwafire       │
+└─────────────────────────────────────────────────────┘
+```
 
 ## Version Decision Tree
 
