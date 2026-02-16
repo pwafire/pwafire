@@ -62,12 +62,46 @@ const setupStreamModalClose = (apiName: string): void => {
     }
   }
 
-  const retryHandler = (): void => {
-    // For language detector, retry means run test again
+  const retryHandler = async (): Promise<void> => {
+    // For language detector, retry with current text without closing modal
     if (isLanguageDetector) {
-      window.__summarizerCloseModal?.();
-      window.__summarizerCloseModal = null;
-      setTimeout(() => runTest(apiName), 100);
+      const text = (textarea as HTMLTextAreaElement).value.trim();
+      if (!text) {
+        logConsole("Please enter some text to detect language", "error");
+        return;
+      }
+
+      // Show processing state
+      (submitBtn as HTMLButtonElement).disabled = true;
+      (cancelBtn as HTMLButtonElement).disabled = true;
+      (submitBtn as HTMLButtonElement).textContent = "Processing...";
+
+      try {
+        // Call the API directly
+        const apiFn = pwafire[apiName as keyof typeof pwafire];
+        const result = await (apiFn as (text: string) => Promise<unknown>)(text);
+
+        // Show results
+        const resultsOutput = document.getElementById("language-detector-results");
+        const resultsText = document.getElementById("language-detector-results-text");
+        if (resultsOutput && resultsText) {
+          resultsOutput.style.display = "block";
+          resultsText.textContent = JSON.stringify(result, null, 2);
+        }
+
+        // Reset to retry state
+        (submitBtn as HTMLButtonElement).disabled = false;
+        (cancelBtn as HTMLButtonElement).disabled = false;
+        (submitBtn as HTMLButtonElement).textContent = "Detect Again";
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        logConsole(`Language Detector: ERROR - ${msg}`, "error");
+
+        // Reset on error
+        (submitBtn as HTMLButtonElement).disabled = false;
+        (cancelBtn as HTMLButtonElement).disabled = false;
+        (submitBtn as HTMLButtonElement).textContent = "Detect Again";
+      }
     } else {
       // For others, just close
       window.__summarizerCloseModal?.();
