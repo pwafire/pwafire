@@ -13,6 +13,7 @@ export * from "./pwa/install";
 export * from "./pwa/language-detector";
 export * from "./pwa/lazy-load";
 export * from "./pwa/notification";
+export * from "./pwa/passkey";
 export * from "./pwa/payment";
 export * from "./pwa/screen";
 export * from "./pwa/summarizer";

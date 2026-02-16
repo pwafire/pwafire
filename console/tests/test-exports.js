@@ -48,6 +48,7 @@ async function testExports() {
     "install",
     "lazy-load",
     "notification",
+    "passkey",
     "payment",
     "screen",
     "visibility",

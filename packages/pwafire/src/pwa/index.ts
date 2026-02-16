@@ -13,6 +13,7 @@ export * from "./install";
 export * from "./language-detector";
 export * from "./lazy-load";
 export * from "./notification";
+export * from "./passkey";
 export * from "./payment";
 export * from "./screen";
 export * from "./summarizer";

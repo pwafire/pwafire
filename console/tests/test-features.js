@@ -25,6 +25,7 @@ async function testFeatures() {
       'fonts': checkModule.fonts,
       'fullscreen': checkModule.fullscreen,
       'notification': checkModule.notification,
+      'passkey': checkModule.passkey,
       'payment': checkModule.payment,
       'visibility': checkModule.visibility,
       'wakeLock': checkModule.wakeLock,

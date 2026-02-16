@@ -1,5 +1,14 @@
 import * as pwafire from "pwafire";
 import { apiConfigs, apiGroups } from "../api-configs";
+
+const getApiFn = (apiName: string): unknown => {
+  if (apiName.includes(".")) {
+    const [obj, method] = apiName.split(".");
+    const parent = (pwafire as Record<string, unknown>)[obj];
+    return parent && typeof parent === "object" && method in parent ? (parent as Record<string, unknown>)[method] : undefined;
+  }
+  return (pwafire as Record<string, unknown>)[apiName];
+};
 import { stats, updateStats } from "../stats";
 import { logConsole } from "../log";
 import { showResult } from "../results";
@@ -151,7 +160,7 @@ const setupStreamModalClose = (apiName: string): void => {
         }
 
         // Call the API directly
-        const apiFn = pwafire[apiName as keyof typeof pwafire];
+        const apiFn = getApiFn(apiName);
         const result = await (apiFn as (...args: unknown[]) => Promise<unknown>)(...params);
 
         // Hide loading bar
@@ -326,7 +335,7 @@ export const generateTests = (): void => {
     testGrid.appendChild(groupHeader);
 
     apis.forEach((key) => {
-      const pwafireApi = pwafire[key as keyof typeof pwafire];
+      const pwafireApi = getApiFn(key);
       const config = apiConfigs[key];
 
       if (typeof pwafireApi === "function" && config) {
@@ -366,7 +375,7 @@ export const runTest = async (apiName: string): Promise<void> => {
       return;
     }
 
-    const apiFn = pwafire[apiName as keyof typeof pwafire];
+    const apiFn = getApiFn(apiName);
     if (typeof apiFn !== "function") {
       stats.failed++;
       updateStats();
@@ -465,7 +474,7 @@ export const runAllTests = async (): Promise<void> => {
   logConsole("=".repeat(50), "info");
 
   for (const apiName of Object.keys(apiConfigs)) {
-    if (typeof pwafire[apiName as keyof typeof pwafire] === "function") {
+    if (typeof getApiFn(apiName) === "function") {
       await runTest(apiName);
       await new Promise((r) => setTimeout(r, 500));
     }

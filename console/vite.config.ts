@@ -1,11 +1,13 @@
-import { defineConfig } from 'vite';
-import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { defineConfig } from "vite";
+import { resolve, dirname } from "path";
+import { fileURLToPath } from "url";
+import { mockWebAuthnPlugin } from "./src/mocks/vite-mock-webauthn";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default defineConfig({
+  plugins: [mockWebAuthnPlugin()],
   build: {
     outDir: 'dist',
     emptyOutDir: true,

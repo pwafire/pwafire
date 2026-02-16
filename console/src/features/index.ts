@@ -16,6 +16,7 @@ export const featureDisplayNames: Record<string, string> = {
   install: "Install",
   lazyLoad: "Lazy Loading",
   notification: "Notification",
+  passkey: "Passkey",
   payment: "Payment Request",
   screenShare: "Screen Share",
   summarizer: "Summarizer",

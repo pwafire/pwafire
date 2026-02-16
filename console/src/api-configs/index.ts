@@ -3,8 +3,13 @@ import { logConsole } from "../log";
 import {
   showSummarizerModal,
   showTranslatorModal,
-  showLanguageDetectorModal,
+  showLanguageDetectorModal
 } from "../modals";
+import { passkey } from "pwafire";
+import {
+  getMockCreationOptions,
+  getMockRequestOptions
+} from "../mocks/passkey-mock";
 
 export const apiConfigs: Record<string, ApiConfig> = {
   webShare: {
@@ -89,6 +94,60 @@ export const apiConfigs: Record<string, ApiConfig> = {
     params: () => ["start", () => logConsole("User is idle", "info"), 60000]
   },
   webOtp: { title: "Web OTP" },
+  "passkey.create": {
+    title: "Passkey Create",
+    params: async () => {
+      let json: Record<string, unknown>;
+      try {
+        const res = await fetch("/mock/webauthn/register");
+        json = res.ok ? await res.json() : getMockCreationOptions();
+      } catch {
+        json = getMockCreationOptions();
+      }
+      const parsed = passkey.parseCreationOptions(json);
+      if (!parsed.ok || !parsed.options) {
+        logConsole(parsed.message, "error");
+        return null;
+      }
+      return [parsed.options];
+    }
+  },
+  "passkey.get": {
+    title: "Passkey Get",
+    params: async () => {
+      let json: Record<string, unknown>;
+      try {
+        const res = await fetch("/mock/webauthn/signin");
+        json = res.ok ? await res.json() : getMockRequestOptions();
+      } catch {
+        json = getMockRequestOptions();
+      }
+      const parsed = passkey.parseRequestOptions(json);
+      if (!parsed.ok || !parsed.options) {
+        logConsole(parsed.message, "error");
+        return null;
+      }
+      return [parsed.options];
+    }
+  },
+  "passkey.getConditional": {
+    title: "Passkey Get (Conditional)",
+    params: async () => {
+      let json: Record<string, unknown>;
+      try {
+        const res = await fetch("/mock/webauthn/signin");
+        json = res.ok ? await res.json() : getMockRequestOptions();
+      } catch {
+        json = getMockRequestOptions();
+      }
+      const parsed = passkey.parseRequestOptions(json);
+      if (!parsed.ok || !parsed.options) {
+        logConsole(parsed.message, "error");
+        return null;
+      }
+      return [parsed.options];
+    }
+  },
   payment: {
     title: "Payment",
     params: () => [
@@ -268,7 +327,7 @@ export const apiConfigs: Record<string, ApiConfig> = {
       if (!config) return null;
       window.__summarizerCloseModal = config.closeModal;
       return [config.text];
-    },
+    }
   }
 };
 
@@ -307,5 +366,6 @@ export const apiGroups: Record<string, string[]> = {
     "accessFonts"
   ],
   "👤 User Data": ["contacts", "payment", "webOtp"],
+  "🔐 Passkey": ["passkey.create", "passkey.get", "passkey.getConditional"],
   "📦 Other": ["contentIndexing", "install"]
 };
