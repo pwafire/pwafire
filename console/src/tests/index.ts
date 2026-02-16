@@ -15,6 +15,7 @@ const MODAL_APIS = [
 
 const setupStreamModalClose = (apiName: string): void => {
   const isLanguageDetector = apiName === "languageDetector";
+  const isTranslator = apiName === "translator" || apiName === "translatorStream";
 
   const submitBtn = document.getElementById(
     isLanguageDetector ? "language-detector-submit" : "summarizer-submit"
@@ -32,16 +33,17 @@ const setupStreamModalClose = (apiName: string): void => {
   (submitBtn as HTMLButtonElement).disabled = false;
   (cancelBtn as HTMLButtonElement).disabled = false;
 
-  // Language detector gets both buttons: "Detect Again" and "Close"
-  if (isLanguageDetector) {
-    (submitBtn as HTMLButtonElement).textContent = "Detect Again";
-    (cancelBtn as HTMLButtonElement).textContent = "Close";
-    cancelBtn.style.display = "inline-block";
-  } else {
-    // Other modals get single "Close" button
-    (submitBtn as HTMLButtonElement).textContent = "Close";
-    cancelBtn.style.display = "none";
+  // All AI modals get retry button based on their action
+  let retryText = "Summarize Again";
+  if (isTranslator) {
+    retryText = "Translate Again";
+  } else if (isLanguageDetector) {
+    retryText = "Detect Again";
   }
+
+  (submitBtn as HTMLButtonElement).textContent = retryText;
+  (cancelBtn as HTMLButtonElement).textContent = "Close";
+  cancelBtn.style.display = "inline-block";
 
   if (!isLanguageDetector) {
     const typeSelect = document.getElementById("summarizer-type");
@@ -63,60 +65,100 @@ const setupStreamModalClose = (apiName: string): void => {
   }
 
   const retryHandler = async (): Promise<void> => {
-    // For language detector, retry with current text without closing modal
-    if (isLanguageDetector) {
+    const isTranslator = apiName === "translator" || apiName === "translatorStream";
+    const isSummarizer = apiName === "summarizer" || apiName === "summarizerStream";
+
+    // For all AI modals, retry with current values without closing modal
+    if (isLanguageDetector || isTranslator || isSummarizer) {
       const text = (textarea as HTMLTextAreaElement).value.trim();
       if (!text) {
-        logConsole("Please enter some text to detect language", "error");
+        const apiType = isLanguageDetector ? "language detection" : isTranslator ? "translation" : "summarization";
+        logConsole(`Please enter some text for ${apiType}`, "error");
         return;
       }
 
       // Clear previous results and show processing state
-      const resultsOutput = document.getElementById("language-detector-results");
-      const resultsText = document.getElementById("language-detector-results-text");
-      if (resultsText) resultsText.textContent = "";
+      if (isLanguageDetector) {
+        const resultsOutput = document.getElementById("language-detector-results");
+        const resultsText = document.getElementById("language-detector-results-text");
+        if (resultsText) resultsText.textContent = "";
+      } else {
+        const streamOutput = document.getElementById("summarizer-stream-output");
+        const streamText = document.getElementById("summarizer-stream-text");
+        if (streamText) streamText.textContent = "";
+        if (streamOutput) streamOutput.style.display = "block";
+      }
 
       (submitBtn as HTMLButtonElement).disabled = true;
       (cancelBtn as HTMLButtonElement).disabled = true;
       (submitBtn as HTMLButtonElement).textContent = "Processing...";
 
       try {
+        // Get current options for summarizer/translator
+        let params: unknown[] = [text];
+
+        if (isSummarizer && !apiName.includes("Stream")) {
+          const typeSelect = document.getElementById("summarizer-type") as HTMLSelectElement;
+          const formatSelect = document.getElementById("summarizer-format") as HTMLSelectElement;
+          const lengthSelect = document.getElementById("summarizer-length") as HTMLSelectElement;
+          params = [text, {
+            type: typeSelect?.value || "key-points",
+            format: formatSelect?.value || "markdown",
+            length: lengthSelect?.value || "medium",
+          }];
+        } else if (isTranslator && !apiName.includes("Stream")) {
+          const sourceLangSelect = document.getElementById("translator-source") as HTMLSelectElement;
+          const targetLangSelect = document.getElementById("translator-target") as HTMLSelectElement;
+          params = [text, {
+            sourceLanguage: sourceLangSelect?.value || "en",
+            targetLanguage: targetLangSelect?.value || "es",
+          }];
+        }
+
         // Call the API directly
         const apiFn = pwafire[apiName as keyof typeof pwafire];
-        const result = await (apiFn as (text: string) => Promise<unknown>)(text);
+        const result = await (apiFn as (...args: unknown[]) => Promise<unknown>)(...params);
 
-        // Replace with new results
-        if (resultsOutput && resultsText) {
-          resultsOutput.style.display = "block";
-          resultsText.textContent = JSON.stringify(result, null, 2);
+        // Show results
+        if (isLanguageDetector) {
+          const resultsOutput = document.getElementById("language-detector-results");
+          const resultsText = document.getElementById("language-detector-results-text");
+          if (resultsOutput && resultsText) {
+            resultsOutput.style.display = "block";
+            resultsText.textContent = JSON.stringify(result, null, 2);
+          }
+        } else {
+          const streamText = document.getElementById("summarizer-stream-text");
+          if (streamText) {
+            const typedResult = result as { ok?: boolean; summary?: string; translation?: string; message?: string };
+            streamText.textContent = typedResult.summary || typedResult.translation || typedResult.message || JSON.stringify(result, null, 2);
+          }
         }
 
         // Reset to retry state
         (submitBtn as HTMLButtonElement).disabled = false;
         (cancelBtn as HTMLButtonElement).disabled = false;
-        (submitBtn as HTMLButtonElement).textContent = "Detect Again";
+
+        let retryText = "Summarize Again";
+        if (isTranslator) retryText = "Translate Again";
+        else if (isLanguageDetector) retryText = "Detect Again";
+
+        (submitBtn as HTMLButtonElement).textContent = retryText;
       } catch (err) {
         const msg = err instanceof Error ? err.message : String(err);
-        logConsole(`Language Detector: ERROR - ${msg}`, "error");
+        const apiType = isLanguageDetector ? "Language Detector" : isTranslator ? "Translator" : "Summarizer";
+        logConsole(`${apiType}: ERROR - ${msg}`, "error");
 
         // Reset on error
         (submitBtn as HTMLButtonElement).disabled = false;
         (cancelBtn as HTMLButtonElement).disabled = false;
-        (submitBtn as HTMLButtonElement).textContent = "Detect Again";
-      }
-    } else {
-      // For others, just close
-      window.__summarizerCloseModal?.();
-      window.__summarizerCloseModal = null;
 
-      // Reset button text for next use
-      let buttonText = "Summarize";
-      if (apiName === "translator" || apiName === "translatorStream") {
-        buttonText = "Translate";
-      }
+        let retryText = "Summarize Again";
+        if (isTranslator) retryText = "Translate Again";
+        else if (isLanguageDetector) retryText = "Detect Again";
 
-      (submitBtn as HTMLButtonElement).textContent = buttonText;
-      cancelBtn.style.display = "inline-block";
+        (submitBtn as HTMLButtonElement).textContent = retryText;
+      }
     }
   };
 
