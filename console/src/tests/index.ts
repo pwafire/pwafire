@@ -127,6 +127,9 @@ const setupStreamModalClose = (apiName: string): void => {
       }
 
       try {
+        // Show loading bar
+        window.showTopLoadingBar();
+
         // Get current options for summarizer/translator
         let params: unknown[] = [text];
 
@@ -151,6 +154,9 @@ const setupStreamModalClose = (apiName: string): void => {
         // Call the API directly
         const apiFn = pwafire[apiName as keyof typeof pwafire];
         const result = await (apiFn as (...args: unknown[]) => Promise<unknown>)(...params);
+
+        // Hide loading bar
+        window.hideTopLoadingBar();
 
         // Show results
         if (isLanguageDetector) {
@@ -193,6 +199,9 @@ const setupStreamModalClose = (apiName: string): void => {
 
         (submitBtn as HTMLButtonElement).textContent = retryText;
       } catch (err) {
+        // Hide loading bar on error
+        window.hideTopLoadingBar();
+
         const msg = err instanceof Error ? err.message : String(err);
         const apiType = isLanguageDetector ? "Language Detector" : isTranslator ? "Translator" : "Summarizer";
         logConsole(`${apiType}: ERROR - ${msg}`, "error");
@@ -365,9 +374,15 @@ export const runTest = async (apiName: string): Promise<void> => {
       return;
     }
 
+    // Show loading bar before API call
+    window.showTopLoadingBar();
+
     const result = await (apiFn as (...args: unknown[]) => Promise<unknown>)(
       ...(Array.isArray(params) ? params : [])
     );
+
+    // Hide loading bar after API call
+    window.hideTopLoadingBar();
 
     if (window.__summarizerCloseModal) {
         if (MODAL_APIS.includes(apiName as any)) {
@@ -426,6 +441,9 @@ export const runTest = async (apiName: string): Promise<void> => {
     if (typedResult.ok) stats.success++;
     else stats.failed++;
   } catch (err) {
+    // Hide loading bar on error
+    window.hideTopLoadingBar();
+
     if (window.__summarizerCloseModal) {
         if (MODAL_APIS.includes(apiName as any)) {
         setupStreamModalError(apiName);

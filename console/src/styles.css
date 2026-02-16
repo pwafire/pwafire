@@ -99,6 +99,34 @@ body {
   to { transform: rotate(360deg); }
 }
 
+/* Top Loading Bar */
+.top-loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-accent), #ff69b4);
+  z-index: 10001;
+  transition: width 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  box-shadow: 0 0 10px var(--color-accent);
+}
+
+.top-loading-bar.active {
+  opacity: 1;
+}
+
+.top-loading-bar.loading {
+  width: 70%;
+  transition: width 2s ease;
+}
+
+.top-loading-bar.complete {
+  width: 100%;
+  transition: width 0.3s ease;
+}
+
 /* Hide main content until loaded */
 .container {
   opacity: 0;

@@ -20,8 +20,31 @@ declare global {
     checkAllFeatures: typeof checkAllFeatures;
     closeSidebar: typeof closeSidebar;
     downloadStream: typeof downloadStream;
+    showTopLoadingBar: () => void;
+    hideTopLoadingBar: () => void;
   }
 }
+
+export const showTopLoadingBar = (): void => {
+  const loadingBar = document.getElementById("top-loading-bar");
+  if (loadingBar) {
+    loadingBar.classList.remove("complete");
+    loadingBar.classList.add("active", "loading");
+  }
+};
+
+export const hideTopLoadingBar = (): void => {
+  const loadingBar = document.getElementById("top-loading-bar");
+  if (loadingBar) {
+    loadingBar.classList.remove("loading");
+    loadingBar.classList.add("complete");
+
+    // Reset after animation completes
+    setTimeout(() => {
+      loadingBar.classList.remove("active", "complete");
+    }, 300);
+  }
+};
 
 export const init = (): void => {
   window.pwafire = pwafire;
@@ -33,6 +56,8 @@ export const init = (): void => {
   window.checkAllFeatures = checkAllFeatures;
   window.closeSidebar = closeSidebar;
   window.downloadStream = downloadStream;
+  window.showTopLoadingBar = showTopLoadingBar;
+  window.hideTopLoadingBar = hideTopLoadingBar;
 
   logConsole("PWAFire package loaded successfully", "success");
   logConsole("Available exports: " + Object.keys(pwafire).length, "info");
