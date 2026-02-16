@@ -10,6 +10,7 @@ export * from "./fonts";
 export * from "./fullscreen";
 export * from "./idle-detection";
 export * from "./install";
+export * from "./language-detector";
 export * from "./lazy-load";
 export * from "./notification";
 export * from "./payment";

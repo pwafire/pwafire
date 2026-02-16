@@ -9,10 +9,18 @@ The console app (`/console`) groups related APIs together for better organizatio
 ### 🤖 AI APIs
 - `summarizer` - Batch text summarization
 - `summarizerStream` - Streaming text summarization
+- `translator` - Batch text translation
+- `translatorStream` - Streaming text translation
+- `languageDetector` - Detect language(s) in text
+- `languageDetectorTopLanguage` - Get top detected language
 
 **Features:**
-- Interactive modal with text input
-- Configurable options (type, format, length)
+- Interactive modals with text input for all AI APIs
+- Configurable options:
+  - **Summarizer**: type, format, length
+  - **Translator**: source language, target language
+  - **Language Detector**: automatic detection
+- Stream support for real-time results
 - Status codes for error handling
 - AI tag in features list
 
@@ -69,12 +77,16 @@ The console app (`/console`) groups related APIs together for better organizatio
 
 When adding new APIs to the console:
 
-1. **Add to appropriate group** in `apiGroups` object in `app.js`
-2. **Add configuration** in `apiConfigs` object
-3. **Add feature detection** in `check` namespace
-4. **Add display name** in `featureDisplayNames`
-5. **If AI-related**: Add to `aiFeatures` array for AI tag
-6. **Build and copy**: Run `npm run build` in packages/pwafire and copy to console/public/lib/
+1. **Add to appropriate group** in `apiGroups` object in `src/api-configs/index.ts`
+2. **Add configuration** in `apiConfigs` object in `src/api-configs/index.ts`
+3. **Add feature detection** in `check` namespace in the pwafire package
+4. **Add display name** in `featureDisplayNames` in `src/features/index.ts`
+5. **If AI-related**:
+   - Add to `aiFeatures` array for AI tag
+   - Create modal function in `src/modals/index.ts` if needed
+   - Add type definition in `src/types/index.ts`
+6. **Build pwafire package**: Run `npm run build` in `packages/pwafire`
+7. **Test**: Run `npm run dev` in console directory
 
 ## Response Pattern
 
@@ -91,7 +103,8 @@ All APIs follow consistent response structure:
 
 ## Testing
 
-- **Local**: `npm start` in console directory → http://localhost:8080
+- **Local Dev**: `npm run dev` in console directory → http://localhost:8080 (with HMR)
+- **Local Preview**: `npm run preview` after building
 - **Deploy**: `npm run deploy` for Firebase hosting
 - **Requirements**: Chrome 138+ for AI APIs, modern Chrome/Edge for other features
 
@@ -103,34 +116,52 @@ All APIs follow consistent response structure:
 console/
 ├── public/
 │   ├── index.html         # Main HTML structure
-│   ├── app.js             # Application logic, API tests, grouping
+│   ├── app.ts             # Legacy entry point (being migrated)
 │   ├── styles.css         # Styling with CSS variables
-│   └── lib/               # Built pwafire package
+│   └── types.d.ts         # Global type declarations
+├── src/
+│   ├── api-configs/       # API test configurations and grouping
+│   ├── app/               # Main application logic
+│   ├── features/          # Feature detection utilities
+│   ├── keyboard/          # Keyboard shortcuts handler
+│   ├── log/               # Console logging utilities
+│   ├── matrix/            # Matrix rain animation
+│   ├── modals/            # AI modal implementations
+│   ├── results/           # Test results display
+│   ├── stats/             # Statistics tracking
+│   ├── tests/             # Test execution logic
+│   └── types/             # TypeScript type definitions
 ├── firebase.json          # Firebase hosting config
+├── tsconfig.json          # TypeScript configuration
+├── vite.config.ts         # Vite build configuration
 └── package.json           # Scripts and dependencies
 ```
 
 ### Key Components
 
-**API Groups** (`apiGroups` in `app.js`):
-- Organizes APIs by functionality
+**API Groups** (`src/api-configs/index.ts`):
+- Organizes APIs by functionality (AI, Clipboard, File System, etc.)
 - Renders group headers with emojis
 - Improves discoverability
 
-**API Configs** (`apiConfigs` in `app.js`):
+**API Configs** (`src/api-configs/index.ts`):
 - Defines test parameters for each API
 - Handles special cases (modals, file pickers)
 - Dynamic test generation
+- Async parameter support for modal interactions
 
-**Feature Detection**:
+**Feature Detection** (`src/features/index.ts`):
 - Scans available APIs from `pwafire.check`
 - Marks supported features with checkmarks
 - Shows AI tag for AI-powered features
 
-**Modal Interactions**:
-- Custom text input for AI APIs
-- File pickers for File System APIs
-- Configuration options for API parameters
+**Modal Interactions** (`src/modals/index.ts`):
+- `showSummarizerModal()` - Text summarization configuration
+- `showTranslatorModal()` - Translation language selection
+- `showLanguageDetectorModal()` - Language detection input
+- Reuses modal UI elements for consistent UX
+- Promise-based async API
+- Stream output support for real-time results
 
 ## Styling Guide
 
@@ -151,10 +182,13 @@ console/
 ## Development Workflow
 
 1. **Make changes** to pwafire package in `/packages/pwafire/src`
-2. **Build**: `cd packages/pwafire && npm run build`
-3. **Copy**: `rsync -av packages/pwafire/lib/ console/public/lib/`
-4. **Test**: `cd console && npm start`
-5. **Deploy**: `npm run deploy` (Firebase hosting)
+2. **Build package**: `cd packages/pwafire && npm run build`
+3. **Make changes** to console in `/console/src`
+4. **Dev server**: `cd console && npm run dev` (http://localhost:8080)
+5. **Build console**: `cd console && npm run build`
+6. **Deploy**: `cd console && npm run deploy` (Firebase hosting)
+
+The console now uses Vite for development with hot module replacement and TypeScript support.
 
 ## Browser Requirements
 

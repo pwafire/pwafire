@@ -15,7 +15,7 @@ export const translator = async (
     }
 
     const availability = await Translator.availability(options);
-    if (availability === "unavailable" || availability === "no") {
+    if (availability === "unavailable" ) {
       return {
         ok: false,
         status: "unavailable",
@@ -68,7 +68,7 @@ export const translatorStream = async (
     }
 
     const availability = await Translator.availability(options);
-    if (availability === "unavailable" || availability === "no") {
+    if (availability === "unavailable" ) {
       return {
         ok: false,
         status: "unavailable",
@@ -88,7 +88,7 @@ export const translatorStream = async (
     const stream = translatorSession.translateStreaming(text);
 
     let fullTranslation = "";
-    for await (const chunk of stream) {
+    for await (const chunk of stream as any) {
       fullTranslation = chunk;
       streamCallback(chunk);
     }

@@ -1,3 +1,5 @@
+type SummarizerOptions = SummarizerCreateOptions & { context?: string };
+
 export const summarizer = async (text: string, options?: SummarizerOptions) => {
   try {
     if (!("Summarizer" in self)) {
@@ -76,9 +78,16 @@ export const summarizerStream = async (
 
     const session = await Summarizer.create(options);
     const stream = session.summarizeStreaming(text, options?.context ? { context: options.context } : undefined);
+    const reader = stream.getReader();
 
-    for await (const chunk of stream) {
-      callback(chunk);
+    try {
+      let result = await reader.read();
+      while (!result.done) {
+        callback(result.value);
+        result = await reader.read();
+      }
+    } finally {
+      reader.releaseLock();
     }
 
     session.destroy();

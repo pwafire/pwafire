@@ -4,15 +4,22 @@
   "description": "Interactive console for testing pwafire package",
   "type": "module",
   "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
     "start": "./start.sh",
     "test:exports": "node tests/test-exports.js",
     "test:features": "node tests/test-features.js",
-    "serve": "python3 -m http.server 8080 --directory public",
     "test": "npm run test:exports && npm run test:features",
     "deploy": "./deploy.sh",
     "deploy:preview": "./deploy.sh && firebase hosting:channel:deploy preview"
   },
   "dependencies": {
     "pwafire": "file:../packages/pwafire"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.8.3",
+    "vite": "^6.0.7"
   }
 }

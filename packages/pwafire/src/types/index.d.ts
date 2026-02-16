@@ -1,5 +1,4 @@
 // Main types export - combines all type definitions
-/// <reference path="./ai.d.ts" />
 /// <reference path="./barcode.d.ts" />
 /// <reference path="./fonts.d.ts" />
 /// <reference path="./files.d.ts" />

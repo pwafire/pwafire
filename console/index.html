@@ -14,9 +14,16 @@
       content="PWA, Progressive Web Apps, Web APIs, PWA testing, Web Share API, Notification API, Service Worker"
     />
     <link rel="canonical" href="https://console.pwafire.org" />
-    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Top Loading Bar -->
+    <div id="top-loading-bar" class="top-loading-bar"></div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-spinner"></div>
+    </div>
+
     <canvas class="matrix-bg" id="matrix"></canvas>
     <div class="container">
       <div class="header">
@@ -193,6 +200,31 @@
     </div>
     <div id="summarizer-overlay" class="modal-overlay"></div>
 
-    <script type="module" src="app.js"></script>
+    <!-- Language Detector Modal -->
+    <div id="language-detector-modal" class="summarizer-modal">
+      <div class="modal-content">
+        <h3 id="language-detector-modal-title">Language Detector</h3>
+        <textarea
+          id="language-detector-text"
+          placeholder="Paste or type text in any language here..."
+          rows="10"
+        ></textarea>
+        <div id="language-detector-results" class="stream-output" style="display:none;">
+          <div class="stream-label">Detection Results:</div>
+          <div id="language-detector-results-text" class="stream-text"></div>
+        </div>
+        <div class="modal-buttons">
+          <button id="language-detector-cancel" class="modal-button secondary">
+            Cancel
+          </button>
+          <button id="language-detector-submit" class="modal-button primary">
+            Detect Language
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="language-detector-overlay" class="modal-overlay"></div>
+
+    <script type="module" src="/src/app/index.ts"></script>
   </body>
 </html>
