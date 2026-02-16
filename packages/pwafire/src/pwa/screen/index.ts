@@ -59,7 +59,8 @@ export const webPIP = async (
         pipWindow.document.body.append(player);
         if (callback) callback({ ok: true, window: pipWindow, message: "Picture in Picture mode enabled." });
       } else {
-        if (callback) callback({ ok: false, window: null, message: "Picture in Picture is not supported in this browser." });
+        if (callback)
+          callback({ ok: false, window: null, message: "Picture in Picture is not supported in this browser." });
       }
     });
 

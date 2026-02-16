@@ -1,14 +1,14 @@
 const sanitizeUrl = (url: string): string | null => {
   if (!url) return null;
-  
+
   const trimmedUrl = url.trim();
-  
+
   const dangerousProtocols = /^(javascript|data|vbscript):/i;
   if (dangerousProtocols.test(trimmedUrl)) {
     console.warn(`[pwafire] Blocked potentially dangerous URL: ${trimmedUrl}`);
     return null;
   }
-  
+
   if (/^[a-z][a-z0-9+.-]*:/i.test(trimmedUrl)) {
     try {
       new URL(trimmedUrl);
@@ -17,7 +17,7 @@ const sanitizeUrl = (url: string): string | null => {
       return null;
     }
   }
-  
+
   return trimmedUrl.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
 };
 

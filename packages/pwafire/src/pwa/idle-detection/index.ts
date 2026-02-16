@@ -1,8 +1,4 @@
-export const idleDetection = async (
-  action = "start",
-  callback = () => {},
-  threshold = 60000,
-) => {
+export const idleDetection = async (action = "start", callback = () => {}, threshold = 60000) => {
   try {
     if ("IdleDetector" in window) {
       const state = await IdleDetector.requestPermission();
