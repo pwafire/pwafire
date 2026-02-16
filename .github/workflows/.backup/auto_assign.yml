@@ -1,0 +1,21 @@
+# Auto-assign configuration for pull requests
+# Used by kentaro-m/auto-assign-action
+
+# Set to true to add reviewers to pull requests
+addReviewers: true
+
+# Set to true to add assignees to pull requests
+addAssignees: false
+
+# A list of reviewers to be added to pull requests (GitHub user names)
+reviewers:
+  - mayeedwin
+
+# A number of reviewers added to the pull request
+numberOfReviewers: 1
+
+# Set to true to add reviewers from different groups to pull requests
+useReviewGroups: false
+
+# Set to true to add assignees from different groups to pull requests
+useAssigneeGroups: false

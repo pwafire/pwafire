@@ -1,0 +1,232 @@
+# PWAFire Development Guide
+
+Quick reference for working on PWAFire. For detailed guidelines, see `/docs/*.md` files.
+
+## Core Principles
+
+- **No code comments** - code is self-documenting
+- **Catch-and-return pattern** - all PWA functions follow this
+- **Never throw errors** - catch and return them
+- **Consistent response format**: `{ ok: boolean, message: string, ...data? }`
+- **Minimal abstractions** - KISS, DRY, YAGNI
+
+## Quick Links
+
+- [Versioning & Release](./docs/versioning-and-release.md) - How to version and release packages
+- [Commit Style](./docs/commit-style.md) - Commit messages, PR and release summaries
+- [Naming Conventions](./docs/naming-conventions.md) - Functions, files, constants, types, APIs
+- [Code Style](./docs/code-style.md) - Formatting, error handling, type safety, async/await
+- [File Organization](./docs/file-organization.md) - Project structure, modules, imports/exports
+- [Testing](./docs/testing.md) - Testing philosophy and patterns
+- [Testing Style](./docs/testing-style.md) - Dynamic generation, test configuration
+- [HTML/CSS Style](./docs/html-css-style.md) - Test console styling guidelines
+- [Tooling](./docs/tooling.md) - Prettier, ESLint, NPM scripts, testing requirements
+- [Console App](./docs/console.md) - Complete console app documentation
+
+## Key Reminders
+
+**Error Handling:**
+
+```typescript
+export const apiName = async (...args) => {
+  try {
+    if (!featureAvailable) return { ok: false, message: "API not supported" };
+    const result = await someAPI(...args);
+    return { ok: true, message: "Success", ...data };
+  } catch (error) {
+    return {
+      ok: false,
+      message: error instanceof Error ? error.message : "Failed"
+    };
+  }
+};
+```
+
+**Naming:**
+
+- Functions/variables: `camelCase` (`webShare`, `copyText`)
+- Files/directories: `kebab-case` (`lazy-load`, `idle-detection`)
+- Constants: `SCREAMING_SNAKE_CASE` (`MAX_RETRY_ATTEMPTS`)
+- Types: `PascalCase` (`ResponseType`, `ConfigOptions`)
+
+**Before Committing:**
+
+```bash
+cd packages/pwafire
+npm run lint    # 0 errors (7 warnings OK)
+npm run build   # CJS, ESM, DTS generated
+npm test        # All tests pass
+```
+
+**Commit Format:**
+
+```text
+<type>(<scope>) - <description>
+
+Examples:
+feat(notifications) - add support for notification actions
+fix(lazy-load) - prevent CSS injection in background images
+chore(cleanup) - standardize error handling across modules
+```
+
+## Deployment
+
+**Local vs Production:**
+
+- **Local tests**: Use local `./lib/` files for real-time testing
+- **Deployed version**: Use CDN imports from jsdelivr
+- Deploy script handles transformation automatically
+- Never commit built files
+
+## Versioning & Releases
+
+**Quick Reference:** See [Versioning & Release Guide](./docs/versioning-and-release.md) for complete details.
+
+**IMPORTANT for AI Agents:** Always ASK the user which version bump to use. Don't assume!
+
+```bash
+# Ask user: "Which version bump? (patch/minor/major)"
+npm version patch -m "chore(release): bump version to %s"   # 6.1.0 → 6.1.1 (fixes)
+npm version minor -m "chore(release): bump version to %s"   # 6.1.0 → 6.2.0 (new APIs)
+npm version major -m "chore(release): bump version to %s"   # 6.1.0 → 7.0.0 (breaking changes)
+
+# Push branch and create PR
+git push origin <branch-name>
+gh pr create
+
+# Merge to main → auto-publishes!
+gh pr merge --merge
+```
+
+**How it works:**
+1. `npm version` runs locally → updates package.json, creates commit
+2. Create PR and merge to main
+3. Workflow detects version change → publishes to npm (OIDC, no secrets!)
+4. Creates GitHub release with tag automatically
+
+## Best Practices
+
+### API Design
+
+1. **Consistency**: All APIs follow same patterns
+2. **Simplicity**: No over-engineering, minimal abstractions
+3. **Safety**: Built-in error handling, never throw
+4. **Clarity**: Response format always `{ ok, message }`
+
+### Code Quality
+
+1. **DRY**: Don't repeat yourself
+2. **YAGNI**: You aren't gonna need it - don't add unused features
+3. **KISS**: Keep it simple - no complex abstractions
+4. **Self-documenting**: Clear names over comments
+
+## Anti-Patterns to Avoid
+
+❌ **DO NOT:**
+
+- Add code comments (removed on purpose)
+- Add try/catch in examples (error handling is built-in)
+- Use verbose function names
+- Hardcode test lists or feature lists
+- Over-engineer with unnecessary abstractions
+- Add features "just in case"
+- Throw errors to consumers
+- Use inconsistent naming between main and check APIs
+
+✅ **DO:**
+
+- Keep code clean and self-documenting
+- Use dynamic generation for tests and features
+- Follow consistent naming conventions
+- Handle all errors internally
+- Return consistent response format
+- Make APIs safe to use without try/catch
+- Keep main and check API names aligned
+
+## Maintenance Notes
+
+### ESLint Warnings (Expected)
+
+The 7 warnings about `any` types are **expected and safe**:
+
+- `barcode/index.ts` - BarcodeDetector API
+- `contacts/index.ts` - Contact Picker API
+- `content-indexing/index.ts` - Content Index API
+- `files/index.ts` - File System Access API
+- `idle-detection/index.ts` - Idle Detection API
+- `screen/index.ts` - Document Picture-in-Picture API
+
+These are experimental browser APIs without TypeScript definitions.
+**Do not "fix" these by defining custom interfaces.**
+
+### Build Process
+
+- Uses `tsup` for bundling (not TypeScript directly)
+- Outputs: CJS (`lib/*.js`), ESM (`lib/*.mjs`), Types (`lib/*.d.ts`)
+- Build time: ~8-9 seconds for type definitions
+
+## Testing Philosophy
+
+PWAFire follows **pattern-based testing** rather than exhaustive module testing.
+
+**Why:**
+- All 23 PWA API modules follow consistent patterns:
+  - Check API support (`if (!("API" in navigator))`)
+  - Try operation in try-catch block
+  - Return `{ok: boolean, message: string, ...data?}`
+- Testing every module would be repetitive copy-paste
+- Testing representative patterns validates the approach
+
+**Current Coverage:**
+- 66% statement coverage with 4 tests
+- Tests cover: import validation, basic API pattern, check functions
+- Pre-commit hooks enforce tests pass before commit
+- CI/CD runs tests on every PR
+
+**When to Add Tests:**
+- New API patterns not covered by existing tests
+- Complex logic with multiple branches (permissions, streaming, DOM manipulation)
+- Bug fixes (add regression test)
+- Breaking changes to API signatures
+
+**When NOT to Add Tests:**
+- New modules following existing patterns (clipboard → web-share)
+- Simple wrappers with no branching logic
+- Cosmetic changes (error messages, formatting)
+
+### For Future Agents
+
+**When working on PWAFire:**
+
+1. All PWA modules follow catch-and-return pattern - maintain consistency
+2. Don't define new browser API interfaces - use `unknown` and `as any`
+3. Error messages: `"Failed to {action}"` or `"{API} API not supported"`
+4. All functions return `{ok: boolean, message: string, ...data?}`
+5. Run lint, build, and test before committing
+6. Commit format: `<type>(<scope>) - <description>`
+
+**Verification:**
+
+```bash
+cd packages/pwafire
+npm run lint    # 0 errors, 7 warnings OK
+npm run build   # CJS, ESM, DTS generated
+npm test        # All tests pass
+```
+
+## Future Improvements (Not Yet Implemented)
+
+Identified but not implemented to keep changes focused:
+
+1. **Add JSDoc comments** - Document error scenarios
+2. **Error codes/enums** - For programmatic error handling
+3. **TypeDoc generation** - Auto-generate API docs
+4. **Bundle size monitoring** - Track ESM chunk sizes
+5. **Update CI/CD** - Test Node 18.x, 20.x, 22.x (currently 16.x EOL)
+
+## Related Resources
+
+- [PWAFire Documentation](https://docs.pwafire.org)
+- [Progressive Web Apps](https://web.dev/progressive-web-apps/)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [Conventional Commits](https://www.conventionalcommits.org/)
