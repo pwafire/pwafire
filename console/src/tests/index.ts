@@ -97,7 +97,6 @@ const setupStreamModalClose = (apiName: string): void => {
 
       // Clear previous results and show processing state
       if (isLanguageDetector) {
-        const resultsOutput = document.getElementById("language-detector-results");
         const resultsText = document.getElementById("language-detector-results-text");
         if (resultsText) resultsText.textContent = "";
       } else {
