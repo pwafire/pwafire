@@ -71,7 +71,11 @@ const setupStreamModalClose = (apiName: string): void => {
         return;
       }
 
-      // Show processing state
+      // Clear previous results and show processing state
+      const resultsOutput = document.getElementById("language-detector-results");
+      const resultsText = document.getElementById("language-detector-results-text");
+      if (resultsText) resultsText.textContent = "";
+
       (submitBtn as HTMLButtonElement).disabled = true;
       (cancelBtn as HTMLButtonElement).disabled = true;
       (submitBtn as HTMLButtonElement).textContent = "Processing...";
@@ -81,9 +85,7 @@ const setupStreamModalClose = (apiName: string): void => {
         const apiFn = pwafire[apiName as keyof typeof pwafire];
         const result = await (apiFn as (text: string) => Promise<unknown>)(text);
 
-        // Show results
-        const resultsOutput = document.getElementById("language-detector-results");
-        const resultsText = document.getElementById("language-detector-results-text");
+        // Replace with new results
         if (resultsOutput && resultsText) {
           resultsOutput.style.display = "block";
           resultsText.textContent = JSON.stringify(result, null, 2);
