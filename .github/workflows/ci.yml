@@ -32,7 +32,9 @@ jobs:
         working-directory: .
 
       - name: Install package dependencies
-        run: npm ci
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
 
       - name: Lint
         run: npm run lint
