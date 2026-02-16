@@ -31,7 +31,11 @@ jobs:
           cache: "npm"
           cache-dependency-path: packages/pwafire/package-lock.json
 
-      - run: npm ci
+      - name: Clean install dependencies
+        run: |
+          npm cache clean --force
+          npm ci --force
+
       - run: npm run verify
 
       # Publish using OIDC trusted publisher (no token needed!)
