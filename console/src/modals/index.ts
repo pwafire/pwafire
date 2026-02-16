@@ -192,11 +192,6 @@ export const showTranslatorModal = (
           <option value="es">Spanish</option>
           <option value="fr">French</option>
           <option value="de">German</option>
-          <option value="it">Italian</option>
-          <option value="pt">Portuguese</option>
-          <option value="zh">Chinese</option>
-          <option value="ja">Japanese</option>
-          <option value="ko">Korean</option>
         </select>
       </div>
       <div class="option-group">
@@ -206,11 +201,6 @@ export const showTranslatorModal = (
           <option value="es" selected>Spanish</option>
           <option value="fr">French</option>
           <option value="de">German</option>
-          <option value="it">Italian</option>
-          <option value="pt">Portuguese</option>
-          <option value="zh">Chinese</option>
-          <option value="ja">Japanese</option>
-          <option value="ko">Korean</option>
         </select>
       </div>
     `;
