@@ -22,7 +22,6 @@ Quick reference for working on PWAFire. For detailed guidelines, see `/docs/*.md
 - [HTML/CSS Style](./docs/html-css-style.md) - Test console styling guidelines
 - [Tooling](./docs/tooling.md) - Prettier, ESLint, NPM scripts, testing requirements
 - [Console App](./docs/console.md) - Complete console app documentation
-- [Passkey API](./docs/passkey.md) - Passkey implementation notes and user verification
 
 ## Key Reminders
 
