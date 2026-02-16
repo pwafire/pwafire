@@ -1,3 +1,4 @@
+import "../styles.css";
 import * as pwafire from "pwafire";
 import * as check from "pwafire/check";
 import { initMatrixEffect } from "../matrix";
@@ -45,4 +46,28 @@ export const init = (): void => {
   initMatrixEffect();
   initKeyboardShortcuts();
   checkAllFeatures();
+
+  // Hide loading screen and show content after 2s delay
+  const loadingScreen = document.getElementById("loading-screen");
+  const container = document.querySelector(".container");
+
+  if (loadingScreen && container) {
+    setTimeout(() => {
+      // Fade out loading screen
+      loadingScreen.classList.add("fade-out");
+      container.classList.add("loaded");
+
+      // Remove loading screen from DOM after fade
+      setTimeout(() => {
+        loadingScreen.remove();
+      }, 500);
+    }, 2000);
+  }
 };
+
+// Initialize the app when DOM is ready
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}

@@ -269,15 +269,16 @@ export const showTranslatorModal = (
 export const showLanguageDetectorModal =
   (): Promise<LanguageDetectorConfig | null> => {
     return new Promise((resolve) => {
-      const modal = document.getElementById("summarizer-modal");
-      const overlay = document.getElementById("summarizer-overlay");
-      const textarea = document.getElementById("summarizer-text");
-      const title = document.getElementById("summarizer-modal-title");
-      const submitBtn = document.getElementById("summarizer-submit");
-      const cancelBtn = document.getElementById("summarizer-cancel");
-      const optionsContainer = document.querySelector(".modal-options");
-      const streamOutput = document.getElementById("summarizer-stream-output");
-      const streamText = document.getElementById("summarizer-stream-text");
+      const modal = document.getElementById("language-detector-modal");
+      const overlay = document.getElementById("language-detector-overlay");
+      const textarea = document.getElementById("language-detector-text");
+      const title = document.getElementById("language-detector-modal-title");
+      const submitBtn = document.getElementById("language-detector-submit");
+      const cancelBtn = document.getElementById("language-detector-cancel");
+      const resultsOutput = document.getElementById("language-detector-results");
+      const resultsText = document.getElementById(
+        "language-detector-results-text"
+      );
 
       if (
         !modal ||
@@ -286,44 +287,31 @@ export const showLanguageDetectorModal =
         !title ||
         !submitBtn ||
         !cancelBtn ||
-        !optionsContainer ||
-        !streamOutput ||
-        !streamText
+        !resultsOutput ||
+        !resultsText
       ) {
         resolve(null);
         return;
       }
 
-      streamOutput.style.display = "none";
-      streamText.textContent = "";
+      resultsOutput.style.display = "none";
+      resultsText.textContent = "";
 
       const defaultText =
         "Bonjour! Comment allez-vous? Je suis très content de vous voir aujourd'hui.";
 
       (textarea as HTMLTextAreaElement).value = defaultText;
-      title.textContent = "Language Detector Config";
       modal.classList.add("active");
       overlay.classList.add("active");
       textarea.focus();
       (textarea as HTMLTextAreaElement).disabled = false;
       (submitBtn as HTMLButtonElement).disabled = false;
       (cancelBtn as HTMLButtonElement).disabled = false;
-      (submitBtn as HTMLButtonElement).textContent = "Detect Language";
-
-      optionsContainer.innerHTML = `
-      <div class="option-group">
-        <label>Detection Info:</label>
-        <div style="padding: 8px; background: rgba(255, 255, 255, 0.05); border-radius: 4px; font-size: 0.9em;">
-          This will analyze the text and detect the language(s) present in the content.
-        </div>
-      </div>
-    `;
 
       const closeModal = (): void => {
         modal.classList.remove("active");
         overlay.classList.remove("active");
-        const so = document.getElementById("summarizer-stream-output");
-        if (so) so.style.display = "none";
+        if (resultsOutput) resultsOutput.style.display = "none";
       };
 
       const handleSubmit = (): void => {

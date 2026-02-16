@@ -14,9 +14,13 @@
       content="PWA, Progressive Web Apps, Web APIs, PWA testing, Web Share API, Notification API, Service Worker"
     />
     <link rel="canonical" href="https://console.pwafire.org" />
-    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-spinner"></div>
+    </div>
+
     <canvas class="matrix-bg" id="matrix"></canvas>
     <div class="container">
       <div class="header">
@@ -218,6 +222,6 @@
     </div>
     <div id="language-detector-overlay" class="modal-overlay"></div>
 
-    <script type="module" src="/app.ts"></script>
+    <script type="module" src="/src/app/index.ts"></script>
   </body>
 </html>

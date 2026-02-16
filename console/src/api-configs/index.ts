@@ -269,15 +269,6 @@ export const apiConfigs: Record<string, ApiConfig> = {
       window.__summarizerCloseModal = config.closeModal;
       return [config.text];
     },
-  },
-  languageDetectorTopLanguage: {
-    title: "Language Detector (Top)",
-    params: async () => {
-      const config = await showLanguageDetectorModal();
-      if (!config) return null;
-      window.__summarizerCloseModal = config.closeModal;
-      return [config.text];
-    },
   }
 };
 
@@ -287,8 +278,7 @@ export const apiGroups: Record<string, string[]> = {
     "summarizerStream",
     "translator",
     "translatorStream",
-    "languageDetector",
-    "languageDetectorTopLanguage"
+    "languageDetector"
   ],
   "📋 Clipboard": ["copyText", "readText", "copyImage"],
   "📁 File System": [

@@ -4,10 +4,27 @@ import { stats, updateStats } from "../stats";
 import { logConsole } from "../log";
 import { showResult } from "../results";
 
+// AI APIs that use modals for input and results (no sidebar)
+const MODAL_APIS = [
+  "summarizer",
+  "summarizerStream",
+  "translator",
+  "translatorStream",
+  "languageDetector",
+] as const;
+
 const setupStreamModalClose = (apiName: string): void => {
-  const submitBtn = document.getElementById("summarizer-submit");
-  const cancelBtn = document.getElementById("summarizer-cancel");
-  const textarea = document.getElementById("summarizer-text");
+  const isLanguageDetector = apiName === "languageDetector";
+
+  const submitBtn = document.getElementById(
+    isLanguageDetector ? "language-detector-submit" : "summarizer-submit"
+  );
+  const cancelBtn = document.getElementById(
+    isLanguageDetector ? "language-detector-cancel" : "summarizer-cancel"
+  );
+  const textarea = document.getElementById(
+    isLanguageDetector ? "language-detector-text" : "summarizer-text"
+  );
 
   if (!submitBtn || !cancelBtn || !window.__summarizerCloseModal) return;
 
@@ -15,39 +32,40 @@ const setupStreamModalClose = (apiName: string): void => {
   (submitBtn as HTMLButtonElement).disabled = false;
   (cancelBtn as HTMLButtonElement).disabled = false;
 
-  let buttonText = "Summarize";
-  if (apiName === "translatorStream") buttonText = "Translate";
-  else if (apiName === "languageDetector" || apiName === "languageDetectorTopLanguage")
-    buttonText = "Detect Language";
-
-  (submitBtn as HTMLButtonElement).textContent = buttonText;
+  // After results are shown, button should say "Close"
+  (submitBtn as HTMLButtonElement).textContent = "Close";
   cancelBtn.style.display = "none";
 
-  const typeSelect = document.getElementById("summarizer-type");
-  const formatSelect = document.getElementById("summarizer-format");
-  const lengthSelect = document.getElementById("summarizer-length");
-  const sourceLangSelect = document.getElementById("translator-source");
-  const targetLangSelect = document.getElementById("translator-target");
+  if (!isLanguageDetector) {
+    const typeSelect = document.getElementById("summarizer-type");
+    const formatSelect = document.getElementById("summarizer-format");
+    const lengthSelect = document.getElementById("summarizer-length");
+    const sourceLangSelect = document.getElementById("translator-source");
+    const targetLangSelect = document.getElementById("translator-target");
 
-  if (apiName === "translatorStream") {
-    if (sourceLangSelect)
-      (sourceLangSelect as HTMLSelectElement).disabled = false;
-    if (targetLangSelect)
-      (targetLangSelect as HTMLSelectElement).disabled = false;
-  } else {
-    if (typeSelect) (typeSelect as HTMLSelectElement).disabled = false;
-    if (formatSelect) (formatSelect as HTMLSelectElement).disabled = false;
-    if (lengthSelect) (lengthSelect as HTMLSelectElement).disabled = false;
+    if (apiName === "translatorStream") {
+      if (sourceLangSelect)
+        (sourceLangSelect as HTMLSelectElement).disabled = false;
+      if (targetLangSelect)
+        (targetLangSelect as HTMLSelectElement).disabled = false;
+    } else {
+      if (typeSelect) (typeSelect as HTMLSelectElement).disabled = false;
+      if (formatSelect) (formatSelect as HTMLSelectElement).disabled = false;
+      if (lengthSelect) (lengthSelect as HTMLSelectElement).disabled = false;
+    }
   }
 
   const closeHandler = (): void => {
     window.__summarizerCloseModal?.();
     window.__summarizerCloseModal = null;
 
+    // Reset button text for next use
     let buttonText = "Summarize";
-    if (apiName === "translatorStream") buttonText = "Translate";
-    else if (apiName === "languageDetector" || apiName === "languageDetectorTopLanguage")
+    if (apiName === "translator" || apiName === "translatorStream") {
+      buttonText = "Translate";
+    } else if (isLanguageDetector) {
       buttonText = "Detect Language";
+    }
 
     (submitBtn as HTMLButtonElement).textContent = buttonText;
     cancelBtn.style.display = "inline-block";
@@ -58,9 +76,17 @@ const setupStreamModalClose = (apiName: string): void => {
 };
 
 const setupStreamModalError = (apiName: string): void => {
-  const submitBtn = document.getElementById("summarizer-submit");
-  const cancelBtn = document.getElementById("summarizer-cancel");
-  const textarea = document.getElementById("summarizer-text");
+  const isLanguageDetector = apiName === "languageDetector";
+
+  const submitBtn = document.getElementById(
+    isLanguageDetector ? "language-detector-submit" : "summarizer-submit"
+  );
+  const cancelBtn = document.getElementById(
+    isLanguageDetector ? "language-detector-cancel" : "summarizer-cancel"
+  );
+  const textarea = document.getElementById(
+    isLanguageDetector ? "language-detector-text" : "summarizer-text"
+  );
 
   if (!submitBtn || !cancelBtn || !window.__summarizerCloseModal) return;
 
@@ -69,27 +95,31 @@ const setupStreamModalError = (apiName: string): void => {
   (cancelBtn as HTMLButtonElement).disabled = false;
 
   let buttonText = "Summarize Again";
-  if (apiName === "translatorStream") buttonText = "Translate Again";
-  else if (apiName === "languageDetector" || apiName === "languageDetectorTopLanguage")
+  if (apiName === "translator" || apiName === "translatorStream") {
+    buttonText = "Translate Again";
+  } else if (isLanguageDetector) {
     buttonText = "Detect Again";
+  }
 
   (submitBtn as HTMLButtonElement).textContent = buttonText;
 
-  const typeSelect = document.getElementById("summarizer-type");
-  const formatSelect = document.getElementById("summarizer-format");
-  const lengthSelect = document.getElementById("summarizer-length");
-  const sourceLangSelect = document.getElementById("translator-source");
-  const targetLangSelect = document.getElementById("translator-target");
+  if (!isLanguageDetector) {
+    const typeSelect = document.getElementById("summarizer-type");
+    const formatSelect = document.getElementById("summarizer-format");
+    const lengthSelect = document.getElementById("summarizer-length");
+    const sourceLangSelect = document.getElementById("translator-source");
+    const targetLangSelect = document.getElementById("translator-target");
 
-  if (apiName === "translatorStream") {
-    if (sourceLangSelect)
-      (sourceLangSelect as HTMLSelectElement).disabled = false;
-    if (targetLangSelect)
-      (targetLangSelect as HTMLSelectElement).disabled = false;
-  } else {
-    if (typeSelect) (typeSelect as HTMLSelectElement).disabled = false;
-    if (formatSelect) (formatSelect as HTMLSelectElement).disabled = false;
-    if (lengthSelect) (lengthSelect as HTMLSelectElement).disabled = false;
+    if (apiName === "translatorStream") {
+      if (sourceLangSelect)
+        (sourceLangSelect as HTMLSelectElement).disabled = false;
+      if (targetLangSelect)
+        (targetLangSelect as HTMLSelectElement).disabled = false;
+    } else {
+      if (typeSelect) (typeSelect as HTMLSelectElement).disabled = false;
+      if (formatSelect) (formatSelect as HTMLSelectElement).disabled = false;
+      if (lengthSelect) (lengthSelect as HTMLSelectElement).disabled = false;
+    }
   }
 
   submitBtn.onclick = () => {
@@ -169,23 +199,27 @@ export const runTest = async (apiName: string): Promise<void> => {
     );
 
     if (window.__summarizerCloseModal) {
-      if (
-        apiName === "summarizerStream" ||
-        apiName === "translatorStream" ||
-        apiName === "languageDetector" ||
-        apiName === "languageDetectorTopLanguage"
-      ) {
+        if (MODAL_APIS.includes(apiName as any)) {
         // Show results in modal for these APIs
-        if (apiName === "languageDetector" || apiName === "languageDetectorTopLanguage") {
+        if (apiName === "languageDetector") {
+          const resultsOutput = document.getElementById("language-detector-results");
+          const resultsText = document.getElementById("language-detector-results-text");
+          if (resultsOutput && resultsText) {
+            resultsOutput.style.display = "block";
+            // Show the complete API response in formatted JSON
+            resultsText.textContent = JSON.stringify(result, null, 2);
+          }
+        } else {
+          // For summarizer and translator (both stream and non-stream)
           const streamOutput = document.getElementById("summarizer-stream-output");
           const streamText = document.getElementById("summarizer-stream-text");
           if (streamOutput && streamText) {
             streamOutput.style.display = "block";
-            const typedResult = result as { ok?: boolean; message?: string; data?: unknown };
-            if (typedResult.ok && typedResult.data) {
-              streamText.textContent = JSON.stringify(typedResult.data, null, 2);
+            const typedResult = result as { ok?: boolean; message?: string; summary?: string; translation?: string };
+            if (typedResult.ok) {
+              streamText.textContent = typedResult.summary || typedResult.translation || typedResult.message || "";
             } else {
-              streamText.textContent = typedResult.message || "Detection completed";
+              streamText.textContent = typedResult.message || "Processing completed";
             }
           }
         }
@@ -206,12 +240,8 @@ export const runTest = async (apiName: string): Promise<void> => {
       );
     }
 
-    if (
-      apiName !== "summarizerStream" &&
-      apiName !== "translatorStream" &&
-      apiName !== "languageDetector" &&
-      apiName !== "languageDetectorTopLanguage"
-    ) {
+    // Only show sidebar for non-modal APIs
+    if (!MODAL_APIS.includes(apiName as any)) {
       await showResult(`${id}-result`, typedResult as Parameters<typeof showResult>[1], apiName);
     }
 
@@ -226,12 +256,7 @@ export const runTest = async (apiName: string): Promise<void> => {
     else stats.failed++;
   } catch (err) {
     if (window.__summarizerCloseModal) {
-      if (
-        apiName === "summarizerStream" ||
-        apiName === "translatorStream" ||
-        apiName === "languageDetector" ||
-        apiName === "languageDetectorTopLanguage"
-      ) {
+        if (MODAL_APIS.includes(apiName as any)) {
         setupStreamModalError(apiName);
       } else {
         window.__summarizerCloseModal();
