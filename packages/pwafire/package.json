@@ -43,8 +43,17 @@
     "web",
     "app"
   ],
-  "author": "",
+  "author": "Maye Edwin",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pwafire/pwafire.git",
+    "directory": "packages/pwafire"
+  },
+  "homepage": "https://docs.pwafire.org",
+  "bugs": {
+    "url": "https://github.com/pwafire/pwafire/issues"
+  },
   "devDependencies": {
     "@types/dom-chromium-ai": "^0.0.14",
     "@types/jest": "^29.5.0",
