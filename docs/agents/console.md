@@ -57,9 +57,9 @@ The console app (`/console`) groups related APIs together for better organizatio
 ### ⚡ System APIs
 - `wakeLock` - Prevent screen sleep
 - `idleDetection` - Detect user idle state
-- `connectivity` - Network status
-- `visibility` - Page visibility state
-- `displayMode` - App display mode (standalone, etc.)
+- `connectivity` - Network status (sync)
+- `visibility` - Page visibility state (sync)
+- `displayMode` - App display mode (sync)
 
 ### 🎨 Media APIs
 - `barcodeDetector` - Scan barcodes

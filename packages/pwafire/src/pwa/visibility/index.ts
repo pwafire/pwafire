@@ -1,4 +1,4 @@
-export const visibility = async () => {
+export const visibility = () => {
   try {
     if (!document.visibilityState) {
       return {
@@ -23,7 +23,7 @@ export const visibility = async () => {
   }
 };
 
-export const displayMode = async () => {
+export const displayMode = () => {
   try {
     const mode = window.matchMedia("(display-mode: standalone)").matches
       ? "standalone"

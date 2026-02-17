@@ -26,7 +26,7 @@ export const functionName = async (...args) => {
       return { ok: false, message: "API not supported" };
     }
 
-    // 2. API call
+    // 2. API call (use sync when underlying API is sync, e.g. connectivity, visibility)
     const result = await someAPI(...args);
     return { ok: true, message: "Success message", ...data };
   } catch (error) {
@@ -107,8 +107,13 @@ interface BarcodeDetectorFull {
   export const apiName = async (p1: string, p2: number, p3: boolean, p4: string) => {};
   ```
 
+## Sync vs Async
+- Use **sync** when the underlying browser API is synchronous (e.g. `navigator.onLine`, `document.visibilityState`, `BroadcastChannel`)
+- Use **async** when the API returns a Promise or requires user interaction
+- Sync APIs: `connectivity`, `visibility`, `displayMode`, `broadcast`
+
 ## Async/Await
-- Prefer async/await over promises
+- Prefer async/await over promises for async APIs
 - Always handle errors internally
 - Example:
   ```typescript

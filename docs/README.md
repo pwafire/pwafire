@@ -10,3 +10,4 @@
 - **`apis/`** — Unique API documentation
   - `passkey.md` — Passkey/WebAuthn implementation notes
   - `broadcast.md` — Broadcast Channel API
+  - `system.md` — Sync system APIs (connectivity, visibility, displayMode)

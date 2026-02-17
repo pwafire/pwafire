@@ -27,8 +27,20 @@ Quick reference for working on PWAFire. For detailed guidelines, see `docs/agent
 **APIs (unique API docs):**
 - [Passkey](./docs/apis/passkey.md) - Passkey/WebAuthn implementation notes
 - [Broadcast](./docs/apis/broadcast.md) - Broadcast Channel API
+- [System](./docs/apis/system.md) - Sync system APIs (connectivity, visibility, displayMode)
 
 ## Key Reminders
+
+**Sync vs Async (IMPORTANT for new APIs):**
+
+- **Use sync** when the underlying browser API is synchronous (no Promises, no user interaction):
+  - Property reads: `navigator.onLine`, `document.visibilityState`, `matchMedia().matches`
+  - Sync constructors: `new BroadcastChannel()`, `postMessage()`, `close()`
+  - Sync APIs: `connectivity`, `visibility`, `displayMode`, `broadcast`
+- **Use async** when the API returns a Promise or requires user interaction:
+  - `navigator.clipboard.*`, `navigator.share()`, `requestFullscreen()`, `wakeLock.request()`
+  - File pickers, notifications, payment, contacts, etc.
+- **Rule:** Match the underlying browser API. Sync → sync. Promise-returning → async.
 
 **Error Handling:**
 
@@ -203,12 +215,13 @@ PWAFire follows **pattern-based testing** rather than exhaustive module testing.
 
 **When working on PWAFire:**
 
-1. All PWA modules follow catch-and-return pattern - maintain consistency
-2. Don't define new browser API interfaces - use `unknown` and `as any`
-3. Error messages: `"Failed to {action}"` or `"{API} API not supported"`
-4. All functions return `{ok: boolean, message: string, ...data?}`
-5. Run lint, build, and test before committing
-6. Commit format: `<type>(<scope>) - <description>`
+1. **Sync vs async:** Use sync when the browser API is sync (property reads, BroadcastChannel). Use async when it returns a Promise. See "Sync vs Async" in Key Reminders.
+2. All PWA modules follow catch-and-return pattern - maintain consistency
+3. Don't define new browser API interfaces - use `unknown` and `as any`
+4. Error messages: `"Failed to {action}"` or `"{API} API not supported"`
+5. All functions return `{ok: boolean, message: string, ...data?}`
+6. Run lint, build, and test before committing
+7. Commit format: `<type>(<scope>) - <description>`
 
 **Verification:**
 
