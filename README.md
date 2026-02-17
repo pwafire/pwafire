@@ -23,20 +23,20 @@ const { ok, message } = await copyText("Hello World");
 
 ## Try it Live
 
-| Resource                                                                                    | Description                              |
-| ------------------------------------------------------------------------------------------- | ---------------------------------------- |
-| [Launch Console](https://console.pwafire.org)                                               | Test all PWA APIs in your browser        |
-| [StackBlitz Playground](https://stackblitz.com/edit/pwafire?file=src%2Findex.ts)            | Live demo and playground — edit and run  |
+| Resource                                                             | Description                           |
+| -------------------------------------------------------------------- | ------------------------------------- |
+| [Launch Console](https://console.pwafire.org)                        | Test all PWA APIs in your browser     |
+| [Code Live](https://stackblitz.com/edit/pwafire?file=src%2Findex.ts) | Live Demo & Playground — edit and run |
 
 ## Documentation
 
-| Document                                                 | Description                         |
-| -------------------------------------------------------- | ----------------------------------- |
-| [docs.pwafire.org](https://docs.pwafire.org/get-started) | API reference, guides, and examples |
-| [Breaking Changes](./docs/breaking-changes.md)           | Migration guide for v6.0.0          |
-| [Contributing](./.github/CONTRIBUTING.md)                | Contribution guidelines             |
-| [Code of Conduct](./.github/CODE_OF_CONDUCT.md)          | Community standards                 |
-| [Security](./.github/SECURITY.md)                        | Security policy                     |
+| Document                                              | Description                         |
+| ----------------------------------------------------- | ----------------------------------- |
+| [Documentation](https://docs.pwafire.org/get-started) | API reference, guides, and examples |
+| [Breaking Changes](./docs/breaking-changes.md)        | Migration guide for v6.0.0          |
+| [Contributing](./.github/CONTRIBUTING.md)             | Contribution guidelines             |
+| [Code of Conduct](./.github/CODE_OF_CONDUCT.md)       | Community standards                 |
+| [Security](./.github/SECURITY.md)                     | Security policy                     |
 
 ## Contributing
 
