@@ -1,6 +1,6 @@
 # PWAFire Development Guide
 
-Quick reference for working on PWAFire. For detailed guidelines, see `/docs/*.md` files.
+Quick reference for working on PWAFire. For detailed guidelines, see `docs/agents/` (style guides) and `docs/apis/` (API-specific docs).
 
 ## Core Principles
 
@@ -12,16 +12,21 @@ Quick reference for working on PWAFire. For detailed guidelines, see `/docs/*.md
 
 ## Quick Links
 
-- [Versioning & Release](./docs/versioning-and-release.md) - How to version and release packages
-- [Commit Style](./docs/commit-style.md) - Commit messages, PR and release summaries
-- [Naming Conventions](./docs/naming-conventions.md) - Functions, files, constants, types, APIs
-- [Code Style](./docs/code-style.md) - Formatting, error handling, type safety, async/await
-- [File Organization](./docs/file-organization.md) - Project structure, modules, imports/exports
-- [Testing](./docs/testing.md) - Testing philosophy and patterns
-- [Testing Style](./docs/testing-style.md) - Dynamic generation, test configuration
-- [HTML/CSS Style](./docs/html-css-style.md) - Test console styling guidelines
-- [Tooling](./docs/tooling.md) - Prettier, ESLint, NPM scripts, testing requirements
-- [Console App](./docs/console.md) - Complete console app documentation
+**Agents (style guides):**
+- [Versioning & Release](./docs/agents/versioning-and-release.md) - How to version and release packages
+- [Commit Style](./docs/agents/commit-style.md) - Commit messages, PR and release summaries
+- [Naming Conventions](./docs/agents/naming-conventions.md) - Functions, files, constants, types, APIs
+- [Code Style](./docs/agents/code-style.md) - Formatting, error handling, type safety, async/await
+- [File Organization](./docs/agents/file-organization.md) - Project structure, modules, imports/exports
+- [Testing](./docs/agents/testing.md) - Testing philosophy and patterns
+- [Testing Style](./docs/agents/testing-style.md) - Dynamic generation, test configuration
+- [HTML/CSS Style](./docs/agents/html-css-style.md) - Test console styling guidelines
+- [Tooling](./docs/agents/tooling.md) - Prettier, ESLint, NPM scripts, testing requirements
+- [Console App](./docs/agents/console.md) - Complete console app documentation
+
+**APIs (unique API docs):**
+- [Passkey](./docs/apis/passkey.md) - Passkey/WebAuthn implementation notes
+- [Broadcast](./docs/apis/broadcast.md) - Broadcast Channel API
 
 ## Key Reminders
 
@@ -80,7 +85,7 @@ chore(cleanup) - standardize error handling across modules
 
 ## Versioning & Releases
 
-**Quick Reference:** See [Versioning & Release Guide](./docs/versioning-and-release.md) for complete details.
+**Quick Reference:** See [Versioning & Release Guide](./docs/agents/versioning-and-release.md) for complete details.
 
 **IMPORTANT for AI Agents:** Always ASK the user which version bump to use. Don't assume!
 

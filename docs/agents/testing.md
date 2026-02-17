@@ -165,7 +165,7 @@ export const notification = async (data) => {
 
 - [Code Style](./code-style.md) - Error handling patterns
 - [Tooling](./tooling.md) - Jest configuration
-- [AGENTS.md](../AGENTS.md) - Testing philosophy
+- [AGENTS.md](../../AGENTS.md) - Testing philosophy
 
 ## FAQ
 

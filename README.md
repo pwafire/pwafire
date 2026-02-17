@@ -33,7 +33,7 @@ const { ok, message } = await copyText("Hello World");
 | Document                                              | Description                         |
 | ----------------------------------------------------- | ----------------------------------- |
 | [Documentation](https://docs.pwafire.org/get-started) | API reference, guides, and examples |
-| [Breaking Changes](./docs/breaking-changes.md)        | Migration guide for v6.0.0          |
+| [Breaking Changes](./docs/agents/breaking-changes.md) | Migration guide for v6.0.0          |
 | [Contributing](./.github/CONTRIBUTING.md)             | Contribution guidelines             |
 | [Code of Conduct](./.github/CODE_OF_CONDUCT.md)       | Community standards                 |
 | [Security](./.github/SECURITY.md)                     | Security policy                     |

@@ -115,10 +115,13 @@ packages/pwafire/src/
 ## Detailed Docs
 
 For full guidelines, see project docs:
-- `AGENTS.md` / `agents.md` - Quick reference
-- `docs/code-style.md` - Formatting, type safety
-- `docs/naming-conventions.md` - Naming rules
-- `docs/file-organization.md` - Module structure
-- `docs/commit-style.md` - Commit and PR format
-- `docs/testing-style.md` - Test patterns
-- `docs/console.md` - Console app
+
+**Agents (style guides):** `docs/agents/`
+- `code-style.md` - Formatting, type safety
+- `naming-conventions.md` - Naming rules
+- `file-organization.md` - Module structure
+- `commit-style.md` - Commit and PR format
+- `testing-style.md` - Test patterns
+- `console.md` - Console app
+
+**APIs:** `docs/apis/` - Unique API docs (passkey, broadcast)

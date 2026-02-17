@@ -418,10 +418,10 @@ git push origin main --tags
 
 The release workflow is configured at: `.github/workflows/publish.yml`
 
-For setup details, see: [CI/CD Setup Guide](../.github/CI.md)
+For setup details, see: [CI/CD Setup Guide](../../.github/CI.md)
 
 ## Related Documentation
 
 - [Commit Style](./commit-style.md) - How to write good commit messages
-- [CI/CD Setup](../.github/CI.md) - GitHub Actions configuration
+- [CI/CD Setup](../../.github/CI.md) - GitHub Actions configuration
 - [npm Trusted Publishers](https://docs.npmjs.com/trusted-publishers) - Official npm docs
