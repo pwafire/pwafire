@@ -51,15 +51,15 @@ The console app (`/console`) groups related APIs together for better organizatio
 - `fullscreen` - Toggle fullscreen mode
 
 ### 📡 Broadcast APIs
-- `broadcast.send` - Send message to other tabs
-- `broadcast.listen` - Listen for messages from other tabs
+- `broadcast.send` - Send message to other tabs (sync, no loading bar)
+- `broadcast.listen` - Listen for messages from other tabs (sync, no loading bar)
 
 ### ⚡ System APIs
 - `wakeLock` - Prevent screen sleep
 - `idleDetection` - Detect user idle state
-- `connectivity` - Network status (sync)
-- `visibility` - Page visibility state (sync)
-- `displayMode` - App display mode (sync)
+- `connectivity` - Network status (sync, no loading bar)
+- `visibility` - Page visibility state (sync, no loading bar)
+- `displayMode` - App display mode (sync, no loading bar)
 
 ### 🎨 Media APIs
 - `barcodeDetector` - Scan barcodes

@@ -13,6 +13,14 @@ import { stats, updateStats } from "../stats";
 import { logConsole } from "../log";
 import { showResult } from "../results";
 
+const SYNC_APIS = [
+  "connectivity",
+  "visibility",
+  "displayMode",
+  "broadcast.send",
+  "broadcast.listen",
+] as const;
+
 // AI APIs that use modals for input and results (no sidebar)
 const MODAL_APIS = [
   "summarizer",
@@ -382,15 +390,17 @@ export const runTest = async (apiName: string): Promise<void> => {
       return;
     }
 
-    // Show loading bar before API call
-    window.showTopLoadingBar();
+    if (!SYNC_APIS.includes(apiName as (typeof SYNC_APIS)[number])) {
+      window.showTopLoadingBar();
+    }
 
-    const result = await (apiFn as (...args: unknown[]) => Promise<unknown>)(
-      ...(Array.isArray(params) ? params : [])
+    const result = await Promise.resolve(
+      (apiFn as (...args: unknown[]) => unknown)(...(Array.isArray(params) ? params : []))
     );
 
-    // Hide loading bar after API call
-    window.hideTopLoadingBar();
+    if (!SYNC_APIS.includes(apiName as (typeof SYNC_APIS)[number])) {
+      window.hideTopLoadingBar();
+    }
 
     if (window.__summarizerCloseModal) {
         if (MODAL_APIS.includes(apiName as any)) {
