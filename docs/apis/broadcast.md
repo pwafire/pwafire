@@ -27,7 +27,7 @@ import { broadcast } from "pwafire";
 const result = broadcast.channel("tenant-context");
 if (result.ok && result.channel) {
   result.channel.postMessage({ type: "TENANT_SWITCH", tenantId: "acme" });
-  result.channel.close();
+  // channel stays open for more posts; call close() when disconnecting (e.g. unmount)
 }
 ```
 
@@ -53,6 +53,7 @@ broadcast.listen(undefined, (data) => console.log(data)); // Listen with callbac
 
 ## Notes
 
+- **close()** — Only needed when disconnecting (e.g. component unmount). You can post multiple messages before closing.
 - **Same origin only** — All tabs must share the same origin.
 - **Sender does not receive** — The tab that calls `postMessage` does not receive its own message.
 - **Structured clone** — Data is serialized via the structured clone algorithm.
