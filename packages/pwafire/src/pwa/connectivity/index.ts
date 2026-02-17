@@ -1,4 +1,4 @@
-export const connectivity = async () => {
+export const connectivity = () => {
   try {
     const isOnline = navigator.onLine;
     return {

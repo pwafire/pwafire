@@ -82,6 +82,31 @@ const showJsonResult = (
   `;
 };
 
+const showBroadcastListenResult = (
+  title: HTMLElement,
+  content: HTMLElement,
+  data: ApiResult
+): void => {
+  title.textContent = "Broadcast Listen";
+  const statusClass = data.ok ? "result-success" : "result-error";
+
+  content.innerHTML = `
+    <div class="${statusClass}">${data.ok ? "✓" : "✗"} ${data.message}</div>
+    <div class="broadcast-messages-label">Messages received:</div>
+    <div id="broadcast-messages" class="broadcast-messages"></div>
+  `;
+};
+
+export const appendBroadcastMessage = (data: unknown): void => {
+  const el = document.getElementById("broadcast-messages");
+  if (!el) return;
+  const item = document.createElement("div");
+  item.className = "broadcast-message-item";
+  item.textContent = `${new Date().toLocaleTimeString()} — ${JSON.stringify(data)}`;
+  el.appendChild(item);
+  el.scrollTop = el.scrollHeight;
+};
+
 export const showResult = async (
   _elementId: string,
   data: ApiResult,
@@ -110,6 +135,8 @@ export const showResult = async (
     const streamType =
       apiName === "decompressStream" ? "decompressed" : "compressed";
     await showStreamResult(title, content, data, streamType);
+  } else if (apiName === "broadcast.listen") {
+    showBroadcastListenResult(title, content, data);
   } else if (data.file) {
     showFileResult(title, content, data);
   } else {

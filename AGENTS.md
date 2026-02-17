@@ -1,6 +1,6 @@
 # PWAFire Development Guide
 
-Quick reference for working on PWAFire. For detailed guidelines, see `/docs/*.md` files.
+Quick reference for working on PWAFire. For detailed guidelines, see `docs/agents/` (style guides) and `docs/apis/` (API-specific docs).
 
 ## Core Principles
 
@@ -12,18 +12,35 @@ Quick reference for working on PWAFire. For detailed guidelines, see `/docs/*.md
 
 ## Quick Links
 
-- [Versioning & Release](./docs/versioning-and-release.md) - How to version and release packages
-- [Commit Style](./docs/commit-style.md) - Commit messages, PR and release summaries
-- [Naming Conventions](./docs/naming-conventions.md) - Functions, files, constants, types, APIs
-- [Code Style](./docs/code-style.md) - Formatting, error handling, type safety, async/await
-- [File Organization](./docs/file-organization.md) - Project structure, modules, imports/exports
-- [Testing](./docs/testing.md) - Testing philosophy and patterns
-- [Testing Style](./docs/testing-style.md) - Dynamic generation, test configuration
-- [HTML/CSS Style](./docs/html-css-style.md) - Test console styling guidelines
-- [Tooling](./docs/tooling.md) - Prettier, ESLint, NPM scripts, testing requirements
-- [Console App](./docs/console.md) - Complete console app documentation
+**Agents (style guides):**
+- [Versioning & Release](./docs/agents/versioning-and-release.md) - How to version and release packages
+- [Commit Style](./docs/agents/commit-style.md) - Commit messages, PR and release summaries
+- [Naming Conventions](./docs/agents/naming-conventions.md) - Functions, files, constants, types, APIs
+- [Code Style](./docs/agents/code-style.md) - Formatting, error handling, type safety, async/await
+- [File Organization](./docs/agents/file-organization.md) - Project structure, modules, imports/exports
+- [Testing](./docs/agents/testing.md) - Testing philosophy and patterns
+- [Testing Style](./docs/agents/testing-style.md) - Dynamic generation, test configuration
+- [HTML/CSS Style](./docs/agents/html-css-style.md) - Test console styling guidelines
+- [Tooling](./docs/agents/tooling.md) - Prettier, ESLint, NPM scripts, testing requirements
+- [Console App](./docs/agents/console.md) - Complete console app documentation
+
+**APIs (unique API docs):**
+- [Passkey](./docs/apis/passkey.md) - Passkey/WebAuthn implementation notes
+- [Broadcast](./docs/apis/broadcast.md) - Broadcast Channel API
+- [System](./docs/apis/system.md) - Sync system APIs (connectivity, visibility, displayMode)
 
 ## Key Reminders
+
+**Sync vs Async (IMPORTANT for new APIs):**
+
+- **Use sync** when the underlying browser API is synchronous (no Promises, no user interaction):
+  - Property reads: `navigator.onLine`, `document.visibilityState`, `matchMedia().matches`
+  - Sync constructors: `new BroadcastChannel()`, `postMessage()`, `close()`
+  - Sync APIs: `connectivity`, `visibility`, `displayMode`, `broadcast`
+- **Use async** when the API returns a Promise or requires user interaction:
+  - `navigator.clipboard.*`, `navigator.share()`, `requestFullscreen()`, `wakeLock.request()`
+  - File pickers, notifications, payment, contacts, etc.
+- **Rule:** Match the underlying browser API. Sync → sync. Promise-returning → async.
 
 **Error Handling:**
 
@@ -80,7 +97,7 @@ chore(cleanup) - standardize error handling across modules
 
 ## Versioning & Releases
 
-**Quick Reference:** See [Versioning & Release Guide](./docs/versioning-and-release.md) for complete details.
+**Quick Reference:** See [Versioning & Release Guide](./docs/agents/versioning-and-release.md) for complete details.
 
 **IMPORTANT for AI Agents:** Always ASK the user which version bump to use. Don't assume!
 
@@ -198,12 +215,13 @@ PWAFire follows **pattern-based testing** rather than exhaustive module testing.
 
 **When working on PWAFire:**
 
-1. All PWA modules follow catch-and-return pattern - maintain consistency
-2. Don't define new browser API interfaces - use `unknown` and `as any`
-3. Error messages: `"Failed to {action}"` or `"{API} API not supported"`
-4. All functions return `{ok: boolean, message: string, ...data?}`
-5. Run lint, build, and test before committing
-6. Commit format: `<type>(<scope>) - <description>`
+1. **Sync vs async:** Use sync when the browser API is sync (property reads, BroadcastChannel). Use async when it returns a Promise. See "Sync vs Async" in Key Reminders.
+2. All PWA modules follow catch-and-return pattern - maintain consistency
+3. Don't define new browser API interfaces - use `unknown` and `as any`
+4. Error messages: `"Failed to {action}"` or `"{API} API not supported"`
+5. All functions return `{ok: boolean, message: string, ...data?}`
+6. Run lint, build, and test before committing
+7. Commit format: `<type>(<scope>) - <description>`
 
 **Verification:**
 

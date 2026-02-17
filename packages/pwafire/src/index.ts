@@ -1,5 +1,6 @@
 export * from "./pwa/badging";
 export * from "./pwa/barcode";
+export * from "./pwa/broadcast";
 export * from "./pwa/clipboard";
 export * from "./pwa/compression";
 export * from "./pwa/connectivity";

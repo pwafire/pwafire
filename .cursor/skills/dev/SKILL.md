@@ -1,5 +1,5 @@
 ---
-name: pwafire-development
+name: dev
 description: Develop and maintain the PWAFire PWA utilities library. Use when working on pwafire package, adding PWA APIs, fixing modules, writing tests, or contributing to the PWAFire codebase.
 ---
 
@@ -21,9 +21,20 @@ Use this skill when working on:
 - **Consistent response format**: `{ ok: boolean, message: string, ...data? }`
 - **Minimal abstractions** - KISS, DRY, YAGNI
 
+## Sync vs Async (IMPORTANT)
+
+**Use sync** when the underlying browser API is synchronous:
+- Property reads: `navigator.onLine`, `document.visibilityState`, `matchMedia().matches`
+- Sync APIs: `new BroadcastChannel()`, `postMessage()`, `close()`
+- Examples: `connectivity`, `visibility`, `displayMode`, `broadcast`
+
+**Use async** when the API returns a Promise or requires user interaction:
+- `navigator.clipboard.*`, `navigator.share()`, `requestFullscreen()`, file pickers, etc.
+- Rule: Match the underlying browser API. Sync → sync. Promise-returning → async.
+
 ## Error Handling (Required Pattern)
 
-Every PWA module function must use this structure:
+Every PWA module function must use this structure (async when API is async):
 
 ```typescript
 export const apiName = async (...args) => {
@@ -40,7 +51,7 @@ export const apiName = async (...args) => {
 };
 ```
 
-- Feature detection → `{ ok: false, message: "API not supported" }`
+For sync APIs, omit `async` and `await`. Feature detection → `{ ok: false, message: "API not supported" }`
 - Success → `{ ok: true, message: "...", ...optionalData }`
 - Error messages: `"Failed to {action}"` or `"{API} API not supported"`
 
@@ -115,10 +126,14 @@ packages/pwafire/src/
 ## Detailed Docs
 
 For full guidelines, see project docs:
-- `AGENTS.md` / `agents.md` - Quick reference
-- `docs/code-style.md` - Formatting, type safety
-- `docs/naming-conventions.md` - Naming rules
-- `docs/file-organization.md` - Module structure
-- `docs/commit-style.md` - Commit and PR format
-- `docs/testing-style.md` - Test patterns
-- `docs/console.md` - Console app
+
+**Agents (style guides):** `docs/agents/`
+- `code-style.md` - Formatting, type safety
+- `naming-conventions.md` - Naming rules
+- `file-organization.md` - Module structure
+- `commit-style.md` - Commit and PR format
+- `testing-style.md` - Test patterns
+- `console.md` - Console app
+
+**APIs:** `docs/apis/` - Unique API docs (passkey, broadcast, system)
+- `system.md` - Sync APIs (connectivity, visibility, displayMode)
