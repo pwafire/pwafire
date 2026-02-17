@@ -1,0 +1,27 @@
+{
+  "challenge": "N0KWYrCc-txPg8V7E4I-NQJqJqJQwPZp8DQw7vzJCGM",
+  "rp": {
+    "name": "PWAFire Demo",
+    "id": "console.pwafire.org"
+  },
+  "user": {
+    "id": "dGVzdC11c2VyLTE",
+    "name": "demo@pwafire.org",
+    "displayName": "PWAFire Demo User"
+  },
+  "pubKeyCredParams": [
+    {
+      "alg": -7,
+      "type": "public-key"
+    },
+    {
+      "alg": -257,
+      "type": "public-key"
+    }
+  ],
+  "authenticatorSelection": {
+    "authenticatorAttachment": "platform",
+    "requireResidentKey": true,
+    "residentKey": "required"
+  }
+}
