@@ -1,5 +1,6 @@
 export * from "./badging";
 export * from "./barcode";
+export * from "./broadcast";
 export * from "./clipboard";
 export * from "./compression";
 export * from "./connectivity";

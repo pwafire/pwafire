@@ -3,6 +3,7 @@ import { logConsole } from "../log";
 
 export const featureDisplayNames: Record<string, string> = {
   badging: "Badging",
+  broadcast: "Broadcast Channel",
   barcode: "Barcode Detector",
   clipboard: "Clipboard",
   compression: "Compression",

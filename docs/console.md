@@ -50,6 +50,10 @@ The console app (`/console`) groups related APIs together for better organizatio
 - `webPIP` - Picture-in-picture mode
 - `fullscreen` - Toggle fullscreen mode
 
+### 📡 Broadcast APIs
+- `broadcast.send` - Send message to other tabs
+- `broadcast.listen` - Listen for messages from other tabs
+
 ### ⚡ System APIs
 - `wakeLock` - Prevent screen sleep
 - `idleDetection` - Detect user idle state

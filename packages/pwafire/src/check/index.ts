@@ -1,5 +1,6 @@
 export const badging = () => "setAppBadge" in navigator;
 export const barcode = () => "BarcodeDetector" in window;
+export const broadcast = () => "BroadcastChannel" in globalThis;
 export const clipboard = () => "clipboard" in navigator;
 export const compression = () => "CompressionStream" in window;
 export const connectivity = () => "connection" in navigator;

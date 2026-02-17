@@ -1,5 +1,6 @@
 import type { ApiConfig } from "../types";
 import { logConsole } from "../log";
+import { appendBroadcastMessage } from "../results";
 import {
   showSummarizerModal,
   showTranslatorModal,
@@ -328,6 +329,17 @@ export const apiConfigs: Record<string, ApiConfig> = {
       window.__summarizerCloseModal = config.closeModal;
       return [config.text];
     }
+  },
+  "broadcast.send": { title: "Broadcast Send" },
+  "broadcast.listen": {
+    title: "Broadcast Listen",
+    params: () => [
+      undefined,
+      (data: unknown) => {
+        logConsole(`Broadcast received: ${JSON.stringify(data)}`, "success");
+        appendBroadcastMessage(data);
+      }
+    ]
   }
 };
 
@@ -367,5 +379,6 @@ export const apiGroups: Record<string, string[]> = {
   ],
   "👤 User Data": ["contacts", "payment", "webOtp"],
   "🔐 Passkey": ["passkey.create", "passkey.get", "passkey.getConditional"],
+  "📡 Broadcast": ["broadcast.send", "broadcast.listen"],
   "📦 Other": ["contentIndexing", "install"]
 };
