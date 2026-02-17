@@ -33,8 +33,8 @@ jobs:
 
       - name: Clean install dependencies
         run: |
-          npm cache clean --force
-          npm ci --force
+          rm -rf node_modules package-lock.json
+          npm install
 
       - run: npm run verify
 
