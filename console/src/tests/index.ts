@@ -364,6 +364,13 @@ export const generateTests = (): void => {
   });
 };
 
+const cleanupVisibilityListener = (): void => {
+  if (window.__visibilityUnlisten) {
+    window.__visibilityUnlisten();
+    window.__visibilityUnlisten = null;
+  }
+};
+
 export const runTest = async (apiName: string): Promise<void> => {
   const config = apiConfigs[apiName];
   if (!config) return;
@@ -388,6 +395,10 @@ export const runTest = async (apiName: string): Promise<void> => {
       stats.failed++;
       updateStats();
       return;
+    }
+
+    if (apiName !== "visibility" && window.__visibilityUnlisten) {
+      cleanupVisibilityListener();
     }
 
     if (!SYNC_APIS.includes(apiName as (typeof SYNC_APIS)[number])) {
@@ -501,6 +512,8 @@ export const runAllTests = async (): Promise<void> => {
       await new Promise((r) => setTimeout(r, 500));
     }
   }
+
+  cleanupVisibilityListener();
 
   logConsole("=".repeat(50), "info");
   logConsole(
