@@ -22,6 +22,7 @@ declare global {
     downloadStream: typeof downloadStream;
     showTopLoadingBar: () => void;
     hideTopLoadingBar: () => void;
+    __visibilityUnlisten: (() => void) | null;
   }
 }
 
@@ -49,6 +50,7 @@ export const hideTopLoadingBar = (): void => {
 export const init = (): void => {
   window.pwafire = pwafire;
   window.check = check;
+  window.__visibilityUnlisten = null;
   window.runTest = runTest;
   window.runAllTests = runAllTests;
   window.clearConsole = clearConsole;
