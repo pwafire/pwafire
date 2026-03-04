@@ -444,6 +444,18 @@ export const runTest = async (apiName: string): Promise<void> => {
       );
     }
 
+    if (apiName === "visibility") {
+      window.__visibilityUnlisten?.();
+      const visResult = result as { ok: boolean; onlisten?: (cb: (state: DocumentVisibilityState) => void) => { unlisten: () => void } };
+      if (visResult.ok && visResult.onlisten) {
+        const { unlisten } = visResult.onlisten((state) => {
+          logConsole(`Visibility changed: ${state}`, state === "visible" ? "success" : "info");
+        });
+        window.__visibilityUnlisten = unlisten;
+        logConsole("Visibility listener attached — switch tabs to test", "info");
+      }
+    }
+
     // Only show sidebar for non-modal APIs
     if (!MODAL_APIS.includes(apiName as any)) {
       await showResult(`${id}-result`, typedResult as Parameters<typeof showResult>[1], apiName);

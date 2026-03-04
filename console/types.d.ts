@@ -23,6 +23,7 @@ declare global {
     downloadStream: () => void;
     __summarizerCloseModal: (() => void) | null;
     __lastFileHandle: FileSystemFileHandle | null;
+    __visibilityUnlisten: (() => void) | null;
     __currentStreamBlob: Blob | null;
     __currentStreamType: string | null;
   }
