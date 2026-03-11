@@ -38,8 +38,10 @@ jobs:
 
       - run: npm run verify
 
-      # Publish using OIDC trusted publisher (no token needed!)
+      # Publish to npm using NPM_TOKEN secret; provenance is signed via GitHub OIDC
       - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Get version from package.json
         id: version
