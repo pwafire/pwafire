@@ -5,7 +5,6 @@ export const summarizer = async (text: string, options?: SummarizerOptions) => {
     if (!("Summarizer" in self)) {
       return {
         ok: false,
-        status: "not-supported",
         message: "Summarizer API not supported",
       };
     }
@@ -14,7 +13,6 @@ export const summarizer = async (text: string, options?: SummarizerOptions) => {
     if (availability === "unavailable") {
       return {
         ok: false,
-        status: "unavailable",
         message: "Summarizer API not available on this device",
       };
     }
@@ -22,7 +20,6 @@ export const summarizer = async (text: string, options?: SummarizerOptions) => {
     if (!navigator.userActivation?.isActive) {
       return {
         ok: false,
-        status: "user-activation-required",
         message: "User activation required",
       };
     }
@@ -32,14 +29,12 @@ export const summarizer = async (text: string, options?: SummarizerOptions) => {
     session.destroy();
     return {
       ok: true,
-      status: "success",
       message: "Summarized",
       summary,
     };
   } catch (error) {
     return {
       ok: false,
-      status: "error",
       message: error instanceof Error ? error.message : "Failed to summarize",
     };
   }
@@ -54,7 +49,6 @@ export const summarizerStream = async (
     if (!("Summarizer" in self)) {
       return {
         ok: false,
-        status: "not-supported",
         message: "Summarizer API not supported",
       };
     }
@@ -63,7 +57,6 @@ export const summarizerStream = async (
     if (availability === "unavailable") {
       return {
         ok: false,
-        status: "unavailable",
         message: "Summarizer API not available on this device",
       };
     }
@@ -71,7 +64,6 @@ export const summarizerStream = async (
     if (!navigator.userActivation?.isActive) {
       return {
         ok: false,
-        status: "user-activation-required",
         message: "User activation required",
       };
     }
@@ -94,13 +86,11 @@ export const summarizerStream = async (
 
     return {
       ok: true,
-      status: "success",
       message: "Streaming complete",
     };
   } catch (error) {
     return {
       ok: false,
-      status: "error",
       message: error instanceof Error ? error.message : "Failed to summarize stream",
     };
   }
