@@ -26,6 +26,7 @@ export const notification = async (data: {
     if (!("Notification" in window)) {
       return {
         ok: false,
+        status: "not-supported",
         message: "Notification API not supported",
       };
     }
@@ -35,6 +36,7 @@ export const notification = async (data: {
     if (permission === "denied") {
       return {
         ok: false,
+        status: "permission-denied",
         message: "Notification permission denied",
       };
     }
@@ -45,12 +47,14 @@ export const notification = async (data: {
         await registration.showNotification(title, options);
         return {
           ok: true,
+          status: "success",
           message: "Notification sent via service worker",
         };
       } else {
         new Notification(title, options);
         return {
           ok: true,
+          status: "success",
           message: "Notification sent",
         };
       }
@@ -58,11 +62,13 @@ export const notification = async (data: {
 
     return {
       ok: false,
+      status: "permission-default",
       message: "Notification permission not granted",
     };
   } catch (error) {
     return {
       ok: false,
+      status: "error",
       message: error instanceof Error ? error.message : "Failed to send notification",
     };
   }

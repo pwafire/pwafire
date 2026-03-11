@@ -9,6 +9,7 @@ export const translator = async (
     if (!("Translator" in self)) {
       return {
         ok: false,
+        status: "not-supported",
         message: "Translator API not supported",
       };
     }
@@ -17,6 +18,7 @@ export const translator = async (
     if (availability === "unavailable" ) {
       return {
         ok: false,
+        status: "unavailable",
         message: "Translator API not available for this language pair",
       };
     }
@@ -24,6 +26,7 @@ export const translator = async (
     if (!navigator.userActivation?.isActive) {
       return {
         ok: false,
+        status: "user-activation-required",
         message: "User activation required",
       };
     }
@@ -34,12 +37,14 @@ export const translator = async (
 
     return {
       ok: true,
+      status: "success",
       message: "Translated",
       translation,
     };
   } catch (error) {
     return {
       ok: false,
+      status: "error",
       message: error instanceof Error ? error.message : "Failed to translate",
     };
   }
@@ -57,6 +62,7 @@ export const translatorStream = async (
     if (!("Translator" in self)) {
       return {
         ok: false,
+        status: "not-supported",
         message: "Translator API not supported",
       };
     }
@@ -65,6 +71,7 @@ export const translatorStream = async (
     if (availability === "unavailable" ) {
       return {
         ok: false,
+        status: "unavailable",
         message: "Translator API not available for this language pair",
       };
     }
@@ -72,6 +79,7 @@ export const translatorStream = async (
     if (!navigator.userActivation?.isActive) {
       return {
         ok: false,
+        status: "user-activation-required",
         message: "User activation required",
       };
     }
@@ -89,12 +97,14 @@ export const translatorStream = async (
 
     return {
       ok: true,
+      status: "success",
       message: "Translated via stream",
       translation: fullTranslation,
     };
   } catch (error) {
     return {
       ok: false,
+      status: "error",
       message: error instanceof Error ? error.message : "Failed to translate",
     };
   }
