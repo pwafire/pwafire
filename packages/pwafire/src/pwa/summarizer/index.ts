@@ -28,8 +28,12 @@ export const summarizer = async (text: string, options?: SummarizerOptions) => {
     }
 
     const session = await Summarizer.create(options);
-    const summary = await session.summarize(text, options?.context ? { context: options.context } : undefined);
-    session.destroy();
+    let summary;
+    try {
+      summary = await session.summarize(text, options?.context ? { context: options.context } : undefined);
+    } finally {
+      session.destroy();
+    }
     return {
       ok: true,
       status: "success",
@@ -77,20 +81,22 @@ export const summarizerStream = async (
     }
 
     const session = await Summarizer.create(options);
-    const stream = session.summarizeStreaming(text, options?.context ? { context: options.context } : undefined);
-    const reader = stream.getReader();
-
     try {
-      let result = await reader.read();
-      while (!result.done) {
-        callback(result.value);
-        result = await reader.read();
+      const stream = session.summarizeStreaming(text, options?.context ? { context: options.context } : undefined);
+      const reader = stream.getReader();
+
+      try {
+        let result = await reader.read();
+        while (!result.done) {
+          callback(result.value);
+          result = await reader.read();
+        }
+      } finally {
+        reader.releaseLock();
       }
     } finally {
-      reader.releaseLock();
+      session.destroy();
     }
-
-    session.destroy();
 
     return {
       ok: true,

@@ -32,8 +32,12 @@ export const translator = async (
     }
 
     const translatorSession = await Translator.create(options);
-    const translation = await translatorSession.translate(text);
-    translatorSession.destroy();
+    let translation;
+    try {
+      translation = await translatorSession.translate(text);
+    } finally {
+      translatorSession.destroy();
+    }
 
     return {
       ok: true,
@@ -85,15 +89,17 @@ export const translatorStream = async (
     }
 
     const translatorSession = await Translator.create(options);
-    const stream = translatorSession.translateStreaming(text);
 
     let fullTranslation = "";
-    for await (const chunk of stream as any) {
-      fullTranslation = chunk;
-      streamCallback(chunk);
+    try {
+      const stream = translatorSession.translateStreaming(text);
+      for await (const chunk of stream as any) {
+        fullTranslation = chunk;
+        streamCallback(chunk);
+      }
+    } finally {
+      translatorSession.destroy();
     }
-
-    translatorSession.destroy();
 
     return {
       ok: true,

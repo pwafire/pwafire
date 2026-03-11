@@ -113,7 +113,10 @@ export const writeUrlToFile = async (handle: FileSystemFileHandle, url: string) 
   try {
     const writable = await handle.createWritable();
     const response = await fetch(url);
-    if (!response.body) throw new Error("Response body is null");
+    if (!response.body) {
+      await writable.abort();
+      return { ok: false, message: "Response body is null" };
+    }
     await response.body.pipeTo(writable);
     return { ok: true, message: "URL written to file successfully" };
   } catch (error) {
