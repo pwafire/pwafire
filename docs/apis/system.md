@@ -43,4 +43,4 @@ if (result.ok) {
 
 - No `await` needed — all return immediately
 - Underlying APIs: `navigator.onLine`, `document.visibilityState`, `matchMedia("(display-mode: ...)")`
-- Visibility: `onlisten` subscribes to `document`'s `visibilitychange`; the callback receives `"visible"` or `"hidden"`
+- Visibility: `onlisten` subscribes to `document`'s `visibilitychange`; the callback receives `document.visibilityState` (a `DocumentVisibilityState` value, such as `"visible"` or `"hidden"`)
