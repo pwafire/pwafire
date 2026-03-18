@@ -31,7 +31,7 @@ To react when the tab becomes visible or hidden (e.g. user switches tabs), use `
 
 ```typescript
 const result = visibility();
-if (result.ok && result.onlisten) {
+if (result.ok) {
   const { unlisten } = result.onlisten((state) => {
     console.log("Visibility:", state);
   });
