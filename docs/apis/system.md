@@ -6,7 +6,7 @@
 
 ```typescript
 connectivity(): { ok, message, online: boolean }
-visibility(): { ok, message, state: string | null, onlisten: (cb: (state: DocumentVisibilityState) => void) => { unlisten: () => void } }
+visibility(): { ok, message, state: DocumentVisibilityState | null, onlisten: (cb: (state: DocumentVisibilityState) => void) => { unlisten: () => void } }
 displayMode(): { ok, message, mode: "standalone" | "minimal-ui" | "fullscreen" | "browser-tab" }
 ```
 
