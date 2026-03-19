@@ -31,8 +31,12 @@ export const languageDetector = async (
     }
 
     const detector = await LanguageDetector.create(options);
-    const results = await detector.detect(text);
-    detector.destroy();
+    let results;
+    try {
+      results = await detector.detect(text);
+    } finally {
+      detector.destroy();
+    }
 
     return {
       ok: true,

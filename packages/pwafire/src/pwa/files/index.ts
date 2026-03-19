@@ -112,9 +112,17 @@ export const writeUrlToFile = async (handle: FileSystemFileHandle, url: string) 
   if (!("showSaveFilePicker" in self)) return { ok: false, message: "File System Access API not supported" };
   try {
     const writable = await handle.createWritable();
-    const response = await fetch(url);
-    if (!response.body) throw new Error("Response body is null");
-    await response.body.pipeTo(writable);
+    try {
+      const response = await fetch(url);
+      if (!response.body) {
+        await writable.abort();
+        return { ok: false, message: "Response body is null" };
+      }
+      await response.body.pipeTo(writable);
+    } catch (error) {
+      await writable.abort();
+      throw error;
+    }
     return { ok: true, message: "URL written to file successfully" };
   } catch (error) {
     return { ok: false, message: `Failed to write URL to file: ${error}` };
