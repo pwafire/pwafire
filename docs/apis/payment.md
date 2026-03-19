@@ -1,6 +1,6 @@
 # Payment Request (`payment`)
 
-Wraps the [Payment Request API](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API). Same arguments as `new PaymentRequest(methodData, details, options)`.
+Wraps the [Payment Request API](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API). Takes an `input` object whose `methodData`, `details`, and `options` fields correspond to the arguments of `new PaymentRequest(methodData, details, options)`, plus an `onApprove` callback.
 
 ## API Surface
 
