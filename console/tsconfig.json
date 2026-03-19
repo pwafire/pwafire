@@ -20,5 +20,5 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src/**/*.ts", "types.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "exclude": ["src/mocks/vite-mock-webauthn.ts"]
 }

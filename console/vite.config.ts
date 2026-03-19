@@ -9,17 +9,17 @@ const __dirname = dirname(__filename);
 export default defineConfig({
   plugins: [mockWebAuthnPlugin()],
   build: {
-    outDir: 'dist',
+    outDir: "dist",
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
-      },
-    },
+        main: resolve(__dirname, "index.html")
+      }
+    }
   },
   server: {
     port: 8080,
-    open: true,
+    open: true
   },
-  publicDir: 'public',
+  publicDir: "public"
 });

@@ -11,6 +11,47 @@ import {
   getMockCreationOptions,
   getMockRequestOptions
 } from "../mocks/passkey-mock";
+import { PAYMENT_HANDLER_DEMO_URL } from "../constants/payment-demo";
+
+const consolePaymentCart = {
+  details: {
+    total: {
+      label: "Donation",
+      amount: { currency: "USD", value: "55.00" }
+    },
+    displayItems: [
+      {
+        label: "Original donation amount",
+        amount: { currency: "USD", value: "65.00" }
+      },
+      {
+        label: "Friends and family discount",
+        amount: { currency: "USD", value: "-10.00" }
+      }
+    ]
+  },
+  options: {
+    requestPayerName: true,
+    requestPayerEmail: true
+  }
+} as const;
+
+const consolePaymentOnApprove = async (paymentResponse: PaymentResponse) => {
+  logConsole(
+    `PaymentResponse: ${JSON.stringify({
+      methodName: paymentResponse.methodName,
+      details: paymentResponse.details,
+      payerName: paymentResponse.payerName,
+      payerEmail: paymentResponse.payerEmail
+    })}`,
+    "info"
+  );
+  logConsole(
+    'onApprove returned true — pwafire calls complete("success")',
+    "success"
+  );
+  return true;
+};
 
 export const apiConfigs: Record<string, ApiConfig> = {
   webShare: {
@@ -150,25 +191,14 @@ export const apiConfigs: Record<string, ApiConfig> = {
     }
   },
   payment: {
-    title: "Payment",
+    title: "Payment Request",
+    executeLabel: "Open BobBucks sheet",
     params: () => [
       {
-        paymentMethods: [
-          {
-            supportedMethods: "basic-card",
-            data: { supportedNetworks: ["visa", "mastercard"] }
-          }
-        ],
-        paymentDetails: {
-          total: {
-            label: "Total",
-            amount: { currency: "USD", value: "10.00" }
-          }
-        }
+        methodData: [{ supportedMethods: PAYMENT_HANDLER_DEMO_URL }],
+        ...consolePaymentCart
       },
-      (response: unknown) => {
-        logConsole(`Payment: ${JSON.stringify(response)}`, "info");
-      }
+      consolePaymentOnApprove
     ]
   },
   screenShare: {
@@ -377,7 +407,8 @@ export const apiGroups: Record<string, string[]> = {
     "lazyLoad",
     "accessFonts"
   ],
-  "👤 User Data": ["contacts", "payment", "webOtp"],
+  "💳 Payment": ["payment"],
+  "👤 User Data": ["contacts", "webOtp"],
   "🔐 Passkey": ["passkey.create", "passkey.get", "passkey.getConditional"],
   "📡 Broadcast": ["broadcast.send", "broadcast.listen"],
   "📦 Other": ["contentIndexing", "install"]

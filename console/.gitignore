@@ -2,3 +2,9 @@ node_modules
 public/lib
 .firebase
 .firebasestorage
+
+vite.config.js
+vite.config.d.ts
+src/mocks/vite-mock-*.js
+src/mocks/vite-mock-*.d.ts
+*.tsbuildinfo

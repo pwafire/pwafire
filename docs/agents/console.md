@@ -77,10 +77,13 @@ The console app (`/console`) groups related APIs together for better organizatio
 - `lazyLoad` - Lazy load images/content
 - `accessFonts` - Access local fonts
 
+### 💳 Payment
+
+- `payment` - **Open BobBucks sheet** — `supportedMethods` **`https://bobbucks.dev/pay`** (Chrome [Payment Handler sample](https://googlechrome.github.io/samples/paymentrequest/payment-handler/)); `onApprove` logs `PaymentResponse` and returns `true`. [payment.md](https://github.com/pwafire/pwafire/blob/main/docs/apis/payment.md).
+
 ### 👤 User Data APIs
 
 - `contacts` - Access device contacts
-- `payment` - Payment Request API
 - `webOtp` - Auto-fill OTP from SMS
 
 ### 📦 Other APIs

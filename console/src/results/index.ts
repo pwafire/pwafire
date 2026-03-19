@@ -1,5 +1,13 @@
 import type { ApiResult } from "../types";
 import { logConsole } from "../log";
+import {
+  PAYMENT_APIS_DOC_HREF,
+  paymentHandlerSampleBody,
+  PAYMENT_HANDLER_DEMO_URL
+} from "../constants/payment-demo";
+
+const escPre = (s: string): string =>
+  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 const showStreamResult = async (
   title: HTMLElement,
@@ -82,6 +90,36 @@ const showJsonResult = (
   `;
 };
 
+const showPaymentResult = (
+  title: HTMLElement,
+  content: HTMLElement,
+  data: ApiResult
+): void => {
+  title.textContent = "Payment Request";
+  const statusClass = data.ok ? "result-success" : "result-error";
+  const payload = escPre(JSON.stringify(data, null, 2));
+
+  const usageHint = `<p class="payment-sidebar-hint">Check <code class="payment-sidebar-code">check.payment()</code>. <code class="payment-sidebar-code">onApprove</code> returns true/false; pwafire calls <code class="payment-sidebar-code">complete()</code>. <a class="payment-sidebar-link" href="${PAYMENT_APIS_DOC_HREF}" target="_blank" rel="noopener noreferrer">docs/apis/payment.md</a></p>`;
+  const methodHint = `<p class="payment-sidebar-hint">This run: <code class="payment-sidebar-code">${escPre(
+    PAYMENT_HANDLER_DEMO_URL
+  )}</code></p>`;
+
+  const refHeading = "Sample PaymentResponse (BobBucks demo)";
+  const refBody = escPre(paymentHandlerSampleBody);
+
+  content.innerHTML = `
+    ${usageHint}
+    ${methodHint}
+    <div class="demo-reference demo-reference--sidebar">
+      <div class="demo-reference-heading">${refHeading}</div>
+      <pre class="demo-reference-pre">${refBody}</pre>
+    </div>
+    <p class="payment-result-label"><strong>pwafire payment() returned</strong></p>
+    <div class="${statusClass}">${data.ok ? "✓" : "✗"} ${data.message}</div>
+    <pre>${payload}</pre>
+  `;
+};
+
 const showBroadcastListenResult = (
   title: HTMLElement,
   content: HTMLElement,
@@ -102,7 +140,9 @@ export const appendBroadcastMessage = (data: unknown): void => {
   if (!el) return;
   const item = document.createElement("div");
   item.className = "broadcast-message-item";
-  item.textContent = `${new Date().toLocaleTimeString()} — ${JSON.stringify(data)}`;
+  item.textContent = `${new Date().toLocaleTimeString()} — ${JSON.stringify(
+    data
+  )}`;
   el.appendChild(item);
   el.scrollTop = el.scrollHeight;
 };
@@ -139,6 +179,8 @@ export const showResult = async (
     showBroadcastListenResult(title, content, data);
   } else if (data.file) {
     showFileResult(title, content, data);
+  } else if (apiName === "payment") {
+    showPaymentResult(title, content, data);
   } else {
     showJsonResult(title, content, data);
   }
@@ -188,6 +230,5 @@ export const downloadStream = (): void => {
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     logConsole(`Download failed: ${msg}`, "error");
-    console.error("Download error:", err);
   }
 };

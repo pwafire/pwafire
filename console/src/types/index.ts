@@ -41,4 +41,6 @@ export interface ApiResult {
 export interface ApiConfig {
   title: string;
   params?: () => unknown[] | Promise<unknown[] | null> | null;
+  executeLabel?: string;
+  cardHint?: string;
 }
