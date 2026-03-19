@@ -13,6 +13,7 @@ Quick reference for working on PWAFire. For detailed guidelines, see `docs/agent
 ## Quick Links
 
 **Agents (style guides):**
+
 - [Versioning & Release](./docs/agents/versioning-and-release.md) - How to version and release packages
 - [Commit Style](./docs/agents/commit-style.md) - Commit messages, PR and release summaries
 - [Naming Conventions](./docs/agents/naming-conventions.md) - Functions, files, constants, types, APIs
@@ -25,9 +26,11 @@ Quick reference for working on PWAFire. For detailed guidelines, see `docs/agent
 - [Console App](./docs/agents/console.md) - Complete console app documentation
 
 **APIs (unique API docs):**
+
 - [Passkey](./docs/apis/passkey.md) - Passkey/WebAuthn implementation notes
 - [Broadcast](./docs/apis/broadcast.md) - Broadcast Channel API
 - [System](./docs/apis/system.md) - Sync system APIs (connectivity, visibility, displayMode)
+- [Payment](./docs/apis/payment.md) - Payment Request API (`PaymentRequest`); see MDN [Using the Payment Request API](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API/Using_the_Payment_Request_API)
 
 ## Key Reminders
 
@@ -39,7 +42,7 @@ Quick reference for working on PWAFire. For detailed guidelines, see `docs/agent
   - Sync APIs: `connectivity`, `visibility`, `displayMode`, `broadcast`
 - **Use async** when the API returns a Promise or requires user interaction:
   - `navigator.clipboard.*`, `navigator.share()`, `requestFullscreen()`, `wakeLock.request()`
-  - File pickers, notifications, payment, contacts, etc.
+  - File pickers, notifications, payment (`PaymentRequest`), contacts, etc.
 - **Rule:** Match the underlying browser API. Sync → sync. Promise-returning → async.
 
 **Error Handling:**
@@ -116,6 +119,7 @@ gh pr merge --merge
 ```
 
 **How it works:**
+
 1. `npm version` runs locally → updates package.json, creates commit
 2. Create PR and merge to main
 3. Workflow detects version change → publishes to npm (OIDC, no secrets!)
@@ -187,6 +191,7 @@ These are experimental browser APIs without TypeScript definitions.
 PWAFire follows **pattern-based testing** rather than exhaustive module testing.
 
 **Why:**
+
 - All 23 PWA API modules follow consistent patterns:
   - Check API support (`if (!("API" in navigator))`)
   - Try operation in try-catch block
@@ -195,18 +200,21 @@ PWAFire follows **pattern-based testing** rather than exhaustive module testing.
 - Testing representative patterns validates the approach
 
 **Current Coverage:**
+
 - 66% statement coverage with 4 tests
 - Tests cover: import validation, basic API pattern, check functions
 - Pre-commit hooks enforce tests pass before commit
 - CI/CD runs tests on every PR
 
 **When to Add Tests:**
+
 - New API patterns not covered by existing tests
 - Complex logic with multiple branches (permissions, streaming, DOM manipulation)
 - Bug fixes (add regression test)
 - Breaking changes to API signatures
 
 **When NOT to Add Tests:**
+
 - New modules following existing patterns (clipboard → web-share)
 - Simple wrappers with no branching logic
 - Cosmetic changes (error messages, formatting)

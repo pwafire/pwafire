@@ -150,25 +150,25 @@ export const apiConfigs: Record<string, ApiConfig> = {
     }
   },
   payment: {
-    title: "Payment",
+    title: "Payment Request",
     params: () => [
       {
-        paymentMethods: [
-          {
-            supportedMethods: "basic-card",
-            data: { supportedNetworks: ["visa", "mastercard"] }
-          }
-        ],
-        paymentDetails: {
+        methodData: [{ supportedMethods: "https://example.com/pay" }],
+        details: {
+          id: "order-demo",
+          displayItems: [
+            {
+              label: "Example item",
+              amount: { currency: "USD", value: "1.00" }
+            }
+          ],
           total: {
             label: "Total",
-            amount: { currency: "USD", value: "10.00" }
+            amount: { currency: "USD", value: "1.00" }
           }
         }
       },
-      (response: unknown) => {
-        logConsole(`Payment: ${JSON.stringify(response)}`, "info");
-      }
+      () => true
     ]
   },
   screenShare: {

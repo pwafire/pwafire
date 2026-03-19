@@ -15,7 +15,7 @@ export const languageDetector = () => "LanguageDetector" in self;
 export const lazyLoad = () => "loading" in HTMLImageElement.prototype;
 export const notification = () => "Notification" in window;
 export const passkey = () => "PublicKeyCredential" in window;
-export const payment = () => "PaymentRequest" in window;
+export const payment = () => typeof window.PaymentRequest !== "undefined";
 export const screenShare = () => "getDisplayMedia" in navigator.mediaDevices;
 export const summarizer = () => "Summarizer" in self;
 export const translator = () => "Translator" in self;

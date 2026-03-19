@@ -26,7 +26,7 @@ export const featureDisplayNames: Record<string, string> = {
   visibility: "Visibility",
   wakeLock: "Wake Lock",
   webOtp: "Web OTP",
-  webShare: "Web Share",
+  webShare: "Web Share"
 };
 
 export const aiFeatures = ["summarizer", "translator", "languageDetector"];
@@ -41,35 +41,33 @@ export const checkAllFeatures = (): void => {
   let supported = 0;
   let total = 0;
 
-  (Object.keys(check) as Array<keyof typeof check>)
-    .sort()
-    .forEach((key) => {
-      if (typeof check[key] === "function") {
-        total++;
-        const isSupported = (check[key] as () => boolean)();
-        const displayName = featureDisplayNames[key] ?? key;
+  (Object.keys(check) as Array<keyof typeof check>).sort().forEach((key) => {
+    if (typeof check[key] === "function") {
+      total++;
+      const isSupported = (check[key] as () => boolean)();
+      const displayName = featureDisplayNames[key] ?? key;
 
-        const item = document.createElement("div");
-        item.className = `feature-item ${
-          isSupported ? "supported" : "not-supported"
-        }`;
-        const aiTag = aiFeatures.includes(key)
-          ? '<span class="ai-tag">AI</span>'
-          : "";
-        item.innerHTML = `
+      const item = document.createElement("div");
+      item.className = `feature-item ${
+        isSupported ? "supported" : "not-supported"
+      }`;
+      const aiTag = aiFeatures.includes(key)
+        ? '<span class="ai-tag">AI</span>'
+        : "";
+      item.innerHTML = `
         <span class="feature-name">${displayName}${aiTag}</span>
         <span class="feature-status ${isSupported ? "yes" : "no"}">
           ${isSupported ? "YES" : "NO"}
         </span>
       `;
-        listEl.appendChild(item);
-        if (isSupported) supported++;
-        logConsole(
-          `${displayName}: ${isSupported ? "SUPPORTED" : "NOT SUPPORTED"}`,
-          isSupported ? "success" : "error"
-        );
-      }
-    });
+      listEl.appendChild(item);
+      if (isSupported) supported++;
+      logConsole(
+        `${displayName}: ${isSupported ? "SUPPORTED" : "NOT SUPPORTED"}`,
+        isSupported ? "success" : "error"
+      );
+    }
+  });
 
   const featureCount = document.getElementById("feature-count");
   if (featureCount) {

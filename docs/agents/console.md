@@ -80,7 +80,7 @@ The console app (`/console`) groups related APIs together for better organizatio
 ### 👤 User Data APIs
 
 - `contacts` - Access device contacts
-- `payment` - Payment Request API
+- `payment` - Payment Request API ([overview](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API), [usage guide](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API/Using_the_Payment_Request_API)); demo follows MDN’s `methodData` + `details` (`id`, `displayItems`, `total`) with a placeholder method URL
 - `webOtp` - Auto-fill OTP from SMS
 
 ### 📦 Other APIs
