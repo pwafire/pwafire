@@ -11,6 +11,47 @@ import {
   getMockCreationOptions,
   getMockRequestOptions
 } from "../mocks/passkey-mock";
+import { PAYMENT_HANDLER_DEMO_URL } from "../constants/payment-demo";
+
+const consolePaymentCart = {
+  details: {
+    total: {
+      label: "Donation",
+      amount: { currency: "USD", value: "55.00" }
+    },
+    displayItems: [
+      {
+        label: "Original donation amount",
+        amount: { currency: "USD", value: "65.00" }
+      },
+      {
+        label: "Friends and family discount",
+        amount: { currency: "USD", value: "-10.00" }
+      }
+    ]
+  },
+  options: {
+    requestPayerName: true,
+    requestPayerEmail: true
+  }
+} as const;
+
+const consolePaymentOnApprove = async (paymentResponse: PaymentResponse) => {
+  logConsole(
+    `PaymentResponse: ${JSON.stringify({
+      methodName: paymentResponse.methodName,
+      details: paymentResponse.details,
+      payerName: paymentResponse.payerName,
+      payerEmail: paymentResponse.payerEmail
+    })}`,
+    "info"
+  );
+  logConsole(
+    'onApprove returned true — pwafire calls complete("success")',
+    "success"
+  );
+  return true;
+};
 
 export const apiConfigs: Record<string, ApiConfig> = {
   webShare: {
@@ -150,49 +191,14 @@ export const apiConfigs: Record<string, ApiConfig> = {
     }
   },
   payment: {
-    title: "Payment Request (BobBucks)",
+    title: "Payment Request",
+    executeLabel: "Open BobBucks sheet",
     params: () => [
       {
-        methodData: [{ supportedMethods: "https://bobbucks.dev/pay" }],
-        details: {
-          id: "pwafire-console-donation",
-          displayItems: [
-            {
-              label: "Original donation amount",
-              amount: { currency: "USD", value: "65.00" }
-            },
-            {
-              label: "Friends and family discount",
-              amount: { currency: "USD", value: "-10.00" }
-            }
-          ],
-          total: {
-            label: "Donation",
-            amount: { currency: "USD", value: "55.00" }
-          }
-        },
-        options: {
-          requestPayerName: true,
-          requestPayerEmail: true
-        }
+        methodData: [{ supportedMethods: PAYMENT_HANDLER_DEMO_URL }],
+        ...consolePaymentCart
       },
-      async (paymentResponse: PaymentResponse) => {
-        logConsole(
-          `Payment sheet closed — method: ${paymentResponse.methodName}`,
-          "info"
-        );
-        const raw = paymentResponse.details as unknown;
-        logConsole(
-          `PaymentResponse.details: ${JSON.stringify(raw, null, 2)}`,
-          "info"
-        );
-        await new Promise((r) => setTimeout(r, 800));
-        logConsole(
-          'Simulated server OK — pwafire will call complete("success")',
-          "success"
-        );
-        return true;
-      }
+      consolePaymentOnApprove
     ]
   },
   screenShare: {
@@ -401,7 +407,8 @@ export const apiGroups: Record<string, string[]> = {
     "lazyLoad",
     "accessFonts"
   ],
-  "👤 User Data": ["contacts", "payment", "webOtp"],
+  "💳 Payment": ["payment"],
+  "👤 User Data": ["contacts", "webOtp"],
   "🔐 Passkey": ["passkey.create", "passkey.get", "passkey.getConditional"],
   "📡 Broadcast": ["broadcast.send", "broadcast.listen"],
   "📦 Other": ["contentIndexing", "install"]

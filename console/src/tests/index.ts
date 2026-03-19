@@ -1,5 +1,11 @@
 import * as pwafire from "pwafire";
 import { apiConfigs, apiGroups } from "../api-configs";
+import { stats, updateStats } from "../stats";
+import { logConsole } from "../log";
+import { showResult } from "../results";
+
+const escapeHtml = (s: string): string =>
+  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 const getApiFn = (apiName: string): unknown => {
   if (apiName.includes(".")) {
@@ -11,9 +17,6 @@ const getApiFn = (apiName: string): unknown => {
   }
   return (pwafire as Record<string, unknown>)[apiName];
 };
-import { stats, updateStats } from "../stats";
-import { logConsole } from "../log";
-import { showResult } from "../results";
 
 const SYNC_APIS = [
   "connectivity",
@@ -433,9 +436,15 @@ export const generateTests = (): void => {
 
         const card = document.createElement("div");
         card.className = "test-card";
+        const hint =
+          config.cardHint != null && config.cardHint !== ""
+            ? `<p class="test-card-hint">${escapeHtml(config.cardHint)}</p>`
+            : "";
+        const btnLabel = escapeHtml(config.executeLabel ?? "Execute");
         card.innerHTML = `
         <h3>${config.title}</h3>
-        <button onclick="window.runTest('${key}')">Execute</button>
+        ${hint}
+        <button onclick="window.runTest('${key}')">${btnLabel}</button>
         <div id="${id}-result" class="result" style="display:none;"></div>
       `;
         testGrid.appendChild(card);
@@ -465,11 +474,10 @@ export const runTest = async (apiName: string): Promise<void> => {
   try {
     if (apiName === "payment") {
       logConsole(
-        "Full demo uses BobBucks (same as Google’s Payment Handler sample). Install once from https://bobbucks.dev — then Execute opens the real sheet in Chrome/Edge over HTTPS.",
+        "Sheet uses https://bobbucks.dev/pay (install Chromium Payment Handler demo app). onApprove logs PaymentResponse and completes success.",
         "info"
       );
     }
-
     const params = config.params ? await config.params() : [];
     if (params === null) {
       stats.failed++;

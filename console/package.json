@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && tsc --noEmit -p tsconfig.node.json && vite build",
     "preview": "vite preview",
     "start": "./start.sh",
     "test:exports": "node tests/test-exports.js",

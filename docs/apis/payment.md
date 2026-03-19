@@ -1,80 +1,105 @@
 # Payment Request (`payment`)
 
-PWAFire wraps the [Payment Request API](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API) using the same flow described in [Using the Payment Request API](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API/Using_the_Payment_Request_API): construct `PaymentRequest`, call `show()`, process the `PaymentResponse`, then call `complete()`.
+Wraps the [Payment Request API](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API). Same arguments as `new PaymentRequest(methodData, details, options)`.
 
-## What `payment()` does
+## API Surface
 
-1. Checks `PaymentRequest`, secure context, and (when available) user activation.
-2. Creates `new PaymentRequest(methodData, details, options)`.
-3. Awaits `show()` → `paymentResponse`.
-4. Awaits `onApprove(paymentResponse)`; expects `true` (charge OK) or `false` (decline).
-5. Calls `paymentResponse.complete("success")` or `complete("fail")` accordingly. Do **not** call `complete()` inside `onApprove`.
+```typescript
+payment(
+  input: {
+    methodData: PaymentMethodData[];
+    details: PaymentDetailsInit;
+    options?: PaymentOptions;
+  },
+  onApprove: (response: PaymentResponse) => boolean | Promise<boolean>
+): Promise<{ ok: boolean; message: string; methodName?: string }>;
+```
 
-## Feature detection
+## Usage
 
-MDN recommends checking `window.PaymentRequest`. PWAFire exposes the same via `check.payment` in `pwafire/check` (`typeof window.PaymentRequest !== "undefined"`).
+**Check:** `check.payment()` — `true` if `PaymentRequest` exists (not whether a given method works).
 
-## Secure context and user gesture
+Needs **HTTPS** and usually a **user gesture** (e.g. click) before `show()`.
 
-- The API requires a [secure context](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts) (typically HTTPS). If `window.isSecureContext` is false, `payment()` returns `{ ok: false }`.
-- `show()` should run from a user gesture. If [`navigator.userActivation`](https://developer.mozilla.org/en-US/docs/Web/API/UserActivation) exists and `isActive` is false, `payment()` returns `{ ok: false }`.
+After `show()`, **`onApprove`** runs with the `PaymentResponse`. Post to your server there; return **`true`** or **`false`**. PWAFire calls **`complete("success")`** or **`complete("fail")`** — do not call `complete()` yourself.
 
-## One `PaymentRequest` per checkout
+Use **one `payment()` per checkout**. For **`canMakePayment()`**, use your own `PaymentRequest` ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API/Using_the_Payment_Request_API)).
 
-MDN states that **`show()` may be called only once per `PaymentRequest` instance**. Call `payment()` again for a new checkout so a fresh `PaymentRequest` is created each time.
+## `methodData`
 
-## `canMakePayment()`
+Each entry needs **`supportedMethods`**: a [payment method identifier](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API/Concepts#payment_method_identifiers) (often an `https://` URL for a handler or wallet). Anything else for that method goes in **`data`** per the provider spec.
 
-The MDN guide uses [`canMakePayment()`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/canMakePayment) to customize UI (e.g. “fast checkout” vs “set up checkout”), to probe before prices are final, or to recover when the promise rejects (e.g. privacy settings). PWAFire does **not** call it inside `payment()` so you keep full control: run your own stub `PaymentRequest` + `canMakePayment()` when you need that, then call `payment()` with real `details` when the user checks out.
+## Example
 
-## Signature
+```html
+<button id="pay" type="button">Pay</button>
+<p id="status" aria-live="polite"></p>
+```
 
 ```ts
 import { payment } from "pwafire";
+import * as check from "pwafire/check";
 
-await payment(
-  {
-    methodData: [{ supportedMethods: "https://bobbucks.dev/pay" }],
-    details: {
-      id: "order-123",
-      displayItems: [
-        {
-          label: "Original donation amount",
-          amount: { currency: "USD", value: "65.00" }
-        },
-        {
-          label: "Friends and family discount",
-          amount: { currency: "USD", value: "-10.00" }
-        }
-      ],
-      total: {
-        label: "Donation",
-        amount: { currency: "USD", value: "55.00" }
+const methodUrl = "https://your-payment-handler.example/pay";
+
+async function postPaymentToServer(
+  paymentResponse: PaymentResponse
+): Promise<boolean> {
+  const res = await fetch("/api/pay", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      methodName: paymentResponse.methodName,
+      details: paymentResponse.details,
+      payerName: paymentResponse.payerName,
+      payerEmail: paymentResponse.payerEmail
+    })
+  });
+  return res.ok;
+}
+
+document.getElementById("pay")?.addEventListener("click", async () => {
+  const status = document.getElementById("status");
+  if (!status) return;
+
+  if (!check.payment()) {
+    status.textContent = "Payment Request not supported";
+    return;
+  }
+
+  status.textContent = "Opening payment sheet…";
+
+  const { ok, message, methodName } = await payment(
+    {
+      methodData: [{ supportedMethods: methodUrl }],
+      details: {
+        id: "cart-1",
+        displayItems: [
+          { label: "Subtotal", amount: { currency: "USD", value: "60.00" } },
+          { label: "Shipping", amount: { currency: "USD", value: "5.00" } }
+        ],
+        total: { label: "Total", amount: { currency: "USD", value: "65.00" } }
+      },
+      options: {
+        requestPayerName: true,
+        requestPayerEmail: true
       }
     },
-    options: {
-      requestPayerName: true,
-      requestPayerEmail: true
-    }
-  },
-  async (paymentResponse) => {
-    const charged = await postPaymentToServer(paymentResponse);
-    return charged;
-  }
-);
+    postPaymentToServer
+  );
+
+  status.textContent = ok
+    ? `${message}${methodName ? ` — ${methodName}` : ""}`
+    : message;
+});
 ```
 
-The second argument is `onApprove`: return `true` after a successful charge so PWAFire calls `paymentResponse.complete("success")`; return `false` for `complete("fail")`. If `onApprove` throws, PWAFire completes with `"fail"` and returns `{ ok: false, message }`.
+## Notes
 
-## Errors
+- User dismisses the sheet or no payment app matches → `{ ok: false, message }`
+- [Google Payment Handler sample](https://googlechrome.github.io/samples/paymentrequest/payment-handler/) — install the demo payment app so **`https://bobbucks.dev/pay`** works; demo `details` only, not production
+- Live tryout: [console.pwafire.org](https://console.pwafire.org) → **💳 Payment** — same handler URL; `onApprove` logs the response and returns success (no backend)
 
-- **`AbortError`** — user dismissed the sheet → `{ ok: false, message: "Payment cancelled" }`.
-- **`NotSupportedError`** — no suitable payment handler (MDN suggests redirecting users to install an app) → a dedicated `{ ok: false, message }` explains that case.
+## See also
 
-## Payment method identifiers
-
-Use valid [payment method identifiers](https://w3c.github.io/payment-method-id/) (often HTTPS URLs for payment handlers). For a **working demo** in Chromium, use `https://bobbucks.dev/pay` after installing [BobBucks](https://bobbucks.dev/) — the same shape as [Google’s Payment Handler sample](https://googlechrome.github.io/samples/paymentrequest/payment-handler/). Production apps use their own provider URLs.
-
-## PWAFire test console
-
-On [console.pwafire.org](https://console.pwafire.org) (HTTPS), run **Payment Request (BobBucks)** after installing BobBucks to exercise the full flow with the library.
+- [MDN: Using the Payment Request API](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API/Using_the_Payment_Request_API)

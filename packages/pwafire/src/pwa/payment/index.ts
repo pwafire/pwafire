@@ -32,7 +32,7 @@ export const payment = async (
       try {
         await response.complete("fail");
       } catch {
-        /* ignore */
+        void 0;
       }
       return {
         ok: false,
