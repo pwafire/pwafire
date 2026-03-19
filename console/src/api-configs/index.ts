@@ -150,25 +150,49 @@ export const apiConfigs: Record<string, ApiConfig> = {
     }
   },
   payment: {
-    title: "Payment Request",
+    title: "Payment Request (BobBucks)",
     params: () => [
       {
-        methodData: [{ supportedMethods: "https://example.com/pay" }],
+        methodData: [{ supportedMethods: "https://bobbucks.dev/pay" }],
         details: {
-          id: "order-demo",
+          id: "pwafire-console-donation",
           displayItems: [
             {
-              label: "Example item",
-              amount: { currency: "USD", value: "1.00" }
+              label: "Original donation amount",
+              amount: { currency: "USD", value: "65.00" }
+            },
+            {
+              label: "Friends and family discount",
+              amount: { currency: "USD", value: "-10.00" }
             }
           ],
           total: {
-            label: "Total",
-            amount: { currency: "USD", value: "1.00" }
+            label: "Donation",
+            amount: { currency: "USD", value: "55.00" }
           }
+        },
+        options: {
+          requestPayerName: true,
+          requestPayerEmail: true
         }
       },
-      () => true
+      async (paymentResponse: PaymentResponse) => {
+        logConsole(
+          `Payment sheet closed — method: ${paymentResponse.methodName}`,
+          "info"
+        );
+        const raw = paymentResponse.details as unknown;
+        logConsole(
+          `PaymentResponse.details: ${JSON.stringify(raw, null, 2)}`,
+          "info"
+        );
+        await new Promise((r) => setTimeout(r, 800));
+        logConsole(
+          'Simulated server OK — pwafire will call complete("success")',
+          "success"
+        );
+        return true;
+      }
     ]
   },
   screenShare: {

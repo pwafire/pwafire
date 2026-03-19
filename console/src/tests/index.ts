@@ -5,7 +5,9 @@ const getApiFn = (apiName: string): unknown => {
   if (apiName.includes(".")) {
     const [obj, method] = apiName.split(".");
     const parent = (pwafire as Record<string, unknown>)[obj];
-    return parent && typeof parent === "object" && method in parent ? (parent as Record<string, unknown>)[method] : undefined;
+    return parent && typeof parent === "object" && method in parent
+      ? (parent as Record<string, unknown>)[method]
+      : undefined;
   }
   return (pwafire as Record<string, unknown>)[apiName];
 };
@@ -18,7 +20,7 @@ const SYNC_APIS = [
   "visibility",
   "displayMode",
   "broadcast.send",
-  "broadcast.listen",
+  "broadcast.listen"
 ] as const;
 
 // AI APIs that use modals for input and results (no sidebar)
@@ -27,12 +29,13 @@ const MODAL_APIS = [
   "summarizerStream",
   "translator",
   "translatorStream",
-  "languageDetector",
+  "languageDetector"
 ] as const;
 
 const setupStreamModalClose = (apiName: string): void => {
   const isLanguageDetector = apiName === "languageDetector";
-  const isTranslator = apiName === "translator" || apiName === "translatorStream";
+  const isTranslator =
+    apiName === "translator" || apiName === "translatorStream";
 
   const submitBtn = document.getElementById(
     isLanguageDetector ? "language-detector-submit" : "summarizer-submit"
@@ -59,8 +62,10 @@ const setupStreamModalClose = (apiName: string): void => {
     const targetLangSelect = document.getElementById("translator-target");
 
     if (isTranslator) {
-      if (sourceLangSelect) (sourceLangSelect as HTMLSelectElement).disabled = false;
-      if (targetLangSelect) (targetLangSelect as HTMLSelectElement).disabled = false;
+      if (sourceLangSelect)
+        (sourceLangSelect as HTMLSelectElement).disabled = false;
+      if (targetLangSelect)
+        (targetLangSelect as HTMLSelectElement).disabled = false;
     } else {
       if (typeSelect) (typeSelect as HTMLSelectElement).disabled = false;
       if (formatSelect) (formatSelect as HTMLSelectElement).disabled = false;
@@ -100,24 +105,34 @@ const setupStreamModalClose = (apiName: string): void => {
   }
 
   const retryHandler = async (): Promise<void> => {
-    const isTranslator = apiName === "translator" || apiName === "translatorStream";
-    const isSummarizer = apiName === "summarizer" || apiName === "summarizerStream";
+    const isTranslator =
+      apiName === "translator" || apiName === "translatorStream";
+    const isSummarizer =
+      apiName === "summarizer" || apiName === "summarizerStream";
 
     // For all AI modals, retry with current values without closing modal
     if (isLanguageDetector || isTranslator || isSummarizer) {
       const text = (textarea as HTMLTextAreaElement).value.trim();
       if (!text) {
-        const apiType = isLanguageDetector ? "language detection" : isTranslator ? "translation" : "summarization";
+        const apiType = isLanguageDetector
+          ? "language detection"
+          : isTranslator
+          ? "translation"
+          : "summarization";
         logConsole(`Please enter some text for ${apiType}`, "error");
         return;
       }
 
       // Clear previous results and show processing state
       if (isLanguageDetector) {
-        const resultsText = document.getElementById("language-detector-results-text");
+        const resultsText = document.getElementById(
+          "language-detector-results-text"
+        );
         if (resultsText) resultsText.textContent = "";
       } else {
-        const streamOutput = document.getElementById("summarizer-stream-output");
+        const streamOutput = document.getElementById(
+          "summarizer-stream-output"
+        );
         const streamText = document.getElementById("summarizer-stream-text");
         if (streamText) streamText.textContent = "";
         if (streamOutput) streamOutput.style.display = "block";
@@ -129,15 +144,25 @@ const setupStreamModalClose = (apiName: string): void => {
 
       // Disable select dropdowns during processing
       if (isSummarizer) {
-        const typeSelect = document.getElementById("summarizer-type") as HTMLSelectElement;
-        const formatSelect = document.getElementById("summarizer-format") as HTMLSelectElement;
-        const lengthSelect = document.getElementById("summarizer-length") as HTMLSelectElement;
+        const typeSelect = document.getElementById(
+          "summarizer-type"
+        ) as HTMLSelectElement;
+        const formatSelect = document.getElementById(
+          "summarizer-format"
+        ) as HTMLSelectElement;
+        const lengthSelect = document.getElementById(
+          "summarizer-length"
+        ) as HTMLSelectElement;
         if (typeSelect) typeSelect.disabled = true;
         if (formatSelect) formatSelect.disabled = true;
         if (lengthSelect) lengthSelect.disabled = true;
       } else if (isTranslator) {
-        const sourceLangSelect = document.getElementById("translator-source") as HTMLSelectElement;
-        const targetLangSelect = document.getElementById("translator-target") as HTMLSelectElement;
+        const sourceLangSelect = document.getElementById(
+          "translator-source"
+        ) as HTMLSelectElement;
+        const targetLangSelect = document.getElementById(
+          "translator-target"
+        ) as HTMLSelectElement;
         if (sourceLangSelect) sourceLangSelect.disabled = true;
         if (targetLangSelect) targetLangSelect.disabled = true;
       }
@@ -150,34 +175,56 @@ const setupStreamModalClose = (apiName: string): void => {
         let params: unknown[] = [text];
 
         if (isSummarizer && !apiName.includes("Stream")) {
-          const typeSelect = document.getElementById("summarizer-type") as HTMLSelectElement;
-          const formatSelect = document.getElementById("summarizer-format") as HTMLSelectElement;
-          const lengthSelect = document.getElementById("summarizer-length") as HTMLSelectElement;
-          params = [text, {
-            type: typeSelect?.value || "key-points",
-            format: formatSelect?.value || "markdown",
-            length: lengthSelect?.value || "medium",
-          }];
+          const typeSelect = document.getElementById(
+            "summarizer-type"
+          ) as HTMLSelectElement;
+          const formatSelect = document.getElementById(
+            "summarizer-format"
+          ) as HTMLSelectElement;
+          const lengthSelect = document.getElementById(
+            "summarizer-length"
+          ) as HTMLSelectElement;
+          params = [
+            text,
+            {
+              type: typeSelect?.value || "key-points",
+              format: formatSelect?.value || "markdown",
+              length: lengthSelect?.value || "medium"
+            }
+          ];
         } else if (isTranslator && !apiName.includes("Stream")) {
-          const sourceLangSelect = document.getElementById("translator-source") as HTMLSelectElement;
-          const targetLangSelect = document.getElementById("translator-target") as HTMLSelectElement;
-          params = [text, {
-            sourceLanguage: sourceLangSelect?.value || "en",
-            targetLanguage: targetLangSelect?.value || "es",
-          }];
+          const sourceLangSelect = document.getElementById(
+            "translator-source"
+          ) as HTMLSelectElement;
+          const targetLangSelect = document.getElementById(
+            "translator-target"
+          ) as HTMLSelectElement;
+          params = [
+            text,
+            {
+              sourceLanguage: sourceLangSelect?.value || "en",
+              targetLanguage: targetLangSelect?.value || "es"
+            }
+          ];
         }
 
         // Call the API directly
         const apiFn = getApiFn(apiName);
-        const result = await (apiFn as (...args: unknown[]) => Promise<unknown>)(...params);
+        const result = await (
+          apiFn as (...args: unknown[]) => Promise<unknown>
+        )(...params);
 
         // Hide loading bar
         window.hideTopLoadingBar();
 
         // Show results
         if (isLanguageDetector) {
-          const resultsOutput = document.getElementById("language-detector-results");
-          const resultsText = document.getElementById("language-detector-results-text");
+          const resultsOutput = document.getElementById(
+            "language-detector-results"
+          );
+          const resultsText = document.getElementById(
+            "language-detector-results-text"
+          );
           if (resultsOutput && resultsText) {
             resultsOutput.style.display = "block";
             resultsText.textContent = JSON.stringify(result, null, 2);
@@ -185,8 +232,17 @@ const setupStreamModalClose = (apiName: string): void => {
         } else {
           const streamText = document.getElementById("summarizer-stream-text");
           if (streamText) {
-            const typedResult = result as { ok?: boolean; summary?: string; translation?: string; message?: string };
-            streamText.textContent = typedResult.summary || typedResult.translation || typedResult.message || JSON.stringify(result, null, 2);
+            const typedResult = result as {
+              ok?: boolean;
+              summary?: string;
+              translation?: string;
+              message?: string;
+            };
+            streamText.textContent =
+              typedResult.summary ||
+              typedResult.translation ||
+              typedResult.message ||
+              JSON.stringify(result, null, 2);
           }
         }
 
@@ -196,15 +252,25 @@ const setupStreamModalClose = (apiName: string): void => {
 
         // Re-enable select dropdowns
         if (isSummarizer) {
-          const typeSelect = document.getElementById("summarizer-type") as HTMLSelectElement;
-          const formatSelect = document.getElementById("summarizer-format") as HTMLSelectElement;
-          const lengthSelect = document.getElementById("summarizer-length") as HTMLSelectElement;
+          const typeSelect = document.getElementById(
+            "summarizer-type"
+          ) as HTMLSelectElement;
+          const formatSelect = document.getElementById(
+            "summarizer-format"
+          ) as HTMLSelectElement;
+          const lengthSelect = document.getElementById(
+            "summarizer-length"
+          ) as HTMLSelectElement;
           if (typeSelect) typeSelect.disabled = false;
           if (formatSelect) formatSelect.disabled = false;
           if (lengthSelect) lengthSelect.disabled = false;
         } else if (isTranslator) {
-          const sourceLangSelect = document.getElementById("translator-source") as HTMLSelectElement;
-          const targetLangSelect = document.getElementById("translator-target") as HTMLSelectElement;
+          const sourceLangSelect = document.getElementById(
+            "translator-source"
+          ) as HTMLSelectElement;
+          const targetLangSelect = document.getElementById(
+            "translator-target"
+          ) as HTMLSelectElement;
           if (sourceLangSelect) sourceLangSelect.disabled = false;
           if (targetLangSelect) targetLangSelect.disabled = false;
         }
@@ -219,7 +285,11 @@ const setupStreamModalClose = (apiName: string): void => {
         window.hideTopLoadingBar();
 
         const msg = err instanceof Error ? err.message : String(err);
-        const apiType = isLanguageDetector ? "Language Detector" : isTranslator ? "Translator" : "Summarizer";
+        const apiType = isLanguageDetector
+          ? "Language Detector"
+          : isTranslator
+          ? "Translator"
+          : "Summarizer";
         logConsole(`${apiType}: ERROR - ${msg}`, "error");
 
         // Reset on error
@@ -228,15 +298,25 @@ const setupStreamModalClose = (apiName: string): void => {
 
         // Re-enable select dropdowns
         if (isSummarizer) {
-          const typeSelect = document.getElementById("summarizer-type") as HTMLSelectElement;
-          const formatSelect = document.getElementById("summarizer-format") as HTMLSelectElement;
-          const lengthSelect = document.getElementById("summarizer-length") as HTMLSelectElement;
+          const typeSelect = document.getElementById(
+            "summarizer-type"
+          ) as HTMLSelectElement;
+          const formatSelect = document.getElementById(
+            "summarizer-format"
+          ) as HTMLSelectElement;
+          const lengthSelect = document.getElementById(
+            "summarizer-length"
+          ) as HTMLSelectElement;
           if (typeSelect) typeSelect.disabled = false;
           if (formatSelect) formatSelect.disabled = false;
           if (lengthSelect) lengthSelect.disabled = false;
         } else if (isTranslator) {
-          const sourceLangSelect = document.getElementById("translator-source") as HTMLSelectElement;
-          const targetLangSelect = document.getElementById("translator-target") as HTMLSelectElement;
+          const sourceLangSelect = document.getElementById(
+            "translator-source"
+          ) as HTMLSelectElement;
+          const targetLangSelect = document.getElementById(
+            "translator-target"
+          ) as HTMLSelectElement;
           if (sourceLangSelect) sourceLangSelect.disabled = false;
           if (targetLangSelect) targetLangSelect.disabled = false;
         }
@@ -383,6 +463,13 @@ export const runTest = async (apiName: string): Promise<void> => {
   stats.run++;
 
   try {
+    if (apiName === "payment") {
+      logConsole(
+        "Full demo uses BobBucks (same as Google’s Payment Handler sample). Install once from https://bobbucks.dev — then Execute opens the real sheet in Chrome/Edge over HTTPS.",
+        "info"
+      );
+    }
+
     const params = config.params ? await config.params() : [];
     if (params === null) {
       stats.failed++;
@@ -406,7 +493,9 @@ export const runTest = async (apiName: string): Promise<void> => {
     }
 
     const result = await Promise.resolve(
-      (apiFn as (...args: unknown[]) => unknown)(...(Array.isArray(params) ? params : []))
+      (apiFn as (...args: unknown[]) => unknown)(
+        ...(Array.isArray(params) ? params : [])
+      )
     );
 
     if (!SYNC_APIS.includes(apiName as (typeof SYNC_APIS)[number])) {
@@ -414,11 +503,15 @@ export const runTest = async (apiName: string): Promise<void> => {
     }
 
     if (window.__summarizerCloseModal) {
-        if (MODAL_APIS.includes(apiName as any)) {
+      if (MODAL_APIS.includes(apiName as any)) {
         // Show results in modal for these APIs
         if (apiName === "languageDetector") {
-          const resultsOutput = document.getElementById("language-detector-results");
-          const resultsText = document.getElementById("language-detector-results-text");
+          const resultsOutput = document.getElementById(
+            "language-detector-results"
+          );
+          const resultsText = document.getElementById(
+            "language-detector-results-text"
+          );
           if (resultsOutput && resultsText) {
             resultsOutput.style.display = "block";
             // Show the complete API response in formatted JSON
@@ -426,15 +519,27 @@ export const runTest = async (apiName: string): Promise<void> => {
           }
         } else {
           // For summarizer and translator (both stream and non-stream)
-          const streamOutput = document.getElementById("summarizer-stream-output");
+          const streamOutput = document.getElementById(
+            "summarizer-stream-output"
+          );
           const streamText = document.getElementById("summarizer-stream-text");
           if (streamOutput && streamText) {
             streamOutput.style.display = "block";
-            const typedResult = result as { ok?: boolean; message?: string; summary?: string; translation?: string };
+            const typedResult = result as {
+              ok?: boolean;
+              message?: string;
+              summary?: string;
+              translation?: string;
+            };
             if (typedResult.ok) {
-              streamText.textContent = typedResult.summary || typedResult.translation || typedResult.message || "";
+              streamText.textContent =
+                typedResult.summary ||
+                typedResult.translation ||
+                typedResult.message ||
+                "";
             } else {
-              streamText.textContent = typedResult.message || "Processing completed";
+              streamText.textContent =
+                typedResult.message || "Processing completed";
             }
           }
         }
@@ -445,7 +550,11 @@ export const runTest = async (apiName: string): Promise<void> => {
       }
     }
 
-    const typedResult = result as { ok?: boolean; handle?: FileSystemFileHandle; message?: string };
+    const typedResult = result as {
+      ok?: boolean;
+      handle?: FileSystemFileHandle;
+      message?: string;
+    };
 
     if (apiName === "createFile" && typedResult.ok && typedResult.handle) {
       window.__lastFileHandle = typedResult.handle;
@@ -457,19 +566,34 @@ export const runTest = async (apiName: string): Promise<void> => {
 
     if (apiName === "visibility") {
       window.__visibilityUnlisten?.();
-      const visResult = result as { ok: boolean; onlisten?: (cb: (state: DocumentVisibilityState) => void) => { unlisten: () => void } };
+      const visResult = result as {
+        ok: boolean;
+        onlisten?: (cb: (state: DocumentVisibilityState) => void) => {
+          unlisten: () => void;
+        };
+      };
       if (visResult.ok && visResult.onlisten) {
         const { unlisten } = visResult.onlisten((state) => {
-          logConsole(`Visibility changed: ${state}`, state === "visible" ? "success" : "info");
+          logConsole(
+            `Visibility changed: ${state}`,
+            state === "visible" ? "success" : "info"
+          );
         });
         window.__visibilityUnlisten = unlisten;
-        logConsole("Visibility listener attached — switch tabs to test", "info");
+        logConsole(
+          "Visibility listener attached — switch tabs to test",
+          "info"
+        );
       }
     }
 
     // Only show sidebar for non-modal APIs
     if (!MODAL_APIS.includes(apiName as any)) {
-      await showResult(`${id}-result`, typedResult as Parameters<typeof showResult>[1], apiName);
+      await showResult(
+        `${id}-result`,
+        typedResult as Parameters<typeof showResult>[1],
+        apiName
+      );
     }
 
     logConsole(
@@ -486,7 +610,7 @@ export const runTest = async (apiName: string): Promise<void> => {
     window.hideTopLoadingBar();
 
     if (window.__summarizerCloseModal) {
-        if (MODAL_APIS.includes(apiName as any)) {
+      if (MODAL_APIS.includes(apiName as any)) {
         setupStreamModalError(apiName);
       } else {
         window.__summarizerCloseModal();

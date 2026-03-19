@@ -80,7 +80,7 @@ The console app (`/console`) groups related APIs together for better organizatio
 ### 👤 User Data APIs
 
 - `contacts` - Access device contacts
-- `payment` - Payment Request API ([overview](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API), [usage guide](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API/Using_the_Payment_Request_API)); demo follows MDN’s `methodData` + `details` (`id`, `displayItems`, `total`) with a placeholder method URL
+- `payment` - Payment Request API; live demo uses [BobBucks](https://bobbucks.dev/pay) (`supportedMethods: "https://bobbucks.dev/pay"`) like [Google’s Payment Handler sample](https://googlechrome.github.io/samples/paymentrequest/payment-handler/) — install BobBucks once, then Execute opens a real sheet on HTTPS in Chromium browsers
 - `webOtp` - Auto-fill OTP from SMS
 
 ### 📦 Other APIs
