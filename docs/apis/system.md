@@ -6,7 +6,7 @@
 
 ```typescript
 connectivity(): { ok, message, online: boolean }
-visibility(): { ok, message, state: string | null }
+visibility(): { ok, message, state: DocumentVisibilityState | null, onlisten: (cb: (state: DocumentVisibilityState) => void) => { unlisten: () => void } }
 displayMode(): { ok, message, mode: "standalone" | "minimal-ui" | "fullscreen" | "browser-tab" }
 ```
 
@@ -25,7 +25,22 @@ const mode = displayMode();
 if (mode.ok) console.log("Display mode:", mode.mode);
 ```
 
+## Visibility listener
+
+To react when the tab becomes visible or hidden (e.g. user switches tabs), use `onlisten`. Call `unlisten()` when you no longer need updates (e.g. component unmount).
+
+```typescript
+const result = visibility();
+if (result.ok) {
+  const { unlisten } = result.onlisten((state) => {
+    console.log("Visibility:", state);
+  });
+  // later: unlisten();
+}
+```
+
 ## Notes
 
 - No `await` needed — all return immediately
 - Underlying APIs: `navigator.onLine`, `document.visibilityState`, `matchMedia("(display-mode: ...)")`
+- Visibility: `onlisten` subscribes to `document`'s `visibilitychange`; the callback receives `document.visibilityState` (a `DocumentVisibilityState` value, such as `"visible"` or `"hidden"`)
