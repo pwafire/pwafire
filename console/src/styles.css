@@ -561,6 +561,31 @@ body {
   color: var(--color-white);
 }
 
+.import-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-base);
+  padding: 2px 0;
+  font-family: var(--font-family-mono, monospace);
+}
+
+.import-row .import-status {
+  width: 1em;
+  font-weight: bold;
+}
+
+.import-row.ok .import-status {
+  color: var(--color-green, #00ff88);
+}
+
+.import-row.fail .import-status {
+  color: var(--color-red, #ff4d4d);
+}
+
+.import-row .import-label {
+  color: var(--color-white);
+}
+
 .shortcuts-panel {
   margin-top: var(--spacing-2xl);
   padding: var(--spacing-xl);
