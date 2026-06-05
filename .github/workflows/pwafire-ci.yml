@@ -32,6 +32,9 @@ jobs:
       - name: Build
         run: npm run -w pwafire build
 
+      - name: Size budget
+        run: npm run -w pwafire size
+
       - name: Coverage
         run: npm run -w pwafire test:coverage
 
