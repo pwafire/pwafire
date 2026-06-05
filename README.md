@@ -26,7 +26,7 @@ const { ok, message } = await copyText("Hello World");
 ## Why pwafire
 
 - **Spec-aligned typed errors.** Every API returns `{ ok, message, code, cause }` where `code` is a kebab-case `ErrorCode` literal (`"unsupported"`, `"permission-denied"`, `"gesture-required"`, …) — branch on it instead of string-matching `message`. The original error is preserved on `cause`.
-- **Structured capability detection.** `pwafire/capability` reports `{ supported, reason, secureContext, requiresUserActivation, spec, mdn }` per API so you can progressively enhance with actionable diagnostics. `pwafire/check` stays boolean-only.
+- **Structured capability detection.** `pwafire/capability` reports `{ supported, reason, secureContext, requiresUserActivation }` per API so you can progressively enhance with actionable diagnostics. `pwafire/check` stays boolean-only.
 - **Tree-shakeable.** Deep imports + `sideEffects: false` — pay only for what you use.
 - **Strictly back-compat.** v6.5 is additive: every existing field on every result is preserved. APIs that already exposed `status` (notification, summarizer, translator, language-detector) keep it alongside the new `code`, with a v7 removal note.
 

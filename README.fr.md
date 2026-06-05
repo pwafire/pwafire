@@ -26,7 +26,7 @@ const { ok, message } = await copyText("Bonjour le monde");
 ## Pourquoi pwafire
 
 - **Erreurs typées alignées sur la spec.** Chaque API renvoie `{ ok, message, code, cause }` où `code` est un littéral `ErrorCode` en kebab-case (`"unsupported"`, `"permission-denied"`, `"gesture-required"`, …) — branchez dessus plutôt que de filtrer `message` par chaîne. L'erreur d'origine est conservée dans `cause`.
-- **Détection de capacité structurée.** `pwafire/capability` retourne `{ supported, reason, secureContext, requiresUserActivation, spec, mdn }` par API pour faire de l'enrichissement progressif avec des diagnostics actionnables. `pwafire/check` reste booléen pur.
+- **Détection de capacité structurée.** `pwafire/capability` retourne `{ supported, reason, secureContext, requiresUserActivation }` par API pour faire de l'enrichissement progressif avec des diagnostics actionnables. `pwafire/check` reste booléen pur.
 - **Tree-shakeable.** Imports profonds + `sideEffects: false` — vous payez uniquement ce que vous utilisez.
 - **Strictement rétro-compatible.** v6.5 est purement additif : chaque champ existant de chaque résultat est préservé. Les APIs qui exposaient déjà `status` (notification, summarizer, translator, language-detector) le conservent à côté du nouveau `code`, avec une note de suppression en v7.
 
