@@ -40,6 +40,49 @@ import { pwa } from "pwafire";
 pwa.copyText("Hello World");
 ```
 
+## CDN Usage
+
+Drop pwafire into any page without a build step. **esm.sh** is the recommended entry — it respects the package's `exports` field and rewrites bare specifiers so deep imports work the same as in npm:
+
+```html
+<script type="module">
+  import { copyText } from "https://esm.sh/pwafire@6/clipboard";
+  await copyText("hello from the CDN");
+</script>
+```
+
+**unpkg** and **jsDelivr** serve the tarball verbatim. They don't resolve the `exports` field, so you address files by path:
+
+```html
+<script type="module">
+  import { copyText } from "https://unpkg.com/pwafire@6/lib/pwa/clipboard/index.mjs";
+</script>
+
+<script type="module">
+  import { copyText } from "https://cdn.jsdelivr.net/npm/pwafire@6/lib/pwa/clipboard/index.mjs";
+</script>
+```
+
+**Import maps** keep your in-browser code identical to your npm code:
+
+```html
+<script type="importmap">
+  {
+    "imports": {
+      "pwafire": "https://esm.sh/pwafire@6",
+      "pwafire/": "https://esm.sh/pwafire@6/"
+    }
+  }
+</script>
+
+<script type="module">
+  import { copyText } from "pwafire/clipboard";
+  await copyText("hello");
+</script>
+```
+
+Pin to an exact version (`pwafire@6.4.4`) for production; `pwafire@6` follows the latest 6.x.
+
 ## Try it Live
 
 | Resource                                                             | Description                           |

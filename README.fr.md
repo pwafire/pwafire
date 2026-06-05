@@ -40,6 +40,49 @@ import { pwa } from "pwafire";
 pwa.copyText("Bonjour le monde");
 ```
 
+## Utilisation via CDN
+
+Intégrez pwafire à n'importe quelle page sans étape de build. **esm.sh** est l'entrée recommandée — il respecte le champ `exports` du package et réécrit les spécificateurs bare, donc les imports profonds fonctionnent comme via npm :
+
+```html
+<script type="module">
+  import { copyText } from "https://esm.sh/pwafire@6/clipboard";
+  await copyText("bonjour depuis le CDN");
+</script>
+```
+
+**unpkg** et **jsDelivr** servent l'archive telle quelle. Ils n'évaluent pas le champ `exports`, donc on adresse les fichiers par chemin :
+
+```html
+<script type="module">
+  import { copyText } from "https://unpkg.com/pwafire@6/lib/pwa/clipboard/index.mjs";
+</script>
+
+<script type="module">
+  import { copyText } from "https://cdn.jsdelivr.net/npm/pwafire@6/lib/pwa/clipboard/index.mjs";
+</script>
+```
+
+Les **import maps** permettent de garder le même code que côté npm :
+
+```html
+<script type="importmap">
+  {
+    "imports": {
+      "pwafire": "https://esm.sh/pwafire@6",
+      "pwafire/": "https://esm.sh/pwafire@6/"
+    }
+  }
+</script>
+
+<script type="module">
+  import { copyText } from "pwafire/clipboard";
+  await copyText("bonjour");
+</script>
+```
+
+Épinglez une version précise (`pwafire@6.4.4`) en production ; `pwafire@6` suit la dernière 6.x.
+
 ## Essayez en Direct
 
 | Ressource                                                                  | Description                                      |
