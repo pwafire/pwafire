@@ -23,60 +23,6 @@ import { copyText } from "pwafire";
 const { ok, message } = await copyText("Hello World");
 ```
 
-## Why pwafire
-
-- **Spec-aligned typed errors.** Every API returns `{ ok, message, code, cause }` where `code` is a kebab-case `ErrorCode` literal (`"unsupported"`, `"permission-denied"`, `"gesture-required"`, …) — branch on it instead of string-matching `message`. The original error is preserved on `cause`.
-- **Structured capability detection.** `pwafire/capability` reports `{ supported, reason, secureContext, requiresUserActivation }` per API so you can progressively enhance with actionable diagnostics. `pwafire/check` stays boolean-only.
-- **Tree-shakeable.** Deep imports + `sideEffects: false` — pay only for what you use.
-- **Strictly back-compat.** v6.5 is additive: every existing field on every result is preserved. APIs that already exposed `status` (notification, summarizer, translator, language-detector) keep it alongside the new `code`, with a v7 removal note.
-
-```ts
-import { copyText } from "pwafire/clipboard";
-import { clipboard } from "pwafire/capability";
-
-const cap = clipboard();
-if (!cap.supported) {
-  if (cap.reason === "insecure-context") return showUpgradeToHttpsBanner();
-  if (cap.reason === "no-user-activation") return enableOnNextClick();
-  return hideCopyButton();
-}
-
-const r = await copyText("hi");
-if (!r.ok && r.code === "permission-denied") promptUserToAllow();
-```
-
-## Browser support
-
-`secure ctx` and `user gesture` are static API requirements. Browser version availability lives in the linked references — they update as engines ship.
-
-| API | secure ctx | user gesture | Reference |
-| --- | :-: | :-: | --- |
-| `badging` | ✅ | — | [Badging API](https://caniuse.com/mdn-api_navigator_setappbadge) |
-| `barcode` | — | — | [BarcodeDetector](https://caniuse.com/mdn-api_barcodedetector) |
-| `broadcast` | — | — | [BroadcastChannel](https://caniuse.com/broadcastchannel) |
-| `clipboard` | ✅ | ✅ | [Async Clipboard](https://caniuse.com/async-clipboard) |
-| `compression` | — | — | [CompressionStream](https://caniuse.com/mdn-api_compressionstream) |
-| `connectivity` | — | — | [navigator.onLine](https://caniuse.com/online-status) |
-| `contacts` | ✅ | ✅ | [Contact Picker](https://caniuse.com/mdn-api_contactsmanager) |
-| `content-indexing` | ✅ | — | [Content Index](https://caniuse.com/mdn-api_contentindex) |
-| `files` | ✅ | ✅ | [File System Access](https://caniuse.com/native-filesystem-api) |
-| `fonts` | ✅ | ✅ | [Local Font Access](https://caniuse.com/mdn-api_window_querylocalfonts) |
-| `fullscreen` | — | ✅ | [Fullscreen](https://caniuse.com/fullscreen) |
-| `idle-detection` | ✅ | ✅ | [IdleDetector](https://caniuse.com/mdn-api_idledetector) |
-| `install` | ✅ | ✅ | [web.dev install](https://web.dev/customize-install/) |
-| `language-detector` | ✅ | ✅ | [Chrome AI: Language Detection](https://developer.chrome.com/docs/ai/language-detection) |
-| `lazy-load` | — | — | [loading=lazy](https://caniuse.com/loading-lazy-attr) |
-| `notification` | ✅ | ✅ | [Notifications](https://caniuse.com/notifications) |
-| `passkey` | ✅ | ✅ | [WebAuthn](https://caniuse.com/webauthn) |
-| `payment` | ✅ | ✅ | [Payment Request](https://caniuse.com/payment-request) |
-| `screen` | ✅ | ✅ | [getDisplayMedia](https://caniuse.com/mdn-api_mediadevices_getdisplaymedia) |
-| `summarizer` | ✅ | ✅ | [Chrome AI: Summarizer](https://developer.chrome.com/docs/ai/summarizer-api) |
-| `translator` | ✅ | ✅ | [Chrome AI: Translator](https://developer.chrome.com/docs/ai/translator-api) |
-| `visibility` | — | — | [Page Visibility](https://caniuse.com/pagevisibility) |
-| `wake-lock` | ✅ | — | [Screen Wake Lock](https://caniuse.com/wake-lock) |
-| `web-otp` | ✅ | ✅ | [Web OTP](https://caniuse.com/webotp) |
-| `web-share` | ✅ | ✅ | [Web Share](https://caniuse.com/web-share) |
-
 ## Tree-shaking
 
 Named and deep imports tree-shake automatically with any modern bundler:

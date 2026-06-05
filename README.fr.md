@@ -23,60 +23,6 @@ import { copyText } from "pwafire";
 const { ok, message } = await copyText("Bonjour le monde");
 ```
 
-## Pourquoi pwafire
-
-- **Erreurs typées alignées sur la spec.** Chaque API renvoie `{ ok, message, code, cause }` où `code` est un littéral `ErrorCode` en kebab-case (`"unsupported"`, `"permission-denied"`, `"gesture-required"`, …) — branchez dessus plutôt que de filtrer `message` par chaîne. L'erreur d'origine est conservée dans `cause`.
-- **Détection de capacité structurée.** `pwafire/capability` retourne `{ supported, reason, secureContext, requiresUserActivation }` par API pour faire de l'enrichissement progressif avec des diagnostics actionnables. `pwafire/check` reste booléen pur.
-- **Tree-shakeable.** Imports profonds + `sideEffects: false` — vous payez uniquement ce que vous utilisez.
-- **Strictement rétro-compatible.** v6.5 est purement additif : chaque champ existant de chaque résultat est préservé. Les APIs qui exposaient déjà `status` (notification, summarizer, translator, language-detector) le conservent à côté du nouveau `code`, avec une note de suppression en v7.
-
-```ts
-import { copyText } from "pwafire/clipboard";
-import { clipboard } from "pwafire/capability";
-
-const cap = clipboard();
-if (!cap.supported) {
-  if (cap.reason === "insecure-context") return afficherBanniereHttps();
-  if (cap.reason === "no-user-activation") return activerSurClic();
-  return cacherBoutonCopier();
-}
-
-const r = await copyText("salut");
-if (!r.ok && r.code === "permission-denied") demanderAutorisation();
-```
-
-## Compatibilité navigateurs
-
-`ctx sécurisé` et `geste utilisateur` sont des exigences statiques de l'API. Les versions disponibles par navigateur vivent dans les liens — ils sont à jour au fil des releases.
-
-| API | ctx sécurisé | geste utilisateur | Référence |
-| --- | :-: | :-: | --- |
-| `badging` | ✅ | — | [Badging API](https://caniuse.com/mdn-api_navigator_setappbadge) |
-| `barcode` | — | — | [BarcodeDetector](https://caniuse.com/mdn-api_barcodedetector) |
-| `broadcast` | — | — | [BroadcastChannel](https://caniuse.com/broadcastchannel) |
-| `clipboard` | ✅ | ✅ | [Async Clipboard](https://caniuse.com/async-clipboard) |
-| `compression` | — | — | [CompressionStream](https://caniuse.com/mdn-api_compressionstream) |
-| `connectivity` | — | — | [navigator.onLine](https://caniuse.com/online-status) |
-| `contacts` | ✅ | ✅ | [Contact Picker](https://caniuse.com/mdn-api_contactsmanager) |
-| `content-indexing` | ✅ | — | [Content Index](https://caniuse.com/mdn-api_contentindex) |
-| `files` | ✅ | ✅ | [File System Access](https://caniuse.com/native-filesystem-api) |
-| `fonts` | ✅ | ✅ | [Local Font Access](https://caniuse.com/mdn-api_window_querylocalfonts) |
-| `fullscreen` | — | ✅ | [Fullscreen](https://caniuse.com/fullscreen) |
-| `idle-detection` | ✅ | ✅ | [IdleDetector](https://caniuse.com/mdn-api_idledetector) |
-| `install` | ✅ | ✅ | [web.dev install](https://web.dev/customize-install/) |
-| `language-detector` | ✅ | ✅ | [Chrome AI : Détection de langue](https://developer.chrome.com/docs/ai/language-detection) |
-| `lazy-load` | — | — | [loading=lazy](https://caniuse.com/loading-lazy-attr) |
-| `notification` | ✅ | ✅ | [Notifications](https://caniuse.com/notifications) |
-| `passkey` | ✅ | ✅ | [WebAuthn](https://caniuse.com/webauthn) |
-| `payment` | ✅ | ✅ | [Payment Request](https://caniuse.com/payment-request) |
-| `screen` | ✅ | ✅ | [getDisplayMedia](https://caniuse.com/mdn-api_mediadevices_getdisplaymedia) |
-| `summarizer` | ✅ | ✅ | [Chrome AI : Summarizer](https://developer.chrome.com/docs/ai/summarizer-api) |
-| `translator` | ✅ | ✅ | [Chrome AI : Translator](https://developer.chrome.com/docs/ai/translator-api) |
-| `visibility` | — | — | [Page Visibility](https://caniuse.com/pagevisibility) |
-| `wake-lock` | ✅ | — | [Screen Wake Lock](https://caniuse.com/wake-lock) |
-| `web-otp` | ✅ | ✅ | [Web OTP](https://caniuse.com/webotp) |
-| `web-share` | ✅ | ✅ | [Web Share](https://caniuse.com/web-share) |
-
 ## Tree-shaking
 
 Les imports nommés et profonds sont tree-shakés automatiquement par tout bundler moderne :
