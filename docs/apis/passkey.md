@@ -45,3 +45,22 @@ To cancel manually (e.g. when the user submits a form with a password instead of
 ```typescript
 form.addEventListener("submit", () => passkey.abort());
 ```
+
+## Serializing the credential for your backend
+
+`passkey.create()` and `passkey.get()` resolve with `result.credential` as the native [`PublicKeyCredential`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential) object. Its `rawId`, `clientDataJSON`, `attestationObject`, `authenticatorData`, `signature`, and `userHandle` fields are `ArrayBuffer`s, not strings — they don't survive a plain JSON post.
+
+Use the WebAuthn Level 3 [`toJSON()`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/toJSON) method to convert them to Base64URL-encoded strings before sending:
+
+```typescript
+const result = await pwafire.passkey.create(options);
+if (result.ok && result.credential) {
+  await fetch("/api/passkey/verify", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(result.credential.toJSON()),
+  });
+}
+```
+
+`JSON.stringify` would invoke `toJSON()` implicitly, but calling it explicitly is clearer and lets you inspect or reshape the payload before sending. `toJSON()` is available in all modern browsers that support passkeys.
