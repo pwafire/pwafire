@@ -24,6 +24,9 @@ export * from "./pwa/wake-lock";
 export * from "./pwa/web-otp";
 export * from "./pwa/web-share";
 
+export type { ErrorCode, ResultMeta } from "./types/result";
+export type { Capability, CapabilityReason } from "./types/capability";
+
 import * as pwa from "./pwa";
 import * as check from "./check";
 
