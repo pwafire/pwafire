@@ -1,17 +1,17 @@
 import type { ErrorCode } from "../../types/result";
 
-// `code` is the OTP value (back-compat); the v6.5 error discriminator
-// is exposed as `errorCode` here to avoid colliding with it.
 export const webOtp = async (): Promise<{
   ok: boolean;
   message: string;
+  /** @deprecated Use `otpCode`. In v7 this field will be removed and `code` will become the `ErrorCode` discriminator like every other pwafire API. */
   code: string | null;
+  otpCode: string | null;
   errorCode?: ErrorCode;
   cause?: unknown;
 }> => {
   try {
     if (!("OTPCredential" in window)) {
-      return { ok: false, errorCode: "unsupported", message: "Web OTP API not supported", code: null };
+      return { ok: false, errorCode: "unsupported", message: "Web OTP API not supported", code: null, otpCode: null };
     }
 
     const input = document.querySelector('input[autocomplete="one-time-code"]');
@@ -21,6 +21,7 @@ export const webOtp = async (): Promise<{
         errorCode: "invalid-argument",
         message: "No input with autocomplete='one-time-code' found",
         code: null,
+        otpCode: null,
       };
     }
 
@@ -41,6 +42,7 @@ export const webOtp = async (): Promise<{
       ok: true,
       message: "OTP received",
       code: otp.code,
+      otpCode: otp.code,
     };
   } catch (error) {
     let errorCode: ErrorCode = "runtime-error";
@@ -50,6 +52,7 @@ export const webOtp = async (): Promise<{
       errorCode,
       message: error instanceof Error ? error.message : "Failed to get OTP",
       code: null,
+      otpCode: null,
       cause: error,
     };
   }

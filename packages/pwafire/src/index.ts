@@ -29,5 +29,6 @@ export type { Capability, CapabilityReason } from "./types/capability";
 
 import * as pwa from "./pwa";
 import * as check from "./check";
+import * as capability from "./capability";
 
-export { pwa, check };
+export { pwa, check, capability };
