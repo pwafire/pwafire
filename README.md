@@ -4,6 +4,8 @@ Modern PWA APIs for building Progressive Web Apps with ease.
 
 [![CI](https://github.com/pwafire/pwafire/workflows/CI/badge.svg)](https://github.com/pwafire/pwafire/actions/workflows/pwafire-ci.yml)
 [![npm version](https://badge.fury.io/js/pwafire.svg)](https://badge.fury.io/js/pwafire)
+[![npm downloads](https://img.shields.io/npm/dm/pwafire.svg)](https://www.npmjs.com/package/pwafire)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/pwafire?label=minzip)](https://bundlephobia.com/package/pwafire)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Documentation](https://img.shields.io/badge/Docs-docs.pwafire.org-blue)](https://docs.pwafire.org/get-started)
 
@@ -19,6 +21,23 @@ npm install pwafire
 import { copyText } from "pwafire";
 
 const { ok, message } = await copyText("Hello World");
+```
+
+## Tree-shaking
+
+Named and deep imports tree-shake automatically with any modern bundler:
+
+```ts
+import { copyText } from "pwafire";                              // npm, named
+import { copyText } from "pwafire/clipboard";                    // npm, deep import
+import { copyText } from "https://esm.sh/pwafire@6/clipboard";   // CDN
+```
+
+The namespace form below stays supported but pulls the full API surface:
+
+```ts
+import { pwa } from "pwafire";
+pwa.copyText("Hello World");
 ```
 
 ## Try it Live

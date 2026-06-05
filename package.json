@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "description": "PWAFire monorepo root",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "prepare": "husky"
   },
