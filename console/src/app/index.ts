@@ -8,6 +8,7 @@ import { updateStats } from "../stats";
 import { generateTests, runTest, runAllTests } from "../tests";
 import { checkAllFeatures } from "../features";
 import { initKeyboardShortcuts } from "../keyboard";
+import { renderImportsPanel, importsSummary } from "../imports";
 
 declare global {
   interface Window {
@@ -73,6 +74,12 @@ export const init = (): void => {
   initMatrixEffect();
   initKeyboardShortcuts();
   checkAllFeatures();
+  renderImportsPanel();
+  const imports = importsSummary();
+  logConsole(
+    `Import shapes verified: ${imports.ok}/${imports.total}`,
+    imports.ok === imports.total ? "success" : "error"
+  );
 
   // Hide loading screen and show content after 2s delay
   const loadingScreen = document.getElementById("loading-screen");

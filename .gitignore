@@ -12,6 +12,7 @@ coverage/
 # IDE
 .vscode/
 .idea/
+.claude/
 
 # Environment
 .env

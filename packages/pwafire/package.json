@@ -1,38 +1,167 @@
 {
   "name": "pwafire",
-  "version": "6.4.3",
+  "version": "6.4.4",
   "description": "A collection of PWA APIs and utilities",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
   "types": "lib/index.d.ts",
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
       "import": "./lib/index.mjs",
       "require": "./lib/index.js"
     },
-    "./*": {
-      "types": "./lib/pwa/*/index.d.ts",
-      "import": "./lib/pwa/*/index.mjs",
-      "require": "./lib/pwa/*/index.js"
-    },
     "./check": {
       "types": "./lib/check/index.d.ts",
       "import": "./lib/check/index.mjs",
       "require": "./lib/check/index.js"
+    },
+    "./badging": {
+      "types": "./lib/pwa/badging/index.d.ts",
+      "import": "./lib/pwa/badging/index.mjs",
+      "require": "./lib/pwa/badging/index.js"
+    },
+    "./barcode": {
+      "types": "./lib/pwa/barcode/index.d.ts",
+      "import": "./lib/pwa/barcode/index.mjs",
+      "require": "./lib/pwa/barcode/index.js"
+    },
+    "./broadcast": {
+      "types": "./lib/pwa/broadcast/index.d.ts",
+      "import": "./lib/pwa/broadcast/index.mjs",
+      "require": "./lib/pwa/broadcast/index.js"
+    },
+    "./clipboard": {
+      "types": "./lib/pwa/clipboard/index.d.ts",
+      "import": "./lib/pwa/clipboard/index.mjs",
+      "require": "./lib/pwa/clipboard/index.js"
+    },
+    "./compression": {
+      "types": "./lib/pwa/compression/index.d.ts",
+      "import": "./lib/pwa/compression/index.mjs",
+      "require": "./lib/pwa/compression/index.js"
+    },
+    "./connectivity": {
+      "types": "./lib/pwa/connectivity/index.d.ts",
+      "import": "./lib/pwa/connectivity/index.mjs",
+      "require": "./lib/pwa/connectivity/index.js"
+    },
+    "./contacts": {
+      "types": "./lib/pwa/contacts/index.d.ts",
+      "import": "./lib/pwa/contacts/index.mjs",
+      "require": "./lib/pwa/contacts/index.js"
+    },
+    "./content-indexing": {
+      "types": "./lib/pwa/content-indexing/index.d.ts",
+      "import": "./lib/pwa/content-indexing/index.mjs",
+      "require": "./lib/pwa/content-indexing/index.js"
+    },
+    "./files": {
+      "types": "./lib/pwa/files/index.d.ts",
+      "import": "./lib/pwa/files/index.mjs",
+      "require": "./lib/pwa/files/index.js"
+    },
+    "./fonts": {
+      "types": "./lib/pwa/fonts/index.d.ts",
+      "import": "./lib/pwa/fonts/index.mjs",
+      "require": "./lib/pwa/fonts/index.js"
+    },
+    "./fullscreen": {
+      "types": "./lib/pwa/fullscreen/index.d.ts",
+      "import": "./lib/pwa/fullscreen/index.mjs",
+      "require": "./lib/pwa/fullscreen/index.js"
+    },
+    "./idle-detection": {
+      "types": "./lib/pwa/idle-detection/index.d.ts",
+      "import": "./lib/pwa/idle-detection/index.mjs",
+      "require": "./lib/pwa/idle-detection/index.js"
+    },
+    "./install": {
+      "types": "./lib/pwa/install/index.d.ts",
+      "import": "./lib/pwa/install/index.mjs",
+      "require": "./lib/pwa/install/index.js"
+    },
+    "./language-detector": {
+      "types": "./lib/pwa/language-detector/index.d.ts",
+      "import": "./lib/pwa/language-detector/index.mjs",
+      "require": "./lib/pwa/language-detector/index.js"
+    },
+    "./lazy-load": {
+      "types": "./lib/pwa/lazy-load/index.d.ts",
+      "import": "./lib/pwa/lazy-load/index.mjs",
+      "require": "./lib/pwa/lazy-load/index.js"
+    },
+    "./notification": {
+      "types": "./lib/pwa/notification/index.d.ts",
+      "import": "./lib/pwa/notification/index.mjs",
+      "require": "./lib/pwa/notification/index.js"
+    },
+    "./passkey": {
+      "types": "./lib/pwa/passkey/index.d.ts",
+      "import": "./lib/pwa/passkey/index.mjs",
+      "require": "./lib/pwa/passkey/index.js"
+    },
+    "./payment": {
+      "types": "./lib/pwa/payment/index.d.ts",
+      "import": "./lib/pwa/payment/index.mjs",
+      "require": "./lib/pwa/payment/index.js"
+    },
+    "./screen": {
+      "types": "./lib/pwa/screen/index.d.ts",
+      "import": "./lib/pwa/screen/index.mjs",
+      "require": "./lib/pwa/screen/index.js"
+    },
+    "./summarizer": {
+      "types": "./lib/pwa/summarizer/index.d.ts",
+      "import": "./lib/pwa/summarizer/index.mjs",
+      "require": "./lib/pwa/summarizer/index.js"
+    },
+    "./translator": {
+      "types": "./lib/pwa/translator/index.d.ts",
+      "import": "./lib/pwa/translator/index.mjs",
+      "require": "./lib/pwa/translator/index.js"
+    },
+    "./visibility": {
+      "types": "./lib/pwa/visibility/index.d.ts",
+      "import": "./lib/pwa/visibility/index.mjs",
+      "require": "./lib/pwa/visibility/index.js"
+    },
+    "./wake-lock": {
+      "types": "./lib/pwa/wake-lock/index.d.ts",
+      "import": "./lib/pwa/wake-lock/index.mjs",
+      "require": "./lib/pwa/wake-lock/index.js"
+    },
+    "./web-otp": {
+      "types": "./lib/pwa/web-otp/index.d.ts",
+      "import": "./lib/pwa/web-otp/index.mjs",
+      "require": "./lib/pwa/web-otp/index.js"
+    },
+    "./web-share": {
+      "types": "./lib/pwa/web-share/index.d.ts",
+      "import": "./lib/pwa/web-share/index.mjs",
+      "require": "./lib/pwa/web-share/index.js"
+    },
+    "./package.json": "./package.json",
+    "./*": {
+      "types": "./lib/pwa/*/index.d.ts",
+      "import": "./lib/pwa/*/index.mjs",
+      "require": "./lib/pwa/*/index.js"
     }
   },
   "files": [
     "lib"
   ],
   "scripts": {
-    "build": "tsup src/index.ts src/pwa/**/index.ts src/check/index.ts --format cjs,esm --dts --out-dir lib",
-    "dev": "tsup src/index.ts src/pwa/**/index.ts src/check/index.ts --format cjs,esm --dts --out-dir lib --watch",
+    "build": "tsup src/index.ts src/pwa/**/index.ts src/check/index.ts --format cjs,esm --dts --out-dir lib --treeshake --no-splitting",
+    "dev": "tsup src/index.ts src/pwa/**/index.ts src/check/index.ts --format cjs,esm --dts --out-dir lib --watch --treeshake --no-splitting",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "lint": "eslint src --ext .ts",
     "format": "prettier --write \"src/**/*.ts\"",
-    "verify": "npm run lint && npm run build && npm test",
+    "sync:exports": "node scripts/sync-exports.mjs",
+    "sync:exports:check": "node scripts/sync-exports.mjs --check",
+    "verify": "npm run sync:exports:check && npm run lint && npm run build && npm test",
     "prepublishOnly": "npm run verify"
   },
   "keywords": [
@@ -45,6 +174,9 @@
   ],
   "author": "Maye Edwin",
   "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/pwafire/pwafire.git",
