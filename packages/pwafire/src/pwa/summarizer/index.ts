@@ -1,11 +1,33 @@
+import type { ErrorCode } from "../../types/result";
+
 type SummarizerOptions = SummarizerCreateOptions & { context?: string };
 
-export const summarizer = async (text: string, options?: SummarizerOptions) => {
+type SummarizerResult = {
+  ok: boolean;
+  message: string;
+  /** @deprecated Use `code` instead. Will be removed in v7. */
+  status: string;
+  summary?: string;
+  code?: ErrorCode;
+  cause?: unknown;
+};
+
+type SummarizerStreamResult = {
+  ok: boolean;
+  message: string;
+  /** @deprecated Use `code` instead. Will be removed in v7. */
+  status: string;
+  code?: ErrorCode;
+  cause?: unknown;
+};
+
+export const summarizer = async (text: string, options?: SummarizerOptions): Promise<SummarizerResult> => {
   try {
     if (!("Summarizer" in self)) {
       return {
         ok: false,
         status: "not-supported",
+        code: "unsupported",
         message: "Summarizer API not supported",
       };
     }
@@ -15,6 +37,7 @@ export const summarizer = async (text: string, options?: SummarizerOptions) => {
       return {
         ok: false,
         status: "unavailable",
+        code: "unsupported",
         message: "Summarizer API not available on this device",
       };
     }
@@ -23,6 +46,7 @@ export const summarizer = async (text: string, options?: SummarizerOptions) => {
       return {
         ok: false,
         status: "user-activation-required",
+        code: "gesture-required",
         message: "User activation required",
       };
     }
@@ -44,7 +68,9 @@ export const summarizer = async (text: string, options?: SummarizerOptions) => {
     return {
       ok: false,
       status: "error",
+      code: "runtime-error",
       message: error instanceof Error ? error.message : "Failed to summarize",
+      cause: error,
     };
   }
 };
@@ -53,12 +79,13 @@ export const summarizerStream = async (
   text: string,
   callback: (chunk: string) => void,
   options?: SummarizerOptions,
-) => {
+): Promise<SummarizerStreamResult> => {
   try {
     if (!("Summarizer" in self)) {
       return {
         ok: false,
         status: "not-supported",
+        code: "unsupported",
         message: "Summarizer API not supported",
       };
     }
@@ -68,6 +95,7 @@ export const summarizerStream = async (
       return {
         ok: false,
         status: "unavailable",
+        code: "unsupported",
         message: "Summarizer API not available on this device",
       };
     }
@@ -76,6 +104,7 @@ export const summarizerStream = async (
       return {
         ok: false,
         status: "user-activation-required",
+        code: "gesture-required",
         message: "User activation required",
       };
     }
@@ -107,7 +136,9 @@ export const summarizerStream = async (
     return {
       ok: false,
       status: "error",
+      code: "runtime-error",
       message: error instanceof Error ? error.message : "Failed to summarize stream",
+      cause: error,
     };
   }
 };

@@ -1,3 +1,5 @@
+import type { ErrorCode } from "../../types/result";
+
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
   userChoice: Promise<{ outcome: "accepted" | "dismissed"; platform: string }>;
@@ -6,10 +8,10 @@ interface BeforeInstallPromptEvent extends Event {
 export const install = async (
   type: "before" | "install" | "installed" = "installed",
   callback?: (event: string | BeforeInstallPromptEvent) => void,
-) => {
+): Promise<{ ok: boolean; message: string; code?: ErrorCode; cause?: unknown }> => {
   try {
     if (!navigator.serviceWorker) {
-      return { ok: false, message: "Service Worker not supported" };
+      return { ok: false, code: "unsupported", message: "Service Worker not supported" };
     }
 
     const methods = {
@@ -36,12 +38,14 @@ export const install = async (
       case "installed":
         return await methods.checkIfAppInstalled();
       default:
-        return { ok: false, message: "Type can be 'install', 'installed' or 'before'" };
+        return { ok: false, code: "invalid-argument", message: "Type can be 'install', 'installed' or 'before'" };
     }
   } catch (error) {
     return {
       ok: false,
+      code: "runtime-error",
       message: error instanceof Error ? error.message : "Failed to handle install event",
+      cause: error,
     };
   }
 };

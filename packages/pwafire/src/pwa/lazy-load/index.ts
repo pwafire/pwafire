@@ -1,3 +1,7 @@
+import type { ErrorCode } from "../../types/result";
+
+type Result = LazyLoadResult & { code?: ErrorCode };
+
 const sanitizeUrl = (url: string): string | null => {
   if (!url) return null;
 
@@ -21,11 +25,12 @@ const sanitizeUrl = (url: string): string | null => {
   return trimmedUrl.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
 };
 
-export const loadImage = async (element: string, options: ImageOptions = {}): Promise<LazyLoadResult> => {
+export const loadImage = async (element: string, options: ImageOptions = {}): Promise<Result> => {
   try {
     if (!("IntersectionObserver" in window)) {
       return {
         ok: false,
+        code: "unsupported",
         message: "Intersection Observer API not supported",
       };
     }
@@ -35,7 +40,7 @@ export const loadImage = async (element: string, options: ImageOptions = {}): Pr
     const elements = Array.from(document.querySelectorAll(element));
 
     if (!elements.length) {
-      return { ok: false, message: "No elements found" };
+      return { ok: false, code: "invalid-argument", message: "No elements found" };
     }
 
     if (placeholder) {
@@ -73,16 +78,19 @@ export const loadImage = async (element: string, options: ImageOptions = {}): Pr
   } catch (error) {
     return {
       ok: false,
+      code: "runtime-error",
       message: error instanceof Error ? error.message : "Failed to set up lazy loading for images",
+      cause: error,
     };
   }
 };
 
-export const loadBackground = async (element: string, options: BackgroundOptions = {}): Promise<LazyLoadResult> => {
+export const loadBackground = async (element: string, options: BackgroundOptions = {}): Promise<Result> => {
   try {
     if (!("IntersectionObserver" in window)) {
       return {
         ok: false,
+        code: "unsupported",
         message: "Intersection Observer API not supported",
       };
     }
@@ -92,7 +100,7 @@ export const loadBackground = async (element: string, options: BackgroundOptions
     const elements = Array.from(document.querySelectorAll(element));
 
     if (!elements.length) {
-      return { ok: false, message: "No elements found" };
+      return { ok: false, code: "invalid-argument", message: "No elements found" };
     }
 
     if (placeholder) {
@@ -142,16 +150,19 @@ export const loadBackground = async (element: string, options: BackgroundOptions
   } catch (error) {
     return {
       ok: false,
+      code: "runtime-error",
       message: error instanceof Error ? error.message : "Failed to set up lazy loading for backgrounds",
+      cause: error,
     };
   }
 };
 
-export const loadOnScroll = async (element: string, options: ScrollOptions = {}): Promise<LazyLoadResult> => {
+export const loadOnScroll = async (element: string, options: ScrollOptions = {}): Promise<Result> => {
   try {
     if (!("IntersectionObserver" in window)) {
       return {
         ok: false,
+        code: "unsupported",
         message: "Intersection Observer API not supported",
       };
     }
@@ -161,7 +172,7 @@ export const loadOnScroll = async (element: string, options: ScrollOptions = {})
     const elements = Array.from(document.querySelectorAll(element));
 
     if (!elements.length) {
-      return { ok: false, message: "No elements found" };
+      return { ok: false, code: "invalid-argument", message: "No elements found" };
     }
 
     if (style !== "none" && !document.getElementById("pwafire-lazy-styles")) {
@@ -217,16 +228,19 @@ export const loadOnScroll = async (element: string, options: ScrollOptions = {})
   } catch (error) {
     return {
       ok: false,
+      code: "runtime-error",
       message: error instanceof Error ? error.message : "Failed to set up scroll reveal",
+      cause: error,
     };
   }
 };
 
-export const lazyLoad = async (options?: InitOptions): Promise<LazyLoadResult> => {
+export const lazyLoad = async (options?: InitOptions): Promise<Result> => {
   try {
     if (!("IntersectionObserver" in window)) {
       return {
         ok: false,
+        code: "unsupported",
         message: "Intersection Observer API not supported",
       };
     }
@@ -257,7 +271,7 @@ export const lazyLoad = async (options?: InitOptions): Promise<LazyLoadResult> =
     }
 
     if (!promises.length) {
-      return { ok: false, message: "No elements found to lazy load" };
+      return { ok: false, code: "invalid-argument", message: "No elements found to lazy load" };
     }
 
     await Promise.all(promises);
@@ -265,7 +279,9 @@ export const lazyLoad = async (options?: InitOptions): Promise<LazyLoadResult> =
   } catch (error) {
     return {
       ok: false,
+      code: "runtime-error",
       message: error instanceof Error ? error.message : "Failed to initialize lazy loading",
+      cause: error,
     };
   }
 };

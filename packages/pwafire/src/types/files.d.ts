@@ -5,12 +5,16 @@ interface FileResponse {
   files?: File[];
   file?: File;
   contents?: string;
+  code?: string;
+  cause?: unknown;
 }
 
 interface CreateFileResponse {
   ok: boolean;
   message: string;
   handle?: FileSystemFileHandle;
+  code?: string;
+  cause?: unknown;
 }
 
 interface FilePickerOptions {

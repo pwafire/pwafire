@@ -1,13 +1,5 @@
 import type { ErrorCode } from "../../types/result";
 
-/**
- * Sets the application badge to `unreadCount`.
- *
- * Browsers display the badge on the installed PWA icon. Requires a
- * secure context.
- *
- * @see https://w3c.github.io/badging/
- */
 export const setBadge = async (
   unreadCount: number,
 ): Promise<{ ok: boolean; message: string; code?: ErrorCode; cause?: unknown }> => {
@@ -27,11 +19,6 @@ export const setBadge = async (
   }
 };
 
-/**
- * Clears the application badge.
- *
- * @see https://w3c.github.io/badging/#dom-navigator-clearappbadge
- */
 export const clearBadge = async (): Promise<{
   ok: boolean;
   message: string;

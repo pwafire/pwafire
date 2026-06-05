@@ -7,14 +7,6 @@ const errorCodeFor = (error: unknown): ErrorCode => {
   return "runtime-error";
 };
 
-/**
- * Writes text to the system clipboard via the async Clipboard API.
- *
- * Requires a secure context. Most browsers require recent user
- * activation; without it, the call rejects with `permission-denied`.
- *
- * @see https://w3c.github.io/clipboard-apis/#dom-clipboard-writetext
- */
 export const copyText = async (
   text: string,
 ): Promise<{ ok: boolean; message: string; code?: ErrorCode; cause?: unknown }> => {
@@ -34,14 +26,6 @@ export const copyText = async (
   }
 };
 
-/**
- * Reads plain text from the system clipboard.
- *
- * Requires a secure context and (in most browsers) user activation.
- * Some browsers also surface a one-time permission prompt.
- *
- * @see https://w3c.github.io/clipboard-apis/#dom-clipboard-readtext
- */
 export const readText = async (): Promise<{
   ok: boolean;
   message: string;
@@ -66,14 +50,6 @@ export const readText = async (): Promise<{
   }
 };
 
-/**
- * Fetches an image URL and writes it to the clipboard as a `ClipboardItem`.
- *
- * Requires a secure context. The blob's MIME type must be one the
- * platform supports (typically `image/png`).
- *
- * @see https://w3c.github.io/clipboard-apis/#dom-clipboard-write
- */
 export const copyImage = async (
   imgURL: string,
 ): Promise<{ ok: boolean; message: string; code?: ErrorCode; cause?: unknown }> => {
