@@ -70,8 +70,12 @@ export const fullscreen = (): Capability =>
 export const idleDetection = (): Capability =>
   make(() => "IdleDetector" in window, { requiresUserActivation: true, requiresSecureContext: true });
 
+// `install()` just registers `appinstalled` / `beforeinstallprompt`
+// listeners (or fires a callback). Activation is only needed at the
+// downstream `BeforeInstallPromptEvent.prompt()` call, which is the
+// consumer's responsibility — not pwafire's call surface.
 export const install = (): Capability =>
-  make(() => "serviceWorker" in navigator, { requiresUserActivation: true, requiresSecureContext: true });
+  make(() => "serviceWorker" in navigator, { requiresUserActivation: false, requiresSecureContext: true });
 
 export const languageDetector = (): Capability =>
   make(() => "LanguageDetector" in self, { requiresUserActivation: true, requiresSecureContext: true });

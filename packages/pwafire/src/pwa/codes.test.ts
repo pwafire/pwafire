@@ -11,6 +11,7 @@ import { notification } from "./notification";
 import { webShare } from "./web-share";
 import { passkey } from "./passkey";
 import { compressStream } from "./compression";
+import { webOtp } from "./web-otp";
 
 type AnyNav = Record<string, unknown>;
 type AnyWin = Record<string, unknown>;
@@ -37,6 +38,7 @@ describe("ErrorCode contract", () => {
     delete (window as unknown as AnyWin).Notification;
     delete (window as unknown as AnyWin).CompressionStream;
     delete (window as unknown as AnyWin).PublicKeyCredential;
+    delete (window as unknown as AnyWin).OTPCredential;
   });
 
   it("'unsupported' — wakeLock returns it when navigator.wakeLock is missing", async () => {
@@ -139,5 +141,47 @@ describe("ErrorCode contract", () => {
     expect(r.ok).toBe(false);
     expect(r.code).toBe("runtime-error");
     expect(r.cause).toBeInstanceOf(Error);
+  });
+
+  // --- extra contract pinning ---
+
+  it("webOtp uses `errorCode` (not `code`) for the discriminator — pins the v7 rename", async () => {
+    // The OTPCredential payload itself uses `code` for the SMS value,
+    // so v6.5 exposes the ErrorCode discriminator as `errorCode` and
+    // mirrors the OTP value to `otpCode`. v7 frees up `code` for the
+    // ErrorCode (same as everywhere else). Test pins the field name
+    // so the divergence can't drift accidentally.
+    const r = await webOtp();
+    expect(r.ok).toBe(false);
+    expect(r.errorCode).toBe("unsupported");
+    // The OTP-value field stays `code`, kept null on failure.
+    expect(r.code).toBeNull();
+    expect(r.otpCode).toBeNull();
+  });
+
+  it("notification permission='denied' maps to 'permission-denied' (vs 'default' → 'permission-dismissed')", async () => {
+    // The spec distinguishes "denied" (user actively blocked) from
+    // "default" (user dismissed without choosing). pwafire mirrors
+    // that distinction in `code` so consumers can offer a different
+    // affordance for each.
+    setWin("Notification", { requestPermission: () => Promise.resolve("denied") });
+    const r = await notification({ title: "t", options: { body: "b", timestamp: 0 } });
+    expect(r.ok).toBe(false);
+    expect(r.code).toBe("permission-denied");
+    expect(r.status).toBe("permission-denied"); // legacy field also updated
+  });
+
+  it("`cause` round-trips a non-Error throw value verbatim", async () => {
+    // Code does `error instanceof Error ? error.message : "..."` so
+    // non-Error throws fall through to the fallback message — but
+    // `cause` should still carry the original thrown value untouched
+    // for diagnostics.
+    setNav("clipboard", {
+      writeText: () => Promise.reject("raw string thrown"),
+    });
+    const r = await copyText("x");
+    expect(r.ok).toBe(false);
+    expect(r.code).toBe("runtime-error");
+    expect(r.cause).toBe("raw string thrown");
   });
 });
