@@ -23,7 +23,9 @@ export const fullscreen = () => "requestFullscreen" in document.documentElement;
 /** @deprecated Use `pwafire/capability` — `.supported` is the boolean. Removed in v7. */
 export const idleDetection = () => "IdleDetector" in window;
 /** @deprecated Use `pwafire/capability` — `.supported` is the boolean. Removed in v7. */
-export const install = () => "getInstalledRelatedApps" in navigator;
+// Probes navigator.serviceWorker — the actual prerequisite for `pwafire.install()`.
+// Earlier versions probed `getInstalledRelatedApps`, which answers a different question.
+export const install = () => "serviceWorker" in navigator;
 /** @deprecated Use `pwafire/capability` — `.supported` is the boolean. Removed in v7. */
 export const languageDetector = () => "LanguageDetector" in self;
 /** @deprecated Use `pwafire/capability` — `.supported` is the boolean. Removed in v7. */
