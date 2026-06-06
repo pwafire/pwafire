@@ -9,6 +9,7 @@ import { generateTests, runTest, runAllTests } from "../tests";
 import { checkAllFeatures } from "../features";
 import { initKeyboardShortcuts } from "../keyboard";
 import { renderImportsPanel, importsSummary } from "../imports";
+import { renderCapabilityDemo, capabilityDemoSummary, demoCopy } from "../capability-demo";
 
 declare global {
   interface Window {
@@ -23,6 +24,8 @@ declare global {
     downloadStream: typeof downloadStream;
     showTopLoadingBar: () => void;
     hideTopLoadingBar: () => void;
+    demoCopy: typeof demoCopy;
+    logConsole: typeof logConsole;
     __visibilityUnlisten: (() => void) | null;
   }
 }
@@ -61,6 +64,8 @@ export const init = (): void => {
   window.downloadStream = downloadStream;
   window.showTopLoadingBar = showTopLoadingBar;
   window.hideTopLoadingBar = hideTopLoadingBar;
+  window.demoCopy = demoCopy;
+  window.logConsole = logConsole;
 
   logConsole("PWAFire package loaded successfully", "success");
   logConsole("Available exports: " + Object.keys(pwafire).length, "info");
@@ -79,6 +84,13 @@ export const init = (): void => {
   logConsole(
     `Import shapes verified: ${imports.ok}/${imports.total}`,
     imports.ok === imports.total ? "success" : "error"
+  );
+
+  renderCapabilityDemo();
+  const capability = capabilityDemoSummary();
+  logConsole(
+    `Capability detection live: ${capability.supported}/${capability.total} supported in this browser`,
+    "info"
   );
 
   // Hide loading screen and show content after 2s delay
