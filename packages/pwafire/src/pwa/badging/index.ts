@@ -1,34 +1,42 @@
-export const setBadge = async (unreadCount: number) => {
+import type { ErrorCode } from "../../types/result";
+
+export const setBadge = async (
+  unreadCount: number,
+): Promise<{ ok: boolean; message: string; code?: ErrorCode; cause?: unknown }> => {
   try {
-    if (navigator.setAppBadge) {
-      await navigator.setAppBadge(unreadCount);
-      return { ok: true, message: "Set" };
-    } else {
-      return {
-        ok: false,
-        message: "Badging API not supported",
-      };
+    if (!navigator.setAppBadge) {
+      return { ok: false, code: "unsupported", message: "Badging API not supported" };
     }
+    await navigator.setAppBadge(unreadCount);
+    return { ok: true, message: "Set" };
   } catch (error) {
     return {
       ok: false,
+      code: "runtime-error",
       message: error instanceof Error ? error.message : "Failed to set badge",
+      cause: error,
     };
   }
 };
 
-export const clearBadge = async () => {
+export const clearBadge = async (): Promise<{
+  ok: boolean;
+  message: string;
+  code?: ErrorCode;
+  cause?: unknown;
+}> => {
   try {
-    if (navigator.clearAppBadge) {
-      await navigator.clearAppBadge();
-      return { ok: true, message: "Cleared" };
-    } else {
-      return { ok: false, message: "Badging API not supported" };
+    if (!navigator.clearAppBadge) {
+      return { ok: false, code: "unsupported", message: "Badging API not supported" };
     }
+    await navigator.clearAppBadge();
+    return { ok: true, message: "Cleared" };
   } catch (error) {
     return {
       ok: false,
+      code: "runtime-error",
       message: error instanceof Error ? error.message : "Failed to clear badge",
+      cause: error,
     };
   }
 };

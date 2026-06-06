@@ -1,15 +1,28 @@
+import type { ErrorCode } from "../../types/result";
+
+type TranslatorResult = {
+  ok: boolean;
+  message: string;
+  /** @deprecated Use `code` instead. Will be removed in v7. */
+  status: string;
+  translation?: string;
+  code?: ErrorCode;
+  cause?: unknown;
+};
+
 export const translator = async (
   text: string,
   options: {
     sourceLanguage: string;
     targetLanguage: string;
   },
-) => {
+): Promise<TranslatorResult> => {
   try {
     if (!("Translator" in self)) {
       return {
         ok: false,
         status: "not-supported",
+        code: "unsupported",
         message: "Translator API not supported",
       };
     }
@@ -19,6 +32,7 @@ export const translator = async (
       return {
         ok: false,
         status: "unavailable",
+        code: "unsupported",
         message: "Translator API not available for this language pair",
       };
     }
@@ -27,6 +41,7 @@ export const translator = async (
       return {
         ok: false,
         status: "user-activation-required",
+        code: "gesture-required",
         message: "User activation required",
       };
     }
@@ -49,7 +64,9 @@ export const translator = async (
     return {
       ok: false,
       status: "error",
+      code: "runtime-error",
       message: error instanceof Error ? error.message : "Failed to translate",
+      cause: error,
     };
   }
 };
@@ -61,12 +78,13 @@ export const translatorStream = async (
     sourceLanguage: string;
     targetLanguage: string;
   },
-) => {
+): Promise<TranslatorResult> => {
   try {
     if (!("Translator" in self)) {
       return {
         ok: false,
         status: "not-supported",
+        code: "unsupported",
         message: "Translator API not supported",
       };
     }
@@ -76,6 +94,7 @@ export const translatorStream = async (
       return {
         ok: false,
         status: "unavailable",
+        code: "unsupported",
         message: "Translator API not available for this language pair",
       };
     }
@@ -84,6 +103,7 @@ export const translatorStream = async (
       return {
         ok: false,
         status: "user-activation-required",
+        code: "gesture-required",
         message: "User activation required",
       };
     }
@@ -111,7 +131,9 @@ export const translatorStream = async (
     return {
       ok: false,
       status: "error",
+      code: "runtime-error",
       message: error instanceof Error ? error.message : "Failed to translate",
+      cause: error,
     };
   }
 };

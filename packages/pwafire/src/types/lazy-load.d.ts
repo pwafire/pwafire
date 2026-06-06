@@ -2,6 +2,8 @@
 interface LazyLoadResult {
   ok: boolean;
   message: string;
+  code?: string;
+  cause?: unknown;
 }
 
 interface ImageOptions {

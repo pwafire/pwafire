@@ -1,12 +1,22 @@
+import type { ErrorCode } from "../../types/result";
+
 const noopListen = (_cb: (state: DocumentVisibilityState) => void) => ({
   unlisten: () => {},
 });
 
-export const visibility = () => {
+export const visibility = (): {
+  ok: boolean;
+  message: string;
+  state: DocumentVisibilityState | null;
+  onlisten: typeof noopListen;
+  code?: ErrorCode;
+  cause?: unknown;
+} => {
   try {
     if (!document.visibilityState) {
       return {
         ok: false,
+        code: "unsupported",
         message: "Visibility API not supported",
         state: null,
         onlisten: noopListen,
@@ -30,14 +40,22 @@ export const visibility = () => {
   } catch (error) {
     return {
       ok: false,
+      code: "runtime-error",
       message: error instanceof Error ? error.message : "Failed to check visibility",
       state: null,
       onlisten: noopListen,
+      cause: error,
     };
   }
 };
 
-export const displayMode = () => {
+export const displayMode = (): {
+  ok: boolean;
+  message: string;
+  mode: "standalone" | "minimal-ui" | "fullscreen" | "browser-tab";
+  code?: ErrorCode;
+  cause?: unknown;
+} => {
   try {
     const mode = window.matchMedia("(display-mode: standalone)").matches
       ? "standalone"
@@ -55,8 +73,10 @@ export const displayMode = () => {
   } catch (error) {
     return {
       ok: false,
+      code: "runtime-error",
       message: error instanceof Error ? error.message : "Failed to detect display mode",
       mode: "browser-tab",
+      cause: error,
     };
   }
 };

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "pwafire (full surface)",
+    "path": "lib/index.mjs",
+    "limit": "10 kB",
+    "import": "*"
+  },
+  {
+    "name": "pwafire/check",
+    "path": "lib/check/index.mjs",
+    "limit": "700 B",
+    "import": "*"
+  },
+  {
+    "name": "pwafire/capability",
+    "path": "lib/capability/index.mjs",
+    "limit": "2.2 kB",
+    "import": "*"
+  },
+  {
+    "name": "pwafire/clipboard",
+    "path": "lib/pwa/clipboard/index.mjs",
+    "limit": "600 B",
+    "import": "*"
+  },
+  {
+    "name": "pwafire/notification",
+    "path": "lib/pwa/notification/index.mjs",
+    "limit": "500 B",
+    "import": "*"
+  },
+  {
+    "name": "pwafire/passkey",
+    "path": "lib/pwa/passkey/index.mjs",
+    "limit": "1 kB",
+    "import": "*"
+  }
+]
