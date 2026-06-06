@@ -1,5 +1,8 @@
 import type { Capability, CapabilityReason } from "../types/capability";
 
+// Single SSR / non-browser safety net. Probes can freely reference
+// window/navigator/self/document without per-probe `typeof` guards —
+// missing globals throw ReferenceError, which we catch here.
 const apiExists = (probe: () => boolean): boolean => {
   try {
     return probe();
@@ -45,7 +48,7 @@ export const compression = (): Capability =>
   make(() => "CompressionStream" in window, { requiresUserActivation: false });
 
 export const connectivity = (): Capability =>
-  make(() => typeof navigator !== "undefined" && "onLine" in navigator, { requiresUserActivation: false });
+  make(() => "onLine" in navigator, { requiresUserActivation: false });
 
 export const contacts = (): Capability =>
   make(() => "contacts" in navigator && "ContactsManager" in window, {
@@ -63,9 +66,7 @@ export const fonts = (): Capability =>
   make(() => "queryLocalFonts" in window, { requiresUserActivation: true, requiresSecureContext: true });
 
 export const fullscreen = (): Capability =>
-  make(() => typeof document !== "undefined" && document.fullscreenEnabled === true, {
-    requiresUserActivation: true,
-  });
+  make(() => document.fullscreenEnabled === true, { requiresUserActivation: true });
 
 export const idleDetection = (): Capability =>
   make(() => "IdleDetector" in window, { requiresUserActivation: true, requiresSecureContext: true });
@@ -81,9 +82,7 @@ export const languageDetector = (): Capability =>
   make(() => "LanguageDetector" in self, { requiresUserActivation: true, requiresSecureContext: true });
 
 export const lazyLoad = (): Capability =>
-  make(() => typeof HTMLImageElement !== "undefined" && "loading" in HTMLImageElement.prototype, {
-    requiresUserActivation: false,
-  });
+  make(() => "loading" in HTMLImageElement.prototype, { requiresUserActivation: false });
 
 export const notification = (): Capability =>
   make(() => "Notification" in window, { requiresUserActivation: true, requiresSecureContext: true });
@@ -95,7 +94,7 @@ export const passkey = (): Capability =>
   });
 
 export const payment = (): Capability =>
-  make(() => typeof window !== "undefined" && typeof window.PaymentRequest !== "undefined", {
+  make(() => typeof window.PaymentRequest !== "undefined", {
     requiresUserActivation: true,
     requiresSecureContext: true,
   });
@@ -104,13 +103,10 @@ export const pip = (): Capability =>
   make(() => "documentPictureInPicture" in window, { requiresUserActivation: true, requiresSecureContext: true });
 
 export const screenShare = (): Capability =>
-  make(
-    () =>
-      typeof navigator !== "undefined" &&
-      !!navigator.mediaDevices &&
-      "getDisplayMedia" in navigator.mediaDevices,
-    { requiresUserActivation: true, requiresSecureContext: true },
-  );
+  make(() => !!navigator.mediaDevices && "getDisplayMedia" in navigator.mediaDevices, {
+    requiresUserActivation: true,
+    requiresSecureContext: true,
+  });
 
 export const summarizer = (): Capability =>
   make(() => "Summarizer" in self, { requiresUserActivation: true, requiresSecureContext: true });
@@ -119,7 +115,7 @@ export const translator = (): Capability =>
   make(() => "Translator" in self, { requiresUserActivation: true, requiresSecureContext: true });
 
 export const visibility = (): Capability =>
-  make(() => typeof document !== "undefined" && "visibilityState" in document, { requiresUserActivation: false });
+  make(() => "visibilityState" in document, { requiresUserActivation: false });
 
 export const wakeLock = (): Capability =>
   make(() => "wakeLock" in navigator, { requiresUserActivation: false, requiresSecureContext: true });
