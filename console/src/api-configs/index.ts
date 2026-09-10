@@ -374,15 +374,15 @@ export const apiConfigs: Record<string, ApiConfig> = {
 };
 
 export const apiGroups: Record<string, string[]> = {
-  "🤖 AI": [
+  AI: [
     "summarizer",
     "summarizerStream",
     "translator",
     "translatorStream",
     "languageDetector"
   ],
-  "📋 Clipboard": ["copyText", "readText", "copyImage"],
-  "📁 File System": [
+  Clipboard: ["copyText", "readText", "copyImage"],
+  "File System": [
     "pickFile",
     "pickTextFile",
     "readFiles",
@@ -390,26 +390,26 @@ export const apiGroups: Record<string, string[]> = {
     "writeFile",
     "writeUrlToFile"
   ],
-  "🔔 Notifications": ["notification", "setBadge", "clearBadge"],
-  "🔗 Sharing": ["webShare"],
-  "🖥️ Screen": ["screenShare", "webPIP", "fullscreen"],
-  "⚡ System": [
+  Notifications: ["notification", "setBadge", "clearBadge"],
+  Sharing: ["webShare"],
+  Screen: ["screenShare", "webPIP", "fullscreen"],
+  System: [
     "wakeLock",
     "idleDetection",
     "connectivity",
     "visibility",
     "displayMode"
   ],
-  "🎨 Media": [
+  Media: [
     "barcodeDetector",
     "compressStream",
     "decompressStream",
     "lazyLoad",
     "accessFonts"
   ],
-  "💳 Payment": ["payment"],
-  "👤 User Data": ["contacts", "webOtp"],
-  "🔐 Passkey": ["passkey.create", "passkey.get", "passkey.getConditional"],
-  "📡 Broadcast": ["broadcast.send", "broadcast.listen"],
-  "📦 Other": ["contentIndexing", "install"]
+  Payment: ["payment"],
+  "User Data": ["contacts", "webOtp"],
+  Passkey: ["passkey.create", "passkey.get", "passkey.getConditional"],
+  Broadcast: ["broadcast.send", "broadcast.listen"],
+  Other: ["contentIndexing", "install"]
 };
