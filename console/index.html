@@ -36,7 +36,20 @@
               rel="noopener"
               class="header-link"
             >
-              📚 Docs
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              </svg>
+              <span>Docs</span>
             </a>
             <a
               href="https://stackblitz.com/edit/pwafire?file=src%2Findex.ts"
@@ -44,7 +57,19 @@
               rel="noopener"
               class="header-link"
             >
-              ⚡ Playground
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+              <span>Playground</span>
             </a>
             <a
               href="https://github.com/pwafire/pwafire"
@@ -125,7 +150,7 @@
         <div class="stats-panel">
           <div class="stats-title">v6.5 Capability</div>
           <div id="capability-demo-list"></div>
-          <button onclick="window.demoCopy().then(m => window.logConsole(m, 'info'))" style="margin-top: 8px; width: 100%;">Try copyText (typed code)</button>
+          <button class="action-button secondary" onclick="window.demoCopy().then(m => window.logConsole(m, 'info'))" style="margin-top: 8px;">Try copyText (typed code)</button>
         </div>
 
         <div class="shortcuts-panel">
