@@ -21,6 +21,27 @@ type SummarizerStreamResult = {
   cause?: unknown;
 };
 
+type SummarizerFailure = SummarizerStreamResult & { ok: false };
+
+const coreOptions = (options: SummarizerOptions = {}): SummarizerCreateCoreOptions => {
+  const { type, format, length, expectedInputLanguages, expectedContextLanguages, outputLanguage } = options;
+  return { type, format, length, expectedInputLanguages, expectedContextLanguages, outputLanguage };
+};
+
+const toFailure = (error: unknown, fallback: string): SummarizerFailure => {
+  const message = error instanceof Error ? error.message : fallback;
+  const name = error instanceof DOMException || error instanceof Error ? error.name : "";
+
+  if (name === "AbortError") return { ok: false, status: "aborted", code: "cancelled", message, cause: error };
+  if (name === "NotAllowedError")
+    return { ok: false, status: "not-allowed", code: "permission-denied", message, cause: error };
+  if (name === "NotSupportedError")
+    return { ok: false, status: "not-supported", code: "unsupported", message, cause: error };
+  if (name === "QuotaExceededError")
+    return { ok: false, status: "quota-exceeded", code: "invalid-argument", message, cause: error };
+  return { ok: false, status: "error", code: "runtime-error", message, cause: error };
+};
+
 export const summarizer = async (text: string, options?: SummarizerOptions): Promise<SummarizerResult> => {
   try {
     if (!("Summarizer" in self)) {
@@ -32,7 +53,7 @@ export const summarizer = async (text: string, options?: SummarizerOptions): Pro
       };
     }
 
-    const availability = await Summarizer.availability();
+    const availability = await Summarizer.availability(coreOptions(options));
     if (availability === "unavailable") {
       return {
         ok: false,
@@ -65,13 +86,7 @@ export const summarizer = async (text: string, options?: SummarizerOptions): Pro
       summary,
     };
   } catch (error) {
-    return {
-      ok: false,
-      status: "error",
-      code: "runtime-error",
-      message: error instanceof Error ? error.message : "Failed to summarize",
-      cause: error,
-    };
+    return toFailure(error, "Failed to summarize");
   }
 };
 
@@ -90,7 +105,7 @@ export const summarizerStream = async (
       };
     }
 
-    const availability = await Summarizer.availability();
+    const availability = await Summarizer.availability(coreOptions(options));
     if (availability === "unavailable") {
       return {
         ok: false,
@@ -133,12 +148,6 @@ export const summarizerStream = async (
       message: "Streaming complete",
     };
   } catch (error) {
-    return {
-      ok: false,
-      status: "error",
-      code: "runtime-error",
-      message: error instanceof Error ? error.message : "Failed to summarize stream",
-      cause: error,
-    };
+    return toFailure(error, "Failed to summarize stream");
   }
 };
