@@ -106,24 +106,22 @@ chore(cleanup) - standardize error handling across modules
 
 ```bash
 # Ask user: "Which version bump? (patch/minor/major)"
-npm version patch -m "chore(release): bump version to %s"   # 6.1.0 → 6.1.1 (fixes)
-npm version minor -m "chore(release): bump version to %s"   # 6.1.0 → 6.2.0 (new APIs)
-npm version major -m "chore(release): bump version to %s"   # 6.1.0 → 7.0.0 (breaking changes)
+cd packages/pwafire && npm version patch --no-git-tag-version && cd ../..
+git commit -am "chore(release): bump pwafire to 6.5.1"
+git push -u origin release/v6.5.1 && gh pr create
 
-# Push branch and create PR
-git push origin <branch-name>
-gh pr create
-
-# Merge to main → auto-publishes!
-gh pr merge --merge
+# After merge, the maintainer publishes from main
+npm publish -w pwafire
+git tag v6.5.1 && git push origin v6.5.1
+gh release create v6.5.1 --generate-notes
 ```
 
 **How it works:**
 
-1. `npm version` runs locally → updates package.json, creates commit
-2. Create PR and merge to main
-3. Workflow detects version change → publishes to npm (OIDC, no secrets!)
-4. Creates GitHub release with tag automatically
+1. Publishing is manual - `pwafire-ci.yml` only runs lint, test, build and size checks
+2. `prepublishOnly` runs `npm run verify`, so a failing package cannot be published
+3. `npm publish` uses the maintainer's npm account - agents prepare the release, never publish
+4. Tag and create the GitHub release after publishing so npm and GitHub stay in sync
 
 ## Best Practices
 
