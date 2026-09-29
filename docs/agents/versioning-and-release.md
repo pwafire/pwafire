@@ -81,211 +81,60 @@ return { ok: false, message: error instanceof Error ? error.message : "Failed" }
 
 ## Release Process
 
-### Automated via GitHub Actions
+Publishing is **manual**. The only workflow is `.github/workflows/pwafire-ci.yml`, which runs lint, tests, build, size budget and coverage on pushes and PRs to `main`/`develop`. Nothing publishes to npm or creates GitHub releases automatically.
 
-PWAFire uses **npm Trusted Publisher** with OIDC authentication - no secrets required!
+`prepublishOnly` runs `npm run verify` (exports check, lint, build, test, size), so `npm publish` refuses to ship a package that fails verification.
 
-**Important:** Publishing happens when you **merge to main**, not when you create tags.
-
-**Commit Scope Requirements:**
-- ✅ `feat()` - new features → triggers auto-publish
-- ✅ `fix()` - bug fixes → triggers auto-publish
-- ❌ `chore()` - maintenance work → NO publish
+### Steps
 
 ```bash
-# Working on a feature branch (e.g., fix/console)
+# 1. Branch from an up-to-date main
+git checkout main && git pull
+git checkout -b release/v6.5.1
 
-# 1. Make your changes and commit (use feat or fix scope!)
-git add .
-git commit -m "feat(clipboard) - add paste image support"
-# OR
-git commit -m "fix(clipboard) - resolve Safari copy error"
+# 2. Bump the version (ask which level - see "For AI Agents")
+cd packages/pwafire
+npm version patch --no-git-tag-version
+cd ../..
+git add packages/pwafire/package.json package-lock.json
+git commit -m "chore(release): bump pwafire to 6.5.1"
 
-# 2. Bump version (YOU choose the level based on changes)
-npm version patch   # For fixes → 6.1.0 → 6.1.1
-npm version minor   # For new APIs → 6.1.0 → 6.2.0
-npm version major   # For breaking changes → 6.1.0 → 7.0.0
+# 3. Push and open a PR
+git push -u origin release/v6.5.1
+gh pr create --title "chore(release): pwafire 6.5.1"
 
-# This command updates package.json and creates a commit
+# 4. After merge, publish from main (maintainer, with npm access)
+git checkout main && git pull
+npm publish -w pwafire
 
-# 3. Push your branch and create PR
-git push origin fix/console
-gh pr create --title "Release v6.1.1" --body "Bug fixes and improvements"
-
-# 4. Merge PR to main (via GitHub UI or CLI)
-gh pr merge --merge
-
-# 5. GitHub Actions automatically (on merge to main):
-#    ✅ Detects feat() or fix() commit
-#    ✅ Detects version change in package.json
-#    ✅ Runs lint, test, build
-#    ✅ Publishes to npm (via OIDC)
-#    ✅ Creates GitHub release with tag
-#    ✅ Generates changelog
+# 5. Tag the merged commit and create the GitHub release
+git tag v6.5.1
+git push origin v6.5.1
+gh release create v6.5.1 --title "v6.5.1" --generate-notes
 ```
 
 **Key points:**
-- Workflow triggers on merge to main when package.json changes
-- Only publishes for `feat()` or `fix()` commits (not `chore()`)
-- No manual tag pushing needed!
+
+- `--no-git-tag-version` keeps the tag off the release branch; tag the commit on `main` after merge
+- `npm publish` uses the maintainer's npm account - AI agents prepare everything up to it and hand it off
+- Tag and release only after `npm publish` succeeds, so GitHub and npm stay in sync
 
 ### For AI Agents
 
 **When assisting with releases, ALWAYS ask the user which version bump to use:**
 
-❌ **Don't assume:**
-```bash
-# Wrong - don't decide for the user!
-npm version patch
-```
-
-✅ **Always ask:**
-```
+```text
 Which version bump should I use?
 - patch (6.1.0 → 6.1.1) - bug fixes only
 - minor (6.1.0 → 6.2.0) - new features/APIs
 - major (6.1.0 → 7.0.0) - breaking changes
 ```
 
-✅ **Ensure feat() or fix() scope:**
-```
-Is your last commit using feat() or fix() scope?
-- feat() = new features
-- fix() = bug fixes
-- NOT chore() (won't trigger publish)
-```
-
-The user knows their changes best and should decide the semantic version level.
-
-### What Happens Behind the Scenes
-
-#### Step 1: Local Version Bump (YOU run this)
-
-```bash
-npm version patch -m "chore(release): bump version to %s"
-# or minor, or major
-```
-
-This runs on YOUR machine and does:
-- ✅ Updates `package.json`: `"version": "6.1.1"`
-- ✅ Creates git commit: `"chore(release): bump version to 6.1.1"`
-
-**Note:** No tag is created yet! This is all local.
-
-#### Step 2: Create PR and Merge to Main
-
-```bash
-# Push your branch
-git push origin fix/console
-
-# Create PR
-gh pr create --title "Release v6.1.1"
-
-# Merge to main (after review/approval)
-gh pr merge --merge
-```
-
-#### Step 3: GitHub Actions Detects Version Change
-
-`.github/workflows/publish.yml` triggers on:
-```yaml
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'packages/pwafire/package.json'
-```
-
-**Only runs if:**
-- Push to main ✅
-- package.json changed ✅
-- Commit message indicates version bump ✅
-
-#### Step 4: Workflow Runs
-
-```yaml
-- Checkout code (includes your package.json with new version)
-- Setup Node.js with npm registry
-- Install dependencies (npm ci)
-- Run full verification (npm run verify)
-  → lint, test, build all must pass
-- Publish to npm (OIDC authentication)
-  → npm reads version from package.json (e.g., 6.1.1)
-  → publishes as pwafire@6.1.1
-- Create GitHub release (auto-generated notes)
-```
-
-#### Step 5: npm Trusted Publisher (The Magic ✨)
-
-- GitHub Actions issues an OIDC token
-- npm verifies token against trusted publisher config:
-  - Repository: `pwafire/pwafire` ✅
-  - Workflow: `publish.yml` ✅
-  - Tag format: `v*` ✅
-- Publishes with provenance attestation
-- **No `NPM_TOKEN` secret needed!**
-
-### The Full Flow Visualized
-
-```
-┌─────────────────────────────────────────────────────┐
-│  LOCAL (Your Machine - Feature Branch)              │
-├─────────────────────────────────────────────────────┤
-│  $ git checkout -b fix/console                      │
-│  $ # make changes...                                │
-│  $ git commit -m "feat: add new feature"            │
-│                                                     │
-│  $ npm version patch -m "chore(release): %s"        │
-│    → package.json: "6.1.1"                         │
-│    → git commit: "chore(release): 6.1.1"           │
-│                                                     │
-│  $ git push origin fix/console                      │
-│  $ gh pr create                                     │
-└─────────────────────────────────────────────────────┘
-                      ↓
-┌─────────────────────────────────────────────────────┐
-│  GITHUB (Pull Request)                              │
-├─────────────────────────────────────────────────────┤
-│  ✅ CI runs (tests pass)                            │
-│  ✅ Review & approve                                │
-│  ✅ Merge to main                                   │
-└─────────────────────────────────────────────────────┘
-                      ↓
-┌─────────────────────────────────────────────────────┐
-│  GITHUB (Main Branch)                               │
-├─────────────────────────────────────────────────────┤
-│  Push to main detected!                             │
-│  ├─ package.json changed? ✅                        │
-│  ├─ Commit is version bump? ✅                      │
-│  └─ Triggers publish.yml workflow                   │
-└─────────────────────────────────────────────────────┘
-                      ↓
-┌─────────────────────────────────────────────────────┐
-│  GITHUB ACTIONS (CI/CD)                             │
-├─────────────────────────────────────────────────────┤
-│  1. Checkout code                                   │
-│  2. Run tests ✅                                     │
-│  3. Build package ✅                                 │
-│  4. Issue OIDC token                                │
-│  5. npm publish pwafire@6.1.1                       │
-│  6. Create git tag: v6.1.1                          │
-│  7. Create GitHub release                           │
-└─────────────────────────────────────────────────────┘
-                      ↓
-┌─────────────────────────────────────────────────────┐
-│  NPM REGISTRY                                       │
-├─────────────────────────────────────────────────────┤
-│  ✅ Verify OIDC token (trusted publisher)           │
-│  ✅ Publish pwafire@6.1.1                           │
-│  ✅ Add provenance attestation                      │
-│  🎉 Package live at npmjs.com/package/pwafire       │
-└─────────────────────────────────────────────────────┘
-```
+The user knows their changes best and should decide the semantic version level. Never run `npm publish` yourself.
 
 ## Version Decision Tree
 
-```
+```text
 Is this change breaking existing code?
 ├─ Yes → MAJOR version (npm version major)
 └─ No
@@ -296,43 +145,20 @@ Is this change breaking existing code?
 
 ## Examples from PWAFire History
 
-### PATCH: v6.0.1
-```bash
-# Fixed bug in notification API error handling
-npm version patch
-git push origin main --tags
-```
-
-### MINOR: v6.1.0
-```bash
-# Added Chrome Web AI APIs (Summarizer & Translator)
-npm version minor
-git push origin main --tags
-```
-
-### MAJOR: v6.0.0
-```bash
-# Complete rewrite with TypeScript, new API structure
-npm version major
-git push origin main --tags
-```
+- **PATCH v6.0.1** - fixed bug in notification API error handling
+- **MINOR v6.1.0** - added Chrome Web AI APIs (Summarizer & Translator)
+- **MAJOR v6.0.0** - complete rewrite with TypeScript, new API structure
 
 ## Pre-Release Versions
 
-For beta/alpha releases:
-
 ```bash
-# Create beta version: 6.2.0-beta.0
-npm version preminor --preid=beta
-git push origin main --tags
-
-# Publish with beta tag
-npm publish --tag beta
+cd packages/pwafire
+npm version preminor --preid=beta --no-git-tag-version
+cd ../..
+npm publish -w pwafire --tag beta
 ```
 
 ## Rollback a Release
-
-If you need to unpublish or deprecate:
 
 ```bash
 # Deprecate a version (recommended)
@@ -341,29 +167,20 @@ npm deprecate pwafire@6.1.0 "This version has a critical bug, use 6.1.1"
 # Unpublish (only within 72 hours)
 npm unpublish pwafire@6.1.0
 
-# Revert git tag locally
-git tag -d v6.1.0
-git push origin :refs/tags/v6.1.0
+# Remove the git tag and GitHub release
+gh release delete v6.1.0 --cleanup-tag
 ```
 
 ## Changelog Management
 
-PWAFire uses **auto-generated changelogs** from GitHub releases.
-
-The workflow automatically:
-- Groups commits by type (feat, fix, docs, etc.)
-- Links to PRs and commits
-- Shows contributors
-
-To improve changelog quality, follow [Conventional Commits](./commit-style.md).
+GitHub release notes are generated from merged PRs with `gh release create --generate-notes`. To improve them, follow [Conventional Commits](./commit-style.md).
 
 ## Verifying a Release
 
-After publishing, verify:
-
-1. **npm package**: https://www.npmjs.com/package/pwafire
+1. **npm package**: `npm view pwafire version` or https://www.npmjs.com/package/pwafire
 2. **GitHub release**: https://github.com/pwafire/pwafire/releases
 3. **Install test**:
+
    ```bash
    mkdir test-install && cd test-install
    npm init -y
@@ -373,55 +190,31 @@ After publishing, verify:
 
 ## Troubleshooting
 
-### "Permission denied" when publishing
-- Verify trusted publisher is configured at: https://www.npmjs.com/package/pwafire/access
-- Check workflow name matches: `publish.yml`
-- Ensure repository is: `pwafire/pwafire`
+### `npm publish` fails in `prepublishOnly`
+
+Run `npm run -w pwafire verify` and fix whichever step fails (exports sync, lint, build, test, size).
+
+### Version already published
+
+npm never reuses a version. Bump again (`npm version patch --no-git-tag-version`) and publish the new version.
 
 ### Version tag already exists
+
 ```bash
-# Delete local and remote tag
 git tag -d v6.1.0
 git push origin :refs/tags/v6.1.0
-
-# Create new tag
-npm version patch
-git push origin main --tags
-```
-
-### Workflow didn't trigger
-- Ensure tag format is `v*` (e.g., `v6.1.0`, not `6.1.0`)
-- Check workflow file exists: `.github/workflows/publish.yml`
-- View workflow runs: https://github.com/pwafire/pwafire/actions
-
-### Published version has issues
-```bash
-# Quick fix and patch release
-git checkout main
-# Fix the issue
-git add .
-git commit -m "fix: critical bug in release"
-npm version patch
-git push origin main --tags
 ```
 
 ## Best Practices
 
-1. **Test before releasing**: Always run `npm run verify` locally
-2. **Review changes**: Use `git log` to review what's being released
+1. **Test before releasing**: Always run `npm run -w pwafire verify` locally
+2. **Review changes**: Use `git log v<last>..main` to review what's being released
 3. **Update docs**: Keep documentation in sync with API changes
 4. **Announce breaking changes**: Update migration guides for major versions
 5. **Keep changelog clean**: Write clear, conventional commit messages
 6. **Version frequently**: Small, frequent releases are better than large ones
 
-## CI/CD Configuration
-
-The release workflow is configured at: `.github/workflows/publish.yml`
-
-For setup details, see: [CI/CD Setup Guide](../../.github/CI.md)
-
 ## Related Documentation
 
 - [Commit Style](./commit-style.md) - How to write good commit messages
-- [CI/CD Setup](../../.github/CI.md) - GitHub Actions configuration
-- [npm Trusted Publishers](https://docs.npmjs.com/trusted-publishers) - Official npm docs
+- [CI workflow](../../.github/workflows/pwafire-ci.yml) - Lint, test, build and size checks
