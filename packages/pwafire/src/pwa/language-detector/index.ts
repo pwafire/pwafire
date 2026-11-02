@@ -1,11 +1,6 @@
 import type { ErrorCode } from "../../types/result";
 
-export const languageDetector = async (
-  text: string,
-  options?: {
-    monitor?: (monitor: CreateMonitor) => void;
-  },
-): Promise<{
+type LanguageDetectorResult = {
   ok: boolean;
   message: string;
   /** @deprecated Use `code` instead. Will be removed in v7. */
@@ -13,7 +8,30 @@ export const languageDetector = async (
   results?: unknown;
   code?: ErrorCode;
   cause?: unknown;
-}> => {
+};
+
+type LanguageDetectorFailure = LanguageDetectorResult & { ok: false };
+
+const toFailure = (error: unknown, fallback: string): LanguageDetectorFailure => {
+  const message = error instanceof Error ? error.message : fallback;
+  const name = error instanceof DOMException || error instanceof Error ? error.name : "";
+
+  if (name === "AbortError") return { ok: false, status: "aborted", code: "cancelled", message, cause: error };
+  if (name === "NotAllowedError")
+    return { ok: false, status: "not-allowed", code: "permission-denied", message, cause: error };
+  if (name === "NotSupportedError")
+    return { ok: false, status: "not-supported", code: "unsupported", message, cause: error };
+  if (name === "QuotaExceededError")
+    return { ok: false, status: "quota-exceeded", code: "invalid-argument", message, cause: error };
+  return { ok: false, status: "error", code: "runtime-error", message, cause: error };
+};
+
+export const languageDetector = async (
+  text: string,
+  options?: {
+    monitor?: (monitor: CreateMonitor) => void;
+  },
+): Promise<LanguageDetectorResult> => {
   try {
     if (!("LanguageDetector" in self)) {
       return {
@@ -58,12 +76,6 @@ export const languageDetector = async (
       results,
     };
   } catch (error) {
-    return {
-      ok: false,
-      status: "error",
-      code: "runtime-error",
-      message: error instanceof Error ? error.message : "Failed to detect language",
-      cause: error,
-    };
+    return toFailure(error, "Failed to detect language");
   }
 };
